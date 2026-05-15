@@ -16,6 +16,7 @@ Identity policy still applies: use the correct sender account by context and nev
 
 - [ ] Track Coca-Cola employment contract | Due: ASAP / when received | Source: Guy update 2026-05-14
 - [ ] Track ABN freelance onboarding | Due: ASAP / during onboarding | Source: Guy update 2026-05-14
+- [ ] Relocation papers indexed in `KK/personal/relocation/` | Due: keep available when requested | Source: Guy request 2026-05-15
 
 ## Recurring commitments
 

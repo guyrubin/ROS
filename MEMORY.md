@@ -20,8 +20,8 @@ Read at session start. Write here on "remember [X]". Run /session-audit at end.
 ## Active across all agents
 
 ### HV — Real Estate
-Status: Active | Pipeline: deal sourcing — Den Haag, Rotterdam
-Next: [update per deal]
+Status: Active | Pipeline: smart living + development-upside sourcing — Amsterdam Noord, Amsterdam Zuid, Den Haag coastal prestige
+Next: Maintain [[HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands|Smart Living Deal Radar — Netherlands]]; current primary target is [[HV/03_Deals/Badhuiskade_217_Amsterdam_Noord|Badhuiskade 217]] pending viewing + DD.
 
 ### EA — Enterprise Arch / Workplaces
 Status: Active | Focus: current workplaces only — Coca-Cola employment contract + ABN freelance onboarding
