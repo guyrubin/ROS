@@ -1,0 +1,199 @@
+# memory.md — Persistent Product Memory
+
+## Product Name
+
+Working names:
+- Arbor
+- Parenting OS
+- Family Development OS
+
+Preferred strategic positioning:
+
+> Arbor: the developmental operating system for modern families.
+
+---
+
+## Founder Intent
+
+The platform should become the authoritative parent guide from birth to age 12.
+
+It should answer parent questions across:
+- psychology
+- behavior
+- emotional regulation
+- routines
+- education
+- language learning
+- autism spectrum concerns
+- school readiness
+- family communication
+- medical-adjacent questions
+- creative solutions such as personalized stories and AR experiences
+
+---
+
+## Strategic Inspiration
+
+Jordan Peterson inspiration:
+- family order
+- meaning
+- responsibility
+- discipline with warmth
+- truth-telling
+- developmental competence
+- practical problem-solving
+- moral and emotional development
+
+Do not copy tone or ideology. Convert the inspiration into product principles.
+
+---
+
+## Knowledge System Inspiration
+
+Andrej Karpathy inspiration:
+- markdown-based knowledge base
+- small composable notes
+- source-grounded knowledge
+- memory as infrastructure
+- AI as interface over structured knowledge
+- fast iteration and artifact generation
+- build the system like a personal/team operating system
+
+---
+
+## Product Thesis
+
+Most parenting platforms fail because they are either:
+1. content libraries,
+2. generic chatbots,
+3. medical symptom checkers,
+4. therapy marketplaces,
+5. fragmented school/parent communication tools.
+
+Arbor should combine:
+- trusted knowledge
+- personal child context
+- longitudinal memory
+- actionable guidance
+- human professional escalation
+- local market integration
+
+---
+
+## Core Moat
+
+The moat is not content.
+
+The moat is:
+- child profile memory
+- developmental timeline
+- parent interaction history
+- intervention outcomes
+- professional notes
+- family routines
+- localization by country and culture
+- pattern recognition over time
+
+Strategic phrase:
+
+> Longitudinal developmental intelligence.
+
+---
+
+## Target Users
+
+### Parent
+Needs calm, actionable advice in stressful moments.
+
+### Child Development Professional
+Needs structured intake, observation history, and intervention tracking.
+
+### Educator / Daycare / School
+Needs communication, behavior context, and practical support plans.
+
+### Municipality / Insurer / Health System
+Needs scalable early support, prevention, triage, and cost reduction.
+
+---
+
+## Market Strategy
+
+### Israel
+Use as content and professional expertise engine.
+Strong parenting, therapy, child-development, and education ecosystem.
+
+### Netherlands
+Use as institutional scaling market.
+Focus on municipalities, schools, youth care, insurers, and subsidized family support.
+
+### Belgium / EU
+Secondary expansion market after proof of model.
+
+---
+
+## Business Model
+
+Revenue streams:
+1. B2C subscription for parents.
+2. B2B2C institutional licensing.
+3. Professional dashboard subscription.
+4. Premium assessments and reports.
+5. Human expert marketplace take-rate.
+6. Localized content/curriculum packs.
+7. API/data partnerships where legally and ethically appropriate.
+
+---
+
+## MVP Scope
+
+MVP must include:
+- parent question intake
+- child profile
+- safety triage
+- age-based developmental guidance
+- practical action plan
+- tracking prompts
+- escalation note for professionals
+- knowledge base memory
+
+MVP must not include:
+- diagnosis
+- autonomous treatment plans
+- emergency handling beyond escalation
+- unsupported medical claims
+- over-complex marketplace features
+
+---
+
+## Product Personality
+
+The product should feel:
+- calm
+- serious
+- useful
+- warm
+- intelligent
+- structured
+- non-judgmental
+- high-agency
+
+Avoid:
+- childish UX
+- generic chatbot tone
+- over-medicalization
+- therapy cosplay
+- spiritual fluff
+- moral preaching
+
+---
+
+## Key Differentiator
+
+Arbor should turn one-off parent questions into accumulated developmental intelligence.
+
+Every interaction should improve:
+- the child profile
+- the family context
+- the intervention history
+- future recommendations
+- professional handoff quality

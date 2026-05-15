@@ -1,0 +1,47 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+
+# Obsidian local workspace state
+.obsidian/workspace*
+.obsidian/cache/
+.obsidian/plugins/*/data.json
+
+# Python / build artifacts
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Node / frontend artifacts
+node_modules/
+.npm/
+.next/
+out/
+coverage/
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+*.local
+secrets.*
+*.key
+*.pem
+
+# Logs / temp
+*.log
+*.tmp
+*.temp
+.cache/
+tmp/
