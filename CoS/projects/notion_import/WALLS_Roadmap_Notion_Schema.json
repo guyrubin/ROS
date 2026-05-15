@@ -1,0 +1,25 @@
+{
+  "database_name": "WALLS Roadmap",
+  "description": "Project-running dashboard converted from Guy's handwritten setup note. Tracks Workspace, AI tools, Lists/tasks, Library/knowledge base, and Scoreboards/dashboards.",
+  "properties": {
+    "Name": {"type": "title"},
+    "Workstream": {"type": "select", "options": ["Workspace Foundation", "AI Production Stack", "Notion Task Dashboard", "Design & Branding", "Content Growth", "Marketing", "Knowledge Base", "Dashboards"]},
+    "Owner Agent": {"type": "select", "options": ["CoS", "KK", "EA", "HV", "PAI", "MKT", "FIN", "Guy"]},
+    "Status": {"type": "select", "options": ["Todo", "In Progress", "Blocked", "Done", "Cancelled"]},
+    "Priority": {"type": "select", "options": ["Critical", "High", "Medium", "Low"]},
+    "Due": {"type": "date"},
+    "Next Action": {"type": "rich_text"},
+    "Dependency": {"type": "rich_text"},
+    "Source": {"type": "rich_text"},
+    "Notes": {"type": "rich_text"}
+  },
+  "recommended_views": [
+    "Today / Next Actions",
+    "By Workstream",
+    "Blocked",
+    "This Week",
+    "Agent Ownership",
+    "Done / Archive"
+  ],
+  "api_blocker": "NOTION_API_KEY is missing from the Hermes runtime. Add it locally to ~/.hermes/.env and share the parent page with the integration."
+}

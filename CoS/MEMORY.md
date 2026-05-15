@@ -1,5 +1,5 @@
 # CoS Memory
-Last updated: 2026-05-11
+Last updated: 2026-05-15
 
 ---
 
@@ -22,6 +22,7 @@ bguy.rubin@gmail.com
 - [ ] Coca-Cola employment contract — Domain: EA/KK — Stage: Final contract — Owner: Guy — Next milestone: Receive/review contract — Due: ASAP — Status: 🟡
 - [ ] ABN freelance onboarding — Domain: EA/KK — Stage: Onboarding — Owner: Guy — Next milestone: Complete onboarding steps/access/admin — Due: ASAP — Status: 🟢
 - [ ] Notion Second Brain for ROS — Domain: CoS/KK — Stage: Build pack ready, awaiting Notion API access — Owner: Guy + Hermes — Next milestone: Add NOTION_API_KEY and parent Notion page ID — Due: ASAP — Status: 🟡
+- [ ] [[projects/WALLS_Roadmap_Dashboard|WALLS Roadmap / Notion project-running dashboard]] — Domain: CoS/MKT/KK/PAI — Stage: ROS dashboard + Notion import ready, Notion API blocked — Owner: Guy + Hermes — Next milestone: connect Notion integration and create database — Due: ASAP — Status: 🟡
 
 ## Open decisions
 
@@ -38,6 +39,9 @@ bguy.rubin@gmail.com
 ## Learned patterns
 
 <!-- CoS-level patterns, recurring blockers, cross-domain dependencies -->
+
+- User's handwritten software setup notes should be converted into actionable ROS/Notion project dashboards with task rows, owner agents, dependencies, blockers, and import-ready files when Notion API access is unavailable.
+- Notion execution is blocked until `NOTION_API_KEY` is available in Hermes runtime and the target Notion parent page is shared with the integration.
 
 
 - [GitHub] Local ROS initialized as git repo and first commit pushed to `https://github.com/guyrubin/ROS` main. Commit `b3ce2b9` verified by fresh clone with 85 files, including Arbor HTML prototypes and PAI working files. | Date: 2026-05-15

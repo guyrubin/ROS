@@ -1,0 +1,25 @@
+Name,Workstream,Owner Agent,Status,Priority,Due,Next Action,Dependency,Source,Notes
+Confirm Google Workspace/domain,Workspace Foundation,KK,Todo,High,,Confirm account/domain and folder ownership,,Handwritten note,Google workspace/workbook line
+Define Google Drive folder structure,Workspace Foundation,KK,Todo,High,,Create Admin/Clients/Ventures/Content/Real Estate/Personal Ops structure,Confirm Google Workspace/domain,Handwritten note,Foundation for ops
+Clarify Workbook meaning,Workspace Foundation,CoS,Todo,Medium,,Decide if workbook means spreadsheet or workspace brand,,Handwritten note,Ambiguous handwriting
+Set up HeyGen AI workflow,AI Production Stack,MKT,Todo,High,,Define account/workflow and first use cases,,Handwritten note,AI content production
+Create HeyGen pilot script,AI Production Stack,MKT,Todo,High,,Draft first founder/client explainer video script,Set up HeyGen AI workflow,Handwritten note,First execution artifact
+Produce first HeyGen pilot video,AI Production Stack,MKT,Todo,Medium,,Generate/test one pilot video,Create HeyGen pilot script,Handwritten note,Execution test
+Connect Notion API,Notion Task Dashboard,CoS,Blocked,Critical,,Add NOTION_API_KEY locally and share parent page with integration,User local setup,Handwritten note,Hermes currently missing NOTION_API_KEY
+Create WALLS Roadmap database in Notion,Notion Task Dashboard,CoS,Blocked,Critical,,Create Notion database with roadmap schema,Connect Notion API,Handwritten note,Will execute when Notion access exists
+Import roadmap task rows to Notion,Notion Task Dashboard,CoS,Blocked,High,,Import CSV or create pages via API,Create WALLS Roadmap database in Notion,Handwritten note,CSV ready in ROS
+Create Notion dashboard views,Notion Task Dashboard,CoS,Blocked,High,,Create views: Today/By workstream/Blocked/This week/Agent ownership,Create WALLS Roadmap database in Notion,Handwritten note,API cannot set UI views but database can be structured
+Define brand lanes,Design & Branding,MKT,Todo,High,,Separate Guy / Cloud AI / HollandVest brand lanes,,Handwritten note,Design branding -> content growth
+Create visual identity basics,Design & Branding,MKT,Todo,Medium,,Draft colors/fonts/logo/template direction,Define brand lanes,Handwritten note,Brand system
+Define content pillars,Content Growth,MKT,Todo,High,,Create pillars for AI architecture/AI workflows/real estate/founder life,Define brand lanes,Handwritten note,Content growth
+Create weekly content calendar,Content Growth,MKT,Todo,High,,Plan first 2 weeks of posts,Define content pillars,Handwritten note,Marketing and content growth
+Draft first 5 content pieces,Content Growth,MKT,Todo,High,,Create 5 LinkedIn drafts,Create weekly content calendar,Handwritten note,Start executing marketing
+Define marketing channels,Marketing,MKT,Todo,High,,Set LinkedIn first; website second; newsletter optional,,Handwritten note,Marketing
+Create lead magnet concept,Marketing,MKT,Todo,Medium,,Draft one credibility asset idea,Define marketing channels,Handwritten note,Lead generation
+Create outreach/follow-up workflow,Marketing,MKT,Todo,Medium,,Define lightweight CRM/follow-up flow,Define marketing channels,Handwritten note,Marketing execution
+Maintain ROS/Obsidian as source of truth,Knowledge Base,CoS,In Progress,High,,Keep durable notes in ROS and link Notion back to ROS,,Handwritten note,Knowledge base - Obsidian
+Create Obsidian knowledge map,Knowledge Base,CoS,Todo,Medium,,Map active domains and dashboards in ROS,Maintain ROS/Obsidian as source of truth,Handwritten note,Knowledge base
+Create CoS dashboard/scoreboard,Dashboards,CoS,Todo,High,,Track weekly priorities/blocked decisions/active projects,Maintain ROS/Obsidian as source of truth,Handwritten note,Dashboards
+Create MKT content dashboard,Dashboards,MKT,Todo,High,,Track content calendar/status/channel/metrics,Define content pillars,Handwritten note,Dashboards
+Create PAI venture dashboard,Dashboards,PAI,Todo,Medium,,Track ventures/products/experiments,,Handwritten note,Dashboards
+Create KK personal ops dashboard,Dashboards,KK,Todo,Medium,,Track docs/calendar/admin/personal ops,,Handwritten note,Dashboards
