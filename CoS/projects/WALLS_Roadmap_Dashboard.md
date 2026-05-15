@@ -13,7 +13,7 @@ notion_status: ready_for_import_api_blocked
 
 This roadmap converts Guy's handwritten setup note into an execution dashboard. The operating idea is to build the **WALLS operating stack**: workspace, agents, lists/tasks, library/knowledge, and scoreboards/dashboards.
 
-**Current blocker:** Notion API access is not configured in Hermes (`NOTION_API_KEY` missing). I created a Notion-ready database import and dashboard spec locally. Once the Notion integration is connected, this can be pushed into Notion as a real database.
+**Current blocker:** Notion API access is not configured in Hermes (`NOTION_API_KEY` missing), and no authenticated browser session is available in this execution environment. Target workspace: **Guy Rubin Notion workspace under `bguy.rubin`**. I created a Notion-ready database import, schema, and deployment script locally. Once the integration token + parent page are available locally, this can be pushed into Notion as a real database.
 
 ## Transcription from image
 
