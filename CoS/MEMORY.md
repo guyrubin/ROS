@@ -38,3 +38,6 @@ bguy.rubin@gmail.com
 ## Learned patterns
 
 <!-- CoS-level patterns, recurring blockers, cross-domain dependencies -->
+
+
+- [GitHub] Local ROS initialized as git repo and first commit pushed to `https://github.com/guyrubin/ROS` main. Commit `b3ce2b9` verified by fresh clone with 85 files, including Arbor HTML prototypes and PAI working files. | Date: 2026-05-15
