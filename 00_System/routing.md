@@ -1,6 +1,6 @@
 # ROS Routing Matrix
-Version: 1.0
-Last updated: 2026-05-13
+Version: 1.1
+Last updated: 2026-05-17
 
 ---
 
@@ -99,9 +99,10 @@ Every plugin CLAUDE.md must include this block:
 ```
 ## Session start
 1. Read /00_System/routing.md
-2. Read /MEMORY.md
-3. Read /{plugin}/MEMORY.md
-4. Read /{plugin}/CLAUDE.md (already loaded)
+2. Read /00_System/agent-capabilities.md
+3. Read /MEMORY.md
+4. Read /{plugin}/MEMORY.md
+5. Read /{plugin}/CLAUDE.md (already loaded)
 ```
 
-This ensures shared context is available before any task starts.
+This ensures shared context and baseline capabilities are available before any task starts.

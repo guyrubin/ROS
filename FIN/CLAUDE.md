@@ -1,6 +1,6 @@
 ﻿# FIN -- Finance & Admin
 Version: 0.1 (stub -- build Phase 5)
-Last updated: 2026-05-13
+Last updated: 2026-05-17
 
 ## Role
 
@@ -10,8 +10,9 @@ Covers both Guy's professional invoicing and Hollandvest financial administratio
 ## On session start
 
 1. Read /00_System/routing.md
-2. Read /MEMORY.md
-3. Read /FIN/MEMORY.md
+2. Read /00_System/agent-capabilities.md
+3. Read /MEMORY.md
+4. Read /FIN/MEMORY.md
 
 ## Commands
 
@@ -33,6 +34,10 @@ Covers both Guy's professional invoicing and Hollandvest financial administratio
 ## Memory
 
 /FIN/MEMORY.md -- active invoices, insurance policies, subscriptions, tax calendar
+
+## Shared skills
+
+- `/00_System/agent-capabilities.md` for baseline web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.
 
 ## Safety note
 

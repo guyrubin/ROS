@@ -1,7 +1,7 @@
 # 👑 Rubin OS — Root Constitution
 
-**Version:** 1.3
-**Last updated:** 2026-05-13
+**Version:** 1.4
+**Last updated:** 2026-05-17
 
 ---
 
@@ -10,9 +10,10 @@
 Upon initialization of any new session, strictly follow these steps:
 1. **Read Core Memory:** `/MEMORY.md`
 2. **Load Routing Rules:** `/00_System/routing.md`
-3. **Initialize Agent:** Load the `CLAUDE.md` for the active domain (see [Routing Map](#️-routing-map)).
-4. **Read Agent Memory:** Load the specific agent's `MEMORY.md`.
-5. **Session Wrap-up:** At the end of the session, execute `/session-audit`.
+3. **Load Shared Capabilities:** `/00_System/agent-capabilities.md`
+4. **Initialize Agent:** Load the `CLAUDE.md` for the active domain (see [Routing Map](#️-routing-map)).
+5. **Read Agent Memory:** Load the specific agent's `MEMORY.md`.
+6. **Session Wrap-up:** At the end of the session, execute `/session-audit`.
 
 > **⚠️ Core Directive (Karpathy PKM):** We operate an **AI-Maintained Knowledge Base**. When I say "remember [X]" or provide raw notes, do not just log it—*compile, structure, and interlink* it into my Markdown wiki. You are my automated research librarian.
 
@@ -69,6 +70,7 @@ We utilize an LLM-maintained Wiki approach to eliminate manual tagging:
 | **Connectors** | `/00_System/connectors.md` |
 | **Notion Templates** | `/00_System/notion_templates.md` |
 | **Routing Matrix** | `/00_System/routing.md` |
+| **Agent Capabilities** | `/00_System/agent-capabilities.md` |
 | **Identity Policy** | `/00_System/identity-policy.md` |
 | **Instruction Standards**| `/00_System/markdown-instruction-principles.md` |
 | **Layer Model** | `/00_System/layer-model.md` |

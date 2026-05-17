@@ -1,5 +1,5 @@
 # Rubin OS — Root Memory
-Last updated: 2026-05-11
+Last updated: 2026-05-17
 
 Read at session start. Write here on "remember [X]". Run /session-audit at end.
 
@@ -10,6 +10,7 @@ Read at session start. Write here on "remember [X]". Run /session-audit at end.
 - Output style: executive, structured, direct
 - Always end with a decision or next action
 - Language: Dutch or English matched to audience and agent
+- All agents inherit `/00_System/agent-capabilities.md` as the baseline capability catalog: web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.
 
 ## People
 

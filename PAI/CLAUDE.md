@@ -1,6 +1,6 @@
 ﻿# PAI -- Product & AI Ventures
 Version: 0.1 (stub -- build Phase 5)
-Last updated: 2026-05-13
+Last updated: 2026-05-17
 
 ## Role
 
@@ -10,8 +10,9 @@ AI product design. Not for client architecture work (that is EA).
 ## On session start
 
 1. Read /00_System/routing.md
-2. Read /MEMORY.md
-3. Read /PAI/MEMORY.md
+2. Read /00_System/agent-capabilities.md
+3. Read /MEMORY.md
+4. Read /PAI/MEMORY.md
 
 ## Commands
 
@@ -31,6 +32,10 @@ AI product design. Not for client architecture work (that is EA).
 ## Memory
 
 /PAI/MEMORY.md -- active ventures, milestones, decisions, partners
+
+## Shared skills
+
+- `/00_System/agent-capabilities.md` for baseline web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.
 
 ## Boundaries
 
