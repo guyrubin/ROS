@@ -1,0 +1,161 @@
+{
+  "generated_at": "2026-05-15",
+  "policy": "Curated only: active projects/tasks from ROS memory plus confirmed high-signal email event; no newsletter/job-alert/noise items.",
+  "projects": [
+    {
+      "Name": "Coca-Cola employment contract",
+      "Status": "Waiting",
+      "Domain": [
+        "EA",
+        "KK"
+      ],
+      "Owner": "Guy",
+      "Health": "Amber",
+      "Current Milestone": "Receive/review employment contract",
+      "ROS Path": "EA/clients/Coca-Cola/CONTEXT.md"
+    },
+    {
+      "Name": "ABN freelance onboarding",
+      "Status": "Active",
+      "Domain": [
+        "EA",
+        "KK"
+      ],
+      "Owner": "Guy",
+      "Health": "Green",
+      "Current Milestone": "Complete onboarding/access/admin steps",
+      "ROS Path": "EA/clients/ABN/CONTEXT.md"
+    },
+    {
+      "Name": "Amsterdam Noord personal-living deal search",
+      "Status": "Active",
+      "Domain": [
+        "HV",
+        "KK"
+      ],
+      "Owner": "Guy / HV",
+      "Health": "Amber",
+      "Current Milestone": "Attend confirmed Christoffelkruidstraat 82 viewing and continue DD on primary targets",
+      "ROS Path": "HV/MEMORY.md"
+    },
+    {
+      "Name": "Arbor parenting app / Parenting OS",
+      "Status": "Active",
+      "Domain": [
+        "PAI"
+      ],
+      "Owner": "Guy + Hermes",
+      "Health": "Green",
+      "Current Milestone": "Phase 0: PRD/data/safety/scenario/GTM/prototype validation",
+      "ROS Path": "PAI/projects/parenting-os-plugin/"
+    },
+    {
+      "Name": "Rubin OS Notion Command Center",
+      "Status": "Blocked",
+      "Domain": [
+        "CoS",
+        "KK"
+      ],
+      "Owner": "Guy + Hermes",
+      "Health": "Red",
+      "Current Milestone": "Share target Command Center page with Notion integration ROS KK Con",
+      "ROS Path": "CoS/projects/notion-command-center-update/"
+    }
+  ],
+  "tasks": [
+    {
+      "Name": "Attend Christoffelkruidstraat 82 viewing",
+      "Status": "Scheduled",
+      "Priority": "P0",
+      "Domain": [
+        "HV",
+        "KK"
+      ],
+      "Due": "2026-05-18T16:00:00+02:00",
+      "Owner": "Guy",
+      "Context": "Errand",
+      "Source": "Email",
+      "Waiting For": "",
+      "ROS Path": "HV/MEMORY.md",
+      "Notes": "Confirmed by Lammers + Dijkstra Makelaars / HousApp; address 1032LK Amsterdam; docs: https://app.eerlijkbieden.nl/auction/69aaee601a3901efb5f7571f"
+    },
+    {
+      "Name": "Review Coca-Cola employment contract when received",
+      "Status": "Waiting",
+      "Priority": "P0",
+      "Domain": [
+        "EA",
+        "KK"
+      ],
+      "Due": "2026-05-16",
+      "Owner": "Guy",
+      "Context": "Review",
+      "Source": "ROS",
+      "Waiting For": "Coca-Cola / HR / hiring contact",
+      "ROS Path": "EA/clients/Coca-Cola/CONTEXT.md",
+      "Notes": "Track inbox; review terms immediately when received."
+    },
+    {
+      "Name": "Complete ABN onboarding checklist",
+      "Status": "Next",
+      "Priority": "P0",
+      "Domain": [
+        "EA",
+        "KK"
+      ],
+      "Due": "2026-05-16",
+      "Owner": "Guy",
+      "Context": "Desk",
+      "Source": "ROS",
+      "Waiting For": "ABN onboarding contact where applicable",
+      "ROS Path": "EA/clients/ABN/CONTEXT.md",
+      "Notes": "Documents, access, admin, start-date logistics."
+    },
+    {
+      "Name": "Decide next move on Badhuiskade 217 viewing/DD",
+      "Status": "Next",
+      "Priority": "P1",
+      "Domain": [
+        "HV"
+      ],
+      "Due": "2026-05-17",
+      "Owner": "Guy / HV",
+      "Context": "Review",
+      "Source": "ROS",
+      "Waiting For": "",
+      "ROS Path": "HV/03_Deals/Badhuiskade_217_Amsterdam_Noord",
+      "Notes": "Primary target in HV memory; request DD documents if pursuing."
+    },
+    {
+      "Name": "Choose Arbor first beta wedge",
+      "Status": "Next",
+      "Priority": "P1",
+      "Domain": [
+        "PAI"
+      ],
+      "Due": "2026-05-20",
+      "Owner": "Guy",
+      "Context": "Deep Work",
+      "Source": "ROS",
+      "Waiting For": "",
+      "ROS Path": "PAI/MEMORY.md",
+      "Notes": "Options: behavior/routines, speech/language, emotional regulation, school readiness, autism/ADHD concerns."
+    },
+    {
+      "Name": "Share Notion Command Center page with integration ROS KK Con",
+      "Status": "Blocked",
+      "Priority": "P0",
+      "Domain": [
+        "CoS",
+        "KK"
+      ],
+      "Due": "2026-05-15",
+      "Owner": "Guy",
+      "Context": "Desk",
+      "Source": "Telegram",
+      "Waiting For": "Guy to connect Notion page to integration",
+      "ROS Path": "CoS/projects/notion-command-center-update/",
+      "Notes": "Notion API key is valid, but search returns zero accessible pages; no live update possible until a parent page is shared."
+    }
+  ]
+}

@@ -11,9 +11,10 @@ Upon initialization of any new session, strictly follow these steps:
 1. **Read Core Memory:** `/MEMORY.md`
 2. **Load Routing Rules:** `/00_System/routing.md`
 3. **Load Shared Capabilities:** `/00_System/agent-capabilities.md`
-4. **Initialize Agent:** Load the `CLAUDE.md` for the active domain (see [Routing Map](#️-routing-map)).
-5. **Read Agent Memory:** Load the specific agent's `MEMORY.md`.
-6. **Session Wrap-up:** At the end of the session, execute `/session-audit`.
+4. **Load Connector Registry:** `/00_System/connectors.md`
+5. **Initialize Agent:** Load the `CLAUDE.md` for the active domain (see [Routing Map](#️-routing-map)).
+6. **Read Agent Memory:** Load the specific agent's `MEMORY.md`.
+7. **Session Wrap-up:** At the end of the session, execute `/session-audit`.
 
 > **⚠️ Core Directive (Karpathy PKM):** We operate an **AI-Maintained Knowledge Base**. When I say "remember [X]" or provide raw notes, do not just log it—*compile, structure, and interlink* it into my Markdown wiki. You are my automated research librarian.
 

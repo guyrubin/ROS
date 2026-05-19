@@ -1,0 +1,6 @@
+Name,Status,Domain,Owner,Health,Current Milestone,ROS Path
+Coca-Cola employment contract,Waiting,EA; KK,Guy,Amber,Receive/review employment contract,EA/clients/Coca-Cola/CONTEXT.md
+ABN freelance onboarding,Active,EA; KK,Guy,Green,Complete onboarding/access/admin steps,EA/clients/ABN/CONTEXT.md
+Amsterdam Noord personal-living deal search,Active,HV; KK,Guy / HV,Amber,Attend confirmed Christoffelkruidstraat 82 viewing and continue DD on primary targets,HV/MEMORY.md
+Arbor parenting app / Parenting OS,Active,PAI,Guy + Hermes,Green,Phase 0: PRD/data/safety/scenario/GTM/prototype validation,PAI/projects/parenting-os-plugin/
+Rubin OS Notion Command Center,Blocked,CoS; KK,Guy + Hermes,Red,Share target Command Center page with Notion integration ROS KK Con,CoS/projects/notion-command-center-update/

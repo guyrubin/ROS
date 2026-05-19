@@ -10,7 +10,7 @@ Read at session start. Write here on "remember [X]". Run /session-audit at end.
 - Output style: executive, structured, direct
 - Always end with a decision or next action
 - Language: Dutch or English matched to audience and agent
-- All agents inherit `/00_System/agent-capabilities.md` as the baseline capability catalog: web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.
+- All agents inherit `/00_System/agent-capabilities.md` as the baseline capability catalog and `/00_System/connectors.md` as live connector status: Gmail via Himalaya (`bguy` verified; `hollandvest`/`joseph` verified) and Notion via `ROS KK Con` integration pending shared parent page.
 
 ## People
 

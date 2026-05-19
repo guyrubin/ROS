@@ -1,6 +1,6 @@
 # ROS Identity Policy
-Version: 1.0
-Last updated: 2026-05-13
+Version: 1.1
+Last updated: 2026-05-17
 
 ---
 
@@ -12,11 +12,11 @@ This file defines which Gmail identity is used for each ROS agent, how emails ar
 
 ## Gmail account registry
 
-| Account | Owner identity | Status | Assigned agents |
+| Account | Owner identity | Connector status | Assigned agents |
 |---|---|---|---|
-| bguy.rubin@gmail.com | Guy Rubin (personal/professional) | Active ✅ | CoS, KK, EA, PAI, MKT |
-| bhollandvest@gmail.com | Hollandvest (real estate entity) | Active ✅ | HV only |
-| josephdoronrubin@gmail.com | Joseph Rubin (EA consultant, CTO consultant) | Active — EA ✅ | EA (main lead) |
+| bguy.rubin@gmail.com | Guy Rubin (personal/professional) | Himalaya `bguy` active / verified ✅ | CoS, KK, EA, PAI, MKT, FIN-by-context |
+| bhollandvest@gmail.com | Hollandvest (real estate entity) | Himalaya `hollandvest` active / verified ✅ | HV, KK, FIN-by-context |
+| josephdoronrubin@gmail.com | Joseph Rubin (EA consultant, CTO consultant) | Himalaya `joseph` active / verified ✅ | EA when Joseph is sender/primary, KK, FIN-by-context |
 
 ---
 
@@ -50,7 +50,7 @@ Joseph Rubin's account. Joseph is an EA consultant and CTO consultant — the ma
 - Sending Joseph copies of EA deliverables
 - Any communication where Joseph is the primary contact
 
-josephdoronrubin@gmail.com is now connected. Use it for EA work where Joseph is the sender or primary contact. Only CC Joseph on specific deliverables when explicitly instructed — never auto-CC on EA client emails. Guy sends from bguy.rubin@gmail.com; Joseph sends from josephdoronrubin@gmail.com.
+josephdoronrubin@gmail.com is configured in Himalaya but blocked until its Gmail App Password is populated. Use it for EA work only where Joseph is the sender or primary contact once credentials are available. Only CC Joseph on specific deliverables when explicitly instructed — never auto-CC on EA client emails. Guy sends from bguy.rubin@gmail.com; Joseph sends from josephdoronrubin@gmail.com.
 
 ---
 
@@ -92,10 +92,10 @@ Ready to send? Confirm or edit above.
 
 ## Connector status
 
-| Account | MCP connector | Status |
+| Account | Access method | Status |
 |---|---|---|
-| bguy.rubin@gmail.com | Gmail MCP (2996ec33) | Connected ✅ |
-| bhollandvest@gmail.com | Gmail MCP (second instance) | Connected ✅ |
-| josephdoronrubin@gmail.com | Gmail MCP (third instance) | Connected ✅ |
+| bguy.rubin@gmail.com | Himalaya CLI account `bguy` | Active / verified ✅ |
+| bhollandvest@gmail.com | Himalaya CLI account `hollandvest` | Active / verified ✅ |
+| josephdoronrubin@gmail.com | Himalaya CLI account `joseph` | Active / verified ✅ |
 
-See `00_System/connectors.md` for full connector registry.
+See `00_System/connectors.md` for full connector registry and Notion status.

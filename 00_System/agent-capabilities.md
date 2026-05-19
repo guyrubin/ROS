@@ -25,6 +25,20 @@ All agents inherit these capabilities unless a domain-specific safety rule narro
 
 ---
 
+## Shared Gmail and Notion operating layer
+
+All agents inherit `/00_System/connectors.md` as the source of truth for connector status.
+
+| Workflow | Required Hermes skill | Current access | Universal rule |
+|---|---|---|---|
+| Gmail / email triage, search, read, draft, reply, forward, send | `himalaya` | Himalaya CLI accounts: `bguy` verified; `hollandvest` and `joseph` active / verified | Always use the domain's authorized account; draft first; never send without explicit confirmation |
+| Notion pages/databases/tasks/projects | `productivity/notion` | `NOTION_API_KEY` present for integration `ROS KK Con`; Rubin OS and HollandVest Command Center pages verified accessible | Validate target page/database before writes; upsert by exact title/name; do not create disconnected junk |
+| Hermes configuration / tools / profiles / gateway | `hermes-agent` | Local Hermes runtime on WSL | Load the skill before config/tool/profile/gateway changes |
+
+Agents should not duplicate connector status in domain files except for domain-specific account scope. If live connector access is blocked, agents should produce clean ROS Markdown/import packs and state the blocker.
+
+---
+
 ## Popular modern skill families to prefer
 
 When choosing tools or workflows, agents should prefer current, widely adopted approaches in these categories:

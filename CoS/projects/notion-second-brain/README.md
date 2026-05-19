@@ -1,7 +1,7 @@
 # Notion Second Brain for Rubin OS
-Last updated: 2026-05-14
+Last updated: 2026-05-19
 Owner: CoS
-Status: Build pack ready — Notion deployment blocked until NOTION_API_KEY + parent page are available
+Status: Build pack ready — Notion integration connected; Rubin OS and HollandVest Command Center parent pages verified via API
 
 ---
 

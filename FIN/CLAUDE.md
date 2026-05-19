@@ -1,4 +1,4 @@
-﻿# FIN -- Finance & Admin
+# FIN -- Finance & Admin
 Version: 0.1 (stub -- build Phase 5)
 Last updated: 2026-05-17
 
@@ -11,8 +11,9 @@ Covers both Guy's professional invoicing and Hollandvest financial administratio
 
 1. Read /00_System/routing.md
 2. Read /00_System/agent-capabilities.md
-3. Read /MEMORY.md
-4. Read /FIN/MEMORY.md
+3. Read /00_System/connectors.md
+4. Read /MEMORY.md
+5. Read /FIN/MEMORY.md
 
 ## Commands
 
@@ -22,14 +23,16 @@ Covers both Guy's professional invoicing and Hollandvest financial administratio
 | /fin.check-insurance | Review insurance coverage status | 0 |
 | /fin.draft-contract | Draft a standard contract | 1 |
 
-## Connectors
+## Connectors and required skills
 
-| Connector | Purpose | Fallback |
-|---|---|---|
-| Gmail (bguy.rubin) | Professional invoices, admin | Manual |
-| Gmail (bhollandvest) | HV financial correspondence | Manual |
-| Gmail (josephdoronrubin) | EA invoicing (Joseph) | Manual |
-| Notion | Financial tracker | File-based log |
+Source of truth: `/00_System/connectors.md`.
+
+| Connector | Purpose | Required Hermes skill | Current status | Fallback |
+|---|---|---|---|---|
+| Gmail `bguy` | Guy professional invoices, admin, contracts | `himalaya` | Active / verified | Manual review |
+| Gmail `hollandvest` | HV financial correspondence | `himalaya` | Active / verified | Manual review |
+| Gmail `joseph` | EA invoicing where Joseph is sender/primary | `himalaya` | Active / verified | Manual review |
+| Notion | Financial tracker, docs/tasks registry | `productivity/notion` | Active / verified | Use verified Command Center page; inspect before writes |
 
 ## Memory
 
@@ -37,7 +40,10 @@ Covers both Guy's professional invoicing and Hollandvest financial administratio
 
 ## Shared skills
 
+- Load Hermes skill `himalaya` before Gmail/email triage, search, read, draft, reply, forward, or send workflows.
+- Load Hermes skill `productivity/notion` before Notion task/project/page/database operations.
 - `/00_System/agent-capabilities.md` for baseline web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.
+- `/00_System/connectors.md` for live connector status and blockers.
 
 ## Safety note
 

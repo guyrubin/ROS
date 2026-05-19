@@ -100,9 +100,10 @@ Every plugin CLAUDE.md must include this block:
 ## Session start
 1. Read /00_System/routing.md
 2. Read /00_System/agent-capabilities.md
-3. Read /MEMORY.md
-4. Read /{plugin}/MEMORY.md
-5. Read /{plugin}/CLAUDE.md (already loaded)
+3. Read /00_System/connectors.md
+4. Read /MEMORY.md
+5. Read /{plugin}/MEMORY.md
+6. Read /{plugin}/CLAUDE.md (already loaded)
 ```
 
-This ensures shared context and baseline capabilities are available before any task starts.
+This ensures shared context, baseline capabilities, and live connector status are available before any task starts.
