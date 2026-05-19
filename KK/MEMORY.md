@@ -10,7 +10,7 @@ KK manages operational email handling across all connected email accounts:
 - `bhollandvest@gmail.com`
 - `josephdoronrubin@gmail.com`
 
-Identity policy still applies: use the correct sender account by context and never send externally without explicit confirmation.
+External sending is governed by `/00_System/identity-policy.md`.
 
 ## Active priorities
 

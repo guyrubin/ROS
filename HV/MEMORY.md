@@ -33,7 +33,7 @@ bhollandvest@gmail.com
 ## Learned market patterns
 
 - For Guy's personal-living-plus-upside brief, Amsterdam Noord currently outranks Zuid and Statenkwartier on combined family logistics, car/parking sanity, modern infrastructure, and future upside. Zuid remains #1 for prestige today; Statenkwartier/Belgisch Park remains best for calm coastal family living.
-- BOG/development candidates must be separated from personal-living candidates until omgevingsplan/zoning, permit path, VvE/MJOP, erfpacht/own land, parking rights, WWS/rental restrictions, and monument/protected-cityscape constraints are checked.
+- BOG/development candidates are tracked separately from personal-living candidates until omgevingsplan/zoning, permit path, VvE/MJOP, erfpacht/own land, parking rights, WWS/rental restrictions, and monument/protected-cityscape constraints have been checked.
 
 ## Open decisions
 

@@ -1,16 +1,16 @@
 # Rubin OS — Root Memory
-Last updated: 2026-05-17
+Last updated: 2026-05-20
 
-Read at session start. Write here on "remember [X]". Run /session-audit at end.
+Read at session start. Write durable current facts here. Prescriptive behavior belongs in `CLAUDE.md`, `AGENTS.md`, system docs, or skills.
 
 ---
 
-## Preferences & rules
+## Operating facts
 
-- Output style: executive, structured, direct
-- Always end with a decision or next action
-- Language: Dutch or English matched to audience and agent
-- All agents inherit `/00_System/agent-capabilities.md` as the baseline capability catalog and `/00_System/connectors.md` as live connector status: Gmail via Himalaya (`bguy` verified; `hollandvest`/`joseph` verified) and Notion via `ROS KK Con` integration pending shared parent page.
+- 2026-05-20 — ROS is a Markdown-first AI operating system: durable knowledge lives in Markdown, operational state may live in Notion, binaries/sensitive files stay local-only or in Drive unless explicitly approved.
+- 2026-05-20 — Canonical shared workspace is `C:\Users\dguyr\ROS` (`/mnt/c/Users/dguyr/ROS`); `/home/guyru/ROS` is a symlink to the same working tree for Hermes.
+- 2026-05-20 — ROS uses the whiteboard/archive pattern: active facts stay in `MEMORY.md`; stale/completed history moves to nearest `archive.md`.
+- 2026-05-20 — Hermes scheduled job `bc55de81f9f1` runs a read-only ROS weekly hygiene audit Mondays at 08:00 and reports findings without editing or pushing.
 
 ## People
 

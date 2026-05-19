@@ -8,15 +8,16 @@
 ## 🚀 Session Boot Sequence
 
 Upon initialization of any new session, strictly follow these steps:
-1. **Read Core Memory:** `/MEMORY.md`
-2. **Load Routing Rules:** `/00_System/routing.md`
-3. **Load Shared Capabilities:** `/00_System/agent-capabilities.md`
-4. **Load Connector Registry:** `/00_System/connectors.md`
-5. **Initialize Agent:** Load the `CLAUDE.md` for the active domain (see [Routing Map](#️-routing-map)).
-6. **Read Agent Memory:** Load the specific agent's `MEMORY.md`.
-7. **Session Wrap-up:** At the end of the session, execute `/session-audit`.
+1. **Read Cross-Agent Contract:** `/AGENTS.md`
+2. **Read Core Memory:** `/MEMORY.md`
+3. **Load Routing Rules:** `/00_System/routing.md`
+4. **Load Shared Capabilities:** `/00_System/agent-capabilities.md`
+5. **Load Connector Registry:** `/00_System/connectors.md`
+6. **Initialize Agent:** Load the `CLAUDE.md` for the active domain (see [Routing Map](#️-routing-map)).
+7. **Read Agent Memory:** Load the specific agent's `MEMORY.md`.
+8. **Session Wrap-up:** At the end of the session, execute `/session-audit`.
 
-> **⚠️ Core Directive (Karpathy PKM):** We operate an **AI-Maintained Knowledge Base**. When I say "remember [X]" or provide raw notes, do not just log it—*compile, structure, and interlink* it into my Markdown wiki. You are my automated research librarian.
+> **⚠️ Core Directive (Karpathy PKM):** We operate an **AI-Maintained Knowledge Base**. When I say "remember [X]" or provide raw notes, compile, structure, and interlink it into Markdown. Output style: executive, structured, direct; end with a decision or next action.
 
 ## 🗺️ Routing Map
 
@@ -73,12 +74,18 @@ We utilize an LLM-maintained Wiki approach to eliminate manual tagging:
 | **Routing Matrix** | `/00_System/routing.md` |
 | **Agent Capabilities** | `/00_System/agent-capabilities.md` |
 | **Identity Policy** | `/00_System/identity-policy.md` |
+| **AI OS Principles** | `/00_System/ai-os-principles.md` |
+| **Memory/Archive Policy** | `/00_System/memory-archive-policy.md` |
+| **Hygiene Runbook** | `/00_System/ros-hygiene-runbook.md` |
+| **Session Audit** | `/00_System/session-audit.md` |
 | **Instruction Standards**| `/00_System/markdown-instruction-principles.md` |
 | **Layer Model** | `/00_System/layer-model.md` |
 
 ## ⚡ Token Optimization Rules
 
 - **Size Limit:** This file *must* stay under 100 lines. Domain-specific rules live in agent `CLAUDE.md` files.
+- **Memory Diet:** Root/domain `MEMORY.md` files hold active facts only; stale detail moves to `archive.md`.
+- **Instruction vs Memory:** Prescriptive rules live in instruction files or skills; facts/status live in memory files.
 - **DRY Principle:** No rule appears in more than one file.
 - **Lazy Loading:** Each agent's `CLAUDE.md` is loaded *only* when that agent is active.
 - **Model Selection:** Default model is Sonnet. Use Opus *only* for complex tasks with 3+ interdependent steps.

@@ -40,6 +40,11 @@ Source of truth: `/00_System/connectors.md`.
 
 /KK/MEMORY.md -- active tasks, priorities, scheduled items, recurring commitments
 
+## Email and identity rules
+
+- Use the correct sender account by context per `/00_System/identity-policy.md`.
+- Always draft first; never send externally without explicit confirmation.
+
 ## Shared skills
 
 - Load Hermes skill `himalaya` before Gmail/email triage, search, read, draft, reply, forward, or send workflows.
