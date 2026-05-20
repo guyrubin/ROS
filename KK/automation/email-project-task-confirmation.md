@@ -1,8 +1,17 @@
 # Email Project & Task Confirmation Automation
 
 **Owner:** KK / Personal Ops  
-**Status:** Design draft  
+**Status:** Phase 1 implemented  
 **Purpose:** Frequently scan connected mailboxes and produce a deduplicated confirmation list of projects and tasks Guy should approve, reject, delegate, or snooze.
+
+## Implementation status
+
+- Implemented as Hermes profile script: `/home/guyru/.hermes/profiles/cos/scripts/email_task_confirmation.py`.
+- Unit tests: `/home/guyru/.hermes/profiles/cos/scripts/test_email_task_confirmation.py`.
+- Local state DB: `/home/guyru/.hermes/profiles/cos/state/email_task_confirmation.sqlite`.
+- Hermes cron job: `af8fb6155cfc` — `KK email project/task confirmation scan`, scheduled `every 120m`, delivery `origin` Telegram chat.
+- Runtime mode: `no_agent=True`; the script emits a Telegram-ready digest directly. Empty stdout means no message is sent.
+- Current scope: read-only inbox scan, heuristic extraction, SQLite deduplication, Telegram confirmation digest. No Notion writes and no external sends.
 
 ---
 
