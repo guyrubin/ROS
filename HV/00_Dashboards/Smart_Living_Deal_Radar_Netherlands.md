@@ -25,6 +25,69 @@ markets:
 
 ## Scan updates
 
+### 2026-05-21 — Fouda/Funda link added from viewing email
+
+- Added **Christoffelkruidstraat 82, Amsterdam Noord / Buiksloterham** to the live listings section from the Lammers + Dijkstra/HousApp viewing reminder.
+- Funda link: [Christoffelkruidstraat 82 — Funda](https://www.funda.nl/detail/koop/amsterdam/appartement-christoffelkruidstraat-82/89787233/)
+- Broker link: [Lammers + Dijkstra — Christoffelkruidstraat 82](https://www.ldmakelaars.nl/woningaanbod/koop/amsterdam/christoffelkruidstraat/82)
+- Viewing reminder in bguy mailbox: **22-05-2026 12:30**.
+
+### 2026-05-21 — Daily public scan
+
+**Result:** Three materially relevant public-MVA candidates surfaced from the latest MarketSuite batch. **Ms. Tarnweg 13/15** is the cleanest new living-first benchmark complement in Noord: larger than Badhuiskade 217, lower €/m², three bedrooms, two roof terraces and A++ new-build quality near the NDSM/Boegbeeld corridor. **Spreeuwenpark 11** is a surprisingly strong hybrid whole-pand screen because it combines two residential floors, BOG/practice space, cellar/zolder volume and vacant delivery at a low headline ticket. **Chrysantenstraat 20** is a core Buiksloterham BOG/development watch, but only as high-risk / with-contingencies.
+
+#### Promoted watch: Ms. Tarnweg 13 / 15 — Amsterdam Noord / Boegbeeld-NDSM new-build family maisonette
+
+- Asset links: [MVA — Ms. Tarnweg 13](https://mva.nl/koop/woningen/ms-tarnweg-13) · [MVA — Ms. Tarnweg 15](https://mva.nl/koop/woningen/ms-tarnweg-15)
+- Source APIs: [API — Ms. Tarnweg 13](https://mva.nl/api/ms/listing/properties/ms-tarnweg-13) · [API — Ms. Tarnweg 15](https://mva.nl/api/ms/listing/properties/ms-tarnweg-15)
+- Ask: **€885,000** each
+- Size: **123 m²**
+- Bedrooms / bathrooms: public text states **3 bedrooms / 2 bathrooms**
+- Price/m²: **~€7,195/m²**
+- Energy / construction: **A++ / new construction**
+- Outdoor / parking: public text states **two roof terraces totaling ~32 m²**; Boegbeeld text states there is an underground parking garage and it is generally possible to buy a parking place.
+- Public facts: MVA/MarketSuite text describes a multi-level family apartment/maisonette with a ~46 m² living/kitchen area, three bedrooms, two bathrooms, WTW, underfloor heating, CO2-controlled ventilation, storage and modern kitchen/utility connections.
+- Why it matters: **best new residential complement to Badhuiskade 217** — +12 m², +1 likely bedroom, large private outdoor area, lower €/m², modern energy profile and potential garage solution while staying in the Amsterdam-Noord transformation lane.
+- Caveat versus Badhuiskade 217: not Overhoeks/BOLD prestige, the API layout fields are incomplete despite the public text, parking is not included/confirmed, project completion/VvE/service-charge details need confirmation, and NDSM/Boegbeeld is more mixed-use than the clean Overhoeks waterfront benchmark.
+- HV decision: **Proceed if conditions met** — request project brochure, definitive floorplans, delivery timing, leasehold/canon basis, VvE/service costs, exact private outdoor rights, and garage-space price/availability.
+
+#### Promoted watch: Spreeuwenpark 11 — Amsterdam Noord / Vogelbuurt whole-pand hybrid
+
+- Asset link: [MVA — Spreeuwenpark 11](https://mva.nl/koop/bedrijfsruimtes/bog-spreeuwenpark-11)
+- Source API: [MVA API — Spreeuwenpark 11](https://mva.nl/api/ms/listing/properties/bog-spreeuwenpark-11)
+- Ask: **€700,000**
+- API size: **193 m²** / **158 m² outside area**; public text separately describes BOG/practice space, two ~89 m² residential floors and a ~86 m² zolder, so the usable volume requires DD because the API area appears not to capture the whole practical stack.
+- API price/m²: **~€3,627/m²** on 193 m²; potentially materially lower if the full described BVO/GO stack is legally usable.
+- Public facts: MVA text describes a **royal business premises with two upper dwellings**, former physiotherapy/practice space, full/watertight cellar, rear garden, two residential floors, large insulated zolder with facilities, vacant delivery, existing practice permit for downstairs, continuing leasehold, and blue-zone parking nearby.
+- Why it matters: **strongest new hybrid-living/value-add screen** — whole-pand control, vacant delivery, residential + BOG mix, garden/cellar/zolder optionality and a very low headline ticket relative to Amsterdam-Noord multi-unit volume.
+- Caveat versus Badhuiskade/Asterweg: not in Overhoeks/Buiksloterham/Elzenhagen core, leasehold not own land, older-stock execution risk, legal split/use status and actual measured area must be reconciled, and car sanity is only street/blue-zone rather than private parking.
+- HV decision: **Proceed only as high-risk value-add screen** — request NEN measurement, cadastral/split status, leasehold terms, practice permit, BAG/legal dwelling count, foundation/roof/cellar reports, fire/BBL compliance, and whether owner-occupation plus BOG use is financeable.
+
+#### High-risk watch only: Chrysantenstraat 20 — Buiksloterham BOG / garage-volume development play
+
+- Asset link: [MVA — Chrysantenstraat 20](https://mva.nl/koop/bedrijfsruimtes/bog-chrysantenstraat-20)
+- Source API: [MVA API — Chrysantenstraat 20](https://mva.nl/api/ms/listing/properties/bog-chrysantenstraat-20)
+- Status: **with contingencies**
+- Ask: **€1,950,000**
+- Size: **650 m² VVO** plus API outside area **438 m²**
+- Price/m²: **~€3,000/m²**
+- Public facts: MVA text describes a garage/business building in **Buiksloterham**, currently garage use with overhead doors and mezzanine/upper-floor areas, to be delivered vacant; the area text explicitly frames Buiksloterham as a transforming mixed living/working district with international/creative businesses and future investment appeal.
+- Why it matters: **core-location development complement to Asterweg 19** — materially more scale, lower €/m² than Asterweg, vacant delivery and the right Buiksloterham transformation context.
+- Caveat: no residential right is established, energy label is absent, single-glass/older industrial shell implies heavy capex, status is already with contingencies, and the ticket/execution risk are too high for personal-living-first unless zoning and financing are unusually favorable.
+- HV decision: **Watch only / back-up DD if contingency drops** — check omgevingsplan, residential/live-work precedent, soil/asbestos, structural capacity, fire separation, parking/loading rights, VAT/transfer tax and achievable exit use before spending viewing time.
+
+#### Checked but not promoted
+
+- **Liergouw 62** — impressive Amsterdam-Noord rural own-land package with woonboerderij, business spaces, ~6,355 m² land and ~10-car parking, but the public text states residential use is not permitted in the former-stable apartments and the asset sits outside the core Noord urban-upside lane. Good lifestyle/land scarcity comp, not a clean replacement for Badhuiskade. [MVA](https://mva.nl/koop/bedrijfsruimtes/bog-liergouw-62) · [API](https://mva.nl/api/ms/listing/properties/bog-liergouw-62)
+- **Werfkade 199** — NDSM waterfront commercial unit, 329 m² at €1.75m, but at ~€5,319/m² and commercial-only/casco delivery it is less compelling than Asterweg/Chrysantenstraat for development optionality and not personal-living led. [MVA](https://mva.nl/koop/bedrijfsruimtes/bog-werfkade-199) · [API](https://mva.nl/api/ms/listing/properties/bog-werfkade-199)
+- **Ms. van Riemsdijkweg 8 K / Oslofjordweg 6 A3** — useful Boegbeeld/NDSM comps at 103 m² / €740k and 94 m² / €685k, A++, parking potentially purchasable, but less family-complete than Tarnweg due to smaller size and weaker bedroom evidence in public text. [8 K](https://mva.nl/koop/woningen/ms-van-riemsdijkweg-8-k) · [6 A3](https://mva.nl/koop/woningen/ms-oslofjordweg-6-a3)
+
+**Market observations:**
+
+- The strongest fresh residential signal is now **Noord new-build family maisonette supply around NDSM/Boegbeeld**: it undercuts Badhuiskade on €/m² and space, but needs parking/leasehold/project-DD before it can replace the Overhoeks benchmark.
+- The strongest optionality signal is **whole-pand / BOG volume in Noord**, but the better-looking entries carry meaningful legal-use, leasehold, measurement and financing risk; they complement rather than displace the living-first Badhuiskade path.
+- Funda again returned the standard automated-access interstitial, so address-level facts above are grounded in MVA/MarketSuite public API and public MVA listing text.
+
 ### 2026-05-19 — Daily public scan
 
 **Result:** Three materially relevant MVA/MarketSuite public candidates surfaced from the latest MVA batch. None is a clean replacement for **Badhuiskade 217** as the lowest-risk modern Overhoeks apartment benchmark, but **Hillenraadt 59** and **Koperslagerij 67** are strong enough to add to the active watchlist because they improve the family-house / garden / expansion angle at a much lower entry price. **Nederhoven 41** is a high-ticket Zuid villa-scale optionality comp rather than an immediate target.
@@ -202,6 +265,21 @@ markets:
 ## Live asset links
 
 ### 1. Primary residential target — Amsterdam Noord
+
+#### Christoffelkruidstraat 82 — Amsterdam Noord / Buiksloterham Superloft
+
+- Asset link: [Funda — Christoffelkruidstraat 82](https://www.funda.nl/detail/koop/amsterdam/appartement-christoffelkruidstraat-82/89787233/)
+- Broker link: [Lammers + Dijkstra — Christoffelkruidstraat 82](https://www.ldmakelaars.nl/woningaanbod/koop/amsterdam/christoffelkruidstraat/82)
+- Ask: **€1,095,000 k.k.**
+- Size: **~133 m²**
+- Price/m²: **~€8,233/m²**
+- Bedrooms: **2** plus multifunctional entresol/work/lounge area per broker text
+- Energy / construction: **A++ / 2017 Superloft**
+- Outdoor / parking: private west-facing roof garden, shared roof terrace, own parking place, storage and bicycle storage per broker text
+- Ground rent: broker text states perpetual leasehold fully bought off, including parking place
+- Viewing: **22-05-2026 12:30** from HousApp/Lammers + Dijkstra reminder
+- Why it matters: strong direct fit with the Noord modern-living lane: Buiksloterham, architectural loft, parking, A++ energy, roof outdoor space and premium family/lifestyle signal.
+- Decision: **Proceed to viewing / fast DD screen** — compare against Badhuiskade 217 on family layout, third-bedroom practicality, VvE/service charges, erfpacht proof, and actual roof/private outdoor rights.
 
 #### Badhuiskade 217 — Overhoeks / BOLD
 
