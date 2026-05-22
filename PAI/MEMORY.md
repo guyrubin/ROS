@@ -1,5 +1,5 @@
 ﻿# PAI Memory
-Last updated: 2026-05-15
+Last updated: 2026-05-22
 
 ---
 
@@ -28,3 +28,4 @@ Last updated: 2026-05-15
 
 
 - [Execution] Created clickable Arbor Concierge MVP prototype at `PAI/projects/parenting-os-plugin/html/arbor-concierge-mvp-prototype.html`, plus parent tester recruitment message, professional reviewer checklist, and product demo flow under `execution/`. | Date: 2026-05-15
+- [Decision] PPPPtherapy/Arbor GitHub repo pre-go-live review concluded the current repo is a concept/prototype, not production-ready; recommended private beta preparation only, with narrowed non-diagnostic parent-support MVP, child-data privacy architecture, safety escalation, expert governance, and production app foundation before public launch. Report: `PAI/projects/parenting-os-plugin/execution/pppptherapy-golive-review-2026-05-22.md`. | Date: 2026-05-22
