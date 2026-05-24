@@ -40,8 +40,9 @@ Add relations:
 
 ## Phase 3 — Dashboards
 
-Build pages:
+Build pages and dynamic visual surfaces:
 
+- [x] Command Center radar strip — live visual cards refreshed from canonical Notion data sources via `scripts/update_command_center_radar.py`
 - [ ] CoS Dashboard
 - [ ] KK Personal Assistant Dashboard
 - [ ] HV Dashboard, inspired by existing HV environment
@@ -71,6 +72,6 @@ Create templates:
 - [ ] Create `/home/guyru/ROS/00_System/notion_database_registry.md`
 - [ ] Decide sync rules: Notion → ROS, ROS → Notion, or manual bridge only
 
-## Current blocker
+## Current status
 
-`NOTION_API_KEY` is not currently available in this Hermes runtime or `/home/guyru/.hermes/.env`, so live API deployment cannot proceed yet.
+`NOTION_API_KEY` is available in this Hermes runtime and live API access to `🧠 Rubin OS — Command Center` is verified. The next blocker is not access; it is design/deployment sequencing: create domain dashboard pages without duplicating canonical databases or mixing HV/business records into the generic Second Brain structure.

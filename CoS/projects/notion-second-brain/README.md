@@ -27,6 +27,35 @@ Use the existing HV Notion environment as design inspiration: domain dashboard f
 - **Fast capture beats perfect tagging:** minimum viable fields first; enrichment can happen later by agent.
 - **Client/workplace isolation:** EA/ABN/Coca-Cola views must never mix confidential details unless explicitly intended.
 - **HV pattern:** replicate the useful HV workspace style: pipeline, status, contacts, assets, notes, documents, next actions.
+- **Dynamic first impression:** the top Command Center strip should read like a live cockpit, not a static wiki page. The refresh script updates the three visual radar cards from canonical Notion data sources.
+
+---
+
+## Dynamic visual layer
+
+The current live upgrade is the **Command Center radar strip** on `🧠 Rubin OS — Command Center`.
+
+- Script: `scripts/update_command_center_radar.py`
+- Target page: `2b4f37e231fe801c8495dea36d0efd4d`
+- Updated blocks:
+  - Today radar: `366f37e231fe81e88ec4decf97a68dc9`
+  - Projects radar: `366f37e231fe81a59c56cb45b9c4ce4b`
+  - Waiting radar: `366f37e231fe81eb8a01d0aafab890d7`
+- Inputs:
+  - Rubin OS Projects, Notes, Areas/Resources
+  - HollandVest Tasks, Deals, Properties
+
+Run safely with:
+
+```bash
+python3 CoS/projects/notion-second-brain/scripts/update_command_center_radar.py --dry-run
+```
+
+Live refresh:
+
+```bash
+python3 CoS/projects/notion-second-brain/scripts/update_command_center_radar.py
+```
 
 ---
 
