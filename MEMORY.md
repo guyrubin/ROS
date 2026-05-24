@@ -9,6 +9,7 @@ Read at session start. Write durable current facts here. Prescriptive behavior b
 
 - 2026-05-20 — ROS is a Markdown-first AI operating system: durable knowledge lives in Markdown, operational state may live in Notion, binaries/sensitive files stay local-only or in Drive unless explicitly approved.
 - 2026-05-20 — Canonical shared workspace is `C:\Users\dguyr\ROS` (`/mnt/c/Users/dguyr/ROS`); `/home/guyru/ROS` is a symlink to the same working tree for Hermes.
+- 2026-05-24 — ROS cross-agent architecture is model-agnostic: Claude/Cowork, Codex, Hermes, and future agents share the filesystem as the stable context layer via `/AGENTS.md` and `/00_System/agent-filesystem-contract.md`.
 - 2026-05-20 — ROS uses the whiteboard/archive pattern: active facts stay in `MEMORY.md`; stale/completed history moves to nearest `archive.md`.
 - 2026-05-20 — Hermes scheduled job `bc55de81f9f1` runs a read-only ROS weekly hygiene audit Mondays at 08:00 and reports findings without editing or pushing.
 

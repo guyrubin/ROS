@@ -1,5 +1,8 @@
 # ROS Hygiene Runbook
 
+Version: 1.1
+Last updated: 2026-05-24
+
 **Created:** 2026-05-20
 **Owner:** CoS
 
@@ -17,8 +20,14 @@ Use this for weekly or biweekly ROS optimization.
 
 ### 1. Git and workspace health
 
+Use the runtime's canonical path:
+
+| Runtime | Command |
+|---|---|
+| Windows agents | `cd C:\Users\dguyr\ROS` |
+| WSL/Hermes | `cd /home/guyru/ROS` |
+
 ```bash
-cd /home/guyru/ROS
 git fetch origin
 git status --short --branch
 git rev-list --left-right --count HEAD...origin/main

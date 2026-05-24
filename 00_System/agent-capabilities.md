@@ -1,12 +1,12 @@
 # ROS Agent Capabilities
-Version: 1.0
-Last updated: 2026-05-17
+Version: 1.1
+Last updated: 2026-05-24
 
 ---
 
 ## Purpose
 
-This is the shared, current baseline capability catalog for every Rubin OS agent. Domain `CLAUDE.md` files should reference this file instead of duplicating tool rules.
+This is the shared, current baseline capability catalog for every Rubin OS agent. Domain `CLAUDE.md` files should reference this file instead of duplicating tool rules. Capabilities are runtime-neutral unless a connector explicitly depends on Hermes, Codex, Claude, or another runtime.
 
 All agents inherit these capabilities unless a domain-specific safety rule narrows access.
 
@@ -29,11 +29,11 @@ All agents inherit these capabilities unless a domain-specific safety rule narro
 
 All agents inherit `/00_System/connectors.md` as the source of truth for connector status.
 
-| Workflow | Required Hermes skill | Current access | Universal rule |
+| Workflow | Required runtime/tool | Current access | Universal rule |
 |---|---|---|---|
-| Gmail / email triage, search, read, draft, reply, forward, send | `himalaya` | Himalaya CLI accounts: `bguy` verified; `hollandvest` and `joseph` active / verified | Always use the domain's authorized account; draft first; never send without explicit confirmation |
-| Notion pages/databases/tasks/projects | `productivity/notion` | `NOTION_API_KEY` present for integration `ROS KK Con`; Rubin OS and HollandVest Command Center pages verified accessible | Validate target page/database before writes; upsert by exact title/name; do not create disconnected junk |
-| Hermes configuration / tools / profiles / gateway | `hermes-agent` | Local Hermes runtime on WSL | Load the skill before config/tool/profile/gateway changes |
+| Gmail / email triage, search, read, draft, reply, forward, send | Email connector; current Hermes tool `himalaya` | Himalaya CLI accounts: `bguy` verified; `hollandvest` and `joseph` active / verified | Always use the domain's authorized account; draft first; never send without explicit confirmation |
+| Notion pages/databases/tasks/projects | Notion connector; current Hermes skill `productivity/notion` | `NOTION_API_KEY` present for integration `ROS KK Con`; Rubin OS and HollandVest Command Center pages verified accessible | Validate target page/database before writes; upsert by exact title/name; do not create disconnected junk |
+| Hermes configuration / tools / profiles / gateway | Hermes skill `hermes-agent` | Local Hermes runtime on WSL | Load the skill before config/tool/profile/gateway changes |
 
 Agents should not duplicate connector status in domain files except for domain-specific account scope. If live connector access is blocked, agents should produce clean ROS Markdown/import packs and state the blocker.
 

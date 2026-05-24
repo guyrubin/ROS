@@ -1,12 +1,12 @@
 # ROS Routing Matrix
-Version: 1.1
-Last updated: 2026-05-17
+Version: 1.2
+Last updated: 2026-05-24
 
 ---
 
 ## Purpose
 
-This file defines the canonical routing rules for Rubin OS. It is read by the root CLAUDE.md and referenced by every plugin CLAUDE.md. When a user input is ambiguous or does not use explicit `/plugin.command` syntax, Claude applies this matrix to select the correct agent.
+This file defines the canonical routing rules for Rubin OS. It is read by the root instruction surface and referenced by every domain `CLAUDE.md`. When a user input is ambiguous or does not use explicit command syntax, the active agent applies this matrix to select the correct domain.
 
 **Rule**: Always route to the most specific match. If two agents match, prefer the one with the most concrete keyword match over a general one.
 
@@ -94,7 +94,7 @@ If no keyword or command matches, route to **CoS** for clarification. CoS is the
 
 ## Session start protocol
 
-Every plugin CLAUDE.md must include this block:
+Every domain `CLAUDE.md` must include this block:
 
 ```
 ## Session start

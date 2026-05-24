@@ -1,18 +1,29 @@
 # ROS AI Operating System Principles
 
+**Version:** 1.1
 **Created:** 2026-05-20
+**Last updated:** 2026-05-24
 **Owner:** CoS
 
 This file translates the AI-second-brain principles into ROS operating rules.
 
 ## 1. Markdown is the substrate
 
-ROS is a normal Markdown filesystem first. Obsidian, Claude, Hermes, Notion, and other tools are interfaces over it.
+ROS is a normal Markdown filesystem first. Obsidian, Claude, Codex, Hermes, Notion, and other tools are interfaces over it.
 
 - Markdown files hold durable knowledge.
 - GitHub provides history and off-machine audit.
 - Obsidian is the human-friendly editor/lens.
-- Agents are operators that read, write, route, and maintain the vault.
+- Agents are model-agnostic operators that read, write, route, and maintain the vault.
+
+## 1A. The filesystem is the agent context layer
+
+ROS follows a filesystem-as-context-layer pattern: agents should operate through normal paths, files, diffs, and commits instead of hidden vendor memory.
+
+- The working tree is the shared context interface.
+- Instructions and memory must be inspectable by humans and portable across LLMs.
+- Runtime-specific capabilities belong in connector/tool registries, not in the shape of the knowledge base.
+- New agents become ROS-compatible by following `/AGENTS.md` and `/00_System/agent-filesystem-contract.md`.
 
 ## 2. Root files stay lean
 
@@ -40,7 +51,7 @@ Instruction locations:
 - `AGENTS.md`
 - domain `CLAUDE.md`
 - `00_System/*.md`
-- Hermes skills
+- Runtime skills or runbooks
 
 Memory locations:
 
@@ -62,7 +73,7 @@ Root memory should know a project exists; project memory should hold the details
 
 ROS domains are workstations: `CoS`, `KK`, `HV`, `EA`, `PAI`, `MKT`, `FIN`.
 
-Repeatable procedures should become Hermes skills or documented runbooks, not long root instructions.
+Repeatable procedures should become runtime skills or documented runbooks, not long root instructions.
 
 ## 6. Active memory vs archive
 

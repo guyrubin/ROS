@@ -1,172 +1,127 @@
 # ROS Layer Model
-Version: 1.0
-Last updated: 2026-05-13
-
----
+Version: 1.1
+Last updated: 2026-05-24
 
 ## Overview
 
-Rubin OS runs across four distinct layers. Each layer has one job. Nothing should live in two layers. When in doubt, ask: "Will Claude need to _read this as an instruction_ or _act on this as a task_?" Instructions → Knowledge layer. Tasks → Operations layer.
+Rubin OS runs across four layers. Each layer has one job. Nothing should live in two layers. When in doubt, ask: "Will an agent need to read this as an instruction, remember it as durable context, act on it as live state, or execute it externally?"
 
+```text
++------------------------------------------------------+
+| Layer 4: REASONING                                   |
+| Claude/Cowork, Codex, Hermes, future agents          |
+| Active sessions, tool use, synthesis, file edits      |
++------------------------------------------------------+
+| Layer 3: EXECUTION                                   |
+| Gmail, Calendar, Drive, external portals, APIs        |
+| Live communication and external side effects          |
++------------------------------------------------------+
+| Layer 2: OPERATIONS                                  |
+| Notion and operational dashboards                     |
+| Tasks, deals, projects, relational current state      |
++------------------------------------------------------+
+| Layer 1: KNOWLEDGE                                   |
+| Obsidian / Markdown filesystem / GitHub               |
+| Instructions, memory, references, templates, outputs  |
++------------------------------------------------------+
 ```
-┌─────────────────────────────────────────────────────┐
-│  Layer 4: REASONING  (Claude Cowork)                 │
-│  Active sessions · Plugin execution · Output         │
-├─────────────────────────────────────────────────────┤
-│  Layer 3: EXECUTION  (Google Workspace)              │
-│  Gmail · Calendar · Drive · Live communication       │
-├─────────────────────────────────────────────────────┤
-│  Layer 2: OPERATIONS (Notion)                        │
-│  Tasks · Deals · Dashboards · Relational state       │
-├─────────────────────────────────────────────────────┤
-│  Layer 1: KNOWLEDGE  (Obsidian / File system)        │
-│  Instructions · Memory · Reference · Templates       │
-└─────────────────────────────────────────────────────┘
-```
 
----
+## Layer 1 - Knowledge Layer
 
-## Layer 1 — Knowledge Layer (Obsidian / File System)
-
-**What lives here**: Everything that defines HOW the system thinks and what it knows long-term.
+**What lives here:** Everything that defines how ROS behaves and what it knows long term.
 
 | Content type | Examples | Path |
 |---|---|---|
-| Instruction files | CLAUDE.md, agent CLAUDE.md files | `/`, `/CoS/`, `/HV/`, etc. |
-| System policy files | routing.md, identity-policy.md | `/00_System/` |
-| Memory files | MEMORY.md, agent MEMORY.md files | `/`, `/EA/`, `/HV/`, etc. |
-| Reference documents | Architecture guides, regulatory PDFs | `/EA/references/`, `/HV/references/` |
-| Templates | Email templates, output formats | `/CoS/templates/`, etc. |
+| Cross-agent contract | Agent runtime rules, workspace paths | `/AGENTS.md` |
+| Instruction files | Root and domain instruction surfaces | `/CLAUDE.md`, `/<domain>/CLAUDE.md` |
+| System policy files | Routing, identity policy, filesystem contract | `/00_System/` |
+| Memory files | Current facts and decisions | `/MEMORY.md`, `/<domain>/MEMORY.md` |
+| Reference documents | Architecture guides, market references, regulatory material | `/<domain>/references/` |
+| Templates | Email templates, ADR templates, output formats | `/<domain>/templates/` |
 | Architecture records | HLDs, ADRs | `/EA/HLDs/`, `/EA/ADRs/` |
-| Client context | CONTEXT.md per client | `/EA/clients/{client}/` |
-| Deal notes | Asset notes, deal memos | `/HV/deals/` |
+| Client context | Context per active client | `/EA/clients/{client}/` |
+| Deal notes | Asset notes and deal memos | `/HV/03_Deals/`, `/HV/deals/` |
 
-**Properties of the Knowledge layer:**
-- Persistent — survives across sessions
-- Local — stored in OneDrive, accessible offline
-- Version-controllable — plain Markdown, no lock-in
-- Authoritative — Claude reads these files on session start; they define behavior
-- Slow-changing — content here is reviewed, not reactive
+**Properties:** persistent, local, version-controllable, human-readable, model-agnostic, and authoritative.
 
-**Not for**: Live tasks, current project status, things that need filtering or querying. If you need to ask "what's the status of X today?" it belongs in Notion.
+**Not for:** live task queues, raw operational state, hidden agent memory, or connector-only data.
 
----
+## Layer 2 - Operations Layer
 
-## Layer 2 — Operations Layer (Notion)
+**What lives here:** Current state of work across ROS domains.
 
-**What lives here**: Everything that represents the CURRENT STATE of work across all 7 domains.
-
-| Content type | Examples | Notion database |
+| Content type | Examples | System |
 |---|---|---|
-| Task registry | Assigned tasks, due dates, status | My Tasks |
-| Deal pipeline | BRRRR properties, stages, values | HV Deal Pipeline |
-| Client tracker | EA clients, engagements, deliverables | EA Client Dashboard |
-| Project registry | Active projects per domain | Projects |
-| Command center | Cross-domain daily view | Work Command Center |
-| HV command center | Properties, tasks, financing radar | HollandVest Command Center |
+| Task registry | Assigned tasks, due dates, status | Notion My Tasks |
+| Deal pipeline | BRRRR properties, stages, values | Notion HV Deal Pipeline |
+| Client tracker | EA clients, engagements, deliverables | Notion EA Client Dashboard |
+| Project registry | Active projects per domain | Notion Projects |
+| Command center | Cross-domain daily view | Notion Work Command Center |
 
-**Properties of the Operations layer:**
-- Live — updated continuously via Notion MCP and manual edits
-- Relational — databases link to each other (tasks ↔ projects ↔ clients)
-- Queryable — filtering, sorting, views, dashboards
-- Collaborative — shareable with Joseph, partners, tenants if needed
-- Volatile — state changes frequently; not the source of truth for behavior
+**Properties:** live, relational, queryable, collaborative, and volatile.
 
-**Not for**: Instructions to Claude, architectural decisions, reference documents, long-form knowledge. If Claude needs to follow a rule, it belongs in Obsidian.
+**Not for:** behavior instructions, architectural decisions, long-form knowledge, or source-of-truth memory.
 
----
+## Layer 3 - Execution Layer
 
-## Obsidian vs Notion — The Definitive Distinction
+**What lives here:** Live communication, scheduling, portals, and external actions.
 
-| Question | Obsidian | Notion |
+| Tool | What it handles | Rule |
 |---|---|---|
-| "How should Claude behave?" | ✅ Yes — CLAUDE.md | ❌ No |
-| "What is Claude working on today?" | ❌ No | ✅ Yes — Tasks DB |
-| "What are Guy's routing preferences?" | ✅ Yes — routing.md | ❌ No |
-| "What's the status of the bpost engagement?" | ✅ MEMORY.md (facts) | ✅ Client tracker (live) |
-| "What template should Claude use for an ADR?" | ✅ Yes — template file | ❌ No |
-| "How many deals are in the HV pipeline?" | ❌ No | ✅ Yes — Deal Pipeline DB |
-| "What did Guy decide about refinancing strategy?" | ✅ Yes — HV/MEMORY.md | ❌ No |
-| "What tasks are due this week?" | ❌ No | ✅ Yes — My Tasks |
+| Gmail | Email triage, drafts, replies, sends | Draft first; never send without explicit confirmation. |
+| Calendar | Scheduling and time blocks | Confirm external changes before committing. |
+| Drive / Docs / Sheets | Documents in transit | Promote durable reviewed outputs into ROS Markdown when useful. |
+| Web portals / APIs | Forms, dashboards, vendor/client systems | Confirm irreversible or external side effects. |
 
-**The rule in one sentence**: Obsidian is the system's _long-term memory and instruction set_. Notion is the system's _current operational state_.
+**Properties:** real-time, external-facing, and often ephemeral.
 
-### Why not just use one?
+## Layer 4 - Reasoning Layer
 
-Obsidian fails at operations: no filtering, no relational queries, no dashboards, poor for "give me all tasks due this week across 7 domains."
+**What lives here:** Active agent sessions and runtime tools.
 
-Notion fails at instructions: Claude does not natively read Notion pages on session start; they are not version-controlled; behavioral rules in Notion drift and become stale without being noticed.
+| Runtime | Role |
+|---|---|
+| Claude/Cowork | Interactive ROS reasoning and legacy instruction consumer. |
+| Codex | Coding/file-system agent for direct workspace changes. |
+| Hermes | WSL automation/runtime agent and scheduled jobs. |
+| Future agents | Any LLM/runtime that follows `/AGENTS.md` and the filesystem contract. |
 
----
+**Properties:** ephemeral by default. Anything useful must be written back to the correct lower layer.
 
-## Layer 3 — Execution Layer (Google Workspace)
+## Obsidian vs Notion
 
-**What lives here**: Live communication and scheduling.
-
-| Tool | What it handles | MCP status |
+| Question | Knowledge layer | Operations layer |
 |---|---|---|
-| Gmail (bguy.rubin) | EA, CoS, KK, PAI, MKT email | Connected ✅ |
-| Gmail (bhollandvest) | HV-only email | Connected ✅ |
-| Google Calendar | Scheduling, time-blocking | Not connected ❌ |
-| Google Drive | Documents in transit | Not connected ❌ |
+| "How should agents behave?" | Yes - instruction files | No |
+| "What is due this week?" | No | Yes - task views |
+| "What are Guy's routing preferences?" | Yes - `/00_System/routing.md` | No |
+| "What is the current status of a client or deal?" | Yes for durable facts | Yes for live state |
+| "What template should an agent use?" | Yes - template files | No |
+| "How many deals are in the pipeline?" | No | Yes - pipeline database |
+| "What did Guy decide about refinancing strategy?" | Yes - domain memory or decision note | Maybe as linked operational context |
 
-**Properties**: Real-time, external-facing, ephemeral. Emails processed by Claude are captured as MEMORY.md facts or Notion tasks via session audit. Drive documents are downloaded to the knowledge layer once reviewed.
+**Rule:** Obsidian/Markdown is the long-term memory and instruction set. Notion is the current operational state.
 
----
-
-## Layer 4 — Reasoning Layer (Claude Cowork)
-
-**What lives here**: Active session context, plugin execution, output generation.
-
-**Properties**: Entirely ephemeral. Everything processed in a session disappears unless explicitly captured. This is why the session-audit protocol exists.
-
-**What persists from a session**:
-- Facts → written to MEMORY.md (Knowledge layer)
-- Tasks → created or updated in Notion (Operations layer)
-- Deliverables → saved as files in the file system (Knowledge layer)
-- Emails → drafted and sent via Gmail (Execution layer)
-
----
-
-## Ongoing Learning & Update Mechanism
-
-### Trigger → Action → Destination
+## Ongoing Learning and Update Mechanism
 
 | Trigger | Action | Destination |
 |---|---|---|
-| Session ends | Run /session-audit | MEMORY.md (root or agent) |
-| "Remember [X]" | Immediate write | MEMORY.md |
-| Engagement completes | Update CONTEXT.md | EA or HV client folder |
-| Architectural decision made | Write ADR | EA/ADRs/ |
-| New routing pattern identified | Update routing.md | 00_System/routing.md |
-| Task completed | Mark done in Notion | Operations layer |
-| New deal enters pipeline | Create deal note | HV/deals/ + Notion pipeline |
-| Voice/style learning | Update voice.md | Agent voice file |
+| Session ends | Run `/00_System/session-audit.md` | Nearest correct memory, archive, or system file |
+| "Remember X" | Write durable fact | Nearest `MEMORY.md` |
+| Engagement changes | Update context | EA client folder or relevant domain folder |
+| Architectural decision made | Write ADR | `/EA/ADRs/` |
+| New routing pattern identified | Update routing | `/00_System/routing.md` |
+| Task completed | Mark done | Notion |
+| New deal enters pipeline | Create deal note and operational record | `/HV/03_Deals/` plus Notion when available |
+| Voice/style learning | Update voice file | `/<domain>/voice.md` |
 
-### Memory freshness rules
+## Layer Violations to Avoid
 
-| File | Update frequency | Staleness risk |
+| Violation | Problem | Fix |
 |---|---|---|
-| Root MEMORY.md | Every session with new facts | Low — session-audit catches this |
-| Agent MEMORY.md | Per domain session | Medium — only updated when agent is active |
-| Client CONTEXT.md | Per engagement update | High — must be manually updated after key meetings |
-| routing.md | When new routing patterns emerge | Low — stable once designed |
-| Notion databases | Continuously via MCP | Low — live state |
-
-### Obsidian → Notion sync (MVP)
-
-For MVP, sync is **one-way and on-demand**: Obsidian is the source of truth. When Notion needs context (e.g., a project brief, client overview), Claude reads from Obsidian and writes to Notion manually.
-
-Automated sync is deferred post-MVP. The risk of two-way sync before the system is stable is that conflicts between layers create confusion about which is authoritative.
-
----
-
-## Layer violations to avoid
-
-| Violation | Problem |
-|---|---|
-| Behavioral rules written in Notion | Claude won't read them on session start; they become stale |
-| Current task lists in MEMORY.md | MEMORY.md is for facts, not task management; use Notion |
-| Architecture decisions only in Notion | Not version-controlled; risk of loss or confusion |
-| Emails stored in Obsidian (not processed) | Obsidian is for digested knowledge, not raw email |
-| Session facts not captured in MEMORY.md | Lost on session end — the most common ROS failure mode |
+| Behavioral rules written only in Notion | Agents will not reliably load them | Move to instruction files. |
+| Current task lists in `MEMORY.md` | Memory becomes a stale task manager | Use Notion or a task import pack. |
+| Architecture decisions only in Notion | Weak auditability and versioning | Write ADRs or decision notes. |
+| Runtime-specific hidden memory | Breaks portability across LLMs | Promote durable context to Markdown. |
+| Agent-specific copies of ROS | Creates split-brain context | Use the canonical workspace only. |
+| Session facts not captured | Context disappears after the session | Run session audit and update memory. |

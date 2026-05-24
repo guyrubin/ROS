@@ -1,5 +1,8 @@
 # ROS Session Audit Protocol
 
+Version: 1.1
+Last updated: 2026-05-24
+
 **Created:** 2026-05-20
 **Owner:** CoS
 
@@ -27,7 +30,7 @@ Capture durable context without bloating root memory.
 | Stable/current fact | nearest `MEMORY.md` |
 | Project-specific detail | project README/MEMORY |
 | Historical/completed detail | nearest `archive.md` |
-| Repeatable procedure | Hermes skill or runbook |
+| Repeatable procedure | Runtime skill or runbook |
 | Binary/sensitive file | local-only or Drive registry |
 | Operational task/database state | Notion |
 
