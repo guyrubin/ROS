@@ -40,6 +40,11 @@ Source of truth: `/00_System/connectors.md`.
 
 /KK/MEMORY.md -- active tasks, priorities, scheduled items, recurring commitments
 
+## Automations
+
+- Hermes cron job `KK-owned email project/task confirmation scan` (`af8fb6155cfc`) is KK-owned and scans connected Gmail accounts every 120 minutes for mail-derived tasks requiring confirmation.
+- The cron job is read-only: it reads inboxes, deduplicates candidates locally, and posts confirmation cards back to Guy; it does not send external email or write ROS state by itself.
+
 ## Email and identity rules
 
 - Use the correct sender account by context per `/00_System/identity-policy.md`.
