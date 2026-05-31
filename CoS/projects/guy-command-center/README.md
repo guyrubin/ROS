@@ -3,6 +3,7 @@
 A compact visual cockpit for ROS, Claude/Cowork, Hermes, Obsidian, and Google workflows.
 
 - **HTML artifact:** `index.html`
+- **PRD:** `PRD.md`
 - **Primary model:** one front-seat mission, back-seat queue, trunk backlog
 - **Domains covered:** war/geopolitics signal, investments/HV, finance/admin, EA work, PAI ventures, travel, family, fitness, art/energy
 - **Design source:** adapted from the YouTube command-center pattern: front seat, hourglass focus timer, Google time blocks, Obsidian-backed Markdown, bookmark revival, daily close.

@@ -1,6 +1,6 @@
 # Command Center — Obsidian Entry
 
-[[README|Project README]] · [[../../../MEMORY|Root Memory]] · [[../../MEMORY|CoS Memory]] · [[../../../HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands|HV Radar]]
+[[README|Project README]] · [[PRD|PRD]] · [[../../../MEMORY|Root Memory]] · [[../../MEMORY|CoS Memory]] · [[../../../HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands|HV Radar]]
 
 ## Open the visual dashboard
 
