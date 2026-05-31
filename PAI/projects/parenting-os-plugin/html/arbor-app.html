@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#315f49" />
+<title>Arbor — Developmental OS for Families</title>
+<style>
+/* ============================================================
+   ARBOR DESIGN SYSTEM
+   ============================================================ */
+:root{
+  --green:#2f5d47; --green-700:#264c3a; --green-300:#6f9e84; --green-50:#e6f0e8;
+  --amber:#c08329; --amber-50:#f6ecd8;
+  --red:#b3463c; --red-50:#f6e2df;
+  --blue:#2f5a73; --blue-50:#e2edf2;
+  --ink:#16211b; --ink-2:#37463d; --muted:#6a7770;
+  --bg:#f4efe5; --bg-grad-1:#fbf6ec; --bg-grad-2:#efe7d7; --bg-grad-3:#e7ddca;
+  --card:#fffaf1; --card-2:#fffdf8; --line:#e0d6c2; --line-2:#ece3d3;
+  --shadow-sm:0 2px 8px rgba(31,38,30,.06);
+  --shadow:0 14px 40px rgba(31,38,30,.10);
+  --shadow-lg:0 30px 80px rgba(31,38,30,.18);
+  --r-xs:10px; --r-sm:14px; --r:18px; --r-lg:26px; --r-pill:999px;
+  --sp:16px; --maxw:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --font:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+html[data-theme="dark"]{
+  --ink:#eef3ee; --ink-2:#c6d0c8; --muted:#8c988f;
+  --bg:#11150f; --bg-grad-1:#161b14; --bg-grad-2:#10140e; --bg-grad-3:#0c0f0a;
+  --card:#1a2018; --card-2:#1f261c; --line:#2c3528; --line-2:#262e22;
+  --green-50:#1d2a22; --amber-50:#2a2418; --red-50:#2c1c19; --blue-50:#172630;
+  --green-300:#7fae93;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.3);
+  --shadow:0 16px 44px rgba(0,0,0,.4);
+  --shadow-lg:0 30px 80px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:var(--font); color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 12% -10%, var(--bg-grad-1), transparent 60%),
+    radial-gradient(1000px 700px at 110% 10%, var(--bg-grad-2), transparent 55%),
+    linear-gradient(160deg,var(--bg-grad-1),var(--bg-grad-2) 55%,var(--bg-grad-3));
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  transition:background .4s var(--ease), color .3s var(--ease);
+}
+button{font:inherit}
+::selection{background:var(--green-300);color:#fff}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px;border:3px solid transparent;background-clip:content-box}
+:focus-visible{outline:3px solid var(--green-300);outline-offset:2px;border-radius:6px}
+
+/* ---------- typography ---------- */
+h1,h2,h3,h4{margin:0;letter-spacing:-.02em;line-height:1.1}
+.display{font-size:clamp(34px,5vw,60px);letter-spacing:-.045em;line-height:.98}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green-300);font-weight:800}
+html[data-theme="light"] .eyebrow{color:var(--green)}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+a{color:var(--green);text-decoration:none}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;justify-content:center;
+  border:1px solid var(--ink);background:var(--ink);color:var(--card);
+  border-radius:var(--r-pill);padding:12px 20px;font-weight:750;cursor:pointer;
+  transition:transform .15s var(--ease),box-shadow .2s var(--ease),background .2s,filter .2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn:active{transform:translateY(0)}
+.btn.green{background:var(--green);border-color:var(--green);color:#fff}
+.btn.green:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{background:var(--card)}
+.btn.subtle{background:var(--green-50);color:var(--green);border-color:transparent}
+html[data-theme="dark"] .btn.subtle{color:var(--green-300)}
+.btn.sm{padding:8px 14px;font-size:13.5px}
+.btn.lg{padding:15px 26px;font-size:16px}
+.btn.block{width:100%}
+.btn.danger{background:transparent;color:var(--red);border-color:var(--red)}
+.btn.danger:hover{background:var(--red-50)}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.iconbtn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:var(--r-pill);
+  border:1px solid var(--line);background:var(--card);cursor:pointer;color:var(--ink-2);transition:.2s var(--ease)}
+.iconbtn:hover{background:var(--green-50);color:var(--green);transform:translateY(-1px)}
+
+/* ---------- cards / surfaces ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);position:relative}
+.surface{background:var(--card-2);border:1px solid var(--line);border-radius:var(--r)}
+.pad{padding:22px}
+.pad-lg{padding:30px}
+
+/* ---------- pills / tags ---------- */
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:var(--r-pill);background:var(--line-2);
+  padding:5px 11px;font-size:12px;font-weight:800;color:var(--ink-2)}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.pill.low{background:var(--green-50);color:var(--green)}
+.pill.medium{background:var(--amber-50);color:var(--amber)}
+.pill.high{background:var(--red-50);color:var(--red)}
+.pill.urgent{background:var(--red);color:#fff}
+html[data-theme="dark"] .pill.low{color:var(--green-300)}
+
+/* ---------- forms ---------- */
+.field{display:grid;gap:7px;margin-bottom:14px}
+.field label{font-size:12.5px;font-weight:800;color:var(--ink-2)}
+.field .hint{font-size:11.5px;color:var(--muted);font-weight:600}
+.input,.field input,.field textarea,.field select{
+  border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card-2);
+  padding:13px 14px;font:inherit;color:var(--ink);outline:none;width:100%;
+  transition:border-color .2s,box-shadow .2s,background .2s}
+.field textarea{min-height:96px;resize:vertical;line-height:1.5}
+.field input:focus,.field textarea:focus,.field select:focus,.input:focus{
+  border-color:var(--green);box-shadow:0 0 0 4px rgba(47,93,71,.14)}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236a7770' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.full{grid-column:1/-1}
+
+/* ---------- layout shell ---------- */
+.app{display:none;min-height:100%}
+.app.show{display:block}
+.topbar{position:sticky;top:0;z-index:40;backdrop-filter:saturate(160%) blur(14px);
+  background:color-mix(in srgb,var(--bg) 72%,transparent);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px 20px}
+.brand{display:flex;align-items:center;gap:11px;cursor:pointer}
+.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(140deg,var(--green),var(--green-700));
+  display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:var(--shadow-sm);flex:none}
+.mark svg{width:21px;height:21px}
+.brand b{font-size:17px;letter-spacing:-.02em}
+.brand .tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.spacer{flex:1}
+.layout{max-width:var(--maxw);margin:0 auto;padding:22px 20px 90px;display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:start}
+.sidenav{position:sticky;top:80px;display:grid;gap:5px}
+.sidenav .navlink{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:var(--r-sm);
+  color:var(--ink-2);font-weight:700;cursor:pointer;border:1px solid transparent;transition:.18s var(--ease)}
+.sidenav .navlink:hover{background:var(--card)}
+.sidenav .navlink.active{background:var(--green);color:#fff;box-shadow:var(--shadow-sm)}
+.sidenav .navlink svg{width:18px;height:18px;flex:none}
+.sidenav .sep{height:1px;background:var(--line);margin:10px 4px}
+.sidenav .lbl{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:800;padding:6px 13px 2px}
+.view{min-height:60vh;animation:fade .4s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- child switcher ---------- */
+.childchip{display:flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--card);
+  border-radius:var(--r-pill);padding:5px 12px 5px 5px;cursor:pointer;transition:.2s var(--ease);font-weight:700;font-size:14px}
+.childchip:hover{box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+.avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;font-size:13px;flex:none}
+.avatar.lg{width:54px;height:54px;font-size:20px}
+.avatar.xl{width:72px;height:72px;font-size:27px}
+
+/* ---------- dashboard ---------- */
+.greet{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.stat{padding:18px 20px}
+.stat .n{font-size:30px;font-weight:850;letter-spacing:-.03em;line-height:1}
+.stat .l{font-size:12.5px;color:var(--muted);font-weight:700;margin-top:6px}
+.dash-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px}
+.section-head h3{font-size:18px}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.quick .qa{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:var(--r);border:1px solid var(--line);
+  background:var(--card-2);cursor:pointer;transition:.2s var(--ease)}
+.quick .qa:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--green-300)}
+.qa .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--green-50);color:var(--green);flex:none}
+html[data-theme="dark"] .qa .ic{color:var(--green-300)}
+.qa b{display:block;font-size:14.5px}
+.qa span{font-size:12.5px;color:var(--muted)}
+
+/* ---------- case list ---------- */
+.caserow{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:var(--r);border:1px solid var(--line);
+  background:var(--card-2);cursor:pointer;transition:.18s var(--ease);margin-bottom:10px}
+.caserow:hover{border-color:var(--green-300);transform:translateX(3px)}
+.caserow .meta{flex:1;min-width:0}
+.caserow .meta b{font-size:14.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.caserow .meta span{font-size:12px;color:var(--muted)}
+
+/* ---------- timeline ---------- */
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{content:"";position:absolute;left:-25px;top:4px;width:14px;height:14px;border-radius:50%;
+  background:var(--card);border:3px solid var(--green-300)}
+.tl-item.urgent::before{border-color:var(--red)}
+.tl-item .when{font-size:11.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+
+/* ---------- wizard / stepper ---------- */
+.stepper{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:9px;padding:8px 14px;border-radius:var(--r-pill);border:1px solid var(--line);
+  background:var(--card-2);font-size:13px;font-weight:750;color:var(--muted);transition:.25s var(--ease)}
+.step .num{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink-2);font-size:12px;font-weight:850}
+.step.active{border-color:var(--green);color:var(--green);background:var(--green-50)}
+.step.active .num{background:var(--green);color:#fff}
+.step.done .num{background:var(--green);color:#fff}
+.step.done{color:var(--ink-2)}
+html[data-theme="dark"] .step.active{color:var(--green-300)}
+
+/* ---------- risk cards ---------- */
+.risk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:6px 0 18px}
+.riskcard{border:1.5px solid var(--line);border-radius:var(--r);padding:15px;background:var(--card-2);transition:.25s var(--ease);position:relative;overflow:hidden}
+.riskcard .lvl{font-size:15px;font-weight:850;display:flex;align-items:center;gap:8px}
+.riskcard small{color:var(--muted);font-size:12px;display:block;margin-top:6px}
+.riskcard.sel.low{border-color:var(--green);background:var(--green-50)}
+.riskcard.sel.medium{border-color:var(--amber);background:var(--amber-50)}
+.riskcard.sel.high{border-color:var(--red);background:var(--red-50)}
+.riskcard.sel.urgent{border-color:var(--red);background:var(--red);color:#fff}
+.riskcard.sel.urgent small{color:rgba(255,255,255,.85)}
+.riskcard .badge{position:absolute;top:10px;right:10px;font-size:10px;font-weight:850;padding:3px 8px;border-radius:99px;background:var(--ink);color:var(--card);opacity:0}
+.riskcard.sel .badge{opacity:1}
+
+/* ---------- guidance blocks ---------- */
+.gblock{border:1px solid var(--line);border-radius:var(--r);padding:18px;background:var(--card-2);margin-bottom:12px}
+.gblock h4{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--green);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+html[data-theme="dark"] .gblock h4{color:var(--green-300)}
+.gblock ul{margin:0;padding-left:20px;line-height:1.7}
+.gblock p{margin:0;line-height:1.65}
+.note{font-family:var(--mono);white-space:pre-wrap;background:#13201a;color:#eef3e9;border-radius:var(--r);padding:20px;line-height:1.6;font-size:13px;border:1px solid #21342a}
+
+/* ---------- tracker ---------- */
+.track-days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.day{aspect-ratio:1;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--card-2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:.2s var(--ease);gap:3px}
+.day:hover{border-color:var(--green-300)}
+.day .d{font-size:11px;color:var(--muted);font-weight:700}
+.day .v{font-size:18px;font-weight:850}
+.day.good{background:var(--green-50);border-color:var(--green-300)}
+.day.bad{background:var(--red-50);border-color:var(--red)}
+.day.mid{background:var(--amber-50);border-color:var(--amber)}
+
+/* ---------- auth ---------- */
+.auth{display:grid;min-height:100vh;grid-template-columns:1.05fr .95fr}
+.auth-hero{position:relative;overflow:hidden;padding:54px;display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(150deg,var(--green-700),var(--green) 60%,#3a6e54);color:#eef3ed}
+.auth-hero::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 400px at 80% 10%, rgba(255,255,255,.12), transparent 60%),
+  radial-gradient(500px 500px at 10% 100%, rgba(0,0,0,.18), transparent 60%);pointer-events:none}
+.auth-hero .htitle{font-size:clamp(30px,3.6vw,46px);letter-spacing:-.04em;line-height:1.02;margin:18px 0 14px;max-width:15ch}
+.auth-hero .hsub{font-size:16px;opacity:.9;max-width:42ch;line-height:1.6}
+.auth-hero .feats{display:grid;gap:14px;margin-top:8px;position:relative;z-index:1}
+.auth-hero .feat{display:flex;gap:12px;align-items:flex-start}
+.auth-hero .feat .fi{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.14);display:grid;place-items:center;flex:none}
+.auth-hero .feat b{display:block;font-size:15px}
+.auth-hero .feat span{font-size:13px;opacity:.82;line-height:1.5}
+.auth-form{display:flex;align-items:center;justify-content:center;padding:40px 28px}
+.auth-card{width:100%;max-width:400px}
+.auth-card .seg{display:flex;background:var(--line-2);border-radius:var(--r-pill);padding:4px;margin-bottom:22px}
+.auth-card .seg button{flex:1;border:none;background:transparent;padding:9px;border-radius:var(--r-pill);font-weight:800;cursor:pointer;color:var(--muted);transition:.2s var(--ease)}
+.auth-card .seg button.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow-sm)}
+.auth-mark{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+
+/* ---------- modal ---------- */
+.scrim{position:fixed;inset:0;background:rgba(15,20,15,.45);backdrop-filter:blur(3px);z-index:80;
+  display:none;align-items:center;justify-content:center;padding:20px;animation:fade .2s var(--ease)}
+.scrim.show{display:flex}
+.modal{width:100%;max-width:480px;max-height:88vh;overflow:auto;animation:pop .28s var(--ease)}
+@keyframes pop{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+
+/* ---------- toast ---------- */
+.toast-wrap{position:fixed;right:18px;bottom:18px;z-index:100;display:grid;gap:10px}
+.toast{display:flex;align-items:center;gap:10px;background:var(--ink);color:var(--card);padding:13px 17px;
+  border-radius:var(--r);box-shadow:var(--shadow-lg);font-weight:650;font-size:14px;animation:slidein .3s var(--ease);max-width:340px}
+.toast.ok{background:var(--green)}
+.toast.warn{background:var(--amber)}
+.toast.err{background:var(--red)}
+.toast.ok,.toast.warn,.toast.err{color:#fff}
+@keyframes slidein{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+
+/* ---------- empty states ---------- */
+.empty{text-align:center;padding:48px 20px;color:var(--muted)}
+.empty .ei{width:64px;height:64px;border-radius:20px;background:var(--green-50);color:var(--green);display:grid;place-items:center;margin:0 auto 16px}
+html[data-theme="dark"] .empty .ei{color:var(--green-300)}
+
+/* ---------- misc ---------- */
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.between{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.divider{height:1px;background:var(--line);margin:18px 0}
+.tag-list{display:flex;flex-wrap:wrap;gap:7px}
+.badge-soft{font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:99px;background:var(--green-50);color:var(--green)}
+html[data-theme="dark"] .badge-soft{color:var(--green-300)}
+.skel{background:linear-gradient(90deg,var(--line-2),var(--line),var(--line-2));background-size:200% 100%;
+  animation:shimmer 1.2s infinite;border-radius:8px}
+@keyframes shimmer{to{background-position:-200% 0}}
+
+@media(max-width:920px){
+  .auth{grid-template-columns:1fr}.auth-hero{display:none}
+  .layout{grid-template-columns:1fr;padding:16px 14px 90px}
+  .sidenav{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:50;grid-auto-flow:column;justify-content:space-around;
+    background:var(--card);border-top:1px solid var(--line);padding:8px;gap:2px;border-radius:0}
+  .sidenav .lbl,.sidenav .sep{display:none}
+  .sidenav .navlink{flex-direction:column;gap:3px;font-size:10.5px;padding:7px 6px}
+  .sidenav .navlink span{font-size:10px}
+  .dash-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr 1fr}
+  .risk-grid{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.quick{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= AUTH SCREEN ================= -->
+<div id="authScreen" class="auth">
+  <div class="auth-hero">
+    <div class="auth-mark">
+      <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-3 2-5 5-5"/><path d="M12 12c0-3-2-5-5-5"/><path d="M12 8c0-2.5 1.6-4 4-4"/></svg></div>
+      <div><b style="font-size:19px">Arbor</b><div class="tag" style="color:rgba(255,255,255,.7)">Developmental OS</div></div>
+    </div>
+    <div>
+      <div class="eyebrow" style="color:rgba(255,255,255,.8)">For modern families</div>
+      <h1 class="htitle">A calm senior parenting advisor, with memory.</h1>
+      <p class="hsub">Understand what's happening with your child, what to do today, what to track, and when to involve a professional — and build a useful developmental record over time.</p>
+      <div class="feats">
+        <div class="feat"><div class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="m9 12 2 2 4-4"/></svg></div><div><b>Conservative safety triage</b><span>Every question classified low → urgent, with clear escalation triggers.</span></div></div>
+        <div class="feat"><div class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div><div><b>Longitudinal memory</b><span>Each child gets a private timeline. One-off questions become patterns.</span></div></div>
+        <div class="feat"><div class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><div><b>Professional handoff notes</b><span>Generate clean summaries for pediatricians, coaches, and schools.</span></div></div>
+      </div>
+    </div>
+    <p class="small" style="opacity:.7;position:relative;z-index:1">Not a doctor, therapist, or emergency service. For self-harm, abuse, or medical emergencies, contact local emergency services.</p>
+  </div>
+
+  <div class="auth-form">
+    <div class="auth-card card pad-lg">
+      <div class="seg" id="authSeg">
+        <button class="on" data-mode="signin">Sign in</button>
+        <button data-mode="signup">Create account</button>
+      </div>
+      <form id="authForm" autocomplete="on">
+        <div class="field" id="nameField" style="display:none">
+          <label>Your name</label>
+          <input id="auName" placeholder="e.g. Maya Rubin" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input id="auEmail" type="email" placeholder="you@email.com" required />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input id="auPass" type="password" placeholder="••••••••" required minlength="4" />
+          <span class="hint">Stored locally on this device only — this is a private prototype.</span>
+        </div>
+        <button class="btn green block lg" id="authSubmit" type="submit">Sign in</button>
+      </form>
+      <div class="divider"></div>
+      <button class="btn ghost block" id="demoBtn">Explore the demo family →</button>
+      <p class="small muted" style="text-align:center;margin:14px 0 0">No account leaves this browser. Data lives in localStorage.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= APP SHELL ================= -->
+<div id="app" class="app">
+  <header class="topbar">
+    <div class="topbar-in">
+      <div class="brand" onclick="nav('dashboard')">
+        <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-3 2-5 5-5"/><path d="M12 12c0-3-2-5-5-5"/><path d="M12 8c0-2.5 1.6-4 4-4"/></svg></div>
+        <div><b>Arbor</b><div class="tag">Developmental OS</div></div>
+      </div>
+      <div class="spacer"></div>
+      <div id="childSwitch"></div>
+      <button class="iconbtn" id="themeBtn" title="Toggle theme" onclick="toggleTheme()">
+        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <div id="userMenu"></div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidenav" id="sidenav">
+      <div class="lbl">Family</div>
+      <div class="navlink" data-route="dashboard" onclick="nav('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Home</span></div>
+      <div class="navlink" data-route="ask" onclick="nav('ask')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Ask Arbor</span></div>
+      <div class="navlink" data-route="timeline" onclick="nav('timeline')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span>Timeline</span></div>
+      <div class="navlink" data-route="track" onclick="nav('track')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Tracking</span></div>
+      <div class="sep"></div>
+      <div class="lbl">Manage</div>
+      <div class="navlink" data-route="children" onclick="nav('children')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Children</span></div>
+      <div class="navlink" data-route="settings" onclick="nav('settings')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg><span>Settings</span></div>
+    </nav>
+
+    <main id="view" class="view"></main>
+  </div>
+</div>
+
+<!-- modal + toast mounts -->
+<div class="scrim" id="scrim"><div class="modal card pad-lg" id="modal"></div></div>
+<div class="toast-wrap" id="toasts"></div>
+
+<script>
+/* ============================================================
+   ARBOR — client app (vanilla, localStorage persistence)
+   ============================================================ */
+"use strict";
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const uid=()=>Math.random().toString(36).slice(2,10);
+const now=()=>Date.now();
+const esc=s=>(s==null?"":String(s)).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const AVATAR_COLORS=["#2f5d47","#2f5a73","#9a5b2b","#7a4a86","#b3463c","#3a7d6b","#5b6e2f"];
+const hashId=s=>{let h=0;for(const c of String(s))h=(h*31+c.charCodeAt(0))|0;return Math.abs(h)};
+const colorFor=s=>AVATAR_COLORS[hashId(s)%AVATAR_COLORS.length];
+const initials=n=>(n||"?").trim().split(/\s+/).slice(0,2).map(w=>w[0]||"").join("").toUpperCase();
+const fmtDate=t=>new Date(t).toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"});
+const fmtTime=t=>new Date(t).toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"});
+const ago=t=>{const d=(now()-t)/1000;if(d<60)return"just now";if(d<3600)return Math.floor(d/60)+"m ago";if(d<86400)return Math.floor(d/3600)+"h ago";if(d<604800)return Math.floor(d/86400)+"d ago";return fmtDate(t)};
+
+/* ---------- store ---------- */
+const DB={
+  key:"arbor.v2",
+  load(){try{return JSON.parse(localStorage.getItem(this.key))||{}}catch{return{}}},
+  save(d){localStorage.setItem(this.key,JSON.stringify(d))},
+};
+let S=Object.assign({users:{},session:null,children:{},cases:{},tracking:{},theme:"light",prefs:{posture:"Conservative"}},DB.load());
+function persist(){DB.save(S)}
+function me(){return S.session?S.users[S.session]:null}
+function myChildren(){return Object.values(S.children).filter(c=>c.owner===S.session).sort((a,b)=>a.created-b.created)}
+function activeChild(){const u=me();if(!u)return null;const list=myChildren();if(!list.length)return null;return S.children[u.activeChild]||list[0]}
+function childCases(cid){return Object.values(S.cases).filter(c=>c.childId===cid).sort((a,b)=>b.created-a.created)}
+
+/* ---------- theme ---------- */
+function applyTheme(){document.documentElement.dataset.theme=S.theme;
+  const i=$("#themeIcon");if(i)i.innerHTML=S.theme==="dark"
+    ?'<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>'
+    :'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';}
+function toggleTheme(){S.theme=S.theme==="dark"?"light":"dark";persist();applyTheme();}
+
+/* ---------- toast ---------- */
+function toast(msg,kind="ok"){const w=$("#toasts");const t=document.createElement("div");
+  t.className="toast "+kind;t.innerHTML=`<span>${esc(msg)}</span>`;w.appendChild(t);
+  setTimeout(()=>{t.style.transition="opacity .3s,transform .3s";t.style.opacity="0";t.style.transform="translateX(40px)";setTimeout(()=>t.remove(),300)},2600);}
+
+/* ---------- modal ---------- */
+function modal(html){const s=$("#scrim");$("#modal").innerHTML=html;s.classList.add("show");}
+function closeModal(){$("#scrim").classList.remove("show");}
+$("#scrim").addEventListener("click",e=>{if(e.target.id==="scrim")closeModal();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+
+/* ============================================================
+   TRIAGE ENGINE  — conservative, rule-based
+   ============================================================ */
+const URGENT_TERMS=["suicid","self-harm","self harm","kill","not breathing","can't breathe","cant breathe","seizure","unconscious","overdose","poison","choking","blood","abuse","hitting me","hurts me","starv","strangl"];
+const HIGH_TERMS=["regress","stopped talking","lost weight","won't eat","not eating","won't sleep for days","panic","hallucinat","violent","hurting other","running away","extreme","every setting","at school and home","teacher worried","weeks of"];
+const MED_TERMS=["meltdown","tantrum","aggress","throw","bite","hit","won't listen","refus","anxious","worried","crying","every day","most days","weeks","recurring","screaming","battle"];
+function triage(intake){
+  const txt=[intake.situation,intake.safety,intake.tried,intake.goal].join(" ").toLowerCase();
+  const freq=(intake.frequency||"").toLowerCase();
+  const hit=arr=>arr.filter(t=>txt.includes(t));
+  const u=hit(URGENT_TERMS), h=hit(HIGH_TERMS), m=hit(MED_TERMS);
+  let level="low", reasons=[];
+  if(u.length){level="urgent";reasons.push("Potential safety/medical red flag detected in your description ("+u.slice(0,2).join(", ")+").");}
+  else if(h.length){level="high";reasons.push("Signs of significant impairment or cross-setting difficulty.");}
+  else if(m.length||/(every|most|daily|weeks|recurring)/.test(freq+txt)){level="medium";reasons.push("A recurring pattern that is affecting daily functioning.");}
+  else{reasons.push("Reads as an everyday developmental or routine question without red flags in the current intake.");}
+  if(level==="low"&&/(weeks|month)/.test(txt)){level="medium";reasons.push("Duration suggests this is a pattern worth structuring and tracking.");}
+  return {level,reasons,flags:{urgent:u,high:h,medium:m}};
+}
+const RISK_META={
+  low:{t:"Low",d:"Everyday routine or mild behavior."},
+  medium:{t:"Medium",d:"Recurring pattern affecting daily functioning."},
+  high:{t:"High",d:"Significant impairment — assessment may be needed."},
+  urgent:{t:"Urgent",d:"Immediate safety/medical escalation."}
+};
+
+/* ---------- guidance generator (template-grounded) ---------- */
+function guidance(intake,tri){
+  const age=intake.age||"your child", concern=intake.concern||"this concern";
+  if(tri.level==="urgent"){
+    return {
+      read:`This intake contains language that can indicate a safety or medical concern. Arbor does not handle emergencies. The most important thing right now is getting ${esc(age)} in front of a qualified human.`,
+      today:[
+        "If there is any immediate danger, breathing problem, or risk of harm — contact local emergency services now (112 in NL/EU, 911 in US).",
+        "Contact your pediatrician, GP, or a crisis line today and describe exactly what you wrote here.",
+        "Do not leave the child alone if there is risk of self-harm or injury.",
+        "Stay calm and concrete; remove immediate hazards from the environment."
+      ],
+      track:["Keep a simple log of what happened, when, and who you contacted — bring it to the professional."],
+      escalate:"This is already at the escalation threshold. Involve a professional immediately rather than waiting."
+    };
+  }
+  const reads={
+    "Bedtime battles":`This reads as a routine/transition problem around sleep, not a character flaw. ${esc(age)} is likely struggling to switch from active/stimulated mode into wind-down mode.`,
+    "Screen-time transition":`The friction is the transition off screens, not the screen itself. The dopamine drop at the end is the hard part for ${esc(age)}.`,
+    "Aggression with sibling":`Sibling conflict at this age is usually about competition for attention and undeveloped impulse control, not malice. The pattern is what matters.`,
+    "School readiness concern":`School-readiness worries are common and rarely about intelligence. Look at self-regulation, separation, and following multi-step instructions.`
+  };
+  const read=reads[concern]||`This looks like a repeated pattern rather than a one-off. With ${esc(age)}, the consistency of your response usually matters more than any single technique.`;
+  const today=[
+    "Pick one calm, repeatable routine and run it the same way for a week — predictability lowers conflict.",
+    "Offer two concrete choices instead of open questions (\"blue cup or green cup?\").",
+    "Name the transition out loud before it happens, in the same short phrase each time.",
+    "Don't negotiate during a meltdown; stay warm, brief, and consistent.",
+    "Afterwards, praise the recovery specifically, not just compliance."
+  ];
+  const track=["When it starts","The trigger right before","How long it lasts","What actually helped recovery","Whether it appears in other settings (school/daycare)"];
+  const escalate=tri.level==="high"
+    ?"You're near the threshold for professional input. Book a pediatric or psychology consult and bring your tracking log."
+    :"Escalate to a professional if it worsens, appears across multiple settings, affects sleep/appetite, or daycare/school reports persistent impairment.";
+  return {read,today,track,escalate};
+}
+function handoffNote(child,intake,tri,g){
+  return `Professional Handoff Note — Arbor Draft
+Generated: ${new Date().toLocaleString()}
+
+Child: ${child?esc(child.name)+", ":""}${esc(intake.age||"")}
+Concern: ${esc(intake.concern||"")}
+Duration: ${esc(intake.started||"n/a")}
+Frequency: ${esc(intake.frequency||"n/a")}
+
+What is happening:
+${esc(intake.situation||"")}
+
+What parent has tried:
+${esc(intake.tried||"")}
+
+Safety screen:
+${esc(intake.safety||"None reported")}
+
+Arbor risk level: ${RISK_META[tri.level].t}
+Rationale: ${tri.reasons.join(" ")}
+
+Current plan:
+- ${g.today.slice(0,4).join("\n- ")}
+
+Parent goal:
+${esc(intake.goal||"")}
+
+Questions for the professional:
+1. Is this within the normal developmental range for this age?
+2. What specific signs would indicate a formal assessment is warranted?
+3. Should the school/daycare align on the same approach?`;
+}
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+let authMode="signin";
+$("#authSeg").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+  authMode=b.dataset.mode;$$("#authSeg button").forEach(x=>x.classList.toggle("on",x===b));
+  $("#nameField").style.display=authMode==="signup"?"grid":"none";
+  $("#authSubmit").textContent=authMode==="signup"?"Create account":"Sign in";});
+$("#authForm").addEventListener("submit",e=>{e.preventDefault();
+  const email=$("#auEmail").value.trim().toLowerCase(),pass=$("#auPass").value,name=$("#auName").value.trim();
+  if(!email||!pass)return;
+  if(authMode==="signup"){
+    if(S.users[email]){toast("That account already exists — sign in instead.","warn");return;}
+    S.users[email]={email,name:name||email.split("@")[0],pass:btoa(pass),created:now(),activeChild:null};
+    S.session=email;persist();toast("Welcome to Arbor, "+S.users[email].name.split(" ")[0]+" 🌱","ok");
+    enterApp();nav("onboard");
+  }else{
+    const u=S.users[email];
+    if(!u||u.pass!==btoa(pass)){toast("Email or password is incorrect.","err");return;}
+    S.session=email;persist();toast("Welcome back, "+u.name.split(" ")[0],"ok");
+    enterApp();nav(myChildren().length?"dashboard":"onboard");
+  }
+});
+$("#demoBtn").addEventListener("click",()=>{seedDemo();S.session="demo@arbor.app";persist();
+  toast("Loaded the demo family","ok");enterApp();nav("dashboard");});
+
+function signOut(){S.session=null;persist();$("#app").classList.remove("show");$("#authScreen").style.display="grid";}
+
+function enterApp(){$("#authScreen").style.display="none";$("#app").classList.add("show");renderChrome();}
+
+/* ---------- demo seed ---------- */
+function seedDemo(){
+  if(S.users["demo@arbor.app"])return;
+  S.users["demo@arbor.app"]={email:"demo@arbor.app",name:"Maya Rubin",pass:btoa("demo"),created:now(),activeChild:null};
+  const c1=uid(),c2=uid();
+  S.children[c1]={id:c1,owner:"demo@arbor.app",name:"Noa",dob:isoYearsAgo(4),sex:"Girl",context:"Daycare 3 days/week. Younger sibling on the way.",created:now()-86400000*40};
+  S.children[c2]={id:c2,owner:"demo@arbor.app",name:"Daniel",dob:isoYearsAgo(7),sex:"Boy",context:"Grade 1. Loves Lego and dinosaurs.",created:now()-86400000*38};
+  S.users["demo@arbor.app"].activeChild=c1;
+  const intake={age:"4 years old",concern:"Morning routine / transition meltdown",situation:"Melts down every morning before daycare — screaming, refusing shoes, clinging at the door.",started:"About three weeks ago",frequency:"Most weekdays",tried:"Preparing clothes, rewards, consequences, leaving earlier.",safety:"No self-harm, no breathing issues. Sometimes throws shoes.",goal:"Get out the door calmly and know if this is normal."};
+  const tri=triage(intake);const g=guidance(intake,tri);
+  const caseId=uid();
+  S.cases[caseId]={id:caseId,childId:c1,owner:"demo@arbor.app",intake,tri,g,created:now()-86400000*6,saved:true};
+  S.tracking[caseId]={caseId,childId:c1,metric:"Morning meltdown severity",days:[2,3,2,1,2,0,1].map((v,i)=>({t:now()-86400000*(6-i),v}))};
+  persist();
+}
+function isoYearsAgo(y){const d=new Date();d.setFullYear(d.getFullYear()-y);return d.toISOString().slice(0,10);}
+function ageFromDob(dob){if(!dob)return"";const d=new Date(dob),n=new Date();let m=(n.getFullYear()-d.getFullYear())*12+(n.getMonth()-d.getMonth());
+  if(n.getDate()<d.getDate())m--;const y=Math.floor(m/12);
+  return y<2?`${m} months`:`${y} years old`;}
+
+/* ============================================================
+   CHROME (topbar widgets + nav highlight)
+   ============================================================ */
+function renderChrome(){
+  const u=me();if(!u)return;
+  // user menu
+  $("#userMenu").innerHTML=`<div class="childchip" onclick="userMenu()"><div class="avatar" style="background:${colorFor(u.email)}">${esc(initials(u.name))}</div></div>`;
+  // child switch
+  const list=myChildren(),ac=activeChild();
+  $("#childSwitch").innerHTML = ac
+    ? `<div class="childchip" onclick="childMenu()"><div class="avatar" style="background:${colorFor(ac.id)}">${esc(initials(ac.name))}</div><span>${esc(ac.name)}</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>`
+    : "";
+  applyTheme();
+}
+function userMenu(){const u=me();
+  modal(`<div class="modal-head"><h3>Account</h3><button class="iconbtn" onclick="closeModal()">✕</button></div>
+    <div class="row" style="margin-bottom:18px"><div class="avatar lg" style="background:${colorFor(u.email)}">${esc(initials(u.name))}</div>
+      <div><b style="font-size:16px">${esc(u.name)}</b><div class="small muted">${esc(u.email)}</div></div></div>
+    <div class="field"><label>Display name</label><input id="pmName" value="${esc(u.name)}"></div>
+    <div class="row"><button class="btn green" onclick="saveProfile()">Save</button>
+    <button class="btn danger" onclick="closeModal();signOut()">Sign out</button></div>`);}
+function saveProfile(){me().name=$("#pmName").value.trim()||me().name;persist();renderChrome();closeModal();toast("Profile updated");}
+function childMenu(){const list=myChildren(),acId=me().activeChild;
+  modal(`<div class="modal-head"><h3>Switch child</h3><button class="iconbtn" onclick="closeModal()">✕</button></div>
+    <div style="display:grid;gap:8px">${list.map(c=>`<div class="caserow" onclick="setActive('${c.id}')" style="margin:0">
+      <div class="avatar" style="background:${colorFor(c.id)}">${esc(initials(c.name))}</div>
+      <div class="meta"><b>${esc(c.name)} ${c.id===acId?'<span class="badge-soft">active</span>':''}</b><span>${esc(ageFromDob(c.dob))} · ${childCases(c.id).length} case(s)</span></div></div>`).join("")}</div>
+    <div class="divider"></div><button class="btn ghost block" onclick="closeModal();nav('children');openAddChild()">+ Add a child</button>`);}
+function setActive(id){me().activeChild=id;persist();renderChrome();closeModal();render();toast("Switched to "+S.children[id].name);}
+
+/* ============================================================
+   ROUTER
+   ============================================================ */
+let route="dashboard";
+function nav(r){route=r;$$(".sidenav .navlink").forEach(n=>n.classList.toggle("active",n.dataset.route===r));render();window.scrollTo({top:0,behavior:"smooth"});}
+function render(){
+  const v=$("#view");
+  const map={dashboard:viewDashboard,ask:viewAsk,timeline:viewTimeline,track:viewTrack,children:viewChildren,settings:viewSettings,onboard:viewOnboard};
+  v.innerHTML=(map[route]||viewDashboard)();
+  if(afterRender[route])afterRender[route]();
+}
+const afterRender={};
+
+/* ============================================================
+   VIEW: ONBOARDING
+   ============================================================ */
+function viewOnboard(){
+  return `<div style="max-width:560px;margin:24px auto">
+    <div class="eyebrow">Welcome</div>
+    <h1 class="display" style="margin:8px 0 6px">Let's add your first child.</h1>
+    <p class="muted" style="margin:0 0 22px">Arbor keeps a private developmental record for each child. You can add more later.</p>
+    <div class="card pad-lg">${childFormHTML()}
+      <button class="btn green lg block" style="margin-top:6px" onclick="submitChild(null,true)">Create profile & continue →</button>
+    </div></div>`;
+}
+
+/* ============================================================
+   VIEW: DASHBOARD
+   ============================================================ */
+function viewDashboard(){
+  const u=me(),ac=activeChild();
+  if(!ac)return emptyChildState();
+  const cases=childCases(ac.id), saved=cases.filter(c=>c.saved);
+  const urgent=cases.filter(c=>c.tri.level==="urgent"||c.tri.level==="high").length;
+  const trk=Object.values(S.tracking).filter(t=>t.childId===ac.id);
+  const hour=new Date().getHours();const hi=hour<12?"Good morning":hour<18?"Good afternoon":"Good evening";
+  return `
+  <div class="greet">
+    <div>
+      <div class="eyebrow">${hi}, ${esc(u.name.split(" ")[0])}</div>
+      <h1 class="display" style="margin:6px 0">Here's ${esc(ac.name)}.</h1>
+      <div class="row"><span class="muted">${esc(ageFromDob(ac.dob))}${ac.context?" · "+esc(ac.context.slice(0,60)):""}</span></div>
+    </div>
+    <button class="btn green lg" onclick="nav('ask')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Ask about ${esc(ac.name)}</button>
+  </div>
+  <div class="stat-row">
+    <div class="card stat"><div class="n">${cases.length}</div><div class="l">Questions asked</div></div>
+    <div class="card stat"><div class="n">${saved.length}</div><div class="l">Saved to memory</div></div>
+    <div class="card stat"><div class="n">${trk.length}</div><div class="l">Active trackers</div></div>
+    <div class="card stat"><div class="n">${urgent}</div><div class="l">Need attention</div></div>
+  </div>
+  <div class="dash-grid">
+    <div>
+      <div class="card pad">
+        <div class="section-head"><h3>Recent cases</h3><button class="btn ghost sm" onclick="nav('timeline')">View timeline</button></div>
+        ${cases.length?cases.slice(0,4).map(caseRowHTML).join(""):'<p class="muted small">No questions yet. Ask Arbor your first one.</p>'}
+      </div>
+      <div class="card pad" style="margin-top:18px">
+        <div class="section-head"><h3>Quick actions</h3></div>
+        <div class="quick">
+          <div class="qa" onclick="nav('ask')"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><b>Ask a question</b><span>Intake → triage → plan</span></div></div>
+          <div class="qa" onclick="nav('track')"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div><b>Log a tracker</b><span>7-day check-ins</span></div></div>
+          <div class="qa" onclick="nav('children')"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><div><b>Edit ${esc(ac.name)}'s profile</b><span>Context improves answers</span></div></div>
+          <div class="qa" onclick="exportData()"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg></div><div><b>Export record</b><span>Download JSON</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      ${dashTrackerHTML(ac,trk)}
+      <div class="card pad" style="margin-top:18px">
+        <div class="section-head"><h3>Developmental focus</h3></div>
+        <p class="small muted" style="margin:0 0 12px">Common themes for ${esc(ageFromDob(ac.dob))}:</p>
+        <div class="tag-list">${ageThemes(ac.dob).map(t=>`<span class="badge-soft">${esc(t)}</span>`).join("")}</div>
+      </div>
+    </div>
+  </div>`;
+}
+function dashTrackerHTML(ac,trk){
+  if(!trk.length)return `<div class="card pad"><div class="section-head"><h3>Tracking</h3></div>
+    <div class="empty" style="padding:24px"><div class="ei"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+    <p class="small">No trackers yet.<br>Start one from any guidance plan.</p></div></div>`;
+  const t=trk[0],last=t.days.slice(-7);
+  return `<div class="card pad"><div class="section-head"><h3>This week</h3><span class="badge-soft">${esc(t.metric)}</span></div>
+    <div class="track-days">${last.map(d=>`<div class="day ${d.v<=1?'good':d.v>=3?'bad':'mid'}"><div class="d">${new Date(d.t).toLocaleDateString(undefined,{weekday:"short"}).slice(0,2)}</div><div class="v">${d.v}</div></div>`).join("")}</div>
+    <p class="small muted" style="margin:12px 0 0">Lower is calmer. <a onclick="nav('track')" style="cursor:pointer">Open tracking →</a></p></div>`;
+}
+function ageThemes(dob){const a=parseInt(ageFromDob(dob))||4;
+  if(/month/.test(ageFromDob(dob)))return["Sleep & feeding","Attachment","Sensory","Motor milestones"];
+  if(a<=3)return["Routines & transitions","Tantrums","Language burst","Autonomy"];
+  if(a<=6)return["Emotional regulation","Sharing & siblings","School readiness","Boundaries"];
+  return["Friendships","Focus & homework","Screen balance","Responsibility","Self-esteem"];}
+function caseRowHTML(c){
+  return `<div class="caserow" onclick="openCase('${c.id}')">
+    <span class="pill ${c.tri.level}"><span class="dot"></span>${RISK_META[c.tri.level].t}</span>
+    <div class="meta"><b>${esc(c.intake.concern||"Question")}</b><span>${esc((c.intake.situation||"").slice(0,70))}</span></div>
+    <span class="small muted">${ago(c.created)}</span></div>`;
+}
+function emptyChildState(){
+  return `<div class="empty" style="padding:80px 20px">
+    <div class="ei"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+    <h2 style="color:var(--ink)">Add a child to begin</h2>
+    <p>Arbor keeps a private developmental record for each child.</p>
+    <button class="btn green lg" style="margin-top:14px" onclick="nav('children');openAddChild()">+ Add your first child</button></div>`;
+}
+
+/* ============================================================
+   VIEW: ASK ARBOR (wizard)
+   ============================================================ */
+let wiz={step:0,intake:{},tri:null,g:null};
+function viewAsk(){
+  const ac=activeChild();if(!ac)return emptyChildState();
+  if(!wiz.intake.age)wiz.intake.age=ageFromDob(ac.dob);
+  const steps=["Intake","Triage","Guidance","Save & handoff"];
+  return `<div style="max-width:760px;margin:0 auto">
+    <div class="eyebrow">Ask Arbor about ${esc(ac.name)}</div>
+    <h1 class="display" style="margin:6px 0 18px">${["What's going on?","Safety triage","Your plan","Save it"][wiz.step]}</h1>
+    <div class="stepper">${steps.map((s,i)=>`<div class="step ${i===wiz.step?'active':''} ${i<wiz.step?'done':''}"><span class="num">${i<wiz.step?'✓':i+1}</span>${s}</div>`).join("")}</div>
+    <div id="wizBody">${[wizIntake,wizTriage,wizGuidance,wizSave][wiz.step](ac)}</div>
+  </div>`;
+}
+function wizIntake(ac){
+  const i=wiz.intake;
+  return `<div class="card pad-lg">
+    <div class="grid2">
+      <div class="field"><label>Child's age</label><input id="w_age" value="${esc(i.age||ageFromDob(ac.dob))}"></div>
+      <div class="field"><label>Primary concern</label><select id="w_concern">
+        ${["Morning routine / transition meltdown","Bedtime battles","Screen-time transition","Aggression with sibling","Tantrums / emotional outbursts","Anxiety / worries","School readiness concern","Eating / mealtime","Speech / language","Other"].map(o=>`<option ${i.concern===o?"selected":""}>${o}</option>`).join("")}
+      </select></div>
+      <div class="field full"><label>What is happening? <span class="hint">Be specific — Arbor reads this for safety signals.</span></label><textarea id="w_situation" placeholder="Describe the situation...">${esc(i.situation||"")}</textarea></div>
+      <div class="field"><label>When did it start?</label><input id="w_started" value="${esc(i.started||"")}" placeholder="e.g. ~3 weeks ago"></div>
+      <div class="field"><label>How often?</label><input id="w_frequency" value="${esc(i.frequency||"")}" placeholder="e.g. most weekdays"></div>
+      <div class="field full"><label>What have you tried?</label><textarea id="w_tried" placeholder="What you've already attempted...">${esc(i.tried||"")}</textarea></div>
+      <div class="field full"><label>Any safety concerns? <span class="hint">Self-harm, breathing, injury, not eating, etc.</span></label><textarea id="w_safety" placeholder="Note anything that worries you, or 'none'.">${esc(i.safety||"")}</textarea></div>
+      <div class="field full"><label>Your goal</label><input id="w_goal" value="${esc(i.goal||"")}" placeholder="What would a good outcome look like?"></div>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button class="btn green lg" onclick="wizNext()">Classify risk →</button>
+      <button class="btn ghost" onclick="saveDraft()">Save draft</button>
+    </div></div>`;
+}
+function wizTriage(ac){
+  const t=wiz.tri;
+  return `<div class="card pad-lg">
+    <p class="muted small" style="margin-top:0">Arbor classifies conservatively. High and urgent cases should always involve a human.</p>
+    <div class="risk-grid">${["low","medium","high","urgent"].map(l=>`
+      <div class="riskcard ${l} ${t.level===l?'sel':''}"><div class="lvl">${l==="urgent"?"⚠ ":""}${RISK_META[l].t}<span class="badge">selected</span></div><small>${RISK_META[l].d}</small></div>`).join("")}</div>
+    <div class="gblock"><h4>Why this level</h4><p>${t.reasons.map(esc).join(" ")}</p></div>
+    ${t.level==="urgent"?`<div class="gblock" style="border-color:var(--red);background:var(--red-50)"><h4 style="color:var(--red)">Please read</h4><p>Arbor is not an emergency service. The plan on the next screen focuses on getting ${esc(ac.name)} to a qualified human quickly.</p></div>`:""}
+    <div class="row" style="margin-top:6px">
+      <button class="btn green lg" onclick="wizNext()">See the plan →</button>
+      <button class="btn ghost" onclick="wiz.step=0;render()">← Edit intake</button>
+    </div></div>`;
+}
+function wizGuidance(ac){
+  const g=wiz.g,t=wiz.tri;
+  return `<div class="card pad-lg">
+    <div class="between" style="margin-bottom:14px"><span class="pill ${t.level}"><span class="dot"></span>${RISK_META[t.level].t} risk</span>
+      <span class="small muted">for ${esc(ac.name)}, ${esc(wiz.intake.age)}</span></div>
+    <div class="gblock"><h4>📖 Read</h4><p>${esc(g.read)}</p></div>
+    <div class="gblock"><h4>✅ Do today</h4><ul>${g.today.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+    <div class="gblock"><h4>📊 Track</h4><ul>${g.track.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+    <div class="gblock"><h4>🚩 Escalate if</h4><p>${esc(g.escalate)}</p></div>
+    <div class="row" style="margin-top:6px">
+      <button class="btn green lg" onclick="wizNext()">Save to ${esc(ac.name)}'s memory →</button>
+      <button class="btn ghost" onclick="wiz.step=1;render()">← Back</button>
+    </div></div>`;
+}
+function wizSave(ac){
+  const note=handoffNote(ac,wiz.intake,wiz.tri,wiz.g);
+  return `<div class="card pad-lg">
+    <div class="gblock"><h4>🌱 Memory update</h4>
+      <p class="small muted" style="margin-bottom:10px">Arbor will save these durable details to ${esc(ac.name)}'s timeline:</p>
+      <ul><li><b>Concern:</b> ${esc(wiz.intake.concern)}</li><li><b>Pattern:</b> ${esc((wiz.intake.situation||"").slice(0,90))}</li><li><b>Risk:</b> ${RISK_META[wiz.tri.level].t}</li><li><b>Plan:</b> ${esc(wiz.g.today[0])}</li></ul>
+    </div>
+    <div class="field"><label>Professional handoff note <span class="hint">Editable — for your pediatrician, coach, or school.</span></label>
+      <div class="note" id="w_note" style="margin-top:2px">${esc(note)}</div></div>
+    <div class="row" style="margin-top:6px">
+      <button class="btn green lg" onclick="commitCase(true)">Save case + start tracker</button>
+      <button class="btn ghost" onclick="commitCase(false)">Save case only</button>
+      <button class="btn subtle" onclick="copyNote()">Copy note</button>
+    </div></div>`;
+}
+function readIntake(){const g=id=>($("#"+id)?$("#"+id).value:"");
+  wiz.intake={age:g("w_age"),concern:g("w_concern"),situation:g("w_situation"),started:g("w_started"),frequency:g("w_frequency"),tried:g("w_tried"),safety:g("w_safety"),goal:g("w_goal")};}
+function wizNext(){
+  if(wiz.step===0){readIntake();
+    if(!wiz.intake.situation.trim()){toast("Tell Arbor what's happening first.","warn");return;}
+    wiz.tri=triage(wiz.intake);wiz.step=1;}
+  else if(wiz.step===1){wiz.g=guidance(wiz.intake,wiz.tri);wiz.step=2;}
+  else if(wiz.step===2){wiz.step=3;}
+  render();
+}
+function saveDraft(){readIntake();localStorage.setItem("arbor.draft."+S.session,JSON.stringify(wiz.intake));toast("Draft saved on this device");}
+function copyNote(){const txt=$("#w_note").innerText;navigator.clipboard?.writeText(txt).then(()=>toast("Handoff note copied"),()=>toast("Select and copy manually","warn"));}
+function commitCase(withTracker){
+  const ac=activeChild();const id=uid();
+  S.cases[id]={id,childId:ac.id,owner:S.session,intake:wiz.intake,tri:wiz.tri,g:wiz.g,created:now(),saved:true};
+  if(withTracker){S.tracking[id]={caseId:id,childId:ac.id,metric:wiz.intake.concern||"Concern severity",days:[]};}
+  persist();wiz={step:0,intake:{},tri:null,g:null};
+  toast(withTracker?"Saved + tracker started 🌱":"Saved to memory 🌱","ok");
+  nav(withTracker?"track":"timeline");
+}
+
+/* ============================================================
+   VIEW: TIMELINE
+   ============================================================ */
+function viewTimeline(){
+  const ac=activeChild();if(!ac)return emptyChildState();
+  const cases=childCases(ac.id);
+  return `<div style="max-width:820px;margin:0 auto">
+    <div class="greet"><div><div class="eyebrow">Developmental record</div><h1 class="display" style="margin:6px 0">${esc(ac.name)}'s timeline</h1>
+      <p class="muted" style="margin:0">${cases.length} entr${cases.length===1?"y":"ies"} · ${esc(ageFromDob(ac.dob))}</p></div>
+      <button class="btn green" onclick="nav('ask')">+ New question</button></div>
+    ${cases.length?`<div class="card pad-lg"><div class="timeline">${cases.map(c=>`
+      <div class="tl-item ${c.tri.level==='urgent'?'urgent':''}">
+        <div class="when">${fmtDate(c.created)} · ${fmtTime(c.created)}</div>
+        <div class="caserow" style="margin:6px 0 0" onclick="openCase('${c.id}')">
+          <span class="pill ${c.tri.level}"><span class="dot"></span>${RISK_META[c.tri.level].t}</span>
+          <div class="meta"><b>${esc(c.intake.concern)}</b><span>${esc((c.intake.situation||"").slice(0,80))}</span></div>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div></div>`).join("")}</div></div>`
+      :`<div class="card"><div class="empty"><div class="ei"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><h3 style="color:var(--ink)">No history yet</h3><p>Every question you ask becomes a durable, private entry here.</p><button class="btn green" style="margin-top:12px" onclick="nav('ask')">Ask your first question</button></div></div>`}
+  </div>`;
+}
+function openCase(id){const c=S.cases[id];if(!c)return;const ch=S.children[c.childId];
+  modal(`<div class="modal-head"><div><span class="pill ${c.tri.level}"><span class="dot"></span>${RISK_META[c.tri.level].t}</span></div><button class="iconbtn" onclick="closeModal()">✕</button></div>
+    <h3 style="margin-bottom:4px">${esc(c.intake.concern)}</h3>
+    <p class="small muted">${esc(ch?ch.name:"")} · ${fmtDate(c.created)}</p>
+    <div class="gblock"><h4>Situation</h4><p>${esc(c.intake.situation)}</p></div>
+    <div class="gblock"><h4>Read</h4><p>${esc(c.g.read)}</p></div>
+    <div class="gblock"><h4>Do today</h4><ul>${c.g.today.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+    <div class="gblock"><h4>Escalate if</h4><p>${esc(c.g.escalate)}</p></div>
+    <div class="row"><button class="btn subtle" onclick="copyCaseNote('${id}')">Copy handoff note</button><button class="btn danger" onclick="deleteCase('${id}')">Delete</button></div>`);}
+function copyCaseNote(id){const c=S.cases[id];const ch=S.children[c.childId];
+  navigator.clipboard?.writeText(handoffNote(ch,c.intake,c.tri,c.g)).then(()=>toast("Handoff note copied"));}
+function deleteCase(id){const c=S.cases[id];delete S.cases[id];delete S.tracking[id];persist();closeModal();render();toast("Case deleted","warn");}
+
+/* ============================================================
+   VIEW: TRACKING
+   ============================================================ */
+function viewTrack(){
+  const ac=activeChild();if(!ac)return emptyChildState();
+  const trk=Object.values(S.tracking).filter(t=>t.childId===ac.id);
+  return `<div style="max-width:820px;margin:0 auto">
+    <div class="greet"><div><div class="eyebrow">7-day check-ins</div><h1 class="display" style="margin:6px 0">Tracking ${esc(ac.name)}</h1>
+      <p class="muted" style="margin:0">Quick daily logs turn into patterns you can show a professional.</p></div></div>
+    ${trk.length?trk.map(trackerCardHTML).join(""):
+      `<div class="card"><div class="empty"><div class="ei"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3 style="color:var(--ink)">No active trackers</h3><p>Start one when you save a guidance plan.</p><button class="btn green" style="margin-top:12px" onclick="nav('ask')">Ask a question</button></div></div>`}
+  </div>`;
+}
+function trackerCardHTML(t){
+  const days=t.days.slice(-7);
+  const avg=days.length?(days.reduce((a,d)=>a+d.v,0)/days.length).toFixed(1):"—";
+  return `<div class="card pad-lg" style="margin-bottom:16px">
+    <div class="between" style="margin-bottom:14px"><div><b style="font-size:16px">${esc(t.metric)}</b><div class="small muted">7-day avg: ${avg} · ${days.length} log(s)</div></div>
+      <button class="btn green sm" onclick="logToday('${t.caseId}')">+ Log today</button></div>
+    ${days.length?`<div class="track-days">${days.map(d=>`<div class="day ${d.v<=1?'good':d.v>=3?'bad':'mid'}" title="${fmtDate(d.t)}"><div class="d">${new Date(d.t).toLocaleDateString(undefined,{weekday:"short"}).slice(0,2)}</div><div class="v">${d.v}</div></div>`).join("")}</div>
+      <p class="small muted" style="margin:12px 0 0">Scale 0 (calm) → 4 (very difficult). ${trendText(days)}</p>`
+      :`<p class="small muted">No logs yet. Tap "Log today" each evening for a week.</p>`}
+  </div>`;
+}
+function trendText(days){if(days.length<3)return"Keep logging to see a trend.";
+  const first=days.slice(0,Math.ceil(days.length/2)),last=days.slice(-Math.ceil(days.length/2));
+  const a=first.reduce((x,d)=>x+d.v,0)/first.length,b=last.reduce((x,d)=>x+d.v,0)/last.length;
+  if(b<a-.4)return"📉 Trending calmer — the plan seems to be helping.";
+  if(b>a+.4)return"📈 Trending harder — consider escalating if this continues.";
+  return"➡️ Holding steady.";}
+function logToday(caseId){
+  modal(`<div class="modal-head"><h3>How was today?</h3><button class="iconbtn" onclick="closeModal()">✕</button></div>
+    <p class="small muted">Rate the difficulty of "${esc(S.tracking[caseId].metric)}" today.</p>
+    <div class="track-days" style="margin:14px 0">${[0,1,2,3,4].map(v=>`<div class="day ${v<=1?'good':v>=3?'bad':'mid'}" onclick="saveLog('${caseId}',${v})"><div class="v">${v}</div><div class="d">${["calm","ok","mixed","hard","tough"][v]}</div></div>`).join("")}</div>`);}
+function saveLog(caseId,v){const t=S.tracking[caseId];
+  const today=new Date().toDateString();
+  const existing=t.days.find(d=>new Date(d.t).toDateString()===today);
+  if(existing)existing.v=v;else t.days.push({t:now(),v});
+  persist();closeModal();render();toast("Logged today: "+["calm","ok","mixed","hard","tough"][v]);}
+
+/* ============================================================
+   VIEW: CHILDREN
+   ============================================================ */
+function viewChildren(){
+  const list=myChildren();
+  return `<div style="max-width:820px;margin:0 auto">
+    <div class="greet"><div><div class="eyebrow">Profiles</div><h1 class="display" style="margin:6px 0">Children</h1>
+      <p class="muted" style="margin:0">Richer context produces better, safer guidance.</p></div>
+      <button class="btn green" onclick="openAddChild()">+ Add child</button></div>
+    ${list.length?`<div style="display:grid;gap:14px">${list.map(c=>`
+      <div class="card pad" style="display:flex;gap:16px;align-items:center">
+        <div class="avatar xl" style="background:${colorFor(c.id)}">${esc(initials(c.name))}</div>
+        <div style="flex:1">
+          <div class="row" style="gap:8px"><b style="font-size:18px">${esc(c.name)}</b>${c.id===me().activeChild?'<span class="badge-soft">active</span>':''}</div>
+          <div class="small muted">${esc(ageFromDob(c.dob))}${c.sex?" · "+esc(c.sex):""} · ${childCases(c.id).length} case(s)</div>
+          ${c.context?`<p class="small" style="margin:8px 0 0">${esc(c.context)}</p>`:""}
+        </div>
+        <div style="display:grid;gap:8px">
+          ${c.id!==me().activeChild?`<button class="btn subtle sm" onclick="setActive('${c.id}')">Set active</button>`:""}
+          <button class="btn ghost sm" onclick="openEditChild('${c.id}')">Edit</button>
+        </div></div>`).join("")}</div>`
+      :`<div class="card"><div class="empty"><div class="ei"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3 style="color:var(--ink)">No children yet</h3><button class="btn green" style="margin-top:12px" onclick="openAddChild()">+ Add your first child</button></div></div>`}
+  </div>`;
+}
+function childFormHTML(c={}){
+  return `<div class="grid2">
+    <div class="field"><label>Name / nickname</label><input id="c_name" value="${esc(c.name||"")}" placeholder="e.g. Noa"></div>
+    <div class="field"><label>Date of birth</label><input id="c_dob" type="date" value="${esc(c.dob||"")}" max="${new Date().toISOString().slice(0,10)}"></div>
+    <div class="field"><label>Sex (optional)</label><select id="c_sex">${["","Girl","Boy","Other / prefer not to say"].map(o=>`<option ${c.sex===o?"selected":""}>${o||"—"}</option>`).join("")}</select></div>
+    <div class="field full"><label>Context <span class="hint">Daycare/school, siblings, anything relevant.</span></label><textarea id="c_context" placeholder="e.g. Daycare 3 days/week, new sibling on the way.">${esc(c.context||"")}</textarea></div>
+  </div>`;
+}
+function openAddChild(){modal(`<div class="modal-head"><h3>Add a child</h3><button class="iconbtn" onclick="closeModal()">✕</button></div>
+  ${childFormHTML()}<button class="btn green block lg" onclick="submitChild(null)">Add child</button>`);}
+function openEditChild(id){const c=S.children[id];modal(`<div class="modal-head"><h3>Edit ${esc(c.name)}</h3><button class="iconbtn" onclick="closeModal()">✕</button></div>
+  ${childFormHTML(c)}<div class="row"><button class="btn green" onclick="submitChild('${id}')">Save</button><button class="btn danger" onclick="removeChild('${id}')">Delete child</button></div>`);}
+function submitChild(id,fromOnboard){
+  const g=x=>($("#"+x)?$("#"+x).value.trim():"");
+  const name=g("c_name");if(!name){toast("A name helps Arbor address your child.","warn");return;}
+  const sex=g("c_sex")==="—"?"":g("c_sex");
+  if(id){Object.assign(S.children[id],{name,dob:g("c_dob"),sex,context:g("c_context")});toast("Profile updated");}
+  else{const nid=uid();S.children[nid]={id:nid,owner:S.session,name,dob:g("c_dob"),sex,context:g("c_context"),created:now()};
+    if(!me().activeChild)me().activeChild=nid;toast(name+" added 🌱");}
+  persist();closeModal();renderChrome();
+  if(fromOnboard)nav("dashboard");else render();
+}
+function removeChild(id){const c=S.children[id];delete S.children[id];
+  childCases(id).forEach(cs=>{delete S.cases[cs.id];delete S.tracking[cs.id];});
+  if(me().activeChild===id)me().activeChild=myChildren()[0]?.id||null;
+  persist();closeModal();renderChrome();render();toast(c.name+" removed","warn");}
+
+/* ============================================================
+   VIEW: SETTINGS
+   ============================================================ */
+function viewSettings(){
+  const u=me();
+  return `<div style="max-width:680px;margin:0 auto">
+    <div class="eyebrow">Settings</div><h1 class="display" style="margin:6px 0 20px">Preferences</h1>
+    <div class="card pad-lg" style="margin-bottom:16px">
+      <h3 style="margin-bottom:14px">Account</h3>
+      <div class="row" style="margin-bottom:16px"><div class="avatar lg" style="background:${colorFor(u.email)}">${esc(initials(u.name))}</div>
+        <div><b>${esc(u.name)}</b><div class="small muted">${esc(u.email)}</div></div></div>
+      <div class="field"><label>Display name</label><input id="set_name" value="${esc(u.name)}"></div>
+      <button class="btn green sm" onclick="me().name=$('#set_name').value.trim()||me().name;persist();renderChrome();toast('Saved')">Save name</button>
+    </div>
+    <div class="card pad-lg" style="margin-bottom:16px">
+      <h3 style="margin-bottom:14px">Appearance & safety</h3>
+      <div class="between" style="margin-bottom:14px"><div><b>Dark mode</b><div class="small muted">Currently ${S.theme}</div></div><button class="btn ghost sm" onclick="toggleTheme();render()">Toggle</button></div>
+      <div class="field"><label>Risk posture</label><select id="set_posture" onchange="S.prefs.posture=this.value;persist();toast('Posture: '+this.value)">
+        ${["Conservative","Balanced"].map(o=>`<option ${S.prefs.posture===o?"selected":""}>${o}</option>`).join("")}</select>
+        <span class="hint">Conservative escalates earlier. Recommended.</span></div>
+    </div>
+    <div class="card pad-lg" style="margin-bottom:16px">
+      <h3 style="margin-bottom:6px">Your data</h3>
+      <p class="small muted" style="margin:0 0 14px">Everything is stored locally in this browser. Nothing is sent to a server.</p>
+      <div class="row"><button class="btn subtle" onclick="exportData()">Export all data (JSON)</button>
+      <button class="btn danger" onclick="confirmWipe()">Delete everything</button></div>
+    </div>
+    <p class="small muted" style="text-align:center">Arbor is a prototype and not a medical, diagnostic, or emergency service.</p>
+  </div>`;
+}
+function exportData(){
+  const u=me();
+  const data={exported:new Date().toISOString(),user:{name:u.name,email:u.email},
+    children:myChildren(),cases:Object.values(S.cases).filter(c=>c.owner===S.session),
+    tracking:Object.values(S.tracking).filter(t=>myChildren().some(c=>c.id===t.childId))};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download="arbor-record-"+new Date().toISOString().slice(0,10)+".json";a.click();
+  toast("Record exported");
+}
+function confirmWipe(){modal(`<div class="modal-head"><h3>Delete everything?</h3><button class="iconbtn" onclick="closeModal()">✕</button></div>
+  <p>This permanently removes your account, all children, cases, and trackers from this browser. This cannot be undone.</p>
+  <div class="row" style="margin-top:8px"><button class="btn danger" onclick="wipeAll()">Yes, delete all</button><button class="btn ghost" onclick="closeModal()">Cancel</button></div>`);}
+function wipeAll(){localStorage.removeItem(DB.key);S={users:{},session:null,children:{},cases:{},tracking:{},theme:S.theme,prefs:{posture:"Conservative"}};
+  closeModal();$("#app").classList.remove("show");$("#authScreen").style.display="grid";toast("All data deleted","warn");}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+applyTheme();
+if(S.session&&S.users[S.session]){enterApp();nav(myChildren().length?"dashboard":"onboard");}
+else{$("#authScreen").style.display="grid";}
+</script>
+</body>
+</html>

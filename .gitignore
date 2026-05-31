@@ -7,6 +7,7 @@ Thumbs.db
 .obsidian/workspace*
 .obsidian/cache/
 .obsidian/plugins/*/data.json
+.obsidian/graph.json
 
 # Python / build artifacts
 __pycache__/
@@ -45,3 +46,15 @@ secrets.*
 *.temp
 .cache/
 tmp/
+
+# Runtime scratch & local agent config (not ROS knowledge)
+.workspace/
+.claude/settings.local.json
+
+# Nested Arbor product clone (separate git remote: guyrubin/PPPPtherapy- → Arbor).
+# Pending consolidation into PAI/arbor/ once the live sessions using it close.
+/PPPPtherapy-/
+# PAI/arbor/ is reserved as the single canonical Arbor clone home (its own remote).
+/PAI/arbor/
+# One-off helper script tied to the live .workspace session
+/commit-logo.bat

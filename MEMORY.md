@@ -1,5 +1,5 @@
 # Rubin OS — Root Memory
-Last updated: 2026-05-24
+Last updated: 2026-05-30
 
 Read at session start. Write durable current facts here. Prescriptive behavior belongs in `CLAUDE.md`, `AGENTS.md`, system docs, or skills.
 
@@ -32,11 +32,12 @@ Lead: Guy Rubin | Joseph only when explicitly involved
 Next: Track Coca-Cola employment contract and ABN onboarding steps
 
 ### PAI — Ventures / AI Products
-Status: Active | Focus: Arbor parenting app — production build running locally
-Canonical version: `guyrubin/PPPPtherapy-` main @ `04cc2c7` | Local clone: `C:\Users\dguyr\ROS\PPPPtherapy-\PPPPtherapy-`
-Running: `npm run start` from `app/` → `http://localhost:3000` | AI: disabled until real GEMINI_API_KEY added to `app/.env.local`
-Shipped 2026-05-28: 10 scholar-grounded developmental routine action plans (sleep, eating, emotional regulation, screen time, reading, movement, chores, evening wind-down)
-Next: Add GEMINI_API_KEY to activate AI coach; decide cloud deployment target
+Status: Active | Focus: Arbor parenting app — v2 architecture on a local unmerged branch, runs locally
+Published main (last verified): `guyrubin/PPPPtherapy-` main @ `04cc2c7` (10 routine plans). Local clone `C:\Users\dguyr\ROS\PPPPtherapy-\PPPPtherapy-` is on branch `codex/arbor-v2-architecture-foundation` @ `8a50d86` — v2 architecture + Firebase auth + terraform/Cloud Run scaffold now COMMITTED + pushed (2026-05-30). Branches `feat/six-frames` + `feat/arbor-next` also pushed.
+Reorg in progress: consolidating the 3 local clones → one at `PAI/arbor/` is BLOCKED while concurrent claude-code sessions hold the inner clone + `.workspace/`. GitHub rename `PPPPtherapy-`→`Arbor` pending (no `gh`; use web UI). Detail in [[PAI/MEMORY|PAI Memory]] Updates 2026-05-30.
+Run from `app/`: dev `npm run dev` (tsx server.ts) / prod `npm run start` → `http://localhost:3000`; ROS `.claude/launch.json` exposes `arbor-dev`/`arbor-prod`. AI disabled until real GEMINI_API_KEY in `app/.env.local`.
+Canonical surface = React app at `PPPPtherapy-/PPPPtherapy-/app/src/`; HTML files in `PAI/projects/parenting-os-plugin/html/` are legacy prototypes. Detail: [[PAI/MEMORY|PAI Memory]] + [[PAI/archive|PAI Archive]].
+Next: Commit/merge the v2 branch; add GEMINI_API_KEY to activate AI coach; decide cloud deployment target (Cloud Run scaffold present)
 
 ### KK — Personal Ops
 Status: Active

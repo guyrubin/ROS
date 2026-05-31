@@ -34,6 +34,11 @@ References:
 | Durable repo | `https://github.com/guyrubin/ROS` | Source of truth and audit log. |
 | Runtime scratch | `.workspace/`, temp folders, tool caches | Local execution state; do not treat as ROS knowledge unless promoted into Markdown. |
 
+If `/home/guyru/ROS` is not a symlink to `/mnt/c/Users/dguyr/ROS`, repair it
+with `/00_System/sync/repair-wsl-ros-path.sh`. Historical WSL-canonical sync
+plans under `/ros-sync-setup/` are superseded and must not be used for the
+current single-tree setup.
+
 ## File roles
 
 | File or folder | Role | Write rule |
