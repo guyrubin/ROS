@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Guy Rubin — ROS Command Center</title>
+<style>
+:root{--bg:#090b0f;--panel:#111621;--panel2:#151c29;--ink:#f4f0e8;--muted:#9aa6b2;--line:#263244;--gold:#d6a84b;--blue:#67b7ff;--green:#55d38a;--red:#ff6b6b;--violet:#b891ff;--radius:18px;--shadow:0 18px 50px #0007;--font:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;--mono:"SFMono-Regular",Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 18% 0,#22324a 0,#090b0f 34%),linear-gradient(135deg,#080a0d,#10131b);color:var(--ink);font:14px/1.35 var(--font);min-height:100vh}button,input,textarea{font:inherit}a{color:inherit}.app{max-width:1380px;margin:0 auto;padding:16px;display:grid;gap:12px;grid-template-columns:1.08fr 1.42fr .9fr}.top{grid-column:1/-1;display:flex;align-items:center;gap:12px}.brand{display:flex;align-items:center;gap:12px;min-width:300px}.mark{width:42px;height:42px;border-radius:14px;background:conic-gradient(from 210deg,var(--gold),#433210,var(--blue),var(--gold));box-shadow:0 0 0 1px #ffffff22 inset}.title h1{font-size:18px;margin:0;letter-spacing:.02em}.title p{margin:2px 0 0;color:var(--muted);font-size:12px}.clock{margin-left:auto;font:700 18px var(--mono);color:var(--gold)}.chip{border:1px solid var(--line);background:#0d121b;border-radius:999px;color:var(--muted);padding:7px 10px;font-size:12px}.card{background:linear-gradient(180deg,#151b27f2,#0f141df2);border:1px solid #2b3547;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.head{display:flex;align-items:center;gap:8px;padding:13px 14px;border-bottom:1px solid var(--line);background:#0f1420}.head h2{margin:0;font-size:13px;text-transform:uppercase;letter-spacing:.13em;color:#dfe8f3}.head small{margin-left:auto;color:var(--muted)}.body{padding:14px}.front{min-height:270px;display:grid;grid-template-rows:auto 1fr auto;gap:12px;background:radial-gradient(circle at 70% 10%,#2b2210 0,#111621 38%,#0d1119)}.seat{position:relative;border:1px solid #3a4658;border-radius:22px;padding:16px;background:linear-gradient(145deg,#1a2230,#0e131b);min-height:150px;overflow:hidden}.seat:before{content:"";position:absolute;inset:9px 42px;border:2px solid #4d5a6f;border-radius:38px 38px 22px 22px;opacity:.45}.belt{position:absolute;left:-28px;right:-28px;top:70px;height:12px;background:linear-gradient(90deg,#2b3342,#d6a84b,#2b3342);transform:rotate(-18deg);opacity:.76}.seat h3{position:relative;margin:0 0 10px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em}.mission{position:relative;font-size:22px;font-weight:850;line-height:1.1;max-width:330px}.why{position:relative;margin-top:10px;color:#cbd6e0;font-size:13px}.meter{height:9px;border-radius:99px;background:#242d3b;overflow:hidden}.meter>i{display:block;height:100%;width:72%;background:linear-gradient(90deg,var(--green),var(--gold),var(--red))}.timer{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:center}.glass{height:98px;border:2px solid #8b733e;border-radius:44% 44% 42% 42%;position:relative;background:linear-gradient(#211a10 48%,#d6a84b33 49%,#16110a 52%);overflow:hidden}.sand{position:absolute;left:18px;right:18px;bottom:8px;height:28px;background:#d6a84b;border-radius:50% 50% 12px 12px;animation:sand 1500s linear forwards}.fall{position:absolute;top:22px;left:50%;width:2px;height:48px;background:#d6a84b;animation:fall 1s linear infinite}@keyframes sand{to{height:70px}}@keyframes fall{50%{opacity:.25}}.timer strong{font:800 32px var(--mono)}.timer .row{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid #344052;background:#182030;color:var(--ink);border-radius:12px;padding:8px 10px;cursor:pointer}.btn:hover,.btn:focus{border-color:var(--gold);outline:0}.btn.gold{background:#2b2111;color:#ffe7a4;border-color:#795d20}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stack{display:grid;gap:12px}.domain{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:10px;border:1px solid var(--line);border-radius:14px;background:#0e141e}.dot{width:10px;height:10px;border-radius:99px;margin-top:5px}.green{background:var(--green)}.amber{background:var(--gold)}.red{background:var(--red)}.domain b{display:block}.domain span{color:var(--muted);font-size:12px}.pill{font:700 10px var(--mono);padding:3px 7px;border-radius:99px;border:1px solid var(--line);color:#c9d3df}.lane{min-height:92px;padding:10px;border:1px dashed #344052;border-radius:14px;background:#0c1119}.lane h3{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.task{padding:8px 9px;border-radius:11px;background:#171f2e;margin:7px 0;border:1px solid #2b3749;display:flex;gap:8px;align-items:center}.task input{accent-color:var(--gold)}.small{color:var(--muted);font-size:12px}.map{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.tile{min-height:84px;border:1px solid var(--line);border-radius:16px;padding:10px;background:linear-gradient(145deg,#151c29,#0d121b)}.tile b{display:block;margin-bottom:6px}.tile em{font-style:normal;color:var(--muted);font-size:12px}.war{background:linear-gradient(145deg,#241411,#10141c)}.finance{background:linear-gradient(145deg,#132417,#10141c)}.travel{background:linear-gradient(145deg,#111d29,#10141c)}.fitness{background:linear-gradient(145deg,#211525,#10141c)}.cmd{display:grid;gap:8px}.prompt{width:100%;min-height:74px;border:1px solid var(--line);background:#0b1018;color:var(--ink);border-radius:12px;padding:10px;font-family:var(--mono);font-size:12px;resize:vertical}.integrations{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.connector{padding:10px;border:1px solid var(--line);border-radius:14px;background:#0f151f}.connector b{display:block}.connector span{font-size:12px;color:var(--muted)}.journal textarea{width:100%;min-height:92px;border:1px solid var(--line);border-radius:14px;background:#0b1018;color:var(--ink);padding:10px}.log{max-height:110px;overflow:auto;color:var(--muted);font-size:12px;border-top:1px solid var(--line);margin-top:10px;padding-top:8px}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none}.footer{grid-column:1/-1;color:var(--muted);font-size:12px;text-align:center;padding:6px}.minirow{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #202a39;padding:8px 0}.minirow:last-child{border-bottom:0}@media(max-width:1050px){.app{grid-template-columns:1fr}.top{flex-wrap:wrap}.clock{margin-left:0}.map{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.grid2,.integrations,.map{grid-template-columns:1fr}.brand{min-width:0}.clock{font-size:15px}.app{padding:10px}.mission{font-size:19px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="mark"></div><div class="title"><h1>Guy Rubin Command Center</h1><p>ROS × Claude × Hermes × Obsidian × Google — one small visual cockpit</p></div></div>
+    <span class="chip">Rule: one front-seat mission</span><span class="chip">Source: /home/guyru/ROS</span><span id="clock" class="clock"></span>
+  </header>
+
+  <section class="card front">
+    <div class="head"><h2>Front Seat</h2><small>80/20 focus</small></div>
+    <div class="body">
+      <div class="seat"><div class="belt"></div><h3>Now driving</h3><div id="mission" class="mission" contenteditable>Ship the command center v1 and make it usable daily.</div><div class="why">If it is not in the seat, it waits in the trunk.</div></div>
+      <div class="timer"><div class="glass"><div class="fall"></div><div class="sand"></div></div><div><strong id="left">25:00</strong><div class="meter"><i id="bar"></i></div><div class="row"><button class="btn gold" onclick="startTimer()">Start</button><button class="btn" onclick="resetTimer()">Reset</button><button class="btn" onclick="closeDay()">Close day</button></div></div></div>
+    </div>
+  </section>
+
+  <main class="stack">
+    <section class="card">
+      <div class="head"><h2>War Room / Domains</h2><small>status at a glance</small></div>
+      <div class="body grid2">
+        <div class="domain"><i class="dot amber"></i><div><b>HV — Investments / Real Estate</b><span>Smart living + development-upside sourcing. Primary radar: Badhuiskade / Den Haag DD.</span></div><span class="pill">AMBER</span></div>
+        <div class="domain"><i class="dot amber"></i><div><b>EA — Work / Architecture</b><span>Coca-Cola contract + ABN onboarding; protect deep work and admin closure.</span></div><span class="pill">AMBER</span></div>
+        <div class="domain"><i class="dot amber"></i><div><b>PAI — Ventures</b><span>Arbor v2 branch + Firebase/Cloud Run scaffold; decide deployment + AI key.</span></div><span class="pill">AMBER</span></div>
+        <div class="domain"><i class="dot green"></i><div><b>KK — Personal Ops</b><span>Inbox, calendar, school placement, travel, health. Execution layer for today.</span></div><span class="pill">GREEN</span></div>
+        <div class="domain"><i class="dot green"></i><div><b>FIN — Finance/Admin</b><span>Contracts, tax, insurance, subscriptions, personal finance guardrails.</span></div><span class="pill">GREEN</span></div>
+        <div class="domain"><i class="dot amber"></i><div><b>MKT — Content / Brand</b><span>LinkedIn/job positioning, campaigns, thought leadership; suppress subscription noise.</span></div><span class="pill">AMBER</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="head"><h2>Compact Map</h2><small>everything in one picture</small></div>
+      <div class="body map">
+        <div class="tile war"><b>War / Geopolitics</b><em>Signal only: conflicts, sanctions, supply shocks, AI/security changes. Output: decision impact.</em></div>
+        <div class="tile finance"><b>Investments</b><em>HV pipeline, BRRRR math, asset watch, lender/tax risks. Output: go/no-go.</em></div>
+        <div class="tile finance"><b>Finance</b><em>Cash, invoices, contracts, subscriptions, insurance, tax. Output: next admin action.</em></div>
+        <div class="tile travel"><b>Travel</b><em>Trips, schools, routes, documents. Rule: Brussels means central/main, not CRL.</em></div>
+        <div class="tile fitness"><b>Fitness</b><em>Move before 60m, stretch blocks, running, recovery. Calendar blocks remove guilt.</em></div>
+        <div class="tile"><b>Family</b><em>Dylan schools, Keren visits, Hebrew/English context, Amsterdam Noord proximity.</em></div>
+        <div class="tile"><b>Work</b><em>Coca-Cola / ABN priorities, architecture decisions, stakeholder follow-ups.</em></div>
+        <div class="tile"><b>Art / Energy</b><em>Daily quote, music, article/bookmark revival. Not productivity — resilience fuel.</em></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="head"><h2>Back Seat / Trunk</h2><small>drag mentally, not physically</small></div>
+      <div class="body grid2">
+        <div class="lane"><h3>Back seat — next</h3><label class="task"><input type="checkbox">Coca-Cola / ABN admin closure</label><label class="task"><input type="checkbox">Badhuiskade + Den Haag DD follow-up</label><label class="task"><input type="checkbox">Dylan school placement calls</label></div>
+        <div class="lane"><h3>Trunk — later</h3><label class="task"><input type="checkbox">Notion dashboards polish</label><label class="task"><input type="checkbox">Arbor cloud deployment decision</label><label class="task"><input type="checkbox">Bookmark/article revival pack</label></div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="stack">
+    <section class="card">
+      <div class="head"><h2>Command Palette</h2><small>copy to agent</small></div>
+      <div class="body cmd">
+        <button class="btn" onclick="setPrompt('morning')">Morning routing</button><button class="btn" onclick="setPrompt('war')">War/investment signal</button><button class="btn" onclick="setPrompt('fitness')">Calendar fitness block</button><button class="btn" onclick="copyPrompt()">Copy prompt</button>
+        <textarea id="prompt" class="prompt">Hermes: run my morning routing. Use ROS, Gmail triage, calendar context if available, and return the top 5 actionable tasks only.</textarea>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="head"><h2>Connectors</h2><small>live/ready</small></div>
+      <div class="body integrations">
+        <div class="connector"><b>Hermes</b><span>Telegram + WSL automation + cron + skills.</span></div>
+        <div class="connector"><b>Claude/Cowork</b><span>Reads ROS files via shared filesystem.</span></div>
+        <div class="connector"><b>Obsidian</b><span>Open this project as Markdown notes in ROS vault.</span></div>
+        <div class="connector"><b>Google</b><span>Gmail active via Himalaya; Calendar/Drive need OAuth setup.</span></div>
+      </div>
+    </section>
+
+    <section class="card journal">
+      <div class="head"><h2>Brain Dump</h2><small>local only</small></div>
+      <div class="body"><textarea id="dump" placeholder="Cmd/Ctrl+Enter saves a timestamped note locally..."></textarea><button class="btn gold" onclick="saveDump()">Save thought</button><div id="log" class="log"></div></div>
+    </section>
+
+    <section class="card">
+      <div class="head"><h2>Quick Links</h2><small>ROS paths</small></div>
+      <div class="body nav">
+        <a class="btn" href="../notion-second-brain/README.md">Notion Second Brain</a><a class="btn" href="../../MEMORY.md">CoS Memory</a><a class="btn" href="../../../MEMORY.md">Root Memory</a><a class="btn" href="../../../HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands.md">HV Radar</a><a class="btn" href="https://calendar.google.com/calendar/u/0/r/day">Google Calendar</a><a class="btn" href="https://mail.google.com/mail/u/0/#inbox">Gmail</a>
+      </div>
+    </section>
+
+    <section class="card"><div class="head"><h2>Daily Ritual</h2><small>4 moves</small></div><div class="body"><div class="minirow"><b>1. Plan</b><span class="small">route inbox/calendar</span></div><div class="minirow"><b>2. Buckle</b><span class="small">choose one mission</span></div><div class="minirow"><b>3. Block</b><span class="small">put health/deep work on calendar</span></div><div class="minirow"><b>4. Close</b><span class="small">log, trunk, stop</span></div></div></section>
+  </aside>
+
+  <div class="footer">Designed from the YouTube “front seat / trunk / time blocks / Obsidian markdown” model, adapted to Guy’s ROS domains and connector reality.</div>
+</div>
+<script>
+const $=s=>document.querySelector(s);let total=1500,remain=1500,tick=null;
+function pad(n){return String(n).padStart(2,'0')}function render(){let m=Math.floor(remain/60),s=remain%60;$('#left').textContent=`${pad(m)}:${pad(s)}`;$('#bar').style.width=(remain/total*100)+'%'}
+function startTimer(){clearInterval(tick);tick=setInterval(()=>{remain=Math.max(0,remain-1);render();if(!remain)clearInterval(tick)},1000)}function resetTimer(){clearInterval(tick);remain=total;render()}
+function setPrompt(kind){const p={morning:'Hermes: run my morning routing. Use ROS, Gmail triage, calendar context if available, and return the top 5 actionable tasks only.',war:'Claude/Hermes: produce a war-room signal brief for today: geopolitics, markets, Dutch real estate, finance/admin risks. Only actionable effects on Guy/HV/EA/PAI.',fitness:'Hermes: draft Google Calendar time blocks for today: one deep-work block, one stretch block before 60 minutes sitting, one run/recovery block. Ask before creating events.'};$('#prompt').value=p[kind]}
+async function copyPrompt(){await navigator.clipboard.writeText($('#prompt').value);$('#prompt').value+='\n\nCopied.'}
+function saveDump(){const txt=$('#dump').value.trim();if(!txt)return;const arr=JSON.parse(localStorage.ccDump||'[]');arr.unshift({t:new Date().toLocaleString(),txt});localStorage.ccDump=JSON.stringify(arr.slice(0,12));$('#dump').value='';drawLog()}function drawLog(){const arr=JSON.parse(localStorage.ccDump||'[]');$('#log').innerHTML=arr.map(x=>`<p><b>${x.t}</b><br>${x.txt.replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</p>`).join('')}function closeDay(){const item={t:new Date().toLocaleString(),txt:'Closed day. Front-seat mission: '+$('#mission').innerText};const arr=JSON.parse(localStorage.ccDump||'[]');arr.unshift(item);localStorage.ccDump=JSON.stringify(arr.slice(0,12));drawLog()}
+function clock(){const d=new Date();$('#clock').textContent=d.toLocaleString([], {weekday:'short',hour:'2-digit',minute:'2-digit'})}setInterval(clock,1000);clock();render();drawLog();document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter')saveDump()});
+</script>
+</body>
+</html>
