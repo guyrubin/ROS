@@ -18,11 +18,18 @@ WSL path:
 
 ## Daily operating loop
 
-1. **Plan** — Ask Hermes: “run my morning routing; top five actionable tasks only.”
-2. **Buckle** — Pick one front-seat mission.
-3. **Block** — Put deep work + health blocks into Google Calendar.
-4. **Execute** — Everything else stays in back seat/trunk.
-5. **Close** — Log result; promote durable facts into the correct ROS note.
+1. **Plan** — `⌘K → Morning routing` (copies the prompt for Hermes/Claude): “top five actionable tasks only.”
+2. **Buckle** — Pick one front-seat mission, set its domain, start the focus ring.
+3. **Block** — `⌘K → Open Deep-work / Stretch / Run calendar block` → confirm prefilled events in Google.
+4. **Execute** — Everything else stays in back seat / trunk; click domain cards to keep statuses honest.
+5. **Close** — Click **Close day**, then **⧉ MD** to paste a daily note here; promote durable facts into the correct ROS note.
+
+## v2 shortcuts
+
+- **⌘K / Ctrl+K** — command palette (prompts, Obsidian notes, calendar blocks, fitness, export).
+- **Click a domain card** — cycle 🟢→🟡→🔴. **Shift-click** — open that domain's note in Obsidian.
+- **Tap a fitness ring** — +25%; right-click — reset. Rings + focus sessions reset each new day.
+- **⧉ MD** (topbar) — copy today as an Obsidian daily note. **⬇︎** — export all your data as JSON.
 
 ## Prompt shortcuts
 

@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "arbor-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "PPPPtherapy-/PPPPtherapy-/app", "run", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "arbor-prod",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "PPPPtherapy-/PPPPtherapy-/app", "run", "start"],
+      "port": 3000
+    },
+    {
+      "name": "command-center",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "http-server", "CoS/projects/guy-command-center", "-p", "4500", "-c-1"],
+      "port": 4500
+    }
+  ]
+}

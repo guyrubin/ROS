@@ -1,6 +1,6 @@
 # Guy Rubin Command Center — PRD
 
-**Status:** Draft v1  
+**Status:** v2 shipped (was Draft v1)  
 **Owner:** Guy Rubin  
 **Product lead:** CoS / Hermes  
 **Created:** 2026-05-31  
@@ -437,3 +437,30 @@ Recommended order:
 4. War/investment live signal cards.
 
 **Verification:** Chosen decision is recorded in this PRD under Open Decisions or in project README.
+
+---
+
+## 17. Changelog — v2 (2026-05-31)
+
+Enhancement pass over the v1 static dashboard. All v1 acceptance criteria still hold; v2 adds:
+
+**Live + editable state (FR1–FR6 extended)**
+- Front-seat mission, mission domain, domain statuses, domain context lines, back-seat/trunk tasks, signals, fitness rings, focus sessions, and brain-dump all persist to `localStorage` (`cc2`, versioned).
+- Domain cards click-cycle 🟢→🟡→🔴; context/task/signal text is inline-editable; tasks can be added/checked/deleted.
+- Daily rollover resets fitness rings + session count on date change.
+
+**Deeper integrations (§10)**
+- **Google Calendar (no OAuth):** prefilled `calendar.google.com/render` template links for today's deep-work (09:00, 90m), stretch (12:00, 15m), and run (18:00, 45m) blocks, exposed in Quick Links and ⌘K. Direct API writes remain a gated V1.1 item.
+- **Obsidian:** `obsidian://open?vault=ROS&file=…` deep links from connectors, quick links, ⌘K, and shift-click on domain cards.
+- **Gmail:** compose deep link that carries the current agent prompt.
+- **Export/interop:** JSON export of all state; "Copy today as Obsidian daily note" generates a `# Daily Note — YYYY-MM-DD` with domains, tasks, signals, fitness, and dump — keeping ROS Markdown as durable source of truth.
+
+**Visual + UX**
+- ⌘K/Ctrl+K command palette (19 fuzzy-searchable actions, keyboard-driven).
+- Focus **ring** timer with 25/50/90 modes, session dots, completion auto-log + toast.
+- Fitness rings (Move/Stretch/Run), world clocks (AMS/BRU/TLV), workday-progress bar, density toggle, toasts.
+
+**Non-functional:** still a single dependency-free HTML file; `.claude/launch.json` adds a `command-center` static-server entry for local preview. Verified: 0 console errors; all dynamic sections render (6 domains, 8 map tiles, 6 tasks, 3 rings, 3 signals, 6 connectors, 9 links, 3 clocks); palette/cycle/add/persist/prompt/export interactions tested green.
+
+### Updated open decisions
+- §14.2 (Calendar automation) is partially resolved: prefilled template links ship now; OAuth-based direct creation deferred to V1.1.
