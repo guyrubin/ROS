@@ -1,9 +1,32 @@
-# Guy Rubin Command Center — v2
+# Guy Rubin Command Center — v3
 
-A compact, **live and editable** visual cockpit for ROS, Claude/Cowork, Hermes, Obsidian, and Google workflows. Everything you touch persists on the device; ROS Markdown / Obsidian stays the durable source of truth via one-click export.
+A compact, **voice-agentic** visual cockpit for ROS, Claude/Cowork, Hermes, Obsidian, and Google. v3 turns it from a personal dashboard into a **shared file system that agents act on**.
 
 - **HTML artifact:** `index.html` (single file, zero dependencies)
+- **Shared state (source of truth):** `state.json`
+- **Sync contract (Hermes ⇄ Claude):** `AGENT-SYNC.md`
 - **PRD:** `PRD.md`
+
+## v3 — the agentic file system (read this first)
+
+The dashboard is a static file; it can't call Google/Notion APIs itself. So the architecture is **agent-actuated**:
+
+```
+voice / ⌘K / dashboard edit
+        │ writes an intent
+        ▼
+state.json.actionQueue[]  →  Hermes (WSL) or Claude (MCP) executes it
+        │                        (Gmail, Calendar, Drive, Notion, ROS)
+        └──────── writes result back → dashboard re-renders
+```
+
+- **`state.json`** is the single source of truth. The dashboard **Pulls** it on load and renders it; your edits are **proposals** until you **Push** (copies state + queue) and an agent commits them. Both Hermes and Claude read/write the same file — that's the Hermes↔Claude sync you asked for.
+- **Voice** (🎙 topbar, or Telegram→Hermes): natural commands route per `AGENT-SYNC.md` §4 — *"front seat: …", "task: …", "client amber because …", "block deep work", "draft email to …", "remember … "* — each becomes a state change + a queued intent.
+- **Agent Queue** card shows pending intents with safety gates (3+ = external action, draft-first / confirm).
+- **EA Client Cockpit** (new): the active engagement — name, stack, RAG, phase, next decision, stakeholders, milestones — with one-click **Scaffold** (queues Drive folder + ROS folder + Notion row) and **HLD / ADR / Review / Kickoff / Meeting** actions wired to the EA skills and the EA sending identity.
+- **Connectors** now show real status from `state.json.integrations` (Gmail / Calendar / Drive / Notion = live via MCP; Tasks / Contacts / Slack = planned).
+
+## Earlier (v2) capabilities, still here
 - **Primary model:** one front-seat mission, back-seat queue, trunk backlog
 - **Domains covered:** war/geopolitics signal, investments/HV, finance/admin, EA work, PAI ventures, travel, family, fitness, art/energy
 - **Design source:** adapted from the YouTube command-center pattern — front seat, focus timer, Google time blocks, Obsidian-backed Markdown, daily close.

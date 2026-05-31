@@ -1,6 +1,8 @@
 # Command Center — Obsidian Entry
 
-[[README|Project README]] · [[PRD|PRD]] · [[../../../MEMORY|Root Memory]] · [[../../MEMORY|CoS Memory]] · [[../../../HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands|HV Radar]]
+[[README|Project README]] · [[PRD|PRD]] · [[AGENT-SYNC|Agent Sync Contract]] · [[../../../MEMORY|Root Memory]] · [[../../MEMORY|CoS Memory]] · [[../../../HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands|HV Radar]]
+
+> **v3 — voice-agentic file system.** `state.json` is the shared truth that Hermes (WSL) and Claude (MCP) both read/write; the dashboard renders it and proposes intents into an action queue agents execute. See [[AGENT-SYNC]]. New: 🎙 voice commands, EA Client Cockpit, live Gmail/Calendar/Drive/Notion via MCP.
 
 ## Open the visual dashboard
 

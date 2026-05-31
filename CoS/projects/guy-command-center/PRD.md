@@ -464,3 +464,32 @@ Enhancement pass over the v1 static dashboard. All v1 acceptance criteria still 
 
 ### Updated open decisions
 - §14.2 (Calendar automation) is partially resolved: prefilled template links ship now; OAuth-based direct creation deferred to V1.1.
+
+---
+
+## 18. Changelog — v3 (2026-05-31): voice-agentic file system
+
+Re-architected from "live dashboard" to a **shared agentic file system** so Hermes and Claude operate on the same truth and the cockpit drives real work.
+
+**Architecture**
+- **`state.json`** is now the canonical source of truth (front seat, domains, map, tasks, signals, fitness, **clients**, **actionQueue**, integrations). The dashboard fetches it on load (when served), renders it, and treats local edits as *proposals* (Pull / Push). `localStorage (cc3)` is only an edit buffer.
+- **`AGENT-SYNC.md`** — the Hermes⇄Claude contract: source-of-truth, write protocol (last-write-wins + `meta.updatedBy/updatedAt`), the **action queue** verb registry, safety gates (per `/CLAUDE.md` 0–5), voice grammar, and the EA-client scaffold protocol.
+- **Agentic loop:** voice / ⌘K / edits append intents to `actionQueue`; agents drain it via the right connector and write results back.
+
+**Voice (FR new)**
+- In-dashboard mic (Web Speech API) + documented Telegram→Hermes path. Natural-language routing: front seat, task, signal (+severity), client status, calendar block, draft email, remember/promote. Graceful fallback when speech isn't supported.
+
+**EA client support (this engagement)**
+- **EA Client Cockpit** card driven by `state.json.clients[]`: name, stack, RAG (click-cycle), phase, next decision, stakeholders, milestones (checkable), Drive/Notion/ROS deep links.
+- One-click **Scaffold** queues `drive.folder` + ROS folder + `notion.upsert` (gated). **HLD / ADR / Review / Kickoff / Meeting** buttons enqueue intents *and* load a ready agent prompt, wired to skills (`hld-writer`, `adr-writer`, `architecture-review`) and the EA sending identity (`josephdoronrubin@gmail.com`).
+
+**Integrations made real (§10 corrected)**
+- Gmail, Calendar, Drive, Notion are **live now via Claude MCP** (not "needs OAuth"). Connectors render real status from `state.json.integrations`. Direct external writes remain safety-gated (draft/confirm).
+- Tailored, connector-aware prompts replace the generic ones (morning sync, EA mail triage, HLD, signal refresh, time blocks, close day).
+
+**Verified:** served via `command-center` launch config; dashboard fetched `state.json` (confirmed `meta.updatedBy:"claude"`, not the embedded fallback); 0 console errors; EA scaffold → 3 queued intents (2 gated); voice routing for task/client/signal all green; 8 connectors, 27 palette actions, sync dirty-flag working.
+
+### Updated open decisions (v3)
+- §14.1 (state model): **resolved** → `state.json` canonical, optional Notion mirror later.
+- §14.2 (voice): in-dashboard mic shipped; Telegram→Hermes voice loop is the next Hermes skill.
+- **New — needs Guy:** the EA client's **name** and **cloud/stack** (Azure/AWS/GCP) + tools (Slack/Jira/Confluence/DevOps) to finish-tailor the cockpit and scope client-side connectors.
