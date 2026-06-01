@@ -1,6 +1,8 @@
 # ABN — Workplace Context
 Last updated: 2026-05-14
 
+> Live in the [[../../../CoS/projects/guy-command-center/Command Center - Obsidian Entry|Command Center]] → EA Client Cockpit (ABN AMRO tab). Engagement state mirrors `CoS/projects/guy-command-center/state.json`.
+
 ---
 
 ## Status

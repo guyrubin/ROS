@@ -456,18 +456,18 @@ const FALLBACK={v:3,meta:{owner:"Guy Rubin",updatedAt:nowISO(),updatedBy:"dashbo
   {sev:"red",t:"Geopolitics",s:"Energy + supply shocks → only if it changes a Guy/HV/EA decision."}],
  fitness:{move:0,stretch:0,run:0},sessions:0,lastDay:"",
  clients:[
-   {id:"abn-amro",agent:"EA",name:"ABN AMRO",role:"Security Enterprise Architect",stack:"Azure + on-prem (confirm)",
-    domainFocus:"Security architecture · IAM / Zero Trust · network segmentation · DORA / DNB / EBA compliance",
-    status:"red",phase:"Onboarding",nextDecision:"Confirm onboarding scope, access/clearance, and first security-architecture deliverable",
+   {id:"abn-amro",agent:"EA",name:"ABN AMRO",role:"Security Enterprise Architect",relationship:"Freelance",stack:"confirm during onboarding",
+    domainFocus:"Security architecture · IAM / ZTA · network segmentation · banking compliance (DORA / DNB / NIS2)",
+    status:"amber",phase:"Onboarding (in progress)",nextDecision:"Capture onboarding checklist — access/clearance, compliance docs, start date, key contacts",
     owner:"Guy Rubin (EA)",identity:"bguy.rubin@gmail.com",stakeholders:[],tools:"confirm: ServiceNow / Azure DevOps / Confluence / Archi",
-    milestones:[{t:"Onboarding + access provisioned",d:0},{t:"Current-state security architecture review",d:0},{t:"Target-state security HLD",d:0},{t:"ADRs: IAM / segmentation / Zero Trust",d:0}],
-    drive:"",rosFolder:"EA/clients/abn-amro/",notion:"",active:true},
-   {id:"coca-cola",agent:"EA",name:"Coca-Cola",role:"Infrastructure & Security Enterprise Architect",stack:"Multi-cloud (Azure / AWS) + infra (confirm)",
+    milestones:[{t:"Onboarding checklist + access provisioned",d:0},{t:"Compliance / clearance docs captured",d:0},{t:"Current-state security architecture review",d:0},{t:"Target-state security HLD",d:0}],
+    drive:"",rosFolder:"EA/clients/ABN/",contextFile:"EA/clients/ABN/CONTEXT.md",notion:"",active:true},
+   {id:"coca-cola",agent:"EA",name:"Coca-Cola",role:"Infrastructure & Security Enterprise Architect",relationship:"Employment",stack:"confirm (multi-cloud + infra)",
     domainFocus:"Infrastructure & security architecture · cloud landing zones · network · identity · security baselines",
-    status:"amber",phase:"In-flight",nextDecision:"Close contract/admin items; confirm next architecture deliverable",
+    status:"amber",phase:"Finalizing employment contract",nextDecision:"Review employment contract when received; capture start date + onboarding",
     owner:"Guy Rubin (EA)",identity:"bguy.rubin@gmail.com",stakeholders:[],tools:"confirm: ServiceNow / Jira / Confluence / cloud consoles",
-    milestones:[{t:"Contract / admin closure",d:0},{t:"Infra & security baseline review",d:0},{t:"Target-state HLD update",d:0},{t:"Key ADRs logged",d:0}],
-    drive:"",rosFolder:"EA/clients/coca-cola/",notion:"",active:false}],
+    milestones:[{t:"Employment contract reviewed + signed",d:0},{t:"Onboarding + access",d:0},{t:"Infra & security baseline review",d:0},{t:"Target-state HLD update",d:0}],
+    drive:"",rosFolder:"EA/clients/Coca-Cola/",contextFile:"EA/clients/Coca-Cola/CONTEXT.md",notion:"",active:false}],
  actionQueue:[],
  integrations:{gmail:{status:"live",via:"MCP + Himalaya"},calendar:{status:"live",via:"MCP + links"},
    drive:{status:"live",via:"MCP"},notion:{status:"live",via:"MCP"},
@@ -620,7 +620,7 @@ function drawClient(){
     ${c.domainFocus?`<div class="cl-focus">${esc(c.domainFocus)}</div>`:''}
     <div class="cl-grid">
       <div class="cl-fld"><label>Phase</label><div class="val edit" contenteditable onblur="c_set('phase',this.innerText)">${esc(c.phase)}</div></div>
-      <div class="cl-fld"><label>Owner / identity</label><div class="val">${esc(c.owner)} · ${esc(c.identity)}</div></div>
+      <div class="cl-fld"><label>Relationship · identity</label><div class="val">${esc(c.relationship||c.owner)} · ${esc(c.identity)}</div></div>
     </div>
     <div class="cl-fld"><label>Next decision</label><div class="val edit" contenteditable onblur="c_set('nextDecision',this.innerText)">${esc(c.nextDecision)}</div></div>
     <div class="cl-fld"><label>Client tools / connectors</label><div class="val edit" contenteditable onblur="c_set('tools',this.innerText)">${esc(c.tools||'add the tools this client uses…')}</div></div>
@@ -640,7 +640,7 @@ function drawClient(){
     <div class="cl-links">
       ${c.drive?`<a class="btn sm ghost" href="${c.drive}" target="_blank">📁 Drive</a>`:`<span class="btn sm ghost" style="opacity:.5">📁 Drive (queue scaffold)</span>`}
       ${c.notion?`<a class="btn sm ghost" href="${c.notion}" target="_blank">📔 Notion</a>`:`<span class="btn sm ghost" style="opacity:.5">📔 Notion</span>`}
-      <a class="btn sm ghost" href="${obs(c.rosFolder)}">🗒️ ROS folder</a>
+      <a class="btn sm ghost" href="${obs(c.contextFile||c.rosFolder)}">🗒️ CONTEXT</a>
     </div>`;
 }
 function c_set(k,v){const c=activeClient();c[k]=v.trim();markDirty();drawClient();}
@@ -650,7 +650,7 @@ function c_ms(i,on){activeClient().milestones[i].d=on?1:0;markDirty();drawClient
 function c_msTxt(i,v){activeClient().milestones[i].t=v.trim();markDirty();}
 function ea_scaffold(){const c=activeClient();
   enqueue("drive.folder",{summary:`Create Drive folder "EA — ${c.name} — Engagement"`,name:`EA — ${c.name} — Engagement`},"EA",3);
-  enqueue("note.promote",{summary:`Create ROS folder ${c.rosFolder} with engagement index`,path:c.rosFolder},"EA",2);
+  enqueue("note.promote",{summary:`Update engagement index in existing ${c.rosFolder} (CONTEXT.md present)`,path:c.rosFolder},"EA",2);
   enqueue("notion.upsert",{summary:`Upsert client "${c.name}" into EA/CoS projects DB`,client:c.name},"EA",3);
   toast('Scaffold queued (3 intents) — Push, then ask an agent to drain the queue');}
 function ea_action(kind){const c=activeClient();const map={
