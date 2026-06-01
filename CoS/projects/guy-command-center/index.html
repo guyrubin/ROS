@@ -108,7 +108,16 @@ a{color:inherit;text-decoration:none}
 
 /* EA CLIENT COCKPIT */
 .client .body{display:grid;gap:10px}
+.cl-tabs{display:flex;gap:6px}
+.cl-tab{flex:1;cursor:pointer;border:1px solid var(--line);border-radius:10px;padding:6px 8px;background:#0d1320;display:flex;align-items:center;gap:7px;transition:.15s}
+.cl-tab:hover{border-color:var(--line2)}
+.cl-tab.on{border-color:var(--gold);background:#1a1408}
+.cl-tab .d{width:7px;height:7px;border-radius:99px;flex:none}
+.cl-tab b{font-size:11.5px}
+.cl-tab small{display:block;font-size:9px;color:var(--faint)}
 .cl-top{display:flex;align-items:center;gap:10px}
+.cl-role{font-size:10.5px;color:var(--muted);margin-top:-4px}
+.cl-focus{font-size:10.5px;color:var(--muted);border-left:2px solid var(--gold);padding-left:8px;line-height:1.35}
 .cl-name{font-size:16px;font-weight:800;outline:0}
 .cl-name:focus{color:#ffe7a4}
 .cl-stack{font:600 10px var(--mono);color:var(--muted);border:1px solid var(--line2);border-radius:99px;padding:3px 8px}
@@ -446,11 +455,19 @@ const FALLBACK={v:3,meta:{owner:"Guy Rubin",updatedAt:nowISO(),updatedBy:"dashbo
   {sev:"green",t:"Dutch housing policy",s:"Wet betaalbare huur / WWS — monitor for ceiling shifts."},
   {sev:"red",t:"Geopolitics",s:"Energy + supply shocks → only if it changes a Guy/HV/EA decision."}],
  fitness:{move:0,stretch:0,run:0},sessions:0,lastDay:"",
- clients:[{id:"ea-new",agent:"EA",name:"[New EA Client — set name]",stack:"TBD (Azure / AWS / GCP)",status:"red",
-   phase:"Discovery / scoping",nextDecision:"Confirm engagement scope, success criteria, and timeline",
-   owner:"Joseph (EA lead)",identity:"josephdoronrubin@gmail.com",stakeholders:[],
-   milestones:[{t:"Kickoff + scope confirmed",d:0},{t:"Current-state architecture review",d:0},{t:"HLD draft",d:0},{t:"ADRs for key decisions",d:0}],
-   drive:"",rosFolder:"EA/clients/ea-new/",notion:"",active:true}],
+ clients:[
+   {id:"abn-amro",agent:"EA",name:"ABN AMRO",role:"Security Enterprise Architect",stack:"Azure + on-prem (confirm)",
+    domainFocus:"Security architecture · IAM / Zero Trust · network segmentation · DORA / DNB / EBA compliance",
+    status:"red",phase:"Onboarding",nextDecision:"Confirm onboarding scope, access/clearance, and first security-architecture deliverable",
+    owner:"Guy Rubin (EA)",identity:"bguy.rubin@gmail.com",stakeholders:[],tools:"confirm: ServiceNow / Azure DevOps / Confluence / Archi",
+    milestones:[{t:"Onboarding + access provisioned",d:0},{t:"Current-state security architecture review",d:0},{t:"Target-state security HLD",d:0},{t:"ADRs: IAM / segmentation / Zero Trust",d:0}],
+    drive:"",rosFolder:"EA/clients/abn-amro/",notion:"",active:true},
+   {id:"coca-cola",agent:"EA",name:"Coca-Cola",role:"Infrastructure & Security Enterprise Architect",stack:"Multi-cloud (Azure / AWS) + infra (confirm)",
+    domainFocus:"Infrastructure & security architecture · cloud landing zones · network · identity · security baselines",
+    status:"amber",phase:"In-flight",nextDecision:"Close contract/admin items; confirm next architecture deliverable",
+    owner:"Guy Rubin (EA)",identity:"bguy.rubin@gmail.com",stakeholders:[],tools:"confirm: ServiceNow / Jira / Confluence / cloud consoles",
+    milestones:[{t:"Contract / admin closure",d:0},{t:"Infra & security baseline review",d:0},{t:"Target-state HLD update",d:0},{t:"Key ADRs logged",d:0}],
+    drive:"",rosFolder:"EA/clients/coca-cola/",notion:"",active:false}],
  actionQueue:[],
  integrations:{gmail:{status:"live",via:"MCP + Himalaya"},calendar:{status:"live",via:"MCP + links"},
    drive:{status:"live",via:"MCP"},notion:{status:"live",via:"MCP"},
@@ -586,20 +603,27 @@ function drawSignals(){$('#signals').innerHTML=S.signals.map((g,i)=>`
 
 /* ---------- EA CLIENT COCKPIT ---------- */
 function activeClient(){return S.clients.find(c=>c.active)||S.clients[0];}
+function setActiveClient(id){S.clients.forEach(c=>c.active=(c.id===id));markDirty();drawClient();}
 function drawClient(){
   const c=activeClient();if(!c){$('#clientBody').innerHTML='No client set.';return;}
   $('#clHint').textContent=c.agent+' · '+c.phase;
+  const tabs=S.clients.map(x=>`<div class="cl-tab ${x.active?'on':''}" onclick="setActiveClient('${x.id}')">
+      <span class="d dot ${x.status}"></span><div><b>${esc(x.name)}</b><small>${esc((x.role||'').replace('Enterprise Architect','EA'))}</small></div></div>`).join('');
   $('#clientBody').innerHTML=`
+    ${S.clients.length>1?`<div class="cl-tabs">${tabs}</div>`:''}
     <div class="cl-top">
       <div class="cl-name edit" contenteditable spellcheck="false" onblur="c_set('name',this.innerText)">${esc(c.name)}</div>
       <span class="cl-stack edit" contenteditable spellcheck="false" onblur="c_set('stack',this.innerText)">${esc(c.stack)}</span>
       <span class="cl-rag ${c.status}" onclick="c_rag()">${SLABEL[c.status]}</span>
     </div>
+    ${c.role?`<div class="cl-role">${esc(c.role)}</div>`:''}
+    ${c.domainFocus?`<div class="cl-focus">${esc(c.domainFocus)}</div>`:''}
     <div class="cl-grid">
       <div class="cl-fld"><label>Phase</label><div class="val edit" contenteditable onblur="c_set('phase',this.innerText)">${esc(c.phase)}</div></div>
       <div class="cl-fld"><label>Owner / identity</label><div class="val">${esc(c.owner)} · ${esc(c.identity)}</div></div>
     </div>
     <div class="cl-fld"><label>Next decision</label><div class="val edit" contenteditable onblur="c_set('nextDecision',this.innerText)">${esc(c.nextDecision)}</div></div>
+    <div class="cl-fld"><label>Client tools / connectors</label><div class="val edit" contenteditable onblur="c_set('tools',this.innerText)">${esc(c.tools||'add the tools this client uses…')}</div></div>
     <div class="cl-fld"><label>Stakeholders (comma-separated)</label><div class="val edit" contenteditable onblur="c_setStake(this.innerText)">${esc((c.stakeholders||[]).join(', '))||'<span style=color:#5e6c7d>add names…</span>'}</div></div>
     <div><label style="font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--faint)">Milestones</label>
       <div class="cl-ms" style="margin-top:5px">${(c.milestones||[]).map((m,i)=>`
