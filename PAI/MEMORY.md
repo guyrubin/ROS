@@ -5,6 +5,18 @@ Active facts only. Completed execution history → [[PAI/archive|PAI Archive]].
 
 ---
 
+## ⭐ Canonical Arbor branch [decided 2026-06-03]
+
+- **`main` (`guyrubin/PPPPtherapy-`) is now the v2 component architecture** — adopted from `feat/arbor-next` via a replace-tree merge (`75b7a48`; parents = old main `cb7c0fa` + arbor-next `a2cca04`). Verified: tsc clean, 25 tests pass, prod build OK, **live AI returns real plans** (HTTP 200, key in `.env.local`, `gemini-2.5-flash`).
+- **Architecture:** `app/src/App.tsx` is now **62 lines** + a real component system (`components/tabs/*`, `components/ui/*` design system, `ErrorBoundary`, auth flow, `layout/Shell|Sidebar|MobileNav`, profile drawer, global search, goals, check-ins, Firebase Storage photo uploads, cost guardrails, type safety, FE tests). This **supersedes the 3019-line monolith**.
+- **Superseded branches (kept on remote, not deleted):** `feat/sprint1-bugs-legibility` + `feat/capability-backlog` = the OLD monolith line (my Sprint-1 QA fixes were applied there). `feat/six-frames` = stale PRD edits. Don't build on these.
+- **Backup of old main:** branch `backup/main-pre-arbor-next-20260603` + tag `main-pre-arbor-next` (both pushed) = PRD v1.1 monolith, fully recoverable.
+- **Port TODO:** the **"Language Lab"** feature (bilingual) existed on old main but is the one thing absent from arbor-next — port it into the v2 components. (Scholars, Six Frames, Friction Scripts, routines already exist in v2 via `knowledge/framework/` + `ScholarTab`/`RoutinesCard`.)
+- **Known issue:** AI `generate-plan` returns populated title/successIndicators but **empty `phases`/`scripts` nested objects** on `gemini-2.5-flash` — schema-fidelity limit; enable billing + `gemini-2.5-pro` or tune the response schema.
+- The earlier [2026-06-02] "Waves 1-6 / sprint1 is the deliverable" notes below are **superseded** by this decision — sprint1 was the monolith line, not the chosen architecture.
+
+---
+
 ## Active ventures
 
 ### Arbor — AI parenting / child-development platform
