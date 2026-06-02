@@ -197,3 +197,50 @@ Every interaction should improve:
 - the intervention history
 - future recommendations
 - professional handoff quality
+
+---
+
+## Implementation Status — 2026-06-02 (capability backlog build)
+
+Canonical app: `PPPPtherapy-/app` (React/Express). Work landed on branch
+`feat/capability-backlog` in 6 verified, tested waves (47 unit tests + build +
+browser verification, no console errors). Local-first persistence
+(localStorage, child-scoped); Firestore swap-in seam preserved.
+
+**Shipped:**
+- **Closed loop (W1):** coach answers save as plans, `observe[]` → tracking
+  prompts, follow-up check-ins capture outcomes that feed back into the prompt,
+  per-answer "useful?" feedback, the load-bearing Six-Frame surfaced inline.
+  Everything persists across refresh.
+- **Story/grounding (W2):** illustrated stories (Imagen, graceful fallback),
+  discussion questions, one-click analysis→plan, accumulated handoff notes,
+  handoff Markdown download + print stylesheet + cloud share, source-card
+  grounding, legible Scholar Lenses.
+- **Safety (W3):** real localized crisis resources (NL/IL/intl — Veilig Thuis,
+  ERAN/1201, 112) replacing placeholders; semantic "elevated concern" gate +
+  model-risk gate above the regex; server-backed high-risk review queue with
+  Safety-tab UI.
+- **11pm capabilities (W4):** always-available panic button → calm overlay
+  (breathing pacer, co-regulation scripts, offline client-side crisis screen),
+  voice input (STT) + read-aloud (TTS), locale-aware.
+- **Identity (W5):** multi-child family model + onboarding (age from birth
+  month) + child switcher; de-grandified copy ("What's happening with <child>
+  today?"); removed false HIPAA claim and `select-none`.
+- **Governance + modules (W6):** pattern detection (recurring/rising/trigger),
+  GDPR export + hard delete, retention enforcement (expiry sweep), guided
+  starters (sleep, responsibility ladder, mealtime, screen-time), one-tap
+  pediatric visit-prep.
+
+**Design note:** the warm-paper "field-notebook" aesthetic is already applied
+at runtime via the `.arbor-app` override layer in `index.css` (the dark-gold
+JSX hex values are remapped). D-01 is effectively done; the earlier "app is
+dark-gold" read was from the JSX source, not the rendered output.
+
+**Deferred (need external decisions or larger effort), not yet built:**
+- E-09 photo/video multimodal logging — **requires legal/AVG review first.**
+- E-04 co-parent shared mode — needs real multi-user auth/sharing infra.
+- A-11 full UI localization (NL/HE) — crisis resources are localized; full i18n
+  is a separate pass.
+- K-10 confidence calibration, K-08 deeper frame-routing-as-decision.
+- D-07 design-token refactor, D-06 full WCAG audit, E-08 toileting, E-10 keepsake.
+- Firestore migration of the new local-first stores for production.

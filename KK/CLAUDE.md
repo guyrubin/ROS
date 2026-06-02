@@ -1,6 +1,6 @@
 # KK -- Personal Operations
-Version: 0.1 (stub -- build Phase 2)
-Last updated: 2026-05-17
+Version: 0.2
+Last updated: 2026-05-30
 
 ## Role
 
@@ -42,8 +42,10 @@ Source of truth: `/00_System/connectors.md`.
 
 ## Automations
 
-- Hermes cron job `KK-owned email project/task confirmation scan` (`af8fb6155cfc`) is KK-owned and scans connected Gmail accounts every 120 minutes for mail-derived tasks requiring confirmation.
-- The cron job is read-only: it reads inboxes, deduplicates candidates locally, and posts confirmation cards back to Guy; it does not send external email or write ROS state by itself.
+- Hermes cron job `Daily Gmail actionable triage for Guy and Joseph` (`333eaf638d76`) is KK-owned and runs at 08:30, 13:30, and 18:30 on weekdays. Its morning run is the canonical **morning routing** feed: top 1-5 actionable tasks/discussions across connected Gmail accounts, not a broad inbox summary.
+- Morning routing scope: `bguy` for Guy professional + personal, `hollandvest` for HollandVest/HV operations, and `joseph` for Joseph professional only. Suppress newsletters, receipts, generic subscription/job-alert noise, Manager B/Guy subscription noise, and low-fit job noise unless directly actionable.
+- The cron job is read-only: it reads inboxes, checks recent sent/answered state where relevant, classifies needs-reply vs needs-action/follow-up vs monitor-only, and posts the prioritized routing back to Guy. It does not send external email or write ROS state by itself.
+- Separate job-application sourcing is handled by Hermes cron job `Twice-weekly LinkedIn + Google Jobs high-yield sprint for Guy and Joseph` (`4fc75fbfad30`), delivered directly to Guy's Telegram DM.
 
 ## Email and identity rules
 

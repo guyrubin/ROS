@@ -25,6 +25,108 @@ markets:
 
 ## Scan updates
 
+### 2026-05-25 — Daily public scan
+
+**Result:** Two materially relevant new MVA/MarketSuite candidates are worth adding to the radar. **A. Moenstraat 32** is the best new practical benchmark-beater for the Elzenhagen family-house lane: five bedrooms, garden, energy A and rear own-terrain parking at a materially lower ticket than Elzenhagensingel 47 and below the Badhuiskade €/m² benchmark. **Boterbloemstraat 35** is a higher-ticket Buiksloterham XL-apartment complement: it does not beat Badhuiskade on absolute price or execution simplicity, but it adds 157 m², three bedrooms, private terrace, fixed garage parking and circular/open-building upside in the exact Noord transformation thesis.
+
+#### Promoted watch: A. Moenstraat 32 — Amsterdam Noord / Elzenhagen family house
+
+- Asset link: [MVA — A. Moenstraat 32](https://mva.nl/koop/woningen/a-moenstraat-32)
+- Source API: [MVA API — A. Moenstraat 32](https://mva.nl/api/ms/listing/properties/a-moenstraat-32)
+- Ask: **€725,000**
+- API size: **130 m² living / 285 m² total available area**
+- Bedrooms / rooms: **5 bedrooms / 6 rooms**
+- Price/m²: **~€5,577/m² on API living area**
+- Energy: **A**; public text states **9 zonnepanelen**.
+- Outdoor / parking: public text states **front garden**, **southwest rear garden**, rear storage and **possibility to park the car on own terrain at the rear**; API parking count is not populated.
+- Public facts: MVA text places it in **Elzenhagen**, close to the Noord/Zuidlijn and fast access to the ring roads, with a practical family layout over multiple levels.
+- Why it matters: **strongest new family-value complement in the exact Elzenhagen focus** — versus Badhuiskade 217 it adds house control, five bedrooms, garden, much lower €/m² and better day-to-day family/car practicality; versus Elzenhagensingel 47 it is lower ticket by **~€465k** while still providing the core Elzenhagen family-house proposition.
+- Caveat versus Badhuiskade / Elzenhagensingel: weaker prestige/waterfront signal, likely less turn-key/new-build quality than Elzenhagensingel 47, no API-confirmed parking deed despite public text, and measured outdoor area/land/erfpacht details need verification.
+- HV decision: **Proceed if conditions met** — request brochure, NEN measurement, floorplans, erfpacht documents, parking-right/private-use evidence, garden/storage rights, recent maintenance/roof/facade status, and realistic renovation/upgrade budget.
+
+#### Promoted watch: Boterbloemstraat 35 — Amsterdam Noord / Buiksloterham circular XL apartment
+
+- Asset link: [MVA — Boterbloemstraat 35](https://mva.nl/koop/woningen/boterbloemstraat-35)
+- Source API: [MVA API — Boterbloemstraat 35](https://mva.nl/api/ms/listing/properties/boterbloemstraat-35)
+- Ask: **€1,285,000**
+- Size: **157 m² living**
+- Bedrooms / rooms: **3 bedrooms / 4 rooms**
+- Price/m²: **~€8,185/m²**
+- Energy / construction: **A**; public text states gasless, floor heating, WTW, district heating and VvE/community solar for common facilities.
+- Outdoor / parking: API outside area **23 m²**; public text states **private terrace**, shared landscaped courtyard, indoor bicycle storage and **fixed parking place in the garage**.
+- Public facts: MVA text describes a **Buiksloterham** circular/open-building woon-/werk complex using reusable materials, modular/dry-building principles and award recognition including **Duurzaam Bouwen Award 2020** and **ARC19 Innovation Award**.
+- Why it matters: **best new Buiksloterham quality/optionality complement** — +46 m² versus Badhuiskade 217, three bedrooms, fixed garage parking, private terrace and a stronger circular/open-building story than a standard apartment. It complements the Asterweg/Buiksloterham transformation thesis without taking on BOG conversion risk.
+- Caveat versus Badhuiskade 217: absolute ticket is **€385k higher**, energy label is A rather than A+++, €/m² is only marginally above Badhuiskade, and development optionality is more modular/flex-use/community-value than a clean sqm-add or legal conversion play; VvE governance and service-cost stack are critical.
+- HV decision: **Proceed only if the higher ticket is acceptable** — request VvE documents/MJOP/reserves, service charges, parking deed, erfpacht/land status, split deed, floorplan flexibility evidence and confirmation of any live-work or internal reconfiguration restrictions.
+
+#### Checked but not promoted
+
+- **Leen Jongewaardkade 7, Amsterdam Noord** — strong ground-floor waterfront apartment with **€1.3m / 145 m² / 3 bedrooms / A++ / own garage parking / garden**, but at **~€8,966/m²** and outside the clean Overhoeks/Buiksloterham/Elzenhagen triad it is a lifestyle premium rather than a risk-adjusted benchmark-beater. [MVA](https://mva.nl/koop/woningen/leen-jongewaardkade-7) · [API](https://mva.nl/api/ms/listing/properties/leen-jongewaardkade-7)
+- **Zuideinde 329, Amsterdam Noord BOG/live-work** — unusual own-land object with public text stating **105 m² VVO business space + 128 m² GO independent house**, three bedrooms, water terrace/berth and long private driveway, at **€1.2m**. Not promoted because it sits outside the core Noord urban-upside lane and the MVA API area/price fields only capture 105 m² commercial, so legal/measurement/use DD must be resolved before it can beat Asterweg as a live-work candidate. [MVA](https://mva.nl/koop/bedrijfsruimtes/bog-zuideinde-329) · [API](https://mva.nl/api/ms/listing/properties/bog-zuideinde-329)
+- **Gevers Deynootweg 55, Scheveningen** — good coastal lifestyle value at **€800k / 150 m² / ~€5,333/m² / own land / garden**, but only **2 bedrooms**, energy C and no confirmed private parking; it is not a Statenkwartier/Belgisch Park family-house upgrade and does not beat the Amsterdam Noord family/car/upside score. [MVA](https://mva.nl/koop/woningen/gevers-deynootweg-55) · [API](https://mva.nl/api/ms/listing/properties/gevers-deynootweg-55)
+
+**Market observations:**
+
+- The strongest fresh signal is **Elzenhagen family-house value**: A. Moenstraat 32 offers five-bedroom house utility around **~€5.6k/m²**, well below the modern Overhoeks/Buiksloterham apartment benchmark, though parking and land rights need legal proof.
+- Buiksloterham quality stock is appearing, but the best units are now priced near/above Badhuiskade on €/m²; the premium is justified only where parking, outdoor space, family scale and low-execution circular-building quality are all real.
+- Funda search pages again returned the standard automated-access interstitial today; address-level facts above are grounded in public MVA/MarketSuite API and public MVA listing text.
+
+### 2026-05-23 — Daily public scan
+
+**Result:** One materially relevant new **Elzenhagen family-house candidate** surfaced in the latest public MVA/MarketSuite batch. **Elzenhagensingel 47** does not replace **Badhuiskade 217** as the lower-ticket Overhoeks/BOLD apartment benchmark, but it is a strong **Noord family-quality and car-sanity complement**: a 2019 turn-key corner house in Elzenhagen with four bedrooms, garden, dakterras, bijgebouw/workspace and two rear parking places.
+
+#### Promoted watch: Elzenhagensingel 47 — Amsterdam Noord / Elzenhagen family house
+
+- Asset link: [MVA — Elzenhagensingel 47](https://mva.nl/koop/woningen/elzenhagensingel-47)
+- Source API: [MVA API — Elzenhagensingel 47](https://mva.nl/api/ms/listing/properties/elzenhagensingel-47)
+- Ask: **€1,190,000**
+- API size: **176 m² living / 470 m² total available area**; public text states **circa 156 m² house + circa 20 m² tuinhuis/bijgebouw**.
+- Bedrooms / rooms: **4 bedrooms / 6 rooms**
+- Price/m²: **~€6,761/m² on API living area**; **~€7,628/m² on the 156 m² main-house figure**.
+- Energy / construction: **A / 2019 / gasloos**; public text states HR+++-glass and turn-key condition.
+- Outdoor / parking: public text states **front, side and rear garden**, **dakterras**, bijgebouw with kitchenette and underfloor heating, and **space for two parking places at the rear**.
+- Land: public text states **eeuwigdurend afgekochte erfpachtgrond**.
+- Why it matters: **best new living-first Noord family complement** — compared with Badhuiskade 217, it adds house control, four bedrooms, materially better outdoor/family utility, a separate work/guest/play bijgebouw and a two-car rear-parking solution while staying inside the priority Elzenhagen lane. On €/m² it also sits below Badhuiskade and most Overhoeks/Buiksloterham modern comps.
+- Caveat versus Badhuiskade 217: higher absolute ticket, weaker waterfront/prestige signal than Overhoeks/BOLD, less direct development optionality than BOG/live-work plays, and API parking-place count is not populated despite the public text; verify legal parking rights, bijgebouw use, erfpacht buyout proof and exact measured GO before treating the rear parking/workspace as bankable value.
+- HV decision: **Proceed if conditions met** — request brochure, NEN measurement, cadastral/split/erfpacht documents, parking-deed or private-use evidence, bijgebouw permit/use status, VvE/HOA or neighbourhood obligations if any, and service/maintenance assumptions.
+
+#### Checked but not promoted
+
+- **Durgerdammerdijk 67, Amsterdam Noord / Durgerdam** — exceptional own-land lifestyle house at **€2.65m / 179 m² API living / ~€14,804/m²**, with large garden, Buiten-IJ setting, garage/atelier potential and possible ~30 m² extension. Not promoted because it sits outside the Overhoeks/Buiksloterham/Elzenhagen urban-upside lane, carries a very high prestige-lifestyle ticket, energy C and weaker Amsterdam ecosystem/logistics for Guy's current brief. [MVA](https://mva.nl/koop/woningen/durgerdammerdijk-67) · [API](https://mva.nl/api/ms/listing/properties/durgerdammerdijk-67)
+- **Van Eeghenstraat 79, Amsterdam Zuid / Vondelpark-Oud-Zuid** — trophy own-land herenhuis at **€5.65m / 355 m² / ~€15,915/m²**, six bedrooms and deep south garden. Not promoted because it is a luxury-capital-preservation asset, not a risk-adjusted benchmark-beater for the stated personal-living + development-upside search; car sanity and execution/capex exposure remain unresolved. [MVA](https://mva.nl/koop/woningen/van-eeghenstraat-79) · [API](https://mva.nl/api/ms/listing/properties/van-eeghenstraat-79)
+
+**Market observations:**
+
+- The strongest fresh signal is **Elzenhagen house stock**, not another tower apartment: when parking and outdoor space are real, it can beat Overhoeks apartments on family logistics even at a higher absolute ticket.
+- Funda search pages again returned the standard automated-access interstitial, so address-level facts above are grounded in MVA/MarketSuite public API and public MVA listing text.
+
+### 2026-05-22 — Daily public scan
+
+**Result:** One materially relevant **Elzenhagen Zuid new-build cluster** is worth adding to the active radar. It does not replace **Badhuiskade 217** for Overhoeks prestige/car-sanity until parking, delivery and erfpacht choices are confirmed, but it is a strong **family-value complement** inside the stated Noord/Elzenhagen focus: A+++/A++ energy, 3-bedroom public descriptions, materially lower €/m², and lower absolute ticket than Badhuiskade, Ms. Tarnweg and most Zuid options.
+
+#### Promoted watch: Elzenhagen Zuid / Oranje Zwartstraat–Rood-Wit A.-straat–Meerluststraat new-build family apartments
+
+- Best currently available screens:
+  - [MVA — Oranje Zwartstraat 13](https://mva.nl/koop/woningen/oranje-zwartstraat-13) · [API](https://mva.nl/api/ms/listing/properties/oranje-zwartstraat-13) — **€755,000 / 122 m² / ~€6,189/m² / A+++**; public text states **3 bedrooms** and possible **4th bedroom**.
+  - [MVA — Oranje Zwartstraat 29](https://mva.nl/koop/woningen/oranje-zwartstraat-29) · [API](https://mva.nl/api/ms/listing/properties/oranje-zwartstraat-29) — **€760,000 / 122 m² / ~€6,230/m² / A+++**; public text states **three bedrooms**.
+  - [MVA — Rood-Wit A.-straat 40](https://mva.nl/koop/woningen/rood-wit-a-straat-40) · [API](https://mva.nl/api/ms/listing/properties/rood-wit-a-straat-40) — **€740,000 / 113 m² / ~€6,549/m² / A+++**; public text states **4-room apartment**, south balcony and **~28 m² roof terrace**.
+  - [MVA — Meerluststraat 69](https://mva.nl/koop/woningen/meerluststraat-69) · [API](https://mva.nl/api/ms/listing/properties/meerluststraat-69) — **€590,000 / 99 m² / ~€5,960/m² / A+++**; public text states **3 slaap-/werkkamers** and west-facing balcony.
+- Public facts: MVA/MarketSuite descriptions frame the location as **Elzenhagen Zuid**, with modern new-build apartments, green/community setting, nearby amenities/recreation, and buyer choice between perpetual leasehold buyout or annual indexed canon subject to final municipality figures.
+- Why it matters: **best newly added Noord family-value complement** — the 122 m² Oranje Zwartstraat units are larger than Badhuiskade 217 and much cheaper per m²; Rood-Wit 40 adds unusual private outdoor space; Meerluststraat 69/99 create a lower-ticket 3-room/3-workroom Elzenhagen fallback. This cluster directly fits the stated Elzenhagen focus and improves the family/energy/value score versus several smaller Overhoeks/NDSM comps.
+- Caveat versus Badhuiskade 217 / Christoffelkruidstraat 82: weaker prestige/waterfront signal than Overhoeks/Buiksloterham, no private parking right found in the pulled API fields, project/delivery timing and VvE/service-cost stack need confirmation, and erfpacht choice materially affects financing/total cost.
+- HV decision: **Proceed if conditions met** — request project brochure, definitive floorplans, delivery timing, VvE/service charge estimate, parking/EV availability, storage rights, erfpacht buyout vs indexed-canon numbers, and confirmation of bedroom count/outdoor rights before ranking against Badhuiskade and Christoffelkruidstraat.
+
+#### Checked but not promoted
+
+- **Disketteweg 9, Amsterdam Noord / NDSM-Werf BOG** — attractive low-ticket new-build/flexible unit at **€495k / 198 m² / ~€2,500/m²**, public text states permit granted, build started, energy-efficient, one parking place included, and office/workshop/storage flexibility. Not promoted as a personal-living candidate because the text is business-unit led and no residential/live-work right is established. [MVA](https://mva.nl/koop/bedrijfsruimtes/bog-disketteweg-9) · [API](https://mva.nl/api/ms/listing/properties/bog-disketteweg-9)
+- **Luchtvaartstraat 4, Amsterdam Zuid / Schinkelgebied BOG** — useful Schinkelkwartier transformation comp at **€1.075m / 295 m² / ~€3,644/m²** with **305 m² outside area**, but public text states it is leased until **1 May 2029**, so it is not a clean personal-living or near-term conversion candidate. [MVA](https://mva.nl/koop/bedrijfsruimtes/bog-luchtvaartstraat-4) · [API](https://mva.nl/api/ms/listing/properties/bog-luchtvaartstraat-4)
+- **Zeilstraat 20, Amsterdam Zuid / Hoofddorpplein BOG** — renovated own-land retail investment at **€695k / 192 m² BVO / energy A** with garden, but the public text markets it explicitly as **belegging** in a split building, so execution and use-control are weaker than Bennebroekstraat/Pilotenstraat for Guy's brief. [MVA](https://mva.nl/koop/bedrijfsruimtes/bog-zeilstraat-20) · [API](https://mva.nl/api/ms/listing/properties/bog-zeilstraat-20)
+
+**Market observations:**
+
+- The best fresh residential signal is **Elzenhagen Zuid value density**: 99–122 m² A+++/A++ new-build family layouts are showing around **~€5,960–€6,550/m²**, materially below Overhoeks/Buiksloterham benchmark pricing.
+- The BOG scan continues to show cheap Noord/Schinkel volume, but most entries are commercial/investment-led; they should not outrank living-first assets until a legal live-work/residential path is proven.
+
 ### 2026-05-21 — Fouda/Funda link added from viewing email
 
 - Added **Christoffelkruidstraat 82, Amsterdam Noord / Buiksloterham** to the live listings section from the Lammers + Dijkstra/HousApp viewing reminder.

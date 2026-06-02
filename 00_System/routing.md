@@ -1,6 +1,6 @@
 # ROS Routing Matrix
-Version: 1.2
-Last updated: 2026-05-24
+Version: 1.3
+Last updated: 2026-05-30
 
 ---
 
@@ -16,7 +16,7 @@ This file defines the canonical routing rules for Rubin OS. It is read by the ro
 
 | Trigger keywords | Agent | Plugin |
 |---|---|---|
-| today, this morning, this afternoon, daily plan, calendar, what's on, schedule, appointments, follow-up, inbox, email triage, urgent | KK (Personal Ops) | ros-core |
+| today, this morning, morning routing, morning briefing, daily briefing, daily plan, inbox routing, route my morning, this afternoon, calendar, what's on, schedule, appointments, follow-up, inbox, email triage, urgent | KK (Personal Ops) | ros-core |
 | weekly review, OKRs, priorities, what matters most, strategy, blockers, quarterly, are we on track, cross-domain, orchestrate | CoS (Chief of Staff) | ros-core |
 | deal, property, asset, BRRRR, rent, tenant, lender, renovation, permit, vergunning, bestemmingsplan, WWS, Funda, Kadaster, Pararius, Dutch RE, Hollandvest | HV (Real Estate) | ros-hv |
 | architecture, HLD, ADR, cloud, AWS, Azure, GCP, ZTA, CCoE, CSDM, Coca-Cola, ABN, ABN AMRO, workplace, employment contract, freelance onboarding, security architect, platform design, interview prep | EA (Enterprise Architecture) | ros-ea |
@@ -38,6 +38,9 @@ CoS handles **direction** — whether you are doing the right things.
 | "What should I do today?" | KK |
 | "What should I focus on this week?" | CoS |
 | "What's on my plate?" | KK |
+| "Morning routing" | KK |
+| "Run my morning briefing" | KK |
+| "Route my inbox for today" | KK |
 | "Am I working on the right things?" | CoS |
 | "Triage my inbox" | KK |
 | "Run a weekly review" | CoS |
