@@ -29,7 +29,7 @@ Next: Maintain [[HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands|Smart Livi
 ### EA — Enterprise Arch / Workplaces
 Status: Active | Focus: current workplaces only — ABN Security Enterprise Architecture onboarding + Coca-Cola Infrastructure & Security Enterprise Architecture contract/final onboarding
 Lead: Guy Rubin | Joseph only when explicitly involved
-Next: Track Coca-Cola employment contract and ABN onboarding steps; use `EA/frameworks/ea-skill-process-outcomes.md` for EA deliverable/process selection
+Next: Track Coca-Cola employment contract and ABN onboarding steps; activate demand-aligned EA skill cards from `EA/frameworks/ea-skill-process-outcomes.md` for onboarding, current-state review, HLD, ADR/governance, compliance/control mapping, and executive briefs
 
 ### PAI — Ventures / AI Products
 Status: Active | Focus: Arbor parenting app — v2 architecture on a local unmerged branch, runs locally

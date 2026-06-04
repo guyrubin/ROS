@@ -1,178 +1,371 @@
-# EA Skill Process Outcomes
+# EA Demand-Aligned Skill Model
 
 Last updated: 2026-06-04
 Owner: EA
 
-Purpose: define the repeatable processes and expected outputs the EA domain should use for Guy's current workplace/consulting work across cybersecurity, architecture, enterprise architecture, infrastructure, and security.
+Purpose: define the actual EA skills ROS should activate for Guy's current work demands: ABN AMRO Security Enterprise Architecture onboarding and Coca-Cola Infrastructure & Security Enterprise Architecture. This replaces generic architecture categories with outcome-driven skill cards tied to the work Guy is expected to perform.
 
-This is a reusable framework. Client/workplace-specific facts still belong under `EA/clients/[client]/` and must not be mixed across workplaces.
+This is reusable across workplaces, but workplace facts, stakeholders, decisions, and deliverables remain under `EA/clients/[client]/` and must not be mixed.
 
 ---
 
-## How to use this framework
+## Current demand signals
 
-Before producing an EA deliverable, identify the active workstream and select the matching process below. Every output should include:
+### ABN AMRO — Security Enterprise Architect
 
-1. Client/workplace context and scope boundaries.
-2. Current state, target state, and transition path.
-3. Decisions required, with owner and sign-off level.
-4. Risks, assumptions, dependencies, and open questions.
-5. Deliverable format: HLD, ADR, review, roadmap, controls matrix, operating model, backlog, or executive brief.
+Demand profile:
+- Onboarding is active; immediate demand is to confirm scope, access, stakeholders, governance forums, and first deliverable.
+- Current-state security architecture review and target-state security HLD are explicit milestones.
+- Domain focus: Security architecture, IAM / Zero Trust, network segmentation, banking compliance, DORA / DNB / NIS2, and internal architecture decision support.
+- Likely tooling to confirm: ServiceNow, Azure DevOps, Confluence, Archi, and client security/governance repositories.
 
-## Workstream map
+### Coca-Cola — Infrastructure & Security Enterprise Architect
 
-### 1. Cybersecurity architecture
+Demand profile:
+- Contract/final onboarding is active; immediate demand is contract/admin closure and readiness for infrastructure/security scope discovery.
+- Infra & security baseline review and target-state HLD update are explicit milestones.
+- Domain focus: infrastructure and security architecture, cloud landing zones, network, identity, security baselines, secure operations, resilience, and enterprise platform governance.
+- Likely tooling to confirm: ServiceNow, Jira, Confluence, cloud consoles, architecture repositories, and security/platform dashboards.
 
-Use when the work concerns cyber risk reduction, threat modelling, controls, compliance, or security-by-design.
+## Operating principle
 
-Process:
-- Establish scope: assets, business services, threat actors, regulatory surface, and risk appetite.
-- Identify critical flows: identity, data, network, workload, third-party, and operational dependencies.
-- Map current controls and gaps using NIST CSF, CIS Controls, ISO 27001/27002, DORA/NIS2/GDPR where relevant.
-- Model threats and abuse cases; prioritize by business impact and exploitability.
-- Recommend layered controls, compensating controls, and measurable evidence.
-- Convert recommendations into a risk-based backlog with owners, due dates, and decision gates.
+The EA agent should not answer with broad theory. It should select one or more skill cards below and produce the concrete artifact the workplace would expect from a senior security/infrastructure enterprise architect.
 
-Expected outcomes:
-- Threat model or risk assessment.
-- Control gap analysis and prioritized remediation backlog.
-- Security architecture patterns: Zero Trust, IAM, segmentation, secure data flows, supply-chain controls.
-- Compliance/evidence mapping for audits or internal assurance.
-- Executive risk brief with residual risk and sign-off asks.
+Each output must include:
+- Workplace: ABN or Coca-Cola.
+- Demand being served: onboarding, current-state review, target-state HLD, decision support, roadmap/backlog, compliance evidence, or executive briefing.
+- Artifact type and owner.
+- Facts vs assumptions.
+- Risks, dependencies, decision gates, and next actions.
 
-### 2. Security architecture / Zero Trust / IAM
+---
 
-Use when the work concerns identity, access, privileged access, segmentation, policy-as-code, and secure access patterns.
+## Core skill cards
 
-Process:
-- Define trust boundaries and identity sources of authority.
-- Map human, workload, machine, service, and third-party identities.
-- Assess authentication, authorization, privileged access, federation, lifecycle, and logging.
-- Separate preventive controls from detective and response controls.
-- Design target-state access patterns with least privilege, JIT/JEA, RBAC/ABAC, conditional access, and break-glass.
-- Define rollout sequence, migration risks, and operational ownership.
+### Skill 1 — Engagement scope and onboarding capture
 
-Expected outcomes:
-- IAM/ZTA current-state assessment.
-- Target identity and access architecture.
-- Access control model and role catalog.
-- Privileged access / break-glass design.
-- Logging, monitoring, and evidence requirements.
-- ADRs for identity provider, federation, segmentation, or access patterns.
+Use when:
+- Guy needs to start or stabilize an engagement.
+- The scope, stakeholders, systems, tools, accesses, or first deliverable are unclear.
+- The work is more about entering the organization correctly than designing the architecture yet.
 
-### 3. Infrastructure and security architecture
+Inputs to capture:
+- Role mandate and success criteria.
+- Stakeholders: sponsor, manager, CISO/CTO delegates, platform leads, security leads, architecture board, delivery leads.
+- Tooling and repositories: ServiceNow/Jira, Confluence, architecture repository, cloud portals, CMDB, risk register, policy repositories, backlog tools.
+- Governance calendar: architecture board, CAB, risk committee, security review, sprint/planning cadence.
+- First 30/60/90-day expectations.
+- Access blockers and compliance/admin steps.
 
-Use when the work concerns infrastructure platforms, landing zones, networks, cloud foundations, endpoint/server/container platforms, resilience, and baseline security.
+Expected artifacts:
+- Engagement brief.
+- Onboarding/access checklist.
+- Stakeholder map.
+- First-deliverable hypothesis.
+- Known-unknowns log.
+- 30/60/90-day architecture plan.
 
-Process:
-- Inventory platform scope: cloud, network, compute, container, storage, DNS, certificates, secrets, CI/CD, and observability.
-- Define non-functional requirements: availability, resilience, RTO/RPO, performance, security, compliance, operability, cost.
-- Review current infrastructure patterns against cloud provider and enterprise guardrails.
-- Design secure landing zones, network segmentation, baseline policies, logging, backup, disaster recovery, and secrets management.
-- Define deployment path: IaC, policy-as-code, GitOps/CI/CD, environment promotion, change control, and runbooks.
-- Create phased implementation plan with dependencies and operational handover.
+Quality bar:
+- No assumed client facts.
+- Clear separation between onboarding/admin blockers and architecture blockers.
+- Every unknown has an owner or discovery action.
 
-Expected outcomes:
-- Infrastructure HLD and transition roadmap.
-- Secure landing-zone / platform baseline.
-- Network and segmentation model.
-- Resilience and disaster recovery design.
-- IaC / policy-as-code backlog.
-- Operational runbook and support model.
+### Skill 2 — Current-state security/infrastructure architecture review
 
-### 4. Solution and system architecture
+Use when:
+- The workplace asks for an assessment, baseline, health check, review, or gap analysis.
+- Guy needs to understand current risks before proposing a target state.
 
-Use when the work concerns a specific application, service, integration, API, data flow, modernization, or target-state design.
+Inputs to gather:
+- Architecture diagrams and inventories.
+- Business-critical services and data flows.
+- Identity model, network topology, cloud account/subscription structure, platforms, CI/CD, logging, monitoring, backup/DR.
+- Existing policies, standards, exceptions, controls, incidents, risks, audit findings, and technical debt.
+- NFR expectations: availability, RTO/RPO, security, privacy, latency, scalability, operability, cost.
 
-Process:
-- Clarify business capability, users, service boundaries, data domains, and integration points.
-- Capture functional and non-functional requirements.
-- Produce C4-style context/container/component views where useful.
-- Compare options: build/buy, managed/self-managed, synchronous/asynchronous, monolith/modular/microservices, event-driven/API.
-- Evaluate security, operability, cost, delivery complexity, and exit costs.
-- Record decisions in ADRs and convert the target design into implementation milestones.
+Analysis dimensions:
+- Identity and privileged access.
+- Network and segmentation.
+- Cloud/platform landing zone and guardrails.
+- Secrets, certificates, and key management.
+- Logging, detection, response, and evidence.
+- Resilience, backup, DR, and operational handover.
+- Compliance/control alignment.
 
-Expected outcomes:
-- HLD or solution design document.
-- C4 diagrams or architecture views.
-- ADR set for key design choices.
-- Interface/API/event/data contracts.
-- NFR checklist and validation plan.
-- Implementation roadmap and dependency map.
+Expected artifacts:
+- Current-state review.
+- Architecture risk register.
+- Control/gap matrix.
+- Heatmap by domain and severity.
+- Remediation backlog grouped by quick wins, structural fixes, and decisions required.
+- Executive summary for sponsor/CISO/CTO.
 
-### 5. Enterprise architecture
+ABN emphasis:
+- Banking-grade risk framing, DORA/DNB/NIS2 implications, IAM/ZTA, segmentation, evidence, traceability.
 
-Use when the work concerns portfolio-level direction, capability mapping, operating model, platform strategy, architecture governance, or cross-domain decisions.
+Coca-Cola emphasis:
+- Enterprise infrastructure baseline, landing zones, network/identity/security baselines, operability, resilience, and global/local governance fit.
 
-Process:
-- Map business capabilities, value streams, systems, stakeholders, and decision forums.
-- Identify duplication, fragmentation, regulatory exposure, technical debt, and strategic constraints.
-- Define architecture principles and guardrails that are specific enough to guide delivery.
-- Establish governance: architecture board, design review flow, ADR lifecycle, exception handling, and escalation path.
-- Build target-state roadmap by horizons: now / next / later.
-- Connect architecture choices to measurable business outcomes.
+### Skill 3 — Target-state HLD / architecture blueprint
 
-Expected outcomes:
-- Capability map and heatmap.
-- Target-state architecture principles and guardrails.
-- Portfolio roadmap and sequencing plan.
-- Architecture governance operating model.
-- Decision log / ADR process.
-- Executive narrative for CTO/CISO/board stakeholders.
+Use when:
+- The workplace expects a high-level design, target-state architecture, or modernization/secure-by-design blueprint.
+- A current-state review has found enough facts to propose direction.
 
-### 6. Cloud / CCoE / platform engineering
+Inputs to define:
+- Business capability or platform scope.
+- Architecture principles and constraints.
+- Options considered and rejected.
+- Target components, trust boundaries, integrations, data flows, and operational model.
+- NFRs, controls, compliance obligations, and exit costs.
 
-Use when the work concerns cloud adoption, cloud foundations, CCoE, governance, FinOps, developer platforms, or multi-cloud strategy.
+Expected artifacts:
+- HLD / target-state blueprint.
+- C4-style context/container views where useful.
+- Security architecture view: identity, network, data, workload, logging, and control planes.
+- Transition roadmap: now / next / later.
+- Decision list and ADR candidates.
+- Validation plan: reviews, tests, evidence, sign-offs.
 
-Process:
-- Assess cloud maturity across governance, identity, network, security, operations, cost, data, and developer experience.
-- Define platform product boundaries and service catalog.
-- Design landing zones and shared services with guardrails and self-service paths.
-- Establish FinOps, tagging, budgeting, policy, and exception processes.
-- Define platform operating model: roles, ceremonies, backlog, SLOs, support, and adoption metrics.
-- Sequence rollout across pilots, migration waves, and enterprise adoption.
+ABN emphasis:
+- Security HLD: IAM/ZTA, segmentation, secure access, auditability, policy alignment, risk acceptance paths.
 
-Expected outcomes:
-- Cloud maturity assessment.
-- CCoE/platform operating model.
-- Landing-zone and shared-services blueprint.
-- Guardrails/policy-as-code catalog.
-- FinOps and governance model.
-- Adoption roadmap and KPI set.
+Coca-Cola emphasis:
+- Infrastructure & Security HLD: landing zone, hybrid/multi-cloud connectivity, network/security baselines, monitoring, resilience/DR, platform operations.
 
-## Current workplace alignment
+### Skill 4 — IAM / Zero Trust / privileged access design
 
-### ABN AMRO
+Use when:
+- The issue involves identity, authentication, authorization, privileged access, federation, service accounts, workload identity, conditional access, or access review.
 
-Primary lens: Security Enterprise Architecture.
+Inputs to gather:
+- Identity providers and federation model.
+- Human, admin, service, workload, machine, vendor, and break-glass identities.
+- Role model: RBAC/ABAC, entitlements, groups, lifecycle, SoD constraints.
+- Current privileged access, JIT/JEA, PIM/PAM, MFA, conditional access, and logging.
+- Joiner/mover/leaver and access review processes.
 
-Likely process families:
-- Cybersecurity architecture.
-- Security architecture / Zero Trust / IAM.
-- Infrastructure and security architecture where banking platform foundations or network segmentation are in scope.
-- Enterprise architecture where DORA, DNB, NIS2, internal governance, or cross-domain risk decisions require portfolio-level alignment.
+Expected artifacts:
+- IAM/ZTA assessment.
+- Target identity architecture.
+- Privileged access model.
+- Role and entitlement catalog outline.
+- Access lifecycle and evidence process.
+- Break-glass and emergency access design.
+- ADRs for federation, IdP, PAM/PIM, workload identity, or conditional access.
 
-Expected outputs should be banking-grade: traceable decisions, compliance-aware risk framing, clear stakeholder ownership, and no mixing with Coca-Cola materials.
+ABN emphasis:
+- Segregation of duties, audit evidence, privileged access traceability, banking compliance.
 
-### Coca-Cola
+Coca-Cola emphasis:
+- Enterprise-scale identity integration, platform access, operational support, baseline consistency across regions/platforms.
 
-Primary lens: Infrastructure & Security Enterprise Architecture.
+### Skill 5 — Network segmentation and secure connectivity
 
-Likely process families:
-- Infrastructure and security architecture.
-- Cloud / CCoE / platform engineering.
-- Security architecture / IAM / baseline controls.
-- Enterprise architecture where platform governance, roadmaps, or operating model decisions are needed.
+Use when:
+- The work concerns network zones, micro-segmentation, private endpoints, hybrid connectivity, traffic inspection, service mesh, mTLS, ingress/egress, or third-party connectivity.
 
-Expected outputs should connect infrastructure/security decisions to enterprise operability, resilience, cost, and global/local governance, and must not reuse ABN-specific context.
+Inputs to gather:
+- Network topology, zones, trust boundaries, routing, firewall policy, DNS, certificates, ingress/egress, private connectivity, and external dependencies.
+- Critical application flows and data classifications.
+- Existing segmentation standards and exceptions.
 
-## Output quality bar
+Expected artifacts:
+- Network/security zone model.
+- Segmentation policy matrix.
+- Traffic-flow inventory and risk hotspots.
+- Secure connectivity pattern catalog.
+- Migration plan that avoids breaking business-critical flows.
+- Monitoring and evidence requirements.
 
-Every EA output should be workplace-grade:
+ABN emphasis:
+- Banking network segmentation, regulated data flows, privileged/admin paths, third-party risk.
 
-- Decision-oriented: state what needs to be decided and by whom.
-- Evidence-aware: distinguish facts, assumptions, risks, and recommendations.
-- Executable: include next actions, owners, and dependencies.
-- Safe: flag confidential or cross-client-sensitive content.
-- Architecturally rigorous: include trade-offs, NFRs, compliance surface, and exit costs.
-- Outcome-led: connect technical architecture to business, risk, delivery, and operating outcomes.
+Coca-Cola emphasis:
+- Global/local network patterns, cloud connectivity, plant/office/platform segmentation where applicable, operational resilience.
+
+### Skill 6 — Cloud landing zone and platform guardrails
+
+Use when:
+- The work involves Azure/AWS foundations, subscriptions/accounts, policy, IaC, CI/CD, GitOps, platform services, developer self-service, or CCoE/platform engineering.
+
+Inputs to gather:
+- Cloud operating model, account/subscription structure, management groups/OUs, identity, network, logging, secrets, shared services, deployment pipelines, policy exceptions.
+- Existing Azure Policy/AWS SCPs, Terraform/Bicep/CloudFormation, GitHub Actions/Azure DevOps/ArgoCD/Flux, OPA/Sentinel.
+- Platform consumers and service catalog.
+
+Expected artifacts:
+- Landing-zone baseline review.
+- Guardrail catalog: preventive, detective, corrective.
+- Policy-as-code backlog.
+- Platform service catalog outline.
+- Environment promotion and change model.
+- FinOps/tagging/cost governance model.
+- Adoption roadmap and KPIs.
+
+ABN emphasis:
+- Cloud guardrails only where confirmed in scope; tie to DORA/NIS2, evidence, risk acceptance, and bank governance.
+
+Coca-Cola emphasis:
+- Core demand area: secure cloud/platform foundations, multi-cloud/hybrid integration, baseline consistency, developer enablement, and operability.
+
+### Skill 7 — Compliance-to-control translation
+
+Use when:
+- The work mentions DORA, NIS2, DNB, GDPR, ISO 27001/27002, PCI-DSS, SOC 2, NIST CSF, CIS Controls, audit, evidence, policy, or control testing.
+
+Inputs to gather:
+- Relevant regulation/policy clauses.
+- Existing controls and evidence sources.
+- System/service scope.
+- Risk ownership and control ownership.
+- Audit findings, exceptions, and remediation plans.
+
+Expected artifacts:
+- Requirement-to-control map.
+- Evidence matrix.
+- Control gap analysis.
+- Risk acceptance/escalation path.
+- Remediation backlog.
+- Executive compliance/risk narrative.
+
+ABN emphasis:
+- DORA, DNB expectations, NIS2, banking control traceability, and operational resilience evidence.
+
+Coca-Cola emphasis:
+- Global enterprise policy alignment, ISO/NIS2/GDPR where relevant, operational evidence and platform guardrails.
+
+### Skill 8 — Architecture decision record and governance
+
+Use when:
+- There is a design decision, architecture board submission, exception, standard, or cross-team trade-off.
+
+Inputs to capture:
+- Decision context and business driver.
+- Options and trade-offs.
+- Security/compliance implications.
+- Cost, operability, delivery, and exit implications.
+- Stakeholders and sign-off forum.
+
+Expected artifacts:
+- ADR.
+- Architecture board one-pager.
+- Exception request with compensating controls.
+- Decision log entry.
+- Follow-up action list.
+
+Quality bar:
+- Explicit recommendation, not neutral analysis only.
+- Decision owner and date/forum identified.
+- Consequences and residual risks stated.
+
+### Skill 9 — Risk-based roadmap and backlog shaping
+
+Use when:
+- The work needs sequencing, remediation planning, dependency mapping, or backlog items from a review/HLD.
+
+Inputs to gather:
+- Findings and design gaps.
+- Severity/impact, urgency, dependencies, owners, budget/resource constraints.
+- Quick wins vs strategic fixes.
+- Compliance deadlines and operational freeze windows.
+
+Expected artifacts:
+- Prioritized roadmap: 0–30 / 30–90 / 90+ days.
+- Risk-ranked backlog with acceptance criteria.
+- Dependency map.
+- Decision and escalation list.
+- Milestone plan tied to governance forums.
+
+ABN emphasis:
+- First roadmap should likely support onboarding → current-state review → target-state security HLD.
+
+Coca-Cola emphasis:
+- First roadmap should likely support contract/onboarding → infra/security baseline review → target-state HLD update.
+
+### Skill 10 — Executive / CISO / CTO communication
+
+Use when:
+- The output is for leadership, sponsors, governance boards, architecture boards, recruiters, onboarding stakeholders, or client executives.
+
+Inputs to gather:
+- Audience and decision needed.
+- Business impact, risk impact, delivery impact, and cost/operability impact.
+- Options and recommended path.
+- Ask: approve, fund, prioritize, accept risk, unblock access, or assign owner.
+
+Expected artifacts:
+- Executive brief.
+- Architecture board summary.
+- Decision memo.
+- Sponsor update.
+- Follow-up email draft.
+- Interview/onboarding positioning narrative.
+
+Quality bar:
+- Lead with the implication and the ask.
+- Keep technical depth available but not dominant.
+- State what happens if no decision is made.
+
+---
+
+## Workplace-specific activation matrix
+
+### ABN AMRO default skill stack
+
+1. Engagement scope and onboarding capture.
+2. Current-state security/infrastructure architecture review.
+3. IAM / Zero Trust / privileged access design.
+4. Network segmentation and secure connectivity.
+5. Compliance-to-control translation.
+6. Target-state HLD / architecture blueprint.
+7. ADR and governance.
+8. Risk-based roadmap/backlog.
+9. Executive/CISO communication.
+
+Near-term expected outputs:
+- ABN onboarding/access/stakeholder checklist.
+- ABN first-deliverable brief.
+- ABN current-state security architecture review.
+- ABN target-state security HLD.
+- ABN security risk/control backlog.
+
+### Coca-Cola default skill stack
+
+1. Engagement scope and onboarding capture.
+2. Current-state security/infrastructure architecture review.
+3. Cloud landing zone and platform guardrails.
+4. Network segmentation and secure connectivity.
+5. IAM / Zero Trust / privileged access design.
+6. Target-state HLD / architecture blueprint.
+7. Risk-based roadmap/backlog.
+8. ADR and governance.
+9. Executive/platform leadership communication.
+
+Near-term expected outputs:
+- Coca-Cola contract/onboarding readiness checklist.
+- Coca-Cola infra & security baseline review.
+- Coca-Cola landing-zone/platform/security baseline gap analysis.
+- Coca-Cola target-state HLD update.
+- Coca-Cola platform/security roadmap and decision log.
+
+---
+
+## What “good” looks like
+
+For ABN:
+- Security-first, banking-grade, evidence-aware, governance-ready.
+- Strong on IAM/ZTA, segmentation, DORA/DNB/NIS2, risk/control mapping, and traceable decisions.
+- First deliverables should help Guy become effective during onboarding fast: scope, access, stakeholder map, current-state review plan, first HLD outline.
+
+For Coca-Cola:
+- Infrastructure-and-security-first, enterprise-operability-aware, platform-governance-ready.
+- Strong on landing zones, network, identity, baselines, resilience/DR, cloud/platform guardrails, and operating model.
+- First deliverables should help Guy move from contract/onboarding into a credible infra/security baseline review and target-state HLD update.
+
+Across both:
+- Keep workplaces separate.
+- Do not invent architecture facts.
+- Convert ambiguity into discovery questions and checklists.
+- Convert findings into decisions, backlog, and executive-ready summaries.
+- Prefer practical artifacts over abstract frameworks.

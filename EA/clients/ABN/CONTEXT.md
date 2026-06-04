@@ -25,10 +25,19 @@ Guy has a new freelance workplace with ABN. The engagement is in onboarding. Tre
 
 ## Expected EA outputs
 
-- Security architecture assessments and executive risk briefs
-- IAM / Zero Trust / privileged access target-state designs
+Near-term demand-aligned outputs:
+- ABN onboarding/access/stakeholder checklist
+- ABN first-deliverable brief
+- ABN current-state security architecture review
+- ABN target-state security HLD
+- ABN security risk/control backlog
+
+Skill emphasis:
+- Engagement scope and onboarding capture
+- Security architecture assessment and executive risk brief
+- IAM / Zero Trust / privileged access target-state design
 - Network segmentation and secure access patterns
-- Compliance-aware control maps for DORA, DNB, NIS2, GDPR, ISO 27001, or internal banking policy when applicable
+- Compliance-to-control mapping for DORA, DNB, NIS2, GDPR, ISO 27001, or internal banking policy when applicable
 - ADRs, HLDs, roadmap/backlog items, and decision records tied to named ABN stakeholders
 
 ## Next actions

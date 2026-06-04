@@ -52,11 +52,11 @@ No other active EA workplace/client pipeline items. Scratch prior items unless e
 
 ## Technology positions
 
-- 2026-06-04 — EA reusable skill/process framework lives at `EA/frameworks/ea-skill-process-outcomes.md` and covers cybersecurity architecture, security/IAM/ZTA, infrastructure & security architecture, solution/system architecture, enterprise architecture, and cloud/CCoE/platform engineering.
+- 2026-06-04 — EA reusable skill model lives at `EA/frameworks/ea-skill-process-outcomes.md` and is demand-aligned to current work: ABN Security EA onboarding/current-state review/target-state security HLD, and Coca-Cola Infra & Security EA contract/onboarding/baseline review/target-state HLD update.
 
 ## Reusable patterns
 
-- EA outputs should be selected from the process framework and should end in explicit outcomes: HLD/ADR/review/roadmap/controls matrix/operating model/backlog/executive brief, with workplace context kept separate.
+- EA outputs should activate the relevant skill cards from the framework and end in concrete artifacts: onboarding checklist, stakeholder map, current-state review, HLD, ADR, control/evidence matrix, risk backlog, roadmap, or executive brief, with workplace context kept separate.
 
 ## Workplace roster
 

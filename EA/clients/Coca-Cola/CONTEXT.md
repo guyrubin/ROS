@@ -26,6 +26,15 @@ Guy has a new workplace opportunity with Coca-Cola. The process is in the final 
 
 ## Expected EA outputs
 
+Near-term demand-aligned outputs:
+- Coca-Cola contract/onboarding readiness checklist
+- Coca-Cola infra & security baseline review
+- Coca-Cola landing-zone/platform/security baseline gap analysis
+- Coca-Cola target-state HLD update
+- Coca-Cola platform/security roadmap and decision log
+
+Skill emphasis:
+- Engagement scope and onboarding capture
 - Infrastructure/security HLDs and target-state roadmaps
 - Secure landing-zone, platform baseline, network, identity, logging, resilience, and DR designs
 - Cloud/CCoE/platform operating model artifacts where relevant

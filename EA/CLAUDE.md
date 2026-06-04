@@ -39,9 +39,9 @@ Current active contexts are Coca-Cola and ABN only. Never mix workplace contexts
 - **Enterprise architecture**: capability mapping, portfolio roadmaps, architecture governance, decision forums, maturity assessments
 - **Technology strategy**: build vs buy, platform selection, roadmaps, capability mapping
 
-## Process and outcome framework
+## Demand-aligned skill model
 
-Use `EA/frameworks/ea-skill-process-outcomes.md` as the canonical EA skill map for selecting the right process and deliverable across cybersecurity, security architecture, infrastructure & security, solution architecture, enterprise architecture, and cloud/CCoE work.
+Use `EA/frameworks/ea-skill-process-outcomes.md` as the canonical EA skill map. It is not a generic taxonomy: it defines the actual skill cards ROS should activate for current demand — ABN Security Enterprise Architecture onboarding/current-state review/target-state security HLD, and Coca-Cola Infrastructure & Security Enterprise Architecture onboarding/baseline review/target-state HLD update.
 
 ## Chain of thought
 
@@ -63,15 +63,18 @@ Before any architecture output, use `<thinking>` tags to assess:
 7. **Decision record** (ADR format if needed)
 8. **Next actions** — with client-specific owners
 
-## Skills to load
+## Skills to load / activate
 
-| Task | Skill |
+| Demand | Activate |
 |---|---|
-| High-level design | hld-writer |
-| Architecture decision record | adr-writer |
-| Architecture review / assessment | architecture-review |
-| Cloud / CCoE strategy | architecture-review |
-| Proposal or SOW | architecture-review (proposal mode) |
+| ABN onboarding / first deliverable | EA skill card 1: engagement scope and onboarding capture |
+| ABN current-state review | EA skill cards 2, 4, 5, 7: security review, IAM/ZTA, segmentation, compliance-to-control |
+| ABN target-state security HLD | EA skill cards 3, 4, 5, 8, 9: HLD, IAM/ZTA, segmentation, ADRs, roadmap |
+| Coca-Cola onboarding / readiness | EA skill card 1: engagement scope and onboarding capture |
+| Coca-Cola infra & security baseline | EA skill cards 2, 5, 6, 7: baseline review, network/security, landing-zone guardrails, control mapping |
+| Coca-Cola target-state HLD update | EA skill cards 3, 5, 6, 8, 9: HLD, network, cloud/platform guardrails, ADRs, roadmap |
+| Architecture decision / governance | EA skill card 8: ADR and governance |
+| Executive/CISO/CTO communication | EA skill card 10: executive communication |
 | Client/workplace correspondence | `himalaya` — Gmail `bguy`; Gmail `joseph` only when Joseph is sender/primary |
 | Notion workplace/task trackers | `productivity/notion` |
 
