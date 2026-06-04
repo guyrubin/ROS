@@ -1,5 +1,5 @@
 # Coca-Cola — Workplace Context
-Last updated: 2026-05-14
+Last updated: 2026-06-04
 
 > Live in the [[../../../CoS/projects/guy-command-center/Command Center - Obsidian Entry|Command Center]] → EA Client Cockpit (Coca-Cola tab). Engagement state mirrors `CoS/projects/guy-command-center/state.json`.
 
@@ -8,19 +8,29 @@ Last updated: 2026-05-14
 ## Status
 
 - **Relationship type**: Employment
+- **Role lens**: Infrastructure & Security Enterprise Architect
 - **Current phase**: Final stages of employment contract
 - **Status**: 🟡 Pending/finalizing contract
 
 ## What to remember
 
-Guy has a new workplace opportunity with Coca-Cola. The process is in the final stages of getting an employment contract.
+Guy has a new workplace opportunity with Coca-Cola. The process is in the final stages of getting an employment contract. Treat Coca-Cola EA work primarily as Infrastructure & Security Enterprise Architecture: secure infrastructure foundations, cloud/platform guardrails, network, identity, resilience, security baselines, and enterprise operability.
 
 ## Current focus
 
 - Track employment contract status
 - Prepare to review contract terms when received
 - Capture onboarding requirements once confirmed
+- Capture confirmed infrastructure/security scope, stakeholders, platforms, operating model, and governance expectations
 - Keep Coca-Cola separate from ABN and any prior EA/client contexts
+
+## Expected EA outputs
+
+- Infrastructure/security HLDs and target-state roadmaps
+- Secure landing-zone, platform baseline, network, identity, logging, resilience, and DR designs
+- Cloud/CCoE/platform operating model artifacts where relevant
+- ADRs for infrastructure, security, vendor/tooling, and governance decisions
+- Executive briefs that connect infrastructure/security choices to resilience, cost, operability, and risk
 
 ## Next actions
 
@@ -35,3 +45,4 @@ Guy has a new workplace opportunity with Coca-Cola. The process is in the final 
 - Start date
 - Hiring manager / HR contact
 - Onboarding checklist
+- Confirmed infrastructure/security scope, platforms, governance forums, and operating model expectations

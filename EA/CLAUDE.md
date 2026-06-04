@@ -30,12 +30,18 @@ Current active contexts are Coca-Cola and ABN only. Never mix workplace contexts
 
 ## Practice areas
 
+- **Cybersecurity architecture**: risk framing, threat modelling, controls, compliance, evidence, remediation roadmaps
+- **Security architecture**: Zero Trust, IAM, privileged access, segmentation, policy-as-code, security baselines
+- **Infrastructure & security architecture**: landing zones, network, compute/container platforms, resilience, observability, DR, secure operations
 - **Cloud Center of Excellence (CCoE)**: governance models, landing zones, FinOps, platform engineering
 - **Cloud architecture**: AWS / Azure / GCP — migration, modernisation, multi-cloud
-- **System architecture**: integration patterns, API strategy, event-driven systems, domain modelling
+- **System / solution architecture**: integration patterns, API strategy, event-driven systems, domain modelling, HLDs
+- **Enterprise architecture**: capability mapping, portfolio roadmaps, architecture governance, decision forums, maturity assessments
 - **Technology strategy**: build vs buy, platform selection, roadmaps, capability mapping
-- **EA operating model**: architecture guilds, review boards, decision frameworks, maturity assessments
-- **Security architecture**: ZTA, IAM, compliance (ISO 27001, GDPR, NIS2), threat modelling
+
+## Process and outcome framework
+
+Use `EA/frameworks/ea-skill-process-outcomes.md` as the canonical EA skill map for selecting the right process and deliverable across cybersecurity, security architecture, infrastructure & security, solution architecture, enterprise architecture, and cloud/CCoE work.
 
 ## Chain of thought
 

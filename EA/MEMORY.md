@@ -1,5 +1,5 @@
 # EA Memory
-Last updated: 2026-05-14
+Last updated: 2026-06-04
 
 ---
 
@@ -22,19 +22,23 @@ Treat all prior client/workplace references as inactive unless Guy explicitly re
 
 ## Current workplaces
 
-### Coca-Cola | Employment | Contract final stages
+### Coca-Cola | Employment | Infrastructure & Security Enterprise Architecture
 - **Relationship type**: Employment
 - **Status**: 🟡 Final stages — employment contract pending/finalizing
 - **Current phase**: Contracting
-- **Next action**: Track employment contract, review terms when received, prepare any requested onboarding information
+- **Role lens**: Infrastructure & Security Enterprise Architect
+- **Domain focus**: Infrastructure and security architecture, cloud/platform foundations, network, identity, security baselines, resilience, and secure operations
+- **Next action**: Track employment contract, review terms when received, prepare requested onboarding information, and capture infrastructure/security scope as it becomes available
 - **Deliverable path**: `EA/clients/Coca-Cola/`
 - **Notes**: This is one of the two current active workplaces.
 
-### ABN | Freelance | Onboarding
+### ABN | Freelance | Security Enterprise Architecture
 - **Relationship type**: Freelance
 - **Status**: 🟢 Onboarding in progress
 - **Current phase**: Freelance onboarding
-- **Next action**: Track onboarding steps, documents, access, start-date logistics, and contract/admin requirements
+- **Role lens**: Security Enterprise Architect
+- **Domain focus**: Cybersecurity architecture, IAM/ZTA, network segmentation, banking compliance, security governance, and architecture decision support
+- **Next action**: Track onboarding steps, documents, access, start-date logistics, and capture security architecture scope as it becomes available
 - **Deliverable path**: `EA/clients/ABN/`
 - **Notes**: This is one of the two current active workplaces.
 
@@ -48,11 +52,11 @@ No other active EA workplace/client pipeline items. Scratch prior items unless e
 
 ## Technology positions
 
-<!-- Guy's standing positions — applicable across workplaces unless workplace-specific constraints apply -->
+- 2026-06-04 — EA reusable skill/process framework lives at `EA/frameworks/ea-skill-process-outcomes.md` and covers cybersecurity architecture, security/IAM/ZTA, infrastructure & security architecture, solution/system architecture, enterprise architecture, and cloud/CCoE/platform engineering.
 
 ## Reusable patterns
 
-<!-- Patterns, frameworks, or approaches validated across work contexts -->
+- EA outputs should be selected from the process framework and should end in explicit outcomes: HLD/ADR/review/roadmap/controls matrix/operating model/backlog/executive brief, with workplace context kept separate.
 
 ## Workplace roster
 
