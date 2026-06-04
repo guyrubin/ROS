@@ -53,6 +53,7 @@ No other active EA workplace/client pipeline items. Scratch prior items unless e
 ## Technology positions
 
 - 2026-06-04 — EA reusable skill model lives at `EA/frameworks/ea-skill-process-outcomes.md` and is demand-aligned to current work: ABN Security EA onboarding/current-state review/target-state security HLD, and Coca-Cola Infra & Security EA contract/onboarding/baseline review/target-state HLD update.
+- 2026-06-04 — EA skill model now includes executable activation support: demand-to-artifact routing, output modes, artifact skeletons, and definition-of-done checks for onboarding, reviews, HLDs, ADRs, control matrices, roadmaps, and executive briefs.
 
 ## Reusable patterns
 

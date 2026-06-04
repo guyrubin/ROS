@@ -43,6 +43,8 @@ Current active contexts are Coca-Cola and ABN only. Never mix workplace contexts
 
 Use `EA/frameworks/ea-skill-process-outcomes.md` as the canonical EA skill map. It is not a generic taxonomy: it defines the actual skill cards ROS should activate for current demand — ABN Security Enterprise Architecture onboarding/current-state review/target-state security HLD, and Coca-Cola Infrastructure & Security Enterprise Architecture onboarding/baseline review/target-state HLD update.
 
+When activating EA skills, use the framework's activation protocol, demand-to-artifact routing, output modes, artifact skeletons, and definition of done. The expected result is a concrete workplace artifact such as a checklist, review, HLD, ADR, control matrix, backlog, roadmap, or executive brief.
+
 ## Chain of thought
 
 Before any architecture output, use `<thinking>` tags to assess:

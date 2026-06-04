@@ -38,6 +38,201 @@ Each output must include:
 - Facts vs assumptions.
 - Risks, dependencies, decision gates, and next actions.
 
+## Activation protocol
+
+Use this protocol before producing any EA artifact.
+
+1. Confirm workplace:
+   - ABN: Security Enterprise Architecture, banking/security/risk/control lens.
+   - Coca-Cola: Infrastructure & Security Enterprise Architecture, platform/operability/resilience lens.
+2. Load workplace context:
+   - ABN: `EA/clients/ABN/CONTEXT.md`.
+   - Coca-Cola: `EA/clients/Coca-Cola/CONTEXT.md`.
+3. Identify demand mode:
+   - Onboarding/readiness.
+   - Current-state review or baseline.
+   - Target-state HLD or blueprint.
+   - ADR/governance decision.
+   - Compliance/control mapping.
+   - Risk backlog/roadmap.
+   - Executive brief or stakeholder communication.
+4. Select the smallest useful skill stack:
+   - One card for narrow asks.
+   - Three to five cards for deliverables such as reviews, HLDs, and roadmaps.
+   - Do not activate every card by default.
+5. Produce an artifact, not a lecture:
+   - Start with the workplace and demand.
+   - State assumptions explicitly.
+   - End with owners, decision gates, and next actions.
+
+## Demand-to-artifact routing
+
+| User asks for | Activate | Produce |
+|---|---|---|
+| "Help me start/onboard" | Skill 1 + Skill 10 | Onboarding/access checklist, stakeholder map, first-deliverable brief, sponsor update |
+| "Review current state" | Skill 2 + relevant domain cards + Skill 10 | Current-state review, risk heatmap, control/gap matrix, executive summary |
+| "Make an HLD" | Skill 3 + relevant domain cards + Skill 8 | Target-state HLD, architecture views, transition roadmap, ADR candidates |
+| "IAM / Zero Trust" | Skill 4 + Skill 7 + Skill 8 | IAM/ZTA assessment, privileged access model, evidence process, ADR |
+| "Network segmentation" | Skill 5 + Skill 7 + Skill 9 | Zone model, segmentation matrix, migration backlog, evidence requirements |
+| "Landing zone / guardrails" | Skill 6 + Skill 8 + Skill 9 | Landing-zone review, guardrail catalog, policy-as-code backlog, adoption roadmap |
+| "DORA/NIS2/DNB/control mapping" | Skill 7 + Skill 2 + Skill 9 | Requirement-control-evidence matrix, risk acceptance path, remediation backlog |
+| "Prepare for architecture board" | Skill 8 + Skill 10 | Board one-pager, decision record, options/trade-offs, explicit ask |
+| "Turn findings into plan" | Skill 9 + Skill 10 | 0-30 / 30-90 / 90+ roadmap, backlog, escalation list, sponsor brief |
+
+## Output modes
+
+Use the output mode that matches the audience.
+
+### Discovery mode
+
+Use for onboarding, unclear scope, and missing facts.
+
+Required sections:
+- Workplace and demand.
+- What is known.
+- Unknowns to resolve.
+- Access/tooling needed.
+- Stakeholders/forums to confirm.
+- First deliverable hypothesis.
+- Next discovery actions.
+
+### Architecture mode
+
+Use for HLDs, reviews, baselines, and technical decisions.
+
+Required sections:
+- Workplace and initiative.
+- Executive summary.
+- Current state.
+- Target state.
+- Options and trade-offs.
+- Recommendation.
+- Risks and controls.
+- Transition path.
+- Decisions and ADR candidates.
+- Next actions.
+
+### Risk/control mode
+
+Use for compliance, audit, evidence, and remediation.
+
+Required sections:
+- Workplace and control scope.
+- Requirement or policy source.
+- Systems/services in scope.
+- Existing control/evidence.
+- Gap and risk.
+- Owner and decision gate.
+- Remediation backlog.
+- Evidence to collect.
+
+### Executive mode
+
+Use for CISO/CTO/sponsor updates and board preparation.
+
+Required sections:
+- One-paragraph implication.
+- Decision or unblock needed.
+- Recommended path.
+- Top risks.
+- Cost/operability/delivery impact.
+- Consequence of no decision.
+- Next action and owner.
+
+## Artifact skeletons
+
+### Onboarding/access checklist
+
+Columns:
+- Category.
+- Item.
+- Why it matters.
+- Owner.
+- Status.
+- Evidence/link.
+- Blocker or next action.
+
+Minimum categories:
+- Contract/admin.
+- Identity/account access.
+- Device/VPN/network access.
+- Repositories and documentation.
+- Architecture forums and calendars.
+- Risk/compliance repositories.
+- Backlog/work management.
+- Stakeholder introductions.
+
+### Current-state review
+
+Minimum sections:
+- Scope and assumptions.
+- System/platform inventory.
+- Identity and privileged access.
+- Network and connectivity.
+- Cloud/platform foundation.
+- Logging/detection/evidence.
+- Resilience/DR/operability.
+- Compliance/control alignment.
+- Findings heatmap.
+- Risk-ranked backlog.
+- Executive summary.
+
+### Target-state HLD
+
+Minimum sections:
+- Scope and drivers.
+- Architecture principles.
+- Context view.
+- Target components and trust boundaries.
+- Identity/access model.
+- Network/connectivity model.
+- Logging/evidence/control model.
+- Resilience and operations.
+- Options considered.
+- Recommended design.
+- Transition roadmap.
+- ADR candidates and sign-offs.
+
+### Risk/control backlog
+
+Columns:
+- Finding.
+- Risk statement.
+- Impact.
+- Likelihood.
+- Severity.
+- Control/regulation/policy mapping.
+- Recommended action.
+- Owner.
+- Due window.
+- Dependency.
+- Acceptance criteria.
+- Evidence required.
+
+### Decision log
+
+Columns:
+- Decision.
+- Context.
+- Options.
+- Recommendation.
+- Owner.
+- Forum/date.
+- Status.
+- Consequences.
+- Follow-up action.
+
+## Definition of done
+
+For any EA output:
+- Workplace is named and matches the loaded context.
+- No facts are invented; assumptions are labelled.
+- Current state, target state, and transition path are separated when relevant.
+- At least one concrete artifact is produced or updated.
+- Every risk has an owner, decision gate, or discovery action.
+- Executive-facing material states the ask and consequence of no decision.
+- Client confidentiality is preserved.
+
 ---
 
 ## Core skill cards
