@@ -1,5 +1,12 @@
 # PAI Memory
-Last updated: 2026-05-30
+Last updated: 2026-06-12
+
+## Updates [2026-06-12] — Practice Studio shipped (Fall release, 10 features)
+
+- **PRD:** `PAI/projects/parenting-os-plugin/PRDs/PRD_2026-06-12_speech-language-fall-release.md` — 10 features ported from Articulation Station / Speech Blubs / Otsimo / MITA, organized as 4 modules + the Development Copilot killer feature (connect-the-category, prescribe→signal wedge).
+- **Built same day on `main` @ `8072745`, pushed + deployed to production** (arborprd-westeu.web.app verified: new bundle + all 5 chunks live, API 401 gate + rate limit up; CSP concern moot — helmet CSP is API-only, Hosting serves the SPA without CSP): new `app/src/practice/` engine (content banks + pure scoring `signals.ts`, 15 unit tests) + 5 views in `app/src/components/practice/` (SpeechCoach, MimicStudio, Missions, Adventures, DevelopmentCopilot). New 7th nav section "Practice Studio"; Development Dashboard under My Child. All sandbox-safe; audio/camera strictly on-device. tsc + 122 tests + prod build green; flows verified live in browser.
+- **Key design decisions:** bands not "developmental age" numbers (clinical defensibility / EU-MDR); parent scoring is the universal floor (Web Speech API best-effort only); Development Score = practice *consistency*, never child ability; adventures record first-try answers only.
+- **Open (PRD hypotheses):** H1 daily-habit retention gate (<20% families @3 missions/wk by day 30 = kill), H2 SLP interviews on the practice report, H3 recommendation-followed rate. Hebrew sound set + AI-generated adventures = fast follow.
 
 Active facts only. Completed execution history → [[PAI/archive|PAI Archive]].
 
