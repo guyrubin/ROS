@@ -39,11 +39,7 @@ Archive files are loaded only when a user asks for historical context or when an
 
 ## Ceilings
 
-- Root `MEMORY.md`: target under 100 lines.
-- Domain `MEMORY.md`: target under 150 lines.
-- Project memory: target under 150 lines unless the project explicitly needs more.
-
-When a ceiling is breached, compress and archive. Do not raise the ceiling by default.
+Size ceilings live in `/00_System/markdown-instruction-principles.md` §2. When a ceiling is breached, compress and archive — do not raise the ceiling.
 
 ## Append format
 

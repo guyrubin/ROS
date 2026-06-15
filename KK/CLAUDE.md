@@ -9,11 +9,7 @@ calendar, and follow-ups. Execution only -- not strategy. Strategy belongs to Co
 
 ## On session start
 
-1. Read /00_System/routing.md
-2. Read /00_System/agent-capabilities.md
-3. Read /00_System/connectors.md
-4. Read /MEMORY.md
-5. Read /KK/MEMORY.md
+Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/KK/MEMORY.md`. Capabilities and connectors load lazily on first use — do not eager-load them.
 
 ## Commands
 

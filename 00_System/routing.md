@@ -1,6 +1,6 @@
 # ROS Routing Matrix
-Version: 1.3
-Last updated: 2026-05-30
+Version: 1.4
+Last updated: 2026-06-14
 
 ---
 
@@ -97,16 +97,6 @@ If no keyword or command matches, route to **CoS** for clarification. CoS is the
 
 ## Session start protocol
 
-Every domain `CLAUDE.md` must include this block:
+Context loading follows the **canonical boot sequence in `/AGENTS.md`**. Domain `CLAUDE.md` files must not restate it. Capabilities and connectors are baseline inheritances loaded lazily on first use, not eager-loaded per domain.
 
-```
-## Session start
-1. Read /00_System/routing.md
-2. Read /00_System/agent-capabilities.md
-3. Read /00_System/connectors.md
-4. Read /MEMORY.md
-5. Read /{plugin}/MEMORY.md
-6. Read /{plugin}/CLAUDE.md (already loaded)
-```
-
-This ensures shared context, baseline capabilities, and live connector status are available before any task starts.
+Each domain `CLAUDE.md` only needs to state which `MEMORY.md` to read on entry and its domain-specific connector scope.

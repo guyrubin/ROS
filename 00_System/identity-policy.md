@@ -92,10 +92,4 @@ Ready to send? Confirm or edit above.
 
 ## Connector status
 
-| Account | Access method | Status |
-|---|---|---|
-| bguy.rubin@gmail.com | Himalaya CLI account `bguy` | Active / verified ✅ |
-| bhollandvest@gmail.com | Himalaya CLI account `hollandvest` | Active / verified ✅ |
-| josephdoronrubin@gmail.com | Himalaya CLI account `joseph` | Active / verified ✅ |
-
-See `00_System/connectors.md` for full connector registry and Notion status.
+Live account/connector status lives in `/00_System/connectors.md`. This file owns identity *routing*, not connector state.

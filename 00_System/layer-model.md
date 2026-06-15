@@ -1,6 +1,6 @@
 # ROS Layer Model
-Version: 1.1
-Last updated: 2026-05-24
+Version: 1.2
+Last updated: 2026-06-14
 
 ## Overview
 
@@ -88,6 +88,10 @@ Rubin OS runs across four layers. Each layer has one job. Nothing should live in
 
 **Properties:** ephemeral by default. Anything useful must be written back to the correct lower layer.
 
+## Workstations vs skills
+
+Domains (`CoS`, `KK`, `HV`, `EA`, `PAI`, `MKT`, `FIN`) are **workstations** — places where ongoing work happens and context accumulates. A **skill/runbook** is a repeatable process that runs the same way each time. Put accumulating context in domain memory; put repeatable procedures in skills or runbooks, never in long root instructions.
+
 ## Obsidian vs Notion
 
 | Question | Knowledge layer | Operations layer |
@@ -104,16 +108,7 @@ Rubin OS runs across four layers. Each layer has one job. Nothing should live in
 
 ## Ongoing Learning and Update Mechanism
 
-| Trigger | Action | Destination |
-|---|---|---|
-| Session ends | Run `/00_System/session-audit.md` | Nearest correct memory, archive, or system file |
-| "Remember X" | Write durable fact | Nearest `MEMORY.md` |
-| Engagement changes | Update context | EA client folder or relevant domain folder |
-| Architectural decision made | Write ADR | `/EA/ADRs/` |
-| New routing pattern identified | Update routing | `/00_System/routing.md` |
-| Task completed | Mark done | Notion |
-| New deal enters pipeline | Create deal note and operational record | `/HV/03_Deals/` plus Notion when available |
-| Voice/style learning | Update voice file | `/<domain>/voice.md` |
+Where new state belongs is defined once in the **Promotion rule** of `/00_System/agent-filesystem-contract.md` (on create) and the **decision table** of `/00_System/session-audit.md` (at wrap-up). Domain-specific destinations (ADRs → `/EA/ADRs/`, deals → `/HV/03_Deals/`, voice → `/<domain>/voice.md`) live in each domain's `CLAUDE.md`.
 
 ## Layer Violations to Avoid
 

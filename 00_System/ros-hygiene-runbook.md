@@ -41,11 +41,7 @@ Expected: no unexpected divergence. Investigate before editing if behind/ahead u
 wc -l CLAUDE.md MEMORY.md */CLAUDE.md */MEMORY.md 2>/dev/null | sort -n
 ```
 
-Flag:
-
-- root `CLAUDE.md` over 100 lines
-- root `MEMORY.md` over 100 lines
-- domain instruction/memory files over 150 lines
+Flag any file over its ceiling in `/00_System/markdown-instruction-principles.md` §2.
 
 ### 3. Instruction vs memory audit
 

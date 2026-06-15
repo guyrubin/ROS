@@ -9,11 +9,7 @@ Covers Guy's personal brand and Hollandvest brand. Not for client EA deliverable
 
 ## On session start
 
-1. Read /00_System/routing.md
-2. Read /00_System/agent-capabilities.md
-3. Read /00_System/connectors.md
-4. Read /MEMORY.md
-5. Read /MKT/MEMORY.md
+Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/MKT/MEMORY.md`. Capabilities and connectors load lazily on first use — do not eager-load them.
 
 ## Commands
 

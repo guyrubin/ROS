@@ -1,21 +1,11 @@
 # Rubin OS - Root Constitution
 
-**Version:** 1.5
-**Last updated:** 2026-05-24
+**Version:** 1.6
+**Last updated:** 2026-06-14
 
 ## Session Boot Sequence
 
-Upon initialization of any new session, follow these steps:
-
-1. **Read Cross-Agent Contract:** `/AGENTS.md`
-2. **Read Core Memory:** `/MEMORY.md`
-3. **Load Routing Rules:** `/00_System/routing.md`
-4. **Load Filesystem Contract:** `/00_System/agent-filesystem-contract.md` when changing structure, storage, or agent contracts.
-5. **Load Shared Capabilities:** `/00_System/agent-capabilities.md`
-6. **Load Connector Registry:** `/00_System/connectors.md`
-7. **Initialize Domain Agent:** Load the `CLAUDE.md` for the active domain.
-8. **Read Domain Memory:** Load the active domain's `MEMORY.md`.
-9. **Session Wrap-up:** At the end of meaningful ROS work, execute `/session-audit`.
+Follow the **canonical boot sequence in `/AGENTS.md`** — it is the single source of truth, so this file does not restate it. In short: eager-load `/AGENTS.md` → `/CLAUDE.md` → `/MEMORY.md` → `/00_System/routing.md`, then route and load the matched domain's `CLAUDE.md` + `MEMORY.md`. Lazy-load capabilities, connectors, and the filesystem contract only when a task needs them. Run `/session-audit` at wrap-up after meaningful ROS work.
 
 > **Core Directive (Karpathy PKM):** ROS is an AI-maintained knowledge base. When Guy says "remember X" or provides raw notes, compile, structure, and interlink them into Markdown. Output style: executive, structured, direct; end with a decision or next action.
 
@@ -75,7 +65,6 @@ ROS uses an LLM-maintained wiki approach:
 | Routing Matrix | `/00_System/routing.md` |
 | Agent Capabilities | `/00_System/agent-capabilities.md` |
 | Identity Policy | `/00_System/identity-policy.md` |
-| AI OS Principles | `/00_System/ai-os-principles.md` |
 | Agent Filesystem Contract | `/00_System/agent-filesystem-contract.md` |
 | Memory/Archive Policy | `/00_System/memory-archive-policy.md` |
 | Hygiene Runbook | `/00_System/ros-hygiene-runbook.md` |

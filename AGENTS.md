@@ -1,7 +1,7 @@
 # AGENTS.md - Rubin OS Cross-Agent Contract
 
-**Version:** 1.2
-**Last updated:** 2026-05-24
+**Version:** 1.3
+**Last updated:** 2026-06-14
 
 Rubin OS (ROS) is a Markdown-first AI operating system shared by Claude/Cowork, Codex, Hermes, and future agents.
 
@@ -28,16 +28,29 @@ All agents must operate on this single working tree. Do not create divergent ROS
 | Codex | `C:\Users\dguyr\ROS` | Coding/file-system agent in the shared Windows workspace | `codex-agent <codex@rubin-os.local>` |
 | Hermes | `/home/guyru/ROS` | WSL automation/runtime agent over the same working tree | `hermes-agent <hermes@rubin-os.local>` |
 
-## Boot sequence
+## Boot sequence (canonical)
 
-1. Read `/AGENTS.md`.
-2. Read `/CLAUDE.md` as the root instruction surface, regardless of model runtime.
-3. Read `/MEMORY.md`.
-4. Read `/00_System/routing.md`.
-5. Read `/00_System/agent-filesystem-contract.md` when changing structure, agent contracts, or storage rules.
-6. Route the request to the right domain.
-7. Load only that domain's `CLAUDE.md` and `MEMORY.md`.
-8. Load deeper project/resource files only when needed.
+This is the single source of truth for context loading. `/CLAUDE.md`, `/00_System/routing.md`, and every domain `CLAUDE.md` reference this sequence; they must not restate it.
+
+**Eager — load every session, in order:**
+
+1. `/AGENTS.md` (this file).
+2. `/CLAUDE.md` — root instruction surface, regardless of model runtime.
+3. `/MEMORY.md` — root current memory.
+4. `/00_System/routing.md` — routing matrix.
+5. Route the request, then load only the matched domain's `CLAUDE.md` + `MEMORY.md`.
+
+**Lazy — load only when the task needs it:**
+
+| Load this file | When |
+|---|---|
+| `/00_System/agent-capabilities.md` | Before using a shared capability (web search, browser/computer use, multimodal, document intel, data automation). |
+| `/00_System/connectors.md` | Before any connector action (Gmail, Notion, Calendar, etc.) or when reporting connector status. |
+| `/00_System/agent-filesystem-contract.md` | When changing structure, storage, or agent contracts. |
+| Domain `references/`, `templates/`, `projects/` | When the specific task requires that source/output. |
+| `/00_System/session-audit.md` | At session wrap-up after meaningful ROS work. |
+
+Capabilities and connectors are baseline inheritances — do not eager-load them at boot. Load on first use.
 
 ## Write model
 

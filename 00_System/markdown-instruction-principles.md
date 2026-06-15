@@ -1,6 +1,6 @@
 # ROS Markdown Instruction Principles
-Version: 1.1
-Last updated: 2026-05-24
+Version: 1.2
+Last updated: 2026-06-14
 
 ## Purpose
 
@@ -14,14 +14,18 @@ No rule appears in more than one instruction file. If a rule belongs in `/AGENTS
 
 ### 2. Token discipline
 
+This is the **single source of truth for file size ceilings**. Other files (`/CLAUDE.md`, `memory-archive-policy.md`, `ros-hygiene-runbook.md`) reference these numbers and must not restate them.
+
 | File | Max lines | Purpose |
 |---|---:|---|
 | Root `CLAUDE.md` | 100 | Identity, routing, session protocol, safety levels |
-| Domain `CLAUDE.md` | 200 | Role definition, commands, connectors, memory pointers |
-| Skill or runbook file | 150 | Single repeatable procedure or command specification |
-| `MEMORY.md` files | 80 | State only: facts, not instructions |
+| Domain `CLAUDE.md` | 150 | Role, commands, connectors, memory pointers |
+| Root `MEMORY.md` | 100 | Active cross-domain state only |
+| Domain `MEMORY.md` | 150 | Active domain state only |
+| Project `MEMORY.md` | 150 | Active project state only |
+| Skill or runbook file | 150 | Single repeatable procedure or command spec |
 
-If a file exceeds its limit, split or defer content. Instructions that are not loaded are not useful; instructions that bloat context are actively harmful.
+If a file exceeds its limit, split, defer, or archive content — do not raise the ceiling. Instructions that are not loaded are not useful; instructions that bloat context are actively harmful.
 
 ### 3. Instruction language
 

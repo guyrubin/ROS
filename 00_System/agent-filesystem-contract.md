@@ -1,6 +1,6 @@
 # ROS Agent Filesystem Contract
-Version: 1.0
-Last updated: 2026-05-24
+Version: 1.1
+Last updated: 2026-06-14
 
 ## Purpose
 
@@ -64,12 +64,10 @@ current single-tree setup.
 
 ## Context loading contract
 
-1. Read `/AGENTS.md`, `/CLAUDE.md`, `/MEMORY.md`, and `/00_System/routing.md`.
-2. Route the request to the most specific domain.
-3. Read only that domain's `CLAUDE.md` and `MEMORY.md`.
-4. Load project, reference, connector, or runbook files only when the task needs them.
-5. Write durable outputs to the nearest correct folder.
-6. Run `/00_System/session-audit.md` after meaningful ROS changes.
+Loading order is defined once in the **canonical boot sequence in `/AGENTS.md`** (eager root files → route → domain files; capabilities, connectors, references, and this contract load lazily). Beyond that:
+
+1. Write durable outputs to the nearest correct folder.
+2. Run `/00_System/session-audit.md` after meaningful ROS changes.
 
 ## Filesystem hygiene
 
