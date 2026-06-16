@@ -1,5 +1,43 @@
 # PAI Memory
-Last updated: 2026-06-12
+Last updated: 2026-06-17
+
+## Updates [2026-06-17] - Arbor marketing + SEO/AEO foundation live
+
+- **Marketing surface shipped:** Arbor now has Hebrew and English marketing
+  landing pages, guide hubs, SEO intent pages, Markdown summaries for LLM
+  retrieval, `robots.txt`, `sitemap.xml` with 19 URLs, and `llms.txt` deployed
+  on Firebase Hosting at `https://arborprd-westeu.web.app/marketing/`.
+- **Design/copy direction:** The marketing site moved toward a clean, premium,
+  health-system-inspired Hebrew-first brand direction. Core message: Arbor is a
+  child-development operating system for parents, combining living child
+  context, expert guidance, daily play, personalized stories, growth plans, and
+  professional handoff.
+- **SEO/AEO implementation:** The Arbor app repo now includes
+  `app/scripts/enrich-marketing-seo.mjs`, which enriches all marketing HTML
+  pages with JSON-LD graphs, social metadata,
+  WebPage/CollectionPage/Article/Breadcrumb schema, and AI-crawler-friendly
+  robots rules. Live checks returned `200` and parseable JSON-LD.
+- **Domain decision:** Use a local Israeli domain for public launch:
+  `arbor.co.il` if available, then `getarbor.co.il` or `hellarbor.co.il`. Keep
+  `web.app` as the technical origin until the domain is purchased, verified in
+  Firebase Hosting, and serving HTTPS; only then switch canonical/sitemap/LLM
+  URLs.
+- **Procurement direction:** Recommended lean SEO stack: Screaming Frog SEO
+  Spider first, then Semrush One Starter or SE Ranking Core + AI Search add-on
+  after the custom domain and Search Console are live. Do not overbuy
+  enterprise AEO tools yet.
+
+## Updates [2026-06-14] — Competitor wedge shipped: 3 features + IA redesign, live on `main`
+
+- **Trigger:** market research on Arbor's competitors (Kinedu, Lovevery, Huckleberry, Cleo, Cooper, Maven) → defined 3 features to beat them, each built on the longitudinal-memory moat. Strategy stress-tested (grill-me) and IA redesigned (card-sort/tree-test). Docs: `PAI/projects/parenting-os-plugin/arbor-competitive-analysis-and-feature-defs-2026-06-14.md`, `…/arbor-redesign-and-additions-definition-2026-06-14.md`, `…/arbor-ia-redesign-2026-06-14.md`; build plan `PPPPtherapy-/PPPPtherapy-/app/.design/arbor-ia/TASKS.md`.
+- **Built + shipped to production** (3 commits, merged to `main` @ `f019b86`, pushed; live **https://arborprd-westeu.web.app**, verified home 200 / api 401 / fresh asset):
+  - **Rhythm** — `app/src/rhythm/predict.ts` (pure, 8 tests): predicts today's friction/calm/wind-down windows from the family's own log; honest sparse-data state. On the new **Today** home.
+  - **Daily Play** — `app/src/playbank/` (12 household-item activities + concern-aware selector, 9 tests): picks by band **+ recently-logged behavior**; card on Today + library under Grow.
+  - **Ask-a-Specialist** — `app/src/consult/packet.ts` (pure, 8 tests) + `AskSpecialist.tsx`: warm handoff packet from the child's record, line-level redaction (Safety L3), Copy/Download export; send-to-expert stubbed Phase 2.
+  - **IA redesign** — 7 sections → 6 task pillars (Today/Ask/My Child/Grow/Care/Academy) via reusable `HubTabs` (Development/Practice/Consult merges); `TAB_SECTION_FALLBACK` re-homes every demoted leaf — nothing deleted.
+  - **a11y + Hebrew/RTL:** global `:focus-visible` covers keyboard; all new UI chrome wired through i18n en+he (verified live dir=rtl). Activity/packet *content* stays English (native review pending).
+- **Quality:** tsc clean, 162 tests pass (25 new), verified live across all pillars EN+HE.
+- **Open:** native Hebrew review of Daily Play content; Phase-2 backlog (Daily Play Courses, AI-generated activities, send-to-expert marketplace).
 
 ## Updates [2026-06-12] — Practice Studio shipped (Fall release, 10 features)
 
@@ -29,7 +67,7 @@ Active facts only. Completed execution history → [[PAI/archive|PAI Archive]].
 ### Arbor — AI parenting / child-development platform
 - Status: **Active | Private Beta Build — v2 architecture on a local unmerged branch, runs locally**
 - Positioning: Developmental operating system for modern families (birth–age 12)
-- **Published `main` (last verified):** `guyrubin/PPPPtherapy-` `main` @ `04cc2c7` (10 scholar-grounded routine plans). No newer main commit verified.
+- **Published `main` (CURRENT, verified 2026-06-14):** `guyrubin/PPPPtherapy-` `main` @ `f019b86` — deployed live at https://arborprd-westeu.web.app. See the 2026-06-14 update at the top. (The 04cc2c7 / "v2 on an unmerged branch" / "AI disabled" / "gcloud missing" notes in the rest of THIS 2026-06-03 block are historical and superseded — v2 is long since on main, prod is live, gcloud+firebase are authed via ADC.)
 - **Local working clone:** `C:\Users\dguyr\ROS\PPPPtherapy-\PPPPtherapy-` is currently on branch **`codex/arbor-v2-architecture-foundation` @ `42997e3`** — 6 commits ahead of `origin/main`, with uncommitted changes AND untracked files. v2 architecture is on this branch, **not yet merged to `main`**.
 - ⚠️ Untracked/uncommitted in the working tree: Firebase auth (`src/AuthContext.tsx`, `src/LoginPage.tsx`, `src/firebase.ts`), `terraform/`, `scripts/`, `app/.dockerignore`; modified `src/main.tsx`, `src/routes/api.ts`, `src/config/env.ts`, `cloudbuild.yaml`. **Action: commit + open PR / merge so this work isn't lost.**
 - **Stack:** React 19 + Vite + Express + Gemini/Vertex + Firebase. Source in `app/src/`.

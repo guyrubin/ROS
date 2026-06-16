@@ -244,3 +244,36 @@ dark-gold" read was from the JSX source, not the rendered output.
 - K-10 confidence calibration, K-08 deeper frame-routing-as-decision.
 - D-07 design-token refactor, D-06 full WCAG audit, E-08 toileting, E-10 keepsake.
 - Firestore migration of the new local-first stores for production.
+
+---
+
+## Marketing / SEO Status - 2026-06-17
+
+Arbor marketing pages are live on Firebase Hosting at
+`https://arborprd-westeu.web.app/marketing/`.
+
+Published SEO/LLM discovery layer:
+- Hebrew and English landing pages under `/marketing/`.
+- Hebrew and English guide hubs: `/marketing/guides.html`,
+  `/marketing/guides-en.html`.
+- Markdown summaries for LLM retrieval: `/marketing/arbor-he.md`,
+  `/marketing/arbor-en.md`.
+- `robots.txt`, `sitemap.xml` with 19 URLs, and `llms.txt`.
+
+Live smoke test after deploy returned `200` for the guide hubs, markdown
+summaries, sitemap, and `llms.txt`. Next external step is manual Google Search
+Console setup/submission for the Firebase Hosting domain and sitemap; first-page
+SEO cannot be guaranteed immediately, but the on-site foundation is now in
+place.
+
+Domain recommendation for the Israeli launch: use `arbor.co.il` if available,
+then `getarbor.co.il` or `hellarbor.co.il`. Keep the Firebase `web.app` URL as
+the technical origin only. Do not switch canonical/sitemap/LLM URLs until the
+domain is purchased, verified in Firebase Hosting, and serving HTTPS.
+
+SEO/AEO implementation update: added a reusable marketing SEO generator in the
+Arbor app repo that enriches all 19 marketing HTML pages with structured
+JSON-LD graphs, social metadata, WebPage/CollectionPage/Article/Breadcrumb
+schema, and updated `robots.txt` to explicitly allow major search and AI
+crawlers. Deployed to Firebase Hosting and verified live `200` responses plus
+parseable JSON-LD.

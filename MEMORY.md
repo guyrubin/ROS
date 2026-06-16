@@ -1,5 +1,5 @@
 # Rubin OS — Root Memory
-Last updated: 2026-05-30
+Last updated: 2026-06-17
 
 Read at session start. Write durable current facts here. Prescriptive behavior belongs in `CLAUDE.md`, `AGENTS.md`, system docs, or skills.
 
@@ -33,6 +33,13 @@ Next: Track Coca-Cola employment contract and ABN onboarding steps; activate dem
 
 ### PAI — Ventures / AI Products
 Status: Active | Focus: Arbor parenting app — v2 architecture on a local unmerged branch, runs locally
+Marketing/current launch state [2026-06-17]: Arbor Hebrew/English marketing
+surface is live at `https://arborprd-westeu.web.app/marketing/` with SEO intent
+pages, guide hubs, `sitemap.xml`, `llms.txt`, AI-crawler-friendly `robots.txt`,
+and JSON-LD schema across 19 marketing pages. Next external step: buy/verify an
+Israeli domain (`arbor.co.il` preferred, then `getarbor.co.il` /
+`hellarbor.co.il`), connect it in Firebase Hosting, submit Search Console, then
+switch canonical/sitemap/LLM URLs to the custom domain.
 Published main (last verified): `guyrubin/PPPPtherapy-` main @ `04cc2c7` (10 routine plans). Local clone `C:\Users\dguyr\ROS\PPPPtherapy-\PPPPtherapy-` is on branch `codex/arbor-v2-architecture-foundation` @ `8a50d86` — v2 architecture + Firebase auth + terraform/Cloud Run scaffold now COMMITTED + pushed (2026-05-30). Branches `feat/six-frames` + `feat/arbor-next` also pushed.
 Reorg in progress: consolidating the 3 local clones → one at `PAI/arbor/` is BLOCKED while concurrent claude-code sessions hold the inner clone + `.workspace/`. GitHub rename `PPPPtherapy-`→`Arbor` pending (no `gh`; use web UI). Detail in [[PAI/MEMORY|PAI Memory]] Updates 2026-05-30.
 Run from `app/`: dev `npm run dev` (tsx server.ts) / prod `npm run start` → `http://localhost:3000`; ROS `.claude/launch.json` exposes `arbor-dev`/`arbor-prod`. AI disabled until real GEMINI_API_KEY in `app/.env.local`.
