@@ -13,10 +13,11 @@ For the Israeli market, Arbor should not position itself as “another baby trac
 
 > **A Hebrew-first developmental operating system that sits between the family, Tipat Halav/Kupat Holim, the gan/school, and private professionals — turning scattered health/development information into daily action and a professional-ready child story.**
 
-The two most relevant Israeli-market apps to benchmark are:
+The most relevant Israeli-market apps to benchmark are now:
 
-1. **טיפת חלב** — Ministry of Health: official child-health record, vaccines, growth checks, screening results, appointments, professional knowledge.
-2. **התפתחות הילד** — Clalit Health Services: child-development tracker from birth to age 6, digital questionnaires for parents/ganenet/therapists, medical/development-service workflow, forms, appointments.
+1. **talkon SLP** — the primary benchmark for the therapist–patient operating loop: SLP admin, clinical-program management, therapist–parent–client circle, parent feedback through an integrated app, and professional/managerial decision support.
+2. **טיפת חלב** — Ministry of Health: official child-health record, vaccines, growth checks, screening results, appointments, professional knowledge.
+3. **התפתחות הילד** — Clalit Health Services: child-development tracker from birth to age 6, digital questionnaires for parents/ganenet/therapists, medical/development-service workflow, forms, appointments.
 
 Use global leaders only as capability benchmarks:
 
@@ -26,9 +27,31 @@ Use global leaders only as capability benchmarks:
 
 ---
 
-## 2. What the two Israeli apps prove
+## 2. What the Israeli apps prove
 
-### A. טיפת חלב — Ministry of Health
+### A. talkon SLP — therapist–patient operating loop
+
+**App Store IL listing inspected:** `id6444620831`, seller `talkon ltd.`, Medical, rating 5.0 from 4 ratings. Tagline: “For more efficient therapy.”
+
+**Claimed core capabilities:**
+
+- SLP software that streamlines administrative tasks and therapeutic processes.
+- Full suite of administrative tools for speech-language pathologists.
+- End-to-end management of clinical programs.
+- Empowers the therapy circle of **therapist–parent–client**.
+- Parents receive ongoing feedback from the SLP through an integrated app.
+- Improves decision-making on professional and managerial levels.
+- Saves therapist time and makes work easier.
+
+**What it proves:**
+
+- The strongest Israeli product pattern is not an end-user “feature showcase”; it is a **care-delivery workflow**.
+- The buyer/user center of gravity can be the therapist, not only the parent.
+- The valuable loop is: assess → set therapy program → assign home practice → parent performs/logs → therapist reviews → adjusts program → reports progress.
+- Arbor should compete on the *therapist–patient collaboration layer*, not on edge capabilities like avatars, games, or generic AI content.
+- For the Israel beachhead, speech-language therapy is the cleanest professional wedge.
+
+### B. טיפת חלב — Ministry of Health
 
 **App Store IL listing found via Apple Search API:** `id6451442089`, seller `Israel Ministry of Health`, Medical, rating ~2.56 from 45 ratings.
 
@@ -46,7 +69,7 @@ Use global leaders only as capability benchmarks:
 - The trusted vocabulary is health, vaccines, growth, official checks, appointments.
 - The product gap is not authority; it is usability, day-to-day guidance, personalization, and continuity between appointments.
 
-### B. התפתחות הילד — Clalit
+### C. התפתחות הילד — Clalit
 
 **App Store IL listing found via Apple Search API:** `id6746529114`, seller `Clalit Health Services`, Health & Fitness.
 
@@ -98,9 +121,38 @@ Based on ROS memory, product docs, live marketing, and app source inspection:
 
 ---
 
-## 4. Build the Israeli version better than the local apps
+## 4. Build the Israeli version around the therapist–patient loop
 
-### Feature 1 — Israel Child Record Mirror
+### Feature 1 — Therapist–Patient Workspace
+
+**What talkon proves:** the core product is not a child-facing capability; it is an operating system for therapy delivery.
+
+**Arbor better version:**
+
+A shared workspace for therapist, parent, and child context:
+
+- therapist dashboard by active caseload;
+- child profile with developmental story, goals, sessions, home practice, parent logs, and documents;
+- therapy program with goals, exercises, dosage, status, and next review date;
+- parent app view showing only the relevant home tasks and feedback from the therapist;
+- feedback loop: assigned → done/not done → parent note/media → therapist review → adjust program;
+- progress summary and professional note generated from real activity, not manual reconstruction.
+
+**Main capabilities, not edge features:**
+
+1. caseload and child profiles;
+2. therapy plans / clinical programs;
+3. home-practice assignment;
+4. parent feedback and secure messaging;
+5. session notes and progress tracking;
+6. professional reports / summaries;
+7. manager-level view for clinic/team operations.
+
+**Why it wins:** Talkon optimizes the SLP workflow. Arbor can add the missing longitudinal child-memory spine: parent moments, gan context, daily practice, development ladder, and professional packet all become part of the same therapy loop.
+
+---
+
+### Feature 2 — Israel Child Record Mirror
 
 **What Tipat Halav / Clalit do:** show official record fragments: vaccines, growth, screenings, appointments, forms.
 
@@ -130,7 +182,7 @@ A parent-controlled **Israel Child Record Mirror** that lets the parent manually
 
 ---
 
-### Feature 2 — Israeli Development Ladder Plus Daily Action
+### Feature 3 — Israeli Development Ladder Plus Daily Action
 
 **What Clalit does:** age-based developmental ladder/tracker.
 
@@ -161,7 +213,7 @@ A Hebrew-first **Development Ladder + Daily Action** engine:
 
 ---
 
-### Feature 3 — Digital Questionnaire Hub: Parent + Ganenet + Therapist
+### Feature 4 — Digital Questionnaire Hub: Parent + Ganenet + Therapist
 
 **What Clalit does:** digital questionnaires for parents, ganenet, caregivers, and therapists.
 
@@ -191,7 +243,7 @@ A **multi-informant child context hub** that makes questionnaires useful before 
 
 ---
 
-### Feature 4 — Israeli Professional Handoff Packet
+### Feature 5 — Israeli Professional Handoff Packet
 
 **What local apps do:** help route into appointments and services.
 
@@ -223,7 +275,7 @@ A **one-click Hebrew professional packet** for Tipat Halav, Kupat Holim developm
 
 ---
 
-### Feature 5 — Today for Israeli Parents
+### Feature 6 — Today for Israeli Parents
 
 **What Huckleberry does globally:** predicts sleep windows.
 
@@ -253,7 +305,7 @@ A **Today** surface that combines the family rhythm with Israeli routines:
 
 ---
 
-### Feature 6 — Hebrew Speech & Language Beachhead
+### Feature 7 — Hebrew Speech & Language Beachhead
 
 **Why this matters in Israel:** speech/language and bilingual households are high-intent, high-anxiety, and professional-service-linked.
 
@@ -275,7 +327,7 @@ A Hebrew-first **Language & Communication** path that connects home observations
 
 ---
 
-### Feature 7 — Parent Scripts for Israeli Reality
+### Feature 8 — Parent Scripts for Israeli Reality
 
 **What Good Inside does:** scripts and strategies for hard parenting moments.
 
@@ -305,30 +357,32 @@ Scripts that are personalized by child history and localized to Israeli family l
 
 ## 5. Prioritized build order
 
-### P0 — Israel credibility layer
+### P0 — Therapist–patient operating loop
 
-1. Hebrew-first Israel packet template for `Consult`.
-2. Manual Israeli child-record timeline import.
-3. Development ladder localization for ages 0–6.
-4. Ganenet/teacher observation form.
+1. Therapist–Patient Workspace: caseload, child profile, therapy plan, session notes.
+2. Home-practice assignment + parent feedback loop.
+3. Hebrew SLP professional packet and progress summary.
+4. Manual Israeli child-record timeline import.
+5. Ganenet/teacher observation form.
 
-### P1 — Daily retention loop
+### P1 — Israel credibility layer
 
-5. Today/Rhythm localization for gan, holidays, transitions.
-6. Daily Play Israel content pack: 40–60 Hebrew activities, household-items-first.
-7. Parent scripts for top 20 Israeli scenarios.
+6. Development ladder localization for ages 0–6.
+7. Tipat Halav/Kupat/Gan/private-professional source badges.
+8. Consent/redaction/expiry controls for professional sharing.
 
-### P2 — Professional moat
+### P2 — Daily support loop
 
-8. קלינאית תקשורת / OT / sleep consultant consult categories.
-9. Professional share link + redaction + expiry.
-10. Private expert pilot: one partner expert, not a marketplace.
+9. Today/Rhythm localization for gan, holidays, transitions.
+10. Daily Play Israel content pack: 40–60 Hebrew activities, household-items-first.
+11. Parent scripts for top 20 Israeli scenarios.
 
-### P3 — Deeper moat
+### P3 — Deeper professional moat
 
-11. Hebrew speech/language track.
-12. School-readiness plan.
-13. Optional future official integrations after partnerships.
+12. קלינאית תקשורת / OT / sleep consultant consult categories.
+13. Professional share link + clinic/team manager view.
+14. Private expert pilot: one partner expert, not a marketplace.
+15. Hebrew speech/language track and school-readiness plan.
 
 ---
 
@@ -336,6 +390,7 @@ Scripts that are personalized by child history and localized to Israeli family l
 
 Arbor is winning when a parent can say:
 
+- “Talkon manages the SLP workflow; Arbor manages the full therapy circle around the child — therapist plan, home practice, parent feedback, gan context, and longitudinal progress.”
 - “Tipat Halav shows me the official record; Arbor helps me understand what it means for my child this week.”
 - “Clalit gives me the forms; Arbor helps everyone fill the right context and turns it into a useful story.”
 - “Kinedu gives me activities by age; Arbor gives me the right activity for my child’s actual pattern.”
@@ -369,8 +424,9 @@ It should define:
   - `arbor-competitive-analysis-and-feature-defs-2026-06-14.md`
   - `arbor-redesign-and-additions-definition-2026-06-14.md`
   - `PRDs/PRD_2026-06-17_avatar-games-growth.md`
-- Apple Search API, country `IL`, terms: `התפתחות הילד`, `ילדים התפתחות`, `baby development`, `parenting`.
+- Apple Search API, country `IL`, terms: `התפתחות הילד`, `ילדים התפתחות`, `baby development`, `parenting`, plus direct lookup for Talkon.
 - App Store IL listings:
+  - `talkon SLP` — talkon ltd., `id6444620831`.
   - `טיפת חלב` — Israel Ministry of Health, `id6451442089`.
   - `התפתחות הילד` — Clalit Health Services, `id6746529114`.
   - Global benchmarks present in IL App Store: Kinedu, Huckleberry, BabySparks, Good Inside.
