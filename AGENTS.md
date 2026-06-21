@@ -31,6 +31,19 @@ All agents must operate on this single working tree. Do not create divergent ROS
 | Hermes | `/home/guyru/ROS` | WSL automation/runtime agent over the same working tree | `hermes-agent <hermes@rubin-os.local>` |
 | Gemini | `C:\Users\dguyr\ROS` / Gemini CLI · API | Model/runtime for generation, multimodal, and large-context work; Arbor model path (Vertex/AI-Studio); both principals' Gemini subscriptions | `gemini-agent <gemini@rubin-os.local>` |
 
+## Division of labor (one ecosystem, not silos)
+
+The runtimes are agnostic peers sharing the filesystem + Notion as the baton — each does what it's best at, hands off through shared state, never works in a silo:
+
+| Runtime | Best at | Surfaces it owns | Hands off via |
+| :-- | :-- | :-- | :-- |
+| **Claude / Cowork** | Interactive reasoning, orchestration, cross-domain synthesis, design | MCP (Gmail/Notion/Calendar/Drive), the meshes | Markdown memory + `state.json` + Notion |
+| **Codex** | Bulk code/file execution, large refactors, long edit runs | Code repos (Arbor), big mechanical edits | git + the filesystem tree |
+| **Hermes** (WSL) | Scheduled automation, Google Workspace, the daily loops, Telegram | `cron/jobs.json`, `kanban.db`, Notion refresh, the HV scan, Google OAuth | writes back to `MEMORY.md` + Notion DBs |
+| **Gemini** | Generation, multimodal, large-context | Arbor model path; gen tasks (both principals' subs) | outputs into the tree |
+
+**The two human surfaces:** the **Notion Command Center** (`2b4f37e2-31fe-801c-8495-dea36d0efd4d`) is the canonical human cockpit + second brain (10 master DBs, per-domain dashboards, radar refresh); **ROS Markdown** is the agent-maintained durable knowledge. Notion DB IDs live in [`/00_System/notion_database_registry.md`](00_System/notion_database_registry.md). A runtime that runs a scheduled loop **must write its result back** to shared state (Markdown/Notion) — that write-back is what makes the four runtimes one ecosystem instead of four silos.
+
 ## Boot sequence (canonical)
 
 This is the single source of truth for context loading. `/CLAUDE.md`, `/00_System/routing.md`, and every domain `CLAUDE.md` reference this sequence; they must not restate it.

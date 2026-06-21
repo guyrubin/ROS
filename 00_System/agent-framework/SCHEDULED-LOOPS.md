@@ -13,10 +13,14 @@ Runtimes: **Hermes cron** (WSL automation), the `scheduled-tasks` MCP, or `/sche
 
 | ID | Owner | Cadence | Does | Posture | Delivery |
 | :-- | :-- | :-- | :-- | :-- | :-- |
-| `333eaf638d76` | KK | Weekdays 08:30 / 13:30 / 18:30 | Actionable Gmail triage across `bguy` / `hollandvest` / `joseph`; the 08:30 run is the canonical **morning routing** | Read-only | Guy |
-| `4fc75fbfad30` | Career | Twice weekly | LinkedIn + Google Jobs high-yield sourcing sprint for Guy + Joseph | Read-only | Telegram DM |
-| `c20375b10b15` | KK | Mondays 10:00 | Tsagareli Capricorn forecast (Hebrew) | Read-only | Telegram |
-| `bc55de81f9f1` | CoS | Mondays 08:00 | Read-only ROS weekly hygiene audit; reports findings, no edits/push | Read-only | Guy |
+_Verified against Hermes `/home/guyru/.hermes/cron/jobs.json` on 2026-06-21 — only TWO live crons actually exist:_
+
+| `333eaf638d76` | KK | `30 8,13,18 * * 1-5` (08:30/13:30/18:30 wkdays) | Actionable Gmail triage across `bguy` / `hollandvest` / `joseph`; 08:30 run = canonical **morning routing** | Read-only | ✅ enabled (verified) |
+| `4fc75fbfad30` | Career | `0 9 * * 1,4` (Mon/Thu 09:00) | LinkedIn + Google Jobs sourcing sprint for Guy + Joseph (skills: job-application-automation, google-workspace, himalaya) | Read-only | ✅ enabled (verified) |
+
+**⚠️ Doc-vs-reality gaps found 2026-06-21 (the "not connected" problem, concretely):**
+- The **HV daily Smart-Living scan** (radar logged 05-18→06-05) is **NOT a registered cron** — it ran, then stalled ~06-05. Needs reviving as a real job (Guy-gated). See HV mesh.
+- Previously-claimed crons **`c20375b10b15` (Tsagareli)** and **`bc55de81f9f1` (hygiene audit)** are **NOT in Hermes `jobs.json`** — they were documented but aren't running. Removed from "live"; re-create deliberately if wanted.
 
 ---
 

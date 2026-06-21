@@ -57,6 +57,21 @@ HV is built to become **the ultimate AI RE developer in the EU**, so `market` is
 
 Each pod scopes its work to the active market: `hv-sourcing` uses that market's portals + buy-box; `hv-underwriting` its rent/tax model; `hv-permit` its permit regime; the DD-brief and IC memo state the market. Adding a market = fill a row + its regulation note, not new agents.
 
+## Notion data backbone (the real HV system — use it, don't reinvent)
+HV already runs on a verified Notion environment + a daily scan. Pods read/write these via the Notion MCP (source: [`/00_System/notion_database_registry.md`](../../00_System/notion_database_registry.md)). **Do not create parallel trackers.**
+
+| HV database | Notion ID | Used by |
+| :-- | :-- | :-- |
+| Deals (pipeline) | `fe6a7f22-24f4-45ae-9a52-24dbf46083cb` | hv-sourcing, hv-orchestrator |
+| Properties | `3dff6d81-58ba-4bc5-8453-1829e6b0e63c` | hv-sourcing, hv-underwriting |
+| HV Tasks | `10d8e0b9-9f5f-4e77-8ffd-f03fe76aea4f` | hv-execution |
+| Documents & Models | `821baf7b-d26c-41ef-a014-7ea407b68d3c` | hv-underwriting, hv-execution |
+| Vendors & Partners | `95f6ed2b-cb45-4518-814d-810e29f4fb64` | hv-execution |
+| Capital & Financing | `f8419975-b16f-42ef-9ac1-e9860d6bf892` | hv-underwriting (refi), FIN |
+| HV_AREAS | `83db1165-6361-4980-8fc0-a9bd9d7d78e4` | hv-sourcing |
+
+Plus the **Smart-Living Deal Radar** (`HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands.md`) — the daily public MVA/MarketSuite scan output. ⚠️ The scan **stalled ~2026-06-05**; reviving it as a real Hermes loop (writes Deals/Properties + radar + write-back) is HV's top infra fix (Guy-gated; see `SCHEDULED-LOOPS.md`).
+
 ## How to invoke
 - A deal / listing: dispatch `hv-orchestrator` (or a pod directly for a scoped step).
 - Command: `/hv.analyze`, `/hv.brrrr`, `/hv.permit`, `/hv.wws`.
