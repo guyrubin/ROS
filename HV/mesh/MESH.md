@@ -7,7 +7,7 @@
 **Runs:** `/AGENTS.md` boot → reads `/HV/MEMORY.md` → [ROS Agent Framework](../../00_System/agent-framework/FRAMEWORK.md)
 
 ## Mission
-Turn raw market signal into investment-committee-grade decisions: source candidates against the buy-box, underwrite them (BRRRR/value-add), clear the permit/zoning path, and reach an explicit Proceed/Hold verdict — fast, with facts/assumptions/risks always separated.
+Turn raw market signal into investment-committee-grade decisions: source candidates against the buy-box, underwrite them (BRRRR/value-add), clear the permit/zoning path, reach an explicit Proceed/Hold verdict — fast, with facts/assumptions/risks always separated — and once approved, **execute the deal end-to-end (Renovate → Rent → Refinance)**, backed by a deal-grade DD research lane.
 
 ## Roster
 
@@ -17,8 +17,9 @@ Turn raw market signal into investment-committee-grade decisions: source candida
 | `hv-sourcing` | Sourcing/radar | Funda/Pararius/Kadaster scans, buy-box fit-scoring, candidate shortlist | `hv-orchestrator` |
 | `hv-underwriting` | Underwriting | BRRRR model, WWS points, ARV/LTV/yield, financial verdict | `hv-orchestrator` |
 | `hv-permit` | Permit/zoning | Vergunning/bestemmingsplan pathway, monument/protected-cityscape flags, critical-path | `hv-orchestrator` |
+| `hv-execution` | Deal-execution PM | The R-R-R back half of BRRRR: renovation milestones, vendor follow-through, permit-to-completion status, refinance coordination (`HV/06,07,08`) | `hv-orchestrator` |
 
-> Fan-out pays here: `hv-sourcing` can screen N listings in parallel, then `hv-underwriting` + `hv-permit` run concurrently on the shortlist before `hv-orchestrator` synthesizes the IC memo.
+> Fan-out pays here: `hv-sourcing` screens N listings in parallel, then `hv-underwriting` + `hv-permit` run concurrently on the shortlist before `hv-orchestrator` synthesizes the IC memo. After go, `hv-execution` runs the Renovate→Rent→Refinance back half. **Research is a shared lane:** any pod dispatches `research-agent` with [`DD-brief-template.md`](DD-brief-template.md) for deal-grade DD (ROS-BACKLOG D2).
 
 ## Gate (Definition-of-Done)
 - Facts / labeled assumptions / risks / financial impact **separated**.
@@ -35,6 +36,8 @@ Turn raw market signal into investment-committee-grade decisions: source candida
 | Permit / zoning pathway | `permit-pathway` |
 | WWS points, rent ceiling | `wws-analyzer` |
 | Create/update deal note | `deal-note-creator` |
+| **Deal-grade DD research** | `research-agent` + [`DD-brief-template.md`](DD-brief-template.md) |
+| **Deal execution (Renovate/Rent/Refinance) PM** | `project-tracker` (via `hv-execution`) |
 | Deal correspondence | `email-composer` (Gmail `hollandvest`) |
 
 ## Loops it owns

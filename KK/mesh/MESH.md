@@ -20,7 +20,7 @@ Keep Guy's day actionable: turn inbox + calendar + tasks into a prioritized top 
 > - **Research** → [`KK/research/MESH.md`](../research/MESH.md) (`research-agent`) — KK-owned shared service; any domain may dispatch it for a sourced, verified brief.
 
 ## Gate (Definition-of-Done)
-- **Actionable & prioritized** — output is a top 1–5, not a broad inbox dump.
+- **Actionable & prioritized** — output is a **top 3 (5 max)**, ruthlessly filtered, not a broad inbox dump.
 - **Correctly routed** — each item goes to the right domain/account; non-KK items handed off, not actioned.
 - **Draft-first** — anything outbound is drafted, never sent without explicit confirmation (Level 3).
 - **Respects morning-routing scope/noise filters** — suppress newsletters, receipts, subscription/job-alert noise per `/KK/CLAUDE.md`.
@@ -35,7 +35,8 @@ Keep Guy's day actionable: turn inbox + calendar + tasks into a prioritized top 
 | Background before a decision | `research` (or dispatch KK's own `research-agent`) |
 | Push tasks/notes to Notion | `notion-sync` |
 
-> Notion is the **canonical task surface** (My Tasks DB + Command Center) — do not bootstrap a parallel `TASKS.md`. Load Hermes `himalaya` before Gmail work and `productivity/notion` before Notion writes.
+> Notion is the **canonical task surface** (My Tasks DB + Command Center) — do not bootstrap a parallel `TASKS.md`.
+> **Runtime-aware connectors** (`/00_System/connectors.md`): in **Claude Code/Cowork** use the **MCP** Gmail/Calendar/Notion directly — don't force the Hermes path when you're interactive. In **Hermes** (the scheduled crons) use `himalaya` / `productivity/notion`. This is the fix for "KK is Hermes-bound and inefficient."
 
 ## Loops it owns
 

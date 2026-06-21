@@ -32,6 +32,7 @@
 ## Execution status — 2026-06-21
 
 **Applied this session (no-gate foundation):** **#1 A1** git-derived freshness ✅ (verified — MKT correctly flips to STALE where the gamed header read fresh) · **#2 B1** loop write-back rule ✅ · **#3 C1** principal layer (`/00_System/principals.md` + AGENTS boot step) ✅ · **#4 A2** LEARN→DoD gate ✅ · **#5 D1** EA CONTEXT gate ✅ (per-client `CONTEXT.md` already existed; mesh now mandates them) · **#8 A3** `Reviewed:` heartbeat ✅.
+**Applied this session (domain sharpening):** **D1** EA CONTEXT gate ✅ · **D2** HV deal-grade DD research lane ✅ (`HV/mesh/DD-brief-template.md` + `research-agent`) · **D3** HV `hv-execution` PM pod ✅ (Renovate/Rent/Refinance; `project-tracker`) · **KK runtime-aware** ✅ (MCP in Cowork, Hermes for crons) + tighter **top-3** triage.
 **Gated — await Guy:** **#6** confidentiality-policy promotion · **#7** loop go-live · **#10** retire `sync/` · **C4** Joseph's send rail (credential).
 
 ## Theme H — Agnostic / multi-runtime (NEW — Guy, 2026-06-21)
