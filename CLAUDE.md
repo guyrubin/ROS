@@ -1,6 +1,6 @@
 # Rubin OS - Root Constitution
 
-**Version:** 1.7
+**Version:** 1.8
 **Last updated:** 2026-06-21
 
 ## Session Boot Sequence
@@ -8,6 +8,14 @@
 Follow the **canonical boot sequence in `/AGENTS.md`** — it is the single source of truth, so this file does not restate it. In short: eager-load `/AGENTS.md` → `/CLAUDE.md` → `/MEMORY.md` → `/00_System/routing.md`, then route and load the matched domain's `CLAUDE.md` + `MEMORY.md`. Lazy-load capabilities, connectors, and the filesystem contract only when a task needs them. Run `/session-audit` at wrap-up after meaningful ROS work.
 
 > **Core Directive (Karpathy PKM):** ROS is an AI-maintained knowledge base. When Guy says "remember X" or provides raw notes, compile, structure, and interlink them into Markdown. Output style: executive, structured, direct; end with a decision or next action.
+
+## Operating Standard & Method
+
+- **De-slop every output** — run `/de-slop` (the ROS output standard) before delivering anything written: accuracy, density, voice, a decision. No AI-slop, ever.
+- **Method:** `/grill-me` (align before planning) → `/vertical-slice` (ship one real artifact, get judged) → de-slop → loop. Never generate everything and verify nothing.
+- **LLM-agnostic OS, 3 persistent runtimes + Google** (`/AGENTS.md`): Claude (core builder) · Codex (bulk) · Gemini (gen/multimodal) · Hermes (scheduled) — the filesystem + Notion are the shared baton. Get the most from every subscription, both principals.
+- **Second brain:** Notion (PARA) is canonical; ROS Markdown is the durable agent knowledge; the **ROS OS Dashboard** (`CoS/projects/ros-os-dashboard/`) is the HTML control surface on top.
+- **Self-improving:** Arbor CIL (product) + ROS-CIL (company) + a weekly **AI-trends watch** keep ROS current (`/00_System/agent-framework/SCHEDULED-LOOPS.md`).
 
 ## Routing Map
 
@@ -74,6 +82,10 @@ ROS uses an LLM-maintained wiki approach:
 | Instruction Standards | `/00_System/markdown-instruction-principles.md` |
 | Layer Model | `/00_System/layer-model.md` |
 | Agent Framework | `/00_System/agent-framework/README.md` |
+| ROS OS (operating doc) | `/CoS/ROS-OS.md` |
+| ROS OS Dashboard | `/CoS/projects/ros-os-dashboard/` (serve :4700) |
+| Standard & method skills | `/.claude/skills/{de-slop,grill-me,vertical-slice}/` |
+| Self-improvement loops | Arbor `/PAI/projects/parenting-os-plugin/mesh/improvement/`, ROS `/00_System/agent-framework/ROS-CIL.md` |
 
 ## Token Optimization Rules
 

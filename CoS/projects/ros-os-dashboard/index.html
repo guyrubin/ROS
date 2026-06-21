@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ROS OS — multi-agent control</title>
+<style>
+:root{
+  --bg:#0b0e13; --panel:#11151c; --panel2:#161b24; --line:#222b38; --line2:#2c3848;
+  --t:#e6edf6; --t2:#9aa7b8; --t3:#62708399; --t3s:#627083;
+  --accent:#5aa2ff; --green:#3ecf8e; --amber:#e8b339; --red:#ef6f6f; --violet:#a98bff;
+  --r:10px; --mono:"SF Mono",ui-monospace,"Cascadia Code",Consolas,monospace;
+  --sans:system-ui,-apple-system,Segoe UI,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--t);font-family:var(--sans);font-size:13.5px;line-height:1.45}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1320px;margin:0 auto;padding:18px 20px 60px}
+.h{font-family:var(--mono);letter-spacing:.5px;text-transform:uppercase;font-size:10.5px;color:var(--t3s);font-weight:600}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;vertical-align:middle;margin-right:6px}
+.live{background:var(--green)} .prop{background:var(--amber)} .idle{background:var(--t3s)} .gated{background:var(--violet)}
+.s-green{color:var(--green)} .s-amber{color:var(--amber)} .s-red{color:var(--red)}
+
+/* topbar */
+.top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px}
+.brand{font-family:var(--mono);font-size:18px;font-weight:700;letter-spacing:1px}
+.brand b{color:var(--accent)}
+.tag{font-size:11px;color:var(--t2)}
+.rt{display:flex;gap:7px;margin-left:auto;flex-wrap:wrap}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:11.5px;color:var(--t2);font-family:var(--mono)}
+.chip b{color:var(--t)}
+
+/* tabs */
+.tabs{display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap}
+.tab{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 15px;cursor:pointer;color:var(--t2);font-size:12.5px;font-weight:500}
+.tab:hover{border-color:var(--line2);color:var(--t)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#06101f;font-weight:600}
+
+.view{display:none} .view.on{display:block}
+.grid{display:grid;gap:12px}
+.g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:920px){.g3,.g2,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.g3,.g2,.g4{grid-template-columns:1fr}}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.card.click{cursor:pointer;transition:border-color .12s,background .12s}
+.card.click:hover{border-color:var(--accent);background:var(--panel2)}
+.card .k{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.5px}
+.card .role{color:var(--t2);font-size:12px;margin-top:1px}
+.card .lead{color:var(--t3s);font-size:11px;font-family:var(--mono);margin-top:8px}
+.pods{margin-top:8px;display:flex;gap:5px;flex-wrap:wrap}
+.pod{font-size:10.5px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--t2);font-family:var(--mono)}
+.fresh{float:right;font-size:10.5px;font-family:var(--mono);color:var(--t3s)}
+.row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.muted{color:var(--t2)} .mono{font-family:var(--mono);font-size:11.5px}
+.cad{font-family:var(--mono);font-size:11px;color:var(--t3s)}
+.bk{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+h3.sec{font-size:13px;margin:22px 0 10px;display:flex;align-items:center;gap:8px} h3.sec .h{font-size:11px}
+.note{color:var(--t3s);font-size:11.5px;margin-top:4px}
+.btn{display:inline-block;background:var(--panel2);border:1px solid var(--line2);border-radius:7px;padding:5px 11px;color:var(--t);font-size:12px;cursor:pointer;margin:3px 4px 0 0;font-family:var(--mono)}
+.btn:hover{border-color:var(--accent)}
+/* detail drawer */
+#drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,92vw);background:var(--panel);border-left:1px solid var(--line2);padding:22px;overflow:auto;transform:translateX(100%);transition:transform .18s;z-index:50;box-shadow:-20px 0 50px #0008}
+#drawer.on{transform:translateX(0)}
+#drawer .x{float:right;cursor:pointer;color:var(--t2);font-size:18px}
+#drawer h2{font-family:var(--mono);margin:0 0 2px}
+.kv{margin:12px 0} .kv .h{display:block;margin-bottom:3px}
+.foot{margin-top:30px;border-top:1px solid var(--line);padding-top:12px;color:var(--t3s);font-size:11px;font-family:var(--mono)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="brand">RUBIN<b>OS</b> <span style="color:var(--t3s);font-weight:400">// multi-agent control</span></div>
+      <div class="tag" id="subtitle">a family unit, run like a self-improving company · Guy + Joseph</div>
+    </div>
+    <div class="rt" id="runtimes"></div>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <!-- AGENTS -->
+  <div class="view on" id="v-agents">
+    <h3 class="sec"><span class="h">Conductor</span></h3>
+    <div id="conductor"></div>
+    <h3 class="sec"><span class="h">Departments — domain meshes</span> <span class="note">click a mesh for its loop · pods · gate · skills</span></h3>
+    <div class="grid g3" id="meshes"></div>
+  </div>
+
+  <!-- LOOPS -->
+  <div class="view" id="v-loops">
+    <h3 class="sec"><span class="h">Loops — the always-on staff</span> <span class="note">live = running on a clock · proposed = built, awaiting your go</span></h3>
+    <div class="bk" id="loops"></div>
+  </div>
+
+  <!-- BRAIN -->
+  <div class="view" id="v-brain">
+    <h3 class="sec"><span class="h">Notion — second brain (PARA)</span></h3>
+    <div class="bk" id="brain"></div>
+    <div class="note" style="margin-top:8px">Notion is the canonical second brain &amp; cockpit. This OS panel is the agent control surface on top of it. Live DB query needs the Hermes token path (MCP query is Enterprise-gated).</div>
+  </div>
+
+  <!-- STANDARDS -->
+  <div class="view" id="v-std">
+    <h3 class="sec"><span class="h">Operating standard &amp; method</span></h3>
+    <div class="grid g2" id="standards"></div>
+  </div>
+
+  <!-- TRENDS -->
+  <div class="view" id="v-trends">
+    <h3 class="sec"><span class="h">AI trends watch</span> <span class="note">ongoing scan → optimize ROS</span></h3>
+    <div class="bk" id="trends"></div>
+  </div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<div id="drawer"><span class="x" onclick="closeD()">✕</span><div id="dbody"></div></div>
+
+<script>
+const FALLBACK = {
+  meta:{updated:"2026-06-21", by:"seed"},
+  runtimes:[
+    {name:"Claude",role:"core builder",status:"live"},
+    {name:"Codex",role:"bulk build",status:"idle"},
+    {name:"Gemini",role:"gen · multimodal",status:"idle"},
+    {name:"Hermes",role:"scheduled",status:"live"},
+    {name:"Google",role:"Gmail·Cal·Drive",status:"live"}
+  ],
+  conductor:{k:"CoS",role:"Chief of Staff · COO",lead:"ros-conductor",status:"amber",ctx:"runs the operating rhythm; reports to both principals",
+    loops:"weekly review · OKRs · ROS-CIL",skills:"weekly-review · okr-tracker · stakeholder-briefing"},
+  meshes:[
+    {k:"HV",role:"EU real-estate dev",lead:"hv-orchestrator",status:"amber",fresh:"stale",pods:["sourcing","underwriting","permit","execution"],loops:"deal radar (stalled)",skills:"deal-analyzer · brrrr · wws · permit-pathway",ctx:"source→underwrite→permit→execute, NL-first EU-pluggable"},
+    {k:"EA",role:"security architecture",lead:"ea-lead",status:"red",fresh:"stale",pods:["(no pods — per-client isolation)"],loops:"on-demand",skills:"hld-writer · adr-writer · architecture-review",ctx:"ABN + Coca-Cola only; client-confidential"},
+    {k:"KK",role:"PA · second brain",lead:"kk-ops",status:"green",fresh:"fresh",pods:["Career","Research"],loops:"morning triage (live) · daily brief",skills:"inbox-manager · task-manager · research",ctx:"autonomous manage+prepare; draft-first apply"},
+    {k:"MKT",role:"brand · content",lead:"mkt-lead",status:"amber",fresh:"stale",pods:["content"],loops:"content cadence (proposed)",skills:"campaign-planner · copywriter · content-creator",ctx:"Guy brand + HollandVest; coordinates Arbor MKT"},
+    {k:"FIN",role:"money · admin",lead:"fin-admin",status:"green",fresh:"stale",pods:[],loops:"deadline watch (proposed)",skills:"email-composer · notion-sync",ctx:"invoices·tax·insurance; amounts stated, L4 confirm"},
+    {k:"PAI",role:"product AI · Arbor",lead:"arbor-orchestrator",status:"green",fresh:"fresh",pods:["+ 19 Arbor pods","Arbor CIL"],loops:"Arbor CIL eval 2×/day · build 2×/wk",skills:"prd-generator · the mesh",ctx:"Arbor live in prod; self-improving"}
+  ],
+  loops:[
+    {name:"KK Gmail triage (morning routing)",owner:"KK",cad:"weekdays 08:30/13:30/18:30",status:"live",id:"333eaf638d76"},
+    {name:"Career job sourcing sprint",owner:"Career",cad:"Mon/Thu 09:00",status:"live",id:"4fc75fbfad30"},
+    {name:"Arbor CIL — eval",owner:"PAI",cad:"twice daily 03:00/15:00",status:"confirmed",id:"cloud"},
+    {name:"Arbor CIL — build wave",owner:"PAI",cad:"Mon/Thu 04:00",status:"confirmed",id:"cloud"},
+    {name:"ROS-CIL — company self-audit",owner:"CoS",cad:"weekly light / monthly deep",status:"proposed",id:"/ros-improve"},
+    {name:"Command Center refresh",owner:"CoS",cad:"daily AM",status:"proposed",id:"build-state + radar"},
+    {name:"HV deal radar",owner:"HV",cad:"daily (revive)",status:"proposed",id:"stalled 06-05"},
+    {name:"KK daily brief → Notion",owner:"KK",cad:"daily AM",status:"proposed",id:"new"},
+    {name:"AI-trends watch → optimize",owner:"CoS",cad:"weekly",status:"proposed",id:"new"}
+  ],
+  notion:{
+    cockpit:"https://app.notion.com/p/2b4f37e231fe801c8495dea36d0efd4d",
+    para:[
+      {p:"Projects",name:"Projects",url:"https://app.notion.com/p/2b4f37e2-31fe-8129-8ed4-d6363bf11a86"},
+      {p:"Areas",name:"Areas / Domains",url:"https://app.notion.com/p/2b4f37e2-31fe-81c6-8daf-d7b519e4cc40"},
+      {p:"Resources",name:"Notes / Knowledge",url:"https://app.notion.com/p/2b4f37e231fe81ab81e5c92782f8daa3"},
+      {p:"Archive","name":"archive.md (ROS)",url:""}
+    ],
+    hv:["Deals","Properties","Vendors","Capital & Financing","Documents","HV Tasks","HV Areas"]
+  },
+  standards:[
+    {name:"de-slop",what:"the output standard — kills AI-slop, enforces accuracy + density + voice. VERIFY gate on every deliverable.",cmd:"/de-slop"},
+    {name:"grill-me",what:"align before planning — interview, recommend, surface hidden decisions. Front of the loop.",cmd:"/grill-me"},
+    {name:"vertical-slice",what:"ship a real artifact end-to-end, get judged, feed back. Antidote to sprawl.",cmd:"/vertical-slice"},
+    {name:"universal loop",what:"SENSE→FRAME→DESIGN→PRODUCE→VERIFY→DELIVER→LEARN; per-domain Definition-of-Done.",cmd:"00_System/agent-framework"}
+  ],
+  trends:[
+    {date:"2026-06-21",title:"De-slop skill pattern (Ben AI) adopted",action:"shipped .claude/skills/de-slop"},
+    {date:"2026-06-21",title:"Matt Pocock agentic workflow (align→slice→verify)",action:"encoded grill-me + vertical-slice"},
+    {date:"—",title:"(weekly AI-trends scan not yet live)",action:"propose: research-agent weekly → optimize backlog"}
+  ]
+};
+let S = FALLBACK;
+const $=id=>document.getElementById(id);
+const sCls=s=>({live:"live",confirmed:"live",proposed:"prop",gated:"gated",idle:"idle"}[s]||"idle");
+const ragCls=s=>({green:"s-green",amber:"s-amber",red:"s-red"}[s]||"muted");
+
+function render(){
+  $("runtimes").innerHTML = S.runtimes.map(r=>
+    `<span class="chip"><span class="dot ${r.status=='live'?'live':'idle'}"></span><b>${r.name}</b> ${r.role}</span>`).join("");
+  const c=S.conductor;
+  $("conductor").innerHTML = card(c,true);
+  $("meshes").innerHTML = S.meshes.map(m=>card(m,false)).join("");
+  $("loops").innerHTML = S.loops.map(l=>
+    `<div class="row"><div><span class="dot ${sCls(l.status)}"></span>${l.name} <span class="cad">· ${l.owner}</span></div>
+     <div style="text-align:right"><div class="cad">${l.cad}</div><div class="mono" style="color:var(--t3s)">${l.status} · ${l.id}</div></div></div>`).join("");
+  $("brain").innerHTML =
+    `<div class="row"><b>🧠 Command Center</b><a href="${S.notion.cockpit}" target="_blank">open in Notion →</a></div>`+
+    S.notion.para.map(d=>`<div class="row"><div><span class="mono" style="color:var(--violet)">${d.p}</span> &nbsp;${d.name}</div>${d.url?`<a href="${d.url}" target="_blank">open →</a>`:'<span class="cad">local</span>'}</div>`).join("")+
+    `<div class="row"><div class="muted">HV databases</div><div class="cad">${S.notion.hv.join(" · ")}</div></div>`;
+  $("standards").innerHTML = S.standards.map(s=>
+    `<div class="card"><div class="k" style="font-size:13px">${s.name}</div><div class="role">${s.what}</div><div class="lead">${s.cmd}</div></div>`).join("");
+  $("trends").innerHTML = S.trends.map(t=>
+    `<div class="row"><div>${t.title} <span class="cad">· ${t.date}</span></div><div class="cad">${t.action}</div></div>`).join("");
+  $("foot").innerHTML = `state updated ${S.meta.updated} · by ${S.meta.by} · LLM-agnostic OS on Claude(core)+Codex+Gemini+Hermes+Google · Notion = PARA second brain`;
+}
+function card(m,isCond){
+  const pods=(m.pods||[]).map(p=>`<span class="pod">${p}</span>`).join("");
+  return `<div class="card ${isCond?'':'click'}" ${isCond?'':`onclick='openD(${JSON.stringify(m).replace(/'/g,"&#39;")})'`}>
+    ${m.fresh?`<span class="fresh">${m.fresh=='stale'?'⚠ stale':'● fresh'}</span>`:''}
+    <span class="k ${ragCls(m.status)}">${m.k}</span>
+    <div class="role">${m.role}</div>
+    <div class="lead">${m.lead}</div>
+    ${pods?`<div class="pods">${pods}</div>`:''}
+  </div>`;
+}
+function openD(m){
+  $("dbody").innerHTML = `<h2 class="${ragCls(m.status)}">${m.k}</h2><div class="role">${m.role}</div>
+    <div class="kv"><span class="h">Lead</span><span class="mono">${m.lead}</span></div>
+    <div class="kv"><span class="h">Context</span>${m.ctx||''}</div>
+    <div class="kv"><span class="h">Pods</span>${(m.pods||[]).join(" · ")||'—'}</div>
+    <div class="kv"><span class="h">Loops</span>${m.loops||'—'}</div>
+    <div class="kv"><span class="h">Skills</span>${m.skills||'—'}</div>
+    <div class="kv"><span class="h">Freshness</span>${m.fresh||'—'}</div>`;
+  $("drawer").classList.add("on");
+}
+function closeD(){$("drawer").classList.remove("on")}
+const TABS=[["agents","Agents"],["loops","Loops"],["brain","Brain · PARA"],["std","Standard"],["trends","AI trends"]];
+$("tabs").innerHTML = TABS.map((t,i)=>`<div class="tab ${i==0?'on':''}" data-v="${t[0]}">${t[1]}</div>`).join("");
+$("tabs").onclick=e=>{const t=e.target.closest(".tab");if(!t)return;
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));t.classList.add("on");
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));$("v-"+t.dataset.v).classList.add("on");};
+fetch("state.json").then(r=>r.ok?r.json():null).then(j=>{if(j)S=j;render();}).catch(()=>render());
+render();
+</script>
+</body>
+</html>

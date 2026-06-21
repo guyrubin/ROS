@@ -18,6 +18,18 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["-y", "http-server", "CoS/projects/guy-command-center", "-p", "4500", "-c-1"],
       "port": 4500
+    },
+    {
+      "name": "arbor-landing",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "http-server", "PAI/projects/parenting-os-plugin/html", "-p", "4600", "-c-1"],
+      "port": 4600
+    },
+    {
+      "name": "ros-os-dashboard",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "http-server", "CoS/projects/ros-os-dashboard", "-p", "4700", "-c-1"],
+      "port": 4700
     }
   ]
 }

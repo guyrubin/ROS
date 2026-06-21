@@ -35,13 +35,14 @@ Each is **read-and-report** unless noted. Spec a new one with [templates/schedul
 | Command Center morning refresh | CoS | Weekday mornings | `node CoS/projects/guy-command-center/build-state.mjs` + the Notion radar refresh script — refresh both cockpits from live data | Keeps the cockpit auto-fed; surfaces stale domains |
 | **ROS-CIL weekly (light)** | CoS | Weekly | `/ros-improve` `mode:"light"` — freshness + management + reality audit → ROS-BACKLOG + State of the Company; safe fixes only | The self-improvement engine; keeps the company honest |
 | **ROS-CIL monthly (deep)** | CoS | Monthly | `/ros-improve` `mode:"deep"` — full lens panel (domains/standard/tooling) + safe fix wave; gated items surfaced | Monthly company-wide improvement; human ships gated |
+| **AI-trends watch** | CoS | Weekly | `research-agent` scans AI / agent / LLM trends + new tools, skills, methods → proposes ROS optimizations to `ROS-BACKLOG.md` + feeds the dashboard AI-trends panel (read-and-report) | Keeps the LLM-agnostic OS current; "get the most out of everything" |
 | MKT Content cadence | MKT | Weekly | Draft the week's post slate from the content calendar (draft-only) | Keeps personal-brand cadence alive |
 | FIN Deadline watch | FIN | Weekly | Flag upcoming invoice due-dates, insurance renewals, tax/filing deadlines | Nothing slips |
 | Arbor health digest | PAI | Daily | Pull prod error/latency/cost + AI usage into one digest (read-only) | Catch regressions early |
-| **Arbor CIL nightly eval** | PAI | Daily (off-peak) | Run `arbor-improve` `mode:"eval"`: critic panel → score → verify → update `IMPROVEMENT-BACKLOG.md` (workspace write only, no merge/deploy) | Keeps the self-improvement queue fresh; catches regressions |
-| **Arbor CIL weekly build** | PAI | Weekly | Run `arbor-improve` `mode:"build"`: build top verified `safe` findings to green on branch `claude/cil-week` + re-confirm; **opens approve-to-ship roll-up — no merge/deploy** | Closes the loop; human ships |
+| **Arbor CIL eval (2×/day)** | PAI | `0 3,15 * * *` (03:00 + 15:00) | Run `arbor-improve` `mode:"eval"`: critic panel → score → verify → update `IMPROVEMENT-BACKLOG.md` (workspace write only, no merge/deploy) | Keeps the self-improvement queue fresh; catches regressions twice daily |
+| **Arbor CIL build (2×/week)** | PAI | `0 4 * * 1,4` (Mon + Thu 04:00) | Run `arbor-improve` `mode:"build"`: build top verified `safe` findings to green on branch `claude/cil-week` + re-confirm; **opens approve-to-ship roll-up — no merge/deploy** | Closes the loop twice a week; human ships |
 
-> The two **Arbor CIL** loops are the sanctioned autonomous mode (Arbor CHARTER §3.6 / [CIL.md](../../PAI/projects/parenting-os-plugin/mesh/improvement/CIL.md)). They act beyond read-only (write the backlog; push a build branch = Level 3) but **never merge or deploy** and never auto-build `gated` (safety/consent/billing/cost) items. Not live until Guy confirms the crons.
+> The two **Arbor CIL** loops are the sanctioned autonomous mode (Arbor CHARTER §3.6 / [CIL.md](../../PAI/projects/parenting-os-plugin/mesh/improvement/CIL.md)). They act beyond read-only (write the backlog; push a build branch = Level 3) but **never merge or deploy** and never auto-build `gated` (safety/consent/billing/cost) items. **✅ CONFIRMED by Guy 2026-06-21** — cadence = twice-daily eval + 2×/week build, runtime = **cloud scheduled agents** (always-on). Activated on the cloud runtime after the first manual proving cycle (`wf_8e8213a4-360`) lands green.
 
 ---
 

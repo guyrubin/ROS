@@ -1,0 +1,51 @@
+{
+  "meta": { "updated": "2026-06-21", "by": "seed (extend build-state.mjs to auto-feed)" },
+  "runtimes": [
+    { "name": "Claude", "role": "core builder", "status": "live" },
+    { "name": "Codex", "role": "bulk build", "status": "idle" },
+    { "name": "Gemini", "role": "gen · multimodal", "status": "idle" },
+    { "name": "Hermes", "role": "scheduled", "status": "live" },
+    { "name": "Google", "role": "Gmail·Cal·Drive", "status": "live" }
+  ],
+  "conductor": { "k": "CoS", "role": "Chief of Staff · COO", "lead": "ros-conductor", "status": "amber", "ctx": "runs the operating rhythm; reports to both principals", "loops": "weekly review · OKRs · ROS-CIL", "skills": "weekly-review · okr-tracker · stakeholder-briefing" },
+  "meshes": [
+    { "k": "HV", "role": "EU real-estate dev", "lead": "hv-orchestrator", "status": "amber", "fresh": "stale", "pods": ["sourcing", "underwriting", "permit", "execution"], "loops": "deal radar (stalled 06-05)", "skills": "deal-analyzer · brrrr · wws · permit-pathway", "ctx": "source→underwrite→permit→execute, NL-first EU-pluggable" },
+    { "k": "EA", "role": "security architecture", "lead": "ea-lead", "status": "red", "fresh": "stale", "pods": ["(no pods — per-client isolation)"], "loops": "on-demand", "skills": "hld-writer · adr-writer · architecture-review", "ctx": "ABN + Coca-Cola only; client-confidential" },
+    { "k": "KK", "role": "PA · second brain", "lead": "kk-ops", "status": "green", "fresh": "fresh", "pods": ["Career", "Research"], "loops": "morning triage (live) · daily brief", "skills": "inbox-manager · task-manager · research", "ctx": "autonomous manage+prepare; draft-first apply" },
+    { "k": "MKT", "role": "brand · content", "lead": "mkt-lead", "status": "amber", "fresh": "stale", "pods": ["content"], "loops": "content cadence (proposed)", "skills": "campaign-planner · copywriter · content-creator", "ctx": "Guy brand + HollandVest; coordinates Arbor MKT" },
+    { "k": "FIN", "role": "money · admin", "lead": "fin-admin", "status": "green", "fresh": "stale", "pods": [], "loops": "deadline watch (proposed)", "skills": "email-composer · notion-sync", "ctx": "invoices·tax·insurance; amounts stated, L4 confirm" },
+    { "k": "PAI", "role": "product AI · Arbor", "lead": "arbor-orchestrator", "status": "green", "fresh": "fresh", "pods": ["+ 19 Arbor pods", "Arbor CIL"], "loops": "Arbor CIL eval 2×/day · build 2×/wk", "skills": "prd-generator · the mesh", "ctx": "Arbor live in prod; self-improving" }
+  ],
+  "loops": [
+    { "name": "KK Gmail triage (morning routing)", "owner": "KK", "cad": "weekdays 08:30/13:30/18:30", "status": "live", "id": "333eaf638d76" },
+    { "name": "Career job sourcing sprint", "owner": "Career", "cad": "Mon/Thu 09:00", "status": "live", "id": "4fc75fbfad30" },
+    { "name": "Arbor CIL — eval", "owner": "PAI", "cad": "twice daily 03:00/15:00", "status": "confirmed", "id": "cloud" },
+    { "name": "Arbor CIL — build wave", "owner": "PAI", "cad": "Mon/Thu 04:00", "status": "confirmed", "id": "cloud" },
+    { "name": "ROS-CIL — company self-audit", "owner": "CoS", "cad": "weekly light / monthly deep", "status": "proposed", "id": "/ros-improve" },
+    { "name": "Command Center refresh", "owner": "CoS", "cad": "daily AM", "status": "proposed", "id": "build-state + radar" },
+    { "name": "HV deal radar", "owner": "HV", "cad": "daily (revive)", "status": "proposed", "id": "stalled 06-05" },
+    { "name": "KK daily brief → Notion", "owner": "KK", "cad": "daily AM", "status": "proposed", "id": "live-tested 06-21" },
+    { "name": "AI-trends watch → optimize", "owner": "CoS", "cad": "weekly", "status": "proposed", "id": "/ai-trends-watch" }
+  ],
+  "notion": {
+    "cockpit": "https://app.notion.com/p/2b4f37e231fe801c8495dea36d0efd4d",
+    "para": [
+      { "p": "Projects", "name": "Projects", "url": "https://app.notion.com/p/2b4f37e2-31fe-8129-8ed4-d6363bf11a86" },
+      { "p": "Areas", "name": "Areas / Domains", "url": "https://app.notion.com/p/2b4f37e2-31fe-81c6-8daf-d7b519e4cc40" },
+      { "p": "Resources", "name": "Notes / Knowledge", "url": "https://app.notion.com/p/2b4f37e231fe81ab81e5c92782f8daa3" },
+      { "p": "Archive", "name": "archive.md (ROS Markdown)", "url": "" }
+    ],
+    "hv": ["Deals", "Properties", "Vendors", "Capital & Financing", "Documents", "HV Tasks", "HV Areas"]
+  },
+  "standards": [
+    { "name": "de-slop", "what": "the output standard — kills AI-slop, enforces accuracy + density + voice. VERIFY gate on every deliverable.", "cmd": "/de-slop" },
+    { "name": "grill-me", "what": "align before planning — interview, recommend, surface hidden decisions. Front of the loop.", "cmd": "/grill-me" },
+    { "name": "vertical-slice", "what": "ship a real artifact end-to-end, get judged, feed back. Antidote to sprawl.", "cmd": "/vertical-slice" },
+    { "name": "universal loop", "what": "SENSE→FRAME→DESIGN→PRODUCE→VERIFY→DELIVER→LEARN; per-domain Definition-of-Done.", "cmd": "00_System/agent-framework" }
+  ],
+  "trends": [
+    { "date": "2026-06-21", "title": "De-slop skill pattern (Ben AI) adopted", "action": "shipped /de-slop" },
+    { "date": "2026-06-21", "title": "Matt Pocock agentic workflow (align→slice→verify)", "action": "shipped /grill-me + /vertical-slice" },
+    { "date": "weekly", "title": "AI-trends watch loop", "action": "/ai-trends-watch → ROS-BACKLOG (proposed cron)" }
+  ]
+}
