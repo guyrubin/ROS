@@ -46,6 +46,49 @@
 
 ---
 
+---
+
+# Next-Level Backlog (from [ROS-STRATEGY.md](ROS-STRATEGY.md)) — make it run like a 50-employee company
+
+> Sequencing (gradual): **manage what exists (M)** → **the Standard (K)** → **Google-as-filesystem (J)** → **skills + tooling loops (I, L)**. Score = `round(impact×4/effort)`.
+
+## Theme M — The management layer (CoS = COO)  *(do first)*
+| Item | Score | I/E | Owner | BuildsOn | Gated |
+| :-- | :-: | :-: | :-- | :-- | :-: |
+| **M1. Wire the management cadence** — daily (cockpit + morning brief), weekly (cross-domain review, per-principal lanes), quarterly (OKRs). Make the conductor actually run it. | **10** | 5/2 | CoS | `ros-conductor` + `weekly-review`/`okr-tracker` skills + `SCHEDULED-LOOPS` | No |
+| **M2. Cockpit = the management surface** — finish the Notion Command Center per-domain dashboards + a decisions-needed queue, per-principal (Guy/Joseph) lanes, and a loops/agents status panel. ONE cockpit (retire the local HTML or make it a mirror). | **8** | 4/2 | CoS | Notion Second Brain (`notion-second-brain/`) + `notion_database_registry.md` | Yes |
+| **M3. OKRs per department** — quarterly objectives for each mesh; the conductor tracks Green/Amber/Red. | 6 | 3/2 | CoS | `okr-tracker` + `CoS/OKRs/` | No |
+| **M4. "Nothing drops"** — every project has an owner + next action; loop write-back enforced (= B1). | 8 | 4/2 | CoS | `UNIVERSAL-LOOP` LEARN gate + Notion Projects DB | No |
+
+## Theme K — The ROS Standard (tool-agnostic excellence + aesthetic)
+| Item | Score | I/E | Owner | BuildsOn | Gated |
+| :-- | :-: | :-: | :-- | :-- | :-: |
+| **K1. Write the ROS Standard** — one doc: substance (correct/sourced/decision-ending) + house voice (executive/direct) + **aesthetic** spec (docs/decks/email/cockpit/Arbor UI). | **8** | 4/2 | CoS | `markdown-instruction-principles.md` + `impeccable`/`design` skills | No |
+| **K2. Make the Standard a universal gate** — add "passes the ROS Standard" to every domain DoD; a self-review step before DELIVER. | **8** | 4/2 | CoS | `UNIVERSAL-LOOP` DoD | No |
+| **K3. Aesthetic system** — reusable templates + tokens for the human-facing surfaces (Notion dashboards, exported docs, emails, the cockpit, Arbor). | 5 | 4/3 | CoS/MKT | `impeccable` + `theme-factory` + Arbor design system | No |
+
+## Theme J — Google Workspace as the filesystem
+| Item | Score | I/E | Owner | BuildsOn | Gated |
+| :-- | :-: | :-: | :-- | :-- | :-: |
+| **J1. Codify the 3-layer model** — Markdown=brain · Notion=cockpit · **Google Drive=files/deliverables** · Docs/Sheets=artifacts · Gmail/Calendar=comms/time. Into AGENTS.md + the filesystem contract. | **8** | 4/2 | CoS | `AGENTS.md` write-model + `agent-filesystem-contract.md` | No |
+| **J2. Per-domain Drive structure** — canonical Drive folders per mesh (HV deals, EA clients, PAI, FIN docs); the file home for deliverables. | 6 | 4/3 | CoS | Drive MCP + Hermes Google OAuth | Yes |
+| **J3. Deliverables as Google Docs/Sheets** — HV IC memos, EA HLDs, FIN models produced into Drive (premium-formatted), indexed in ROS + status in Notion. | 6 | 3/2 | each mesh | Drive/Docs MCP + the ROS Standard | Yes |
+| **J4. Wire Drive MCP into the meshes** — KK/HV/EA/FIN/PAI read/write their Drive folders (not just local). | 6 | 3/2 | CoS | `connectors.md` Drive (live MCP) | No |
+
+## Theme I — Skill capitalization (most-relevant, not all)
+| Item | Score | I/E | Owner | BuildsOn | Gated |
+| :-- | :-: | :-: | :-- | :-- | :-: |
+| **I1. Per-mesh skill registry** — the few best skills/tools per agent (Claude skills + Hermes skill catalog + MCP), in each `MESH.md`. Select, don't accumulate. | **8** | 4/2 | CoS | each `MESH.md` "Skills" table + Hermes skills catalog | No |
+| **I2. Map the Hermes skill catalog → meshes** — research/workspace-agents/workspace-dispatch/note-taking/social-media/etc. to the right domain. | 5 | 3/2 | CoS | `/home/guyru/.hermes/skills` + `connectors.md` | No |
+
+## Theme L — Tooling & Skills continuous-evaluation loop
+| Item | Score | I/E | Owner | BuildsOn | Gated |
+| :-- | :-: | :-: | :-- | :-- | :-: |
+| **L1. Tooling-eval loop** — scheduled read+report: what's used / underused / missing / new in the ecosystem; proposes adopt/drop. (CIL pattern for capability.) | 6 | 4/3 | CoS | the CIL pattern + `SCHEDULED-LOOPS` + `research-agent` | Yes |
+| **L2. Acquisition + new-input ingestion** — discover→evaluate→adopt the right tools/skills; `research-agent` feeds new relevant market/tool inputs. OAuth/skill-install stays human-gated. | 5 | 3/2 | CoS | `research-agent` + `connectors.md` | Yes |
+
+---
+
 ## Theme A — Stop the memory rot
 
 | Item | Score | Impact/Effort | Owner | BuildsOn | Gated |
