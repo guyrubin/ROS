@@ -32,7 +32,9 @@ Each is **read-and-report** unless noted. Spec a new one with [templates/schedul
 | :-- | :-- | :-- | :-- | :-- |
 | HV Deal Radar | HV | Weekly (Mon) | Scan Funda/Pararius/Kadaster signals for the active buy-box; rank top N new candidates with a 3-line fit note | Keeps the pipeline fed without manual sourcing |
 | CoS Weekly Review prep | CoS | Fridays | Pre-assemble the cross-domain weekly review (status pulled from each domain `MEMORY.md` + Notion) so the live review is a decision, not a gather | Cuts review prep time |
-| Command Center morning refresh | CoS | Weekday mornings | `node CoS/projects/guy-command-center/build-state.mjs` — refresh the dashboard `state.json` from live domain memory (read+workspace-write only) | Keeps the cockpit auto-fed; surfaces stale domains |
+| Command Center morning refresh | CoS | Weekday mornings | `node CoS/projects/guy-command-center/build-state.mjs` + the Notion radar refresh script — refresh both cockpits from live data | Keeps the cockpit auto-fed; surfaces stale domains |
+| **ROS-CIL weekly (light)** | CoS | Weekly | `/ros-improve` `mode:"light"` — freshness + management + reality audit → ROS-BACKLOG + State of the Company; safe fixes only | The self-improvement engine; keeps the company honest |
+| **ROS-CIL monthly (deep)** | CoS | Monthly | `/ros-improve` `mode:"deep"` — full lens panel (domains/standard/tooling) + safe fix wave; gated items surfaced | Monthly company-wide improvement; human ships gated |
 | MKT Content cadence | MKT | Weekly | Draft the week's post slate from the content calendar (draft-only) | Keeps personal-brand cadence alive |
 | FIN Deadline watch | FIN | Weekly | Flag upcoming invoice due-dates, insurance renewals, tax/filing deadlines | Nothing slips |
 | Arbor health digest | PAI | Daily | Pull prod error/latency/cost + AI usage into one digest (read-only) | Catch regressions early |

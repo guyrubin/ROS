@@ -11,6 +11,7 @@ The single, reusable pattern for how every Rubin OS domain runs as an **agent en
 1. [FRAMEWORK.md](FRAMEWORK.md) — the meta-charter: tier model, how a domain plugs in, loop types, safety, invocation.
 2. [UNIVERSAL-LOOP.md](UNIVERSAL-LOOP.md) — the loop every agent runs (SENSE→FRAME→DESIGN→PRODUCE→VERIFY→DELIVER→LEARN) + the per-domain Definition-of-Done gate.
 3. [SCHEDULED-LOOPS.md](SCHEDULED-LOOPS.md) — registry of recurring autonomous loops (live + proposed). All new ones are human-gated before go-live.
+3b. [ROS-CIL.md](ROS-CIL.md) — the **company-wide self-improvement loop** (lead `ros-evaluator`, workflow `/ros-improve`): audits ROS on a cadence, scores findings into the backlog, fixes safe items, surfaces gated. The ops-side sibling of the Arbor CIL.
 4. [templates/](templates/) — fill-in templates: `charter.md` (a domain MESH), `agent.md` (a runnable subagent), `scheduled-loop.md` (a cron spec).
 
 ## The instances

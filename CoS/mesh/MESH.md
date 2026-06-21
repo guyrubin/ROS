@@ -52,6 +52,8 @@ The conductor runs ROS like a COO. The management heartbeat that makes the famil
 
 **Management invariants (always on):** every project has an owner + next action · every loop writes back to shared state · nothing runs unobserved · the **Notion Command Center is the single management surface** (the local `guy-command-center` HTML is a local mirror, not a second cockpit).
 
+**The self-improvement engine:** the [ROS-CIL](../../00_System/agent-framework/ROS-CIL.md) (workflow `/ros-improve`, lead `ros-evaluator`) runs the company's self-audit — **weekly light** (freshness + management + reality) and **monthly deep** (full lens panel + safe fix wave) — writing findings to [`../ROS-BACKLOG.md`](../ROS-BACKLOG.md) + a **State of the Company** to the cockpit. It's what makes ROS improve itself every week; the conductor reviews its output and ships the gated items.
+
 ## How to invoke
 - Portfolio task / multi-domain push: dispatch `ros-conductor`.
 - Command: `/cos.review`, `/cos.okr`, `/cos.brief`.

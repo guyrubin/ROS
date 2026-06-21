@@ -87,6 +87,13 @@
 | **L1. Tooling-eval loop** — scheduled read+report: what's used / underused / missing / new in the ecosystem; proposes adopt/drop. (CIL pattern for capability.) | 6 | 4/3 | CoS | the CIL pattern + `SCHEDULED-LOOPS` + `research-agent` | Yes |
 | **L2. Acquisition + new-input ingestion** — discover→evaluate→adopt the right tools/skills; `research-agent` feeds new relevant market/tool inputs. OAuth/skill-install stays human-gated. | 5 | 3/2 | CoS | `research-agent` + `connectors.md` | Yes |
 
+## Theme N — Self-improvement engine (ROS-CIL) ✅ built
+| Item | Score | Owner | BuildsOn | Gated |
+| :-- | :-: | :-- | :-- | :-: |
+| **N1. ROS-CIL built** — company-wide self-improving loop: `/00_System/agent-framework/ROS-CIL.md` + lead `ros-evaluator` + workflow `/ros-improve` (light/deep). Audits freshness/management/reality/domains/standard/tooling → scores+verifies → ROS-BACKLOG + State of the Company → safe fixes; human ships gated. | ✅ | CoS | the Arbor CIL pattern + the agent framework | No |
+| **N2. Turn the ROS-CIL crons live** — weekly-light + monthly-deep on Hermes. | 8 | CoS | `SCHEDULED-LOOPS.md` | Yes |
+| **N3. First deep run** — produce the first real "State of the Company" + fix wave. | 8 | CoS | `/ros-improve mode:"deep"` | No |
+
 ---
 
 ## Theme A — Stop the memory rot
