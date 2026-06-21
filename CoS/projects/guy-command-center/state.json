@@ -2,7 +2,7 @@
   "v": 3,
   "meta": {
     "owner": "Guy Rubin",
-    "updatedAt": "2026-06-21T02:57:29.921Z",
+    "updatedAt": "2026-06-21T05:28:42.339Z",
     "updatedBy": "generator (build-state.mjs)",
     "note": "Auto-fed from ROS domain MEMORY.md. Freshness is git-derived per ROS-BACKLOG A1/A3. Curated fields preserved.",
     "freshness": "git-derived (last commit) ∪ Reviewed: heartbeat"
@@ -43,10 +43,10 @@
       "s": "amber",
       "ctx": "(1) iOS + Android store publishing — native Capacitor builds green in CI; only Apple/Google account-gated steps remain. (2) Buy/verify Israeli domain (`arbor.co.il`, else `getarbor.co.il`/`hellarbor.co.il`), connect in F",
       "file": "PAI/MEMORY.md",
-      "updated": "2026-06-17",
-      "staleDays": 4,
+      "updated": "2026-06-21",
+      "staleDays": 0,
       "stale": false,
-      "gitDate": "2026-06-17",
+      "gitDate": "2026-06-21",
       "reviewed": null
     },
     {

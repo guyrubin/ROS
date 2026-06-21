@@ -1,5 +1,47 @@
 # Rubin OS (ROS) — Prioritized Build Backlog
 
+> ## State of the Company — 2026-06-21 (ros-evaluator — ROS-CIL deep editor pass)
+> **The management heartbeat is dead, and that is the headline.** The conductor's COO cadence has never actually run: **zero cross-domain weekly reviews exist** (newest is a PRD review, 2026-05-12 → a 40-day gap), **Q2 OKRs were never set** (Q2 ends in 9 days with placeholders to score nothing against), the **decision log directory didn't exist**, and **CoS's own memory was 37 days stale** with blank OKRs/decisions/stakeholders/cadence. Only **2 crons actually run** (KK triage `333eaf638d76`, Career sourcing `4fc75fbfad30`); every other specced loop — daily refresh, weekly-review prep, ROS-CIL — is on paper. **Freshness is honest but unfed:** git-derived freshness works, but **5/7 domains read git-stale** (only PAI fresh, carrying the whole company's commit pulse) and **no domain has ever written a `Reviewed:` heartbeat**, so quiet-but-true domains read false-red. **Doc-vs-reality drift** persists in dead/phantom crons (Tsagareli `c20375b10b15`, hygiene `bc55de81f9f1`, HV Smart-Living radar — all documented live, none in `jobs.json`) and an unmapped **My Tasks DB** the KK/CoS meshes treat as canonical but the Notion registry never recorded. The structure is sound; it just isn't being *run*. This pass fixed the safe substrate (CoS memory, decision log, dead-cron docs); the management cadence itself needs Guy to greenlight loops + OKRs.
+
+> ### Audit findings — 2026-06-21 (full set, scored `sev×imp×conf÷eff`)
+> | ID | Finding | Score | Owner | Gated |
+> | :-- | :-- | :-: | :-- | :-: |
+> | CIL-CoS-004 | CoS's own memory 37d stale — OKRs/decisions/stakeholders/cadence all blank | **11.4** | CoS | No (FIXED) |
+> | CIL-CoS-001 | Cross-domain weekly review has NEVER run — 40-day gap | **9.7** | CoS | No |
+> | F-DRIFT-1 | Tsagareli cron `c20375b10b15` documented LIVE; absent from jobs.json | **9.0** | kk-ops | FIXED docs; revive=gated |
+> | CIL-CoS-003 | Decision log dir missing; decisions unowned/unaged | **5.8** | CoS | No (FIXED) |
+> | F-FRESH-2 | Zero `Reviewed:` heartbeats — freshness escape hatch unused | **5.4** | conductor | No |
+> | CIL-CoS-002 | Q2 OKRs never set; Q2 ends in 9 days | **5.1** | CoS | Gated |
+> | CIL-CoS-005 | Daily/weekly COO cadence specced but not cron'd; only 2 live crons | **5.0** | CoS | Gated |
+> | F-FRESH-1 | 5/7 domain MEMORYs git-stale >14d; only PAI fresh | **4.3** | conductor | No |
+> | CIL-CoS-007 | 4/6 domains stale in cockpit — no monthly freshness sweep ran | **4.2** | CoS | No |
+> | F-DRIFT-3 | "My Tasks DB" (KK/CoS canonical) absent from notion registry | **4.05** | kk-ops | Gated (Notion) |
+> | F-DRIFT-2 | MKT/MEMORY header `2026-06-21` lies vs git `2026-05-15` | **4.0** | mkt-lead | No (FIXED) |
+> | F-DRIFT-5 | Root MEMORY claimed 4 live crons + hygiene `bc55de81f9f1` not in jobs.json | **4.0** | conductor | No (FIXED) |
+> | CIL-CoS-008 | Cockpit lags uncommitted MEMORY edits (heartbeat not committed) | **3.5** | CoS | No |
+> | CIL-CoS-006 | Per-principal (Guy/Joseph) management lanes not operational | **2.7** | CoS | No |
+> | F-DRIFT-4 | HV Smart-Living radar stalled ~2026-06-05, never a cron | **2.7** | hv-orchestrator | Gated (cron) |
+
+> ### ROS-CIL cycle log — 2026-06-21 (editor pass over 15 findings)
+> **Themes:** (1) *Management heartbeat dead* — CIL-CoS-001/002/003/004/005, root cause = COO cadence never run. (2) *Freshness honest-but-unfed* — F-FRESH-1/2, CIL-CoS-007/008, F-DRIFT-2. (3) *Doc-vs-reality drift (dead/phantom loops)* — F-DRIFT-1/4/5. (4) *Unmapped infra* — F-DRIFT-3, CIL-CoS-006.
+>
+> **Safe fixes applied this pass (branch `ros-cil/2026-06-21-editor-pass`, re-confirmed):**
+> - CIL-CoS-004: refreshed `CoS/MEMORY.md` — `Reviewed: 2026-06-21`, OKR block honest (Q2 not-set/no-score, Q3 pointer), open decisions filled, weekly-review cadence line set, `Last updated` bumped. ✓
+> - CIL-CoS-003: created `/13_Decision_Log/` + `README.md`, migrated the 2 cockpit decisions with owner (Guy) + due (2026-06-30); doc-vs-reality path now resolves. ✓
+> - F-FRESH-2: first `Reviewed:` heartbeat written (CoS); rule documented in MKT memory. ✓
+> - F-DRIFT-2: reset MKT `Last updated:` to true git date 2026-05-15 + anti-gaming note. ✓
+> - F-DRIFT-1 / F-DRIFT-5: already corrected in prior same-day pass (kk-ops.md, KK/mesh/MESH.md, root MEMORY.md); confirmed against jobs.json (2 enabled crons). ✓
+> - Cockpit refreshed via `build-state.mjs` (git-derived freshness confirmed: 5/7 STALE, PAI fresh). ✓
+>
+> **Gated — await Guy (Level 3+):**
+> - CIL-CoS-001: run the weekly review now → `CoS/reviews/Review_2026-06-21.md` is safe to author, but standing up the Friday weekly-review-prep cron is gated (live cron).
+> - CIL-CoS-002: draft `CoS/OKRs/Q3-2026.md` — gated (setting objectives is Guy's priority call; skip Q2 scoring, no baseline).
+> - CIL-CoS-005: register CC-refresh + weekly-review-prep + ROS-CIL-light crons — gated (Level-3 automation).
+> - F-DRIFT-3: resolve My Tasks DB Notion ID + Data Source ID → add to `notion_database_registry.md` — gated (Notion write).
+> - F-DRIFT-4 / F-DRIFT-1 revive: re-create HV Deal Radar + (optionally) Tsagareli forecast as real Hermes crons — gated (live cron).
+>
+> **Dropped (adversarial verify):** none — all 15 findings substantiated against file/state (CoS/reviews/ listing, CoS/OKRs/ listing, missing 13_Decision_Log/, git dates, jobs.json, build-state.mjs output, empty CoS/MEMORY placeholders). CIL-CoS-002/005 partially overlap CIL-CoS-001 (one root cadence) but kept distinct as they need separate Guy decisions (OKRs vs crons).
+
 **Version:** 1.0
 **Created:** 2026-06-21
 **Owner:** ROS CoS (delivery lead)
