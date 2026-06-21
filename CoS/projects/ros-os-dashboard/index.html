@@ -6,223 +6,284 @@
 <title>ROS OS — multi-agent control</title>
 <style>
 :root{
-  --bg:#0b0e13; --panel:#11151c; --panel2:#161b24; --line:#222b38; --line2:#2c3848;
-  --t:#e6edf6; --t2:#9aa7b8; --t3:#62708399; --t3s:#627083;
-  --accent:#5aa2ff; --green:#3ecf8e; --amber:#e8b339; --red:#ef6f6f; --violet:#a98bff;
-  --r:10px; --mono:"SF Mono",ui-monospace,"Cascadia Code",Consolas,monospace;
-  --sans:system-ui,-apple-system,Segoe UI,sans-serif;
+  /* OKLCH tinted-slate dark palette — one accent, semantic state ramp */
+  --bg:oklch(0.165 0.013 255);
+  --bg-grad:oklch(0.145 0.013 258);
+  --surface:oklch(0.205 0.014 255);
+  --surface-2:oklch(0.245 0.016 255);
+  --line:oklch(0.30 0.018 255);
+  --line-soft:oklch(0.26 0.015 255);
+  --ink:oklch(0.97 0.004 255);
+  --ink-2:oklch(0.78 0.014 255);
+  --ink-3:oklch(0.62 0.018 255);
+  --accent:oklch(0.74 0.135 248);
+  --accent-dim:oklch(0.74 0.135 248 / .14);
+  --green:oklch(0.80 0.15 158);
+  --amber:oklch(0.84 0.135 82);
+  --red:oklch(0.72 0.17 24);
+  --violet:oklch(0.76 0.13 298);
+  --shadow:0 1px 0 oklch(1 0 0 / .03) inset, 0 8px 30px oklch(0 0 0 / .35);
+  --mono:"SF Mono",ui-monospace,"JetBrains Mono","Cascadia Code",Consolas,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:12px; --r-sm:8px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --z-drawer:40; --z-scrim:30;
 }
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--t);font-family:var(--sans);font-size:13.5px;line-height:1.45}
-a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-.wrap{max-width:1320px;margin:0 auto;padding:18px 20px 60px}
-.h{font-family:var(--mono);letter-spacing:.5px;text-transform:uppercase;font-size:10.5px;color:var(--t3s);font-weight:600}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;vertical-align:middle;margin-right:6px}
-.live{background:var(--green)} .prop{background:var(--amber)} .idle{background:var(--t3s)} .gated{background:var(--violet)}
-.s-green{color:var(--green)} .s-amber{color:var(--amber)} .s-red{color:var(--red)}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{
+  margin:0;color:var(--ink);font-family:var(--sans);font-size:13.5px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;letter-spacing:-0.006em;
+  background:
+    radial-gradient(900px 500px at 78% -8%, oklch(0.74 0.135 248 / .10), transparent 60%),
+    linear-gradient(var(--bg), var(--bg-grad));
+  background-attachment:fixed;
+}
+::selection{background:var(--accent-dim);color:var(--ink)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.mono{font-family:var(--mono);font-variant-ligatures:none}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none}
+.live{background:var(--green);box-shadow:0 0 0 3px oklch(0.80 0.15 158 / .16)}
+.prop{background:var(--amber)} .idle{background:var(--ink-3)} .gated{background:var(--violet)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.pulse{animation:pulse 2.4s var(--ease) infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-/* topbar */
-.top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px}
-.brand{font-family:var(--mono);font-size:18px;font-weight:700;letter-spacing:1px}
+/* shell */
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.side{border-right:1px solid var(--line-soft);padding:20px 16px;display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.06em}
+.brand .glyph{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--accent),var(--violet));display:grid;place-items:center;font-size:12px;color:oklch(0.16 0.02 258)}
 .brand b{color:var(--accent)}
-.tag{font-size:11px;color:var(--t2)}
-.rt{display:flex;gap:7px;margin-left:auto;flex-wrap:wrap}
-.chip{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:11.5px;color:var(--t2);font-family:var(--mono)}
-.chip b{color:var(--t)}
+.ey{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin:0 0 9px 2px}
 
-/* tabs */
-.tabs{display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap}
-.tab{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 15px;cursor:pointer;color:var(--t2);font-size:12.5px;font-weight:500}
-.tab:hover{border-color:var(--line2);color:var(--t)}
-.tab.on{background:var(--accent);border-color:var(--accent);color:#06101f;font-weight:600}
+/* runtime stack */
+.rt{display:flex;flex-direction:column;gap:2px}
+.rt .item{display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:var(--r-sm)}
+.rt .item .nm{font-weight:600;font-size:12.5px}
+.rt .item .ro{color:var(--ink-3);font-size:10.5px;margin-left:auto;font-family:var(--mono)}
+.rt .item.core{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line-soft)}
+.rt .item.core .nm{color:var(--accent)}
 
-.view{display:none} .view.on{display:block}
-.grid{display:grid;gap:12px}
-.g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
-@media(max-width:920px){.g3,.g2,.g4{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.g3,.g2,.g4{grid-template-columns:1fr}}
+/* nav */
+nav{display:flex;flex-direction:column;gap:3px}
+.nv{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--r-sm);color:var(--ink-2);font-size:13.5px;font-weight:500;cursor:pointer;border:1px solid transparent;transition:background .14s var(--ease),color .14s}
+.nv:hover{background:var(--surface);color:var(--ink)}
+.nv[aria-current="true"]{background:var(--accent-dim);color:var(--ink);border-color:oklch(0.74 0.135 248 / .35)}
+.nv .ic{width:15px;text-align:center;opacity:.85}
+.nv .ct{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.side .foot{margin-top:auto;font-family:var(--mono);font-size:10px;color:var(--ink-3);line-height:1.6;border-top:1px solid var(--line-soft);padding-top:12px}
 
-.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px}
-.card.click{cursor:pointer;transition:border-color .12s,background .12s}
-.card.click:hover{border-color:var(--accent);background:var(--panel2)}
-.card .k{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.5px}
-.card .role{color:var(--t2);font-size:12px;margin-top:1px}
-.card .lead{color:var(--t3s);font-size:11px;font-family:var(--mono);margin-top:8px}
-.pods{margin-top:8px;display:flex;gap:5px;flex-wrap:wrap}
-.pod{font-size:10.5px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--t2);font-family:var(--mono)}
-.fresh{float:right;font-size:10.5px;font-family:var(--mono);color:var(--t3s)}
-.row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+/* main */
+main{padding:26px 34px 70px;max-width:1280px}
+.bar{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+.bar h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;margin:0;line-height:1.1}
+.bar .sub{color:var(--ink-2);font-size:13px;margin-top:4px}
+.pulsebar{display:flex;gap:18px;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--ink-2)}
+.pulsebar b{color:var(--ink);font-weight:600}
+.pulsebar .seg{display:flex;align-items:center;gap:6px}
+
+.view{display:none;animation:fade .2s var(--ease)}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:10px;margin:26px 0 12px}
+.lab::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.lab:first-child{margin-top:0}
+
+/* conductor hero */
+.cond{background:linear-gradient(108deg,var(--surface),oklch(0.74 0.135 248 / .06));border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;display:flex;gap:18px;align-items:center;box-shadow:var(--shadow)}
+.cond .k{font-size:22px;font-weight:700;font-family:var(--mono);letter-spacing:.04em}
+.cond .meta{flex:1}
+.cond .role{color:var(--ink-2);font-size:13px}
+.cond .lead{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:3px}
+.cond .loops{font-size:12px;color:var(--ink-2);text-align:right;line-height:1.7}
+
+/* mesh grid */
+.grid{display:grid;gap:13px;grid-template-columns:repeat(auto-fit,minmax(264px,1fr))}
+.mesh{position:relative;background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);padding:15px 16px 14px;cursor:pointer;transition:border-color .15s var(--ease),transform .15s var(--ease),background .15s;text-align:left;color:inherit;font:inherit;width:100%;display:block}
+.mesh:hover{border-color:var(--accent);transform:translateY(-2px);background:var(--surface-2)}
+.mesh .top{display:flex;align-items:baseline;gap:9px}
+.mesh .k{font-size:18px;font-weight:700;font-family:var(--mono);letter-spacing:.03em}
+.mesh .role{color:var(--ink-2);font-size:12.5px;margin-top:2px}
+.mesh .lead{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:9px}
+.mesh .pods{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.pod{font-family:var(--mono);font-size:10px;background:oklch(1 0 0 / .04);border:1px solid var(--line-soft);border-radius:5px;padding:2px 7px;color:var(--ink-2)}
+.mesh .fr{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:10px;display:flex;align-items:center;gap:5px;color:var(--ink-3)}
+.rag-green{color:var(--green)} .rag-amber{color:var(--amber)} .rag-red{color:var(--red)}
+
+/* panels / rows */
+.panel{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--line-soft)}
 .row:last-child{border-bottom:0}
-.muted{color:var(--t2)} .mono{font-family:var(--mono);font-size:11.5px}
-.cad{font-family:var(--mono);font-size:11px;color:var(--t3s)}
-.bk{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px}
-h3.sec{font-size:13px;margin:22px 0 10px;display:flex;align-items:center;gap:8px} h3.sec .h{font-size:11px}
-.note{color:var(--t3s);font-size:11.5px;margin-top:4px}
-.btn{display:inline-block;background:var(--panel2);border:1px solid var(--line2);border-radius:7px;padding:5px 11px;color:var(--t);font-size:12px;cursor:pointer;margin:3px 4px 0 0;font-family:var(--mono)}
-.btn:hover{border-color:var(--accent)}
-/* detail drawer */
-#drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,92vw);background:var(--panel);border-left:1px solid var(--line2);padding:22px;overflow:auto;transform:translateX(100%);transition:transform .18s;z-index:50;box-shadow:-20px 0 50px #0008}
-#drawer.on{transform:translateX(0)}
-#drawer .x{float:right;cursor:pointer;color:var(--t2);font-size:18px}
-#drawer h2{font-family:var(--mono);margin:0 0 2px}
-.kv{margin:12px 0} .kv .h{display:block;margin-bottom:3px}
-.foot{margin-top:30px;border-top:1px solid var(--line);padding-top:12px;color:var(--t3s);font-size:11px;font-family:var(--mono)}
+.row:hover{background:oklch(1 0 0 / .02)}
+.row .nm{font-weight:500}
+.row .meta{margin-left:auto;text-align:right}
+.row .cad{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+.row .id{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.tag{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:999px;border:1px solid var(--line)}
+.tag.live{background:oklch(0.80 0.15 158 / .12);color:var(--green);border-color:oklch(0.80 0.15 158 / .3)}
+.tag.prop{background:oklch(0.84 0.135 82 / .12);color:var(--amber);border-color:oklch(0.84 0.135 82 / .3)}
+
+.g2{display:grid;gap:13px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.std{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);padding:16px}
+.std .h{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--accent)}
+.std .w{color:var(--ink-2);font-size:12.5px;margin-top:6px;line-height:1.55}
+.std .cmd{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:9px}
+.para{font-family:var(--mono);font-size:11px;color:var(--violet);min-width:74px;display:inline-block}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:oklch(0 0 0 / .5);opacity:0;pointer-events:none;transition:opacity .2s var(--ease);z-index:var(--z-scrim)}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,94vw);background:var(--bg);border-left:1px solid var(--line);padding:24px;overflow:auto;transform:translateX(101%);transition:transform .26s var(--ease);z-index:var(--z-drawer);box-shadow:-24px 0 60px oklch(0 0 0 / .5)}
+.drawer.on{transform:none}
+.drawer .x{position:absolute;top:18px;right:18px;width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer;font-size:15px}
+.drawer .x:hover{color:var(--ink);border-color:var(--accent)}
+.drawer h2{font-family:var(--mono);font-size:24px;margin:4px 0 0}
+.kv{margin:16px 0}
+.kv .h{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:4px}
+.kv .v{color:var(--ink-2);font-size:13px;line-height:1.55}
+
+@media(max-width:780px){
+  .app{grid-template-columns:1fr}
+  .side{position:static;height:auto;flex-direction:column;border-right:0;border-bottom:1px solid var(--line-soft)}
+  nav{flex-direction:row;flex-wrap:wrap}.nv .ct{display:none}
+  main{padding:20px 18px 60px}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="top">
+<div class="app">
+  <aside class="side">
+    <div class="brand"><span class="glyph">◆</span> RUBIN<b>OS</b></div>
     <div>
-      <div class="brand">RUBIN<b>OS</b> <span style="color:var(--t3s);font-weight:400">// multi-agent control</span></div>
-      <div class="tag" id="subtitle">a family unit, run like a self-improving company · Guy + Joseph</div>
+      <p class="ey">Runtime · LLM-agnostic</p>
+      <div class="rt" id="rt"></div>
     </div>
-    <div class="rt" id="runtimes"></div>
-  </div>
+    <nav id="nav" aria-label="Sections"></nav>
+    <div class="foot" id="foot"></div>
+  </aside>
 
-  <div class="tabs" id="tabs"></div>
+  <main>
+    <div class="bar">
+      <div>
+        <h1 id="vtitle">Agents</h1>
+        <div class="sub" id="vsub">a family unit, run like a self-improving company · Guy + Joseph</div>
+      </div>
+      <div class="pulsebar" id="pulse"></div>
+    </div>
 
-  <!-- AGENTS -->
-  <div class="view on" id="v-agents">
-    <h3 class="sec"><span class="h">Conductor</span></h3>
-    <div id="conductor"></div>
-    <h3 class="sec"><span class="h">Departments — domain meshes</span> <span class="note">click a mesh for its loop · pods · gate · skills</span></h3>
-    <div class="grid g3" id="meshes"></div>
-  </div>
+    <section class="view on" id="v-agents" aria-label="Agents">
+      <div class="lab">Conductor</div>
+      <div id="cond"></div>
+      <div class="lab">Departments — domain meshes</div>
+      <div class="grid" id="meshes"></div>
+    </section>
 
-  <!-- LOOPS -->
-  <div class="view" id="v-loops">
-    <h3 class="sec"><span class="h">Loops — the always-on staff</span> <span class="note">live = running on a clock · proposed = built, awaiting your go</span></h3>
-    <div class="bk" id="loops"></div>
-  </div>
+    <section class="view" id="v-loops" aria-label="Loops">
+      <div class="lab">Always-on staff — scheduled &amp; self-improving loops</div>
+      <div class="panel" id="loops"></div>
+    </section>
 
-  <!-- BRAIN -->
-  <div class="view" id="v-brain">
-    <h3 class="sec"><span class="h">Notion — second brain (PARA)</span></h3>
-    <div class="bk" id="brain"></div>
-    <div class="note" style="margin-top:8px">Notion is the canonical second brain &amp; cockpit. This OS panel is the agent control surface on top of it. Live DB query needs the Hermes token path (MCP query is Enterprise-gated).</div>
-  </div>
+    <section class="view" id="v-brain" aria-label="Brain">
+      <div class="lab">Notion — second brain (PARA)</div>
+      <div class="panel" id="brain"></div>
+      <p class="kv v" style="margin-top:10px">Notion is the canonical second brain &amp; cockpit; this OS is the agent control surface on top. Live DB query runs through the Hermes token path (MCP query is Enterprise-gated).</p>
+    </section>
 
-  <!-- STANDARDS -->
-  <div class="view" id="v-std">
-    <h3 class="sec"><span class="h">Operating standard &amp; method</span></h3>
-    <div class="grid g2" id="standards"></div>
-  </div>
+    <section class="view" id="v-std" aria-label="Standard">
+      <div class="lab">Operating standard &amp; method</div>
+      <div class="g2" id="std"></div>
+    </section>
 
-  <!-- TRENDS -->
-  <div class="view" id="v-trends">
-    <h3 class="sec"><span class="h">AI trends watch</span> <span class="note">ongoing scan → optimize ROS</span></h3>
-    <div class="bk" id="trends"></div>
-  </div>
-
-  <div class="foot" id="foot"></div>
+    <section class="view" id="v-trends" aria-label="AI trends">
+      <div class="lab">AI trends watch — scan → optimize</div>
+      <div class="panel" id="trends"></div>
+    </section>
+  </main>
 </div>
 
-<div id="drawer"><span class="x" onclick="closeD()">✕</span><div id="dbody"></div></div>
+<div class="scrim" id="scrim" onclick="closeD()"></div>
+<aside class="drawer" id="drawer" aria-hidden="true"><button class="x" onclick="closeD()" aria-label="Close">✕</button><div id="dbody"></div></aside>
 
 <script>
-const FALLBACK = {
-  meta:{updated:"2026-06-21", by:"seed"},
-  runtimes:[
-    {name:"Claude",role:"core builder",status:"live"},
-    {name:"Codex",role:"bulk build",status:"idle"},
-    {name:"Gemini",role:"gen · multimodal",status:"idle"},
-    {name:"Hermes",role:"scheduled",status:"live"},
-    {name:"Google",role:"Gmail·Cal·Drive",status:"live"}
-  ],
-  conductor:{k:"CoS",role:"Chief of Staff · COO",lead:"ros-conductor",status:"amber",ctx:"runs the operating rhythm; reports to both principals",
-    loops:"weekly review · OKRs · ROS-CIL",skills:"weekly-review · okr-tracker · stakeholder-briefing"},
-  meshes:[
-    {k:"HV",role:"EU real-estate dev",lead:"hv-orchestrator",status:"amber",fresh:"stale",pods:["sourcing","underwriting","permit","execution"],loops:"deal radar (stalled)",skills:"deal-analyzer · brrrr · wws · permit-pathway",ctx:"source→underwrite→permit→execute, NL-first EU-pluggable"},
-    {k:"EA",role:"security architecture",lead:"ea-lead",status:"red",fresh:"stale",pods:["(no pods — per-client isolation)"],loops:"on-demand",skills:"hld-writer · adr-writer · architecture-review",ctx:"ABN + Coca-Cola only; client-confidential"},
-    {k:"KK",role:"PA · second brain",lead:"kk-ops",status:"green",fresh:"fresh",pods:["Career","Research"],loops:"morning triage (live) · daily brief",skills:"inbox-manager · task-manager · research",ctx:"autonomous manage+prepare; draft-first apply"},
-    {k:"MKT",role:"brand · content",lead:"mkt-lead",status:"amber",fresh:"stale",pods:["content"],loops:"content cadence (proposed)",skills:"campaign-planner · copywriter · content-creator",ctx:"Guy brand + HollandVest; coordinates Arbor MKT"},
-    {k:"FIN",role:"money · admin",lead:"fin-admin",status:"green",fresh:"stale",pods:[],loops:"deadline watch (proposed)",skills:"email-composer · notion-sync",ctx:"invoices·tax·insurance; amounts stated, L4 confirm"},
-    {k:"PAI",role:"product AI · Arbor",lead:"arbor-orchestrator",status:"green",fresh:"fresh",pods:["+ 19 Arbor pods","Arbor CIL"],loops:"Arbor CIL eval 2×/day · build 2×/wk",skills:"prd-generator · the mesh",ctx:"Arbor live in prod; self-improving"}
-  ],
-  loops:[
-    {name:"KK Gmail triage (morning routing)",owner:"KK",cad:"weekdays 08:30/13:30/18:30",status:"live",id:"333eaf638d76"},
-    {name:"Career job sourcing sprint",owner:"Career",cad:"Mon/Thu 09:00",status:"live",id:"4fc75fbfad30"},
-    {name:"Arbor CIL — eval",owner:"PAI",cad:"twice daily 03:00/15:00",status:"confirmed",id:"cloud"},
-    {name:"Arbor CIL — build wave",owner:"PAI",cad:"Mon/Thu 04:00",status:"confirmed",id:"cloud"},
-    {name:"ROS-CIL — company self-audit",owner:"CoS",cad:"weekly light / monthly deep",status:"proposed",id:"/ros-improve"},
-    {name:"Command Center refresh",owner:"CoS",cad:"daily AM",status:"proposed",id:"build-state + radar"},
-    {name:"HV deal radar",owner:"HV",cad:"daily (revive)",status:"proposed",id:"stalled 06-05"},
-    {name:"KK daily brief → Notion",owner:"KK",cad:"daily AM",status:"proposed",id:"new"},
-    {name:"AI-trends watch → optimize",owner:"CoS",cad:"weekly",status:"proposed",id:"new"}
-  ],
-  notion:{
-    cockpit:"https://app.notion.com/p/2b4f37e231fe801c8495dea36d0efd4d",
-    para:[
-      {p:"Projects",name:"Projects",url:"https://app.notion.com/p/2b4f37e2-31fe-8129-8ed4-d6363bf11a86"},
-      {p:"Areas",name:"Areas / Domains",url:"https://app.notion.com/p/2b4f37e2-31fe-81c6-8daf-d7b519e4cc40"},
-      {p:"Resources",name:"Notes / Knowledge",url:"https://app.notion.com/p/2b4f37e231fe81ab81e5c92782f8daa3"},
-      {p:"Archive","name":"archive.md (ROS)",url:""}
-    ],
-    hv:["Deals","Properties","Vendors","Capital & Financing","Documents","HV Tasks","HV Areas"]
-  },
-  standards:[
-    {name:"de-slop",what:"the output standard — kills AI-slop, enforces accuracy + density + voice. VERIFY gate on every deliverable.",cmd:"/de-slop"},
-    {name:"grill-me",what:"align before planning — interview, recommend, surface hidden decisions. Front of the loop.",cmd:"/grill-me"},
-    {name:"vertical-slice",what:"ship a real artifact end-to-end, get judged, feed back. Antidote to sprawl.",cmd:"/vertical-slice"},
-    {name:"universal loop",what:"SENSE→FRAME→DESIGN→PRODUCE→VERIFY→DELIVER→LEARN; per-domain Definition-of-Done.",cmd:"00_System/agent-framework"}
-  ],
-  trends:[
-    {date:"2026-06-21",title:"De-slop skill pattern (Ben AI) adopted",action:"shipped .claude/skills/de-slop"},
-    {date:"2026-06-21",title:"Matt Pocock agentic workflow (align→slice→verify)",action:"encoded grill-me + vertical-slice"},
-    {date:"—",title:"(weekly AI-trends scan not yet live)",action:"propose: research-agent weekly → optimize backlog"}
-  ]
-};
-let S = FALLBACK;
-const $=id=>document.getElementById(id);
-const sCls=s=>({live:"live",confirmed:"live",proposed:"prop",gated:"gated",idle:"idle"}[s]||"idle");
-const ragCls=s=>({green:"s-green",amber:"s-amber",red:"s-red"}[s]||"muted");
+const FB={meta:{updated:"2026-06-21",by:"seed"},
+runtimes:[{name:"Claude",role:"core",status:"live"},{name:"Codex",role:"bulk",status:"idle"},{name:"Gemini",role:"gen",status:"idle"},{name:"Hermes",role:"cron",status:"live"},{name:"Google",role:"workspace",status:"live"}],
+conductor:{k:"CoS",role:"Chief of Staff · COO — runs the operating rhythm",lead:"ros-conductor",status:"amber",ctx:"Reports to both principals. Daily cockpit · weekly review · quarterly OKRs.",loops:"weekly review · OKRs · ROS-CIL",skills:"weekly-review · okr-tracker · stakeholder-briefing"},
+meshes:[
+{k:"HV",role:"EU real-estate development",lead:"hv-orchestrator",status:"amber",fresh:"stale",pods:["sourcing","underwriting","permit","execution"],loops:"deal radar (stalled 06-05)",skills:"deal-analyzer · brrrr · wws · permit-pathway",ctx:"source → underwrite → permit → execute. NL-first, EU-pluggable."},
+{k:"EA",role:"security architecture",lead:"ea-lead",status:"red",fresh:"stale",pods:["per-client isolation — no pods"],loops:"on-demand",skills:"hld-writer · adr-writer · architecture-review",ctx:"ABN + Coca-Cola only. Client-confidential; confirm client first."},
+{k:"KK",role:"PA · second brain",lead:"kk-ops",status:"green",fresh:"fresh",pods:["Career","Research"],loops:"morning triage (live) · daily brief",skills:"inbox-manager · task-manager · research",ctx:"Autonomous manage + prepare; draft-first apply."},
+{k:"MKT",role:"brand · content",lead:"mkt-lead",status:"amber",fresh:"stale",pods:["content"],loops:"content cadence (proposed)",skills:"campaign-planner · copywriter · content-creator",ctx:"Guy brand + HollandVest; coordinates Arbor MKT."},
+{k:"FIN",role:"money · admin",lead:"fin-admin",status:"green",fresh:"stale",pods:[],loops:"deadline watch (proposed)",skills:"email-composer · notion-sync",ctx:"Invoices · tax · insurance. Amounts stated, L4 confirm."},
+{k:"PAI",role:"product AI · Arbor",lead:"arbor-orchestrator",status:"green",fresh:"fresh",pods:["19 Arbor pods","Arbor CIL"],loops:"Arbor CIL eval 2×/day · build 2×/wk",skills:"prd-generator · the mesh",ctx:"Arbor live in prod; self-improving via its own CIL."}],
+loops:[
+{name:"KK Gmail triage — morning routing",owner:"KK",cad:"weekdays 08:30 / 13:30 / 18:30",status:"live",id:"333eaf638d76"},
+{name:"Career job-sourcing sprint",owner:"Career",cad:"Mon · Thu 09:00",status:"live",id:"4fc75fbfad30"},
+{name:"Arbor CIL — eval",owner:"PAI",cad:"twice daily 03:00 / 15:00",status:"confirmed",id:"cloud"},
+{name:"Arbor CIL — build wave",owner:"PAI",cad:"Mon · Thu 04:00",status:"confirmed",id:"cloud"},
+{name:"ROS-CIL — company self-audit",owner:"CoS",cad:"weekly light / monthly deep",status:"proposed",id:"/ros-improve"},
+{name:"Command Center refresh",owner:"CoS",cad:"daily AM",status:"proposed",id:"build-state + radar"},
+{name:"HV deal radar",owner:"HV",cad:"daily (revive)",status:"proposed",id:"stalled 06-05"},
+{name:"KK daily brief → Notion",owner:"KK",cad:"daily AM",status:"proposed",id:"live-tested 06-21"},
+{name:"AI-trends watch → optimize",owner:"CoS",cad:"weekly",status:"proposed",id:"/ai-trends-watch"}],
+notion:{cockpit:"https://app.notion.com/p/2b4f37e231fe801c8495dea36d0efd4d",
+para:[{p:"Projects",name:"Projects",url:"https://app.notion.com/p/2b4f37e2-31fe-8129-8ed4-d6363bf11a86"},{p:"Areas",name:"Areas / Domains",url:"https://app.notion.com/p/2b4f37e2-31fe-81c6-8daf-d7b519e4cc40"},{p:"Resources",name:"Notes / Knowledge",url:"https://app.notion.com/p/2b4f37e231fe81ab81e5c92782f8daa3"},{p:"Archive",name:"archive.md (ROS Markdown)",url:""}],
+hv:["Deals","Properties","Vendors","Capital & Financing","Documents","HV Tasks","HV Areas"]},
+standards:[
+{name:"de-slop",what:"The output standard. Kills AI-slop, enforces accuracy + density + voice. The VERIFY gate on every deliverable.",cmd:"/de-slop"},
+{name:"grill-me",what:"Align before planning: interview, recommend, surface hidden decisions. The front of the loop.",cmd:"/grill-me"},
+{name:"vertical-slice",what:"Ship one real artifact end-to-end, get judged, feed back. The antidote to sprawl.",cmd:"/vertical-slice"},
+{name:"universal loop",what:"SENSE → FRAME → DESIGN → PRODUCE → VERIFY → DELIVER → LEARN, with a per-domain Definition-of-Done.",cmd:"00_System/agent-framework"}],
+trends:[
+{date:"2026-06-21",title:"De-slop skill pattern (Ben AI)",action:"adopted → /de-slop"},
+{date:"2026-06-21",title:"Matt Pocock agentic workflow (align → slice → verify)",action:"adopted → /grill-me + /vertical-slice"},
+{date:"weekly",title:"AI-trends watch loop",action:"/ai-trends-watch → ROS-BACKLOG (proposed cron)"}]};
+
+let S=FB;
+const $=s=>document.querySelector(s), el=(h)=>{const d=document.createElement('div');d.innerHTML=h;return d.firstElementChild};
+const ds=s=>({live:'live',confirmed:'live',proposed:'prop',gated:'gated',idle:'idle'}[s]||'idle');
+const rag=s=>({green:'rag-green',amber:'rag-amber',red:'rag-red'}[s]||'');
+const NAV=[['agents','◆','Agents'],['loops','↻','Loops'],['brain','◧','Brain · PARA'],['std','✶','Standard'],['trends','◈','AI trends']];
+const SUB={agents:'the org: conductor + domain meshes',loops:'what runs on a clock — and what is built but awaiting your go',brain:'Notion (PARA) is canonical; this OS sits on top',std:'how every output is held to a bar, and how work is run',trends:'keep the LLM-agnostic OS current'};
 
 function render(){
-  $("runtimes").innerHTML = S.runtimes.map(r=>
-    `<span class="chip"><span class="dot ${r.status=='live'?'live':'idle'}"></span><b>${r.name}</b> ${r.role}</span>`).join("");
+  $('#rt').innerHTML=S.runtimes.map(r=>`<div class="item ${r.role=='core'?'core':''}"><span class="dot ${r.status=='live'?'live pulse':'idle'}"></span><span class="nm">${r.name}</span><span class="ro">${r.role}</span></div>`).join('');
+  $('#nav').innerHTML=NAV.map((n,i)=>`<button class="nv" role="tab" data-v="${n[0]}" aria-current="${i==0}"><span class="ic">${n[1]}</span>${n[2]}<span class="ct" data-ct="${n[0]}"></span></button>`).join('');
+  const liveN=S.loops.filter(l=>l.status=='live'||l.status=='confirmed').length;
+  const freshN=S.meshes.filter(m=>m.fresh=='fresh').length;
+  $('[data-ct="agents"]').textContent=S.meshes.length;
+  $('[data-ct="loops"]').textContent=S.loops.length;
+  $('#pulse').innerHTML=`<span class="seg"><span class="dot live pulse"></span><b>${liveN}</b> loops live</span><span class="seg"><b>${freshN}/${S.meshes.length}</b> domains fresh</span><span class="seg mono">${S.meta.updated}</span>`;
   const c=S.conductor;
-  $("conductor").innerHTML = card(c,true);
-  $("meshes").innerHTML = S.meshes.map(m=>card(m,false)).join("");
-  $("loops").innerHTML = S.loops.map(l=>
-    `<div class="row"><div><span class="dot ${sCls(l.status)}"></span>${l.name} <span class="cad">· ${l.owner}</span></div>
-     <div style="text-align:right"><div class="cad">${l.cad}</div><div class="mono" style="color:var(--t3s)">${l.status} · ${l.id}</div></div></div>`).join("");
-  $("brain").innerHTML =
-    `<div class="row"><b>🧠 Command Center</b><a href="${S.notion.cockpit}" target="_blank">open in Notion →</a></div>`+
-    S.notion.para.map(d=>`<div class="row"><div><span class="mono" style="color:var(--violet)">${d.p}</span> &nbsp;${d.name}</div>${d.url?`<a href="${d.url}" target="_blank">open →</a>`:'<span class="cad">local</span>'}</div>`).join("")+
-    `<div class="row"><div class="muted">HV databases</div><div class="cad">${S.notion.hv.join(" · ")}</div></div>`;
-  $("standards").innerHTML = S.standards.map(s=>
-    `<div class="card"><div class="k" style="font-size:13px">${s.name}</div><div class="role">${s.what}</div><div class="lead">${s.cmd}</div></div>`).join("");
-  $("trends").innerHTML = S.trends.map(t=>
-    `<div class="row"><div>${t.title} <span class="cad">· ${t.date}</span></div><div class="cad">${t.action}</div></div>`).join("");
-  $("foot").innerHTML = `state updated ${S.meta.updated} · by ${S.meta.by} · LLM-agnostic OS on Claude(core)+Codex+Gemini+Hermes+Google · Notion = PARA second brain`;
+  $('#cond').innerHTML=`<div class="cond"><span class="k ${rag(c.status)}">${c.k}</span><div class="meta"><div class="role">${c.role}</div><div class="lead">${c.lead}</div></div><div class="loops mono">${c.loops}</div></div>`;
+  $('#meshes').innerHTML=S.meshes.map((m,i)=>`<button class="mesh" data-i="${i}"><span class="fr"><span class="dot ${m.fresh=='fresh'?'live':'idle'}"></span>${m.fresh}</span><div class="top"><span class="k ${rag(m.status)}">${m.k}</span></div><div class="role">${m.role}</div><div class="lead">${m.lead}</div><div class="pods">${(m.pods||[]).map(p=>`<span class="pod">${p}</span>`).join('')}</div></button>`).join('');
+  $('#loops').innerHTML=S.loops.map(l=>`<div class="row"><span class="dot ${ds(l.status)} ${l.status=='live'?'pulse':''}"></span><span class="nm">${l.name}</span><span class="meta"><div class="cad">${l.cad} · ${l.owner}</div><div class="id">${l.id}</div></span><span class="tag ${ds(l.status)}">${l.status}</span></div>`).join('');
+  $('#brain').innerHTML=`<div class="row"><span class="nm">🧠 Command Center</span><span class="meta"><a href="${S.notion.cockpit}" target="_blank" rel="noopener">open in Notion →</a></span></div>`+
+    S.notion.para.map(d=>`<div class="row"><span class="para">${d.p}</span><span class="nm">${d.name}</span><span class="meta">${d.url?`<a href="${d.url}" target="_blank" rel="noopener">open →</a>`:'<span class="id">local Markdown</span>'}</span></div>`).join('')+
+    `<div class="row"><span class="para">HV</span><span class="id">${S.notion.hv.join(' · ')}</span></div>`;
+  $('#std').innerHTML=S.standards.map(s=>`<div class="std"><div class="h">${s.name}</div><div class="w">${s.what}</div><div class="cmd">${s.cmd}</div></div>`).join('');
+  $('#trends').innerHTML=S.trends.map(t=>`<div class="row"><span class="nm">${t.title}</span><span class="meta"><div class="cad">${t.action}</div><div class="id">${t.date}</div></span></div>`).join('');
+  $('#foot').innerHTML=`state ${S.meta.updated}<br>Claude·Codex·Gemini<br>Hermes·Google<br>Notion = PARA brain`;
 }
-function card(m,isCond){
-  const pods=(m.pods||[]).map(p=>`<span class="pod">${p}</span>`).join("");
-  return `<div class="card ${isCond?'':'click'}" ${isCond?'':`onclick='openD(${JSON.stringify(m).replace(/'/g,"&#39;")})'`}>
-    ${m.fresh?`<span class="fresh">${m.fresh=='stale'?'⚠ stale':'● fresh'}</span>`:''}
-    <span class="k ${ragCls(m.status)}">${m.k}</span>
-    <div class="role">${m.role}</div>
-    <div class="lead">${m.lead}</div>
-    ${pods?`<div class="pods">${pods}</div>`:''}
-  </div>`;
-}
-function openD(m){
-  $("dbody").innerHTML = `<h2 class="${ragCls(m.status)}">${m.k}</h2><div class="role">${m.role}</div>
-    <div class="kv"><span class="h">Lead</span><span class="mono">${m.lead}</span></div>
-    <div class="kv"><span class="h">Context</span>${m.ctx||''}</div>
-    <div class="kv"><span class="h">Pods</span>${(m.pods||[]).join(" · ")||'—'}</div>
-    <div class="kv"><span class="h">Loops</span>${m.loops||'—'}</div>
-    <div class="kv"><span class="h">Skills</span>${m.skills||'—'}</div>
-    <div class="kv"><span class="h">Freshness</span>${m.fresh||'—'}</div>`;
-  $("drawer").classList.add("on");
-}
-function closeD(){$("drawer").classList.remove("on")}
-const TABS=[["agents","Agents"],["loops","Loops"],["brain","Brain · PARA"],["std","Standard"],["trends","AI trends"]];
-$("tabs").innerHTML = TABS.map((t,i)=>`<div class="tab ${i==0?'on':''}" data-v="${t[0]}">${t[1]}</div>`).join("");
-$("tabs").onclick=e=>{const t=e.target.closest(".tab");if(!t)return;
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));t.classList.add("on");
-  document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));$("v-"+t.dataset.v).classList.add("on");};
-fetch("state.json").then(r=>r.ok?r.json():null).then(j=>{if(j)S=j;render();}).catch(()=>render());
+function openD(i){const m=S.meshes[i];$('#dbody').innerHTML=`<h2 class="${rag(m.status)}">${m.k}</h2><div class="kv v" style="margin:2px 0 0">${m.role}</div>
+  <div class="kv"><span class="h">Lead</span><span class="v mono">${m.lead}</span></div>
+  <div class="kv"><span class="h">Mandate</span><span class="v">${m.ctx||''}</span></div>
+  <div class="kv"><span class="h">Pods</span><span class="v">${(m.pods||[]).join(' · ')||'—'}</span></div>
+  <div class="kv"><span class="h">Loops</span><span class="v">${m.loops||'—'}</span></div>
+  <div class="kv"><span class="h">Skills</span><span class="v mono">${m.skills||'—'}</span></div>
+  <div class="kv"><span class="h">Memory freshness</span><span class="v">${m.fresh}</span></div>`;
+  $('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('on');}
+function closeD(){$('#drawer').classList.remove('on');$('#drawer').setAttribute('aria-hidden','true');$('#scrim').classList.remove('on');}
+document.addEventListener('keydown',e=>{if(e.key=='Escape')closeD()});
+$('#nav').addEventListener('click',e=>{const b=e.target.closest('.nv');if(!b)return;const v=b.dataset.v;
+  document.querySelectorAll('.nv').forEach(x=>x.setAttribute('aria-current',x===b));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));$('#v-'+v).classList.add('on');
+  $('#vtitle').textContent=(NAV.find(n=>n[0]==v)||['','',v])[2];$('#vsub').textContent=SUB[v];});
+document.addEventListener('click',e=>{const m=e.target.closest('.mesh');if(m)openD(+m.dataset.i)});
+fetch('state.json').then(r=>r.ok?r.json():null).then(j=>{if(j)S=j;render();}).catch(()=>render());
 render();
 </script>
 </body>
