@@ -3,6 +3,8 @@
 
 Read `EA/MEMORY.md` at session start when in EA context.
 
+**Agent mesh:** EA runs as the [EA Architecture Mesh](mesh/MESH.md) under the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md) — single lead `ea-lead` (no pods, by design: per-client confidential isolation), the universal loop, and the EA Definition-of-Done gate.
+
 ## Shared capabilities
 
 Inherits `/00_System/agent-capabilities.md`: web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.

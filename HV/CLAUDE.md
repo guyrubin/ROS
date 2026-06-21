@@ -3,6 +3,8 @@
 
 Read `HV/MEMORY.md` at session start when in HV context.
 
+**Agent mesh:** HV runs as the [HV Deal Mesh](mesh/MESH.md) under the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md) — lead `hv-orchestrator` + pods `hv-sourcing` / `hv-underwriting` / `hv-permit`, the universal loop, and the HV Definition-of-Done gate. Dispatch the mesh for any full deal/IC question.
+
 ## Shared capabilities
 
 Inherits `/00_System/agent-capabilities.md`: web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.

@@ -1,5 +1,44 @@
 # PAI Memory
-Last updated: 2026-06-17
+Last updated: 2026-06-21
+
+## Updates [2026-06-21] — Arbor Continuous Improvement Loop (CIL) designed + scaffolded
+
+- Built the **autonomous self-improvement loop** for Arbor (the eval half of the Agent Mesh): a critic panel (IA/UX, language+Hebrew/RTL, bugs, capability-vs-market, marketing, + DevSecOps audit) inspects the live app, `arbor-evaluator` scores + **adversarially verifies** findings into `mesh/improvement/IMPROVEMENT-BACKLOG.md`, then `arbor-orchestrator` builds the top `safe` items **to green on a branch** and the critics **re-confirm** the fix.
+- **Autonomy = find + fix-to-green-on-branch; merge+deploy stay human.** Safety/consent/billing/image-gen-cost/child-data = `gated`, never auto-built. Cadence = nightly eval + weekly build. Driver = workflow `/arbor-improve` (`.claude/workflows/arbor-improve.workflow.js`); crons specced (SCHEDULED-LOOPS.md) but **not live until Guy confirms**. Docs: `mesh/improvement/`; CHARTER §3.6 now sanctions it. No live run yet.
+
+## Updates [2026-06-21] - Arbor Academy + Practice visual/game engine live
+
+- **Production shipped:** Firebase Hosting now serves Arbor build `index-C1t1FsRy.js` with service worker stamp `arbor-shell-mqn1e37w-olwyu4`; Cloud Run API revision `arbor-api-00072-bdb` serves the upgraded Academy story prompt. Verified live chunks include `HeroJourneyTab-Dr8UoCjA.js` with the Story Engine and `GameScenePanel-oLJxtILB.js` with the Mission Engine.
+- **What changed:** Practice game interiors now get a visible next-gen Mission Engine layer (foundation image + avatar scene, archetype, conflict, action, real-world bridge, viral win loop); hidden/deep-linked Missions also gets the new game-stage treatment. Academy stories now get a Story Engine layer, versioned visual foundations, stronger avatar embedding, and a stricter read-aloud prompt to avoid generic moral summaries.
+- **Cache fix:** visual foundations now use a `nextgen-20260621-01` asset version, and the service worker is network-first for `/assets/` and `/visuals/` so production refreshes game/story visuals instead of holding stale foundations.
+
+## Updates [2026-06-17] — Arbor WAF migration: blueprint + Wave 0 executed
+
+- **What:** ran two autonomous multi-agent workflows to harden Arbor to top-tier Well-Architected (maturity 2.8/5 → target) for the **NL + IL** launch markets — gradual, cost-efficient, conflict-aware. Plan doc: `PAI/projects/parenting-os-plugin/arbor-waf-migration-plan.md`. Full artifacts in the Arbor repo `PPPPtherapy-/PPPPtherapy-/docs/architecture/migration-2026-06-17/`.
+- **Blueprint (17-agent):** build-ready specs for all **44 missions** (OPS/SEC/REL/PERF/COST/AI/CMP) + adversarial verdicts + shared-file conflict map → **5-wave** plan. Critical path = the "API spine" (`routes/api.ts` + `createApp.ts`); everything else parallelizes in 5 disjoint-file tracks. Consumer launch unlocks end of W2; B2G at W4.
+- **Wave 0 EXECUTED (13-agent):** all collision-free missions authored drop-in (DPIA, RoPA/DPA, incident+breach runbook w/ NL-72h + IL-PPA + Hebrew, change-gate, backup/DR, SLO/SLI, CMEK eval=defer, WIF script, budget script, k6 load-test, model-fitness ADR, OPS-1 observability + 5 new modules at `app/src/lib/observability/`, 26/26 tests). **Zero tracked files modified, no git/gcloud/deploy.** Apply gates: `wave-0/WAVE-0-APPLY.md`.
+- **Lean-cost stance locked:** no Redis, no Sentry, CMEK deferred to a paying B2G contract; `min-instances=1` is the only deliberate recurring spend.
+- **Blocked:** W1+ are code on the API spine → need an **isolated clean baseline** (the live billing session holds a dirty `feat/arbor-billing-mon2` tree). Open decision: stand up a **dedicated isolated Arbor repo** for migration execution (aligns w/ the 2026-05-30 consolidate-to-`Arbor` intent).
+- **Concurrency rule still in force:** other sessions edit the Arbor tree — stay in lane, never `git add -A`, fetch + check status first.
+
+## Updates [2026-06-17] — Content system + Development Score + milestone re-base (on main, NOT yet deployed)
+
+- **Context:** acted on the updated PRD (`PRDs/PRD_2026-06-17_avatar-games-growth.md`) + this session's content-gap analysis ("nothing for 1.5/2yo, no get-ready-for-school"). Ran ONE backlog of 6 tasks, all in the **content/growth lane** — deliberately clear of the concurrent **codex avatar/Gemini/payments session** (stayed in `playbank/` + `growth/` + my own components; staged only my files, never `git add -A`).
+- **Shipped to `main` (commits `9536982` + `cc4c627`, pushed; tsc clean, 215 tests):**
+  1. **Micro-stage taxonomy** (`playbank/stages.ts`, 7 tests) — 12 windows; `ageToStage(1.5)`=18-24m. Optional `stages` field on activities.
+  2. **Coverage map** (`playbank/coverage.ts`, 6 tests) — stage×domain grid + gap finder (makes content holes visible).
+  3. **+8 activities** for 12-30mo + early infant (20 total), stage-tagged, en+he.
+  4. **Readiness tracks** (`playbank/courses.ts`) — goal axis + 3 tracks (Get ready for school / new sibling / calmer bedtimes), chooser in Grow › Daily Play, en+he. Fills the "get-ready-for-school" gap.
+  5. **Development Score** (PRD C4, `growth/devScore.ts` pure +8 tests) — per-domain score from milestones reached + weekly-snapshot trend + "nurture next"; `DevScoreCard.tsx` atop My Child › Development, en+he. (Distinct from the practice-consistency score; non-diagnostic.)
+  6. **Milestone re-base** (PRD C1, data-only `initialData.ts`) — +36 CDC/AAP-2022 75th-percentile milestones birth-3y incl. CDC-2022 15- & 30-month checkpoints + ASHA, mapped to the six domains (was only 4-6y).
+- **NOT deployed:** the working tree holds codex's uncommitted avatar WIP (`types.ts`, `modelRouter`, `ProfileEditDrawer`, `AvatarCreator`, `HeroScenePlayer`…). Deploying from it would ship the half-done avatar or require stashing codex's active work. My content is safe on `main`; **deploy once codex's avatar batch lands too (one clean release)**.
+- **Follow-ups:** age-scope DevScore to match the age-filtered Milestones view; potty readiness track (no supporting activities yet); the rest of the PRD growth-loop (JITAI C3, red-flag C5).
+
+## Updates [2026-06-17] — Daily Play Courses + AI token-resilience landed live
+
+- **Concurrent-session reconciliation:** a codex session was actively writing Arbor AI files. Verified I was on the best version (`main`), then committed + shipped codex's work I found uncommitted: `bc2f3aa` (fail-closed prod auth config in `firebase.ts`/`App.tsx` — clear "sign-in not configured" screen instead of the prod "Sandbox Parent" bug; multimodal Gemini routing fix `modelRouter.modelForGeminiRequest`; `build:hosting:prod` env guard) and `a6eb6e2` batch-2 (codex AI token-resilience: `ai/modelRetry.ts`, `claudeVertexProvider.ts`, `memory/memoryService.ts`, env/api). **Lesson: codex sessions run concurrently — always `git fetch` + check `git status` before `git add -A` so you don't sweep WIP into your commit (I amended a commit to credit both honestly).**
+- **New feature — Daily Play Courses** (Phase-2, in `a6eb6e2`): `app/src/playbank/courses.ts` (pure, 6 tests) = 4 challenge tracks sequencing existing activities, `recommendCourse(concernDomains)` matched to the child's top logged concern (the moat), `courseProgress`. `CourseCard.tsx` in Grow › Daily Play: progress bar, ordered days, next day expanded with steps, per-activity done toggles persist per child/course. Fully bilingual (en+he, RTL verified). Fixed a nested-`<button>` HTML bug.
+- **Live on `main`:** https://arborprd-westeu.web.app (home 200 / api 401, asset index-Dte2Nrqz). tsc clean, **174 tests pass**. Phase-2 remaining: AI-generated activities, send-to-Arbor-expert marketplace.
 
 ## Updates [2026-06-17] - Arbor marketing + SEO/AEO foundation live
 
@@ -17,6 +56,8 @@ Last updated: 2026-06-17
   pages with JSON-LD graphs, social metadata,
   WebPage/CollectionPage/Article/Breadcrumb schema, and AI-crawler-friendly
   robots rules. Live checks returned `200` and parseable JSON-LD.
+- **Multimodal tasks configured:** Added `options.images` support to Gemini JSON generation/streaming for both `gemini_dev` and `vertex` providers in [modelRouter.ts](file:///c:/Users/dguyr/ROS/PPPPtherapy-/PPPPtherapy-/app/src/ai/modelRouter.ts). Image-bearing requests are forced through Gemini even when the normal route maps to Claude, and `/api/vision` is now covered by the AI quota guardrail. Verified live via [vision-smoke.mts](file:///c:/Users/dguyr/ROS/PPPPtherapy-/PPPPtherapy-/app/scripts/vision-smoke.mts); 2026-06-17 local test/lint/build green after routing hardening.
+- **Production auth root cause identified:** The live app showed `Sandbox Parent` and `/api/chat` returned `Missing Authorization bearer token` because Firebase Hosting was built without `VITE_FIREBASE_*` client config while Cloud Run had `REQUIRE_AUTH=true`. Added a hosted-production fail-closed auth config screen, clearer chat auth error copy, and `npm run build:hosting:prod` to block future hosting builds without Firebase client env.
 - **Domain decision:** Use a local Israeli domain for public launch:
   `arbor.co.il` if available, then `getarbor.co.il` or `hellarbor.co.il`. Keep
   `web.app` as the technical origin until the domain is purchased, verified in
@@ -65,7 +106,7 @@ Active facts only. Completed execution history → [[PAI/archive|PAI Archive]].
 ## Active ventures
 
 ### Arbor — AI parenting / child-development platform
-- Status: **Active | Private Beta Build — v2 architecture on a local unmerged branch, runs locally**
+- Status: **Active | Live in production at https://arborprd-westeu.web.app (Firebase Hosting + Cloud Run); private beta. v2 architecture is long since on `main` and deployed — see the dated update log above for current build state. The "local unmerged branch / AI disabled / gcloud missing" notes in the 2026-06-03 and earlier blocks below are historical and superseded.**
 - Positioning: Developmental operating system for modern families (birth–age 12)
 - **Published `main` (CURRENT, verified 2026-06-14):** `guyrubin/PPPPtherapy-` `main` @ `f019b86` — deployed live at https://arborprd-westeu.web.app. See the 2026-06-14 update at the top. (The 04cc2c7 / "v2 on an unmerged branch" / "AI disabled" / "gcloud missing" notes in the rest of THIS 2026-06-03 block are historical and superseded — v2 is long since on main, prod is live, gcloud+firebase are authed via ADC.)
 - **Local working clone:** `C:\Users\dguyr\ROS\PPPPtherapy-\PPPPtherapy-` is currently on branch **`codex/arbor-v2-architecture-foundation` @ `42997e3`** — 6 commits ahead of `origin/main`, with uncommitted changes AND untracked files. v2 architecture is on this branch, **not yet merged to `main`**.

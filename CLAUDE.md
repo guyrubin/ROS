@@ -1,7 +1,7 @@
 # Rubin OS - Root Constitution
 
-**Version:** 1.6
-**Last updated:** 2026-06-14
+**Version:** 1.7
+**Last updated:** 2026-06-21
 
 ## Session Boot Sequence
 
@@ -20,8 +20,10 @@ Follow the **canonical boot sequence in `/AGENTS.md`** — it is the single sour
 | AI products, PRDs, GTM, pricing, ventures | PAI | `PAI/CLAUDE.md` + `PAI/MEMORY.md` |
 | Content, copy, campaigns, brand, social | MKT | `MKT/CLAUDE.md` + `MKT/MEMORY.md` |
 | Invoices, insurance, contracts, tax, admin | FIN | `FIN/CLAUDE.md` + `FIN/MEMORY.md` |
+| Job search, CV, applications, recruiters, work permit | Career (KK-owned sub-mesh) | `KK/job-automation/MESH.md` |
+| Sourced research, due diligence, fact-checked briefs | research-agent (KK-owned) | `KK/research/MESH.md` |
 
-Full keyword routing rules live in `/00_System/routing.md`.
+Full keyword routing rules live in `/00_System/routing.md`. Every domain runs as an agent environment under the **ROS Agent Framework** (`/00_System/agent-framework/`): a lead + optional pods + the universal loop + a domain Definition-of-Done. Dispatch a mesh lead from `/.claude/agents/ros/`, or `ros-conductor` for cross-domain work.
 
 ## Email Identity and Safety
 
@@ -71,6 +73,7 @@ ROS uses an LLM-maintained wiki approach:
 | Session Audit | `/00_System/session-audit.md` |
 | Instruction Standards | `/00_System/markdown-instruction-principles.md` |
 | Layer Model | `/00_System/layer-model.md` |
+| Agent Framework | `/00_System/agent-framework/README.md` |
 
 ## Token Optimization Rules
 

@@ -3,6 +3,8 @@
 
 Read `CoS/MEMORY.md` at session start when in CoS context.
 
+**Agent mesh:** CoS runs as the [Conductor Mesh](mesh/MESH.md) — the Tier-1 portfolio conductor of the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md). Dispatch `ros-conductor` for cross-domain work; it frames and sequences, then dispatches the domain leads (`hv-orchestrator`, `ea-lead`, `kk-ops`, `mkt-lead`, `fin-admin`, `career-orchestrator`, `arbor-orchestrator`) and `research-agent`, and synthesizes status up.
+
 ## Shared capabilities
 
 Inherits `/00_System/agent-capabilities.md`: web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.
@@ -60,6 +62,13 @@ Before any CoS output, use `<thinking>` tags to assess:
 | Exec briefing / board update | stakeholder-briefing |
 | Email correspondence | `himalaya` — Gmail `bguy` |
 | Notion projects/tasks/dashboards | `productivity/notion` |
+
+## Arbor Agent Mesh (portfolio oversight)
+
+CoS is the **portfolio owner** of the Arbor Agent Mesh (product owner = PAI). The Mesh's `arbor-orchestrator` reports wave roll-ups up to CoS; CoS holds final green-gate sign-off for prod waves and flags cross-domain conflicts (Guy's time, shared budget, sequencing). Track Arbor Mesh waves like any other project (Green/Amber/Red). It runs **on-demand only** — never auto-triggered.
+
+- Charter + state: `/PAI/projects/parenting-os-plugin/mesh/CHARTER.md`, `mesh/MEMORY.md`
+- Escalations that reach CoS: Level 3–5 (prod deploy, paid spend, store submission, child-data) and any blocked-on-Guy decision surfaced in a wave roll-up.
 
 ## CoS operating rules
 

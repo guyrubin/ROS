@@ -1,5 +1,8 @@
 # Coca-Cola — Workplace Context
 Last updated: 2026-06-04
+Reviewed: 2026-06-21
+<!-- Mandatory first read for Coca-Cola EA work (EA/mesh/MESH.md gate). -->
+
 
 > Live in the [[../../../CoS/projects/guy-command-center/Command Center - Obsidian Entry|Command Center]] → EA Client Cockpit (Coca-Cola tab). Engagement state mirrors `CoS/projects/guy-command-center/state.json`.
 

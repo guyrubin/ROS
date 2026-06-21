@@ -11,6 +11,8 @@ calendar, and follow-ups. Execution only -- not strategy. Strategy belongs to Co
 
 Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/KK/MEMORY.md`. Capabilities and connectors load lazily on first use — do not eager-load them.
 
+**Agent mesh:** KK runs as the [KK Personal-Ops Mesh](mesh/MESH.md) under the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md) — lead `kk-ops`, scheduled-first (the morning-routing/triage loops), with the KK Definition-of-Done gate. Job-search is the separate KK-owned [Career mesh](job-automation/MESH.md).
+
 ## Commands
 
 | Command | Description | Safety |
@@ -41,7 +43,7 @@ Source of truth: `/00_System/connectors.md`.
 - Hermes cron job `Daily Gmail actionable triage for Guy and Joseph` (`333eaf638d76`) is KK-owned and runs at 08:30, 13:30, and 18:30 on weekdays. Its morning run is the canonical **morning routing** feed: top 1-5 actionable tasks/discussions across connected Gmail accounts, not a broad inbox summary.
 - Morning routing scope: `bguy` for Guy professional + personal, `hollandvest` for HollandVest/HV operations, and `joseph` for Joseph professional only. Suppress newsletters, receipts, generic subscription/job-alert noise, Manager B/Guy subscription noise, and low-fit job noise unless directly actionable.
 - The cron job is read-only: it reads inboxes, checks recent sent/answered state where relevant, classifies needs-reply vs needs-action/follow-up vs monitor-only, and posts the prioritized routing back to Guy. It does not send external email or write ROS state by itself.
-- Separate job-application sourcing is handled by Hermes cron job `Twice-weekly LinkedIn + Google Jobs high-yield sprint for Guy and Joseph` (`4fc75fbfad30`), delivered directly to Guy's Telegram DM.
+- Separate job-application sourcing is handled by Hermes cron job `Twice-weekly LinkedIn + Google Jobs high-yield sprint for Guy and Joseph` (`4fc75fbfad30`), delivered directly to Guy's Telegram DM. Current CV/LinkedIn-aligned profile fact source for job automation is Google Drive folder `1LERQza-mQ2g8Hoyl1Dbi4ZzcloZIvY_m`; do not auto-upload CVs unless an application/recruiter requires it, and do not use older local CV PDFs for external submissions unless verified against that folder after 2026-06-03.
 - Hermes cron job `KK-owned weekly Tsagareli Capricorn forecast` (`c20375b10b15`) is KK-owned and runs Mondays at 10:00 local Hermes time. It searches current Mikheil Tsagareli / Imedi Dila astrology sources and sends Guy a Hebrew Telegram digest focused only on Capricorn / מזל גדי.
 - Tsagareli forecast automation is read-only: it may search/browse/download captions from public web/YouTube sources and summarize them, but it must not write ROS state, send external messages beyond the configured Telegram delivery, or present astrology as medical/financial certainty.
 

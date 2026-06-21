@@ -26,6 +26,16 @@ state.json.actionQueue[]  →  Hermes (WSL) or Claude (MCP) executes it
 - **EA Client Cockpit** (new): the active engagement — name, stack, RAG, phase, next decision, stakeholders, milestones — with one-click **Scaffold** (queues Drive folder + ROS folder + Notion row) and **HLD / ADR / Review / Kickoff / Meeting** actions wired to the EA skills and the EA sending identity.
 - **Connectors** now show real status from `state.json.integrations` (Gmail / Calendar / Drive / Notion = live via MCP; Tasks / Contacts / Slack = planned).
 
+## v3.1 — auto-fed from ROS memory (no more stale dashboard)
+
+`state.json` is no longer hand-maintained. **`build-state.mjs`** reads the live ROS domain memory and refreshes the cockpit:
+
+```
+node CoS/projects/guy-command-center/build-state.mjs
+```
+
+It pulls each domain's current **`Next:`** line from root `MEMORY.md`, stamps each domain with its `MEMORY.md` **freshness** (`updated` / `staleDays` / `stale` — a domain whose memory has gone quiet >14 days lights up as stale), adds an Arbor pulse from the mesh memory, and updates `meta`. It **preserves** the curated fields (clients, map, frontSeat, integrations, actionQueue). Re-run any time; make it a Hermes **morning cron** for a truly auto-fed dashboard (registered as a proposed loop in `/00_System/agent-framework/SCHEDULED-LOOPS.md`).
+
 ## Earlier (v2) capabilities, still here
 - **Primary model:** one front-seat mission, back-seat queue, trunk backlog
 - **Domains covered:** war/geopolitics signal, investments/HV, finance/admin, EA work, PAI ventures, travel, family, fitness, art/energy

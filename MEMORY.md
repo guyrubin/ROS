@@ -1,5 +1,5 @@
 # Rubin OS — Root Memory
-Last updated: 2026-06-17
+Last updated: 2026-06-21
 
 Read at session start. Write durable current facts here. Prescriptive behavior belongs in `CLAUDE.md`, `AGENTS.md`, system docs, or skills.
 
@@ -13,6 +13,7 @@ Read at session start. Write durable current facts here. Prescriptive behavior b
 - 2026-05-20 — ROS uses the whiteboard/archive pattern: active facts stay in `MEMORY.md`; stale/completed history moves to nearest `archive.md`.
 - 2026-05-20 — Hermes scheduled job `bc55de81f9f1` runs a read-only ROS weekly hygiene audit Mondays at 08:00 and reports findings without editing or pushing.
 - 2026-05-24 — Notion is the canonical surface for project and task dashboards (My Tasks DB + Command Center). Do not bootstrap parallel `TASKS.md` / `dashboard.html` from the productivity plugin; KK reads/writes tasks via the Notion connector.
+- 2026-06-21 — Every ROS domain runs as an **agent environment** under the **ROS Agent Framework** (`/00_System/agent-framework/`): a lead/orchestrator + optional pods + the universal loop (SENSE→FRAME→DESIGN→PRODUCE→VERIFY→DELIVER→LEARN) + a per-domain **Definition-of-Done** gate (the knowledge-work equivalent of Arbor's `npm test`). Meshes: CoS conductor (`ros-conductor`), HV (4-agent deal mesh), EA, KK, MKT, FIN, and PAI/Arbor (pre-existing). **KK (Guy's PA) also owns two sub-meshes:** Career/job-search (`KK/job-automation/MESH.md`) and Research (`KK/research/MESH.md`, `research-agent` — KK-owned but any domain may dispatch it). Each domain mesh spec = `<DOMAIN>/mesh/MESH.md`; runnable subagents in `/.claude/agents/ros/`. Scheduled/autonomous loops are registered + human-gated in `SCHEDULED-LOOPS.md` (4 live, all read-only; new ones spec'd-but-not-live until Guy confirms). Generalized from the Arbor Mesh pattern.
 
 ## People
 
@@ -32,19 +33,11 @@ Lead: Guy Rubin | Joseph only when explicitly involved
 Next: Track Coca-Cola employment contract and ABN onboarding steps; activate demand-aligned EA skill cards from `EA/frameworks/ea-skill-process-outcomes.md` for onboarding, current-state review, HLD, ADR/governance, compliance/control mapping, and executive briefs
 
 ### PAI — Ventures / AI Products
-Status: Active | Focus: Arbor parenting app — v2 architecture on a local unmerged branch, runs locally
-Marketing/current launch state [2026-06-17]: Arbor Hebrew/English marketing
-surface is live at `https://arborprd-westeu.web.app/marketing/` with SEO intent
-pages, guide hubs, `sitemap.xml`, `llms.txt`, AI-crawler-friendly `robots.txt`,
-and JSON-LD schema across 19 marketing pages. Next external step: buy/verify an
-Israeli domain (`arbor.co.il` preferred, then `getarbor.co.il` /
-`hellarbor.co.il`), connect it in Firebase Hosting, submit Search Console, then
-switch canonical/sitemap/LLM URLs to the custom domain.
-Published main (last verified): `guyrubin/PPPPtherapy-` main @ `04cc2c7` (10 routine plans). Local clone `C:\Users\dguyr\ROS\PPPPtherapy-\PPPPtherapy-` is on branch `codex/arbor-v2-architecture-foundation` @ `8a50d86` — v2 architecture + Firebase auth + terraform/Cloud Run scaffold now COMMITTED + pushed (2026-05-30). Branches `feat/six-frames` + `feat/arbor-next` also pushed.
-Reorg in progress: consolidating the 3 local clones → one at `PAI/arbor/` is BLOCKED while concurrent claude-code sessions hold the inner clone + `.workspace/`. GitHub rename `PPPPtherapy-`→`Arbor` pending (no `gh`; use web UI). Detail in [[PAI/MEMORY|PAI Memory]] Updates 2026-05-30.
-Run from `app/`: dev `npm run dev` (tsx server.ts) / prod `npm run start` → `http://localhost:3000`; ROS `.claude/launch.json` exposes `arbor-dev`/`arbor-prod`. AI disabled until real GEMINI_API_KEY in `app/.env.local`.
-Canonical surface = React app at `PPPPtherapy-/PPPPtherapy-/app/src/`; HTML files in `PAI/projects/parenting-os-plugin/html/` are legacy prototypes. Detail: [[PAI/MEMORY|PAI Memory]] + [[PAI/archive|PAI Archive]].
-Next: Commit/merge the v2 branch; add GEMINI_API_KEY to activate AI coach; decide cloud deployment target (Cloud Run scaffold present)
+Status: Active | Focus: Arbor — AI child-development platform for parents (birth–12), **live in production**
+Live at https://arborprd-westeu.web.app (Firebase Hosting + Cloud Run API `arbor-api`). Shipped & verified in prod: AI coach (Gemini/Vertex/Claude routing + token resilience), Academy Story Engine + Practice Mission Engine (2026-06-21), avatar + image generation, and the EN+HE marketing surface (SEO/AEO, 19 pages, `sitemap.xml`/`llms.txt`/JSON-LD).
+Repo `guyrubin/PPPPtherapy-`; canonical product = React app at `PPPPtherapy-/PPPPtherapy-/app/src/` (HTML in `PAI/projects/parenting-os-plugin/html/` is legacy prototypes). Run from `app/`: dev `npm run dev` / prod `npm run start`; ROS `.claude/launch.json` exposes `arbor-dev`/`arbor-prod`.
+Next: (1) iOS + Android store publishing — native Capacitor builds green in CI; only Apple/Google account-gated steps remain. (2) Buy/verify Israeli domain (`arbor.co.il`, else `getarbor.co.il`/`hellarbor.co.il`), connect in Firebase Hosting + Search Console, then switch canonical/sitemap/LLM URLs. (3) Viral GTM (€10k/6mo, Israel-first). Arbor Agent Mesh (multi-domain build/harden/grow) is scaffolded, on-demand only.
+Detail + dated update log: [[PAI/MEMORY|PAI Memory]] (current as of 2026-06-21) + [[PAI/archive|PAI Archive]].
 
 ### KK — Personal Ops
 Status: Active

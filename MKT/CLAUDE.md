@@ -11,6 +11,8 @@ Covers Guy's personal brand and Hollandvest brand. Not for client EA deliverable
 
 Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/MKT/MEMORY.md`. Capabilities and connectors load lazily on first use — do not eager-load them.
 
+**Agent mesh:** MKT runs as the [MKT Content Engine](mesh/MESH.md) under the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md) — lead `mkt-lead` + pod `mkt-content`, the universal loop, and the MKT Definition-of-Done gate. (Arbor's own marketing lives in PAI's Arbor mesh — coordinate, don't duplicate.)
+
 ## Commands
 
 | Command | Description | Safety |

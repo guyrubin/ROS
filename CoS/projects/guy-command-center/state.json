@@ -2,9 +2,10 @@
   "v": 3,
   "meta": {
     "owner": "Guy Rubin",
-    "updatedAt": "2026-06-01T09:00:00Z",
-    "updatedBy": "claude",
-    "note": "Canonical state for the ROS Command Center. Edited by Hermes (WSL), Claude (MCP/file), and the dashboard (proposes via actionQueue). See AGENT-SYNC.md for the contract."
+    "updatedAt": "2026-06-21T02:57:29.921Z",
+    "updatedBy": "generator (build-state.mjs)",
+    "note": "Auto-fed from ROS domain MEMORY.md. Freshness is git-derived per ROS-BACKLOG A1/A3. Curated fields preserved.",
+    "freshness": "git-derived (last commit) ∪ Reviewed: heartbeat"
   },
   "frontSeat": {
     "mission": "ABN AMRO onboarding: confirm scope + first security-architecture deliverable.",
@@ -12,42 +13,200 @@
     "startedAt": ""
   },
   "domains": [
-    { "k": "HV",  "t": "Investments / Real Estate", "s": "amber", "ctx": "Smart-living + dev-upside sourcing. Radar: Den Haag / Koningin Emmakade DD.", "file": "HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands.md" },
-    { "k": "EA",  "t": "Security Enterprise Architecture", "s": "red", "ctx": "Two engagements: ABN AMRO (Security EA — onboarding) + Coca-Cola (Infra & Security EA — in-flight). Protect deep work; close onboarding admin.", "file": "EA/MEMORY.md" },
-    { "k": "PAI", "t": "Ventures",                   "s": "amber", "ctx": "Arbor v2 branch + Firebase/Cloud Run scaffold; decide deploy + AI key.", "file": "PAI/MEMORY.md" },
-    { "k": "KK",  "t": "Personal Ops",               "s": "green", "ctx": "Inbox, calendar, school placement, travel, health — today's execution layer.", "file": "KK/MEMORY.md" },
-    { "k": "FIN", "t": "Finance / Admin",            "s": "green", "ctx": "Contracts, tax, insurance, subscriptions, personal-finance guardrails.", "file": "FIN/MEMORY.md" },
-    { "k": "MKT", "t": "Content / Brand",            "s": "amber", "ctx": "LinkedIn / job positioning, campaigns, thought leadership.", "file": "MKT/MEMORY.md" }
+    {
+      "k": "HV",
+      "t": "Investments / Real Estate",
+      "s": "amber",
+      "ctx": "Maintain [[HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands|Smart Living Deal Radar — Netherlands]]; current primary target is [[HV/03_Deals/Badhuiskade_217_Amsterdam_Noord|Badhuiskade 217]] pending viewing + DD.",
+      "file": "HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands.md",
+      "updated": "2026-05-20",
+      "staleDays": 32,
+      "stale": true,
+      "gitDate": "2026-05-20",
+      "reviewed": null
+    },
+    {
+      "k": "EA",
+      "t": "Security Enterprise Architecture",
+      "s": "red",
+      "ctx": "Track Coca-Cola employment contract and ABN onboarding steps; activate demand-aligned EA skill cards from `EA/frameworks/ea-skill-process-outcomes.md` for onboarding, current-state review, HLD, ADR/governance, compliance",
+      "file": "EA/MEMORY.md",
+      "updated": "2026-06-04",
+      "staleDays": 17,
+      "stale": true,
+      "gitDate": "2026-06-04",
+      "reviewed": null
+    },
+    {
+      "k": "PAI",
+      "t": "Ventures",
+      "s": "amber",
+      "ctx": "(1) iOS + Android store publishing — native Capacitor builds green in CI; only Apple/Google account-gated steps remain. (2) Buy/verify Israeli domain (`arbor.co.il`, else `getarbor.co.il`/`hellarbor.co.il`), connect in F",
+      "file": "PAI/MEMORY.md",
+      "updated": "2026-06-17",
+      "staleDays": 4,
+      "stale": false,
+      "gitDate": "2026-06-17",
+      "reviewed": null
+    },
+    {
+      "k": "KK",
+      "t": "Personal Ops",
+      "s": "green",
+      "ctx": "[update as tasks develop]",
+      "file": "KK/MEMORY.md",
+      "updated": "2026-05-20",
+      "staleDays": 32,
+      "stale": true,
+      "gitDate": "2026-05-20",
+      "reviewed": null
+    },
+    {
+      "k": "FIN",
+      "t": "Finance / Admin",
+      "s": "green",
+      "ctx": "Contracts, tax, insurance, subscriptions, personal-finance guardrails.",
+      "file": "FIN/MEMORY.md",
+      "updated": "2026-05-15",
+      "staleDays": 37,
+      "stale": true,
+      "gitDate": "2026-05-15",
+      "reviewed": null
+    },
+    {
+      "k": "MKT",
+      "t": "Content / Brand",
+      "s": "amber",
+      "ctx": "[update as campaigns develop]",
+      "file": "MKT/MEMORY.md",
+      "updated": "2026-05-15",
+      "staleDays": 37,
+      "stale": true,
+      "gitDate": "2026-05-15",
+      "reviewed": null
+    }
   ],
   "map": [
-    { "c": "war",    "i": "🛰️", "b": "War / Geopolitics", "e": "Conflicts, sanctions, supply shocks, AI/security shifts → decision impact only.", "sev": "amber" },
-    { "c": "inv",    "i": "📈", "b": "Investments",       "e": "HV pipeline, BRRRR math, asset watch, lender/tax risk → go / no-go.", "sev": "amber" },
-    { "c": "fin",    "i": "💶", "b": "Finance",           "e": "Cash, invoices, contracts, subscriptions, insurance, tax → next admin action.", "sev": "green" },
-    { "c": "travel", "i": "✈️", "b": "Travel",           "e": "Trips, schools, routes, docs. Rule: Brussels = Central/Midi, never CRL.", "sev": "green" },
-    { "c": "fit",    "i": "🏃", "b": "Fitness",           "e": "Move before 60m sitting, stretch, run, recovery. Calendar removes guilt.", "sev": "green" },
-    { "c": "fam",    "i": "👨‍👧", "b": "Family", "e": "Dylan schools, Keren visits, Hebrew/English, Amsterdam Noord proximity.", "sev": "green" },
-    { "c": "work",   "i": "🏗️", "b": "Work",       "e": "ABN AMRO (Security EA, onboarding) + Coca-Cola (Infra & Security EA). Architecture decisions, follow-ups.", "sev": "red" },
-    { "c": "art",    "i": "🎨", "b": "Art / Energy",      "e": "Quote, music, article/bookmark revival. Resilience fuel, not productivity.", "sev": "green" }
+    {
+      "c": "war",
+      "i": "🛰️",
+      "b": "War / Geopolitics",
+      "e": "Conflicts, sanctions, supply shocks, AI/security shifts → decision impact only.",
+      "sev": "amber"
+    },
+    {
+      "c": "inv",
+      "i": "📈",
+      "b": "Investments",
+      "e": "HV pipeline, BRRRR math, asset watch, lender/tax risk → go / no-go.",
+      "sev": "amber"
+    },
+    {
+      "c": "fin",
+      "i": "💶",
+      "b": "Finance",
+      "e": "Cash, invoices, contracts, subscriptions, insurance, tax → next admin action.",
+      "sev": "green"
+    },
+    {
+      "c": "travel",
+      "i": "✈️",
+      "b": "Travel",
+      "e": "Trips, schools, routes, docs. Rule: Brussels = Central/Midi, never CRL.",
+      "sev": "green"
+    },
+    {
+      "c": "fit",
+      "i": "🏃",
+      "b": "Fitness",
+      "e": "Move before 60m sitting, stretch, run, recovery. Calendar removes guilt.",
+      "sev": "green"
+    },
+    {
+      "c": "fam",
+      "i": "👨‍👧",
+      "b": "Family",
+      "e": "Dylan schools, Keren visits, Hebrew/English, Amsterdam Noord proximity.",
+      "sev": "green"
+    },
+    {
+      "c": "work",
+      "i": "🏗️",
+      "b": "Work",
+      "e": "ABN AMRO (Security EA, onboarding) + Coca-Cola (Infra & Security EA). Architecture decisions, follow-ups.",
+      "sev": "red"
+    },
+    {
+      "c": "art",
+      "i": "🎨",
+      "b": "Art / Energy",
+      "e": "Quote, music, article/bookmark revival. Resilience fuel, not productivity.",
+      "sev": "green"
+    }
   ],
   "tasks": {
     "back": [
-      { "t": "ABN AMRO: confirm onboarding scope + access + stakeholders", "d": 0, "domain": "EA" },
-      { "t": "ABN AMRO + Coca-Cola: create engagement Drive + ROS folders", "d": 0, "domain": "EA" },
-      { "t": "Coca-Cola: close contract/admin items", "d": 0, "domain": "EA" },
-      { "t": "Koningin Emmakade DD follow-up", "d": 0, "domain": "HV" }
+      {
+        "t": "ABN AMRO: confirm onboarding scope + access + stakeholders",
+        "d": 0,
+        "domain": "EA"
+      },
+      {
+        "t": "ABN AMRO + Coca-Cola: create engagement Drive + ROS folders",
+        "d": 0,
+        "domain": "EA"
+      },
+      {
+        "t": "Coca-Cola: close contract/admin items",
+        "d": 0,
+        "domain": "EA"
+      },
+      {
+        "t": "Koningin Emmakade DD follow-up",
+        "d": 0,
+        "domain": "HV"
+      }
     ],
     "trunk": [
-      { "t": "Notion dashboards polish", "d": 0, "domain": "CoS" },
-      { "t": "Arbor cloud deployment decision", "d": 0, "domain": "PAI" },
-      { "t": "Bookmark / article revival pack", "d": 0, "domain": "MKT" }
+      {
+        "t": "Notion dashboards polish",
+        "d": 0,
+        "domain": "CoS"
+      },
+      {
+        "t": "Arbor cloud deployment decision",
+        "d": 0,
+        "domain": "PAI"
+      },
+      {
+        "t": "Bookmark / article revival pack",
+        "d": 0,
+        "domain": "MKT"
+      }
     ]
   },
   "signals": [
-    { "sev": "amber", "t": "Rates / ECB watch", "s": "Refi gap sensitivity on HV deals — confirm before any go/no-go." },
-    { "sev": "green", "t": "Dutch housing policy", "s": "Wet betaalbare huur / WWS — monitor for ceiling shifts." },
-    { "sev": "red",   "t": "Geopolitics", "s": "Energy + supply shocks → only if it changes a Guy/HV/EA decision." }
+    {
+      "sev": "amber",
+      "t": "Rates / ECB watch",
+      "s": "Refi gap sensitivity on HV deals — confirm before any go/no-go."
+    },
+    {
+      "sev": "green",
+      "t": "Dutch housing policy",
+      "s": "Wet betaalbare huur / WWS — monitor for ceiling shifts."
+    },
+    {
+      "sev": "red",
+      "t": "Geopolitics",
+      "s": "Energy + supply shocks → only if it changes a Guy/HV/EA decision."
+    }
   ],
-  "fitness": { "move": 0, "stretch": 0, "run": 0 },
+  "fitness": {
+    "move": 0,
+    "stretch": 0,
+    "run": 0
+  },
   "sessions": 0,
   "lastDay": "",
   "clients": [
@@ -67,10 +226,22 @@
       "stakeholders": [],
       "tools": "confirm: ServiceNow / Azure DevOps / Confluence / Archi",
       "milestones": [
-        { "t": "Onboarding checklist + access provisioned", "d": 0 },
-        { "t": "Compliance / clearance docs captured", "d": 0 },
-        { "t": "Current-state security architecture review", "d": 0 },
-        { "t": "Target-state security HLD", "d": 0 }
+        {
+          "t": "Onboarding checklist + access provisioned",
+          "d": 0
+        },
+        {
+          "t": "Compliance / clearance docs captured",
+          "d": 0
+        },
+        {
+          "t": "Current-state security architecture review",
+          "d": 0
+        },
+        {
+          "t": "Target-state security HLD",
+          "d": 0
+        }
       ],
       "drive": "",
       "rosFolder": "EA/clients/ABN/",
@@ -94,10 +265,22 @@
       "stakeholders": [],
       "tools": "confirm: ServiceNow / Jira / Confluence / cloud consoles",
       "milestones": [
-        { "t": "Employment contract reviewed + signed", "d": 0 },
-        { "t": "Onboarding + access", "d": 0 },
-        { "t": "Infra & security baseline review", "d": 0 },
-        { "t": "Target-state HLD update", "d": 0 }
+        {
+          "t": "Employment contract reviewed + signed",
+          "d": 0
+        },
+        {
+          "t": "Onboarding + access",
+          "d": 0
+        },
+        {
+          "t": "Infra & security baseline review",
+          "d": 0
+        },
+        {
+          "t": "Target-state HLD update",
+          "d": 0
+        }
       ],
       "drive": "",
       "rosFolder": "EA/clients/Coca-Cola/",
@@ -108,12 +291,34 @@
   ],
   "actionQueue": [],
   "integrations": {
-    "gmail":    { "status": "live",    "via": "MCP (Claude) + Himalaya (Hermes)" },
-    "calendar": { "status": "live",    "via": "MCP (Claude); prefilled links (dashboard)" },
-    "drive":    { "status": "live",    "via": "MCP (Claude)" },
-    "notion":   { "status": "live",    "via": "MCP (Claude)" },
-    "tasks":    { "status": "planned", "via": "Google Tasks — not yet wired" },
-    "contacts": { "status": "planned", "via": "Google Contacts — not yet wired" },
-    "slack":    { "status": "planned", "via": "client-side — confirm with client" }
-  }
+    "gmail": {
+      "status": "live",
+      "via": "MCP (Claude) + Himalaya (Hermes)"
+    },
+    "calendar": {
+      "status": "live",
+      "via": "MCP (Claude); prefilled links (dashboard)"
+    },
+    "drive": {
+      "status": "live",
+      "via": "MCP (Claude)"
+    },
+    "notion": {
+      "status": "live",
+      "via": "MCP (Claude)"
+    },
+    "tasks": {
+      "status": "planned",
+      "via": "Google Tasks — not yet wired"
+    },
+    "contacts": {
+      "status": "planned",
+      "via": "Google Contacts — not yet wired"
+    },
+    "slack": {
+      "status": "planned",
+      "via": "client-side — confirm with client"
+    }
+  },
+  "arborPulse": "## Update [2026-06-21] — Marketing Registration-Engine wave PLANNED, BLOCKED on Bash/git sandbox - **Target:** P0 wave of `marketing/arbor-marketing-backlog-v2.md` on the live app (`PPPPtherapy-/PPPPtherapy-/app`): P0-2 referral reward gran"
 }

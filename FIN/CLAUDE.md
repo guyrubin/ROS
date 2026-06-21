@@ -11,6 +11,8 @@ Covers both Guy's professional invoicing and Hollandvest financial administratio
 
 Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/FIN/MEMORY.md`. Capabilities and connectors load lazily on first use — do not eager-load them.
 
+**Agent mesh:** FIN runs as the [FIN Admin Mesh](mesh/MESH.md) under the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md) — lead `fin-admin`, the universal loop, and the FIN Definition-of-Done gate (amounts stated, Level-4 confirm before any payment/commit).
+
 ## Commands
 
 | Command | Description | Safety |

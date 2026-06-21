@@ -9,6 +9,8 @@ Rubin OS (ROS) is a Markdown-first AI operating system shared by Claude/Cowork, 
 
 The filesystem is the stable context layer. Agents, models, tools, and runtimes may change; the ROS working tree remains the canonical interface for instructions, memory, routing, source context, and durable outputs.
 
+**ROS is model- and runtime-agnostic.** Use the best tool for each job — Claude Code (interactive + MCP), Codex (bulk code/file edits), Gemini (generation, multimodal, large-context; both principals' subscriptions), Hermes (WSL automation + scheduled loops). No capability is locked to one vendor; the filesystem + `state.json` are the shared contract so any runtime can pick up another's work. The goal is to **get the most out of every connected subscription, across both principals** (see `/00_System/principals.md`).
+
 See `/00_System/agent-filesystem-contract.md` for the full filesystem contract.
 
 ## Canonical workspace
@@ -27,6 +29,7 @@ All agents must operate on this single working tree. Do not create divergent ROS
 | Claude/Cowork | `C:\Users\dguyr\ROS` | Interactive ROS agent and legacy instruction consumer | `claude-cowork <claude-cowork@rubin-os.local>` |
 | Codex | `C:\Users\dguyr\ROS` | Coding/file-system agent in the shared Windows workspace | `codex-agent <codex@rubin-os.local>` |
 | Hermes | `/home/guyru/ROS` | WSL automation/runtime agent over the same working tree | `hermes-agent <hermes@rubin-os.local>` |
+| Gemini | `C:\Users\dguyr\ROS` / Gemini CLI · API | Model/runtime for generation, multimodal, and large-context work; Arbor model path (Vertex/AI-Studio); both principals' Gemini subscriptions | `gemini-agent <gemini@rubin-os.local>` |
 
 ## Boot sequence (canonical)
 
@@ -38,7 +41,8 @@ This is the single source of truth for context loading. `/CLAUDE.md`, `/00_Syste
 2. `/CLAUDE.md` — root instruction surface, regardless of model runtime.
 3. `/MEMORY.md` — root current memory.
 4. `/00_System/routing.md` — routing matrix.
-5. Route the request, then load only the matched domain's `CLAUDE.md` + `MEMORY.md`.
+5. `/00_System/principals.md` — confirm the **active principal** (Guy or Joseph): sets default identity, domain scope, and the confidentiality boundary.
+6. Route the request, then load only the matched domain's `CLAUDE.md` + `MEMORY.md`.
 
 **Lazy — load only when the task needs it:**
 
