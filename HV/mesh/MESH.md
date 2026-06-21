@@ -47,6 +47,16 @@ Turn raw market signal into investment-committee-grade decisions: source candida
 | Deal analysis / IC | on-demand | — | acts in-workspace | — |
 | HV Deal Radar | scheduled (proposed) | Weekly Mon | read-only | SCHEDULED-LOOPS.md |
 
+## Markets (EU-pluggable — NL-first)
+HV is built to become **the ultimate AI RE developer in the EU**, so `market` is a **parameter, not a hard-code**. NL is live and deep; other EU markets are config, not a rewrite.
+
+| Market | Status | Sourcing portals | Regulation model | Comps / permit regime |
+| :-- | :-- | :-- | :-- | :-- |
+| **NL** | ✅ Live | Funda · Pararius · Kadaster | WWS / Wet betaalbare huur · liberalisation | Kadaster comps · omgevingsvergunning / bestemmingsplan |
+| DE / BE / ES / PT … | 🔜 Config | _(per-market portals)_ | _(per-market rent/tax law)_ | _(per-market comps + permit)_ |
+
+Each pod scopes its work to the active market: `hv-sourcing` uses that market's portals + buy-box; `hv-underwriting` its rent/tax model; `hv-permit` its permit regime; the DD-brief and IC memo state the market. Adding a market = fill a row + its regulation note, not new agents.
+
 ## How to invoke
 - A deal / listing: dispatch `hv-orchestrator` (or a pod directly for a scoped step).
 - Command: `/hv.analyze`, `/hv.brrrr`, `/hv.permit`, `/hv.wws`.

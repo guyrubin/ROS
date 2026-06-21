@@ -34,8 +34,20 @@ ROS runs across **two runtimes**, and they reach connectors *differently*. A tas
 | Slack / Linear / Asana / Atlassian / HubSpot | — | plugin MCP (needs `authenticate`) | **Needs auth** | Wire on demand per domain need. |
 | Funda scraper | TBD | TBD | Phase 3 | HV new-listing alerts. |
 
+## Tool capitalization (decided 2026-06-21 — see [`CoS/ROS-CAPITALIZATION.md`](../CoS/ROS-CAPITALIZATION.md))
+Four stacks chosen to wire; each needs a one-time `authenticate` (OAuth) — auth the **lead** tool per category first, add siblings only if it doesn't fit. Map to owning team:
+
+| Stack | Lead tool (siblings) | Owning team(s) | Use | Status |
+|---|---|---|---|---|
+| Project management | **Linear** (Asana/ClickUp) | KK, HV (deal exec), PAI, CoS | task/issue backend beyond Notion | ⏳ auth pending |
+| Comms hub | **Slack** | CoS, KK | status + decisions-needed + command surface | ⏳ auth pending |
+| Product analytics | **Amplitude** (Pendo) | PAI/Arbor | usage → CIL `arbor-critic-feedback` | ⏳ auth pending |
+| Marketing/SEO | **Ahrefs** (Similarweb/HubSpot) | MKT, PAI/Arbor | keyword/competitor → market+capability critics | ⏳ auth pending |
+
+> Capitalize, don't accumulate — wire a tool when a team will use it; an unused connector is clutter (EA client tools stay per-engagement, not global).
+
 ## Needs your action to go fully live
-- **Plugin connectors** (Amplitude/Pendo/Slack/Linear/Asana/Atlassian/HubSpot/GitHub-MCP) require a one-time `authenticate` (OAuth) before use. Authorize the ones a domain actually needs — don't pre-wire all of them (clutter).
+- **Authorize the four stacks above** (`authenticate` OAuth) — I'll initiate; you complete the sign-in. Gradual: start with the one or two that unlock the most.
 - **Hermes-side** Calendar/Drive are reached via Claude Code MCP today; only wire Hermes equivalents if a *scheduled* loop needs them.
 
 ## Required skills by connector (Hermes runtime)
