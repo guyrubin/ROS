@@ -1,5 +1,7 @@
 # Guy Rubin Command Center — v3
 
+> **⚠️ Canonical cockpit = the Notion Command Center** (`🧠 Rubin OS — Command Center`, `2b4f37e2-31fe-801c-8495-dea36d0efd4d`) — the human second-brain + management surface (10 master DBs + per-domain dashboards), per [ROS-STRATEGY.md](../../ROS-STRATEGY.md) Theme M. **This local HTML is a fast offline MIRROR/dev view, not a competing cockpit.** Don't duplicate Notion data here; `build-state.mjs` feeds it read-only from ROS memory.
+
 A compact, **voice-agentic** visual cockpit for ROS, Claude/Cowork, Hermes, Obsidian, and Google. v3 turns it from a personal dashboard into a **shared file system that agents act on**.
 
 - **HTML artifact:** `index.html` (single file, zero dependencies)
