@@ -39,10 +39,10 @@ Four stacks chosen to wire; each needs a one-time `authenticate` (OAuth) — aut
 
 | Stack | Lead tool (siblings) | Owning team(s) | Use | Status |
 |---|---|---|---|---|
-| Project management | **Linear** (Asana/ClickUp) | KK, HV (deal exec), PAI, CoS | task/issue backend beyond Notion | ⏳ auth pending |
-| Comms hub | **Slack** | CoS, KK | status + decisions-needed + command surface | ⏳ auth pending |
-| Product analytics | **Amplitude** (Pendo) | PAI/Arbor | usage → CIL `arbor-critic-feedback` | ⏳ auth pending |
-| Marketing/SEO | **Ahrefs** (Similarweb/HubSpot) | MKT, PAI/Arbor | keyword/competitor → market+capability critics | ⏳ auth pending |
+| Comms hub | **Slack** | CoS, KK | status + decisions-needed + command surface | ✅ **Connected** 2026-06-21 — workspace "ROS" (`ros-5pu8645`), user `U0BCVJB86TS`. MCP tools live (send/read/search/schedule). |
+| Marketing/SEO | **Ahrefs** (Similarweb/HubSpot) | MKT, PAI/Arbor | keyword/competitor → market+capability critics | ⏳ consent pending — Guy logged in (Guy Rubin's workspace, free plan); finish the 2-click Allow (or paste the `localhost:43667/callback?...` URL to complete). |
+| Product analytics | **Amplitude** (Pendo) | PAI/Arbor | usage → CIL `arbor-critic-feedback` | ⚠️ needs org login (not signed in / maybe not set up). Arbor today logs to its own Firestore sink (`lib/analytics.ts`) — Amplitude optional. |
+| Project management | **Linear** (Asana/ClickUp) | KK, HV (deal exec), PAI, CoS | task/issue backend beyond Notion | ⚠️ **no Linear workspace exists** under `bguy.rubin@gmail.com` — needs one created (name/region) before connect, or use Notion as the PM backend for now. |
 
 > Capitalize, don't accumulate — wire a tool when a team will use it; an unused connector is clutter (EA client tools stay per-engagement, not global).
 

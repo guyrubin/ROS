@@ -13,7 +13,7 @@ Domain north-stars (Guy, 2026-06-21): **KK = the ultimate personal assistant / s
 
 ## 1. Tool capitalization map — the right tool, per team
 
-Live now (MCP): Gmail ×3 · Calendar · Notion · Drive · Web/Research. **To wire (auth chosen 2026-06-21):** Project-mgmt (Linear/Asana/ClickUp) · Slack · Product analytics (Amplitude) · Marketing/SEO (Ahrefs/Similarweb/HubSpot). Each needs a one-time OAuth; see [`connectors.md`](../00_System/connectors.md).
+Live now (MCP): Gmail ×3 · Calendar · Notion · Drive · Web/Research · **Slack ✅ (connected 2026-06-21, workspace "ROS")**. **Wiring status (see [`connectors.md`](../00_System/connectors.md)):** Slack ✅ done · Ahrefs ⏳ consent pending (free plan) · Amplitude ⚠️ needs org login · Linear ⚠️ no workspace yet (use Notion as PM backend until created). Capitalize as each connects; don't block the company on tools that need account setup.
 
 | Team | North-star | Capitalized stack (best tool per job) |
 | :-- | :-- | :-- |

@@ -43,6 +43,7 @@ Keep the whole portfolio pointed at what matters: set cross-domain priority, run
 ## How to invoke
 - Portfolio task / multi-domain push: dispatch `ros-conductor`.
 - Command: `/cos.review`, `/cos.okr`, `/cos.brief`.
+- **Slack (connected 2026-06-21):** the ROS workspace is the status + decisions-needed surface. Post via the Slack MCP (`slack_send_message_draft` then send on confirm — draft-first for anything outbound); Guy can also command the conductor from Slack. KK shares this surface for daily notifications.
 
 ## Boundaries
 - Domain execution → the owning domain lead. The Conductor frames and sequences; it doesn't write the IC memo or the HLD itself.
