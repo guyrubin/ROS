@@ -1,6 +1,13 @@
 # PAI Memory
 Last updated: 2026-06-22
 
+## Update [2026-06-22] — Marketing program: execute+verify goal set; deploy path mapped (NOT shipped)
+
+- **Master goal doc:** `mesh/marketing/GOAL-marketing-program-2026-06-22.md` — tracks all 7 session objectives with verification verdicts. A 5-agent execute+verify workflow ran: **audit verdict = STRONG PASS on all 7** (real, coherent, honest; deployment-gates held, no over-claims).
+- **Executed this pass:** (1) NL/DE/FR flagship copy transcreated (AM-L4) → `marketing/assets/arbor-nl-de-fr-transcreation-2026-06-22.md` (drafts, awaiting native review per market); (2) fixed stale "four-products-on-one-record" strings that survived in the **live loop workflow** (lines 89/105) + `arbor-brand.md` — they were re-injecting the killed frame into the loop's prompts; (3) locale matrix NL/DE/FR → "draft done, awaiting native review."
+- **DEPLOY path mapped (Path A — key correction):** the Arbor app is a **NESTED separate git repo** (`PPPPtherapy-/PPPPtherapy-/`) — that's why the ROS-root view showed "gitignored/not-on-main." Inside it the landing pages ARE committed source-of-truth at `app/public/marketing/arbor-marketing-landing-page-{en,he,nl,de,fr}.html` (hand-maintained; `.md` + `enrich-marketing-seo.mjs` are NOT the source/build). Deploy = edit served HTML → push to the **app repo's main** → `.github/workflows/arbor-deploy.yml` (lint+test only, **no canary** = the blind-100%-to-main path) → `firebase deploy` (project `arborprd-westeu`; arborparentingapp.com wired). **⚠️ canonical/OG still point at arborprd-westeu.web.app (brand-domain switch behind main) — align before shipping.**
+- **NOT deployed (by design):** AM-NEW-0 (six-surface landing) isn't built into the SERVED files yet (the earlier EN one-liner edit was the ROS prototype, not the app file); native-human sign-off pending. Safe go-live = build into served files → PR on the app repo → **Guy merges = prod-promote** (never hand-push main).
+
 ## Update [2026-06-22] — Localization fixed: transcreation pod + native-voice gate (Hebrew was bad)
 
 - **Guy's defect:** `arbor-content`'s Hebrew read **translated/literal, not native** — below the bar — and we still need 5 more languages. Two root fixes:

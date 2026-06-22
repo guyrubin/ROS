@@ -30,11 +30,11 @@ Set locked with Guy: **Hebrew + English + Dutch + German + French.** Hebrew is l
 
 | Locale | Market | Status | Script | Display / body font | Currency | Voice register (inside the Arbor essence) |
 | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
-| **he-IL** | Israel (beachhead) | **LIVE — needs native re-transcreation** (current copy reads translated) | RTL | Frank Ruhl Libre / Heebo | ₪ ILS | Concrete, a little blunt, unsentimental; respects the parent's intelligence; no over-politeness, no flattery |
+| **he-IL** | Israel (beachhead) | **FIXES APPLIED 2026-06-22 — awaiting native-human sign-off before L3 publish** (all HELD findings from `marketing/assets/launch/he-qa-and-pricing.md` applied to 3 surfaces; confirmed ₪49/₪75/₪449/₪690 prices live; Arbor gender = feminine throughout; Frank Ruhl Libre confirmed loaded; 6 human-review flags remain as publish gate) | RTL | Frank Ruhl Libre / Heebo | ₪ ILS | Concrete, a little blunt, unsentimental; respects the parent's intelligence; no over-politeness, no flattery |
 | **en** | International (source) | source / master | LTR | Fraunces / Inter | € / local | Calm, direct, specific; the master voice |
-| **nl-NL** | Netherlands (anchor) | to build | LTR | per brand | € EUR | Direct, plain, no fluff; Dutch readers distrust hype and superlatives |
-| **de-DE** | DACH (DE/AT/CH) | to build | LTR | per brand | € EUR | Precise, sober, trust-through-clarity; no corporate stiffness, no hype |
-| **fr-FR / fr-BE** | France + Belgium (Fr.) | to build | LTR | per brand | € EUR | Warm, considered; avoid anglicisms; respect the reader's intelligence |
+| **nl-NL** | Netherlands (anchor) | **draft done (AM-L4 2026-06-22) — awaiting native review** | LTR | per brand | € EUR | Direct, plain, no fluff; Dutch readers distrust hype and superlatives |
+| **de-DE** | DACH (DE/AT/CH) | **draft done (AM-L4 2026-06-22) — awaiting native review** | LTR | per brand | € EUR | Precise, sober, trust-through-clarity; no corporate stiffness, no hype |
+| **fr-FR / fr-BE** | France + Belgium (Fr.) | **draft done (AM-L4 2026-06-22) — awaiting native review** | LTR | per brand | € EUR | Warm, considered; avoid anglicisms; respect the reader's intelligence |
 
 > **Matrix locked.** No Arabic / other markets in scope for now (revisit if the rollout expands). `arbor-localization` owns this table; the **native-human reviewer per market** is the final publish gate (the agent transcreates + self-checks to the gate, but is not the sign-off).
 

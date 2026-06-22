@@ -86,7 +86,7 @@ log(`intel + sense returned ${findings.length} raw findings total`)
 // ---- FRAME ---------------------------------------------------------------
 phase('Frame')
 const frame = await agent(
-  `You are arbor-marketing-lead. READ ${BRAND} (the brand spine — frame everything against the essence, the category, and the four-products-on-one-record convergence), ${MESH}, ${OPMODEL}, and ${BACKLOG}. ` +
+  `You are arbor-marketing-lead. READ ${BRAND} (the brand spine — frame everything against the essence, the category, and the six-surfaces-on-one-record convergence), ${MESH}, ${OPMODEL}, and ${BACKLOG}. ` +
   `Dedupe these raw findings against the existing backlog, score each (severity × userImpact × confidence ÷ effort), and triage:\n` +
   `- buildTasks: the top SAFE (riskClass:"safe", kind:"marketing") items to build THIS cycle — assign each to arbor-content (copy/HE) / arbor-creative (short-form video/motion/design + hook batches) / arbor-seo (technical/AEO) / arbor-acquisition (loop/attribution spec) with a tight brief. Cap at 5.\n` +
   `- featureRequests: ids of kind:"feature-request" items — these are HANDED to the product backlog, not built here.\n` +
@@ -102,7 +102,7 @@ const shipped = await pipeline(
   frame.buildTasks.slice(0, 5),
   // 1. BUILD — pod produces the material against the brand spine
   (t) => agent(
-    `You are ${t.ownerPod} in the Arbor Marketing Mesh. READ ${BRAND} first. Produce this marketing material to a green, previewable state that is unmistakably Arbor (EN+HE where copy): essence-true (the steady hand that remembers your child), category-defining (Longitudinal Child Intelligence, not "a parenting app"), names the enemy, makes the four-products-on-one-record convergence land. Calm clinician-mentor voice, banned-word list is law, one clear CTA, claims mechanism-cited, no clinical/effect-size claim, no child-data payload. Brief: ${t.brief}. Return what you produced + the file/surface path.`,
+    `You are ${t.ownerPod} in the Arbor Marketing Mesh. READ ${BRAND} first. Produce this marketing material to a green, previewable state that is unmistakably Arbor (EN+HE where copy): essence-true (the steady hand that remembers your child), category-defining (Longitudinal Child Intelligence, not "a parenting app"), names the enemy, makes the six-surfaces-on-one-record convergence land. Calm clinician-mentor voice, banned-word list is law, one clear CTA, claims mechanism-cited, no clinical/effect-size claim, no child-data payload. Brief: ${t.brief}. Return what you produced + the file/surface path.`,
     { agentType: t.ownerPod, label: `build:${t.id}`, phase: 'Build' }
   ).then(work => ({ task: t, work })),
   // 2. ECD CRAFT GATE — arbor-brand judges against the Arbor Bar (veto on generic)
