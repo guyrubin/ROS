@@ -25,19 +25,18 @@
 
 ---
 
-## The locale matrix
-**Hebrew is live and is the named quality problem — re-transcreate to native quality first.** The other five follow the Israel-first 5-country rollout.
+## The locale matrix (CONFIRMED 2026-06-22)
+Set locked with Guy: **Hebrew + English + Dutch + German + French.** Hebrew is live and is the named quality problem — **re-transcreate to native quality first (AM-L1).** Each locale needs a native-human reviewer before publish.
 
 | Locale | Market | Status | Script | Display / body font | Currency | Voice register (inside the Arbor essence) |
 | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
 | **he-IL** | Israel (beachhead) | **LIVE — needs native re-transcreation** (current copy reads translated) | RTL | Frank Ruhl Libre / Heebo | ₪ ILS | Concrete, a little blunt, unsentimental; respects the parent's intelligence; no over-politeness, no flattery |
-| **en** | International / rollout | source | LTR | Fraunces / Inter | € / local | Calm, direct, specific; the master voice |
-| **nl-NL** | Netherlands (anchor) | rollout — to build | LTR | per brand | € EUR | Direct, plain, no fluff; Dutch readers distrust hype and superlatives |
-| **lang-4** | _5-country rollout_ | **TBD — confirm market w/ Guy** | — | — | — | candidate: German (DE) — precise, sober, trust-through-clarity |
-| **lang-5** | _5-country rollout_ | **TBD — confirm market w/ Guy** | — | — | — | candidate: French (FR/BE) — warm, considered; avoid anglicisms |
-| **lang-6** | _5-country rollout_ | **TBD — confirm market w/ Guy** | RTL if Arabic | — | — | candidate: Arabic (IL Arabic-speaking) — RTL; or Spanish (ES) |
+| **en** | International (source) | source / master | LTR | Fraunces / Inter | € / local | Calm, direct, specific; the master voice |
+| **nl-NL** | Netherlands (anchor) | to build | LTR | per brand | € EUR | Direct, plain, no fluff; Dutch readers distrust hype and superlatives |
+| **de-DE** | DACH (DE/AT/CH) | to build | LTR | per brand | € EUR | Precise, sober, trust-through-clarity; no corporate stiffness, no hype |
+| **fr-FR / fr-BE** | France + Belgium (Fr.) | to build | LTR | per brand | € EUR | Warm, considered; avoid anglicisms; respect the reader's intelligence |
 
-> **Open decision for Guy:** the exact five markets/languages beyond Hebrew (the 5-country rollout). en + nl are anchored; the other three are placeholders above. Confirm the set and `arbor-localization` locks the matrix (voice profile + font + currency per locale). **Don't localize a market until it's confirmed** — a wrong market is wasted native-review budget.
+> **Matrix locked.** No Arabic / other markets in scope for now (revisit if the rollout expands). `arbor-localization` owns this table; the **native-human reviewer per market** is the final publish gate (the agent transcreates + self-checks to the gate, but is not the sign-off).
 
 ## RTL rules (he, and ar if added)
 Compose right-to-left structurally (share cards, the record, the comic world, layouts) — never mirror an LTR layout as an afterthought. Locale font per the matrix. Chevrons/arrows flip. `dir="auto"` on user/AI-generated strings.
