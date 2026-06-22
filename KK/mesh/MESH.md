@@ -43,7 +43,7 @@ Keep Guy's day actionable: turn inbox + calendar + tasks into a prioritized top 
 | Loop | Type | Cadence | Posture | Registry |
 | :-- | :-- | :-- | :-- | :-- |
 | Daily Gmail actionable triage (08:30 run = **morning routing**) | scheduled | Weekdays 08:30 / 13:30 / 18:30 | read-only | `333eaf638d76` |
-| Tsagareli Capricorn forecast (Hebrew, Capricorn only) | scheduled | Mondays 10:00 | read-only | `c20375b10b15` |
+| Tsagareli Capricorn forecast (Hebrew, Capricorn only) | NOT LIVE (absent from Hermes jobs.json 2026-06-21) | Mondays 10:00 (if revived) | read-only | `c20375b10b15` (re-create deliberately) |
 | Daily plan / inbox triage / capture / follow-up | on-demand | — | drafts in-workspace | — |
 
 ## How to invoke

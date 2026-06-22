@@ -39,6 +39,16 @@ Agents should not duplicate connector status in domain files except for domain-s
 
 ---
 
+## Connector access is a fleet-wide grant (not a main-loop privilege)
+
+ROS is a **multiagent, runtime-agnostic, agent-filesystem OS** — so the connector layer above is granted to the **whole agent fleet**, not just the interactive main loop. Any dispatched ROS agent can reach Gmail, Notion, Calendar, Drive, web search/fetch, and browser/computer use.
+
+- **Tool grant (the mechanism):** ROS agent definitions that do real-world I/O (source, browse, write to Notion/Drive, draft email, dispatch) declare **`tools: "*"`** in their frontmatter — the same grant the built-in `claude` / `general-purpose` agents carry. This gives them the full MCP connector layer + `WebSearch`/`WebFetch` + `ToolSearch`. Pure-reasoning helpers may stay narrower but should still carry `WebSearch`, `WebFetch`, `ToolSearch`. A narrow `Read/Edit/Write/Grep/Glob/Bash/TodoWrite`-only agent is **cut off from the connectors** — only use it for genuinely offline work.
+- **Access path per runtime:** Claude Code → load connector MCP schemas via **`ToolSearch`** on first use (verified IDs + the create-by-ID Notion pattern live in [`/HV/mesh/INTEGRATIONS.md`](../HV/mesh/INTEGRATIONS.md), the reference implementation). Hermes → the connector **skills** (`himalaya`, `productivity/notion`, `google-workspace`). Codex/Gemini → their own tool surfaces. The **filesystem + Notion are the shared baton** across runtimes.
+- **Guardrails do not loosen with a broad grant:** draft-first email, validate-before-write Notion, no duplicate pages, Level 3–5 confirmations — these bind every agent regardless of which tools it holds.
+
+---
+
 ## Popular modern skill families to prefer
 
 When choosing tools or workflows, agents should prefer current, widely adopted approaches in these categories:

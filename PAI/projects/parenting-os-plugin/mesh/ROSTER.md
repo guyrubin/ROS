@@ -1,13 +1,35 @@
 # Arbor Agent Mesh — Roster
 
-**Version:** 1.1 (paths verified against the live tree 2026-06-19)
+**Version:** 2.0 (Advisory Board + Product Council added 2026-06-21; pod paths verified against the live tree 2026-06-19)
 Single source of truth for ownership. Runnable defs: `.claude/agents/arbor/<id>.md`. App root: `PPPPtherapy-/PPPPtherapy-/app`.
 
-## Conductor
+## Advisory Board (Tier 1 — advisory in, review out)
+
+Sets the "worth building" + "clinically sound" bar; feeds the Product Council. Internal capability-definition function. See [teams/advisory.md](teams/advisory.md).
+
+| ID | Role | Owns | Authority |
+| :-- | :-- | :-- | :-- |
+| `arbor-advisor` | Product Philosophy Adviser | The worth-building rubric (competence/order/responsibility/truth/meaning); reviews significant features | **Voice, no veto.** Back-end inspiration only — never branded/user-facing |
+| `arbor-clinical-lead` | Clinical Board lead | Clinical requirements intake, soundness review, claim sign-off; coordinates the three lenses | **Veto** on clinical soundness + any developmental/medical/effect-size claim (co-held with `arbor-safety`) |
+| `arbor-clinical-peds` | Developmental-pediatrics lens | Milestones, red flags, dev-score validity, escalation thresholds | Advises lead; veto routes through lead |
+| `arbor-clinical-slp` | Pediatric speech-language lens | Practice Studio targets, phoneme/word accuracy, age-appropriateness | Advises lead; veto routes through lead |
+| `arbor-clinical-psych` | Child-psychology lens | Behavior/emotion coaching, attachment-safe framing, parent-mediated design | Advises lead; veto routes through lead |
+
+## Product (Tier 1 — direction in, PRDs out)
+
+The forward product-thinking function: owns *what to build and why* + the voice-of-parent. A co-equal input to the Product Council alongside the Advisory Board. See [teams/product.md](teams/product.md).
+
+| ID | Role | Owns | Authority |
+| :-- | :-- | :-- | :-- |
+| `arbor-product` | Head of Product | Discovery, PRDs, success metrics, voice-of-parent (forward user research); the `product` stream into the Council | Advisory (no veto); routes clinical-claim items to the Clinical Board |
+
+## Conductor (Tier 1)
 
 | ID | Role | Owns | Escalates to |
 | :-- | :-- | :-- | :-- |
 | `arbor-orchestrator` | Conductor | Backlog→wave mapping, dispatch, conflict-map enforcement, green-gating, roll-up | PAI, CoS |
+
+> **Intake:** the Orchestrator builds **only** from `PRODUCT-BACKLOG.md`, which the **Product Council** ([PRODUCT-COUNCIL.md](PRODUCT-COUNCIL.md)) maintains by fusing Product + Advisory + Clinical + Marketing + CIL streams. Full company map: [COMPANY.md](COMPANY.md).
 
 ## Domain pods (Tier 2) — verified core paths under `app/src/`
 
@@ -56,4 +78,5 @@ The **illustrated, avatar-embedded standard** (backlog `EXECUTION-BACKLOG.md` �
 
 ## Rules
 - **Boundary:** a pod edits only its owned paths. Cross-boundary or hotspot-locked edits (`index.css` chain `m4→m2→m1→m5→m7→p3`; `OverviewTab.tsx`, `routes/api.ts`/`lib/api.ts`, `navigation.ts`, `lib/reportExport.ts`) are sequenced by the Orchestrator per the CONFLICT-MAP.
-- **Escalation:** Pod → `arbor-orchestrator` → PAI (product) / CoS (portfolio). DevSecOps vetoes and Marketing budget asks route through the Orchestrator.
+- **Escalation:** Pod → `arbor-orchestrator` → PAI (product) / CoS (portfolio). DevSecOps vetoes, **Clinical Board soundness/claim vetoes**, and Marketing budget asks route through the Orchestrator.
+- **Advisory authority:** `arbor-advisor` recommends (no veto). The Clinical Board **can block** a feature on clinical-soundness grounds or a developmental/medical claim — treated identically to an `arbor-safety` veto. The philosophy adviser's identity is back-end only and never ships (CHARTER §3 principle 11).

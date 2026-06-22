@@ -134,6 +134,33 @@ main{padding:26px 34px 70px;max-width:1280px}
 .std .cmd{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:9px}
 .para{font-family:var(--mono);font-size:11px;color:var(--violet);min-width:74px;display:inline-block}
 
+/* arbor company view */
+.arbor-hero{background:linear-gradient(108deg,var(--surface),oklch(0.80 0.15 158 / .07));border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;box-shadow:var(--shadow)}
+.arbor-hero .k{font-size:22px;font-weight:700;font-family:var(--mono);letter-spacing:.04em;color:var(--green)}
+.arbor-hero .meta{flex:1;min-width:200px}
+.arbor-hero .tag-line{color:var(--ink-2);font-size:13px;margin-top:3px}
+.arbor-hero .lead{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:4px}
+.arbor-hero .firewall{flex-basis:100%;font-size:11.5px;color:var(--amber);font-family:var(--mono);border-top:1px solid var(--line-soft);padding-top:10px;margin-top:2px;line-height:1.5}
+/* stat tiles */
+.stats{display:grid;gap:11px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.stat{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);padding:14px 15px}
+.stat .n{font-family:var(--mono);font-size:26px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.stat .l{color:var(--ink-3);font-size:10.5px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-top:7px}
+.stat .ids{color:var(--ink-3);font-family:var(--mono);font-size:9.5px;margin-top:6px;line-height:1.45;word-break:break-word}
+.stat.held .n{color:var(--violet)} .stat.gated .n{color:var(--amber)} .stat.ready .n{color:var(--green)} .stat.promo .n{color:var(--accent)}
+/* pipeline flow strip */
+.flow{display:flex;gap:0;flex-wrap:wrap;align-items:stretch}
+.flow .step{flex:1;min-width:150px;background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);padding:12px 13px;position:relative;margin-right:16px;margin-bottom:10px}
+.flow .step:last-child{margin-right:0}
+.flow .step::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--ink-3);font-family:var(--mono);font-size:14px}
+.flow .step:last-child::after{content:""}
+.flow .step .s{font-weight:600;font-size:12.5px}
+.flow .step .w{font-family:var(--mono);font-size:10px;color:var(--accent);margin-top:4px}
+.flow .step .nt{color:var(--ink-3);font-size:10.5px;margin-top:5px;line-height:1.4}
+@media(max-width:780px){.flow .step{margin-right:0}.flow .step::after{content:""}}
+/* dept rows reuse .mesh grid; tier chip */
+.tier{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line-soft);border-radius:5px;padding:1px 6px}
+
 /* drawer */
 .scrim{position:fixed;inset:0;background:oklch(0 0 0 / .5);opacity:0;pointer-events:none;transition:opacity .2s var(--ease);z-index:var(--z-scrim)}
 .scrim.on{opacity:1;pointer-events:auto}
@@ -180,6 +207,18 @@ main{padding:26px 34px 70px;max-width:1280px}
       <div id="cond"></div>
       <div class="lab">Departments — domain meshes</div>
       <div class="grid" id="meshes"></div>
+    </section>
+
+    <section class="view" id="v-arbor" aria-label="Arbor company">
+      <div id="arbor-hero"></div>
+      <div class="lab">Backlog — live from PRODUCT-BACKLOG.md</div>
+      <div class="stats" id="arbor-stats"></div>
+      <div class="lab">The autonomous loop — feeders → ship</div>
+      <div class="flow" id="arbor-flow"></div>
+      <div class="lab">Departments</div>
+      <div class="grid" id="arbor-depts"></div>
+      <div class="lab">Live loops — on a cadence</div>
+      <div class="panel" id="arbor-loops"></div>
     </section>
 
     <section class="view" id="v-loops" aria-label="Loops">
@@ -240,14 +279,42 @@ standards:[
 trends:[
 {date:"2026-06-21",title:"De-slop skill pattern (Ben AI)",action:"adopted → /de-slop"},
 {date:"2026-06-21",title:"Matt Pocock agentic workflow (align → slice → verify)",action:"adopted → /grill-me + /vertical-slice"},
-{date:"weekly",title:"AI-trends watch loop",action:"/ai-trends-watch → ROS-BACKLOG (proposed cron)"}]};
+{date:"weekly",title:"AI-trends watch loop",action:"/ai-trends-watch → ROS-BACKLOG (proposed cron)"}],
+arbor:{name:"Arbor",tagline:"Longitudinal Child Intelligence — the steady hand that remembers your child",status:"live",role:"Group company #1 — parenting intelligence, ages 0–12",owners:"PAI (product) · CoS (portfolio)",agentCount:40,
+departments:[
+{k:"Governance",tier:"T0",role:"ROS CoS (portfolio) + ROS PAI (product owner)",lead:"ROS CoS · ROS PAI"},
+{k:"Advisory & Clinical",tier:"T1",role:"Worth-building rubric + clinical soundness/claims — holds VETO",lead:"arbor-clinical-lead"},
+{k:"Head of Product",tier:"T1",role:"Discovery · PRD · metric · voice-of-parent",lead:"arbor-product"},
+{k:"Product Council",tier:"intake",role:"Fuses 5 streams → one scored PRODUCT-BACKLOG",lead:"/arbor-product-council"},
+{k:"Orchestrator",tier:"conductor",role:"Backlog → conflict-free build waves",lead:"arbor-orchestrator"},
+{k:"Product (dept)",tier:"T2",role:"Head of Product + PM + UX + UI + 10 eng pods",lead:"arbor-product"},
+{k:"DevSecOps",tier:"T2",role:"Gates every ship — veto on quality/security/release",lead:"arbor-devsecops-lead"},
+{k:"Marketing",tier:"T2",role:"Brand/ECD · content EN+HE · SEO · growth loops",lead:"arbor-marketing-lead"},
+{k:"DevOps (CoS Delivery)",tier:"group",role:"Incremental promotion · release train · claim gating",lead:"ros-release-lead"},
+{k:"CIL",tier:"loop",role:"Critic panel → scored IMPROVEMENT-BACKLOG",lead:"arbor-evaluator"},
+{k:"Research",tier:"shared",role:"Sourced, fact-checked, cited briefs",lead:"research-agent"}],
+pipeline:[
+{stage:"Feeders",who:"Advisory · Clinical · Marketing · CIL · Head of Product",note:"5 demand streams"},
+{stage:"PM",who:"arbor-pm",note:"triage → scored AP- tickets"},
+{stage:"Council",who:"/arbor-product-council",note:"fuse + clinical GATE"},
+{stage:"Orchestrator",who:"arbor-orchestrator",note:"backlog → conflict-free waves"},
+{stage:"DevSecOps",who:"arbor-devsecops-lead",note:"green-gate every ship"},
+{stage:"Release train",who:"ros-release-lead",note:"canary → STOP at prod-promote"}],
+loops:[
+{id:"arbor-cil-eval",owner:"PAI/Arbor",cad:"0 3,15 * * *",does:"CIL cheap regression panel → refresh IMPROVEMENT-BACKLOG.md",posture:"Write-backlog",status:"live"},
+{id:"arbor-cil-build",owner:"PAI/Arbor",cad:"0 4 * * 1,4",does:"CIL deep eval + build top safe fixes to green branch",posture:"Build-to-branch",status:"live"},
+{id:"arbor-clinical-loop",owner:"PAI/Arbor",cad:"0 6 * * 6 (Sat)",does:"Clinical Excellence loop — benchmark vs CDC/AAP/ASHA",posture:"Write-backlog",status:"live"},
+{id:"arbor-product-council",owner:"PAI/Arbor",cad:"0 6 * * 0 (Sun)",does:"Product Council intake — fuse 5 streams → scored backlog",posture:"Write-backlog",status:"live"},
+{id:"arbor-marketing-loop",owner:"PAI/Arbor Mktg",cad:"0 5 * * 2,5 (Tue+Fri)",does:"Marketing loop — build safe materials, publish to owned surfaces",posture:"Publish-organic",status:"live"}],
+backlog:{candidates:28,promoted:13,buildReady:9,buildReadyIds:["AP-001","AP-002","AP-004","AP-005","AP-006","AP-007","AP-009","AP-010","AP-013"],gatedForGuy:4,gatedForGuyIds:["AP-003","AP-008","AP-011","AP-012"],heldByClinicalGate:9,building:0,buildingWave:"PM-01-2026-06-22",shipped:0},
+firewall:"Back-end inspiration only — never branded/clinician-claimed. Clinical soundness + any developmental/medical/effect-size claim is a binding veto."}};
 
 let S=FB;
 const $=s=>document.querySelector(s), el=(h)=>{const d=document.createElement('div');d.innerHTML=h;return d.firstElementChild};
 const ds=s=>({live:'live',confirmed:'live',proposed:'prop',gated:'gated',idle:'idle'}[s]||'idle');
 const rag=s=>({green:'rag-green',amber:'rag-amber',red:'rag-red'}[s]||'');
-const NAV=[['agents','◆','Agents'],['loops','↻','Loops'],['brain','◧','Brain · PARA'],['std','✶','Standard'],['trends','◈','AI trends']];
-const SUB={agents:'the org: conductor + domain meshes',loops:'what runs on a clock — and what is built but awaiting your go',brain:'Notion (PARA) is canonical; this OS sits on top',std:'how every output is held to a bar, and how work is run',trends:'keep the LLM-agnostic OS current'};
+const NAV=[['agents','◆','Agents'],['arbor','▲','Arbor · Co'],['loops','↻','Loops'],['brain','◧','Brain · PARA'],['std','✶','Standard'],['trends','◈','AI trends']];
+const SUB={agents:'the org: conductor + domain meshes',arbor:'company #1 — the Arbor product org, live from the mesh files',loops:'what runs on a clock — and what is built but awaiting your go',brain:'Notion (PARA) is canonical; this OS sits on top',std:'how every output is held to a bar, and how work is run',trends:'keep the LLM-agnostic OS current'};
 
 function render(){
   $('#rt').innerHTML=S.runtimes.map(r=>`<div class="item ${r.role=='core'?'core':''}"><span class="dot ${r.status=='live'?'live pulse':'idle'}"></span><span class="nm">${r.name}</span><span class="ro">${r.role}</span></div>`).join('');
@@ -267,6 +334,28 @@ function render(){
   $('#std').innerHTML=S.standards.map(s=>`<div class="std"><div class="h">${s.name}</div><div class="w">${s.what}</div><div class="cmd">${s.cmd}</div></div>`).join('');
   $('#trends').innerHTML=S.trends.map(t=>`<div class="row"><span class="nm">${t.title}</span><span class="meta"><div class="cad">${t.action}</div><div class="id">${t.date}</div></span></div>`).join('');
   $('#foot').innerHTML=`state ${S.meta.updated}<br>Claude·Codex·Gemini<br>Hermes·Google<br>Notion = PARA brain`;
+  renderArbor();
+}
+function renderArbor(){
+  const a=S.arbor; if(!a||!$('#arbor-hero'))return;
+  const b=a.backlog||{};
+  $('#arbor-hero').innerHTML=`<div class="arbor-hero"><span class="k">${a.name}</span>
+    <div class="meta"><div class="role">${a.role||''}</div><div class="tag-line">${a.tagline||''}</div>
+    <div class="lead">${a.owners||''}${a.agentCount?` · ${a.agentCount} agents`:''}</div></div>
+    <div class="loops mono" style="text-align:right">${a.departments?a.departments.length+' departments':''}<br>${(a.loops||[]).length} loops live</div>
+    ${a.firewall?`<div class="firewall">🔒 ${a.firewall}</div>`:''}</div>`;
+  const tile=(n,l,cls,ids)=>`<div class="stat ${cls||''}"><div class="n">${n}</div><div class="l">${l}</div>${ids&&ids.length?`<div class="ids">${ids.join(' · ')}</div>`:''}</div>`;
+  $('#arbor-stats').innerHTML=
+    tile(b.candidates??'—','candidates','')+
+    tile(b.promoted??'—','promoted (AP-)','promo')+
+    tile(b.buildReady??'—','build-ready','ready',b.buildReadyIds)+
+    tile(b.building??0,'building'+(b.buildingWave?' · '+b.buildingWave:''),'')+
+    tile(b.gatedForGuy??'—','gated · for Guy','gated',b.gatedForGuyIds)+
+    tile(b.heldByClinicalGate??'—','held · clinical gate','held')+
+    tile(b.shipped??0,'shipped','');
+  $('#arbor-flow').innerHTML=(a.pipeline||[]).map(p=>`<div class="step"><div class="s">${p.stage}</div><div class="w">${p.who}</div><div class="nt">${p.note||''}</div></div>`).join('');
+  $('#arbor-depts').innerHTML=(a.departments||[]).map(d=>`<div class="mesh" style="cursor:default"><span class="fr"><span class="tier">${d.tier}</span></span><div class="top"><span class="k" style="font-size:15px">${d.k}</span></div><div class="role">${d.role}</div><div class="lead">${d.lead}</div></div>`).join('');
+  $('#arbor-loops').innerHTML=(a.loops||[]).map(l=>`<div class="row"><span class="dot live pulse"></span><span class="nm">${l.id}</span><span class="meta"><div class="cad">${l.cad} · ${l.owner}</div><div class="id">${l.does||''}</div></span><span class="tag live">${l.posture||l.status}</span></div>`).join('')||'<div class="row"><span class="id">no loops parsed</span></div>';
 }
 function openD(i){const m=S.meshes[i];$('#dbody').innerHTML=`<h2 class="${rag(m.status)}">${m.k}</h2><div class="kv v" style="margin:2px 0 0">${m.role}</div>
   <div class="kv"><span class="h">Lead</span><span class="v mono">${m.lead}</span></div>

@@ -45,12 +45,12 @@ The conductor runs ROS like a COO. The management heartbeat that makes the famil
 
 | Cadence | What the conductor runs | Built on |
 | :-- | :-- | :-- |
-| **Daily (AM)** | Cockpit refreshed (`build-state.mjs` + Notion radar); KK morning brief = top-3 per principal; decisions-needed surfaced (to Slack/cockpit) | KK cron `333eaf638d76` + CC refresh + Slack |
+| **Daily (AM)** | Canonical `state.json` regenerated offline (`build-state.mjs` / `gen-state.mjs`), then mirrored to Notion; KK morning brief = top-3 per principal; decisions-needed surfaced (to Slack/cockpit) | KK cron `333eaf638d76` + CC refresh + Slack |
 | **Weekly** | Cross-domain review — G/A/R per department, **per-principal lanes (Guy / Joseph)**, blockers+owners, decisions logged; pre-assembled so the live review is a *decision*, not a gather | `weekly-review` skill + domain `MEMORY.md` + Notion |
 | **Monthly** | Domain health + memory-freshness sweep (cockpit-flagged stale domains get refreshed); tooling/skills eval (Theme L) | `build-state.mjs` staleness + `research-agent` |
 | **Quarterly** | OKRs per department set/reviewed; strategy check vs `ROS-STRATEGY.md` | `okr-tracker` + `CoS/OKRs/` |
 
-**Management invariants (always on):** every project has an owner + next action · every loop writes back to shared state · nothing runs unobserved · the **Notion Command Center is the single management surface** (the local `guy-command-center` HTML is a local mirror, not a second cockpit).
+**Management invariants (always on):** every project has an owner + next action · every loop writes back to shared state · nothing runs unobserved · **the filesystem cockpit is canonical, Notion is the mirror** — `state.json` (generated offline by `build-state.mjs` / `gen-state.mjs`, no network) is the source of truth the conductor reads and every loop writes back to; Notion is the human-facing render of that state, not the system of record. This matters operationally: the cockpit stays authoritative when Notion's API is gated or down (the MCP `query-data-sources` read is Enterprise-gated — see [`/00_System/connectors.md`](../../00_System/connectors.md)), so management never blocks on a connector.
 
 **The self-improvement engine:** the [ROS-CIL](../../00_System/agent-framework/ROS-CIL.md) (workflow `/ros-improve`, lead `ros-evaluator`) runs the company's self-audit — **weekly light** (freshness + management + reality) and **monthly deep** (full lens panel + safe fix wave) — writing findings to [`../ROS-BACKLOG.md`](../ROS-BACKLOG.md) + a **State of the Company** to the cockpit. It's what makes ROS improve itself every week; the conductor reviews its output and ships the gated items.
 

@@ -17,16 +17,25 @@ Turn raw market signal into investment-committee-grade decisions: source candida
 | `hv-sourcing` | Sourcing/radar | Funda/Pararius/Kadaster scans, buy-box fit-scoring, candidate shortlist | `hv-orchestrator` |
 | `hv-underwriting` | Underwriting | BRRRR model, WWS points, ARV/LTV/yield, financial verdict | `hv-orchestrator` |
 | `hv-permit` | Permit/zoning | Vergunning/bestemmingsplan pathway, monument/protected-cityscape flags, critical-path | `hv-orchestrator` |
-| `hv-execution` | Deal-execution PM | The R-R-R back half of BRRRR: renovation milestones, vendor follow-through, permit-to-completion status, refinance coordination (`HV/06,07,08`) | `hv-orchestrator` |
+| `hv-execution` | **PM lead / project director** | The back half of BRRRR as a stage-gated project (G0–G8): holds the baseline, runs gate reviews, weekly RAG status, risk/decision/change-control, escalates AFC-vs-baseline; leads the PM pods (`HV/06,07,08,13`) | `hv-orchestrator` |
+| `hv-cost-control` | PM — cost/QS | Budget vs committed vs actual vs CTC, contingency ledger, variations, AFC, draw schedule/cashflow | `hv-execution` |
+| `hv-programme` | PM — planner | Milestone schedule, critical path, look-ahead, permit-to-completion, slippage + carry cost | `hv-execution` |
+| `hv-procurement` | PM — contracts | Tender log, vendor register, contracts + certified-milestone payments, retentions | `hv-execution` |
+| `hv-architecture` | Advisor — feasibility | Buildable scheme, structural/heritage/daylight/fire constraints, fragile concept assumptions, reno grade + contingency | `hv-orchestrator` |
+| `hv-finance` | Advisor — fiscal/structuring | Transfer tax/registratierechten, VAT-vs-OVB exit fork, input-VAT, entity (BV/vennootschap), cross-border | `hv-orchestrator` |
+| `hv-investor` | Advisor — IC skeptic | Risk-adjusted ranking, margin-of-safety under stress, deal-killer + proceed-condition, portfolio call | `hv-orchestrator` |
+| `hv-mortgage` | Advisor — finance | Debt structure, day-1 cash, refinance pull-out, DSCR test, financing red flags | `hv-orchestrator` |
 
-> Fan-out pays here: `hv-sourcing` screens N listings in parallel, then `hv-underwriting` + `hv-permit` run concurrently on the shortlist before `hv-orchestrator` synthesizes the IC memo. After go, `hv-execution` runs the Renovate→Rent→Refinance back half. **Research is a shared lane:** any pod dispatches `research-agent` with [`DD-brief-template.md`](DD-brief-template.md) for deal-grade DD (ROS-BACKLOG D2).
+> Fan-out pays here: `hv-sourcing` screens N listings in parallel, then `hv-underwriting` + `hv-permit` + `hv-architecture` run concurrently on the shortlist, the **advisor panel** (`hv-investor` / `hv-mortgage` / `hv-finance`) mediates across it, and `hv-orchestrator` synthesizes the IC memo. **After go, the deal becomes a project:** `hv-execution` (PM lead) imports the underwriting model as the baseline and runs the **stage-gated lifecycle (G0–G8)** with `hv-cost-control` / `hv-programme` / `hv-procurement` — controls, weekly RAG status, and the AFC-vs-baseline tripwire per [`PROJECT-MODEL.md`](PROJECT-MODEL.md) (templates: [`06_Renovation/_templates/`](../06_Renovation/_templates/); status roll-up: `/hv-project-control`). **Research is a shared lane:** any pod dispatches `research-agent` with [`DD-brief-template.md`](DD-brief-template.md) for deal-grade DD (ROS-BACKLOG D2). **Runnable end-to-end** via the [`hv-dev-deal` workflow](../../.claude/workflows/hv-dev-deal.workflow.js) (`/hv-dev-deal`).
 
 ## Gate (Definition-of-Done)
 - Facts / labeled assumptions / risks / financial impact **separated**.
 - Yields, LTV, ARV computed in `<thinking>`; missing variables flagged.
+- **Dual-exit** modeled where development is in play (develop-to-sell margin *and* BRRRR yield/DSCR) per [`DEV-MODEL.md`](DEV-MODEL.md); the winning exit + the breakeven that flips it stated.
 - Permit dependency on the critical path explicitly stated.
 - Explicit verdict: **Proceed / Proceed-if-conditions / Hold / Do-not-proceed** + next actions.
-- Sources grounded; as-is / stabilised / ARV values separated.
+- Sources grounded ([`CONNECTOR-LAYER.md`](CONNECTOR-LAYER.md) — no invented listings); as-is / stabilised / ARV values separated.
+- **Underwrite the discount, not the pro-forma:** when leveraged pro-formas are underwater at ask, rank by margin-of-safety (entry €/m² gap) — that's a pricing signal, not a thesis kill.
 
 ## Skills this mesh loads
 | Task | Skill |
@@ -37,7 +46,7 @@ Turn raw market signal into investment-committee-grade decisions: source candida
 | WWS points, rent ceiling | `wws-analyzer` |
 | Create/update deal note | `deal-note-creator` |
 | **Deal-grade DD research** | `research-agent` + [`DD-brief-template.md`](DD-brief-template.md) |
-| **Deal execution (Renovate/Rent/Refinance) PM** | `project-tracker` (via `hv-execution`) |
+| **Development project management (G0–G8)** | [`PROJECT-MODEL.md`](PROJECT-MODEL.md) + [`_templates/`](../06_Renovation/_templates/) + `project-tracker` (via `hv-execution` + cost/programme/procurement pods); `/hv-project-control` roll-up |
 | Deal correspondence | `email-composer` (Gmail `hollandvest`) |
 
 ## Loops it owns
@@ -45,6 +54,8 @@ Turn raw market signal into investment-committee-grade decisions: source candida
 | Loop | Type | Cadence | Posture | Registry |
 | :-- | :-- | :-- | :-- | :-- |
 | Deal analysis / IC | on-demand | — | acts in-workspace | — |
+| Dev-deal IC pass (`/hv-dev-deal`) | on-demand | — | acts in-workspace | — |
+| **Project control** (`/hv-project-control`) | on-demand / weekly per live project | Weekly | acts in-workspace; vendor/lender comms draft-first | — |
 | HV Deal Radar | scheduled (proposed) | Weekly Mon | read-only | SCHEDULED-LOOPS.md |
 
 ## Markets (EU-pluggable — NL-first)
@@ -52,10 +63,11 @@ HV is built to become **the ultimate AI RE developer in the EU**, so `market` is
 
 | Market | Status | Sourcing portals | Regulation model | Comps / permit regime |
 | :-- | :-- | :-- | :-- | :-- |
-| **NL** | ✅ Live | Funda · Pararius · Kadaster | WWS / Wet betaalbare huur · liberalisation | Kadaster comps · omgevingsvergunning / bestemmingsplan |
-| DE / BE / ES / PT … | 🔜 Config | _(per-market portals)_ | _(per-market rent/tax law)_ | _(per-market comps + permit)_ |
+| **NL** | ✅ Live | Pararius · brokers · Funda-via-snippets *(Funda detail = bot-walled)* · Kadaster/BAG | WWS / Wet betaalbare huur · liberalisation (>186 pts) · OVB 8% investor | Kadaster comps · omgevingsvergunning / omgevingsplan · splitsing gated to 1-Apr-2026 |
+| **BE / Flanders** | ✅ Live (module) | Immoweb · Zimmo · Immovlan · Realo · brokers | Registratierechten 12% · 21%/6% VAT fork · renovatieverplichting (E/F→D in 6yr) | Statbel/Realo comps · omgevingsvergunning Vlaanderen · RUP · opdeling (Bouwcode) |
+| DE / ES / PT … | 🔜 Config | _(per-market portals)_ | _(per-market rent/tax law)_ | _(per-market comps + permit)_ |
 
-Each pod scopes its work to the active market: `hv-sourcing` uses that market's portals + buy-box; `hv-underwriting` its rent/tax model; `hv-permit` its permit regime; the DD-brief and IC memo state the market. Adding a market = fill a row + its regulation note, not new agents.
+Each pod scopes its work to the active market: `hv-sourcing` uses that market's portals + buy-box; `hv-underwriting` its rent/tax model; `hv-permit` its permit regime; the DD-brief and IC memo state the market. Adding a market = fill a [market module](../02_Areas/markets/) + this row, not new agents. **BE/Flanders module:** [`02_Areas/markets/BE-Flanders.md`](../02_Areas/markets/BE-Flanders.md). **Data spine:** [`CONNECTOR-LAYER.md`](CONNECTOR-LAYER.md).
 
 ## Notion data backbone (the real HV system — use it, don't reinvent)
 HV already runs on a verified Notion environment + a daily scan. Pods read/write these via the Notion MCP (source: [`/00_System/notion_database_registry.md`](../../00_System/notion_database_registry.md)). **Do not create parallel trackers.**

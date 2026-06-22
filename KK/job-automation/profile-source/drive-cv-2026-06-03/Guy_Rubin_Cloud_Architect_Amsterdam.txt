@@ -1,0 +1,66 @@
+GUY RUBIN
+Senior Cloud & Enterprise Architect  |  Azure & AWS  |  CCoE  |  NIS2 / DORA
+📍 Amsterdam, NL   ✉  bguy.rubin@gmail.com    📞 +32 469 22 80 40    🔗 linkedin.com/in/guy-rubin-7838a3130
+EXECUTIVE SUMMARY
+Cloud & Enterprise Architect with 20+ years designing mission-critical platforms for global enterprises. Led Cloud Center of Excellence (CCoE) initiatives at IBM Consulting—building secure landing zones, automated governance, and FinOps frameworks adopted across 8+ enterprise clients. Architect of multi-cloud solutions (Azure + AWS) spanning application modernization, microservices, event-driven architectures, and AI/ML workloads. Proven track record translating NIS2, DORA, and ISO 27001 into policy-as-code, reducing provisioning cycles from weeks to hours while maintaining full regulatory compliance.
+
+KEY ACHIEVEMENTS
+
+Led CCoE across 8+ enterprise clients — cut cloud provisioning from 3 weeks to <4 hours through automated landing zones and IaC libraries (Terraform + Azure Policy)
+Directed team of 12 cloud engineers at IBM delivering €50M+ modernization portfolio across financial services and healthcare
+Designed multi-cloud architectures (Azure + AWS) for 4 regulated enterprises achieving NIS2/DORA compliance with zero audit findings in first review cycle
+Supported €30M+ in presales wins at Deloitte through solution architecture, RFP/RFI responses, and executive presentations across 5 enterprise accounts
+
+PROFESSIONAL EXPERIENCE
+Senior Cloud & Enterprise Architect / CCoE Lead
+	IBM Consulting  •  Amsterdam, Netherlands	2017 – Present
+Directed a team of 12 cloud engineers delivering enterprise-scale application modernization programs (microservices, serverless, containers) across financial services and healthcare clients, managing a delivery portfolio of €50M+.
+Built and operationalized Cloud Centers of Excellence (CCoE) for 8+ enterprise clients: designed secure landing zones with policy-enforced guardrails (Azure Policy, AWS SCPs), cutting provisioning time from 3 weeks to under 4 hours and reducing misconfiguration incidents by ~70%.
+Architected hybrid multi-cloud connectivity (ExpressRoute, Direct Connect) with hub-spoke topologies, Zero Trust network segmentation, identity federation (Entra ID, IAM Identity Center), and API gateway strategies aligned with NIS2 and DORA frameworks.
+Designed AI/ML workload platforms including data lakes (ADLS, S3), model training pipelines (Azure ML, SageMaker), MLOps workflows, and inference endpoints supporting intelligent application portfolios.
+Built infrastructure-as-code libraries (Terraform, Bicep) with automated compliance scanning and GitOps pipelines (ArgoCD, Flux), enabling development teams to self-serve governed cloud environments at scale.
+Drove €30M+ in business development through technical presales: solution architecture, RFP/RFI responses, proof-of-concepts, and C-suite presentations across 10+ enterprise accounts.
+Senior Cloud & Enterprise Architect
+	Deloitte  •  Amsterdam & Brussels	2012 – 2017
+Led enterprise cloud transformation programs for 12+ clients across financial services, retail, and public sector — architecting Azure-first migration strategies and application modernization roadmaps reducing on-premises footprint by 60–80%.
+Designed cloud-native application portfolios using Kubernetes, service mesh (Istio), event-driven architectures (Azure Service Bus, Event Grid), and serverless computing — enabling teams to move from monthly releases to daily deployments.
+Built IAM architectures using Azure AD, Okta, and federated SSO, securing data access for 20,000+ users across hybrid environments; contributed to winning multi-million-euro transformation budgets through executive strategy presentations.
+Architected data-centric integration strategies using Boomi and Azure APIM, connecting SAP, Salesforce, and Microsoft 365 ecosystems and eliminating 15+ point-to-point integrations per client.
+
+Cybersecurity Consultant
+	Deloitte  •  Brussels, Belgium	2010 – 2012
+Delivered architecture and compliance frameworks for regulated financial and public sector clients, specializing in cloud security patterns, IAM design, and ISO 27001 / NIS2 control mapping.
+Systems Architect & Security Specialist
+	IDF – Intelligence Corps  •  Israel	2005 – 2010
+Led technical teams architecting mission-critical HA/DR systems with TOP SECRET accreditation; applied defense-grade security principles (Zero Trust, micro-segmentation) that directly inform enterprise cloud architecture practice.
+
+TECHNICAL EXPERTISE
+
+Cloud Platforms & Services
+Azure: AKS, App Service, Functions, API Management, Event Grid, Service Bus, Cosmos DB, Synapse AWS: EKS, Lambda, API Gateway, EventBridge, DynamoDB, RDS, Glue Multi-cloud strategy, Hybrid Connectivity, Well-Architected Frameworks
+Application Modernization
+Microservices Architecture, Event-Driven Design, Serverless Computing API Design & Gateway Patterns, Service Mesh (Istio, Linkerd) Container Orchestration (Kubernetes / AKS / EKS) Cloud-Native Patterns, Legacy Migration Strategies
+CCoE & Governance
+Secure Landing Zones, Azure Policy, AWS SCPs Infrastructure-as-Code: Terraform, Bicep, CloudFormation CI/CD: GitHub Actions, Azure DevOps | GitOps: ArgoCD, Flux Policy-as-Code: OPA, Sentinel | FinOps | NIS2, DORA, ISO 27001, GDPR
+AI/ML & Data Platforms
+Azure ML, AWS SageMaker, MLOps Pipelines Data Lakes: ADLS Gen2, S3/Parquet | Azure Synapse, Databricks Kafka, Event Hubs — Real-Time Streaming Architectures LangChain, Azure OpenAI — Enterprise Copilot Patterns
+Security & Identity
+Zero Trust Architecture, Identity Federation (Entra ID, Okta, IAM) Network Micro-Segmentation, mTLS, SBOM AZ-500 Azure Security Engineer | CISSP | CCSP ISO 27001 Lead Implementer, NIS2/DORA Compliance
+Enterprise Architecture
+TOGAF 9, ArchiMate, SAFe Architecture Runway Business Capability Modeling, Value Streams Strategic Platform Roadmapping, Portfolio Governance Architecture Boards, Design Reviews, RFP/RFI Leadership
+
+CERTIFICATIONS & EDUCATION
+
+AZ-305 – Azure Solutions Architect Expert
+AZ-500 – Azure Security Engineer
+AZ-400 – Azure DevOps Engineer
+AWS Solutions Architect Professional
+AWS Security Specialty
+CISSP / CCSP
+TOGAF 9 Certified
+ITIL 4 Foundation
+ISO 27001 Lead Implementer
+
+Education: 
+B.Sc. Industrial Engineering & Management — Technion, Israel Institute of Technology 
+Languages: English (Fluent), Hebrew (Native)

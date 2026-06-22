@@ -10,6 +10,8 @@ This file defines the canonical routing rules for Rubin OS. It is read by the ro
 
 **Rule**: Always route to the most specific match. If two agents match, prefer the one with the most concrete keyword match over a general one.
 
+**Company-aware routing**: ROS is now a multi-company group (see `/00_System/group-operating-model.md` + `companies.md`). The active company is set at boot. Arbor work routes to the **Arbor company** (its mesh is its org) and runs under Arbor's `COMPANY.md` interfaces; HV and EA remain company-eligible domains. CoS/FIN/Research/Delivery/MKT are shared group services; KK is personal.
+
 ---
 
 ## Agent routing matrix
@@ -26,6 +28,7 @@ This file defines the canonical routing rules for Rubin OS. It is read by the ro
 | invoice, insurance, contract, compliance, admin, bank, tax, subscription, legal, personal finance | FIN (Finance & Admin) | ros-fin |
 | job, jobs, vacancy, vacature, CV, resume, cover letter, job application, recruiter, LinkedIn job, job alert, interview prep, work permit, relocation | Career (job-search, KK-owned mesh) | ros-core |
 | research, look into this, find information on, fact-check, due-diligence research, sources on | research-agent (KK-owned shared service) | ros-core |
+| release, deploy, ship to prod, canary, rollback, release train, promotion, feature flag, claim register, regression gate, green-gate | CoS Delivery (`ros-release-lead`) — files `CoS/delivery/MESH.md` + `00_System/release-engineering/` | ros-core |
 
 ---
 

@@ -8,7 +8,8 @@ The shared connector registry for Rubin OS. Domain agents inherit this through r
 ROS runs across **two runtimes**, and they reach connectors *differently*. A task that "can't connect" in one is usually available via the other path — use whichever runtime you're in:
 
 - **Hermes** (WSL automation, scheduled/cron, Telegram) → reaches connectors through **skills**: `himalaya` (Gmail), `productivity/notion` (Notion). This is the path the domain `CLAUDE.md` files name.
-- **Claude Code / Cowork** (interactive, this runtime) → reaches connectors through **MCP servers** (load schemas via ToolSearch on first use). Gmail, Notion, Calendar, and Drive are **live now via MCP** — you do NOT need a Hermes skill here.
+- **Claude Code / Cowork** (interactive, this runtime) → reaches connectors through **MCP servers** (load schemas via ToolSearch on first use). Gmail, Notion, Calendar, and Drive are **live now via MCP** — you do NOT need a Hermes skill here. **The connected MCP Gmail/Drive/Calendar are on `bguy.rubin@gmail.com`** (verified 2026-06-21); `bhollandvest` + `joseph` mail are reachable **only via Hermes `himalaya`**, not this MCP.
+- **The connector layer is a fleet-wide grant** (not a main-loop privilege): every dispatched ROS agent carries it. ROS agent files that do real-world I/O declare `tools: "*"` (see `/00_System/agent-capabilities.md` → "Connector access is a fleet-wide grant"). Verified MCP IDs + the Notion create-by-ID pattern: [`HV/mesh/INTEGRATIONS.md`](../HV/mesh/INTEGRATIONS.md).
 - **Codex** (bulk code/file edits) and **Gemini** (generation, multimodal, large-context — both Guy's and **Joseph's** subscriptions) are additional runtimes. ROS is **model/runtime-agnostic** (`/AGENTS.md`): pick the best tool per job and get the most from every connected subscription across both principals.
 
 > **All principal email accounts are connected** (Guy ×2, Joseph ×1 — see the table). Per-principal scoping is governed by `/00_System/principals.md` + `/00_System/identity-policy.md`.
@@ -19,12 +20,12 @@ ROS runs across **two runtimes**, and they reach connectors *differently*. A tas
 
 | Connector | Hermes path | Claude Code (MCP) path | Live status | Notes |
 |---|---|---|---|---|
-| Gmail — `bguy.rubin@gmail.com` | `himalaya` account `bguy` | Gmail MCP (search/read/draft/label) | Active | Draft first; never send without explicit confirmation. CoS/KK/EA/PAI/MKT/FIN-by-context. |
-| Gmail — `bhollandvest@gmail.com` | `himalaya` account `hollandvest` | Gmail MCP | Active | HV + FIN-by-context. Draft first. |
-| Gmail — `josephdoronrubin@gmail.com` | `himalaya` account `joseph` | Gmail MCP | Active | EA when Joseph is sender/primary. Draft first. |
-| Notion | skill `productivity/notion` | Notion MCP | Active | `Rubin OS Command Center` (`2b4f37e231fe801c8495dea36d0efd4d`) + `HollandVest Command Center` (`20401545ece243e397e18534e701d207`) API-verified. Inspect before writes; no duplicate pages. |
-| Google Calendar | (Hermes: not wired) | Calendar MCP (list/create/update/suggest-time) | Active via MCP | Event creation is Level 3 — draft/confirm. KK owns. |
-| Google Drive | (Hermes: not wired) | Drive MCP (search/read/create) | Active via MCP | Career CV fact-source folder lives here (`1LERQza-…`). |
+| Gmail — `bguy.rubin@gmail.com` | `himalaya` account `bguy` | **Gmail MCP — the connected account** (search/read/draft/label; verified 2026-06-21) | Active | Draft first; never send without explicit confirmation. CoS/KK/EA/PAI/MKT/FIN-by-context. |
+| Gmail — `bhollandvest@gmail.com` | `himalaya` account `hollandvest` | **Hermes only — NOT the connected MCP account** | Active (Hermes) | HV + FIN-by-context. HV third-party outbound originates here via Hermes. Draft first. |
+| Gmail — `josephdoronrubin@gmail.com` | `himalaya` account `joseph` | **Hermes only — NOT the connected MCP account** | Active (Hermes) | EA when Joseph is sender/primary. Draft first. |
+| Notion | skill `productivity/notion` | Notion MCP — **`fetch`+`create`+`update` by ID work; `query-data-sources` is Enterprise-gated** (read rows via Hermes / a view) | Active | Command Centers verified. **Live data-source IDs + the create-by-ID pattern: [`HV/mesh/INTEGRATIONS.md`](../HV/mesh/INTEGRATIONS.md)** (supersede the stale `notion_database_registry.md` IDs). Inspect before writes; no duplicates. |
+| Google Calendar | (Hermes: not wired) | Calendar MCP (list/create/update/suggest-time) — account `bguy.rubin` | Active via MCP | Event creation is Level 3 — draft/confirm. KK owns. |
+| Google Drive | (Hermes: not wired) | Drive MCP (search/read/create) — account `bguy.rubin` | Active via MCP | Career CV fact-source `1LERQza-…`; **HV "HollandVest — Deals & Projects" `1LkTfpnokI4y_VpjBrLj3fCCrvPecIw1D`**. |
 | GitHub | `git`/`gh` where configured | `git` + GitHub MCP (plugin, needs `authenticate`) | Active (git) | ROS repo `https://github.com/guyrubin/ROS`; Arbor `guyrubin/PPPPtherapy-`. |
 | Gemini (Google AI) | Gemini CLI / API | Gemini API / Vertex / AI-Studio | Active | Agnostic model choice for generation/multimodal/large-context; Arbor's image+coach path. **Guy + Joseph** both have subscriptions — leverage Joseph's for Joseph-context work. |
 | Web search + fetch | Hermes browse | `WebSearch` / `WebFetch` (+ `research-agent`) | Active | Baseline capability; see `agent-capabilities.md`. |

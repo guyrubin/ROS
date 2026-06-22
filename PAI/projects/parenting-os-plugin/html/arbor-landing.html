@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#2f5d47" />
+<title>Arbor — The parenting advisor that remembers your child</title>
+<meta name="description" content="Arbor gives you a calm read on what's happening, a plan for tonight, and a private record of your child that gets richer every time you use it. Built on longitudinal child memory, not a generic chatbot." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,450;14..32,500;14..32,600;14..32,700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   ARBOR · marketing landing · calm clinical-humanist
+   Identity preserved from the shipping app:
+   pine-green brand · Inter + Fraunces · cool clean canvas
+   ============================================================ */
+:root{
+  /* brand — pine green */
+  --green:oklch(0.47 0.072 156);
+  --green-600:oklch(0.43 0.072 156);
+  --green-700:oklch(0.37 0.062 157);
+  --green-800:oklch(0.31 0.055 158);
+  --green-900:oklch(0.25 0.045 159);
+  --green-400:oklch(0.60 0.078 154);
+  --green-300:oklch(0.70 0.072 152);
+  --green-200:oklch(0.82 0.050 154);
+  --green-50:oklch(0.955 0.024 158);
+  --green-100:oklch(0.925 0.034 156);
+
+  /* semantic states (functional only) */
+  --amber:oklch(0.62 0.115 75);   --amber-50:oklch(0.955 0.040 82);
+  --orange:oklch(0.60 0.150 47);  --orange-50:oklch(0.955 0.045 55);
+  --red:oklch(0.55 0.170 26);     --red-50:oklch(0.950 0.045 28);
+  --blue:oklch(0.54 0.095 232);   --blue-50:oklch(0.955 0.030 232);
+  --violet:oklch(0.52 0.110 300); --violet-50:oklch(0.955 0.030 300);
+
+  /* ink ramp — deep green-gray, never pure black */
+  --ink:oklch(0.26 0.018 165);
+  --ink-2:oklch(0.39 0.016 166);
+  --muted:oklch(0.50 0.014 167);
+  --faint:oklch(0.64 0.012 168);
+
+  /* surfaces — cool, faintly green, NOT cream */
+  --bg:oklch(0.985 0.004 168);
+  --bg-2:oklch(0.972 0.006 170);
+  --panel:oklch(0.968 0.007 171);
+  --card:oklch(1 0 0);
+  --card-2:oklch(0.992 0.003 170);
+  --line:oklch(0.905 0.008 170);
+  --line-2:oklch(0.945 0.006 170);
+  --line-strong:oklch(0.855 0.010 170);
+
+  --shadow-sm:0 1px 2px oklch(0.30 0.02 165 / .05), 0 1px 1px oklch(0.30 0.02 165 / .04);
+  --shadow:0 6px 16px -6px oklch(0.30 0.02 165 / .10), 0 2px 6px -2px oklch(0.30 0.02 165 / .06);
+  --shadow-lg:0 28px 56px -16px oklch(0.28 0.02 165 / .20), 0 8px 20px -10px oklch(0.28 0.02 165 / .12);
+  --shadow-green:0 24px 60px -22px oklch(0.40 0.07 156 / .55);
+  --ring:0 0 0 4px oklch(0.47 0.072 156 / .18);
+
+  --r-xs:8px; --r-sm:10px; --r:14px; --r-lg:18px; --r-xl:22px; --r-2xl:28px; --r-pill:999px;
+
+  --sans:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:"Fraunces",ui-serif,Georgia,"Times New Roman",serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+
+  --z-base:1; --z-sticky:30; --z-nav:40; --z-dropdown:50; --z-scrim:80; --z-modal:90; --z-toast:100;
+  --maxw:1200px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;overflow-x:clip}
+body{
+  font-family:var(--sans); color:var(--ink); font-size:1.0625rem;
+  line-height:1.6; letter-spacing:-0.006em;
+  background:
+    radial-gradient(1200px 620px at 6% -10%, var(--green-50), transparent 55%),
+    radial-gradient(980px 560px at 112% -2%, var(--bg-2), transparent 50%),
+    var(--bg);
+  background-repeat:no-repeat;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+img,svg{display:block;max-width:100%}
+p{color:var(--ink-2)}
+::selection{background:var(--green-200);color:var(--green-900)}
+:focus-visible{outline:none;box-shadow:var(--ring);border-radius:var(--r-sm)}
+
+.wrap{width:min(92%,var(--maxw));margin-inline:auto}
+
+/* ---- type ---- */
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;color:var(--ink);margin:0;line-height:1.04;letter-spacing:-0.02em;text-wrap:balance}
+.h-xl{font-size:clamp(2.5rem,1.4rem + 4.6vw,4.7rem)}
+.h-lg{font-size:clamp(2rem,1.3rem + 2.9vw,3.3rem)}
+.h-md{font-size:clamp(1.5rem,1.1rem + 1.7vw,2.2rem)}
+.lede{font-size:clamp(1.075rem,1rem + .42vw,1.3rem);line-height:1.55;color:var(--ink-2);text-wrap:pretty;max-width:60ch}
+.eyebrow{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.01em;color:var(--green-700);display:inline-flex;align-items:center;gap:.55rem}
+.eyebrow::before{content:"";width:18px;height:1.6px;background:var(--green-400);border-radius:2px}
+.serif-accent{font-family:var(--serif);font-weight:500;font-style:italic;color:var(--green-700)}
+
+/* ---- buttons ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.85rem 1.4rem;border-radius:var(--r);font-weight:600;font-size:.97rem;letter-spacing:-0.01em;
+  border:1px solid transparent;cursor:pointer;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out),background .2s,color .2s,border-color .2s;
+  white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--green);color:oklch(0.99 0.01 156);box-shadow:0 10px 24px -10px oklch(0.45 0.07 156 / .6)}
+.btn-primary:hover{background:var(--green-600);transform:translateY(-2px);box-shadow:0 16px 32px -12px oklch(0.42 0.07 156 / .7)}
+.btn-ghost{background:var(--card);color:var(--ink);border-color:var(--line-strong);box-shadow:var(--shadow-sm)}
+.btn-ghost:hover{border-color:var(--green-300);color:var(--green-700);transform:translateY(-2px)}
+.btn-on-dark{background:oklch(0.99 0.01 156);color:var(--green-800)}
+.btn-on-dark:hover{background:var(--green-50);transform:translateY(-2px)}
+.btn-ghost-dark{background:transparent;color:oklch(0.98 0.01 156);border-color:oklch(0.99 0.01 156 / .35)}
+.btn-ghost-dark:hover{background:oklch(0.99 0.01 156 / .12);border-color:oklch(0.99 0.01 156 / .6)}
+.btn-sm{padding:.6rem 1rem;font-size:.9rem}
+
+/* ---- scroll progress ---- */
+.progress{position:fixed;inset:0 0 auto 0;height:3px;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--green-700),var(--green-400));z-index:var(--z-toast)}
+
+/* ---- nav ---- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:var(--z-nav);padding:1.1rem 0;
+  transition:padding .3s var(--ease),background .3s,box-shadow .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.scrolled{padding:.65rem 0;background:oklch(0.985 0.004 168 / .82);backdrop-filter:blur(14px) saturate(1.3);
+  -webkit-backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+.brand{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-weight:600;font-size:1.4rem;letter-spacing:-0.02em}
+.leafmark{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:var(--green);color:oklch(0.99 0.01 156);box-shadow:0 6px 16px -6px oklch(0.45 0.07 156 / .6)}
+.leafmark svg{width:21px;height:21px}
+.nav-links{display:flex;align-items:center;gap:1.7rem;font-size:.94rem;font-weight:500;color:var(--ink-2)}
+.nav-links a{transition:color .2s}
+.nav-links a:hover{color:var(--green-700)}
+.nav-cta{display:flex;align-items:center;gap:.7rem}
+.nav-toggle{display:none}
+@media(max-width:920px){
+  .nav-links{display:none}
+  .nav-cta .btn-ghost{display:none}
+}
+
+/* ---- section rhythm ---- */
+section{position:relative}
+.sec{padding:clamp(4.5rem,3rem + 7vw,8rem) 0}
+.sec-head{max-width:62ch}
+.sec-head .h-lg{margin-top:.7rem}
+.sec-head .lede{margin-top:1.1rem}
+
+/* ---- hero ---- */
+.hero{padding:clamp(7.5rem,5rem + 8vw,10.5rem) 0 clamp(3rem,2rem + 4vw,5rem)}
+.hero .wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(2rem,1rem + 4vw,4.5rem);align-items:center}
+.hero-copy{max-width:38rem}
+.hero-tag{display:inline-flex;align-items:center;gap:.55rem;font-size:.85rem;font-weight:600;color:var(--green-700);
+  background:var(--green-50);border:1px solid var(--green-100);padding:.45rem .85rem;border-radius:var(--r-pill)}
+.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px oklch(0.47 0.072 156 / .18)}
+.hero h1{margin:1.3rem 0 0}
+.hero .lede{margin-top:1.4rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.hero-trust{display:flex;flex-wrap:wrap;gap:1.1rem 1.6rem;margin-top:2.2rem;font-size:.86rem;color:var(--muted)}
+.hero-trust span{display:inline-flex;align-items:center;gap:.45rem}
+.hero-trust svg{width:16px;height:16px;color:var(--green)}
+
+/* product mockup (hero imagery) */
+.mock{position:relative}
+.mock-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-2xl);
+  box-shadow:var(--shadow-lg);overflow:hidden;z-index:2}
+.mock-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.95rem 1.15rem;border-bottom:1px solid var(--line-2);background:var(--card-2)}
+.mock-head .who{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.92rem}
+.mock-head .leafmark{width:28px;height:28px;border-radius:8px}
+.mock-head .leafmark svg{width:15px;height:15px}
+.mock-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:600;color:var(--green-700);
+  background:var(--green-50);border:1px solid var(--green-100);padding:.3rem .6rem;border-radius:var(--r-pill)}
+.mock-chip .av{width:16px;height:16px;border-radius:50%;background:var(--green-300);display:grid;place-items:center;color:var(--green-900);font-size:.62rem;font-weight:700}
+.mock-body{padding:1.15rem;display:flex;flex-direction:column;gap:.85rem}
+.bubble-ask{align-self:flex-end;max-width:84%;background:var(--green);color:oklch(0.99 0.01 156);
+  padding:.7rem .9rem;border-radius:14px 14px 4px 14px;font-size:.9rem;line-height:1.45;box-shadow:0 8px 18px -10px oklch(0.45 0.07 156 / .6)}
+.answer{background:var(--bg-2);border:1px solid var(--line-2);border-radius:14px 14px 14px 4px;padding:.2rem .2rem .35rem;max-width:96%}
+.ans-row{padding:.6rem .8rem;border-bottom:1px solid var(--line-2)}
+.ans-row:last-child{border-bottom:none}
+.ans-k{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--green-700);display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.ans-v{font-size:.88rem;line-height:1.5;color:var(--ink);margin-top:.25rem}
+.risk-pill{font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.16rem .5rem;border-radius:var(--r-pill)}
+.risk-low{color:var(--green-700);background:var(--green-50);border:1px solid var(--green-100)}
+.todo{display:flex;gap:.5rem;font-size:.85rem;color:var(--ink-2);margin-top:.3rem;line-height:1.4}
+.todo .tick{flex:none;width:16px;height:16px;border-radius:5px;background:var(--green-50);border:1px solid var(--green-200);display:grid;place-items:center;color:var(--green);margin-top:.1rem}
+.todo .tick svg{width:10px;height:10px}
+.track-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.4rem}
+.track-tags span{font-size:.72rem;font-weight:500;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:var(--r-pill);padding:.18rem .55rem}
+.mock-foot{display:flex;align-items:center;gap:.45rem;font-size:.76rem;color:var(--green-700);padding:.7rem 1.15rem;border-top:1px solid var(--line-2);background:var(--green-50)}
+.mock-foot svg{width:14px;height:14px}
+.mock-glow{position:absolute;inset:-8% -6% -10% -6%;border-radius:36px;z-index:1;
+  background:radial-gradient(60% 60% at 70% 20%, oklch(0.70 0.072 152 / .35), transparent 70%);filter:blur(28px)}
+.mock-badge{position:absolute;z-index:3;background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:.6rem .8rem;font-size:.78rem;font-weight:600;display:flex;align-items:center;gap:.5rem}
+.mock-badge svg{width:16px;height:16px;color:var(--green)}
+.mock-badge.b1{left:-1.6rem;top:18%}
+.mock-badge.b2{right:-1.4rem;bottom:14%}
+
+/* ---- logos / proof strip ---- */
+.proof{padding:1.5rem 0 0}
+.proof .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem 2.2rem;justify-content:center;
+  border-top:1px solid var(--line);padding-top:2.2rem;color:var(--muted);font-size:.84rem}
+.proof b{color:var(--ink);font-weight:600}
+
+/* ---- problem ---- */
+.problem .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,1rem + 4vw,4rem);align-items:center}
+.contrast{display:grid;gap:1rem}
+.contrast .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cbox{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.1rem 1.15rem;box-shadow:var(--shadow-sm)}
+.cbox.them{background:var(--card-2)}
+.cbox .ctag{font-size:.74rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.4rem;margin-bottom:.5rem}
+.cbox.us .ctag{color:var(--green-700)}
+.cbox .ctag .ic{width:18px;height:18px;border-radius:6px;display:grid;place-items:center}
+.cbox.them .ctag .ic{background:var(--bg-2);color:var(--muted)}
+.cbox.us .ctag .ic{background:var(--green-50);color:var(--green)}
+.cbox p{margin:0;font-size:.92rem;color:var(--ink-2)}
+.cbox.us p{color:var(--ink)}
+
+/* ---- capability map (centerpiece) ---- */
+.map-shell{margin-top:clamp(2rem,1rem + 3vw,3.5rem);display:grid;grid-template-columns:1.35fr .9fr;gap:clamp(1.5rem,1rem + 2vw,2.6rem);align-items:stretch}
+.map-stage{background:
+   radial-gradient(70% 60% at 50% 42%, var(--green-50), transparent 70%),
+   var(--card);
+  border:1px solid var(--line);border-radius:var(--r-2xl);box-shadow:var(--shadow);
+  padding:1rem;display:grid;place-items:center;min-height:430px}
+.map-svg{width:100%;height:auto}
+.cap-node{cursor:pointer}
+.cap-node .node-box{fill:var(--card);stroke:var(--line-strong);stroke-width:1.4;transition:stroke .25s,fill .25s}
+.cap-node .node-label{font-family:var(--sans);font-weight:600;font-size:15px;fill:var(--ink);letter-spacing:-0.01em}
+.cap-node .node-dot{transition:r .25s}
+.cap-node:hover .node-box,.cap-node:focus-visible .node-box{stroke:var(--green-400);fill:var(--green-50)}
+.cap-node:focus-visible{outline:none}
+.cap-node.active .node-box{stroke:var(--green);stroke-width:2;fill:var(--green-50)}
+.cap-node.active .node-label{fill:var(--green-800)}
+.map-link{stroke:var(--line-strong);stroke-width:1.4;transition:stroke .25s,stroke-width .25s;fill:none}
+.map-link.active{stroke:var(--green-400);stroke-width:2.4}
+.core-ring{fill:none;stroke:var(--green-200);stroke-width:1.4;stroke-dasharray:2 6;opacity:.7}
+.core-box{fill:var(--green);stroke:var(--green-700);stroke-width:1.5}
+.core-title{font-family:var(--serif);font-weight:600;font-size:22px;fill:oklch(0.99 0.01 156)}
+.core-sub{font-family:var(--sans);font-weight:500;font-size:12px;fill:oklch(0.93 0.03 156)}
+
+.map-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r-2xl);box-shadow:var(--shadow);
+  padding:1.6rem 1.6rem 1.7rem;display:flex;flex-direction:column}
+.map-panel .pic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--green-50);color:var(--green-700);border:1px solid var(--green-100);margin-bottom:1.1rem}
+.map-panel .pic svg{width:24px;height:24px}
+.map-panel h3{font-size:1.45rem}
+.map-panel .one{margin:.55rem 0 0;font-size:.96rem;color:var(--green-700);font-weight:500}
+.map-panel .long{margin:1rem 0 0;font-size:.95rem;color:var(--ink-2);line-height:1.6}
+.map-panel .looks{margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid var(--line-2);font-size:.86rem;color:var(--ink-2)}
+.map-panel .looks b{color:var(--ink);font-weight:600}
+.map-hint{margin-top:1.4rem;font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:.5rem}
+.map-hint svg{width:15px;height:15px;color:var(--green)}
+.map-tabs{display:none}
+
+/* ---- capability detail rows ---- */
+.caps{display:flex;flex-direction:column;gap:clamp(3rem,2rem + 3vw,5rem);margin-top:clamp(3rem,2rem + 3vw,4.5rem)}
+.cap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,1rem + 4vw,4.5rem);align-items:center}
+.cap:nth-child(even) .cap-art{order:-1}
+.cap-text .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--green-50);color:var(--green-700);border:1px solid var(--green-100);margin-bottom:1.1rem}
+.cap-text .ic svg{width:23px;height:23px}
+.cap-text h3{font-size:clamp(1.5rem,1.2rem + 1vw,2rem)}
+.cap-text p{margin:.9rem 0 0;font-size:1.02rem;color:var(--ink-2);max-width:46ch}
+.cap-points{margin:1.2rem 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.cap-points li{display:flex;gap:.6rem;font-size:.94rem;color:var(--ink-2);line-height:1.45}
+.cap-points .tick{flex:none;width:19px;height:19px;border-radius:6px;background:var(--green-50);border:1px solid var(--green-200);display:grid;place-items:center;color:var(--green);margin-top:.12rem}
+.cap-points .tick svg{width:11px;height:11px}
+.cap-art{position:relative}
+.art-frame{background:var(--card);border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--shadow);padding:1.4rem}
+.art-frame svg{width:100%;height:auto}
+.art-cap{font-size:.78rem;color:var(--muted);margin-top:.8rem;display:flex;align-items:center;gap:.45rem}
+.art-cap svg{width:14px;height:14px;color:var(--green)}
+
+/* generic diagram text */
+.dlabel{font-family:var(--sans);font-weight:600;font-size:13px;fill:var(--ink)}
+.dsub{font-family:var(--sans);font-weight:500;font-size:11px;fill:var(--muted)}
+.dnum{font-family:var(--serif);font-weight:600;fill:var(--green-700)}
+
+/* ---- how it works ---- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,.5rem + 2vw,2.2rem);margin-top:clamp(2.5rem,1.5rem + 3vw,4rem);counter-reset:step}
+.step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-xl);padding:1.6rem 1.5rem 1.7rem;box-shadow:var(--shadow-sm)}
+.step .n{font-family:var(--serif);font-size:2.4rem;font-weight:600;color:var(--green);line-height:1;counter-increment:step}
+.step .n::before{content:counter(step,decimal-leading-zero)}
+.step h3{font-size:1.25rem;margin-top:.9rem}
+.step p{margin:.6rem 0 0;font-size:.93rem;color:var(--ink-2)}
+.step .si{position:absolute;top:1.6rem;right:1.5rem;width:38px;height:38px;border-radius:11px;background:var(--green-50);border:1px solid var(--green-100);display:grid;place-items:center;color:var(--green-700)}
+.step .si svg{width:20px;height:20px}
+.step-arrow{display:none}
+
+/* ---- memory moat (drenched) ---- */
+.moat{background:
+   radial-gradient(900px 500px at 85% -10%, var(--green-700), transparent 60%),
+   linear-gradient(170deg, var(--green-800), var(--green-900));
+  color:oklch(0.96 0.015 156);overflow:hidden}
+.moat .h-lg,.moat h3{color:oklch(0.99 0.012 156)}
+.moat .lede{color:oklch(0.90 0.03 156)}
+.moat .eyebrow{color:var(--green-200)}
+.moat .eyebrow::before{background:var(--green-300)}
+.moat .wrap{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,1rem + 4vw,4.5rem);align-items:center;line-height:1.65}
+.moat-copy p{color:oklch(0.88 0.03 156)}
+.moat-stats{display:flex;gap:1.8rem;margin-top:2rem;flex-wrap:wrap}
+.moat-stats .s b{font-family:var(--serif);font-weight:600;font-size:2.1rem;display:block;color:oklch(0.99 0.01 156);line-height:1}
+.moat-stats .s span{font-size:.84rem;color:oklch(0.85 0.03 156);margin-top:.35rem;display:block}
+.timeline{background:oklch(0.99 0.01 156 / .06);border:1px solid oklch(0.99 0.01 156 / .14);border-radius:var(--r-2xl);
+  padding:1.5rem;backdrop-filter:blur(2px)}
+.timeline h4{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--green-200);margin:0 0 1.1rem;display:flex;align-items:center;gap:.5rem}
+.tl{position:relative;padding-left:1.6rem}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--green-300),oklch(0.99 0.01 156 / .12))}
+.tl-item{position:relative;padding:0 0 1.15rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-1.6rem;top:.35rem;width:11px;height:11px;border-radius:50%;background:var(--green-300);box-shadow:0 0 0 4px oklch(0.30 0.05 158)}
+.tl-item .when{font-size:.74rem;font-weight:600;letter-spacing:.03em;color:var(--green-200);text-transform:uppercase}
+.tl-item .what{font-size:.94rem;color:oklch(0.95 0.02 156);margin-top:.18rem;line-height:1.45}
+.tl-item .tag{font-size:.72rem;color:oklch(0.82 0.03 156);margin-top:.25rem}
+.tl-foot{margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid oklch(0.99 0.01 156 / .14);font-size:.86rem;color:oklch(0.92 0.025 156);display:flex;gap:.5rem;align-items:flex-start}
+.tl-foot svg{width:16px;height:16px;color:var(--green-200);flex:none;margin-top:.1rem}
+
+/* ---- audiences ---- */
+.aud{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:clamp(2.5rem,1.5rem + 3vw,3.8rem)}
+.aud-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-xl);padding:1.6rem 1.5rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.aud-card.lead{background:linear-gradient(175deg,var(--green-50),var(--card));border-color:var(--green-100)}
+.aud-card .ah{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+.aud-card .ai{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:var(--green);color:oklch(0.99 0.01 156)}
+.aud-card.sec .ai{background:var(--green-50);color:var(--green-700);border:1px solid var(--green-100)}
+.aud-card .ai svg{width:21px;height:21px}
+.aud-card .role{font-size:.74rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.aud-card.lead .role{color:var(--green-700)}
+.aud-card h3{font-size:1.3rem;margin-top:.15rem}
+.aud-card p{margin:.7rem 0 0;font-size:.92rem;color:var(--ink-2)}
+.aud-list{margin:1rem 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45rem;font-size:.88rem;color:var(--ink-2)}
+.aud-list li{display:flex;gap:.5rem}
+.aud-list .tick{color:var(--green);flex:none}
+.aud-list .tick svg{width:15px;height:15px;margin-top:.1rem}
+
+/* ---- principles ---- */
+.principles .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,1rem + 4vw,4rem);align-items:start}
+.prom{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.prom-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.3rem 1.25rem;box-shadow:var(--shadow-sm)}
+.prom-card .pi{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--green-50);color:var(--green-700);border:1px solid var(--green-100);margin-bottom:.9rem}
+.prom-card .pi svg{width:20px;height:20px}
+.prom-card h4{font-family:var(--sans);font-weight:700;font-size:1rem;color:var(--ink);letter-spacing:-0.01em}
+.prom-card p{margin:.45rem 0 0;font-size:.87rem;color:var(--ink-2);line-height:1.5}
+
+/* ---- pricing ---- */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(2.5rem,1.5rem + 3vw,3.8rem)}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:var(--r-xl);padding:1.7rem 1.6rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.tier.feat{border-color:var(--green);box-shadow:var(--shadow);position:relative}
+.tier.feat::after{content:"Most chosen";position:absolute;top:-.7rem;right:1.3rem;font-size:.72rem;font-weight:700;letter-spacing:.03em;color:oklch(0.99 0.01 156);background:var(--green);padding:.25rem .7rem;border-radius:var(--r-pill)}
+.tier .tname{font-family:var(--serif);font-weight:600;font-size:1.3rem}
+.tier .price{margin-top:.6rem;display:flex;align-items:baseline;gap:.3rem}
+.tier .price b{font-size:2.1rem;font-weight:600;color:var(--ink);font-family:var(--serif)}
+.tier .price span{font-size:.88rem;color:var(--muted)}
+.tier .for{font-size:.86rem;color:var(--ink-2);margin-top:.5rem}
+.tier ul{margin:1.2rem 0 1.5rem;padding:0;list-style:none;display:flex;flex-direction:column;gap:.55rem;font-size:.88rem;color:var(--ink-2)}
+.tier ul li{display:flex;gap:.5rem}
+.tier ul .tick{color:var(--green);flex:none}
+.tier ul .tick svg{width:15px;height:15px;margin-top:.1rem}
+.tier .btn{margin-top:auto;width:100%}
+.tier-note{margin-top:1.4rem;font-size:.84rem;color:var(--muted);text-align:center}
+
+/* ---- final cta ---- */
+.cta-final{background:linear-gradient(165deg,var(--green-700),var(--green-900));color:oklch(0.97 0.015 156);
+  border-radius:clamp(20px,1rem + 2vw,32px);padding:clamp(2.8rem,2rem + 4vw,5rem) clamp(1.5rem,1rem + 3vw,4rem);
+  text-align:center;box-shadow:var(--shadow-green);position:relative;overflow:hidden}
+.cta-final::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 50% -10%,oklch(0.70 0.072 152 / .35),transparent 60%)}
+.cta-final > *{position:relative}
+.cta-final h2{color:oklch(0.99 0.012 156);max-width:18ch;margin-inline:auto}
+.cta-final p{color:oklch(0.90 0.03 156);max-width:48ch;margin:1.1rem auto 0}
+.cta-final .hero-actions{justify-content:center}
+.cta-final .fine{margin-top:1.4rem;font-size:.82rem;color:oklch(0.84 0.03 156)}
+
+/* ---- footer ---- */
+footer{padding:3.5rem 0 2.5rem;border-top:1px solid var(--line);margin-top:clamp(4rem,3rem + 3vw,6rem)}
+.foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.foot-brand{max-width:26rem}
+.foot-brand p{font-size:.9rem;color:var(--ink-2);margin:.9rem 0 0}
+.foot-cols{display:flex;gap:3rem;flex-wrap:wrap}
+.foot-col h5{font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 .9rem}
+.foot-col a{display:block;font-size:.9rem;color:var(--ink-2);padding:.25rem 0;transition:color .2s}
+.foot-col a:hover{color:var(--green-700)}
+.foot-bot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+
+/* ---- reveal motion ----
+   Base state is fully VISIBLE. The hidden-initial state (.pre) is added by JS
+   only when the tab is actually visible, so a paused renderer (hidden tab /
+   headless screenshot) always shows content instead of a blank section. */
+.js .reveal{transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.js .reveal.pre{opacity:0;transform:translateY(22px)}
+.js .reveal.pre.in{opacity:1;transform:none}
+.js .stagger > *{transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+.js .stagger.pre > *{opacity:0;transform:translateY(18px)}
+.js .stagger.pre.in > *{opacity:1;transform:none}
+.js .stagger.pre.in > *:nth-child(2){transition-delay:.08s}
+.js .stagger.pre.in > *:nth-child(3){transition-delay:.16s}
+.js .stagger.pre.in > *:nth-child(4){transition-delay:.24s}
+.js .stagger.pre.in > *:nth-child(5){transition-delay:.32s}
+.js .stagger.pre.in > *:nth-child(6){transition-delay:.40s}
+
+/* float on hero mockup */
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.mock-card{animation:floaty 7s var(--ease) infinite}
+.mock-badge.b1{animation:floaty 7s var(--ease) infinite .8s}
+.mock-badge.b2{animation:floaty 7s var(--ease) infinite 1.6s}
+
+/* ---- responsive ---- */
+@media(max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;gap:3rem}
+  .mock{max-width:30rem;margin-inline:auto;width:100%}
+  .problem .wrap,.principles .wrap,.moat .wrap{grid-template-columns:1fr;gap:2.4rem}
+  .map-shell{grid-template-columns:1fr}
+  .cap{grid-template-columns:1fr;gap:1.8rem}
+  .cap:nth-child(even) .cap-art{order:0}
+  .cap-art{max-width:34rem}
+  .steps{grid-template-columns:1fr}
+  .aud,.tiers,.prom{grid-template-columns:1fr}
+  .prom{gap:.9rem}
+}
+@media(max-width:560px){
+  .contrast .row{grid-template-columns:1fr}
+  .hero-trust{gap:.7rem 1.2rem}
+  .moat-stats{gap:1.3rem}
+  .mock-badge{display:none}
+  .map-stage{min-height:0;padding:.5rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto !important}
+  .mock-card,.mock-badge{animation:none !important}
+  .js .reveal,.js .stagger > *{opacity:1 !important;transform:none !important;transition:none !important}
+  .btn:hover,.aud-card:hover{transform:none !important}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Arbor home">
+      <span class="leafmark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21V11M12 11c0-3.6 2.4-6.5 6-7-.3 3.7-2.5 6.4-6 7Zm0 0C12 7.6 9.6 5 6 5c.3 3.4 2.5 6 6 6Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      Arbor
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#memory">Memory</a>
+      <a href="#who">For professionals</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="#how">See how it works</a>
+      <a class="btn btn-primary btn-sm" href="#join">Join the beta</a>
+    </div>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-copy reveal">
+      <span class="hero-tag"><span class="dot"></span>A developmental OS for families</span>
+      <h1 class="h-xl">The parenting advisor that <span class="serif-accent">remembers</span> your child.</h1>
+      <p class="lede">Describe what is happening, in plain words. Arbor gives you a calm read, a plan for tonight, and a private record of your child that gets richer every time you ask. Most apps start from zero. Arbor starts from everything it already knows about your kid.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#join">Join the private beta
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#capabilities">Explore the capabilities</a>
+      </div>
+      <div class="hero-trust">
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Non-diagnostic by design</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>GDPR built in, your data stays yours</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Expert-reviewed guidance</span>
+      </div>
+    </div>
+
+    <!-- product mockup = hero imagery -->
+    <div class="mock reveal" aria-label="Example Arbor conversation">
+      <div class="mock-glow" aria-hidden="true"></div>
+      <div class="mock-badge b1"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.3 4.7L19.5 8l-3.7 3.6.9 5.1L12 14.3 7.3 16.7l.9-5.1L4.5 8l5.2-.3L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Saved to memory</div>
+      <div class="mock-badge b2"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2 6 4-14 2 8h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Pattern noticed</div>
+      <article class="mock-card">
+        <div class="mock-head">
+          <div class="who"><span class="leafmark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21V11M12 11c0-3.6 2.4-6.5 6-7-.3 3.7-2.5 6.4-6 7Zm0 0C12 7.6 9.6 5 6 5c.3 3.4 2.5 6 6 6Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Arbor</div>
+          <span class="mock-chip"><span class="av">M</span>Maya · 3y 4m</span>
+        </div>
+        <div class="mock-body">
+          <div class="bubble-ask">Maya's been waking at 5am for a week and melts down by lunch. Is this a phase?</div>
+          <div class="answer">
+            <div class="ans-row">
+              <div class="ans-k">Read</div>
+              <div class="ans-v">An early wake plus a midday crash usually points to an overtired cycle, not a phase she is choosing. The two are linked: less night sleep makes the lunch meltdown worse, which makes the next bedtime harder.</div>
+            </div>
+            <div class="ans-row">
+              <div class="ans-k">Risk level <span class="risk-pill risk-low">Low</span></div>
+              <div class="ans-v">Common at this age. Worth adjusting the routine before involving anyone.</div>
+            </div>
+            <div class="ans-row">
+              <div class="ans-k">Do tonight</div>
+              <div class="todo"><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Move bedtime 20 minutes earlier, not later.</div>
+              <div class="todo"><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Black out the room and keep 5am wake-ups calm and boring.</div>
+              <div class="todo"><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protect the nap; an overtired child sleeps worse, not better.</div>
+            </div>
+            <div class="ans-row">
+              <div class="ans-k">Track over time</div>
+              <div class="track-tags"><span>Bedtime</span><span>Wake time</span><span>Nap length</span><span>Midday mood</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-foot"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Added to Maya's record. Next time, Arbor already knows this week.</div>
+      </article>
+    </div>
+  </div>
+</header>
+
+<div class="proof">
+  <div class="wrap reveal">
+    <span>Built in <b>Amsterdam</b> &amp; <b>Tel Aviv</b></span>
+    <span>For children <b>0&ndash;12</b></span>
+    <span>Trusted handoff to <b>coaches, therapists &amp; schools</b></span>
+    <span>One private record, <b>not a dozen forum tabs</b></span>
+  </div>
+</div>
+
+<!-- ============ PROBLEM ============ -->
+<section class="sec problem" id="problem">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">The 11pm problem</span>
+      <h2 class="h-lg" style="margin-top:.7rem">You have asked this question before. <span class="serif-accent">Your apps haven't.</span></h2>
+      <p class="lede" style="margin-top:1.1rem">It is late, you are on your fourth forum, and every answer is generic because nothing on your phone actually knows your child. So you start over, again, the same way you did last month.</p>
+      <p style="margin-top:1rem;max-width:52ch">Arbor is the opposite. It holds the history, sees the pattern, and answers in the context of your kid, not a stranger's.</p>
+    </div>
+    <div class="contrast reveal" aria-label="Every other app versus Arbor">
+      <div class="row">
+        <div class="cbox them">
+          <div class="ctag"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>Every other app</div>
+          <p>Forgets last month. Asks who your child is, every single time.</p>
+        </div>
+        <div class="cbox us">
+          <div class="ctag"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Arbor</div>
+          <p>Remembers the regression, the speech spurt, what you already tried.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cbox them">
+          <div class="ctag"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>Generic advice</div>
+          <p>Ten bullet points for an average child who is not yours.</p>
+        </div>
+        <div class="cbox us">
+          <div class="ctag"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A read and a plan</div>
+          <p>What is likely happening, how serious it is, three things to do tonight.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cbox them">
+          <div class="ctag"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>A dead end</div>
+          <p>When you finally see a professional, you start the story from scratch.</p>
+        </div>
+        <div class="cbox us">
+          <div class="ctag"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A handoff</div>
+          <p>Arbor writes the brief: history, patterns, what helped and what didn't.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPABILITY MAP (centerpiece) ============ -->
+<section class="sec" id="capabilities" style="background:linear-gradient(var(--bg),var(--bg-2));border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Everything connects to one thing</span>
+      <h2 class="h-lg">Eight capabilities, <span class="serif-accent">one memory</span> at the center.</h2>
+      <p class="lede">Arbor is not a pile of features. Every capability reads from and writes to the same record of your child, so guidance, routines, practice and handoff all stay in sync. Select a node to see what it does.</p>
+    </div>
+
+    <div class="map-shell reveal">
+      <div class="map-stage">
+        <svg class="map-svg" id="capMap" viewBox="0 0 1000 600" role="group" aria-label="Arbor capability map. A central child-memory core connected to eight capabilities.">
+          <g id="mapLinks" aria-hidden="true"></g>
+          <!-- core -->
+          <g id="mapCore" aria-hidden="true">
+            <circle class="core-ring" cx="500" cy="300" r="120"></circle>
+            <rect class="core-box" x="392" y="262" width="216" height="80" rx="20"></rect>
+            <text class="core-title" x="500" y="298" text-anchor="middle">Child Memory</text>
+            <text class="core-sub" x="500" y="320" text-anchor="middle">the record that compounds</text>
+          </g>
+          <g id="mapNodes"></g>
+        </svg>
+      </div>
+
+      <aside class="map-panel" id="capPanel" aria-live="polite">
+        <div class="pic" id="capIcon"></div>
+        <h3 id="capName">Child Memory</h3>
+        <p class="one" id="capOne">The private, parent-owned core every other capability is built on.</p>
+        <p class="long" id="capLong">A longitudinal record of your child: milestones, notes, what worked, the patterns Arbor has noticed. It is editable, source-linked, and owned by you. This is the part a generic chatbot cannot copy, because it cannot be your child's history.</p>
+        <div class="looks" id="capLooks"><b>In the app:</b> a timeline you can open, correct, export, or delete, line by line.</div>
+        <p class="map-hint"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>Tip: use arrow keys to move between capabilities.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPABILITIES EXPLAINED (static, diagram-led) ============ -->
+<section class="sec" id="explained">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Capabilities, in detail</span>
+      <h2 class="h-lg">What each one actually <span class="serif-accent">does for you.</span></h2>
+    </div>
+
+    <div class="caps">
+
+      <!-- 1. Ask Arbor -->
+      <div class="cap reveal">
+        <div class="cap-text">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-4 4v-4H6.5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <h3>Ask Arbor</h3>
+          <p>Describe the moment you are in. Arbor turns it into a calm, structured answer instead of a wall of generic tips.</p>
+          <ul class="cap-points">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A clear read on what is likely happening.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A risk level: low, medium, high, or escalate now.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Three things to try tonight, and what to watch.</li>
+          </ul>
+        </div>
+        <div class="cap-art reveal">
+          <div class="art-frame">
+            <svg viewBox="0 0 420 250" role="img" aria-label="Diagram: a parent's question becomes a structured Read, Risk, Do, Track answer.">
+              <rect x="14" y="22" width="170" height="46" rx="12" fill="var(--green)"></rect>
+              <text x="30" y="42" class="dlabel" fill="oklch(0.98 0.01 156)">"She won't stay in bed"</text>
+              <text x="30" y="58" class="dsub" fill="oklch(0.9 0.03 156)">your words, plain</text>
+              <path d="M120 72 C 120 105, 250 95, 250 120" stroke="var(--green-400)" stroke-width="2" fill="none" stroke-dasharray="3 5"/>
+              <g>
+                <rect x="216" y="110" width="190" height="34" rx="9" fill="var(--card-2)" stroke="var(--line-2)"/>
+                <circle cx="234" cy="127" r="5" fill="var(--green)"/><text x="248" y="131" class="dlabel">Read</text>
+                <rect x="216" y="150" width="190" height="34" rx="9" fill="var(--card-2)" stroke="var(--line-2)"/>
+                <circle cx="234" cy="167" r="5" fill="var(--amber)"/><text x="248" y="171" class="dlabel">Risk level</text>
+                <rect x="216" y="190" width="190" height="34" rx="9" fill="var(--card-2)" stroke="var(--line-2)"/>
+                <circle cx="234" cy="207" r="5" fill="var(--blue)"/><text x="248" y="211" class="dlabel">Do tonight</text>
+              </g>
+              <rect x="14" y="150" width="180" height="74" rx="12" fill="var(--green-50)" stroke="var(--green-100)"/>
+              <text x="30" y="178" class="dlabel" fill="var(--green-800)">Same structure,</text>
+              <text x="30" y="196" class="dlabel" fill="var(--green-800)">every question.</text>
+              <text x="30" y="214" class="dsub">no guesswork on your side</text>
+            </svg>
+            <div class="art-cap"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>From a messy moment to a plan in one reply.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Child Intelligence -->
+      <div class="cap reveal">
+        <div class="cap-text">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a4 4 0 0 1 4 4 3.5 3.5 0 0 1 1.5 6.6A3.5 3.5 0 0 1 14 19a3 3 0 0 1-4 0 3.5 3.5 0 0 1-3.5-5.4A3.5 3.5 0 0 1 8 7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 7v12" stroke="currentColor" stroke-width="1.5"/></svg></div>
+          <h3>Child Intelligence</h3>
+          <p>Every milestone, note and observation in one place, with the patterns connected. Arbor links today's question to last month's answer.</p>
+          <ul class="cap-points">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Milestones and behaviour over time, not in isolation.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A Weekly Insight that surfaces what changed.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Patterns flagged as observations, never as labels.</li>
+          </ul>
+        </div>
+        <div class="cap-art reveal">
+          <div class="art-frame">
+            <svg viewBox="0 0 420 250" role="img" aria-label="Diagram: scattered notes connect into one pattern over time.">
+              <line x1="40" y1="200" x2="400" y2="200" stroke="var(--line-strong)" stroke-width="1.5"/>
+              <g>
+                <circle cx="70" cy="200" r="5" fill="var(--green-300)"/><text x="58" y="222" class="dsub">Mar</text>
+                <circle cx="150" cy="200" r="5" fill="var(--green-300)"/><text x="138" y="222" class="dsub">Apr</text>
+                <circle cx="230" cy="200" r="5" fill="var(--green-300)"/><text x="218" y="222" class="dsub">May</text>
+                <circle cx="310" cy="200" r="5" fill="var(--green-300)"/><text x="298" y="222" class="dsub">Jun</text>
+                <circle cx="380" cy="200" r="6" fill="var(--green)"/><text x="362" y="222" class="dsub" fill="var(--green-700)">now</text>
+              </g>
+              <rect x="44" y="44" width="92" height="30" rx="8" fill="var(--card-2)" stroke="var(--line-2)"/><text x="56" y="63" class="dsub">night waking</text>
+              <rect x="150" y="92" width="92" height="30" rx="8" fill="var(--card-2)" stroke="var(--line-2)"/><text x="162" y="111" class="dsub">short naps</text>
+              <rect x="246" y="58" width="104" height="30" rx="8" fill="var(--card-2)" stroke="var(--line-2)"/><text x="258" y="77" class="dsub">midday melt</text>
+              <path d="M90 74 L 196 92 M196 122 L 298 88 M298 88 L 376 194" stroke="var(--green-400)" stroke-width="1.8" fill="none" stroke-dasharray="3 5"/>
+              <line x1="90" y1="74" x2="70" y2="195" stroke="var(--line-2)" stroke-width="1.2"/>
+              <line x1="196" y1="122" x2="150" y2="195" stroke="var(--line-2)" stroke-width="1.2"/>
+              <line x1="298" y1="88" x2="230" y2="195" stroke="var(--line-2)" stroke-width="1.2"/>
+              <rect x="250" y="150" width="150" height="34" rx="9" fill="var(--green-50)" stroke="var(--green-100)"/>
+              <text x="266" y="171" class="dlabel" fill="var(--green-800)">Pattern: overtired cycle</text>
+            </svg>
+            <div class="art-cap"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2 6 4-14 2 8h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Three small notes become one clear pattern.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Growth Plans -->
+      <div class="cap reveal">
+        <div class="cap-text">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 20V10M12 20V5M18 20v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Growth Plans</h3>
+          <p>Advice you can't keep is useless. Arbor turns a read into a routine your family can actually run: bedtime ladders, morning resets, behaviour plans.</p>
+          <ul class="cap-points">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Step-by-step ladders, not a vague goal.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Templates for the situations that recur.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Resets for when a hard week knocks it off track.</li>
+          </ul>
+        </div>
+        <div class="cap-art reveal">
+          <div class="art-frame">
+            <svg viewBox="0 0 420 250" role="img" aria-label="Diagram: a four-step bedtime ladder rising toward a calm goal.">
+              <g>
+                <rect x="30" y="180" width="80" height="40" rx="9" fill="var(--green-50)" stroke="var(--green-100)"/><text x="46" y="205" class="dsub" fill="var(--green-800)">Wind down</text>
+                <rect x="124" y="146" width="80" height="74" rx="9" fill="var(--green-100)" stroke="var(--green-200)"/><text x="140" y="188" class="dsub" fill="var(--green-800)">Same order</text>
+                <rect x="218" y="108" width="80" height="112" rx="9" fill="var(--green-200)" stroke="var(--green-300)"/><text x="234" y="168" class="dsub" fill="var(--green-900)">Lights low</text>
+                <rect x="312" y="64" width="80" height="156" rx="9" fill="var(--green)" stroke="var(--green-700)"/><text x="328" y="146" class="dlabel" fill="oklch(0.98 0.01 156)">Asleep</text>
+              </g>
+              <path d="M70 178 L 164 144 258 106 352 62" stroke="var(--green-700)" stroke-width="2.2" fill="none"/>
+              <circle cx="70" cy="178" r="4.5" fill="var(--green-700)"/><circle cx="164" cy="144" r="4.5" fill="var(--green-700)"/><circle cx="258" cy="106" r="4.5" fill="var(--green-700)"/><circle cx="352" cy="62" r="5" fill="var(--green-700)"/>
+              <text x="30" y="40" class="dlabel">A ladder, one rung at a time</text>
+            </svg>
+            <div class="art-cap"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Small, repeatable steps the whole house can follow.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Practice Studio -->
+      <div class="cap reveal">
+        <div class="cap-text">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.2 5.5.5-4.2 3.7 1.3 5.4L12 20.5 6.9 23.3l1.3-5.4L4 14.2l5.5-.5L12 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" transform="scale(0.92) translate(1 -0.5)"/></svg></div>
+          <h3>Practice Studio</h3>
+          <p>Short daily play for speech and development, scored gently by domain. It reports bands you can act on, never an age-equivalent label.</p>
+          <ul class="cap-points">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Speech, language, motor, social and thinking, tracked as bands.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Daily missions and adventures that keep it a game.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Camera and audio stay on the device. Always.</li>
+          </ul>
+        </div>
+        <div class="cap-art reveal">
+          <div class="art-frame">
+            <svg viewBox="0 0 420 250" role="img" aria-label="Diagram: a five-axis development radar showing five domains as bands.">
+              <g transform="translate(210 128)">
+                <polygon points="0,-92 87.4,-28.4 54,74.4 -54,74.4 -87.4,-28.4" fill="none" stroke="var(--line-2)" stroke-width="1.2"/>
+                <polygon points="0,-61.3 58.3,-19 36,49.6 -36,49.6 -58.3,-19" fill="none" stroke="var(--line-2)" stroke-width="1"/>
+                <polygon points="0,-30.7 29.1,-9.5 18,24.8 -18,24.8 -29.1,-9.5" fill="none" stroke="var(--line-2)" stroke-width="1"/>
+                <line x1="0" y1="0" x2="0" y2="-92" stroke="var(--line-2)"/><line x1="0" y1="0" x2="87.4" y2="-28.4" stroke="var(--line-2)"/><line x1="0" y1="0" x2="54" y2="74.4" stroke="var(--line-2)"/><line x1="0" y1="0" x2="-54" y2="74.4" stroke="var(--line-2)"/><line x1="0" y1="0" x2="-87.4" y2="-28.4" stroke="var(--line-2)"/>
+                <polygon points="0,-74 70,-23 38,52 -45,62 -64,-21" fill="oklch(0.47 0.072 156 / .18)" stroke="var(--green)" stroke-width="2"/>
+                <circle cx="0" cy="-74" r="3.5" fill="var(--green-700)"/><circle cx="70" cy="-23" r="3.5" fill="var(--green-700)"/><circle cx="38" cy="52" r="3.5" fill="var(--green-700)"/><circle cx="-45" cy="62" r="3.5" fill="var(--green-700)"/><circle cx="-64" cy="-21" r="3.5" fill="var(--green-700)"/>
+              </g>
+              <text x="210" y="22" class="dsub" text-anchor="middle">Speech</text>
+              <text x="372" y="104" class="dsub" text-anchor="end">Language</text>
+              <text x="300" y="232" class="dsub" text-anchor="middle">Motor</text>
+              <text x="120" y="232" class="dsub" text-anchor="middle">Social</text>
+              <text x="48" y="104" class="dsub">Thinking</text>
+            </svg>
+            <div class="art-cap"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.2 5.5.5-4.2 3.7 1.3 5.4L12 16.3" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Five domains, shown as bands, not a single scary number.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Care Network -->
+      <div class="cap reveal">
+        <div class="cap-text">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M14 4h5v5M19 4l-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <h3>Care Network</h3>
+          <p>When it is time to involve a professional, Arbor writes the handoff for you. The coach, therapist or teacher starts from the full picture, not a blank form.</p>
+          <ul class="cap-points">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A versioned brief: history, patterns, what you tried.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>You choose exactly what is shared, and with whom.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Export to PDF, or share securely inside Arbor.</li>
+          </ul>
+        </div>
+        <div class="cap-art reveal">
+          <div class="art-frame">
+            <svg viewBox="0 0 420 250" role="img" aria-label="Diagram: a parent's record becomes a handoff brief shared with a professional.">
+              <g>
+                <rect x="20" y="92" width="96" height="66" rx="12" fill="var(--green-50)" stroke="var(--green-100)"/>
+                <circle cx="68" cy="116" r="11" fill="none" stroke="var(--green-700)" stroke-width="1.6"/><path d="M52 146c0-9 7-15 16-15s16 6 16 15" stroke="var(--green-700)" stroke-width="1.6" fill="none"/>
+                <text x="68" y="176" class="dsub" text-anchor="middle" fill="var(--green-800)">You</text>
+              </g>
+              <g>
+                <rect x="162" y="80" width="96" height="90" rx="10" fill="var(--card)" stroke="var(--line-strong)"/>
+                <line x1="178" y1="102" x2="242" y2="102" stroke="var(--line-strong)" stroke-width="2"/>
+                <line x1="178" y1="118" x2="242" y2="118" stroke="var(--line-2)" stroke-width="2"/>
+                <line x1="178" y1="132" x2="242" y2="132" stroke="var(--line-2)" stroke-width="2"/>
+                <line x1="178" y1="146" x2="220" y2="146" stroke="var(--line-2)" stroke-width="2"/>
+                <text x="210" y="190" class="dsub" text-anchor="middle">Handoff brief</text>
+              </g>
+              <g>
+                <rect x="304" y="92" width="96" height="66" rx="12" fill="var(--green)" stroke="var(--green-700)"/>
+                <circle cx="352" cy="116" r="11" fill="none" stroke="oklch(0.98 0.01 156)" stroke-width="1.6"/><path d="M336 146c0-9 7-15 16-15s16 6 16 15" stroke="oklch(0.98 0.01 156)" stroke-width="1.6" fill="none"/>
+                <text x="352" y="176" class="dsub" text-anchor="middle" fill="var(--green-700)">Professional</text>
+              </g>
+              <path d="M116 125 L 160 125 M258 125 L 302 125" stroke="var(--green-400)" stroke-width="2.2" fill="none" marker-end="url(#arr)"/>
+              <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M1 1L7 4.5 1 8Z" fill="var(--green-400)"/></marker></defs>
+              <text x="210" y="40" class="dlabel" text-anchor="middle">You decide what crosses the line</text>
+            </svg>
+            <div class="art-cap"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7"/></svg>Nothing is shared until you choose to share it.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="margin-top:clamp(2.5rem,1.5rem + 2vw,3.5rem);text-align:center;color:var(--muted);font-size:.95rem">Arbor Academy story journeys, Language &amp; Communication, and the always-on Trust &amp; Safety layer round out the eight. <a href="#capabilities" style="color:var(--green-700);font-weight:600">See them on the map &uarr;</a></p>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec" id="how" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2 class="h-lg">From "help, what now?" to a plan, <span class="serif-accent">in three steps.</span></h2>
+    </div>
+    <div class="steps stagger reveal">
+      <div class="step">
+        <div class="si"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-4 4v-4" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <div class="n"></div>
+        <h3>Ask in plain words</h3>
+        <p>Type the situation the way you would tell a friend. No forms, no checklists, no jargon. "She bites at daycare." "He won't eat anything green."</p>
+      </div>
+      <div class="step">
+        <div class="si"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="n"></div>
+        <h3>Get a read and a plan</h3>
+        <p>Arbor answers in the same shape every time: what is happening, how serious it is, what to do tonight, and what to track. Calm, specific, doable.</p>
+      </div>
+      <div class="step">
+        <div class="si"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a4 4 0 0 1 4 4 3.5 3.5 0 0 1 1.5 6.6A3.5 3.5 0 0 1 14 19a3 3 0 0 1-4 0 3.5 3.5 0 0 1-3.5-5.4A3.5 3.5 0 0 1 8 7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <div class="n"></div>
+        <h3>It remembers</h3>
+        <p>The exchange is saved to your child's record. Next time, Arbor already knows this week, so the advice keeps getting sharper and more yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEMORY MOAT ============ -->
+<section class="sec moat" id="memory">
+  <div class="wrap">
+    <div class="moat-copy reveal">
+      <span class="eyebrow">Why Arbor is different</span>
+      <h2 class="h-lg" style="margin-top:.7rem">The more you use it, the more it becomes <span class="serif-accent" style="color:var(--green-200)">truly yours.</span></h2>
+      <p class="lede" style="margin-top:1.1rem">A new chatbot can answer a question. It cannot be your child's history. Every note, milestone and "what worked" compounds into a record that no competitor can recreate, because they were not there for the last six months. You were, and so was Arbor.</p>
+      <div class="moat-stats">
+        <div class="s"><b>0&ndash;12</b><span>Years of context, one continuous thread</span></div>
+        <div class="s"><b>Yours</b><span>Editable, exportable, deletable, line by line</span></div>
+        <div class="s"><b>Private</b><span>Redacted before any AI sees it</span></div>
+      </div>
+    </div>
+    <div class="timeline reveal" aria-label="Example of a child's record growing over time">
+      <h4><svg viewBox="0 0 24 24" fill="none" width="16" height="16"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Maya's record, building over a year</h4>
+      <div class="tl">
+        <div class="tl-item"><div class="when">September</div><div class="what">Sleep regression logged. Plan: earlier bedtime, calmer 5am.</div><div class="tag">resolved in 11 days</div></div>
+        <div class="tl-item"><div class="when">November</div><div class="what">Word count jumped. Two-word phrases appearing.</div><div class="tag">milestone · language</div></div>
+        <div class="tl-item"><div class="when">January</div><div class="what">Big feelings at drop-off. Started a goodbye routine.</div><div class="tag">plan · active</div></div>
+        <div class="tl-item"><div class="when">March</div><div class="what">Pattern noticed: harder weeks follow short naps.</div><div class="tag">insight · linked to Sept</div></div>
+        <div class="tl-item"><div class="when">Now</div><div class="what">You ask about a new tantrum. Arbor answers with all of the above already in mind.</div><div class="tag">context applied</div></div>
+      </div>
+      <div class="tl-foot"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>This is the switching cost, and it works in your favour.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section class="sec" id="who">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Who it is for</span>
+      <h2 class="h-lg">Made for parents. <span class="serif-accent">Trusted</span> by the people who help them.</h2>
+      <p class="lede">Arbor starts in your pocket and reaches outward only when you want it to: to the professionals you bring in, and to the organisations that fund family support.</p>
+    </div>
+    <div class="aud reveal">
+      <div class="aud-card lead">
+        <div class="ah">
+          <span class="ai"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7"/><circle cx="16.5" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5M15 14c2.5 0 4.5 1.8 4.5 4.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          <div><div class="role">Start here</div><h3>Parents</h3></div>
+        </div>
+        <p>The advisor you wish you had at 11pm: calm, specific, and aware of your child's whole story.</p>
+        <ul class="aud-list">
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A read and a plan for tonight</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>One record across siblings and co-parents</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Routines, practice and stories that fit your kid</li>
+        </ul>
+      </div>
+      <div class="aud-card sec">
+        <div class="ah">
+          <span class="ai"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4-8 4-8-4 8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 9.5V14c0 1.7 2.7 3 6 3s6-1.3 6-3V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          <div><div class="role">Trusted by</div><h3>Professionals</h3></div>
+        </div>
+        <p>Coaches, speech &amp; language therapists, child psychologists, OTs and educators who want context, not a blank intake.</p>
+        <ul class="aud-list">
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A pro dashboard with case summaries</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Secure handoff and homework plans</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Parents arrive with the history written down</li>
+        </ul>
+      </div>
+      <div class="aud-card sec">
+        <div class="ah">
+          <span class="ai"><svg viewBox="0 0 24 24" fill="none"><path d="M4 21V8l6-4 6 4v13" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 21V11l4 2.5V21M4 21h16M9 12h2M9 16h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          <div><div class="role">Distributed by</div><h3>Institutions</h3></div>
+        </div>
+        <p>Municipalities, schools, daycare networks and insurers funding prevention and family support at scale.</p>
+        <ul class="aud-list">
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Family support for whole populations</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Per-family licensing, run as a funded pilot first</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Outcomes that align with prevention budgets</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="sec principles" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">What we will not do</span>
+      <h2 class="h-lg" style="margin-top:.7rem">Four promises, <span class="serif-accent">held in the product.</span></h2>
+      <p class="lede" style="margin-top:1.1rem">These are not a marketing footer. They are enforced in how Arbor is built, because a tool that holds your child's history has to earn that place.</p>
+    </div>
+    <div class="prom reveal">
+      <div class="prom-card">
+        <div class="pi"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Non-diagnostic by design</h4>
+        <p>Arbor explains patterns and points you to what to observe. It never labels or diagnoses your child, and it tells you plainly when to see someone who can.</p>
+      </div>
+      <div class="prom-card">
+        <div class="pi"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V7l8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h4>Expert-reviewed where it counts</h4>
+        <p>The high-stakes guidance, safety, mental health, anything sensitive, is reviewed by clinicians, not generated and forgotten.</p>
+      </div>
+      <div class="prom-card">
+        <div class="pi"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h4>Your data, your child</h4>
+        <p>You own the memory ledger. Export it or delete it, in full, whenever you want. GDPR is built in, and personal details are redacted before any model sees them.</p>
+      </div>
+      <div class="prom-card">
+        <div class="pi"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13c3-1 5 1 7 0s4-2 7-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M5 17c3-1 5 1 7 0s4-2 7-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="7" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h4>Calm, not alarmist</h4>
+        <p>Direct, practical, high-agency. Arbor is built to lower the temperature in the room, never to sell you fear about your own kid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Plans</span>
+      <h2 class="h-lg">Start free. Pay when it <span class="serif-accent">earns its keep.</span></h2>
+      <p class="lede">One simple value: an active child profile. Annual billing is the default and saves about a quarter. Founding families lock a lifetime price.</p>
+    </div>
+    <div class="tiers reveal">
+      <div class="tier">
+        <div class="tname">Seedling</div>
+        <div class="price"><b>Free</b></div>
+        <div class="for">Prove it works for your family, no card needed.</div>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 Ask Arbor sessions a month</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>1 child profile, basic milestones</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Trust &amp; safety, always on</li>
+        </ul>
+        <a class="btn btn-ghost" href="#join">Start free</a>
+      </div>
+      <div class="tier feat">
+        <div class="tname">Arbor Plus</div>
+        <div class="price"><b>&euro;12.99</b><span>/ month</span></div>
+        <div class="for">The core for one engaged parent. &euro;119 a year.</div>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited Ask Arbor and Growth Plans</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Full Child Intelligence and Weekly Insight</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Practice Studio, Academy and secure handoff</li>
+        </ul>
+        <a class="btn btn-primary" href="#join">Join the beta</a>
+      </div>
+      <div class="tier">
+        <div class="tname">Arbor Family</div>
+        <div class="price"><b>&euro;19.99</b><span>/ month</span></div>
+        <div class="for">Up to four children and a co-parent. &euro;179 a year.</div>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Everything in Plus, across the family</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Shared profiles for both parents</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cross-child patterns and family formation</li>
+        </ul>
+        <a class="btn btn-ghost" href="#join">Join the beta</a>
+      </div>
+    </div>
+    <p class="tier-note">Professionals from &euro;45 a seat. Institutions run a funded pilot first, then per-family licensing. <a href="#join" style="color:var(--green-700);font-weight:600">Talk to us &rarr;</a></p>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="sec" id="join" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-final reveal">
+      <span class="hero-tag" style="background:oklch(0.99 0.01 156 / .14);border-color:oklch(0.99 0.01 156 / .25);color:oklch(0.97 0.02 156)"><span class="dot" style="background:var(--green-200);box-shadow:0 0 0 4px oklch(0.99 0.01 156 / .15)"></span>Private beta · limited founding spots</span>
+      <h2 class="h-lg" style="margin-top:1.2rem">Stop starting from scratch every single time.</h2>
+      <p>Join the families building a record their child's advisor actually remembers. Founding families keep a lifetime price and help shape what gets built next.</p>
+      <div class="hero-actions">
+        <a class="btn btn-on-dark" href="#" onclick="return false">Join the private beta
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost-dark" href="#capabilities">Review the capabilities again</a>
+      </div>
+      <p class="fine">No card to start. Non-diagnostic. Your data stays yours, and you can delete it anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <span class="leafmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21V11M12 11c0-3.6 2.4-6.5 6-7-.3 3.7-2.5 6.4-6 7Zm0 0C12 7.6 9.6 5 6 5c.3 3.4 2.5 6 6 6Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Arbor
+        </a>
+        <p>A developmental operating system for families. A calm advisor with memory, for the questions that do not wait until morning.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Product</h5>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#how">How it works</a>
+          <a href="#memory">Child memory</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="foot-col">
+          <h5>For</h5>
+          <a href="#who">Parents</a>
+          <a href="#who">Professionals</a>
+          <a href="#who">Institutions</a>
+        </div>
+        <div class="foot-col">
+          <h5>Trust</h5>
+          <a href="#principles">Our promises</a>
+          <a href="#" onclick="return false">Privacy &amp; GDPR</a>
+          <a href="#" onclick="return false">Safety approach</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; <span id="yr">2026</span> Arbor. Built in Amsterdam &amp; Tel Aviv.</span>
+      <span>Arbor is not a doctor, therapist, or emergency service. In an emergency, contact local services.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var root=document.documentElement;
+  root.classList.add("js");
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* year */
+  var yr=document.getElementById("yr"); if(yr) yr.textContent=new Date().getFullYear();
+
+  /* nav + progress */
+  var nav=document.getElementById("nav"), prog=document.getElementById("progress");
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    if(nav) nav.classList.toggle("scrolled", y>24);
+    if(prog){
+      var h=document.documentElement.scrollHeight-window.innerHeight;
+      prog.style.transform="scaleX("+(h>0?Math.min(y/h,1):0)+")";
+    }
+  }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+  /* reveals — content is visible by default. We only add the hidden-initial
+     ".pre" state (and then animate it away) when the tab is actually visible,
+     so a paused renderer (hidden tab / headless screenshot) never ships blank. */
+  var revealEls=Array.prototype.slice.call(document.querySelectorAll(".reveal,.stagger"));
+  var started=false;
+  function show(el){el.classList.add("in");}
+  function showAll(){revealEls.forEach(show);}
+  function startReveal(){
+    if(started) return; started=true;
+    revealEls.forEach(function(el){el.classList.add("pre");});
+    void document.body.offsetHeight; /* commit the .pre start state before .in */
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ show(e.target); io.unobserve(e.target);} });
+    },{threshold:0.08, rootMargin:"0px 0px -6% 0px"});
+    revealEls.forEach(function(el){io.observe(el);});
+    /* reveal whatever is already on screen now, without waiting for IO */
+    requestAnimationFrame(function(){
+      var vh=window.innerHeight||document.documentElement.clientHeight;
+      revealEls.forEach(function(el){
+        var r=el.getBoundingClientRect();
+        if(r.top<vh*0.94 && r.bottom>0){ show(el); io.unobserve(el); }
+      });
+    });
+    setTimeout(showAll,1800); /* hard safety net */
+  }
+  if(reduce || !("IntersectionObserver" in window)){
+    /* base state is already visible; leave it */
+  } else if(document.visibilityState==="visible"){
+    startReveal();
+  } else {
+    /* loaded in a background tab: stay visible, animate if it becomes active */
+    document.addEventListener("visibilitychange",function(){
+      if(document.visibilityState==="visible") startReveal();
+    },{once:true});
+  }
+
+  /* ---------- capability map ---------- */
+  var CAPS=[
+    {id:"ask",   name:"Ask Arbor",               one:"Plain-words questions become calm, structured answers.",
+      long:"Describe the moment you are in. Arbor returns a clear read, a risk level, what to do tonight, and what to track, in the same shape every time so you never have to interpret a wall of tips.",
+      looks:"A chat that answers in four labelled parts, not a paragraph dump.",
+      icon:'<path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-4 4v-4H6.5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>'},
+    {id:"intel", name:"Child Intelligence",      one:"Milestones, notes and patterns, connected over time.",
+      long:"Every observation lives on one timeline, and Arbor links today's question to last month's answer. A Weekly Insight surfaces what changed, and patterns are flagged as observations to watch, never as labels.",
+      looks:"A timeline plus a Weekly Insight card that says what moved.",
+      icon:'<path d="M12 3a4 4 0 0 1 4 4 3.5 3.5 0 0 1 1.5 6.6A3.5 3.5 0 0 1 14 19a3 3 0 0 1-4 0 3.5 3.5 0 0 1-3.5-5.4A3.5 3.5 0 0 1 8 7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 7v12" stroke="currentColor" stroke-width="1.5"/>'},
+    {id:"plans", name:"Growth Plans",            one:"Advice turned into routines a family can actually keep.",
+      long:"Bedtime ladders, morning resets and behaviour plans, built step by step from the read you just got. Templates cover the situations that recur, and resets get you back on track after a hard week.",
+      looks:"A short ladder of steps with a clear, calm end state.",
+      icon:'<path d="M6 20V10M12 20V5M18 20v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>'},
+    {id:"practice",name:"Practice Studio",       one:"Daily speech and development play, scored as bands.",
+      long:"Short missions and adventures across speech, language, motor, social and thinking. Progress is shown as bands you can act on, never an age-equivalent label, and any camera or audio stays on the device.",
+      looks:"A five-axis radar and a daily mission, framed as a game.",
+      icon:'<path d="M12 4l2.3 4.8 5.2.4-4 3.5 1.2 5.1L12 15.4 7.1 18.3l1.2-5.1-4-3.5 5.2-.4L12 4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>'},
+    {id:"academy",name:"Arbor Academy",          one:"Story journeys and masterclasses, matched to your child.",
+      long:"Short story journeys and parent masterclasses chosen for where your child actually is, not a generic age band. They reinforce the routines you are running instead of pulling in a different direction.",
+      looks:"A path of story cards that line up with the active plan.",
+      icon:'<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 1 4 17.5v-12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5A1.5 1.5 0 0 0 20 17.5v-12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>'},
+    {id:"lang",  name:"Language & Communication",one:"Bilingual support for the words and the feelings.",
+      long:"Help with both the words and the emotions behind them, in the languages your family actually speaks at home. Useful when a child is growing up between two languages and progress is hard to read.",
+      looks:"Side-by-side prompts in two languages, kept in sync.",
+      icon:'<path d="M4 5h9M8.5 5v2c0 4-2 6.5-4.5 7.5M6 9c0 2.5 2.5 4.5 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 20l3.5-8 3.5 8M14.3 17h4.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'},
+    {id:"care",  name:"Care Network",            one:"A handoff brief that professionals can start from.",
+      long:"When you bring in a coach, therapist or teacher, Arbor writes a versioned brief: history, patterns, what you tried and what helped. You decide exactly what is shared and with whom, and can export to PDF.",
+      looks:"A clean brief you preview and approve before anyone sees it.",
+      icon:'<path d="M14 4h5v5M19 4l-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>'},
+    {id:"safety",name:"Trust & Safety",          one:"Always on. Non-diagnostic, with clear escalation.",
+      long:"A safety layer runs on every answer: it stays non-diagnostic, routes high-stakes questions to expert-reviewed guidance, and tells you plainly when a situation needs a professional or emergency care now.",
+      looks:"A quiet shield on every reply, loud only when it must be.",
+      icon:'<path d="M12 3l8 4v5c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V7l8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'}
+  ];
+
+  var cx=500, cy=300, rx=380, ry=212, NODE_W=158, NODE_H=58;
+  var linksG=document.getElementById("mapLinks");
+  var nodesG=document.getElementById("mapNodes");
+  var SVGNS="http://www.w3.org/2000/svg";
+
+  function pt(i){
+    var a=(-90 + i*(360/CAPS.length))*Math.PI/180;
+    return {x:cx+rx*Math.cos(a), y:cy+ry*Math.sin(a)};
+  }
+  function el(name,attrs){
+    var e=document.createElementNS(SVGNS,name);
+    for(var k in attrs) e.setAttribute(k,attrs[k]);
+    return e;
+  }
+
+  if(linksG&&nodesG){
+    CAPS.forEach(function(c,i){
+      var p=pt(i);
+      // edge point on core toward node
+      var dx=p.x-cx, dy=p.y-cy, d=Math.sqrt(dx*dx+dy*dy);
+      var sx=cx+(dx/d)*108, sy=cy+(dy/d)*44;
+      var ex=p.x-(dx/d)*(NODE_W/2-6), ey=p.y-(dy/d)*(NODE_H/2-4);
+      var link=el("line",{x1:sx,y1:sy,x2:ex,y2:ey,class:"map-link","data-link":c.id});
+      linksG.appendChild(link);
+
+      var g=el("g",{class:"cap-node",tabindex:"0",role:"button","data-id":c.id,"aria-label":c.name+". "+c.one});
+      g.appendChild(el("rect",{x:p.x-NODE_W/2,y:p.y-NODE_H/2,width:NODE_W,height:NODE_H,rx:15,class:"node-box"}));
+      g.appendChild(el("circle",{cx:p.x-NODE_W/2+20,cy:p.y,r:4.5,fill:"var(--green)",class:"node-dot"}));
+      var t=el("text",{x:p.x-NODE_W/2+34,y:p.y+5,class:"node-label"});
+      // wrap long labels
+      if(c.name.length>16){
+        var words=c.name.split(" ");
+        t.setAttribute("y",p.y-2);
+        var l1=el("tspan",{x:p.x-NODE_W/2+34}); l1.textContent=words.slice(0,2).join(" ");
+        var l2=el("tspan",{x:p.x-NODE_W/2+34,dy:"15"}); l2.textContent=words.slice(2).join(" ");
+        t.appendChild(l1); t.appendChild(l2);
+      } else {
+        t.textContent=c.name;
+      }
+      g.appendChild(t);
+      nodesG.appendChild(g);
+    });
+  }
+
+  var nameEl=document.getElementById("capName"),
+      oneEl=document.getElementById("capOne"),
+      longEl=document.getElementById("capLong"),
+      looksEl=document.getElementById("capLooks"),
+      iconEl=document.getElementById("capIcon"),
+      panel=document.getElementById("capPanel");
+
+  function select(id){
+    var c=CAPS.filter(function(x){return x.id===id;})[0];
+    if(!c) return;
+    nameEl.textContent=c.name;
+    oneEl.textContent=c.one;
+    longEl.textContent=c.long;
+    looksEl.innerHTML="<b>In the app:</b> "+c.looks;
+    iconEl.innerHTML='<svg viewBox="0 0 24 24" fill="none">'+c.icon+'</svg>';
+    document.querySelectorAll(".cap-node").forEach(function(n){n.classList.toggle("active", n.getAttribute("data-id")===id);});
+    document.querySelectorAll(".map-link").forEach(function(l){l.classList.toggle("active", l.getAttribute("data-link")===id);});
+  }
+
+  var nodes=Array.prototype.slice.call(document.querySelectorAll(".cap-node"));
+  nodes.forEach(function(n,idx){
+    n.addEventListener("click",function(){select(n.getAttribute("data-id"));});
+    n.addEventListener("keydown",function(e){
+      if(e.key==="Enter"||e.key===" "){e.preventDefault();select(n.getAttribute("data-id"));}
+      else if(e.key==="ArrowRight"||e.key==="ArrowDown"){e.preventDefault();var t=nodes[(idx+1)%nodes.length];t.focus();select(t.getAttribute("data-id"));}
+      else if(e.key==="ArrowLeft"||e.key==="ArrowUp"){e.preventDefault();var t2=nodes[(idx-1+nodes.length)%nodes.length];t2.focus();select(t2.getAttribute("data-id"));}
+    });
+  });
+  // default selection = first capability
+  if(nodes.length) select("ask");
+})();
+</script>
+</body>
+</html>

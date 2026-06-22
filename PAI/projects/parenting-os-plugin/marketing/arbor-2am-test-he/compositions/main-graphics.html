@@ -1,0 +1,266 @@
+<template id="main-graphics-template">
+  <div
+    data-composition-id="main-graphics"
+    data-width="1080"
+    data-height="1920"
+    data-duration="48"
+  >
+    <!-- Scene 1: 2am (night) -->
+    <div id="s1" class="scene night">
+      <div class="s1-glow"></div>
+      <div class="s1-wrap">
+        <div class="s1-clock">2:00</div>
+        <div class="s1-line">שתיים בלילה.</div>
+      </div>
+    </div>
+
+    <!-- Scene 2: the search (night) -->
+    <div id="s2" class="scene night">
+      <div class="s2-wrap">
+        <div class="searchbar"><span class="search-q">זה נורמלי??</span></div>
+        <div class="results">
+          <div class="result r1"></div>
+          <div class="result r2"></div>
+          <div class="result r3"></div>
+        </div>
+        <div class="cap s2-line">אתם לא מחפשים בגוגל כי אתם הורים גרועים.</div>
+      </div>
+    </div>
+
+    <!-- Scene 3: the fear (night) -->
+    <div id="s3" class="scene night">
+      <div class="s3-stack">
+        <div class="result rr"></div>
+        <div class="result rr"></div>
+        <div class="result rr"></div>
+        <div class="result rr"></div>
+        <div class="result rr"></div>
+      </div>
+      <div class="cap s3-line">אתם דואגים. והאינטרנט מחזיר לכם פחד.</div>
+    </div>
+
+    <!-- Scene 4: the bloom to light -->
+    <div id="s4" class="scene light">
+      <div class="s4-glow"></div>
+      <div class="cap s4-line ink-line">הילד שלכם הוא לא סימפטום לחיפוש.</div>
+    </div>
+
+    <!-- Scene 5: the calm read (light) -->
+    <div id="s5" class="scene light">
+      <div class="s5-wrap">
+        <div class="eyebrow"><span class="dot"></span>קריאה רגועה · תוכנית להערב</div>
+        <div class="card">
+          <div class="card-row"><span class="k">קריאה</span><span class="v">ברוגע, במילים פשוטות</span></div>
+          <div class="card-row"><span class="k">רמת סיכון</span><span class="v low">נמוכה</span></div>
+          <div class="card-row"><span class="k">מה לעשות הערב</span><span class="v">צעד אחד פשוט</span></div>
+          <div class="card-row"><span class="k">מעקב</span><span class="v">על מה לשים לב</span></div>
+        </div>
+        <div class="cap s5-line ink-line">אתם לא צריכים עוד פאניקה.</div>
+      </div>
+    </div>
+
+    <!-- Scene 6: it remembers (light) -->
+    <div id="s6" class="scene light">
+      <div class="s6-wrap">
+        <div class="timeline">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="dot"></div><div class="dot"></div>
+        </div>
+        <div class="eyebrow"><span class="dot"></span>…וזה זוכר</div>
+        <div class="cap s6-line ink-line">משהו שזוכר — כך שזה מצטבר.</div>
+      </div>
+    </div>
+
+    <!-- Scene 7: the line (light) -->
+    <div id="s7" class="scene light">
+      <div class="s7-line">
+        <span class="w">תפסיקו לחפש</span>
+        <span class="w">את הילד שלכם</span>
+        <span class="w accent">מתוך פחד.</span>
+      </div>
+    </div>
+
+    <!-- Scene 8: end card (light) -->
+    <div id="s8" class="scene light">
+      <div class="s8-wrap">
+        <div class="leafmark"><span class="leaf"></span></div>
+        <div class="wordmark">Arbor</div>
+        <div class="s8-tag">חוות הדעת הרגועה שגדלה עם המשפחה שלכם.</div>
+        <div class="s8-url">joinarbor.com</div>
+      </div>
+    </div>
+
+    <style>
+      @font-face {
+        font-family: "Assistant";
+        src: url("../fonts/assistant-hebrew.woff2") format("woff2");
+        font-weight: 200 800;
+        font-style: normal;
+        font-display: swap;
+      }
+      [data-composition-id="main-graphics"] {
+        background: oklch(0.985 0.008 230);
+        font-family: "Assistant", sans-serif;
+        color: oklch(0.18 0.045 268);
+        overflow: hidden;
+        direction: rtl;
+      }
+      .scene {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        display: flex; justify-content: center; align-items: center;
+        opacity: 0; z-index: 1;
+      }
+      .night { background: oklch(0.16 0.08 268); color: oklch(0.97 0.012 230); }
+      .light {
+        background:
+          radial-gradient(1100px 1100px at 50% 34%, oklch(0.95 0.045 184 / 0.55), oklch(0.985 0.008 230 / 0) 60%),
+          oklch(0.985 0.008 230);
+      }
+      .cap { max-width: 860px; text-align: center; line-height: 1.3; }
+      .ink-line { color: oklch(0.18 0.045 268); }
+
+      .eyebrow {
+        display: inline-flex; align-items: center; gap: 14px;
+        font-size: 32px; font-weight: 600; color: oklch(0.42 0.16 242);
+        letter-spacing: 0.01em; opacity: 0;
+      }
+      .eyebrow .dot { width: 13px; height: 13px; border-radius: 50%; background: oklch(0.68 0.14 178); box-shadow: 0 0 0 7px oklch(0.68 0.14 178 / 0.18); }
+
+      /* Scene 1 */
+      #s1 { opacity: 1; }
+      .s1-glow {
+        position: absolute; width: 880px; height: 880px; border-radius: 50%;
+        background: radial-gradient(circle, oklch(0.55 0.09 232 / 0.35) 0%, oklch(0.16 0.08 268 / 0) 62%);
+        opacity: 0;
+      }
+      .s1-wrap { position: relative; text-align: center; z-index: 2; }
+      .s1-clock { font-size: 72px; font-weight: 500; letter-spacing: 0.1em; color: oklch(0.72 0.03 240); opacity: 0; }
+      .s1-line { font-weight: 300; font-size: 104px; margin-top: 20px; color: oklch(0.97 0.012 230); opacity: 0; }
+
+      /* Scene 2 */
+      .s2-wrap { width: 880px; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+      .searchbar {
+        width: 824px; height: 118px; border-radius: 60px;
+        background: oklch(0.24 0.05 268); border: 2px solid oklch(0.34 0.05 262);
+        display: flex; align-items: center; padding: 0 52px; opacity: 0;
+      }
+      .search-q { font-size: 46px; font-weight: 400; color: oklch(0.82 0.02 240); }
+      .results { width: 824px; display: flex; flex-direction: column; gap: 18px; }
+      .result { height: 62px; border-radius: 12px; background: oklch(0.55 0.170 26); opacity: 0; }
+      .result.r1 { width: 96%; } .result.r2 { width: 84%; } .result.r3 { width: 90%; }
+      .s2-line { font-weight: 400; font-size: 50px; margin-top: 12px; color: oklch(0.97 0.012 230); }
+
+      /* Scene 3 */
+      #s3 { background: oklch(0.13 0.07 268); flex-direction: column; gap: 52px; }
+      .s3-stack { width: 880px; display: flex; flex-direction: column; gap: 16px; }
+      .s3-stack .rr { width: 100%; height: 88px; border-radius: 12px; background: oklch(0.50 0.16 26); opacity: 0; }
+      .s3-line { font-size: 60px; font-weight: 500; color: oklch(0.97 0.012 230); max-width: 860px; }
+
+      /* Scene 4 — bloom */
+      .s4-glow { position: absolute; width: 320px; height: 320px; border-radius: 50%; background: oklch(0.68 0.14 178 / 0.16); opacity: 0; }
+      .s4-line { font-size: 76px; font-weight: 500; position: relative; z-index: 2; }
+
+      /* Scene 5 — answer card */
+      .s5-wrap { display: flex; flex-direction: column; align-items: center; gap: 38px; width: 880px; }
+      .card {
+        width: 776px; background: oklch(1 0 0); color: oklch(0.18 0.045 268);
+        border: 1px solid oklch(0.885 0.018 240); border-radius: 24px; padding: 46px 50px;
+        display: flex; flex-direction: column; gap: 26px;
+        box-shadow: 0 28px 56px -16px oklch(0.28 0.06 262 / 0.20), 0 8px 20px -10px oklch(0.28 0.06 262 / 0.12);
+      }
+      .card-row { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid oklch(0.932 0.014 238); padding-bottom: 22px; opacity: 0; }
+      .card-row:last-child { border-bottom: none; padding-bottom: 0; }
+      .card-row .k { font-size: 40px; font-weight: 700; color: oklch(0.18 0.045 268); }
+      .card-row .v { font-size: 34px; font-weight: 500; color: oklch(0.52 0.025 250); }
+      .card-row .v.low { color: oklch(0.55 0.13 178); font-weight: 700; }
+      .s5-line { font-size: 56px; font-weight: 600; opacity: 0; }
+
+      /* Scene 6 */
+      .s6-wrap { display: flex; flex-direction: column; align-items: center; gap: 46px; }
+      .timeline { display: flex; align-items: center; gap: 26px; }
+      .timeline .dot { width: 42px; height: 42px; border-radius: 50%; background: oklch(0.68 0.14 178); box-shadow: 0 8px 18px -8px oklch(0.43 0.21 263 / 0.5); opacity: 0; }
+      .s6-line { font-size: 66px; font-weight: 500; max-width: 860px; text-align: center; }
+
+      /* Scene 7 — slogan */
+      .s7-line { text-align: center; max-width: 940px; line-height: 1.12; }
+      .s7-line .w { display: block; font-size: 116px; font-weight: 700; color: oklch(0.18 0.045 268); opacity: 0; }
+      .s7-line .w.accent { color: oklch(0.55 0.15 192); }
+
+      /* Scene 8 — end card */
+      .s8-wrap { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+      .leafmark {
+        width: 132px; height: 132px; border-radius: 30px; display: grid; place-items: center;
+        background: oklch(0.965 0.035 184); border: 1px solid oklch(0.885 0.018 240);
+        box-shadow: 0 18px 40px -16px oklch(0.43 0.21 263 / 0.4); opacity: 0;
+      }
+      .leaf { width: 64px; height: 64px; border-radius: 0 64px 0 64px; background: oklch(0.68 0.14 178); }
+      .wordmark { font-family: "Inter", sans-serif; font-weight: 700; font-size: 108px; letter-spacing: 0; color: oklch(0.18 0.045 268); opacity: 0; }
+      .s8-tag { font-size: 42px; font-weight: 500; color: oklch(0.52 0.025 250); max-width: 800px; text-align: center; opacity: 0; }
+      .s8-url { font-family: "Inter", sans-serif; font-size: 46px; font-weight: 700; letter-spacing: 0.01em; color: oklch(0.55 0.15 192); margin-top: 10px; opacity: 0; direction: ltr; }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      /* Scene 1 — 0.0–3.7 */
+      tl.to(".s1-glow", { opacity: 1, scale: 1.05, duration: 1.4, ease: "sine.out" }, 0.2);
+      tl.to(".s1-clock", { opacity: 1, y: -10, duration: 0.9, ease: "power2.out" }, 0.4);
+      tl.to(".s1-line", { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 1.1);
+      tl.to("#s1", { opacity: 0, duration: 0.4, ease: "power1.in" }, 3.5);
+
+      /* Scene 2 — 3.8–9.6 */
+      tl.set("#s2", { opacity: 1 }, 3.8);
+      tl.fromTo(".searchbar", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.9);
+      tl.to(".result.r1", { opacity: 1, duration: 0.4, ease: "power2.out" }, 4.6);
+      tl.to(".result.r2", { opacity: 1, duration: 0.4, ease: "power2.out" }, 4.8);
+      tl.to(".result.r3", { opacity: 1, duration: 0.4, ease: "power2.out" }, 5.0);
+      tl.to(".s2-line", { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 5.4);
+      tl.to("#s2", { opacity: 0, duration: 0.4, ease: "power1.in" }, 9.3);
+
+      /* Scene 3 — 9.6–15.5 */
+      tl.set("#s3", { opacity: 1 }, 9.6);
+      tl.fromTo(".s3-stack .rr",
+        { opacity: 0, scaleX: 0.7 },
+        { opacity: 1, scaleX: 1, stagger: 0.12, duration: 0.45, ease: "power2.out" }, 9.8);
+      tl.to(".s3-line", { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.4)" }, 11.0);
+      tl.to("#s3", { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 15.0);
+
+      /* Scene 4 — 15.6–21.5 (bloom to light) */
+      tl.to("#s4", { opacity: 1, duration: 0.8, ease: "sine.inOut" }, 15.5);
+      tl.fromTo(".s4-glow", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 2.4, duration: 2.4, ease: "sine.out" }, 16.0);
+      tl.to(".s4-line", { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 16.5);
+      tl.to("#s4", { opacity: 0, duration: 0.5, ease: "power1.in" }, 21.1);
+
+      /* Scene 5 — 21.6–29.5 */
+      tl.set("#s5", { opacity: 1 }, 21.6);
+      tl.to(".eyebrow", { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 21.8);
+      tl.from(".card", { opacity: 0, y: 50, duration: 0.6, ease: "power3.out" }, 22.0);
+      tl.to(".card-row", { opacity: 1, x: 0, stagger: 0.18, duration: 0.45, ease: "power2.out" }, 22.5);
+      tl.to(".s5-line", { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 24.4);
+      tl.to("#s5", { opacity: 0, duration: 0.5, ease: "power1.in" }, 29.1);
+
+      /* Scene 6 — 29.6–37.5 */
+      tl.set("#s6", { opacity: 1 }, 29.6);
+      tl.to(".timeline .dot", { opacity: 1, scale: 1, stagger: 0.22, duration: 0.4, ease: "back.out(2)" }, 29.9);
+      tl.to("#s6 .eyebrow", { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 31.3);
+      tl.to(".s6-line", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 32.1);
+      tl.to("#s6", { opacity: 0, duration: 0.5, ease: "power1.in" }, 37.1);
+
+      /* Scene 7 — 37.6–43.5 */
+      tl.set("#s7", { opacity: 1 }, 37.6);
+      tl.to(".s7-line .w", { opacity: 1, y: 0, stagger: 0.18, duration: 0.55, ease: "power3.out" }, 37.9);
+      tl.to("#s7", { opacity: 0, duration: 0.5, ease: "power1.in" }, 43.1);
+
+      /* Scene 8 — 43.6–48.0 */
+      tl.set("#s8", { opacity: 1 }, 43.6);
+      tl.fromTo(".leafmark", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, 43.8);
+      tl.to(".wordmark", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 44.5);
+      tl.to(".s8-tag", { opacity: 1, duration: 0.6, ease: "power2.out" }, 45.1);
+      tl.to(".s8-url", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 45.6);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main-graphics"] = tl;
+    </script>
+  </div>
+</template>

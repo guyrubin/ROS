@@ -1,0 +1,262 @@
+<template id="main-graphics-template">
+  <div
+    data-composition-id="main-graphics"
+    data-width="1080"
+    data-height="1920"
+    data-duration="48"
+  >
+    <!-- Scene 1: 2am -->
+    <div id="s1" class="scene">
+      <div class="s1-glow"></div>
+      <div class="s1-wrap">
+        <div class="s1-clock">2:00</div>
+        <div class="s1-line">It’s 2am.</div>
+      </div>
+    </div>
+
+    <!-- Scene 2: the search -->
+    <div id="s2" class="scene">
+      <div class="s2-wrap">
+        <div class="searchbar"><span class="search-q">is this normal??</span></div>
+        <div class="results">
+          <div class="result r1"></div>
+          <div class="result r2"></div>
+          <div class="result r3"></div>
+        </div>
+        <div class="cap s2-line">You’re not Googling because you’re a bad parent.</div>
+      </div>
+    </div>
+
+    <!-- Scene 3: the fear -->
+    <div id="s3" class="scene">
+      <div class="s3-stack">
+        <div class="result rr"></div>
+        <div class="result rr"></div>
+        <div class="result rr"></div>
+        <div class="result rr"></div>
+        <div class="result rr"></div>
+      </div>
+      <div class="cap s3-line">You care. And the internet pays you back in fear.</div>
+    </div>
+
+    <!-- Scene 4: the turn -->
+    <div id="s4" class="scene">
+      <div class="s4-breath"></div>
+      <div class="cap s4-line serif">Your child isn’t a symptom to search.</div>
+    </div>
+
+    <!-- Scene 5: the calm read -->
+    <div id="s5" class="scene">
+      <div class="s5-wrap">
+        <div class="card">
+          <div class="card-row"><span class="k">Read</span><span class="v">calm, in plain words</span></div>
+          <div class="card-row"><span class="k">Risk</span><span class="v low">low</span></div>
+          <div class="card-row"><span class="k">Do tonight</span><span class="v">one simple step</span></div>
+          <div class="card-row"><span class="k">Track</span><span class="v">what to watch</span></div>
+        </div>
+        <div class="tag s5-tag">a calm read · a plan for tonight</div>
+        <div class="cap s5-line">You don’t need more panic.</div>
+      </div>
+    </div>
+
+    <!-- Scene 6: it remembers -->
+    <div id="s6" class="scene">
+      <div class="s6-wrap">
+        <div class="timeline">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="dot"></div><div class="dot"></div>
+        </div>
+        <div class="tag s6-tag">…and it remembers</div>
+        <div class="cap s6-line serif">Someone who remembers — so it adds up.</div>
+      </div>
+    </div>
+
+    <!-- Scene 7: the line -->
+    <div id="s7" class="scene">
+      <div class="s7-line">
+        <span class="w">Stop</span>
+        <span class="w">fear-Googling</span>
+        <span class="w">your kid.</span>
+      </div>
+    </div>
+
+    <!-- Scene 8: end card -->
+    <div id="s8" class="scene">
+      <div class="s8-wrap">
+        <div class="mark"><span class="mark-canopy"></span><span class="mark-trunk"></span></div>
+        <div class="wordmark">Arbor</div>
+        <div class="s8-tag">The calm second opinion that grows with your family.</div>
+        <div class="s8-url">joinarbor.com</div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="main-graphics"] {
+        background: #2f5e4e;
+        font-family: "Inter", sans-serif;
+        color: #f3efe6;
+        overflow: hidden;
+      }
+      .scene {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        z-index: 1;
+      }
+      .serif { font-style: italic; }
+      .cap {
+        max-width: 820px;
+        text-align: center;
+        line-height: 1.25;
+      }
+
+      /* Scene 1 */
+      #s1 { background: #0f1411; opacity: 1; }
+      .s1-glow {
+        position: absolute;
+        width: 900px; height: 900px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(120,150,135,0.30) 0%, rgba(15,20,17,0) 62%);
+        opacity: 0;
+      }
+      .s1-wrap { position: relative; text-align: center; z-index: 2; }
+      .s1-clock { font-size: 70px; font-weight: 400; letter-spacing: 0.12em; color: #7d8c84; opacity: 0; }
+      .s1-line { font-style: italic; font-size: 104px; margin-top: 24px; color: #f3efe6; opacity: 0; }
+
+      /* Scene 2 */
+      #s2 { background: #0f1411; }
+      .s2-wrap { width: 880px; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+      .searchbar {
+        width: 820px; height: 116px; border-radius: 58px;
+        background: #1b211d; border: 2px solid #2c3531;
+        display: flex; align-items: center; padding: 0 50px; opacity: 0;
+      }
+      .search-q { font-size: 46px; color: #c9d2cc; }
+      .results { width: 820px; display: flex; flex-direction: column; gap: 18px; }
+      .result { height: 60px; border-radius: 12px; background: #b1483f; opacity: 0; }
+      .result.r1 { width: 96%; }
+      .result.r2 { width: 84%; }
+      .result.r3 { width: 90%; }
+      .s2-line { font-style: italic; font-size: 52px; margin-top: 12px; color: #f3efe6; }
+
+      /* Scene 3 */
+      #s3 { background: #0c100e; flex-direction: column; gap: 50px; }
+      .s3-stack { width: 880px; display: flex; flex-direction: column; gap: 16px; }
+      .s3-stack .rr { width: 100%; height: 86px; border-radius: 12px; background: #a8443b; opacity: 0; }
+      .s3-line { font-size: 60px; font-weight: 500; color: #f3efe6; max-width: 860px; }
+
+      /* Scene 4 */
+      #s4 { background: #2f5e4e; }
+      .s4-breath {
+        position: absolute; width: 240px; height: 240px; border-radius: 50%;
+        background: rgba(243,239,230,0.10); opacity: 0;
+      }
+      .s4-line { font-size: 72px; color: #f3efe6; position: relative; z-index: 2; }
+
+      /* Scene 5 */
+      #s5 { background: #2f5e4e; }
+      .s5-wrap { display: flex; flex-direction: column; align-items: center; gap: 40px; width: 880px; }
+      .card { width: 760px; background: #f3efe6; color: #243a30; border-radius: 28px; padding: 44px 48px; display: flex; flex-direction: column; gap: 26px; }
+      .card-row { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #d9d2c2; padding-bottom: 20px; opacity: 0; }
+      .card-row:last-child { border-bottom: none; padding-bottom: 0; }
+      .card-row .k { font-size: 40px; font-weight: 700; }
+      .card-row .v { font-size: 34px; color: #5d6b62; }
+      .card-row .v.low { color: #3f7d5f; font-weight: 700; }
+      .s5-tag { font-size: 34px; color: #bfe0cf; opacity: 0; }
+      .s5-line { font-size: 56px; font-weight: 500; opacity: 0; }
+
+      /* Scene 6 */
+      #s6 { background: #24463b; }
+      .s6-wrap { display: flex; flex-direction: column; align-items: center; gap: 44px; }
+      .timeline { display: flex; align-items: center; gap: 28px; }
+      .timeline .dot { width: 40px; height: 40px; border-radius: 50%; background: #5aa07f; opacity: 0; }
+      .s6-tag { font-size: 40px; color: #bfe0cf; opacity: 0; }
+      .s6-line { font-size: 64px; color: #f3efe6; max-width: 840px; text-align: center; }
+
+      /* Scene 7 */
+      #s7 { background: #2f5e4e; }
+      .s7-line { text-align: center; max-width: 900px; line-height: 1.06; }
+      .s7-line .w { display: block; font-size: 124px; font-weight: 900; color: #f3efe6; opacity: 0; }
+
+      /* Scene 8 */
+      #s8 { background: #2f5e4e; }
+      .s8-wrap { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+      .mark { position: relative; width: 150px; height: 170px; opacity: 0; }
+      .mark-canopy { position: absolute; top: 0; left: 15px; width: 120px; height: 120px; border-radius: 50%; background: #5aa07f; }
+      .mark-trunk { position: absolute; bottom: 0; left: 67px; width: 16px; height: 70px; border-radius: 6px; background: #cbb892; }
+      .wordmark { font-weight: 700; font-size: 110px; letter-spacing: 0.01em; color: #f3efe6; opacity: 0; }
+      .s8-tag { font-size: 40px; color: #cfe6da; max-width: 760px; text-align: center; opacity: 0; }
+      .s8-url { font-size: 44px; font-weight: 700; letter-spacing: 0.02em; color: #f3efe6; margin-top: 10px; opacity: 0; }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      /* Scene 1 — 0.0–3.7 */
+      tl.to(".s1-glow", { opacity: 1, scale: 1.05, duration: 1.4, ease: "sine.out" }, 0.2);
+      tl.to(".s1-clock", { opacity: 1, y: -10, duration: 0.9, ease: "power2.out" }, 0.4);
+      tl.to(".s1-line", { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 1.1);
+      tl.to("#s1", { opacity: 0, duration: 0.4, ease: "power1.in" }, 3.5);
+
+      /* Scene 2 — 3.8–9.6 */
+      tl.set("#s2", { opacity: 1 }, 3.8);
+      tl.fromTo(".searchbar", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.9);
+      tl.to(".result.r1", { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 4.6);
+      tl.to(".result.r2", { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 4.8);
+      tl.to(".result.r3", { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 5.0);
+      tl.to(".s2-line", { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 5.4);
+      tl.to("#s2", { opacity: 0, duration: 0.4, ease: "power1.in" }, 9.3);
+
+      /* Scene 3 — 9.6–15.5 */
+      tl.set("#s3", { opacity: 1 }, 9.6);
+      tl.fromTo(".s3-stack .rr",
+        { opacity: 0, scaleX: 0.7 },
+        { opacity: 1, scaleX: 1, stagger: 0.12, duration: 0.45, ease: "power2.out" }, 9.8);
+      tl.to(".s3-line", { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.4)" }, 11.0);
+      tl.to("#s3", { opacity: 0, duration: 0.5, ease: "power1.in" }, 15.1);
+
+      /* Scene 4 — 15.6–21.5 (the calm turn) */
+      tl.to("#s4", { opacity: 1, duration: 0.7, ease: "sine.inOut" }, 15.6);
+      tl.fromTo(".s4-breath", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 2.6, duration: 2.4, ease: "sine.out" }, 16.0);
+      tl.to(".s4-line", { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 16.5);
+      tl.to("#s4", { opacity: 0, duration: 0.5, ease: "power1.in" }, 21.1);
+
+      /* Scene 5 — 21.6–29.5 */
+      tl.set("#s5", { opacity: 1 }, 21.6);
+      tl.from(".card", { opacity: 0, y: 50, duration: 0.6, ease: "power3.out" }, 21.8);
+      tl.to(".card-row", { opacity: 1, x: 0, stagger: 0.18, duration: 0.45, ease: "power2.out" }, 22.3);
+      tl.to(".s5-tag", { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 23.6);
+      tl.to(".s5-line", { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 24.4);
+      tl.to("#s5", { opacity: 0, duration: 0.5, ease: "power1.in" }, 29.1);
+
+      /* Scene 6 — 29.6–37.5 */
+      tl.set("#s6", { opacity: 1 }, 29.6);
+      tl.to(".timeline .dot", { opacity: 1, scale: 1, stagger: 0.22, duration: 0.4, ease: "back.out(2)" }, 29.9);
+      tl.to(".s6-tag", { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 31.3);
+      tl.to(".s6-line", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 32.1);
+      tl.to("#s6", { opacity: 0, duration: 0.5, ease: "power1.in" }, 37.1);
+
+      /* Scene 7 — 37.6–43.5 */
+      tl.set("#s7", { opacity: 1 }, 37.6);
+      tl.to(".s7-line .w", { opacity: 1, y: 0, stagger: 0.18, duration: 0.55, ease: "power3.out" }, 37.9);
+      tl.to("#s7", { opacity: 0, duration: 0.5, ease: "power1.in" }, 43.1);
+
+      /* Scene 8 — 43.6–48.0 (end card holds) */
+      tl.set("#s8", { opacity: 1 }, 43.6);
+      tl.fromTo(".mark", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, 43.8);
+      tl.to(".wordmark", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 44.4);
+      tl.to(".s8-tag", { opacity: 1, duration: 0.6, ease: "power2.out" }, 45.0);
+      tl.to(".s8-url", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 45.5);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main-graphics"] = tl;
+    </script>
+  </div>
+</template>

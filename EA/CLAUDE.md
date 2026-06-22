@@ -14,11 +14,13 @@ Inherits `/00_System/agent-capabilities.md`: web search, browser/computer use, v
 
 Source of truth: `/00_System/connectors.md`.
 
-| Connector | Scope | Required Hermes skill | Current status |
+Status reflects reality per `/00_System/connectors.md` (don't restate it — that file is canonical). Each row names the **filesystem fallback** to use when the live path is gated.
+
+| Connector | Scope | Live path (by runtime) | Reality + filesystem fallback |
 |---|---|---|---|
-| Gmail `bguy` | Guy's EA/workplace correspondence for Coca-Cola and ABN | `himalaya` | Active / verified |
-| Gmail `joseph` | Joseph-led EA correspondence only when Joseph is sender/primary contact | `himalaya` | Active / verified |
-| Notion | EA workplace trackers, decisions, deliverables, onboarding tasks | `productivity/notion` | Active / verified |
+| Gmail `bguy` | Guy's EA/workplace correspondence for Coca-Cola and ABN | Hermes `himalaya` · Claude Code Gmail MCP (the connected account) | Live both paths. Draft first. |
+| Gmail `joseph` | Joseph-led EA correspondence only when Joseph is sender/primary contact | **Hermes `himalaya` only** — NOT the connected MCP account (MCP Gmail is `bguy` only) | If not on Hermes, draft to file under `EA/clients/[client]/` and hand to a Hermes run to send. |
+| Notion | EA workplace trackers, decisions, deliverables, onboarding tasks | Hermes `productivity/notion` · Claude Code Notion MCP: `fetch`/`create`/`update` **by ID** work; **`query-data-sources` is Enterprise-gated** | To read rows when the query is gated, use Hermes or an existing view; canonical EA state lives on the filesystem under `EA/clients/[client]/` + `state.json`, with Notion as the mirror. |
 
 ## Persona
 

@@ -17,8 +17,15 @@ _Verified against Hermes `/home/guyru/.hermes/cron/jobs.json` on 2026-06-21 — 
 
 | `333eaf638d76` | KK | `30 8,13,18 * * 1-5` (08:30/13:30/18:30 wkdays) | Actionable Gmail triage across `bguy` / `hollandvest` / `joseph`; 08:30 run = canonical **morning routing** | Read-only | ✅ enabled (verified) |
 | `4fc75fbfad30` | Career | `0 9 * * 1,4` (Mon/Thu 09:00) | LinkedIn + Google Jobs sourcing sprint for Guy + Joseph (skills: job-application-automation, google-workspace, himalaya) | Read-only | ✅ enabled (verified) |
+| `hv-weekly-digest` | HV | `0 8 * * 1` (Mon 08:00) | Compile best assets + project-management RAG from ROS HV files → **Google Drive doc + Gmail draft to Guy** | Draft-only (no send) | ✅ active 2026-06-21 — **`scheduled-tasks` MCP** (runs while app open), not Hermes |
+| `arbor-cil-eval` | PAI/Arbor | `0 3,15 * * *` | CIL cheap regression panel → refresh `IMPROVEMENT-BACKLOG.md` | Write-backlog | ✅ verified live (last run 2026-06-21 13:03) — `scheduled-tasks` MCP |
+| `arbor-cil-build` | PAI/Arbor | `0 4 * * 1,4` | CIL deep eval + build top safe fixes to green branch `claude/cil-week` | Build-to-branch | ✅ verified live; never merges/deploys |
+| `arbor-clinical-loop` | PAI/Arbor | `0 6 * * 6` (Sat) | **Clinical Excellence loop (L2)** — Clinical Board benchmarks Arbor vs CDC/AAP/ASHA + competitors → clinical requirements + claim substantiations to `IMPROVEMENT-BACKLOG.md` (ahead of Sun Council). Owns north star N2 "clinically the best". | Write-backlog | ✅ live 2026-06-22; propose-only; firewall enforced |
+| `arbor-product-council` | PAI/Arbor | `0 6 * * 0` (Sun) | **Product Council intake** — fuse Advisory + Clinical + Marketing + CIL → scored `PRODUCT-BACKLOG.md` candidate block (ahead of the Mon build wave) | Write-backlog | ✅ live 2026-06-21; no build/merge/deploy; clinical + gated items surfaced for Guy |
+| `arbor-marketing-loop` | PAI/Arbor Mktg | `0 5 * * 2,5` (Tue+Fri) | Marketing loop — build safe materials to the brand spine, ECD+safety gate, **publish to owned organic surfaces** | Publish-organic | ✅ live 2026-06-21 — **was doc-claimed-active but NOT actually registered until now**; money/claims/child-data/store/domain/user-email gated |
 
 **⚠️ Doc-vs-reality gaps found 2026-06-21 (the "not connected" problem, concretely):**
+- The **Arbor Marketing loop** was described as "✅ ACTIVE since 2026-06-21" below but was **never actually registered** on the `scheduled-tasks` runtime — only `arbor-cil-eval` + `arbor-cil-build` existed. Registered for real 2026-06-21 (org-rebuild session). The prose below is retained as the autonomy-envelope spec.
 - The **HV daily Smart-Living scan** (radar logged 05-18→06-05) is **NOT a registered cron** — it ran, then stalled ~06-05. Needs reviving as a real job (Guy-gated). See HV mesh.
 - Previously-claimed crons **`c20375b10b15` (Tsagareli)** and **`bc55de81f9f1` (hygiene audit)** are **NOT in Hermes `jobs.json`** — they were documented but aren't running. Removed from "live"; re-create deliberately if wanted.
 
@@ -30,7 +37,8 @@ Each is **read-and-report** unless noted. Spec a new one with [templates/schedul
 
 | Proposed | Owner | Cadence | Would do | Why |
 | :-- | :-- | :-- | :-- | :-- |
-| HV Deal Radar | HV | Weekly (Mon) | Scan Funda/Pararius/Kadaster signals for the active buy-box; rank top N new candidates with a 3-line fit note | Keeps the pipeline fed without manual sourcing |
+| HV Deal Radar (revive) | HV | Daily/Weekly | Scan Pararius/Immoweb + broker snippets (Funda is bot-walled) for the active buy-box; rank top N new candidates; **write to Notion Deals/Properties + radar** | Reviving the stalled scan (top infra fix). **Write-to-Notion grant required** — Guy-gated |
+| HV Project Control | HV | Fridays | For each live project (≥G3): `/hv-project-control` → refresh cost/programme/risk, update Notion Tasks, draft exceptions | Weekly RAG on in-delivery projects; activate when first project hits G3 |
 | CoS Weekly Review prep | CoS | Fridays | Pre-assemble the cross-domain weekly review (status pulled from each domain `MEMORY.md` + Notion) so the live review is a decision, not a gather | Cuts review prep time |
 | Command Center morning refresh | CoS | Weekday mornings | `node CoS/projects/guy-command-center/build-state.mjs` + the Notion radar refresh script — refresh both cockpits from live data | Keeps the cockpit auto-fed; surfaces stale domains |
 | **ROS-CIL weekly (light)** | CoS | Weekly | `/ros-improve` `mode:"light"` — freshness + management + reality audit → ROS-BACKLOG + State of the Company; safe fixes only | The self-improvement engine; keeps the company honest |
@@ -39,10 +47,16 @@ Each is **read-and-report** unless noted. Spec a new one with [templates/schedul
 | MKT Content cadence | MKT | Weekly | Draft the week's post slate from the content calendar (draft-only) | Keeps personal-brand cadence alive |
 | FIN Deadline watch | FIN | Weekly | Flag upcoming invoice due-dates, insurance renewals, tax/filing deadlines | Nothing slips |
 | Arbor health digest | PAI | Daily | Pull prod error/latency/cost + AI usage into one digest (read-only) | Catch regressions early |
-| **Arbor CIL eval (2×/day)** | PAI | `0 3,15 * * *` (03:00 + 15:00) | Run `arbor-improve` `mode:"eval"`: critic panel → score → verify → update `IMPROVEMENT-BACKLOG.md` (workspace write only, no merge/deploy) | Keeps the self-improvement queue fresh; catches regressions twice daily |
-| **Arbor CIL build (2×/week)** | PAI | `0 4 * * 1,4` (Mon + Thu 04:00) | Run `arbor-improve` `mode:"build"`: build top verified `safe` findings to green on branch `claude/cil-week` + re-confirm; **opens approve-to-ship roll-up — no merge/deploy** | Closes the loop twice a week; human ships |
+| Release-train cadence | CoS Delivery | weekly (Arbor Product) · 2×/wk (Marketing) · on-demand (ROS) | Run /ros-release: build→full green-gate→canary→smoke, STOP at prod-promote for Guy | The incremental release cycle (ROS-BACKLOG Theme O) — never auto-promotes |
 
-> The two **Arbor CIL** loops are the sanctioned autonomous mode (Arbor CHARTER §3.6 / [CIL.md](../../PAI/projects/parenting-os-plugin/mesh/improvement/CIL.md)). They act beyond read-only (write the backlog; push a build branch = Level 3) but **never merge or deploy** and never auto-build `gated` (safety/consent/billing/cost) items. **✅ CONFIRMED by Guy 2026-06-21** — cadence = twice-daily eval + 2×/week build, runtime = **cloud scheduled agents** (always-on). Activated on the cloud runtime after the first manual proving cycle (`wf_8e8213a4-360`) lands green.
+> _The Arbor **CIL eval**, **CIL build**, **Product Council**, and **Marketing loop** moved Proposed → **Live** (see the `scheduled-tasks` MCP table above). Their autonomy envelope is specced below._
+>
+> The two **Arbor CIL** loops are the sanctioned autonomous mode (Arbor CHARTER §3.6 / [CIL.md](../../PAI/projects/parenting-os-plugin/mesh/improvement/CIL.md)). They act beyond read-only (write the backlog; push a build branch = Level 3) but **never merge or deploy** and never auto-build `gated` (safety/consent/billing/cost) items.
+>
+> The **Arbor Marketing loop** is a second sanctioned autonomous mode (Guy-confirmed 2026-06-21, full-autonomy-with-publish). It goes further than the CIL loops: it **publishes safe materials to Arbor's owned organic surfaces** (landing/SEO/blog/organic social) without per-item confirmation — because each item still passes brand-review + `arbor-safety` + preview in-loop. It **never** spends money, transfers a clinical/effect-size claim, uses real child face/voice/data, buys a domain, submits a store listing, emails acquired user lists, or edits product code (all T3 — gated). Spec: [Arbor Marketing OPERATING-MODEL.md](../../PAI/projects/parenting-os-plugin/mesh/marketing/OPERATING-MODEL.md). Kill-switch = pause its `scheduled-tasks` row.
+>
+> **✅ ACTIVE since 2026-06-21** (moved from Proposed → Live), confirmed by Guy. Runtime = the **`scheduled-tasks` MCP** — four Arbor tasks: `arbor-cil-eval` @ `0 3,15 * * *`, `arbor-cil-build` @ `0 4 * * 1,4`, `arbor-product-council` @ `0 6 * * 0`, `arbor-marketing-loop` @ `0 5 * * 2,5` — which run **while the app is open / on next launch** — not Hermes, not a Hermes cron. The build task runs the hang-proof `arbor-cap-market.workflow.js` for its deep refresh, NOT `arbor-deep-eval` (whose IA/UX screenshot critics hang on the app's open-network-request — see [CIL.md]). First proving cycle landed green (branch `claude/cil-week`, commit `3c5075e`, + a capability-vs-competitors backlog).
+> **Cloud-always-on is the remaining upgrade** (Guy's original preference): it needs the nested Arbor repo pushed to a git remote + node_modules/Firebase env + a headless preview path provisioned in the cloud runner. Until then the loop runs locally whenever the workstation/app is up.
 
 ---
 

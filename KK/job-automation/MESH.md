@@ -1,13 +1,14 @@
 # Career Job-Search Mesh
 
-**Version:** 0.1
+**Version:** 0.2 — matured to an autonomous capability
 **Created:** 2026-06-21
 **Owner:** KK-owned sub-mesh (Career) · lead `career-orchestrator` reports to `kk-ops` (KK lead) → ros-conductor (CoS)
-**Loop type:** scheduled-first (twice-weekly sourcing sprint) + on-demand (tailor a CV / draft an application / prep an interview for a specific role)
+**Loop type:** **autonomous, scheduled-first.** The orchestrator runs the full sense→score→decide→draft→notify→track→follow-up→learn loop on its own; the human approves only what leaves the outbox and offer decisions. See the operating contract in **`career-orchestrator-runbook.md`**.
+**Streams:** Guy 🟢 LIVE · Joseph 🔴 gated (pending verified source — `profile-source/joseph-profile-facts.md`).
 **Runs:** `/AGENTS.md` boot → reads `/KK/MEMORY.md` → [ROS Agent Framework](../../00_System/agent-framework/FRAMEWORK.md)
 
 ## Mission
-Source high-fit Cloud/Security Architect roles in NL/BE, fit-score them, tailor a CV + cover letter from the verified Drive fact source, draft applications and recruiter outreach (never auto-submit), prep interviews, and keep the pipeline tracked.
+Autonomously source high-fit Cloud/Security Architect roles (Guy) and CTO/EA-advisory roles (Joseph, once unblocked) in NL/BE — fit-score against `buy-box.md`, tailor CV + cover letters from the verified fact source, draft applications and recruiter outreach, prep interviews, chase follow-ups, and keep the pipeline tracked — **autonomous up to the outbox, manual through it** (never auto-submit, never auto-upload a CV, never cross-use one person's facts).
 
 ## Roster
 
@@ -33,11 +34,23 @@ Career DoD from [UNIVERSAL-LOOP.md](../../00_System/agent-framework/UNIVERSAL-LO
 | Recruiter outreach, application email | `email-composer` (Gmail `bguy`, draft-first) |
 | Pipeline tracking | `notion-sync` |
 
+## Engine files (scoring + state — load on every run)
+| File | Purpose |
+| :-- | :-- |
+| `career-orchestrator-runbook.md` | **The operating contract** — autonomy tiers, the full loop, state machine + SLAs, failure handling, per-run Definition-of-Done. Read first every run. |
+| `buy-box.md` | Dual-stream profiles, must-haves, dealbreakers, 0–100 fit-scoring rubric, saved-search URLs. **Every sourced role is scored against this.** |
+| `profile-source/joseph-profile-facts.md` | Joseph stream status (🔴 blocked) + what unblocks it. |
+| `pipeline.md` | Live pipeline tracker (Sourced→Offer); mirror to Notion. |
+| `interview-prep-playbook.md` | Reusable prep; tailor per role at dispatch. |
+| `sourcing-sprint-YYYY-MM-DD.md` | Dated shortlist output of each sprint. |
+| `applications/` | Dated CV-variant + cover-letter / outreach drafts (draft-first). |
+
 ## Loops it owns
 
 | Loop | Type | Cadence | Posture | In registry |
 | :-- | :-- | :-- | :-- | :-- |
-| LinkedIn + Google Jobs high-yield sourcing sprint | scheduled (LIVE) | Twice weekly | Read-only | SCHEDULED-LOOPS.md `4fc75fbfad30` (Telegram DM) |
+| LinkedIn + Google Jobs high-yield sourcing sprint (SENSE→DRAFT→NOTIFY, both streams) | scheduled (LIVE) | Twice weekly | Read/draft; fit-scored shortlist + ready drafts | SCHEDULED-LOOPS.md `4fc75fbfad30` (Telegram DM) |
+| Pipeline review + follow-up sweep (TRACK→FOLLOW-UP) | scheduled | Weekly (Mon) | Draft chasers, advance stages, surface stalls | new — wired 2026-06-21 |
 | CV-tailor / draft application / interview prep | on-demand | — | acts in-workspace; external send draft-first | — |
 
 ## How to invoke

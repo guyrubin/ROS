@@ -1,0 +1,59 @@
+GUY RUBIN
+Principal Cloud Security Architect  |  Zero Trust  |  NIS2 / DORA / ISO 27001  |  CISSP
+📍 Amsterdam, NL    ✉  bguy.rubin@gmail.com    📞 +32 469 22 80 40    🔗 linkedin.com/in/guy-rubin-7838a3130
+EXECUTIVE SUMMARY
+Principal Cloud Security Architect with 20+ years transforming enterprise security postures across financial services, healthcare, and critical infrastructure. Deep specialist in Zero Trust architectures, cloud-native security (Azure + AWS), and EU regulatory compliance (NIS2, DORA, GDPR, ISO 27001). Led security architecture programs at IBM Consulting covering 10+ regulated enterprise clients — translating compliance obligations into automated control frameworks, policy-as-code, and continuous monitoring pipelines. Combines defense-grade security principles (IDF Intelligence Corps) with board-level advisory skills to bridge technical risk and executive decision-making.
+KEY ACHIEVEMENTS
+
+Implemented Zero Trust architectures for 10+ enterprise clients eliminating standing privileged access — reducing lateral movement risk and achieving NIS2/DORA compliance with zero critical findings in first audit cycle
+Delivered board-level security programs (risk registers, KRI dashboards, investment models) for C-suites across financial services and healthcare — securing multi-million-euro security budgets
+Automated multi-framework compliance evidence collection (NIS2, DORA, ISO 27001, GDPR) reducing audit preparation from 6 weeks to under 1 week through policy-as-code and continuous control monitoring
+Designed AI/ML security governance frameworks for 4+ enterprises covering model security, data privacy controls, and responsible AI principles aligned with emerging EU AI Act requirements
+PROFESSIONAL EXPERIENCE
+Principal Cloud Security Architect – Enterprise Advisory
+	IBM Consulting  •  Amsterdam, Netherlands	2017 – Present
+Serve as trusted security advisor to CISOs and C-suite executives at 10+ regulated enterprises — establishing risk frameworks that translate business objectives into Zero Trust control architectures with automated policy enforcement (Azure Policy, AWS SCPs, OPA Sentinel).
+Design end-to-end Zero Trust architectures spanning identity (SSO, PIM, just-in-time elevation), data (KMS, DLP, SBOM), network (micro-segmentation, mTLS), and workload (immutable infrastructure) planes — with continuous control monitoring mapped to NIS2/ISO 27001 control sets.
+Lead multi-framework compliance programs (NIS2, DORA, ISO 27001, GDPR, PCI-DSS) through automated control mapping and evidence collection, reducing audit preparation from 6 weeks to under 1 week for 3 major financial services clients.
+Establish AI/ML security governance frameworks including model security, adversarial threat modeling, data privacy controls, and responsible AI principles — among the first IBM teams addressing EU AI Act readiness for enterprise clients.
+Develop board-level security communications: risk registers, KRI dashboards, treatment roadmaps, and investment models — directly contributing to multi-million-euro security program approvals across 5+ enterprise accounts.
+Build third-party risk programs with vendor security assessments, supply chain risk management (SBOM), and integration with enterprise GRC platforms across 4 regulated sectors.
+Senior Security Architect – Cyber Advisory
+	Deloitte  •  Amsterdam & Brussels	2012 – 2017
+Led cloud security transformation programs for 12+ enterprise clients — designing security-by-design architectures for Azure and AWS migrations, with layered controls across identity, network, data, and workload domains mapped to ISO 27001, NIS2, and PCI-DSS.
+Developed enterprise risk frameworks with quantified scoring methodologies and executive remediation roadmaps, enabling clients to prioritize security investment by measurable risk reduction.
+Architected IAM solutions using Azure AD, Okta, and federated SSO securing 20,000+ users across hybrid environments; embedded OIDC/OAuth2, RBAC/ABAC, and identity federation patterns into reference architectures.
+Conducted 20+ enterprise security assessments across financial services, retail, and public sector delivering C-suite remediation roadmaps prioritized by risk impact and regulatory exposure.
+
+Cybersecurity Consultant
+	Deloitte  •  Brussels, Belgium	2010 – 2012
+Delivered security architecture and compliance frameworks for regulated financial and public sector clients; specialized in cloud security patterns, IAM design, and ISO 27001 / NIS2 control mapping for early cloud adopters.
+Security Specialist & Systems Architect
+	IDF – Intelligence Corps  •  Israel	2005 – 2010
+Led security operations and incident response for classified mission-critical environments achieving TOP SECRET system accreditation; applied defense-grade Zero Trust, micro-segmentation, and HA/DR principles that directly shape current enterprise security architecture practice.
+
+CORE COMPETENCIES
+
+Security Architecture
+Zero Trust Architecture (Identity, Network, Data, Workload planes) Defense-in-Depth, Security-by-Design, Cloud Security (Azure/AWS) Identity & Access Management: SSO, PIM, JIT, RBAC/ABAC AI/ML Security Governance, Supply Chain Security & SBOM
+Cloud Security (Azure & AWS)
+AZ-500: Defender for Cloud, Sentinel, Key Vault, DLP, Purview AWS Security Hub, GuardDuty, Macie, IAM Identity Center Zero Trust Network: micro-segmentation, mTLS, Private Endpoints Immutable Infrastructure, Container Security (AKS/EKS), CSPM
+Compliance & Risk (EU Focus)
+NIS2, DORA, ISO 27001/27002, GDPR, PCI-DSS, SOC 2 NIST Cybersecurity Framework, CIS Controls Policy-as-Code: OPA, Sentinel, Azure Policy, AWS SCPs Automated evidence collection, Third-Party Risk Management
+Leadership & Advisory
+CISO Advisory, Board-Level Risk Communications KRI Reporting, Security Investment Modeling Cross-functional Program Leadership (legal, tech, business) Security Strategy, Enterprise Risk Management, Governance Design
+
+CERTIFICATIONS & EDUCATION
+
+CISSP – Certified Information Systems Security Professional
+CCSP – Certified Cloud Security Professional
+AWS Certified Security – Specialty
+AZ-500 – Azure Security Engineer
+ISO 27001 Lead Implementer
+AZ-305 – Azure Solutions Architect Expert
+TOGAF 9 Certified
+ITIL 4 Foundation
+AZ-400 – Azure DevOps Engineer
+
+Education: B.Sc. Industrial Engineering & Management — Technion, Israel Institute of Technology  
+Languages: English (Fluent), Hebrew (Native)

@@ -1,51 +1,453 @@
 {
-  "meta": { "updated": "2026-06-21", "by": "seed (extend build-state.mjs to auto-feed)" },
+  "meta": {
+    "updated": "2026-06-21",
+    "by": "seed (extend build-state.mjs to auto-feed)",
+    "arborGeneratedAt": "2026-06-22"
+  },
   "runtimes": [
-    { "name": "Claude", "role": "core builder", "status": "live" },
-    { "name": "Codex", "role": "bulk build", "status": "idle" },
-    { "name": "Gemini", "role": "gen · multimodal", "status": "idle" },
-    { "name": "Hermes", "role": "scheduled", "status": "live" },
-    { "name": "Google", "role": "Gmail·Cal·Drive", "status": "live" }
+    {
+      "name": "Claude",
+      "role": "core builder",
+      "status": "live"
+    },
+    {
+      "name": "Codex",
+      "role": "bulk build",
+      "status": "idle"
+    },
+    {
+      "name": "Gemini",
+      "role": "gen · multimodal",
+      "status": "idle"
+    },
+    {
+      "name": "Hermes",
+      "role": "scheduled",
+      "status": "live"
+    },
+    {
+      "name": "Google",
+      "role": "Gmail·Cal·Drive",
+      "status": "live"
+    }
   ],
-  "conductor": { "k": "CoS", "role": "Chief of Staff · COO", "lead": "ros-conductor", "status": "amber", "ctx": "runs the operating rhythm; reports to both principals", "loops": "weekly review · OKRs · ROS-CIL", "skills": "weekly-review · okr-tracker · stakeholder-briefing" },
+  "conductor": {
+    "k": "CoS",
+    "role": "Chief of Staff · COO",
+    "lead": "ros-conductor",
+    "status": "amber",
+    "ctx": "runs the operating rhythm; reports to both principals",
+    "loops": "weekly review · OKRs · ROS-CIL",
+    "skills": "weekly-review · okr-tracker · stakeholder-briefing"
+  },
   "meshes": [
-    { "k": "HV", "role": "EU real-estate dev", "lead": "hv-orchestrator", "status": "amber", "fresh": "stale", "pods": ["sourcing", "underwriting", "permit", "execution"], "loops": "deal radar (stalled 06-05)", "skills": "deal-analyzer · brrrr · wws · permit-pathway", "ctx": "source→underwrite→permit→execute, NL-first EU-pluggable" },
-    { "k": "EA", "role": "security architecture", "lead": "ea-lead", "status": "red", "fresh": "stale", "pods": ["(no pods — per-client isolation)"], "loops": "on-demand", "skills": "hld-writer · adr-writer · architecture-review", "ctx": "ABN + Coca-Cola only; client-confidential" },
-    { "k": "KK", "role": "PA · second brain", "lead": "kk-ops", "status": "green", "fresh": "fresh", "pods": ["Career", "Research"], "loops": "morning triage (live) · daily brief", "skills": "inbox-manager · task-manager · research", "ctx": "autonomous manage+prepare; draft-first apply" },
-    { "k": "MKT", "role": "brand · content", "lead": "mkt-lead", "status": "amber", "fresh": "stale", "pods": ["content"], "loops": "content cadence (proposed)", "skills": "campaign-planner · copywriter · content-creator", "ctx": "Guy brand + HollandVest; coordinates Arbor MKT" },
-    { "k": "FIN", "role": "money · admin", "lead": "fin-admin", "status": "green", "fresh": "stale", "pods": [], "loops": "deadline watch (proposed)", "skills": "email-composer · notion-sync", "ctx": "invoices·tax·insurance; amounts stated, L4 confirm" },
-    { "k": "PAI", "role": "product AI · Arbor", "lead": "arbor-orchestrator", "status": "green", "fresh": "fresh", "pods": ["+ 19 Arbor pods", "Arbor CIL"], "loops": "Arbor CIL eval 2×/day · build 2×/wk", "skills": "prd-generator · the mesh", "ctx": "Arbor live in prod; self-improving" }
+    {
+      "k": "HV",
+      "role": "EU real-estate dev",
+      "lead": "hv-orchestrator",
+      "status": "amber",
+      "fresh": "stale",
+      "pods": [
+        "sourcing",
+        "underwriting",
+        "permit",
+        "execution"
+      ],
+      "loops": "deal radar (stalled 06-05)",
+      "skills": "deal-analyzer · brrrr · wws · permit-pathway",
+      "ctx": "source→underwrite→permit→execute, NL-first EU-pluggable"
+    },
+    {
+      "k": "EA",
+      "role": "security architecture",
+      "lead": "ea-lead",
+      "status": "red",
+      "fresh": "stale",
+      "pods": [
+        "(no pods — per-client isolation)"
+      ],
+      "loops": "on-demand",
+      "skills": "hld-writer · adr-writer · architecture-review",
+      "ctx": "ABN + Coca-Cola only; client-confidential"
+    },
+    {
+      "k": "KK",
+      "role": "PA · second brain",
+      "lead": "kk-ops",
+      "status": "green",
+      "fresh": "fresh",
+      "pods": [
+        "Career",
+        "Research"
+      ],
+      "loops": "morning triage (live) · daily brief",
+      "skills": "inbox-manager · task-manager · research",
+      "ctx": "autonomous manage+prepare; draft-first apply"
+    },
+    {
+      "k": "MKT",
+      "role": "brand · content",
+      "lead": "mkt-lead",
+      "status": "amber",
+      "fresh": "stale",
+      "pods": [
+        "content"
+      ],
+      "loops": "content cadence (proposed)",
+      "skills": "campaign-planner · copywriter · content-creator",
+      "ctx": "Guy brand + HollandVest; coordinates Arbor MKT"
+    },
+    {
+      "k": "FIN",
+      "role": "money · admin",
+      "lead": "fin-admin",
+      "status": "green",
+      "fresh": "stale",
+      "pods": [],
+      "loops": "deadline watch (proposed)",
+      "skills": "email-composer · notion-sync",
+      "ctx": "invoices·tax·insurance; amounts stated, L4 confirm"
+    },
+    {
+      "k": "PAI",
+      "role": "product AI · Arbor",
+      "lead": "arbor-orchestrator",
+      "status": "green",
+      "fresh": "fresh",
+      "pods": [
+        "+ 19 Arbor pods",
+        "Arbor CIL"
+      ],
+      "loops": "Arbor CIL eval 2×/day · build 2×/wk",
+      "skills": "prd-generator · the mesh",
+      "ctx": "Arbor live in prod; self-improving"
+    }
   ],
   "loops": [
-    { "name": "KK Gmail triage (morning routing)", "owner": "KK", "cad": "weekdays 08:30/13:30/18:30", "status": "live", "id": "333eaf638d76" },
-    { "name": "Career job sourcing sprint", "owner": "Career", "cad": "Mon/Thu 09:00", "status": "live", "id": "4fc75fbfad30" },
-    { "name": "Arbor CIL — eval", "owner": "PAI", "cad": "twice daily 03:00/15:00", "status": "confirmed", "id": "cloud" },
-    { "name": "Arbor CIL — build wave", "owner": "PAI", "cad": "Mon/Thu 04:00", "status": "confirmed", "id": "cloud" },
-    { "name": "ROS-CIL — company self-audit", "owner": "CoS", "cad": "weekly light / monthly deep", "status": "proposed", "id": "/ros-improve" },
-    { "name": "Command Center refresh", "owner": "CoS", "cad": "daily AM", "status": "proposed", "id": "build-state + radar" },
-    { "name": "HV deal radar", "owner": "HV", "cad": "daily (revive)", "status": "proposed", "id": "stalled 06-05" },
-    { "name": "KK daily brief → Notion", "owner": "KK", "cad": "daily AM", "status": "proposed", "id": "live-tested 06-21" },
-    { "name": "AI-trends watch → optimize", "owner": "CoS", "cad": "weekly", "status": "proposed", "id": "/ai-trends-watch" }
+    {
+      "name": "KK Gmail triage (morning routing)",
+      "owner": "KK",
+      "cad": "weekdays 08:30/13:30/18:30",
+      "status": "live",
+      "id": "333eaf638d76"
+    },
+    {
+      "name": "Career job sourcing sprint",
+      "owner": "Career",
+      "cad": "Mon/Thu 09:00",
+      "status": "live",
+      "id": "4fc75fbfad30"
+    },
+    {
+      "name": "Arbor CIL — eval",
+      "owner": "PAI",
+      "cad": "twice daily 03:00/15:00",
+      "status": "confirmed",
+      "id": "cloud"
+    },
+    {
+      "name": "Arbor CIL — build wave",
+      "owner": "PAI",
+      "cad": "Mon/Thu 04:00",
+      "status": "confirmed",
+      "id": "cloud"
+    },
+    {
+      "name": "ROS-CIL — company self-audit",
+      "owner": "CoS",
+      "cad": "weekly light / monthly deep",
+      "status": "proposed",
+      "id": "/ros-improve"
+    },
+    {
+      "name": "Command Center refresh",
+      "owner": "CoS",
+      "cad": "daily AM",
+      "status": "proposed",
+      "id": "build-state + radar"
+    },
+    {
+      "name": "HV deal radar",
+      "owner": "HV",
+      "cad": "daily (revive)",
+      "status": "proposed",
+      "id": "stalled 06-05"
+    },
+    {
+      "name": "KK daily brief → Notion",
+      "owner": "KK",
+      "cad": "daily AM",
+      "status": "proposed",
+      "id": "live-tested 06-21"
+    },
+    {
+      "name": "AI-trends watch → optimize",
+      "owner": "CoS",
+      "cad": "weekly",
+      "status": "proposed",
+      "id": "/ai-trends-watch"
+    }
   ],
   "notion": {
     "cockpit": "https://app.notion.com/p/2b4f37e231fe801c8495dea36d0efd4d",
     "para": [
-      { "p": "Projects", "name": "Projects", "url": "https://app.notion.com/p/2b4f37e2-31fe-8129-8ed4-d6363bf11a86" },
-      { "p": "Areas", "name": "Areas / Domains", "url": "https://app.notion.com/p/2b4f37e2-31fe-81c6-8daf-d7b519e4cc40" },
-      { "p": "Resources", "name": "Notes / Knowledge", "url": "https://app.notion.com/p/2b4f37e231fe81ab81e5c92782f8daa3" },
-      { "p": "Archive", "name": "archive.md (ROS Markdown)", "url": "" }
+      {
+        "p": "Projects",
+        "name": "Projects",
+        "url": "https://app.notion.com/p/2b4f37e2-31fe-8129-8ed4-d6363bf11a86"
+      },
+      {
+        "p": "Areas",
+        "name": "Areas / Domains",
+        "url": "https://app.notion.com/p/2b4f37e2-31fe-81c6-8daf-d7b519e4cc40"
+      },
+      {
+        "p": "Resources",
+        "name": "Notes / Knowledge",
+        "url": "https://app.notion.com/p/2b4f37e231fe81ab81e5c92782f8daa3"
+      },
+      {
+        "p": "Archive",
+        "name": "archive.md (ROS Markdown)",
+        "url": ""
+      }
     ],
-    "hv": ["Deals", "Properties", "Vendors", "Capital & Financing", "Documents", "HV Tasks", "HV Areas"]
+    "hv": [
+      "Deals",
+      "Properties",
+      "Vendors",
+      "Capital & Financing",
+      "Documents",
+      "HV Tasks",
+      "HV Areas"
+    ]
   },
   "standards": [
-    { "name": "de-slop", "what": "the output standard — kills AI-slop, enforces accuracy + density + voice. VERIFY gate on every deliverable.", "cmd": "/de-slop" },
-    { "name": "grill-me", "what": "align before planning — interview, recommend, surface hidden decisions. Front of the loop.", "cmd": "/grill-me" },
-    { "name": "vertical-slice", "what": "ship a real artifact end-to-end, get judged, feed back. Antidote to sprawl.", "cmd": "/vertical-slice" },
-    { "name": "universal loop", "what": "SENSE→FRAME→DESIGN→PRODUCE→VERIFY→DELIVER→LEARN; per-domain Definition-of-Done.", "cmd": "00_System/agent-framework" }
+    {
+      "name": "de-slop",
+      "what": "the output standard — kills AI-slop, enforces accuracy + density + voice. VERIFY gate on every deliverable.",
+      "cmd": "/de-slop"
+    },
+    {
+      "name": "grill-me",
+      "what": "align before planning — interview, recommend, surface hidden decisions. Front of the loop.",
+      "cmd": "/grill-me"
+    },
+    {
+      "name": "vertical-slice",
+      "what": "ship a real artifact end-to-end, get judged, feed back. Antidote to sprawl.",
+      "cmd": "/vertical-slice"
+    },
+    {
+      "name": "universal loop",
+      "what": "SENSE→FRAME→DESIGN→PRODUCE→VERIFY→DELIVER→LEARN; per-domain Definition-of-Done.",
+      "cmd": "00_System/agent-framework"
+    }
   ],
   "trends": [
-    { "date": "2026-06-21", "title": "De-slop skill pattern (Ben AI) adopted", "action": "shipped /de-slop" },
-    { "date": "2026-06-21", "title": "Matt Pocock agentic workflow (align→slice→verify)", "action": "shipped /grill-me + /vertical-slice" },
-    { "date": "weekly", "title": "AI-trends watch loop", "action": "/ai-trends-watch → ROS-BACKLOG (proposed cron)" }
-  ]
+    {
+      "date": "2026-06-21",
+      "title": "De-slop skill pattern (Ben AI) adopted",
+      "action": "shipped /de-slop"
+    },
+    {
+      "date": "2026-06-21",
+      "title": "Matt Pocock agentic workflow (align→slice→verify)",
+      "action": "shipped /grill-me + /vertical-slice"
+    },
+    {
+      "date": "weekly",
+      "title": "AI-trends watch loop",
+      "action": "/ai-trends-watch → ROS-BACKLOG (proposed cron)"
+    }
+  ],
+  "arbor": {
+    "name": "Arbor",
+    "tagline": "Longitudinal Child Intelligence — the steady hand that remembers your child",
+    "status": "live",
+    "role": "Group company #1 — parenting intelligence, ages 0–12",
+    "owners": "PAI (product) · CoS (portfolio)",
+    "agentCount": 40,
+    "departments": [
+      {
+        "k": "Governance",
+        "tier": "T0",
+        "role": "ROS CoS (portfolio) + ROS PAI (product owner)",
+        "lead": "ROS CoS · ROS PAI"
+      },
+      {
+        "k": "Advisory & Clinical",
+        "tier": "T1",
+        "role": "Worth-building rubric + clinical soundness/claims — holds VETO",
+        "lead": "arbor-clinical-lead"
+      },
+      {
+        "k": "Head of Product",
+        "tier": "T1",
+        "role": "Discovery · PRD · metric · voice-of-parent",
+        "lead": "arbor-product"
+      },
+      {
+        "k": "Product Council",
+        "tier": "intake",
+        "role": "Fuses 5 streams → one scored PRODUCT-BACKLOG",
+        "lead": "/arbor-product-council"
+      },
+      {
+        "k": "Orchestrator",
+        "tier": "conductor",
+        "role": "Backlog → conflict-free build waves",
+        "lead": "arbor-orchestrator"
+      },
+      {
+        "k": "Product (dept)",
+        "tier": "T2",
+        "role": "Head of Product + PM + UX + UI + 10 eng pods",
+        "lead": "arbor-product"
+      },
+      {
+        "k": "DevSecOps",
+        "tier": "T2",
+        "role": "Gates every ship — veto on quality/security/release",
+        "lead": "arbor-devsecops-lead"
+      },
+      {
+        "k": "Marketing",
+        "tier": "T2",
+        "role": "Brand/ECD · content EN+HE · SEO · growth loops",
+        "lead": "arbor-marketing-lead"
+      },
+      {
+        "k": "DevOps (CoS Delivery)",
+        "tier": "group",
+        "role": "Incremental promotion · release train · claim gating",
+        "lead": "ros-release-lead"
+      },
+      {
+        "k": "CIL",
+        "tier": "loop",
+        "role": "Critic panel → scored IMPROVEMENT-BACKLOG",
+        "lead": "arbor-evaluator"
+      },
+      {
+        "k": "Research",
+        "tier": "shared",
+        "role": "Sourced, fact-checked, cited briefs",
+        "lead": "research-agent"
+      }
+    ],
+    "pipeline": [
+      {
+        "stage": "Feeders",
+        "who": "Advisory · Clinical · Marketing · CIL · Head of Product",
+        "note": "5 demand streams"
+      },
+      {
+        "stage": "PM",
+        "who": "arbor-pm",
+        "note": "triage → scored AP- tickets"
+      },
+      {
+        "stage": "Council",
+        "who": "/arbor-product-council",
+        "note": "fuse + clinical GATE"
+      },
+      {
+        "stage": "Orchestrator",
+        "who": "arbor-orchestrator",
+        "note": "backlog → conflict-free waves"
+      },
+      {
+        "stage": "DevSecOps",
+        "who": "arbor-devsecops-lead",
+        "note": "green-gate every ship"
+      },
+      {
+        "stage": "Release train",
+        "who": "ros-release-lead",
+        "note": "canary → STOP at prod-promote"
+      }
+    ],
+    "loops": [
+      {
+        "id": "arbor-cil-eval",
+        "owner": "PAI/Arbor",
+        "cad": "0 3,15 * * *",
+        "does": "CIL cheap regression panel → refresh IMPROVEMENT-BACKLOG.md",
+        "posture": "Write-backlog",
+        "status": "live"
+      },
+      {
+        "id": "arbor-cil-build",
+        "owner": "PAI/Arbor",
+        "cad": "0 4 * * 1,4",
+        "does": "CIL deep eval + build top safe fixes to green branch claude/cil-week",
+        "posture": "Build-to-branch",
+        "status": "live"
+      },
+      {
+        "id": "arbor-clinical-loop",
+        "owner": "PAI/Arbor",
+        "cad": "0 6 * * 6 (Sat)",
+        "does": "Clinical Excellence loop (L2) — Clinical Board benchmarks Arbor vs CDC/AAP/ASHA + competitors → clin",
+        "posture": "Write-backlog",
+        "status": "live"
+      },
+      {
+        "id": "arbor-product-council",
+        "owner": "PAI/Arbor",
+        "cad": "0 6 * * 0 (Sun)",
+        "does": "Product Council intake — fuse Advisory + Clinical + Marketing + CIL → scored PRODUCT-BACKLOG.md cand",
+        "posture": "Write-backlog",
+        "status": "live"
+      },
+      {
+        "id": "arbor-marketing-loop",
+        "owner": "PAI/Arbor Mktg",
+        "cad": "0 5 * * 2,5 (Tue+Fri)",
+        "does": "Marketing loop — build safe materials to the brand spine, ECD+safety gate, publish to owned organic ",
+        "posture": "Publish-organic",
+        "status": "live"
+      }
+    ],
+    "backlog": {
+      "candidates": 28,
+      "candidatesBreakdown": {
+        "DEM": 11,
+        "CLI": 8,
+        "PHI": 9
+      },
+      "promoted": 13,
+      "buildReady": 9,
+      "buildReadyIds": [
+        "AP-001",
+        "AP-002",
+        "AP-004",
+        "AP-005",
+        "AP-006",
+        "AP-007",
+        "AP-009",
+        "AP-010",
+        "AP-013"
+      ],
+      "gatedForGuy": 4,
+      "gatedForGuyIds": [
+        "AP-003",
+        "AP-008",
+        "AP-011",
+        "AP-012"
+      ],
+      "heldByClinicalGate": 9,
+      "building": 0,
+      "buildingWave": "PM-01-2026-06-22",
+      "shipped": 0
+    },
+    "branches": [
+      "claude/cil-week",
+      "claude/mk-registration-engine",
+      "claude/ros-shape-up",
+      "ros-cil/2026-06-21-editor-pass"
+    ],
+    "firewall": "Back-end inspiration only — never branded/clinician-claimed. Clinical soundness + any developmental/medical/effect-size claim is a binding veto."
+  }
 }

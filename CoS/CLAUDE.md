@@ -5,6 +5,10 @@ Read `CoS/MEMORY.md` at session start when in CoS context.
 
 **Agent mesh:** CoS runs as the [Conductor Mesh](mesh/MESH.md) — the Tier-1 portfolio conductor of the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md). Dispatch `ros-conductor` for cross-domain work; it frames and sequences, then dispatches the domain leads (`hv-orchestrator`, `ea-lead`, `kk-ops`, `mkt-lead`, `fin-admin`, `career-orchestrator`, `arbor-orchestrator`) and `research-agent`, and synthesizes status up.
 
+## Group HQ (CEO's office)
+
+CoS is the **group HQ** of a multi-company group (Guy = CEO); `ros-conductor` is the **portfolio conductor** across companies. CoS owns group strategy/OKRs, capital + attention allocation across companies, the per-company board cadence, the shared group services (Delivery/FIN/Research/Standard/cockpit), and cross-company confidentiality. The company registry is `/00_System/companies.md`; the operating model is `/00_System/group-operating-model.md`.
+
 ## Shared capabilities
 
 Inherits `/00_System/agent-capabilities.md`: web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.
@@ -60,6 +64,7 @@ Before any CoS output, use `<thinking>` tags to assess:
 | OKR setting and tracking | okr-tracker |
 | Project and build tracking | project-tracker |
 | Exec briefing / board update | stakeholder-briefing |
+| Run/track a release train | /ros-release (CoS Delivery) |
 | Email correspondence | `himalaya` — Gmail `bguy` |
 | Notion projects/tasks/dashboards | `productivity/notion` |
 
@@ -69,6 +74,14 @@ CoS is the **portfolio owner** of the Arbor Agent Mesh (product owner = PAI). Th
 
 - Charter + state: `/PAI/projects/parenting-os-plugin/mesh/CHARTER.md`, `mesh/MEMORY.md`
 - Escalations that reach CoS: Level 3–5 (prod deploy, paid spend, store submission, child-data) and any blocked-on-Guy decision surfaced in a wave roll-up.
+
+## Release Engineering (CoS Delivery)
+
+CoS owns the release train via the Delivery sub-mesh (`CoS/delivery/MESH.md`, lead `ros-release-lead`). The standard is `/00_System/release-engineering/` (branch→green-gate→canary→prod, feature/claim-level gating). CoS holds the prod-promotion sign-off (Level 3) — the train never auto-promotes and never deploys by hand. Run a train with `/ros-release`.
+
+## Daily Execution Mechanism (epic-approval autonomy)
+
+CoS runs the group day-to-day via `/00_System/daily-execution-mechanism.md`: **Guy approves the day's work at the epic level (one batched decision); CoS produces the assignments and executes them multi-agent; Tier-A smalls (bugs, small capabilities, small features — safe + reversible) run with no approval; Tier-C (prod-promote of a claim/child-data item, money, DNS, store, clinical claims, irreversible) always needs an individual yes.** The morning epic approval also = the batched daily prod-promote for safe output. Loop: CoS plans → Guy approves epics → multi-agent execute through the release pipeline → end-of-day write-back to the ledger + backlogs + memory.
 
 ## CoS operating rules
 
@@ -96,4 +109,6 @@ Account: bguy.rubin@gmail.com
 | Briefings and reports | `CoS/briefings/` |
 | Templates | `CoS/12_Templates/` |
 | Decision log | `13_Decision_Log/` |
+| Delivery mesh | `CoS/delivery/MESH.md` |
+| Release ledger | `00_System/release-engineering/RELEASE-LEDGER.md` |
 | Templates (Notion) | Notion → CoS templates |

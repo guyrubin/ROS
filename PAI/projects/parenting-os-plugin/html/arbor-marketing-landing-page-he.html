@@ -108,7 +108,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;500;600;700;800;900&family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Noto+Sans+Hebrew:wght@400;500;600;700;800;900&family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
 /* ============================================================
    ARBOR · marketing landing · calm clinical-humanist
@@ -165,8 +165,8 @@
 
   --r-xs:8px; --r-sm:10px; --r:12px; --r-lg:14px; --r-xl:16px; --r-2xl:20px; --r-pill:999px;
 
-  --sans:"Assistant","Heebo",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --serif:"Assistant","Heebo",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --sans:"Heebo","Noto Sans Hebrew",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --serif:"Frank Ruhl Libre","Heebo",serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 
   --ease:cubic-bezier(.22,.61,.36,1);
@@ -690,8 +690,8 @@ footer{padding:3.5rem 0 2.5rem;border-top:1px solid var(--line);margin-top:clamp
 
 /* ---- 2030 product-design polish: stable, premium, accessible ---- */
 :root{
-  --sans:"Noto Sans Hebrew","Heebo",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --serif:"Noto Sans Hebrew","Heebo",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --sans:"Heebo","Noto Sans Hebrew",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --serif:"Frank Ruhl Libre","Heebo",serif;
   --ease-premium:cubic-bezier(.2,.8,.2,1);
   --dur-fast:160ms;
   --dur-med:360ms;
@@ -813,15 +813,15 @@ h1,h2,h3,h4{font-weight:800;line-height:1.04}
   --ds-radius-lg:18px;
   --ds-radius-xl:24px;
   --ds-ease:cubic-bezier(.2,.8,.2,1);
-  --sans:"Noto Sans Hebrew","Heebo",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --serif:"Noto Sans Hebrew","Heebo",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --sans:"Heebo","Noto Sans Hebrew",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --serif:"Frank Ruhl Libre","Heebo",serif;
 }
 html{scroll-padding-top:88px;background:var(--ds-bg)}
 [id]{scroll-margin-top:calc(var(--nav-offset, 88px) + 18px)}
 body{font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--ds-ink);background:linear-gradient(180deg,oklch(0.995 0.004 220),var(--ds-bg) 42%,var(--ds-bg-alt));}
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(620px 380px at 84% 8%,oklch(0.80 0.10 190 / .18),transparent 68%),radial-gradient(680px 420px at 12% 28%,oklch(0.62 0.11 230 / .08),transparent 72%)}
 .wrap{width:min(91.5%,1200px)}
-h1,h2,h3,h4{font-family:var(--sans);font-weight:850;color:var(--ds-ink);letter-spacing:0;text-wrap:balance}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;color:var(--ds-ink);letter-spacing:0;text-wrap:balance}
 .h-xl{font-size:clamp(3rem,1.65rem + 5.4vw,6.2rem);line-height:1.02;max-width:12.2ch}
 .h-lg{font-size:clamp(2rem,1.35rem + 2.35vw,3.45rem);line-height:1.1;max-width:15ch}
 .lede{font-size:clamp(1.06rem,1rem + .34vw,1.24rem);line-height:1.72;color:var(--ds-ink-soft);max-width:58ch}
@@ -1018,6 +1018,7 @@ footer{background:var(--ds-bg);margin-top:0}
         <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>פרטי כברירת מחדל</span>
         <span><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>אתם מאשרים מה נשמר</span>
         <span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>מוכן לשיחה עם איש מקצוע</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>נבנה באמסטרדם ובתל אביב</span>
       </div>
     </div>
 
@@ -1062,10 +1063,22 @@ footer{background:var(--ds-bg);margin-top:0}
 
 <div class="proof">
   <div class="wrap reveal">
-    <span><b>מומחים</b> עצות שמבוססות על ידע התפתחותי מוביל</span>
-    <span><b>אישי</b> משחקים, תרגולים וסיפורים סביב הילד שלכם</span>
-    <span><b>יומיומי</b> מה לעשות היום, מתי, ולמה זה עוזר</span>
-    <span><b>רצף</b> זיכרון וסיכום שמחברים בית, גן וטיפול</span>
+    <span>
+      <b>הכוונה שעברה בדיקת מומחים</b>
+      מבוססת על מסגרות ה-CDC, ה-AAP וה-ASHA להתפתחות הילד — כל תשובה מצוטטת במקורה ועוצרת בהכוונה, בלי אבחון.
+    </span>
+    <span>
+      <b>נבנה באמסטרדם ובתל אביב</b>
+      מוצר שמקדים פרטיות אירופית, בנוי על ידי צוות בשתי ערים שלוקחות ברצינות גם התפתחות ילדים וגם הגנת מידע.
+    </span>
+    <span>
+      <b>ארבעה מוצרים על רשומה אחת</b>
+      Daily Play, Rhythm, Ask a Specialist וזיכרון הילד — ארבע קטגוריות שהורה היה מנהל בארבעה אפליקציות נפרדות, מחוברות על רשומה פרטית אחת בבעלות ההורה.
+    </span>
+    <span>
+      <b>המידע שלכם. הרשומה שלכם.</b>
+      נוסף רק באישורכם. הרשומה ניתנת לייצוא ונשארת שלכם — לכל החיים, לא רק כל עוד המנוי פעיל.
+    </span>
   </div>
 </div>
 

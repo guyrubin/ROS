@@ -112,6 +112,10 @@ Safety posture:
 
 ## 10. Success Metrics
 
+**North star (2026 H2):** Weekly-Active-Habit (WAH) families — installs that activate (child profile + first plan) and return ≥3×/week — with paying subscribers (Plus / Family) as the co-primary. Instrumented in-app via `app/src/lib/loopEvents.ts`: `install · profile_created · first_plan · share_* · invite_* · trial_start · paid`, each carrying first-touch attribution (market / source / referral_code / utm).
+
+**Growth-loop KPIs (gates):** activation (install→profile+plan) 35%→55% · week-1 habit (≥3 returns) 20%→35% · K-factor 0.4→~1.0 · invite rate 15%→25% · free→paid 3%→6% · blended CAC < €4. Monthly kill/double: any channel under its floor for 30 days is cut, budget moves to what beats target. Retention gates spend — no paid into a leaky funnel.
+
 Phase 1 concierge MVP:
 
 - 20–30 parent testers onboarded
@@ -154,3 +158,17 @@ Private beta:
 - Add intervention tracker.
 - Add admin review dashboard.
 - Recruit professional advisors.
+
+## 12. Go-to-Market & Growth Loop
+
+**Markets (sequenced):** Israel first (ignition — native HE product, dense WhatsApp/Facebook parent groups, large micro-creator scene = cheapest place to prove K-factor), then Netherlands (anchor), then Belgium / Ireland / UK in English. Budget €10k / 6 months, organic & product-led, with ~30% (≈€3k) paid used only to amplify already-proven assets. Full plan: `marketing/arbor-viral-gtm-2026-H2.md`.
+
+**The loop:** 4 share artifacts (Avatar · personalized story · "is this normal?" answer card · monthly growth card) × 3 mechanics (referral = free Plus month on invitee *activation*; share-to-unlock; creator/UGC seeding). K = invites × conversion; target ≥0.4 early → ~1.0. Gating builds: branded 1-tap share export (P0-3) + referral grant (P0-2). Analytics + first-touch referral capture **shipped** (P0-4). Spec: `marketing/arbor-loop-eng-spec.md`.
+
+**Campaign — "The 2am Test":** enemy = fear-Googling the internet at 2am; line = *"Stop fear-Googling your kid."* Manifesto film → #ArborAvatar challenge → "what did you Google at 2am?" UGC → referral. Landing pages (HE/EN) are message-matched to the hook. Docs: `marketing/arbor-launch-campaign-the-2am-test.md`, `marketing/arbor-launch-copy-pack.md`.
+
+**Channels:** IG / TikTok / YouTube Shorts (HE-first), WhatsApp & Facebook parent groups, AEO/SEO (live guide hubs + `llms.txt`), micro-creators (vetted shortlist: `marketing/arbor-il-creator-tracker.md`). Long-form YouTube = Phase-2 evergreen authority, repurposed not bespoke.
+
+**Conversion → revenue:** Free / Plus €12.99 / Family €19.99. Free-tier volume feeds the loop; paywall triggers tuned to fire post-activation, never before the "aha." Billing rails per `arbor-payment-model-2026-06-17.md`.
+
+**Brand language (locked):** light cool-white canvas, white cards + soft blue shadow, navy ink, teal-green `oklch(0.68 0.14 178)` + blue accents, Assistant (HE) / Inter + serif (EN). Source of truth = the shipping marketing pages, not approximations.

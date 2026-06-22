@@ -55,7 +55,8 @@ This is the single source of truth for context loading. `/CLAUDE.md`, `/00_Syste
 3. `/MEMORY.md` — root current memory.
 4. `/00_System/routing.md` — routing matrix.
 5. `/00_System/principals.md` — confirm the **active principal** (Guy or Joseph): sets default identity, domain scope, and the confidentiality boundary.
-6. Route the request, then load only the matched domain's `CLAUDE.md` + `MEMORY.md`.
+6. `/00_System/companies.md` — confirm the **active company** (default: Guy / group). ROS is a multi-company group (Guy = CEO); this scopes routing, connectors, memory, and the per-company isolation boundary. Model: `/00_System/group-operating-model.md`.
+7. Route the request, then load only the matched domain's `CLAUDE.md` + `MEMORY.md` (and the company's `COMPANY.md` if one applies — e.g. Arbor).
 
 **Lazy — load only when the task needs it:**
 

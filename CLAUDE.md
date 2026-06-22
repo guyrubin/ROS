@@ -1,7 +1,7 @@
 # Rubin OS - Root Constitution
 
-**Version:** 1.8
-**Last updated:** 2026-06-21
+**Version:** 1.9
+**Last updated:** 2026-06-22
 
 ## Session Boot Sequence
 
@@ -16,6 +16,8 @@ Follow the **canonical boot sequence in `/AGENTS.md`** — it is the single sour
 - **LLM-agnostic OS, 3 persistent runtimes + Google** (`/AGENTS.md`): Claude (core builder) · Codex (bulk) · Gemini (gen/multimodal) · Hermes (scheduled) — the filesystem + Notion are the shared baton. Get the most from every subscription, both principals.
 - **Second brain:** Notion (PARA) is canonical; ROS Markdown is the durable agent knowledge; the **ROS OS Dashboard** (`CoS/projects/ros-os-dashboard/`) is the HTML control surface on top.
 - **Self-improving:** Arbor CIL (product) + ROS-CIL (company) + a weekly **AI-trends watch** keep ROS current (`/00_System/agent-framework/SCHEDULED-LOOPS.md`).
+- **Shipping is incremental + gated** under CoS Delivery (`/ros-release`): release train branch→green-gate→canary→prod with feature/claim-level gating — never blind-to-main, never hand-deployed (`/00_System/release-engineering/`).
+- **Multi-company group (Guy = CEO):** ROS runs as a portfolio of companies + shared group services; CoS is the group HQ. **Arbor = product company #1.** Registry `/00_System/companies.md`; model `/00_System/group-operating-model.md`. Boot declares the active company.
 
 ## Routing Map
 
@@ -82,8 +84,8 @@ ROS uses an LLM-maintained wiki approach:
 | Instruction Standards | `/00_System/markdown-instruction-principles.md` |
 | Layer Model | `/00_System/layer-model.md` |
 | Agent Framework | `/00_System/agent-framework/README.md` |
-| ROS OS (operating doc) | `/CoS/ROS-OS.md` |
-| ROS OS Dashboard | `/CoS/projects/ros-os-dashboard/` (serve :4700) |
+| Release Engineering (Delivery) | `/00_System/release-engineering/` |
+| ROS OS + Dashboard | `/CoS/ROS-OS.md` · `/CoS/projects/ros-os-dashboard/` (:4700) |
 | Standard & method skills | `/.claude/skills/{de-slop,grill-me,vertical-slice}/` |
 | Self-improvement loops | Arbor `/PAI/projects/parenting-os-plugin/mesh/improvement/`, ROS `/00_System/agent-framework/ROS-CIL.md` |
 

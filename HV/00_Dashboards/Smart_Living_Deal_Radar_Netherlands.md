@@ -25,6 +25,65 @@ markets:
 
 ## Scan updates
 
+### 2026-06-05 — Daily public scan
+
+**Result:** No better candidates found today. Public MVA/MarketSuite newest-first scans for Amsterdam and Den Haag surfaced several fresh family/lifestyle listings, but none materially beat or cleanly complement the current benchmark set of **Badhuiskade 217**, **Stadionkade 27-3**, **Asterweg 19**, **Bennebroekstraat 31** and **Pilotenstraat 18** on the combined score of family quality, car sanity, international ecosystem, lifestyle, future upside, development optionality and execution risk.
+
+#### Checked but not promoted
+
+- **Raphaëlstraat 25 H, Amsterdam Zuid / Apollobuurt** — public MVA screen: **€1,250,000 / 158 m² / 4 bedrooms / energy C / ~€7,911/m²**, with public text referencing a multifunctional **~35 m² souterrain**. Not promoted because it is still old-stock Zuid with no API-confirmed parking, weaker energy/maintenance simplicity than Badhuiskade, and less clear development optionality than Asterweg/Bennebroekstraat. [MVA](https://mva.nl/koop/woningen/raphaelstraat-25-h) · [API](https://mva.nl/api/ms/listing/properties/raphaelstraat-25-h)
+- **Apollolaan 77 2, Amsterdam Zuid / Oud-Zuid-Apollolaan** — public MVA screen: **€1,350,000 / 171 m² / 5 bedrooms / energy F / ~€7,895/m²**. The price and family scale are interesting versus Stadionkade 27-3, but energy F, no API-confirmed parking and old-stock execution/foundation/VvE exposure keep it below the current benchmark. [MVA](https://mva.nl/koop/woningen/apollolaan-77-2) · [API](https://mva.nl/api/ms/listing/properties/apollolaan-77-2)
+- **Bellefleurhof 29, Amsterdam Noord / De Bongerd** — public MVA screen: **€800,000 / 131 m² / 4 bedrooms / energy A++ / ~€6,107/m²**, with public text describing an autoluw hofje and front/rear garden. Not promoted because it is outside the core **Overhoeks / Buiksloterham / Elzenhagen** focus and does not beat the existing Elzenhagen watchlist on location/upside clarity. [MVA](https://mva.nl/koop/woningen/bellefleurhof-29) · [API](https://mva.nl/api/ms/listing/properties/bellefleurhof-29)
+- **Nieuwendammerkade 28 C11, Amsterdam Noord / Nieuwendam waterfront** — public MVA screen: **€2,500,000 / 269 m² / 4 bedrooms / energy A / ~€9,294/m²**. Lifestyle/volume is strong, but the absolute ticket is far above Badhuiskade/Buiksloterham alternatives and the location is outside the target Noord triad; it is a premium lifestyle asset rather than a risk-adjusted benchmark-beater. [MVA](https://mva.nl/koop/woningen/nieuwendammerkade-28-c11) · [API](https://mva.nl/api/ms/listing/properties/nieuwendammerkade-28-c11)
+- **Soendastraat 28, Den Haag / Archipel-Scheveningen access** — public MVA screen: **€1,395,000 / 234 m² / 6 bedrooms / energy C / ~€5,962/m²**. Good Hague family volume, but it is not Statenkwartier/Belgisch Park/coastal-prestige core, has no API-confirmed private parking, and does not improve on Van Hoornbeekstraat 8 C's cleaner energy A Statenkwartier profile. [MVA](https://mva.nl/koop/woningen/soendastraat-28) · [API](https://mva.nl/api/ms/listing/properties/soendastraat-28)
+
+**Market observations:**
+
+- The fresh Amsterdam Zuid family-scale supply is still mostly **old-stock prestige at €7.9k–€13.8k+/m²** with weak parking certainty and energy-label drag; it complements Stadionkade for lifestyle context but does not improve the overall personal-living + execution-risk score.
+- Amsterdam Noord remains bifurcated: non-core Noord family stock can be good value around **€6.1k/m²**, while waterfront/lifestyle stock jumps to premium pricing. The best risk-adjusted Noord lane therefore remains **Elzenhagen family/new-build value** and **Overhoeks/Buiksloterham modern-upside** rather than broad Noord.
+
+### 2026-06-04 — Daily public scan
+
+**Result:** Two materially relevant public-MVA candidates/clusters are worth adding to the radar. **Elzenhagen Noordbuurt / Elzenhagen Zuid June batch** is the strongest new practical benchmark-beater: 100–114 m² A++ new-build family layouts around **€500k–€620k v.o.n.**, with public text stating 3–4 bedrooms and a **mandatory assigned stallingsplaats** available at **€45k** outside the shown apartment price. **Van Hoornbeekstraat 8 C** is a strong Den Haag coastal-prestige complement: a 1999 Statenkwartier family house with **213 m²**, **six bedrooms**, **energy A**, front/rear garden and beach/Frederik Hendriklaan access at **~€5.5k/m²**. Neither fully replaces Badhuiskade 217 for Amsterdam ecosystem/upside, but both improve the family/car-value frontier.
+
+#### Promoted watch: Elzenhagen Noordbuurt / Elzenhagen Zuid June batch — Amsterdam Noord family-value new-build
+
+- Best currently available screens:
+  - [MVA — Maisonnette 770 ong](https://mva.nl/koop/woningen/maisonnette-770-ong) · [API](https://mva.nl/api/ms/listing/properties/maisonnette-770-ong) — **€500,000 / 100 m² / 3 bedrooms / 5 rooms / A++ / ~€5,000/m²**, public text states **~8 m² dakterras** and **Parkeerplaats: 1**; assigned stallingsplaats **€45,000** is mandatory and not included in the apartment price, giving **~€5,450/m²** if included.
+  - [MVA — Maisonnette 476 ong](https://mva.nl/koop/woningen/maisonnette-476-ong) · [API](https://mva.nl/api/ms/listing/properties/maisonnette-476-ong) — **€570,000 / 106 m² / 3 bedrooms / 5 rooms / A++ / ~€5,377/m²**, API outside area **30 m²**; public text states west/east outdoor space and mandatory assigned stallingsplaats **€45,000** outside the shown price, giving **~€5,802/m²** if included.
+  - [MVA — Appartementen 792 ong](https://mva.nl/koop/woningen/appartementen-792-ong) · [API](https://mva.nl/api/ms/listing/properties/appartementen-792-ong) — **€620,000 / 114 m² / A++ / ~€5,439/m²**; public text states **four bedrooms**, southwest balcony and mandatory assigned stallingsplaats **€45,000** outside the shown price, giving **~€5,833/m²** if included.
+- Public facts: MVA/MarketSuite texts place these in **Elzenhagen Noordbuurt / Elzenhagen Zuid**, describing a green, autoluwe family environment with urban amenities nearby. First buyers can choose between **perpetual leasehold buyout** or **annual indexed canon**; final canon/buyout numbers are still subject to definitive Amsterdam municipality erfpacht offer.
+- Why it matters: **best new low-ticket Noord family/car-sanity screen since the May Elzenhagen batch** — even with the mandatory €45k parking place, the highlighted units sit around **~€5.45k–€5.83k/m²**, far below Badhuiskade 217's **~€8.1k/m²**, while adding 3–4-bedroom utility, new-build energy quality and a materially better day-to-day car solution than most Amsterdam apartments.
+- Caveat versus Badhuiskade 217 / A. Moenstraat 32: less prestige/waterfront signal than Overhoeks/BOLD, project/bouwnummer naming is generic rather than normal street-address clarity, the API layout fields are imperfect on some apartments, parking cost is **extra and mandatory**, and total cost depends on the final erfpacht choice/canon and VvE/service-cost stack.
+- HV decision: **Proceed if conditions met** — request project brochure, bouwnummer-to-address mapping, floorplans, definitive bedroom count, outdoor-space rights, stallingsplaats deed/price/EV terms, VvE/service-charge estimate, delivery timing and exact annual-canon vs buyout numbers before ranking against Badhuiskade, A. Moenstraat and the May Elzenhagen Zuid units.
+
+#### Promoted watch: Van Hoornbeekstraat 8 C — Den Haag / Statenkwartier family house
+
+- Asset link: [MVA — Van Hoornbeekstraat 8 C](https://mva.nl/koop/woningen/van-hoornbeekstraat-8-c)
+- Source API: [MVA API — Van Hoornbeekstraat 8 C](https://mva.nl/api/ms/listing/properties/van-hoornbeekstraat-8-c)
+- Ask: **€1,175,000**
+- API size: **213 m² living / 360 m² total available area**
+- Bedrooms / rooms: **6 bedrooms / 8 rooms**
+- Price/m²: **~€5,516/m²**
+- Energy / construction: **A**; public text states the house dates from **1999**.
+- Outdoor / parking: public text states **front garden**, **rear garden**, balcony/second balcony and space for bikes/greenery in the front garden; no private parking count is populated in the API.
+- Public facts: MVA text places it in a quiet street in the **Statenkwartier**, close to **Frederik Hendriklaan**, the harbour of **Scheveningen** and the beach, with a four-level layout, two living-room zones, multiple bathrooms and work-from-home suitability.
+- Why it matters: **best new Hague coastal family complement** — it is not Amsterdam, but it gives rare family volume, energy A, international-zone/coastal lifestyle and a lower €/m² than comparable Amsterdam Zuid family assets. It materially complements the benchmark set for a calmer, car-saner, beach/international-family lane.
+- Caveat versus Badhuiskade / Stadionkade: weaker Amsterdam business/ecosystem upside, no API-confirmed private parking, limited obvious sqm-add/development optionality, and Hague appreciation likely remains steadier rather than Noord-style transformation-led.
+- HV decision: **Proceed only as lifestyle-family alternative** — request floorplans, NEN measurement, land/leasehold status, parking/permit practicality, maintenance/MJOP-equivalent, energy-installation details, garden rights and school/international-zone logistics before viewing priority.
+
+#### Checked but not promoted
+
+- **De Cuserstraat 5, Amsterdam Zuid / Buitenveldert-Zuidas** — highly unusual public-MVA screen with **392 m² living / 906 m² total available area**, public text stating a **~1,000 m² plot**, water-adjacent south garden and potential transformation into a large family home or possibly two homes subject to permits. Not promoted because the API price is **€-1 / price on request**, energy is **G**, sale is **as-is where-is**, and the capex/permit/price stack is unknowable until the broker discloses guidance. [MVA](https://mva.nl/koop/woningen/de-cuserstraat-5) · [API](https://mva.nl/api/ms/listing/properties/de-cuserstraat-5)
+- **Van Boetzelaerlaan 20, Den Haag / Statenkwartier-Geuzenkwartier edge** — attractive classic herenhuis at **€1.05m / 217 m² / 8 bedrooms / ~€4,839/m²** with southwest garden, two balconies and woon-werk potential, but energy **C**, older-stock execution exposure and weaker parking certainty make it less clean than Van Hoornbeekstraat 8 C as the Hague family benchmark. [MVA](https://mva.nl/koop/woningen/van-boetzelaerlaan-20) · [API](https://mva.nl/api/ms/listing/properties/van-boetzelaerlaan-20)
+- **Frederik Hendriklaan 71, Den Haag BOG** — core Statenkwartier retail/horeca investment at **€825k / 160 m²**, currently leased to Papa John's on De Fred. Not promoted because it is investment/retail-led rather than personal-living or clean conversion optionality. [MVA](https://mva.nl/koop/bedrijfsruimtes/bog-frederik-hendriklaan-71) · [API](https://mva.nl/api/ms/listing/properties/bog-frederik-hendriklaan-71)
+
+**Market observations:**
+
+- The strongest fresh signal is **Elzenhagen price compression with parking**: new-build family-scale Noord units are appearing at roughly **€5.0k–€5.8k/m² before/after mandatory parking**, materially below Overhoeks/Buiksloterham towers and below the current Badhuiskade benchmark.
+- Den Haag coastal prestige is producing better **family volume per euro** than Amsterdam Zuid, but the better listings mostly complement rather than beat the Amsterdam thesis because private parking and development optionality are still not consistently proven.
+- Today's address-level facts are grounded in public MVA/MarketSuite API and public MVA listing text; no Funda detail facts were used where automated retrieval is unreliable.
+
 ### 2026-05-25 — Daily public scan
 
 **Result:** Two materially relevant new MVA/MarketSuite candidates are worth adding to the radar. **A. Moenstraat 32** is the best new practical benchmark-beater for the Elzenhagen family-house lane: five bedrooms, garden, energy A and rear own-terrain parking at a materially lower ticket than Elzenhagensingel 47 and below the Badhuiskade €/m² benchmark. **Boterbloemstraat 35** is a higher-ticket Buiksloterham XL-apartment complement: it does not beat Badhuiskade on absolute price or execution simplicity, but it adds 157 m², three bedrooms, private terrace, fixed garage parking and circular/open-building upside in the exact Noord transformation thesis.

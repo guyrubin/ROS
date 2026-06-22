@@ -134,6 +134,53 @@ Per-module upgrades (all on `practice/` pure-module + content-bank patterns, uni
 
 ---
 
+## 8. UPDATE (2026-06-17b) — Best-in-market capability mining + the Cross-Domain Hero & Comic Identity
+
+**Trigger:** the avatar must not be a profile picture — it must be the child rendered as the **hero of the whole platform** (the reference: premium cel-shaded comic/superhero art, the child caped and mid-action with KA-POW! SFX). And the games must visibly out-deliver the three category leaders parents already know: **Khan Academy Kids, Lingokids, Duolingo ABC.**
+
+### 8.1 Capability mining → Arbor, delivered better
+
+Every leader hands the child a **generic mascot** and a **fixed curriculum**. Arbor's two structural advantages — **(1) the child IS the hero** (their own generated character) and **(2) the path is driven by the child's real logged development** — are non-copyable. Map:
+
+| Leader · signature capability | Why it works | Arbor's enhanced version (moat-powered) |
+|---|---|---|
+| **Khan Kids** · guided cast (Kodi + friends) | a character makes it feel personal & safe | The child's **own Hero Avatar** guides — they aren't *with* a character, they *are* the character |
+| **Khan Kids** · adaptive Learning Path + open Library | structure + autonomy | The **closed-loop Growth Plan** (Workstream C) — driven by the child's logged development, not a static syllabus |
+| **Khan Kids** · creativity studio (draw/color/sing); no ads, no fail states | open-ended, pressure-free | **Hero Comic / Story generation** starring the child; anti-dark-pattern by charter (AADC/Fairplay), free core |
+| **Lingokids** · themed "Playlearning" units (math/literacy/SEL/life skills) | breadth across domains | Domain-tagged play **tied to milestones** — every game logs a real developmental signal back to the spine |
+| **Lingokids** · collectibles/rewards | progress feels tangible | **Development-driven cosmetics** — unlocked by *doing dev activities*, never money/streaks (COPPA/AADC-clean) |
+| **Lingokids** · adaptive playlists; parents area | right next thing; visibility | **JITAI nudges** off the child's logged state + the parent app **is** the moat (longitudinal record + provider PDFs) |
+| **Duolingo ABC** · bite-size literacy path (phonics→sight words→tracing→comprehension) | tight, winnable loops | An **early-reading track layered on SpeechCoach** (articulation → phonics → reading), age-gated to ASHA/CDC norms |
+| **Duolingo ABC** · finger letter-tracing; ultra-short sessions | embodied + low-friction | **Tracing mini-game** (big on-device touch) + **short bursts with clean stops** (AAP-2026 family-time framing) |
+
+### 8.2 The Cross-Domain Hero Avatar — definition (build this)
+
+**Principle: one avatar, generated once, the child IS it everywhere.** Not a per-screen picture — a single cross-domain identity asset.
+
+- **Data model (exists):** `ChildProfile.photoUrl` (image) + `ChildProfile.avatar { url, style, source, createdAt }`. Add style `"comichero"`. Treat the avatar as first-class; expose via a shared `HeroAvatar` accessor with a deterministic **Sprout fallback** when none exists yet.
+- **IA placement (where the hero appears):**
+  - **Today/Home** — the hero greets ("Time to play, {name}?") instead of the generic Sprout once created.
+  - **Practice Studio** — the hero is the player-character in every game header + celebrations; **Adventures** casts the hero as protagonist; **FeelingsLab** uses the hero as the emotion-state avatar.
+  - **Academy** — the hero stars in **Story Journeys** (child-as-hero comic/story) and fronts Masterclass/Family cards as "your child's guide."
+  - **My Child / Development** — anchors the profile, milestone "memory portraits," and the Development Score.
+  - **Care / Sharing** — a watermarked "hero card" export.
+- **Generation flow (exists):** `AvatarCreator` (Describe default / Photo consent-gated) → `/api/generate-avatar` → stylized character saved to profile → rendered everywhere. Wherever the fallback shows, surface a **"Create {name}'s hero"** CTA so the cross-domain upgrade is one tap from any domain.
+
+### 8.3 Comic Hero visual identity + the Hero Comic generator (AI capability)
+
+- **New avatar style preset "Comic Hero"** — caped superhero, cel-shaded, dynamic lines, bright primary palette (the reference). Added to `/api/generate-avatar` style set + the client picker.
+- **Hero Comic generator** — a personalized full-page comic panel starring the child's hero (optionally a sibling), built on **Nano Banana (Gemini 2.5 Flash Image)**, provenance-watermarked, consent-gated, cached per (story, beat, avatar). The user-supplied **comic-page spec is the canonical prompt template**: single dynamic cel-shaded full-page panel; cast = child hero (+ sibling) in matching suits; personalized home setting; verbatim SFX (KA-POW! / ZAP! / AWOO! / WOOF!) and dialogue slots filled from the story beat. Surfaced as a **"Hero Comic"** content type in Academy → Story Journeys and as Adventures scene art (wires the currently-dead `imagePrompt`, PRD §A3).
+- **Comic energy as moments, not wallpaper** — action-line/SFX accents on celebrations and hero reveals only, inside the token system (anti-overstimulation, AADC).
+
+### 8.4 Updated build order (supersedes the §4 sequence head)
+
+1. **A1b — "Comic Hero" avatar style** (backend prompt + client picker). [S] ← *this session*
+2. **A6 — Cross-domain HeroAvatar surfacing** (`HeroAvatar` accessor + render in Practice headers/celebrations + Academy + Today; Sprout fallback + "Create your hero" CTA). [M] ← *this session*
+3. **A3b — Hero Comic generator** (comic-page spec → scene/comic gen, rendered in Academy Story Journeys + Adventures). [L]
+4. …then resume the §4 sequence (MemoryMatch adaptivity → Missions loop → milestone re-base → emotion avatar → real phoneme scoring → generative Adventures → growth loop → JITAI).
+
+---
+
 ## Sources
 
 Avatar/image: Google "Gemini 2.5 Flash Image / Nano Banana" ([developers blog](https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/), [API docs](https://ai.google.dev/gemini-api/docs/image-generation), [Nano Banana 2](https://blog.google/innovation-and-ai/technology/ai/nano-banana-2/)); [Avatar SDK / RPM migration](https://avatarsdk.com/blog/2026/01/15/switch-from-ready-player-me-to-avatar-sdk-fast-familiar-production-ready/); storybook category ([lullaby.ink 2026](https://lullaby.ink/blog/best-ai-childrens-book-generator-2026), [StoryBookly consistency](https://aistorybook.app/blog/ai-character-consistency/storybookly-ai-for-consistent-characters-in-every-story)). COPPA: [Akin COPPA-AI](https://www.akingump.com/en/insights/ai-law-and-regulation-tracker/new-coppa-obligations-for-ai-technologies-collecting-data-from-children), [children's privacy overview](https://pandectes.io/blog/childrens-online-privacy-rules-around-coppa-gdpr-k-and-age-verification/).

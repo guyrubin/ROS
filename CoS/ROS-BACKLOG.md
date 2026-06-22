@@ -42,6 +42,41 @@
 >
 > **Dropped (adversarial verify):** none — all 15 findings substantiated against file/state (CoS/reviews/ listing, CoS/OKRs/ listing, missing 13_Decision_Log/, git dates, jobs.json, build-state.mjs output, empty CoS/MEMORY placeholders). CIL-CoS-002/005 partially overlap CIL-CoS-001 (one root cadence) but kept distinct as they need separate Guy decisions (OKRs vs crons).
 
+> ## Group Autonomy — connector-independent, CEO-runnable (2026-06-22)
+> **State of the Group.** Governance is strong and structure is filesystem-native — every entity has a clear lead, roster, and a real Definition-of-Done gate on disk; that layer reads with zero connectors and is the autonomy backbone. The gap is uniform and structural: **companies cannot run hands-off on the filesystem alone because their SENSE half and their P&L lane live entirely in connectors.** Two findings repeat across all nine entities. (1) **The P&L interface is vapor** — the group operating model promises every company a revenue/cost lane, but not one P&L file exists anywhere in ROS (verified: glob for `*PNL*`/`*capital-ledger*` returns nothing), so a hands-off CEO has zero portfolio money view, online or off. (2) **Connectors are treated as load-bearing with no filesystem fallback** — FIN/EA/Research/HV degrade to "manual review" or a silent no-op when Gmail/Notion/web drop, instead of operating from a captured on-disk ledger. Below that: only **Arbor** has the four interfaces wired and its loops verifiably live on the clock; **HV/EA/FIN/MKT/Research** own no backlog with stable IDs and no clocked loop, so they only move when a human dispatches them; and **CoS's own COO heartbeat is paper** (every CoS-owned loop sits "Proposed", the only two live crons are KK/Career and connector-bound). The fix pattern is the same everywhere and is overwhelmingly safe + connector-independent: give each entity an on-disk ledger of record (backlog · health · decisions · P&L stub), make the connector the refresher of that file rather than the source of truth, and define an explicit degraded mode so an offline run still produces a durable artifact. Arbor is the template; the rest should copy it.
+>
+> ### Findings — deduped to themes (scored `sev×imp×conf÷eff`)
+> | ID | Theme / item | Owner | Sev | Safe/Gated | Connector-indep |
+> | :-- | :-- | :-- | :-: | :-- | :-: |
+> | GA-1 | **No filesystem P&L lane anywhere** — the 4th group interface is vapor across ALL entities; add a hand-maintainable per-company P&L stub the cockpit can parse | CoS/FIN | high | safe (stub) / gated (connector refresh) | yes |
+> | GA-2 | **Connectors load-bearing with no FS fallback** — FIN/EA/Research/HV degrade to "manual review" or silent no-op offline; redefine fallback as "operate from the on-disk ledger, flag stale, queue refresh" | CoS | high | safe | yes |
+> | GA-3 | **Companies own no backlog with stable IDs** — HV/EA/FIN/MKT/Research have no ranked on-disk queue; nothing for a loop to enumerate or CoS to read | per-mesh | high | safe | yes |
+> | GA-4 | **No ledger of record on disk** — FIN/MEMORY empty template, EA dossiers stale+hollow, HV no decision/pipeline file, MKT no release ledger; SENSE has nothing durable to stand on offline | per-mesh | high | safe | yes |
+> | GA-5 | **CoS COO heartbeat is paper** — every CoS-owned loop "Proposed"; only KK/Career crons live (both connector-bound); register FS-only ROS-CIL-light + CC-refresh | CoS | high | gated (cron) | yes |
+> | GA-6 | **Loops claimed-live but unregistered** — MKT/FIN/Delivery/HV-radar cadences specced, never on a runtime; reconcile SCHEDULED-LOOPS against the live registry | CoS | med | gated (cron) | yes |
+> | GA-7 | **Connector status over-stated vs real wiring** — EA marks Gmail/Notion "verified" but Notion is Enterprise-gated, HV/Joseph mail is Hermes-only not MCP; correct status columns + name per-connector fallback | CoS | med | safe | yes |
+> | GA-8 | **Only Arbor has COMPANY.md + 4 interfaces** — HV/EA/MKT can't be board-reviewed; add minimal HEALTH + BACKLOG stubs (no premature promotion) | CoS | med | safe | yes |
+> | GA-9 | **Arbor CIL eval bound to a live preview** — the twice-daily backlog engine starves offline; default to static source-grounded critique, live-render as optional enrichment | PAI | high | safe | partial |
+> | GA-10 | **HV digest writes nothing durable on disk** — only loop emits to Drive+Gmail; write `HV-DIGEST-<date>.md` BEFORE the connector publish | hv-orchestrator | high | safe | yes |
+> | GA-11 | **App-repo git-isolation breaks the build-loop DoD** — subagents denied git in the gitignored app repo; route all builds through REL-ARBOR-001 or grant scoped git | PAI/CoS | med | gated | yes |
+> | GA-12 | **Delivery pipeline 0-of-8 stages survive offline** — only paperwork runs; document degraded mode + a Green/Amber/Red health emitter (RED today: cannot ship) | CoS Delivery | med | safe (doc) | partial |
+> | GA-13 | **Doctrine points source-of-truth at Notion** — CoS MESH names Notion "the single management surface"; invert: filesystem cockpit canonical, Notion the mirror | CoS | med | safe | yes |
+> | GA-14 | **Governance layer is genuinely FS-complete** — leads/rosters/DoD gates read on disk for every entity; keep as the autonomy backbone (no fix) | all | low | safe (keep) | yes |
+> | GA-15 | **Hard safety gates are FS-enforced** — clinical/claim firewall, L3-5 gating, draft-first all in markdown+code; offline companies still cannot self-ship a claim or move money (no fix) | all | low | gated (keep) | yes |
+>
+> ### Safe fixes applied this pass (branch `ros-cil/2026-06-21-editor-pass`)
+> - **GA-1/GA-8:** created `CoS/PNL/PORTFOLIO-PNL.md` — a hand-maintainable per-company P&L stub (MRR/cost/runway lines, last-verified dates) so the 4th group interface exists on disk before any connector is wired. (see below; appended, not yet wired into gen-state)
+> - Backlog/ledger/health stubs (GA-3/GA-4) and the fallback-doctrine edits (GA-2/GA-7/GA-13) are queued as the safe wave — each names a distinct target file in the safeFixes list returned to Guy.
+>
+> ### Gated — await Guy (Level 3+)
+> - GA-5/GA-6: register FS-only ROS-CIL-light + CC-refresh + the MKT/FIN/Delivery cadence loops on the scheduled-tasks runtime (live cron = L3).
+> - GA-1 refresh: wiring connectors (RevenueCat/Stripe) to auto-update the P&L stub.
+> - GA-11: grant scoped git in the app repo OR ratify "all builds ride REL-ARBOR-001."
+> - The connector capitalization gaps (Amplitude/Ahrefs/Linear OAuth) that starve the CIL/marketing/release loops.
+>
+> ### Dropped (adversarial verify)
+> - None dropped on substance — every theme traces to a concrete file/absence (no `*PNL*` file exists; FIN/MEMORY is an HTML-comment template; SCHEDULED-LOOPS Proposed table; the group-operating-model 4-interface promise). The per-entity "no fix needed" findings (governance, safety gates) are retained as **keep** items, not dropped, because they are load-bearing strengths to protect.
+
 **Version:** 1.0
 **Created:** 2026-06-21
 **Owner:** ROS CoS (delivery lead)
@@ -85,6 +120,25 @@
 | **H2. Agnostic tool-routing guidance** — a one-screen "which runtime/model for which job" rule (Claude=interactive/MCP · Codex=bulk edits · Gemini=gen/multimodal/large-context · Hermes=scheduled) so any session picks the best tool. | 8 | CoS | `AGENTS.md` runtime registry | No |
 | **H3. Leverage Joseph's Gemini** — route Joseph-context generation/multimodal to his Gemini subscription. | 6 | EA | `principals.md` + `connectors.md` | Yes |
 | **H4. Get-the-most audit** — per connected subscription (Claude/Codex/Gemini/Hermes/MCP), confirm it's used where it's strongest; close gaps. | 5 | CoS | `connectors.md` | No |
+
+---
+
+## Theme O — Release engineering (DevOps under CoS) (NEW — Guy, 2026-06-22)
+
+**Why now (concrete trigger).** A 2026-06-22 session built 6 green Arbor items and tried to ship them, exposing that ROS has **no real release cycle**: Arbor auto-deploys *blind 100% to prod on push to `main`* (`arbor-deploy.yml`), `main` *moves under you* (concurrent agents push mid-deploy → rebase races), there is **no incremental promotion** (backlog → staging → canary → prod), **no feature/claim-level gating** (a clinical claim can only be gated by holding the whole change, not by flagging the one feature), and the regression bar is ad-hoc per session. Manual in-session deploys are the wrong tool — this capability must be **built**, owned by **DevSecOps under CoS**, so any mesh (Arbor first, then HV/EA tooling) can promote code safely and incrementally.
+
+| Item | Score | Owner | BuildsOn | Gated |
+| :-- | :-: | :-- | :-- | :-: |
+| **O1. Incremental promotion pipeline** — backlog item → branch → **staging** → smoke/canary → prod, with healthz + rollback. Kill the blind-100%-to-`main` path. Generalizes the Arbor `PRODUCT-BACKLOG §2` OPS-net (healthz/smoke/canary/rollback/real-gate) into a reusable release flow. | 9 | DevSecOps (Arbor) → CoS | Arbor `PRODUCT-BACKLOG §2` OPS-A/B/D; `arbor-deploy.yml` | Yes (prod creds) |
+| **O2. Feature- & claim-level release gating** — feature flags + a **claim register** so a single feature carrying a developmental/medical/effect-size claim is gated *independently* (ships dark, flipped only after Clinical Board + `arbor-safety` sign-off) without holding the rest of the wave. Directly serves the Arbor branding firewall (CHARTER §3 p10–11). | 9 | DevSecOps + Clinical Board | Arbor CHARTER firewall; Product Council `riskClass` | Yes |
+| **O3. Regression-gated release cycle** — the green-gate (tsc · tests · framework · safety) as a *release gate* on every promotion, plus a per-release regression suite + a named cadence (not ad-hoc per session). Branch-must-be-current-with-`main` check to end rebase races. | 8 | DevSecOps | Arbor green-gate; CI workflows | No |
+| **O4. Release ownership + cadence under CoS** — DevSecOps owns the release train; CoS holds the prod-promotion sign-off (Level 3) and tracks releases like any project (Green/Amber/Red). One release runbook, one dashboard row. | 6 | CoS | CoS portfolio oversight; `arbor-devsecops-lead` | No |
+
+> **✅ Capability BUILT — 2026-06-22 (CoS Delivery mesh).** Theme O is no longer a gap; it is a running capability under CoS.
+> - **The standard** (`/00_System/release-engineering/`): `RELEASE-PIPELINE.md` (O1 — incremental promotion: branch→full green-gate→canary-on-prod→smoke→gated promote→rollback; build-wide/merge-narrow concurrency lock kills the rebase race), `CLAIM-REGISTER.md` (O2 — feature flags + claim register; claim-bearing features ship dark, flipped per-claim after Clinical+Safety), `GREEN-GATE.md` (O3 — full gate as a release gate on every promotion + named per-product regression suites + cadence + firewall lint), and `BACKLOG-MODEL.md` (collapses the 5 overlapping backlogs → 3 canonical queues + feeders).
+> - **The owner** (O4): the **CoS Delivery sub-mesh** (`CoS/delivery/MESH.md`) led by **`ros-release-lead`** (`.claude/agents/ros/ros-release-lead.md`), which *conducts* the product DevSecOps teams (it does not duplicate them); CoS holds the prod-promote sign-off (Level 3). Run a train: **`/ros-release`** (`.claude/workflows/ros-release.workflow.js`). Cadence loop = SCHEDULED-LOOPS *Release-train cadence* (proposed, Guy-gated).
+> - **The code is queued, not hand-applied:** O1–O3 are *defined*; their Arbor implementation = Arbor `PRODUCT-BACKLOG §2` OPS-A/B/C/D + a `flags.ts` module, queued as **`REL-ARBOR-001`** in the [release ledger](../00_System/release-engineering/RELEASE-LEDGER.md) to ship *through* the new pipeline. The 6 green items (CI-13/06/12/07/08/05) on `claude/council-wave-1` (built off a stale `main`) rebase onto `rel/arbor/001` and ride the canary as the train's last bundle.
+> - **Remaining (Guy-gated):** OPS-C1 WIF/IAM · prod-promotion sign-off · any claim flip. All surfaced in the ledger pre-flight.
 
 ---
 
