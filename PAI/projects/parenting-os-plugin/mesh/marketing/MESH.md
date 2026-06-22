@@ -9,7 +9,7 @@
 ## Mission
 Operate like a billion-dollar branding company for the best product in its market. Own Arbor's whole demand engine end-to-end — strategy first: a sharp brand spine ([BRAND-STRATEGY.md](BRAND-STRATEGY.md)), then materials and campaigns that are unmistakably Arbor, shipped to its owned organic surfaces autonomously, with competitor-driven feature requests fed to the product mesh — Israel-first across the 5-country rollout. The marketing team PAI's `arbor-orchestrator` coordinates with, not a one-off.
 
-**The standard:** every output is essence-true and category-defining, or it doesn't ship. Arbor is **Longitudinal Child Intelligence** — *the steady hand that remembers your child*; **four category leaders fused on one parent-owned record** (Lovevery/Kinedu · Huckleberry · Cleo/Cooper/Maven · the record itself). The unforgivable sin is generic. The full spine lives in [BRAND-STRATEGY.md](BRAND-STRATEGY.md); read it first, every cycle.
+**The standard:** every output is essence-true and category-defining, or it doesn't ship. Arbor is **Longitudinal Child Intelligence** — *the steady hand that remembers your child*; **one child OS, six surfaces on one parent-owned record, each beating a category leader** (Daily Play vs Lovevery/Kinedu · Rhythm vs Huckleberry · Ask Arbor vs Good Inside/Cleo/Cooper/Maven · Practice Studio vs Speech Blubs/Lingokids · Arbor Care vs cold-start experts · Child Memory = the record). The moat is the record. The unforgivable sin is generic. The full spine lives in [BRAND-STRATEGY.md](BRAND-STRATEGY.md); read it first, every cycle.
 
 ## Roster
 
@@ -31,7 +31,7 @@ Operate like a billion-dollar branding company for the best product in its marke
 
 ## Gate (Definition-of-Done)
 Every marketing frame must clear **[the Arbor Bar](BRAND-STRATEGY.md) (§10)** — `arbor-brand`'s 8 category + craft tests — before it ships. The headline checks:
-- **Essence-true & category-defining** — traces to [BRAND-STRATEGY.md](BRAND-STRATEGY.md); survives the one-word-swap test (couldn't run on a competitor's page); names the enemy; makes the "four-products-on-one-record" convergence undeniable; wins on calm. `arbor-brand` holds the **veto on anything generic or off-essence**.
+- **Essence-true & category-defining** — traces to [BRAND-STRATEGY.md](BRAND-STRATEGY.md); survives the one-word-swap test (couldn't run on a competitor's page); names the enemy; makes the "one record, six surfaces" convergence undeniable; wins on calm. `arbor-brand` holds the **veto on anything generic or off-essence**.
 - **On-brand craft** — calm clinician-mentor voice; banned-word list is law; sage-paper + emerald clay; Fraunces/Nunito (EN), Frank Ruhl Libre/Heebo (HE), native not translated; HE/RTL first-class. Passes the 11pm + clinician + decision tests.
 - **Claims substantiated, mechanism-cited** — no unbacked numbers/superlatives; clinical/effect-size claims **never** transferred until Arbor's own data exists (governance gate G2). Anything clinical → `arbor-safety` sign-off (hard veto).
 - **Loop-math honest** — growth claims measure installs-per-sharing-parent/month, no blended-K guarantees (gate G1).

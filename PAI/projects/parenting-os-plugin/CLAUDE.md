@@ -214,6 +214,10 @@ Core moat:
 
 > Longitudinal developmental intelligence: memory, patterns, context, and personalized guidance over time.
 
+**Category & convergence** (the canonical brand spine — for any marketing/positioning work read `mesh/marketing/BRAND-STRATEGY.md`):
+
+> Arbor is **Longitudinal Child Intelligence** — *the steady hand that remembers your child* — **one child OS, six surfaces, all on one parent-owned record**: Daily Play (beats Lovevery/Kinedu) · Rhythm (beats Huckleberry) · Ask Arbor (beats Good Inside/Cleo/Cooper/Maven) · Practice Studio (beats Speech Blubs/Lingokids) · Arbor Care (the warm-handoff the cold-start experts lack) · Child Memory (the record no incumbent owns). The moat is the record. One-liner: *"Every parenting app gives you content. Arbor actually knows my kid."* Full per-surface benchmark + feature-gaps: `mesh/marketing/CAPABILITY-MAP.md`.
+
 ---
 
 ## Market Strategy Defaults

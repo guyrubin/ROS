@@ -4,7 +4,7 @@
 
 > **Canonical role (release-engineering, 2026-06-22):** this is the **one canonical Arbor Marketing backlog** a marketing release train pulls from (`REL-MKTG-*`); items take an **`AM-`** id and back-reference their origin (e.g. a CIL `market`-lens finding). CIL market findings are **feeders** — promoted here, not tracked in parallel. Marketing surfaces pass the `regress:mktg` suite + the **firewall lint** (no clinical-claim/clinician-identity string ships unless registered + signed). Model: [BACKLOG-MODEL.md](../../../../00_System/release-engineering/BACKLOG-MODEL.md) · [claim register](../../../../00_System/release-engineering/CLAIM-REGISTER.md).
 
-> **Brand spine:** every item here is executed against [BRAND-STRATEGY.md](BRAND-STRATEGY.md) and must pass the Arbor Bar (`arbor-brand` ECD gate). Arbor = **Longitudinal Child Intelligence**, *the steady hand that remembers your child* — **four category leaders fused on one parent-owned record** (Lovevery/Kinedu · Huckleberry · Cleo/Cooper/Maven · the record). One-liner: *"Every parenting app gives you content. Arbor actually knows my kid."*
+> **Brand spine:** every item here is executed against [BRAND-STRATEGY.md](BRAND-STRATEGY.md) and must pass the Arbor Bar (`arbor-brand` ECD gate). Arbor = **Longitudinal Child Intelligence**, *the steady hand that remembers your child* — **one child OS, six surfaces on one parent-owned record, each beating a category leader** (Daily Play · Rhythm · Ask Arbor · Practice Studio · Arbor Care · Child Memory=the record — see [CAPABILITY-MAP.md](CAPABILITY-MAP.md)). One-liner: *"Every parenting app gives you content. Arbor actually knows my kid."*
 
 ---
 
@@ -282,3 +282,38 @@ These never auto-execute. Amounts stated; Level 4 gate on all spend.
 | AM-D5 | **#הגיבורשלי / #ArborHero UGC challenge activation** — draft challenge brief + seeding script + community activation copy (top-N win Family plan) | drafts safe; **launch publish = L3**; prize grant = L4 | OPEN |
 
 > **Dependency:** AM-D1/D2/D3/D5 outbound and AM-C2 creator seeding all wait on the §0a critical-path unlocks (brand domain live, social channels, `/join?ref=` loop) before the gated send/seed fires — the *drafts and the playbook are built now*, autonomously, so the moment Guy clears the gates the engine runs.
+
+---
+
+### 9. Capability-map repositioning — "four → six surfaces" (2026-06-22)
+
+**Trigger (Guy):** the marketing surface undersold Arbor as "four products in one," omitting **Grow/Practice Studio, Care, and Academy.** Fix = the full per-surface competitive benchmark in [CAPABILITY-MAP.md](CAPABILITY-MAP.md) → an honest **one child OS, six surfaces** spine (BRAND-STRATEGY §3/§5 updated) → a six-pillar viral engine + the feature-gaps it exposes. **Strategic call:** one product, six surfaces — *not* sub-brands; the wedge still leads, breadth proves the moat.
+
+**9a. Feature-requests handed to PRODUCT** (from the capability×competitor map; full detail + scores in [CAPABILITY-MAP.md](CAPABILITY-MAP.md) §FR). Marketing owns the counter-narrative; product owns the build. Route to `PRODUCT-BACKLOG.md` / `mesh/improvement/IMPROVEMENT-BACKLOG.md` via `arbor-orchestrator`.
+
+| FR | Pillar | Gap → why it gates marketing | Risk | Pri |
+| :-- | :-- | :-- | :-- | :-- |
+| **FR-7** | My Child | Infant age stored in YEARS → 0–24mo cohort broken; can't market baby-coverage vs Kinedu/BabySparks/Huckleberry (correctness bug, also tracked in §5 infant-age item) | gated | **P0** |
+| **FR-3** | Today | Ambient capture (voice/widget, ≤3 taps) — log volume is the moat's fuel; thins every personalization claim if hard | safe | **P0** |
+| **FR-5** | Ask/Care | Specialist booking+payment+video — the Care/Specialist viral angle is deployment-gated until live | gated | P1 |
+| **FR-10** | Grow | Practice Studio feedback-loop verify + parent dashboard/session limits — the "writes to the record" hook gates on this | safe | P1 |
+| **FR-1** | Today | Push/widget at the predicted Rhythm window — the "I was right" share mechanic needs ambient delivery | gated | P1 |
+| **FR-12** | Care | Web/PDF export the parent's *own* pediatrician can open without the app — makes Trusted Sharing real | safe | P1 |
+| **FR-6** | My Child | Data portability (export + GDPR erasure UI) — the parent-owned counter to Nanit's coming longitudinal moat | gated | P1 |
+| FR-2 / FR-8 / FR-9 / FR-4 / FR-11 | Today/My Child/Grow/Academy/Ask | library depth · surface Language tracking · 20+ named-expert Masterclasses · community layer · Growth-Plan completion mechanics | mixed | P2 |
+
+**9b. Six-pillar viral content engine** (each surface = its own competitor-kill + content angle; one record narrative runs through all). Per [VIRAL-ENGINE.md](VIRAL-ENGINE.md) formats. ECD + safety gate each.
+
+| ID | Pillar | Hook (kills on camera) | Format | Gate · Pri |
+| :-- | :-- | :-- | :-- | :-- |
+| **AM-NEW-0** | **Convergence (landing)** | **Rebuild the landing "four → six surfaces" section + add Practice Studio & Arbor Care cards, EN+HE native parity** (EN one-liner already corrected in `arbor-marketing-landing-page-en.html`; HE + full section pending) | landing copy + cards | safe draft; **L3 publish/deploy** · **P0** |
+| **AM-NEW-1** | Convergence | *"The whole stack you're paying for — in one bill."* six incumbents + prices → "one record none of them can become" | Canva carousel / HeyGen | safe · **P0 (highest-leverage — ship before surface-specific content)** |
+| AM-NEW-2 | Rhythm | *"Huckleberry predicts your next nap. Arbor predicts your whole evening."* "I was right" share card | static + caption (HE+EN) | safe · P0 (W2 sprint) |
+| AM-NEW-3 | Memory | Monthly Growth Card auto-gen (HeroAvatar, never a real face) — the viral payload | product+mktg | product-gated (share export P0-3) · P0 |
+| AM-NEW-4 | Daily Play | *"The activity Kinedu can't suggest — it hasn't read this week's logs."* why-Arbor-picked-this reveal | UGC | safe · P1 |
+| AM-NEW-5 | Ask Arbor | *"Good Inside has Dr. Becky. Arbor has your child's actual record."* cited-answer card | static + caption | safe · P1 |
+| AM-NEW-8 | Arbor Care | *"Instead of re-explaining your child at every appointment — send the brief first."* (warm-handoff framing only) | HeyGen talking-head | safe **if no live-marketplace claim** · P1 |
+| AM-NEW-6 | Baby 0–2 | baby-track launch content | landing+social | **HELD — gated on FR-7 fix** |
+| AM-NEW-7 | Practice Studio | *"Speech Blubs shows a streak. Arbor tells the coach what your kid practiced."* | UGC | **HELD — gated on FR-10 loop verified** |
+
+> **Deployment gates (from CAPABILITY-MAP):** Practice Studio + Arbor Care + Development-Check carry product-state limits — the positioning is honest, but AM-NEW-7/8 and any "speak to a specialist" / "screens for" claim wait on FR-5/FR-10 + clinical sign-off. The highest-leverage move this week is **AM-NEW-1 (the convergence carousel)** — it establishes the organism so every surface-specific piece reads as proof, not a feature claim.

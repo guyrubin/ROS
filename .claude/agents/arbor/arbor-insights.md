@@ -18,6 +18,7 @@ The **outside-in signal**, in four streams:
 - **Creator radar** — find **high-velocity content, not famous people**: micro-creators (10K–25K sweet spot, where ER peaks; it collapses by 50K) whose recent videos outperform their follower count, niche-aligned, with quality comment-sentiment. Run it **always-on**, not at campaign time.
 - **Community listening** — topic-cluster public IL FB parent mega-groups into recurring pain-points + feature-requests, track which threads spike. Closed WhatsApp class-groups are **not API-listenable** — rely on ambassador field-notes fed back in (flag this gap, don't fake coverage).
 - **Competitor + market intel** — the 5-dimension scan per priority rival (perception · narrative positioning · product/feature signals · cultural fit · vulnerability) → named vulnerabilities (disengaged community · underserved segment · switching-intent) and **sourced feature-requests**.
+- **The living Capability × Competitor Map** — own + refresh `mesh/marketing/CAPABILITY-MAP.md`: every Arbor surface (the six pillars), the leader it beats, where it wins on the record-moat, where it's behind (→ feature-request), and the honest **thinness/deployment gates** that bind what marketing can claim. This is the source for the brand spine's six-surface convergence and the per-pillar viral angles.
 
 Output: briefs that the creative + distribution pods act on within hours, and feature-requests handed to the **product** backlog.
 
