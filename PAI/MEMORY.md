@@ -1,6 +1,30 @@
 # PAI Memory
 Last updated: 2026-06-22
 
+## Update [2026-06-22] — Positioning fix: "four products in one" → honest six-surface child OS
+
+- **Guy's critique:** marketing undersold Arbor as "four products in one" (seen on the landing page) — omitting three whole pillars. Arbor's REAL IA is **six surfaces on one parent-owned record**: Today (Rhythm+Daily Play) · Ask (Coach+Specialist) · My Child (the record+Development) · **Grow** (Practice Studio + Growth Plans) · **Care** (Consult/Care Team/Trusted Sharing — "Arbor Care") · **Academy** (Masterclasses/Story Journeys/Family Formation).
+- **3-agent workflow (insights → brand → lead) →** new living **`mesh/marketing/CAPABILITY-MAP.md`** (arbor-insights-owned): per-surface competitor benchmark + 12 scored feature-requests + honest **deployment gates**.
+- **Strategic call (locked):** ONE product, SIX surfaces — **not** sub-brands (would collapse the one-record value). Wedge still leads ("Arbor actually knows my kid"); breadth proves the moat. Don't become a generic "everything app."
+- **Deployment gates (bind what ships):** Arbor Care = warm-handoff, NOT a live marketplace (booking gated, FR-5); Practice "writes to the record" hook gates on the feedback loop verified live (FR-10); no baby-0–2 marketing until the infant-age-in-YEARS bug fixed (FR-7, P0); ambient capture ≤3 taps (FR-3, P0); no "screens for" without clinical sign-off.
+- **Applied:** BRAND-STRATEGY §3/§5/§10 rewritten; the DRY "four category leaders" string killed across MESH/BACKLOG/GOAL/PAI CLAUDE×2; landing EN one-liner corrected. MARKETING-BACKLOG §9 = FR handoff to product + six-pillar viral content engine (AM-NEW-0..8); convergence carousel (AM-NEW-1) = highest-leverage move; full landing rebuild + HE parity = AM-NEW-0 (P0, L3). 12 FRs queued for the product backlog via the Council/PM intake.
+
+## PRD [2026-06-22] — AP-007 Trust chip at onboarding hand-over (Wave PM-01)
+
+**What we decided to build:** A single-line trust chip component in OnboardingFlow at the first child-data capture step (name/age/concern), rendering three specific trust facts about Arbor's data model: "Private by default · parent-approved memory · never used to train AI." Links to the existing privacy/safety view. Mirrors in the child profile first-capture field. EN + HE/RTL.
+
+**Why:** The strong privacy statement lives only on AvatarCreator.tsx (behind a paywall feature a new parent never reaches). The first child-data hand-over screen carries zero trust signal. CIL trust-lens score 22 (cycle 2026-06-22). Structurally, the parent who abandons at this step never reaches the paywall (AP-004) or the post-checkout activation sheet (AP-006) — this is the gate the rest of Wave PM-01 depends on.
+
+**Why AP-007 over AP-004 for this PRD:** AP-004 is a confirmed revenue bug with a Level 3 price-confirmation gate pending Guy — its code change is trivial and its constraint is a founder decision, not a product-design problem. AP-007 is a trust-architecture problem at the activation moment, with richer discovery and UX design work that justifies a full PRD.
+
+**Metric:** Onboarding step-completion rate at the child-data capture step — stable or improved at 14-day read. Instrumentation: step_viewed / step_completed / trust_chip_link_tapped events, locale split.
+
+**Gate conditions:** arbor-safety confirms "never used to train AI" is technically accurate; arbor-brand confirms copy passes the Arbor Bar; arbor-content completes native Hebrew review; linked privacy/safety view confirmed at a stable route.
+
+**PRD location:** `PAI/projects/parenting-os-plugin/mesh/prds/PRD_2026-06-22_AP-007.md`
+
+---
+
 ## Update [2026-06-22] — Arbor Marketing upgraded to a full VIRAL GROWTH ORG (+3 pods, loop rewired)
 
 - **Not a rebuild — a surgical upgrade.** The marketing mesh was already mature (lead + ECD + content/seo/acquisition + critic-market + brand strategy + 30-day viral goal + autonomous loop). Filled the 3 real gaps that blocked "viral level," grounded in a 6-agent research+draft workflow (Duolingo/Cal AI short-form playbooks; IL/WhatsApp specifics flagged under-sourced):
