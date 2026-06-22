@@ -719,4 +719,40 @@ The 9 items above carry real soundness or provenance defects that, if built as w
 
 ---
 
+## Council Intake — 2026-06-22 (Marketing Capability-Map → Product handoff, FR-1…FR-14)
+
+**Source:** the Arbor Marketing Mesh capability×competitor benchmark ([`mesh/marketing/CAPABILITY-MAP.md`](marketing/CAPABILITY-MAP.md), full scores in [`MARKETING-BACKLOG.md`](marketing/MARKETING-BACKLOG.md) §9a). **Stream:** `market`. These are **product** builds that the six-surface positioning is honest-gated on — i.e. marketing **cannot ship a specific claim** until the matching FR lands. Marketing owns the counter-narrative; **product owns these builds.** Council/PM: triage into `AP-` ids and sequence; clinical/child-data items ride the existing gate. Most map to known keystones — **promote, don't duplicate** (cross-refs noted).
+
+> **Why this block exists / how to execute it:** each row gives *what to build · acceptance · gate*. Build in priority order. The three **P0s gate the whole repositioning + the viral GTM**; ship them first.
+
+### P0 — gate the repositioning + the viral engine
+| FR | Title | Build (what) · Acceptance | Owner pod | Risk |
+|----|-------|----------------------------|-----------|------|
+| **FR-7** | Infant age in **months** (0–24mo correctness) | **Build:** `ChildProfile.age` currently integer-YEARS → a 6-month-old = "0" gets zero milestones/monitoring. Store DOB / age-in-months; milestone + monitoring engines key off months for 0–24mo. **Accept:** a 6-month-old shows month-correct milestones + Rhythm/Daily-Play personalize; data migration is reversible. **Cross-ref:** this is the known infant-months keystone (ties to CLI-07 corrected-age) — promote that, don't open a duplicate. | arbor-growth + arbor-memory (schema) | **gated** (schema migration — Guy confirm; clinical board on month-thresholds) |
+| **FR-3** | **Ambient capture** (voice/widget, ≤3 taps) | **Build:** a lock-screen/home-screen quick-capture widget + a voice-log shortcut so logging a Moment is ≤3 taps from anywhere. **Why:** log volume is the moat's fuel — every personalization claim (Rhythm/Daily Play/coach) thins if capture is hard. **Accept:** a parent logs a behavior moment in ≤3 taps without opening the app to a deep screen; event lands in the record. | arbor-native (widget/voice) + arbor-memory + arbor-design (UX) | safe (no child-data egress; on-device capture) |
+| **FR-14** | **Hero Comic share/export loop** — the kid-hero VIRAL payload | **Build:** a completed Academy **Story Journey** → renders + exports a **shareable Hero Comic** (stylized hero avatar, **never a real face**) with the referral deep-link; the parent shares it. **Why:** this is the kids-Academy viral acquisition loop the GTM thesis rests on — currently unbuilt. **Accept:** finish a Story Journey → one-tap produces a branded, shareable comic image carrying `/join?ref=`; C2PA/SynthID-signed; zero real-child media. **Cross-ref:** `mk-p0-3-share-export` + `p1-comic-reader`. | arbor-avatar (render/export) + arbor-api (share link) + arbor-billing (entitlement) | **gated** (share export + avatar pipeline + child-data guard) |
+
+### P1 — unlock the gated surfaces (Care, Practice, Rhythm-ambient, portability)
+| FR | Title | Build (what) · Acceptance | Owner pod | Risk |
+|----|-------|----------------------------|-----------|------|
+| **FR-5** | **Specialist booking + payment + video** (completes Ask a Specialist / Arbor Care) | **Build:** booking/scheduling + payment + video on top of the existing consult-packet, so "Ask a Specialist" completes the loop. **Accept:** a parent books, pays, and meets a specialist who opens holding the context packet. **Gate:** until live, marketing must NOT claim "speak to a specialist" — Care markets the *warm-handoff* only. | arbor-billing + arbor-api | **gated** (billing + child-memory-packet share) |
+| **FR-10** | **Practice Studio feedback loop** verify + parent dashboard | **Build:** confirm/repair the practice→record→coach pipeline end-to-end; add a parent-visible session summary + session-length/screen-time controls. **Accept:** a child's Practice session writes to the timeline + is referenceable by the coach; parent sees a session summary + can set limits. **Gate:** the "practice writes to the record" marketing hook (AM-NEW-7) is held until this is verified live. | arbor-practice + arbor-memory | safe |
+| **FR-1** | **Push/widget at the predicted Rhythm window** | **Build:** background push + a Rhythm home/lock-screen widget that surfaces the day-band prediction at the predicted hour. **Accept:** the parent gets the "5pm friction window" nudge without opening the app; enables the "I was right" share mechanic (AM-NEW-2). | arbor-native + arbor-growth | **gated** (FCM background push + consent) |
+| **FR-12** | **Professional-readable export** (web/PDF, no app needed) | **Build:** the consult packet / record exports as a clean web link + PDF a non-Arbor pediatrician/SLP can open on any device. **Accept:** a receiving professional opens the summary without installing Arbor; makes Trusted Sharing real. | arbor-memory + arbor-api | safe |
+| **FR-6** | **Parent data portability** (export + GDPR erasure UI) | **Build:** one-tap export of the full child record (PDF + structured JSON) + a right-to-erasure UI. **Why:** the parent-owned counter to Nanit's coming hardware-gated longitudinal moat; also GDPR Art. 20 compliance. **Accept:** parent exports + can delete; both verified. | arbor-memory + arbor-safety | **gated** (child-data, COPPA/GDPR) |
+
+### P2 — depth that strengthens the per-pillar claims
+| FR | Title · Build / Accept | Owner pod | Risk |
+|----|------------------------|-----------|------|
+| **FR-13** | **Story-Journey depth + virtue-scoring fix** — expand the kids' story library; finish the Peterson-backlog Epic-A fix so avoidance ≠ virtue (avoidant choices award 0 primary-virtue points). Accept: no decision option labeled retreat/avoidance awards courage/wisdom/responsibility; tests lock it. | arbor-practice (stories) | safe |
+| **FR-2** | **Daily Play library → 500+** with expert attribution (CDC/AAP/named source per activity). Accept: no activity repeats within a 4-week window for an active child. | arbor-growth | safe |
+| **FR-8** | **Surface Language & Communication tracking** in My Child + wire Practice Studio outcomes back to it. Accept: a speech flag is visible in My Child and feeds the coach/handoff packet. | arbor-growth + arbor-practice | safe |
+| **FR-9** | **20+ named-expert Parent Masterclasses**, record-indexed (replaces today's mostly-"Coming soon" catalog). Accept: ≥20 real classes; surfacing reflects the child's logged concerns; no fake-catalog cards. | arbor-product (parent academy) | safe |
+| **FR-4** | **Community layer** — second-guardian digest now; record-safe parent-cohort sharing later (no child data in the shared layer). Accept: a parent shares a digest with a second guardian; no child PII leaves the record. | arbor-api + arbor-safety | **gated** (consent + moderation) |
+| **FR-11** | **Growth Plans completion mechanics** — progress indicator + day-3/7 check-in nudge. Accept: multi-week plans show progress + re-engage at stall. | arbor-growth | safe |
+
+**Handoff status:** recorded here + in `MARKETING-BACKLOG.md` §9a. Awaiting Council/PM promotion to `AP-` ids + sequencing into a wave.
+
+---
+
 *Grooming cycle complete 2026-06-22. Next: hand Wave PM-01-2026-06-22 to arbor-orchestrator. Surface gated list to Guy. Re-score after CLI-07 and the brief-template clinical sign-off land (both unblock multiple HELD items).*
