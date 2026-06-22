@@ -295,6 +295,8 @@ These never auto-execute. Amounts stated; Level 4 gate on all spend.
 | :-- | :-- | :-- | :-- | :-- |
 | **FR-7** | My Child | Infant age stored in YEARS → 0–24mo cohort broken; can't market baby-coverage vs Kinedu/BabySparks/Huckleberry (correctness bug, also tracked in §5 infant-age item) | gated | **P0** |
 | **FR-3** | Today | Ambient capture (voice/widget, ≤3 taps) — log volume is the moat's fuel; thins every personalization claim if hard | safe | **P0** |
+| **FR-14** | Academy (kids) | **Hero Comic share/export loop** — the kid-hero viral payload (child-as-hero shareable comic from a Story Journey); the GTM's whole "child is the acquisition angle" thesis depends on this | gated (share export + avatar) | **P0 (viral)** |
+| **FR-13** | Academy (kids) | Story-Journey library depth + virtue-scoring correctness fix (avoidance ≠ virtue) — kid-learning depth vs free Khan Kids/Duolingo ABC | safe | P1 |
 | **FR-5** | Ask/Care | Specialist booking+payment+video — the Care/Specialist viral angle is deployment-gated until live | gated | P1 |
 | **FR-10** | Grow | Practice Studio feedback-loop verify + parent dashboard/session limits — the "writes to the record" hook gates on this | safe | P1 |
 | **FR-1** | Today | Push/widget at the predicted Rhythm window — the "I was right" share mechanic needs ambient delivery | gated | P1 |
@@ -302,11 +304,12 @@ These never auto-execute. Amounts stated; Level 4 gate on all spend.
 | **FR-6** | My Child | Data portability (export + GDPR erasure UI) — the parent-owned counter to Nanit's coming longitudinal moat | gated | P1 |
 | FR-2 / FR-8 / FR-9 / FR-4 / FR-11 | Today/My Child/Grow/Academy/Ask | library depth · surface Language tracking · 20+ named-expert Masterclasses · community layer · Growth-Plan completion mechanics | mixed | P2 |
 
-**9b. Six-pillar viral content engine** (each surface = its own competitor-kill + content angle; one record narrative runs through all). Per [VIRAL-ENGINE.md](VIRAL-ENGINE.md) formats. ECD + safety gate each.
+**9b. Viral content engine — TWO viral languages, one record** (each surface = its own competitor-kill; one record narrative runs through all). The **kid-hero language** (acquisition: the child becomes a shareable hero) and the **proud-parent language** (retention: the record that knows your kid) are Arbor's two engines — the Hero Comic and the Growth Card are the two share payloads (stylized avatar, never a real child's face). Per [VIRAL-ENGINE.md](VIRAL-ENGINE.md) formats. ECD + safety gate each.
 
 | ID | Pillar | Hook (kills on camera) | Format | Gate · Pri |
 | :-- | :-- | :-- | :-- | :-- |
-| **AM-NEW-0** | **Convergence (landing)** | **Rebuild the landing "four → six surfaces" section + add Practice Studio & Arbor Care cards, EN+HE native parity** (EN one-liner already corrected in `arbor-marketing-landing-page-en.html`; HE + full section pending) | landing copy + cards | safe draft; **L3 publish/deploy** · **P0** |
+| **AM-NEW-9** | **Academy / kids (kid-hero)** | *"Khan Kids teaches any kid. Arbor makes YOURS the hero — and you get the comic."* the child-as-hero Story Journey → **shareable Hero Comic** (the kid-hero viral payload + acquisition loop) | UGC + Hero Comic share-card | **P0 (the kid-hero viral engine)**; gated on FR-14 share export — creative angle is draftable now |
+| **AM-NEW-0** | **Convergence (landing)** | **Rebuild the landing "four → six surfaces" section + add Practice Studio, Arbor Care AND the kids-Academy hero world cards, EN+HE native parity** (EN one-liner corrected; HE + full section pending) | landing copy + cards | safe draft; **L3 publish/deploy** · **P0** |
 | **AM-NEW-1** | Convergence | *"The whole stack you're paying for — in one bill."* six incumbents + prices → "one record none of them can become" | Canva carousel / HeyGen | safe · **P0 (highest-leverage — ship before surface-specific content)** |
 | AM-NEW-2 | Rhythm | *"Huckleberry predicts your next nap. Arbor predicts your whole evening."* "I was right" share card | static + caption (HE+EN) | safe · P0 (W2 sprint) |
 | AM-NEW-3 | Memory | Monthly Growth Card auto-gen (HeroAvatar, never a real face) — the viral payload | product+mktg | product-gated (share export P0-3) · P0 |

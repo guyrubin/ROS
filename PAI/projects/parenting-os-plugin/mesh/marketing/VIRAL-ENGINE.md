@@ -6,6 +6,13 @@
 
 ---
 
+## The two viral languages (one record, two engines)
+Arbor markets in **two languages**, both shareable without ever exposing a real child's face/voice/data (stylized avatar only):
+- **Kid-hero language (ACQUISITION):** the **child becomes the hero** — Academy's Story Journeys → the **shareable Hero Comic** (+ the Hero Arcade/Playbank world). The child is the acquisition angle; the *parent* shares the artifact. This is the designed viral loop the GTM is built on. Payload: the **Hero Comic**.
+- **Proud-parent language (RETENTION/PROOF):** the **record that knows your kid** — the 2am wedge, Rhythm "I was right," the moat. Payload: the monthly **Growth Card**.
+
+Both run through the same production discipline below; lead acquisition creative with the kid-hero, anchor retention/trust with proud-parent.
+
 ## The org, in one line
 `arbor-insights` (trend brief) → `arbor-content` (hook/caption first) + `arbor-brand` (taste) → `arbor-creative` (asset + variants) → `arbor-distribution` (owned queue + creators + group seeding) → `arbor-acquisition` (K-factor read) → `arbor-critic-market` (eval) → back to `arbor-insights`. Small, trend-fed, autonomous to T2 — that autonomy is the most-cited reason a tiny team out-ships a big one.
 

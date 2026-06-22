@@ -61,14 +61,22 @@
 
 **Thinness:** the **thinnest-built pillar today.** Position as a "warm-handoff layer" (consult packet + trusted sharing); **do not imply a live specialist marketplace** until booking ships.
 
-## Pillar 6 — ACADEMY (Parent Masterclasses · Story Journeys · Family Formation)
+## Pillar 6 — ACADEMY (TWO-SIDED: the child's hero learning world + the parent's own learning)
+> **Correction (2026-06-22):** Academy is **for both the child and the parent** (per the Peterson/Playbank backlog) — and the **kids' side is a designed VIRAL engine, not a depth layer.** This map earlier wrongly framed Academy as parent-only. The kid-hero learning world is one of Arbor's two viral languages (kid-hero + proud-parent).
+
+**6a — Kids Academy (the viral engine):**
 | Capability | Arbor ships | Category leader | Arbor wins | Behind → FR |
 | :-- | :-- | :-- | :-- | :-- |
-| **Parent Masterclasses** | learning modules surfaced by the child's record | **Good Inside** $23–28 (Dr. Becky, 2M+ followers); **Big Little Feelings** $123/course (500k+ families); **Tinyhood** $12.95 | a course surfaces *because Maya's record shows 5pm friction*, not because the parent browsed | content volume + named-expert video vs leaders → FR-9 |
-| **Story Journeys** | narrative learning arcs from the record | Cooper/Good Inside (cohort-based, not child-record) | record-linked arc is unique | breadth unverified (<5–8 = thin) |
-| **Family Formation** (the parent's own growth) | structured parent-development layer | nobody owns this | uncontested territory | ⚠️ **least built — introduce as "coming," don't foreground** |
+| **Story Journeys** | the child becomes the **hero** of archetypal virtue stories (courage/responsibility/resilience/empathy/wisdom) via a Fear→Decision→Consequence→Reflection loop; **earned virtues write to the child's development record**; rendered with the child's stylized hero avatar (never a real face) | **Khan Academy Kids** (FREE); **Duolingo ABC** (free); **Lingokids** $15.99; **ABCmouse** — generic edutainment, no child-record link, no shareable hero artifact | the child is the hero of stories tied to *their own* record + virtues — character/SEL learning that compounds on the moat; edutainment teaches generic content and forgets the child | ~10 stories; virtue scoring was inverted (rewarded avoidance — Peterson backlog Epic A, fixing) → **FR-13** |
+| **Hero Comic / share** (Hero Arcade · Playbank tie-in) | a completed Story Journey renders a **shareable Hero Comic** — the child-as-hero artifact | **none** — no kids-learning app turns the child into a shareable hero comic | **THE kid-hero viral payload**: the child is the *acquisition* angle, the parent *shares* it (parent-mediated; stylized avatar, never a real face) | share/export loop unbuilt (mk-p0-3); depends on the avatar pipeline → **FR-14** |
 
-**Thinness:** most under-marketed *and* among the thinnest built. Frame as "parent learning, finally personal" — but only show courses that exist.
+**6b — Parent Academy:**
+| Capability | Arbor ships | Category leader | Arbor wins | Behind → FR |
+| :-- | :-- | :-- | :-- | :-- |
+| **Parent Masterclasses** | parent learning surfaced by the child's record ("Maya's logs show 5pm friction → this class on transitions") | **Good Inside** $23–28 (Dr. Becky, 2M+); **Big Little Feelings** $123; **Tinyhood** $12.95 | a class surfaces because the *child's record* calls for it, not because the parent browsed | ⚠️ **largely "Coming soon"** — catalog mostly unbuilt; market "in production," never a fake catalog → FR-9 |
+| **Family Formation** | the parent's own growth (Family Charter is real + persisted; rest coming) | nobody owns the parent's own development as a tracked arc | uncontested | thinnest — introduce as "coming" |
+
+**Thinness / honesty:** the **Kids Academy (Story Journeys + Hero Comic) is REAL, writes to the record, and is the viral engine** — lead the kid-hero viral language here (the child-as-acquisition-angle the whole GTM is built on). **Parent Masterclasses is mostly ComingSoon** — never present a populated catalog; market "in production." The hero is always the generated stylized avatar, never a real child's face (enforced in `HeroJourneyTab`).
 
 ---
 
@@ -83,7 +91,9 @@
 | :-- | :-- | :-- | :-- | :-- | :-- |
 | **FR-7** | My Child | Infant age-in-months (integer-years bug breaks 0–24mo) | Kinedu/BabySparks | gated | **P0** |
 | **FR-3** | Today | Ambient capture (voice/widget, ≤3 taps) | Huckleberry | safe | **P0** |
+| **FR-14** | Academy (kids) | **Hero Comic share/export loop — the kid-hero viral payload** | none (unique) | gated | **P0 (viral)** |
 | **FR-5** | Ask/Care | Specialist booking + payment + video | Maven | gated | P1 |
+| **FR-13** | Academy (kids) | Story-Journey library depth + virtue-scoring fix (avoidance≠virtue) | Khan Kids/Duolingo ABC | safe | P1 |
 | **FR-10** | Grow | Practice Studio feedback loop verify + parent dashboard | Lingokids/Khan | safe | P1 |
 | **FR-1** | Today | Push/widget at predicted Rhythm window | Huckleberry | gated | P1 |
 | **FR-12** | Care | Web/PDF export the parent's own pro can read | Maven | safe | P1 |
