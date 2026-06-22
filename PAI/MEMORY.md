@@ -1,6 +1,15 @@
 # PAI Memory
 Last updated: 2026-06-22
 
+## Update [2026-06-22] — Localization fixed: transcreation pod + native-voice gate (Hebrew was bad)
+
+- **Guy's defect:** `arbor-content`'s Hebrew read **translated/literal, not native** — below the bar — and we still need 5 more languages. Two root fixes:
+  - **`arbor-content` sharpened → message-first** (best marketing craft, concept-led; owns the master message in EN + native HE; **never literal-translates**; hands non-source markets off with a transcreation brief).
+  - **New pod `arbor-localization`** (Transcreation & Localization lead) + standard **`mesh/marketing/LOCALIZATION.md`**: TRANSCREATES (re-writes the idea natively per market, never translates), owns the **native-voice gate** (8 tests incl. no-calque + native-human sign-off for publish), the **locale matrix**, and RTL/i18n. Wired into the mesh DoD + OPERATING-MODEL VERIFY step 6 — **translated-feeling copy does not ship.**
+- **Locale matrix:** he-IL (LIVE, needs native re-do) · en (source) · nl-NL (anchor) · **+3 TBD** — Guy must confirm the **5 rollout markets/languages** (AM-L2, gated). Candidates: German, French (BE), Arabic (IL)/Spanish.
+- **Honest reality:** the agent transcreates to the bar + self-checks, but **a native-human reviewer per market is the final publish gate** — best-in-class native copy in 6 languages is not a pure-AI guarantee.
+- **Backlog (marketing-owned, MARKETING-BACKLOG §10):** AM-L1 re-transcreate HE to native (P0) · AM-L2 lock matrix (Guy) · AM-L3 native-voice gate standing (done in docs) · AM-L4 transcreate flagship assets per locale. Files: `.claude/agents/arbor/arbor-localization.md` + sharpened `arbor-content.md`; `mesh/marketing/LOCALIZATION.md`; MESH/OPERATING-MODEL/PAI CLAUDE updated.
+
 ## Update [2026-06-22] — Positioning fix: "four products in one" → honest six-surface child OS
 
 - **Guy's critique:** marketing undersold Arbor as "four products in one" (seen on the landing page) — omitting three whole pillars. Arbor's REAL IA is **six surfaces on one parent-owned record**: Today (Rhythm+Daily Play) · Ask (Coach+Specialist) · My Child (the record+Development) · **Grow** (Practice Studio + Growth Plans) · **Care** (Consult/Care Team/Trusted Sharing — "Arbor Care") · **Academy** (Masterclasses/Story Journeys/Family Formation).
@@ -27,6 +36,16 @@ Last updated: 2026-06-22
 
 ---
 
+## [2026-06-22] Voice-of-parent function stood up — zero real signals confirmed
+
+**Finding:** Full repo scan confirms Arbor has zero real parent signals in the system. No App Store or Play reviews (apps not yet published), no in-app feedback capture, no support threads, no interview notes, no NPS, no analytics integration. Every backlog priority is grounded in code inspection, heuristics, and competitor benchmarking — not validated by a real parent.
+
+**Action taken:** `arbor-ux` created the standing voice-of-parent function at `mesh/teams/voice-of-parent.md`. Pointer added to `mesh/teams/product.md`.
+
+**What the doc specifies:** (1) honest signal inventory — zero across every source; (2) four intake mechanisms ranked by time-to-first-signal (in-app prompt fastest, then store reviews post-publish, then support inbox, then interviews); (3) a 5-parent first-sprint in 2 weeks (interview script included, 5-slot recruit profile, riskClass: safe for the prompt, Level 4 gate on interview budget); (4) a weekly VoP Pulse format that feeds the Product Council before each session.
+
+**Gated actions required from Guy:** (a) approve ~₪750 interview budget (Level 4 financial), (b) approve any outbound WhatsApp/Facebook group recruit message before it sends (outbound to people = gated). The in-app feedback prompt needs no Guy approval — it is riskClass: safe and goes via the normal `AP-` ticket route.
+
 ## Update [2026-06-22] — Arbor Marketing upgraded to a full VIRAL GROWTH ORG (+3 pods, loop rewired)
 
 - **Not a rebuild — a surgical upgrade.** The marketing mesh was already mature (lead + ECD + content/seo/acquisition + critic-market + brand strategy + 30-day viral goal + autonomous loop). Filled the 3 real gaps that blocked "viral level," grounded in a 6-agent research+draft workflow (Duolingo/Cal AI short-form playbooks; IL/WhatsApp specifics flagged under-sourced):
@@ -37,6 +56,30 @@ Last updated: 2026-06-22
 - **Loop rewired (same registered cron `0 5 ** 2,5`):** `/arbor-marketing-loop` is now INTEL→SENSE→FRAME→DESIGN→BUILD→VERIFY→**DISTRIBUTE**→LEARN — adds an arbor-insights Intel phase, opens BUILD to arbor-creative, adds a Distribute phase (arbor-distribution drafts owned-queue + gated creator/group seeds). No re-registration needed; edits to the workflow file apply on next fire. `node --check` passes.
 - **Working backlog:** `MARKETING-BACKLOG.md §8` — 13 scored, owned AM- items (4 insights / 4 creative / 5 distribution). Drafts + playbooks build autonomously now; gated send/seed waits on the §0a critical-path unlocks (domain live, channels, `/join?ref=`).
 - Files: `.claude/agents/arbor/arbor-{creative,distribution,insights}.md`; `mesh/marketing/{MESH,OPERATING-MODEL,VIRAL-ENGINE,MARKETING-BACKLOG}.md`; `/arbor-marketing-loop` workflow; `PAI/CLAUDE.md`.
+
+## PM Grooming [2026-06-22] — reality-check batch promoted (AP-014…AP-021); AP-006 retracted
+
+**arbor-pm ran the reality-check promotion pass** (source: `CoS/reviews/Arbor-Reality-Check_2026-06-22.md`, 4-lens verified findings). 8 new AP- items added; 4 CIL items marked promoted/dropped; 1 false finding confirmed and retracted.
+
+**Already-promoted findings (confirmed, no duplication):** Paywall no price → AP-004. Onboarding age years → AP-008. CIL-lang-jitai-nudge → AP-005. CIL-trust-posture → AP-007.
+
+**Dropped false finding:** `CIL-conv-no-post-checkout-activation` / AP-006 — **retracted** (`App.tsx` already handles `?billing=success`, confirmed by adversarial verify). CIL marked `dropped: verified-false`; AP-006 entry retired in the canonical queue.
+
+**8 new AP- items promoted (AP-014…AP-021):**
+- AP-014 (score 9.5) — 3 ComingSoon dead sections removed / Appointments wired (arbor-ux + arbor-design, safe)
+- AP-015 (score 3.83) — imagery layer on parent surfaces (arbor-ux + arbor-design, safe)
+- AP-016 (score 23.75) — mobile hero overflow clamped / CTAs above fold (arbor-design, safe — **#1 UX fix, 1-rule CSS**)
+- AP-017 (score 3.24) — type scale sweep in app interior, residual gap after `3c5075e` partial fix (arbor-design, safe)
+- AP-018 (score 2.89) — dark mode token layer + system-preference support (arbor-design, safe; sequence after AP-019)
+- AP-019 (score 3.6) — CSS override arch: replace 304 hardcoded hex + !important hack with token layer (arbor-design, safe; prerequisite for AP-017/018/020)
+- AP-020 (score 3.06) — palette split alignment: app slate-green ≠ landing navy-teal (arbor-design + arbor-brand, safe; after AP-019)
+- AP-021 (score 23.75) — wire /healthz + smoke + canary into deploy gate / OPS-A2/A3/B3 (arbor-release, safe — **tied #1, pipeline integrity**)
+
+**No gated items in this batch.** All 8 are `riskClass: safe`.
+
+**Updated next-wave board:** AP-016 + AP-021 (tied score 23.75) → AP-014 → AP-004 → AP-007 → AP-019 → AP-015. Design items AP-017/018/020 sequenced after AP-019.
+
+**Design sequencing constraint:** AP-019 (hex sweep) must land before AP-017/018/020. AP-021 must be built off `origin/main` (local main is 94 commits behind).
 
 ## PM Grooming [2026-06-22] — first AP- promotion cycle, Wave PM-01-2026-06-22 ready
 

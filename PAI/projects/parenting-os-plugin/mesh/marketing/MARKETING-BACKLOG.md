@@ -333,3 +333,18 @@ These never auto-execute. Amounts stated; Level 4 gate on all spend.
 6. **HELD until product lands:** AM-NEW-3 + AM-NEW-9 share mechanic (FR-14 / share-export P0-3) · AM-NEW-6 baby track (FR-7) · AM-NEW-7 "practice writes to the record" (FR-10). Keep the creative drafted; ship the moment the FR closes.
 
 **Owner of this plan:** `arbor-marketing-lead`. **Standing instruction to `arbor-insights`:** refresh [CAPABILITY-MAP.md](CAPABILITY-MAP.md) each cycle and re-confirm the deployment gates before any held item ships.
+
+---
+
+### 10. Localization & Transcreation workstream (marketing-owned) — 2026-06-22
+
+**Trigger (Guy):** `arbor-content`'s Hebrew read **translated, not native** — below the bar. Root fix: copy is now **message-first** and non-English markets go through **`arbor-localization`** (transcreation, never literal), gated by a **native-voice gate** ([LOCALIZATION.md](LOCALIZATION.md)). New pod + standard added; this workstream re-does HE to native quality and scales to the rollout languages. Marketing-owned (own backlog); no product handoff.
+
+| ID | Item | Owner | Gate · Status |
+| :-- | :-- | :-- | :-- |
+| **AM-L1** | **Re-transcreate the live Hebrew to native quality** — one-liner, 2am hook, hero, the six-surface convergence, the HE landing — written fresh from the concept (not translated); back-translation + intent notes attached | `arbor-localization` + `arbor-content` | native-voice gate + **native-human review**; publish/deploy **L3** · **P0 — the named defect** |
+| **AM-L2** | **Lock the locale matrix** — confirm the **5 rollout markets/languages** beyond Hebrew (en + nl anchored; 3 TBD), then set voice profile + font + currency + RTL per locale in LOCALIZATION.md | `arbor-localization` → **Guy confirms markets** | **gated — Guy decision** (don't localize an unconfirmed market) · open |
+| **AM-L3** | **Native-voice gate is now a standing VERIFY step** on every non-English asset (wired into MESH DoD + OPERATING-MODEL step 6) — operationalize: no translated-feeling copy ships | `arbor-localization` | process · **DONE in docs**, enforce each cycle |
+| **AM-L4** | **Transcreate the flagship assets per confirmed locale** — AM-NEW-1 convergence carousel, AM-NEW-0 landing, AM-NEW-9 kid-hero — native in each market (sequenced after AM-L2 + the EN/HE master is set) | `arbor-localization` (+ `arbor-content` master, `arbor-creative` per-locale art) | native-voice gate + native review; publish L3 · blocked on AM-L2 |
+
+> **Gated decision for Guy (AM-L2):** name the **five** markets/languages for the rollout (beyond Hebrew). Anchored: English (source) + Dutch (NL). Candidates for the other three: German, French (BE), Arabic (IL) or Spanish. `arbor-localization` locks the matrix once confirmed. **Quality reality:** the agent transcreates to the bar and self-checks, but **a native-human reviewer per market is the final publish gate** — best-in-class native copy in six languages is not a pure-AI guarantee.
