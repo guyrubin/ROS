@@ -9,9 +9,9 @@ calendar, and follow-ups. Execution only -- not strategy. Strategy belongs to Co
 
 ## On session start
 
-Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/KK/MEMORY.md`. Capabilities and connectors load lazily on first use — do not eager-load them.
+Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/KK/MEMORY.md`.
 
-**Agent mesh:** KK runs as the [KK Personal-Ops Mesh](mesh/MESH.md) under the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md) — lead `kk-ops`, scheduled-first (the morning-routing/triage loops), with the KK Definition-of-Done gate. Job-search is the separate KK-owned [Career mesh](job-automation/MESH.md).
+**Agent mesh:** KK runs as the [KK Personal-Ops Mesh](mesh/MESH.md) — lead `kk-ops`, scheduled-first (the morning-routing/triage loops). Job-search is the separate KK-owned [Career mesh](job-automation/MESH.md).
 
 ## Commands
 
@@ -26,13 +26,13 @@ Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, rea
 
 Source of truth: `/00_System/connectors.md`.
 
-| Connector | Purpose | Required Hermes skill | Current status | Fallback |
-|---|---|---|---|---|
-| Gmail `bguy` | Primary inbox triage, daily plan, follow-ups | `himalaya` | Active / verified | Manual review |
-| Gmail `hollandvest` | HV operational triage when credentials are available | `himalaya` | Active / verified | Manual review |
-| Gmail `joseph` | Joseph/EA operational triage when credentials are available | `himalaya` | Active / verified | Manual review |
-| Notion | Task registry, My Tasks database, Command Center | `productivity/notion` | Active / verified | Use verified Command Center page; inspect before writes |
-| Google Calendar | Schedule, time blocks | TBD | Not connected | Infer from Gmail only when grounded |
+| Connector | Purpose | Required Hermes skill | Fallback |
+|---|---|---|---|
+| Gmail `bguy` | Primary inbox triage, daily plan, follow-ups | `himalaya` | Manual review |
+| Gmail `hollandvest` | HV operational triage when credentials are available | `himalaya` | Manual review |
+| Gmail `joseph` | Joseph/EA operational triage when credentials are available | `himalaya` | Manual review |
+| Notion | Task registry, My Tasks database, Command Center | `productivity/notion` | Use verified Command Center page; inspect before writes |
+| Google Calendar | Schedule, time blocks | TBD | Infer from Gmail only when grounded |
 
 ## Memory
 

@@ -53,6 +53,24 @@ current single-tree setup.
 | `/<domain>/templates/` | Reusable outputs | Use for repeatable document/email/artifact shapes. |
 | `/<domain>/references/` | Source material | Cite provenance and keep interpretation separate. |
 
+## Canonical per-domain skeleton
+
+Every domain folder conforms to one shape so navigation is predictable across runtimes.
+
+| File / folder | Status | Role |
+|---|---|---|
+| `CLAUDE.md` | Required | Domain instruction surface (routing + behavior). |
+| `MEMORY.md` | Required | Domain current memory (active facts/status). |
+| `archive.md` | Required | Domain history (stale/completed detail). |
+| `mesh/` | Required | The domain's agent mesh (lead + pods + DoD). |
+| `voice.md` | Optional (standardized) | Domain voice profile when the domain writes externally. |
+| `projects/` | Optional (standardized) | A company/product machine when the domain owns one (e.g. PAI → `projects/parenting-os-plugin/`). |
+| `references/` | Optional (standardized) | Source material. |
+| `templates/` | Optional (standardized) | Reusable output shapes. |
+| `daily/` | Optional (standardized) | Dated working scratch promoted into memory when durable. |
+
+Variants are allowed where a domain documents why (e.g. EA runs a single-lead mesh by design; PAI's machine lives under `projects/` and its root holds only routing + memory). New optional folders should reuse a name from this list before inventing one.
+
 ## Runtime boundaries
 
 | Runtime | Allowed assumption | Forbidden assumption |

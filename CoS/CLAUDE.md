@@ -9,19 +9,14 @@ Read `CoS/MEMORY.md` at session start when in CoS context.
 
 CoS is the **group HQ** of a multi-company group (Guy = CEO); `ros-conductor` is the **portfolio conductor** across companies. CoS owns group strategy/OKRs, capital + attention allocation across companies, the per-company board cadence, the shared group services (Delivery/FIN/Research/Standard/cockpit), and cross-company confidentiality. The company registry is `/00_System/companies.md`; the operating model is `/00_System/group-operating-model.md`.
 
-## Shared capabilities
-
-Inherits `/00_System/agent-capabilities.md`: web search, browser/computer use, video and multimodal analytics, document intelligence, data automation, and Markdown knowledge-base maintenance.
-
-
 ## Domain connector scope
 
 Source of truth: `/00_System/connectors.md`.
 
-| Connector | Scope | Required Hermes skill | Current status |
-|---|---|---|---|
-| Gmail `bguy` | CoS correspondence, executive follow-ups, cross-domain inbox signals | `himalaya` | Active / verified |
-| Notion | Command Center, Projects, Tasks, Decisions, cross-domain dashboards | `productivity/notion` | Active / verified |
+| Connector | Scope | Required Hermes skill |
+|---|---|---|
+| Gmail `bguy` | CoS correspondence, executive follow-ups, cross-domain inbox signals | `himalaya` |
+| Notion | Command Center, Projects, Tasks, Decisions, cross-domain dashboards | `productivity/notion` |
 
 ## Persona
 
@@ -107,7 +102,7 @@ Account: bguy.rubin@gmail.com
 | OKR documents | `CoS/OKRs/` |
 | Project trackers | `CoS/projects/` |
 | Briefings and reports | `CoS/briefings/` |
-| Templates | `CoS/12_Templates/` |
+| Templates | `CoS/templates/` |
 | Decision log | `13_Decision_Log/` |
 | Delivery mesh | `CoS/delivery/MESH.md` |
 | Release ledger | `00_System/release-engineering/RELEASE-LEDGER.md` |

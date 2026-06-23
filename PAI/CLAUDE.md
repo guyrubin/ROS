@@ -9,7 +9,11 @@ AI product design. Not for client architecture work (that is EA).
 
 ## On session start
 
-Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/PAI/MEMORY.md`. Capabilities and connectors load lazily on first use — do not eager-load them.
+Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/PAI/MEMORY.md`.
+
+## Structure
+
+PAI root holds only routing (`CLAUDE.md`) + memory (`MEMORY.md`). The company machine — mesh, marketing, QA, PRDs, templates — lives under `projects/parenting-os-plugin/` (Arbor = product company #1). Look there, not at PAI root, for the product org.
 
 ## Commands
 
@@ -23,10 +27,10 @@ Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, rea
 
 Source of truth: `/00_System/connectors.md`.
 
-| Connector | Purpose | Required Hermes skill | Current status | Fallback |
-|---|---|---|---|---|
-| Gmail `bguy` | Venture communications, partner outreach drafts | `himalaya` | Active / verified | Manual review |
-| Notion | Product/project registry, roadmap, PRD/task tracking | `productivity/notion` | Active / verified | Use verified Command Center page; inspect before writes |
+| Connector | Purpose | Required Hermes skill | Fallback |
+|---|---|---|---|
+| Gmail `bguy` | Venture communications, partner outreach drafts | `himalaya` | Manual review |
+| Notion | Product/project registry, roadmap, PRD/task tracking | `productivity/notion` | Use verified Command Center page; inspect before writes |
 
 ## Arbor Agent Mesh
 

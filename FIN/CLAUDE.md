@@ -9,9 +9,9 @@ Covers both Guy's professional invoicing and Hollandvest financial administratio
 
 ## On session start
 
-Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/FIN/MEMORY.md`. Capabilities and connectors load lazily on first use — do not eager-load them.
+Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/FIN/MEMORY.md`.
 
-**Agent mesh:** FIN runs as the [FIN Admin Mesh](mesh/MESH.md) under the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md) — lead `fin-admin`, the universal loop, and the FIN Definition-of-Done gate (amounts stated, Level-4 confirm before any payment/commit).
+**Agent mesh:** FIN runs as the [FIN Admin Mesh](mesh/MESH.md) — lead `fin-admin`, with the FIN Definition-of-Done gate (amounts stated, Level-4 confirm before any payment/commit).
 
 ## Commands
 
@@ -25,12 +25,12 @@ Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, rea
 
 Source of truth: `/00_System/connectors.md`.
 
-| Connector | Purpose | Required Hermes skill | Current status | Fallback |
-|---|---|---|---|---|
-| Gmail `bguy` | Guy professional invoices, admin, contracts | `himalaya` | Active / verified | Manual review |
-| Gmail `hollandvest` | HV financial correspondence | `himalaya` | Active / verified | Manual review |
-| Gmail `joseph` | EA invoicing where Joseph is sender/primary | `himalaya` | Active / verified | Manual review |
-| Notion | Financial tracker, docs/tasks registry | `productivity/notion` | Active / verified | Use verified Command Center page; inspect before writes |
+| Connector | Purpose | Required Hermes skill | Fallback |
+|---|---|---|---|
+| Gmail `bguy` | Guy professional invoices, admin, contracts | `himalaya` | Manual review |
+| Gmail `hollandvest` | HV financial correspondence | `himalaya` | Manual review |
+| Gmail `joseph` | EA invoicing where Joseph is sender/primary | `himalaya` | Manual review |
+| Notion | Financial tracker, docs/tasks registry | `productivity/notion` | Use verified Command Center page; inspect before writes |
 
 ## Memory
 

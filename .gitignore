@@ -40,10 +40,18 @@ secrets.*
 *.key
 *.pem
 
+# Semi-sensitive credential store (env-style key files) — NEVER commit values.
+# Only README.md (the policy + non-secret registry) is tracked.
+# Money/financial secrets NEVER go here → GCP Secret Manager.
+/00_System/secrets/*
+!/00_System/secrets/README.md
+
 # Logs / temp
 *.log
 *.tmp
 *.temp
+*.out
+.firebase/
 .cache/
 tmp/
 
@@ -54,6 +62,9 @@ tmp/
 # Nested Arbor product clone (separate git remote: guyrubin/PPPPtherapy- → Arbor).
 # Pending consolidation into PAI/arbor/ once the live sessions using it close.
 /PPPPtherapy-/
+# Nested-Arbor git worktrees parked at ROS root (build/council/dark/greenmain/
+# mktdeploy/rel-*/w*) — owned by the nested Arbor repo, not ROS. Ignore the noise.
+/.arbor-*/
 # PAI/arbor/ is reserved as the single canonical Arbor clone home (its own remote).
 /PAI/arbor/
 # One-off helper script tied to the live .workspace session

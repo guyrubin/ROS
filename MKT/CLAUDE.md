@@ -9,9 +9,9 @@ Covers Guy's personal brand and Hollandvest brand. Not for client EA deliverable
 
 ## On session start
 
-Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/MKT/MEMORY.md`. Capabilities and connectors load lazily on first use — do not eager-load them.
+Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, read `/MKT/MEMORY.md`.
 
-**Agent mesh:** MKT runs as the [MKT Content Engine](mesh/MESH.md) under the [ROS Agent Framework](../00_System/agent-framework/FRAMEWORK.md) — lead `mkt-lead` + pod `mkt-content`, the universal loop, and the MKT Definition-of-Done gate. (Arbor's own marketing lives in PAI's Arbor mesh — coordinate, don't duplicate.)
+**Agent mesh:** MKT runs as the [MKT Content Engine](mesh/MESH.md) — lead `mkt-lead` + pod `mkt-content`. (Arbor's own marketing lives in PAI's Arbor mesh — coordinate, don't duplicate.)
 
 ## Commands
 
@@ -25,10 +25,10 @@ Follow the canonical boot sequence in `/AGENTS.md`. On entry to this domain, rea
 
 Source of truth: `/00_System/connectors.md`.
 
-| Connector | Purpose | Required Hermes skill | Current status | Fallback |
-|---|---|---|---|---|
-| Gmail `bguy` | Campaign outreach drafts, newsletter/source review | `himalaya` | Active / verified | Manual review |
-| Notion | Content calendar, campaign tracker, task/project sync | `productivity/notion` | Active / verified | Use verified Command Center page; inspect before writes |
+| Connector | Purpose | Required Hermes skill | Fallback |
+|---|---|---|---|
+| Gmail `bguy` | Campaign outreach drafts, newsletter/source review | `himalaya` | Manual review |
+| Notion | Content calendar, campaign tracker, task/project sync | `productivity/notion` | Use verified Command Center page; inspect before writes |
 
 ## Memory
 
