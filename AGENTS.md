@@ -54,14 +54,16 @@ This is the single source of truth for context loading. `/CLAUDE.md`, `/00_Syste
 2. `/CLAUDE.md` — root instruction surface, regardless of model runtime.
 3. `/MEMORY.md` — root current memory.
 4. `/00_System/routing.md` — routing matrix.
-5. `/00_System/principals.md` — confirm the **active principal** (Guy or Joseph): sets default identity, domain scope, and the confidentiality boundary.
-6. `/00_System/companies.md` — confirm the **active company** (default: Guy / group). ROS is a multi-company group (Guy = CEO); this scopes routing, connectors, memory, and the per-company isolation boundary. Model: `/00_System/group-operating-model.md`.
-7. Route the request, then load only the matched domain's `CLAUDE.md` + `MEMORY.md` (and the company's `COMPANY.md` if one applies — e.g. Arbor).
+5. Route the request, then load only the matched domain's `CLAUDE.md` + `MEMORY.md` (and the company's `COMPANY.md` if one applies — e.g. Arbor).
+
+**Defaults (no eager load needed):** active principal = **Guy**, active company = **Guy / group**. Only load the registries below when the session deviates or needs the full scope.
 
 **Lazy — load only when the task needs it:**
 
 | Load this file | When |
 |---|---|
+| `/00_System/principals.md` | When the active principal is **not** Guy (e.g. Joseph/EA work), or you need the confidentiality boundary. |
+| `/00_System/companies.md` (+ `group-operating-model.md`) | When working in a specific company's scope, switching company, or reporting cross-company. |
 | `/00_System/agent-capabilities.md` | Before using a shared capability (web search, browser/computer use, multimodal, document intel, data automation). |
 | `/00_System/connectors.md` | Before any connector action (Gmail, Notion, Calendar, etc.) or when reporting connector status. |
 | `/00_System/agent-filesystem-contract.md` | When changing structure, storage, or agent contracts. |
