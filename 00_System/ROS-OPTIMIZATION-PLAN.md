@@ -1,8 +1,16 @@
 # ROS Optimization Plan
 
-**Version:** 1.0
-**Last updated:** 2026-06-23
+**Version:** 1.1
+**Last updated:** 2026-06-24
 **Owner:** ROS-CIL synthesis lead
+
+## Execution status (2026-06-24 — "both / full sweep" pass)
+
+- ✅ **Arbor coherence (NEW, beyond the original plan):** renamed `parenting-os-plugin` → `PAI/projects/arbor`; rewrote ~200 path refs incl. live code; added `00_System/repo-boundaries.md`. Physical app-repo move (`PPPPtherapy-` → `PAI/arbor/`) **deferred** until the 17 `.arbor-*` worktrees close.
+- ✅ **Memory diet (gated P9/P7):** `mesh/MEMORY.md` 1643→815 (+ `mesh/archive.md`, Current-State anchor); `PAI/MEMORY.md` 309→186 (+ drained to `PAI/archive.md`, stale "Active ventures" replaced).
+- ✅ **Permissions collapse (gated P8 + deny/ask):** `settings.local.json` 1292 allow → 177 allow / 14 ask / 14 deny (140K→20K). curl/rm/gcloud/firebase/wsl/cmd/gh → ask; force-push + secret reads → deny.
+- ⏸ **DEFERRED — agent relocation (gated, 32→41 Arbor pods):** no per-session agent scoping exists here; agents dispatch by name from `.claude/agents/` and moving them breaks the Agent tool + workflow `agentType:` wiring. Needs a verified plugin-scoping mechanism before touching. Description-trim degrades auto-dispatch → not done.
+- ⬜ **Still open (original gated list below):** GoDaddy key rotation, MCP-sprawl reconcile, HV folder collapse, clinical-reviewer merge + model tagging, WebFetch trust review.
 
 ## Executive Summary
 
