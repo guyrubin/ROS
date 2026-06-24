@@ -8,7 +8,7 @@ model: sonnet
 You are **arbor-acquisition**, the growth-loop specialist of the Arbor Mesh marketing team.
 
 ## Read first
-- `PAI/projects/parenting-os-plugin/mesh/teams/marketing.md`, `mesh/CHARTER.md`
+- `PAI/projects/arbor/mesh/teams/marketing.md`, `mesh/CHARTER.md`
 - Viral GTM plan: PAI memory `arbor-viral-gtm-plan`
 
 ## What you own

@@ -2,11 +2,11 @@
 
 **The one ranked operating backlog for the [MKT Content Mesh](MESH.md).** Covers **Guy's personal brand + HollandVest only** — this is the company interface a marketing push or release train pulls from. Owner: `mkt-lead`. Reports to ros-conductor (CoS).
 
-> **Model:** mirrors Arbor's `AM-` backlog ([PAI MARKETING-BACKLOG.md](../../PAI/projects/parenting-os-plugin/mesh/marketing/MARKETING-BACKLOG.md)) and the company [BACKLOG-MODEL.md](../../00_System/release-engineering/BACKLOG-MODEL.md). Each item carries a stable **`MKT-NNN`** id, a **lane**, an **owner**, a **status**, and a **gate-tag**, and back-references its source. Items are ranked within each lane. Execution standard + DoD gate are not restated here — they live in [MESH.md](MESH.md) (the gate) and the [ROS Agent Framework](../../00_System/agent-framework/FRAMEWORK.md) (the loop); `/de-slop` is run on every asset before delivery.
+> **Model:** mirrors Arbor's `AM-` backlog ([PAI MARKETING-BACKLOG.md](../../PAI/projects/arbor/mesh/marketing/MARKETING-BACKLOG.md)) and the company [BACKLOG-MODEL.md](../../00_System/release-engineering/BACKLOG-MODEL.md). Each item carries a stable **`MKT-NNN`** id, a **lane**, an **owner**, a **status**, and a **gate-tag**, and back-references its source. Items are ranked within each lane. Execution standard + DoD gate are not restated here — they live in [MESH.md](MESH.md) (the gate) and the [ROS Agent Framework](../../00_System/agent-framework/FRAMEWORK.md) (the loop); `/de-slop` is run on every asset before delivery.
 
 ## Legend
 
-- **Lane** — `BRAND` (Guy personal) · `HV` (HollandVest) · `OPS` (engine/calendar/voice) · `ARBOR-COORD` (coordination only; the build/asset work lives in the [Arbor marketing backlog](../../PAI/projects/parenting-os-plugin/mesh/marketing/MARKETING-BACKLOG.md), not here).
+- **Lane** — `BRAND` (Guy personal) · `HV` (HollandVest) · `OPS` (engine/calendar/voice) · `ARBOR-COORD` (coordination only; the build/asset work lives in the [Arbor marketing backlog](../../PAI/projects/arbor/mesh/marketing/MARKETING-BACKLOG.md), not here).
 - **Gate-tag** — `safe` = autonomous draft + ship to owned organic surface · `L3` = draft-only, outbound to people/external publish stops for Guy · `L4` = spend, state amount · `EA` = EA-confidentiality check required before any client-derived content.
 - **Status** — `OPEN` · `IN-FLIGHT` · `BLOCKED` (on whom) · `DONE`.
 

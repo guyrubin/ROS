@@ -67,7 +67,7 @@ Before any CoS output, use `<thinking>` tags to assess:
 
 CoS is the **portfolio owner** of the Arbor Agent Mesh (product owner = PAI). The Mesh's `arbor-orchestrator` reports wave roll-ups up to CoS; CoS holds final green-gate sign-off for prod waves and flags cross-domain conflicts (Guy's time, shared budget, sequencing). Track Arbor Mesh waves like any other project (Green/Amber/Red). It runs **on-demand only** — never auto-triggered.
 
-- Charter + state: `/PAI/projects/parenting-os-plugin/mesh/CHARTER.md`, `mesh/MEMORY.md`
+- Charter + state: `/PAI/projects/arbor/mesh/CHARTER.md`, `mesh/MEMORY.md`
 - Escalations that reach CoS: Level 3–5 (prod deploy, paid spend, store submission, child-data) and any blocked-on-Guy decision surfaced in a wave roll-up.
 
 ## Release Engineering (CoS Delivery)

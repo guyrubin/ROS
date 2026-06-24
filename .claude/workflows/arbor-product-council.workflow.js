@@ -87,10 +87,10 @@ log(`reviewed ${live.length} candidates — ${buildReady.length} safe & build-re
 phase('Score+Write')
 const today = '2026-06-21'  // workflows can't read the clock; stamp + correct on write
 await agent(
-  `You are the Arbor Product Council scribe. Follow PAI/projects/parenting-os-plugin/mesh/PRODUCT-COUNCIL.md exactly. ` +
-  `INPUTS: (1) these reviewed candidates from advisory/clinical/demand; (2) the top verified findings already in PAI/projects/parenting-os-plugin/mesh/improvement/IMPROVEMENT-BACKLOG.md (READ it and fold in the top few as stream:"cil"). ` +
+  `You are the Arbor Product Council scribe. Follow PAI/projects/arbor/mesh/PRODUCT-COUNCIL.md exactly. ` +
+  `INPUTS: (1) these reviewed candidates from advisory/clinical/demand; (2) the top verified findings already in PAI/projects/arbor/mesh/improvement/IMPROVEMENT-BACKLOG.md (READ it and fold in the top few as stream:"cil"). ` +
   `STEPS: dedupe across streams (one root cause, not ten symptoms); score each priority = (reach×impact×confidence×strategic_fit)÷effort, where strategic_fit folds in the advisor rubric (aligned>tension>off-rubric) and Arbor's moat/retention; keep the top ~12. ` +
-  `WRITE: APPEND a new "## Council Intake — ${today}" block to PAI/projects/parenting-os-plugin/PRODUCT-BACKLOG.md using the table format in PRODUCT-COUNCIL.md §5 (ID|Title|Stream|riskClass|Priority|Clinical|Advisor|Owner pod|Note). PRESERVE the entire existing file — append only, never rewrite the canonical body. ` +
+  `WRITE: APPEND a new "## Council Intake — ${today}" block to PAI/projects/arbor/PRODUCT-BACKLOG.md using the table format in PRODUCT-COUNCIL.md §5 (ID|Title|Stream|riskClass|Priority|Clinical|Advisor|Owner pod|Note). PRESERVE the entire existing file — append only, never rewrite the canonical body. ` +
   `Below the table write: (a) the 3-5 top SAFE build-ready items flagged for arbor-orchestrator's next wave; (b) an explicit "Gated — needs Guy" decision list (claim-bearing/safety/billing/cost items + any [FOUNDER] calls), each with the one decision needed. ` +
   `Finally append a one-line cycle entry to mesh/MEMORY.md AND /PAI/MEMORY.md: streams pulled, candidates written, top build-ready, gated decisions surfaced. Correct the date if the real date differs. ` +
   `Reviewed candidates:\n${JSON.stringify(live)}`,

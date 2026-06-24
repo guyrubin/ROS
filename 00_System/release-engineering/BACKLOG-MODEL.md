@@ -8,8 +8,8 @@ The cure for "lots of overlapping." Recon found **5 active backlogs — two both
 
 | Product | Canonical backlog | Owner | ID prefix | Feeds the train |
 | :-- | :-- | :-- | :-- | :-- |
-| **Arbor Product** | `PAI/projects/parenting-os-plugin/mesh/PRODUCT-BACKLOG.md` | Product Council (PAI) | `AP-` | `REL-ARBOR-*` |
-| **Arbor Marketing** | `PAI/projects/parenting-os-plugin/mesh/marketing/MARKETING-BACKLOG.md` | `arbor-marketing-lead` | `AM-` | `REL-MKTG-*` |
+| **Arbor Product** | `PAI/projects/arbor/mesh/PRODUCT-BACKLOG.md` | Product Council (PAI) | `AP-` | `REL-ARBOR-*` |
+| **Arbor Marketing** | `PAI/projects/arbor/mesh/marketing/MARKETING-BACKLOG.md` | `arbor-marketing-lead` | `AM-` | `REL-MKTG-*` |
 | **ROS (the OS)** | `CoS/ROS-BACKLOG.md` | CoS (`ros-evaluator` maintains) | `ROS-` | `REL-ROS-*` |
 
 > A backlog is *canonical* if a release train pulls shippable items from it. Nothing else is. There is exactly one canonical backlog per product, and a single shippable item lives in exactly one of them.

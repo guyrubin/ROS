@@ -5,7 +5,7 @@
 **Owner:** ROS CoS (portfolio)
 **Status:** Active
 
-How any Rubin OS domain becomes a disciplined **agent environment**. This is the reusable generalization of the [Arbor Agent Mesh](../../PAI/projects/parenting-os-plugin/mesh/CHARTER.md): same bones (charter → roster → loop → gate → memory), retuned so it fits knowledge-work domains as well as software.
+How any Rubin OS domain becomes a disciplined **agent environment**. This is the reusable generalization of the [Arbor Agent Mesh](../../PAI/projects/arbor/mesh/CHARTER.md): same bones (charter → roster → loop → gate → memory), retuned so it fits knowledge-work domains as well as software.
 
 ---
 
@@ -98,4 +98,4 @@ Runnable defs live in `/.claude/agents/ros/`. Deterministic fan-out (screen N li
 
 - [UNIVERSAL-LOOP.md](UNIVERSAL-LOOP.md) · [SCHEDULED-LOOPS.md](SCHEDULED-LOOPS.md) · [templates/](templates/)
 - Canonical boot + identity: `/AGENTS.md`, `/00_System/routing.md`, `/00_System/identity-policy.md`
-- Reference implementation: `/PAI/projects/parenting-os-plugin/mesh/`
+- Reference implementation: `/PAI/projects/arbor/mesh/`

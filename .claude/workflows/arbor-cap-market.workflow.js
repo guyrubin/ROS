@@ -58,7 +58,7 @@ const real = verified.filter(Boolean).filter(f => f.verdict && f.verdict.verifie
 log(`${real.length}/${allFindings.length} capability/market findings verified`)
 
 await agent(
-  `Editor pass + MERGE into the existing backlog (CRITICS.md §6). READ PAI/projects/parenting-os-plugin/mesh/improvement/IMPROVEMENT-BACKLOG.md and PRESERVE every existing finding. Integrate these newly-verified capability+market findings. ` +
+  `Editor pass + MERGE into the existing backlog (CRITICS.md §6). READ PAI/projects/arbor/mesh/improvement/IMPROVEMENT-BACKLOG.md and PRESERVE every existing finding. Integrate these newly-verified capability+market findings. ` +
   `Then ADD A NEW TOP-LEVEL SECTION titled "## Capability Backlog vs Competitors (cycle 2026-06-21c)" containing a SCORED TABLE with columns: Score | Capability bet | Competitor(s) who have it | What Arbor lacks today | The SMART bet on the moat | Owner | Effort | Risk. Sort by score desc. Above the table, write a 4-6 line thesis: where Arbor already WINS vs each rival, the 2-3 capabilities that would make it best-in-market, and the one moat-native bet to lead with. ` +
   `Also re-score the combined Open/Gated queues and update the cycle log. WRITE the file + append a one-line cycle entry to mesh/MEMORY.md. Newly-verified findings:\n${JSON.stringify(real)}`,
   { agentType: 'arbor-evaluator', label: 'synthesize+write-capability-backlog', phase: 'Verify+Merge', effort: 'high' }

@@ -29,7 +29,7 @@ Live now (MCP, free): Gmail ×3 · Calendar · Notion · Drive · Web/Research �
 
 ## 2. Autonomy rollout — gradual, in waves
 
-Builds on the [agent framework](../00_System/agent-framework/FRAMEWORK.md), the [Arbor CIL](../PAI/projects/parenting-os-plugin/mesh/improvement/CIL.md) pattern, and [SCHEDULED-LOOPS](../00_System/agent-framework/SCHEDULED-LOOPS.md). **External actions (send/spend/deploy) stay human-gated at every phase.**
+Builds on the [agent framework](../00_System/agent-framework/FRAMEWORK.md), the [Arbor CIL](../PAI/projects/arbor/mesh/improvement/CIL.md) pattern, and [SCHEDULED-LOOPS](../00_System/agent-framework/SCHEDULED-LOOPS.md). **External actions (send/spend/deploy) stay human-gated at every phase.**
 
 | Phase | What goes live | Gate |
 | :-- | :-- | :-- |

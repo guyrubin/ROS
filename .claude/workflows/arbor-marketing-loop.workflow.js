@@ -11,10 +11,10 @@ export const meta = {
   ],
 }
 
-const BACKLOG = 'PAI/projects/parenting-os-plugin/mesh/marketing/MARKETING-BACKLOG.md'
-const MESH = 'PAI/projects/parenting-os-plugin/mesh/marketing/MESH.md'
-const OPMODEL = 'PAI/projects/parenting-os-plugin/mesh/marketing/OPERATING-MODEL.md'
-const BRAND = 'PAI/projects/parenting-os-plugin/mesh/marketing/BRAND-STRATEGY.md'
+const BACKLOG = 'PAI/projects/arbor/mesh/marketing/MARKETING-BACKLOG.md'
+const MESH = 'PAI/projects/arbor/mesh/marketing/MESH.md'
+const OPMODEL = 'PAI/projects/arbor/mesh/marketing/OPERATING-MODEL.md'
+const BRAND = 'PAI/projects/arbor/mesh/marketing/BRAND-STRATEGY.md'
 
 // ---- schemas -------------------------------------------------------------
 const FINDING = {

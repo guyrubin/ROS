@@ -19,8 +19,8 @@ All three flow through the **daily epic-approval mechanism**: `ros-daily-plan` (
 
 > All `riskClass: safe`, shippable now. Sequenced. Gated (Tier-C) items listed separately for Guy. The READY+SAFE queue itself is **owned by each canonical backlog** — read the ranked items there, not here, so this file can't drift:
 
-- **Arbor Product (`AP-`):** [mesh/PRODUCT-BACKLOG.md](../PAI/projects/parenting-os-plugin/mesh/PRODUCT-BACKLOG.md) → "Wave PM-CU-2026-06-22".
-- **Arbor Marketing (`AM-`):** [MARKETING-BACKLOG.md](../PAI/projects/parenting-os-plugin/mesh/marketing/MARKETING-BACKLOG.md).
+- **Arbor Product (`AP-`):** [mesh/PRODUCT-BACKLOG.md](../PAI/projects/arbor/mesh/PRODUCT-BACKLOG.md) → "Wave PM-CU-2026-06-22".
+- **Arbor Marketing (`AM-`):** [MARKETING-BACKLOG.md](../PAI/projects/arbor/mesh/marketing/MARKETING-BACKLOG.md).
 - **ROS (`ROS-`):** [ROS-BACKLOG.md](ROS-BACKLOG.md).
 
 ## Tier-C — Guy-gated (never auto; surfaced, not executed)

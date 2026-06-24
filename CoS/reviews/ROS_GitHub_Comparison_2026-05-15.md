@@ -74,14 +74,14 @@ Interpretation: GitHub has no content yet. Local ROS is the source of truth.
   - `MKT/`
   - `FIN/`
 - Arbor / Parenting OS work:
-  - `PAI/projects/parenting-os-plugin/roadmap.md`
-  - `PAI/projects/parenting-os-plugin/prd-v1.md`
-  - `PAI/projects/parenting-os-plugin/data-model-v1.md`
-  - `PAI/projects/parenting-os-plugin/safety-policy-v1.md`
-  - `PAI/projects/parenting-os-plugin/scenario-library-v1.md`
-  - `PAI/projects/parenting-os-plugin/gtm-netherlands-v1.md`
-  - `PAI/projects/parenting-os-plugin/html/arbor-roadmap-dashboard.html`
-  - `PAI/projects/parenting-os-plugin/html/arbor-concierge-mvp-prototype.html`
+  - `PAI/projects/arbor/roadmap.md`
+  - `PAI/projects/arbor/prd-v1.md`
+  - `PAI/projects/arbor/data-model-v1.md`
+  - `PAI/projects/arbor/safety-policy-v1.md`
+  - `PAI/projects/arbor/scenario-library-v1.md`
+  - `PAI/projects/arbor/gtm-netherlands-v1.md`
+  - `PAI/projects/arbor/html/arbor-roadmap-dashboard.html`
+  - `PAI/projects/arbor/html/arbor-concierge-mvp-prototype.html`
 
 ---
 

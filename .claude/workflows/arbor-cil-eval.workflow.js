@@ -58,7 +58,7 @@ const real = verified.filter(Boolean).filter(f => f.verdict && f.verdict.verifie
 log(`${real.length}/${allFindings.length} findings verified`)
 
 await agent(
-  `Editor pass + MERGE into the existing backlog (CRITICS.md §6). READ PAI/projects/parenting-os-plugin/mesh/improvement/IMPROVEMENT-BACKLOG.md and PRESERVE prior findings still open. Dedupe vs existing + each other (keep highest score). Re-score the combined queue with (severity×userImpact×confidence)÷effort×4. Update the "State of the app" (note this is a CHEAP regression eval — deep lenses run weekly), roll nits into themes, cap to top ~12 safe + gated list. Mark any finding a prior build wave shipped as confirmed/regressed. WRITE the backlog (new cycle row on top, dated) + append a one-line cycle entry to mesh/MEMORY.md. Verified findings:\n${JSON.stringify(real)}`,
+  `Editor pass + MERGE into the existing backlog (CRITICS.md §6). READ PAI/projects/arbor/mesh/improvement/IMPROVEMENT-BACKLOG.md and PRESERVE prior findings still open. Dedupe vs existing + each other (keep highest score). Re-score the combined queue with (severity×userImpact×confidence)÷effort×4. Update the "State of the app" (note this is a CHEAP regression eval — deep lenses run weekly), roll nits into themes, cap to top ~12 safe + gated list. Mark any finding a prior build wave shipped as confirmed/regressed. WRITE the backlog (new cycle row on top, dated) + append a one-line cycle entry to mesh/MEMORY.md. Verified findings:\n${JSON.stringify(real)}`,
   { agentType: 'arbor-evaluator', label: 'synthesize+write', phase: 'Triage', effort: 'high' }
 )
 

@@ -64,7 +64,7 @@ Every domain folder conforms to one shape so navigation is predictable across ru
 | `archive.md` | Required | Domain history (stale/completed detail). |
 | `mesh/` | Required | The domain's agent mesh (lead + pods + DoD). |
 | `voice.md` | Optional (standardized) | Domain voice profile when the domain writes externally. |
-| `projects/` | Optional (standardized) | A company/product machine when the domain owns one (e.g. PAI → `projects/parenting-os-plugin/`). |
+| `projects/` | Optional (standardized) | A company/product machine when the domain owns one (e.g. PAI → `projects/arbor/`). |
 | `references/` | Optional (standardized) | Source material. |
 | `templates/` | Optional (standardized) | Reusable output shapes. |
 | `daily/` | Optional (standardized) | Dated working scratch promoted into memory when durable. |

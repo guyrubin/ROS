@@ -103,7 +103,7 @@ Every domain runs as an agent environment under the **[ROS Agent Framework](agen
 - **research-agent** is **KK-owned** (KK is Guy's PA) but a shared service — usually dispatched *by* a domain lead (or the conductor) to gather sourced evidence, then the dispatching domain owns the decision. Spec: `KK/research/MESH.md`. Route a bare "research X" to it directly. **Career** (job-search) is likewise a KK-owned sub-mesh — `KK/job-automation/MESH.md`.
 - Scheduled/autonomous loops are registered in [agent-framework/SCHEDULED-LOOPS.md](agent-framework/SCHEDULED-LOOPS.md) and are human-gated before go-live.
 
-The Arbor Agent Mesh is a multi-agent sub-system owned by PAI (product) and CoS (portfolio). Its charter, roster, and dev-loop live in `/PAI/projects/parenting-os-plugin/mesh/`; runnable pods are in `/.claude/agents/arbor/`. It runs **on-demand only** — dispatch `arbor-orchestrator` or the `arbor-mesh` workflow; never auto-trigger.
+The Arbor Agent Mesh is a multi-agent sub-system owned by PAI (product) and CoS (portfolio). Its charter, roster, and dev-loop live in `/PAI/projects/arbor/mesh/`; runnable pods are in `/.claude/agents/arbor/`. It runs **on-demand only** — dispatch `arbor-orchestrator` or the `arbor-mesh` workflow; never auto-trigger.
 
 ---
 

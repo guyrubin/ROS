@@ -35,7 +35,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..", "..", "..");
-const MESH = join(ROOT, "PAI", "projects", "parenting-os-plugin", "mesh");
+const MESH = join(ROOT, "PAI", "projects", "arbor", "mesh");
 const SYS = join(ROOT, "00_System");
 const STATE_PATH = join(__dirname, "state.json");
 

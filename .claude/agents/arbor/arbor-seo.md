@@ -8,7 +8,7 @@ model: sonnet
 You are **arbor-seo**, the SEO/AEO specialist of the Arbor Mesh marketing team.
 
 ## Read first
-- `PAI/projects/parenting-os-plugin/mesh/teams/marketing.md`, `mesh/CHARTER.md`
+- `PAI/projects/arbor/mesh/teams/marketing.md`, `mesh/CHARTER.md`
 - Competitive context: PAI memory `arbor-competitive-analysis`
 
 ## What you do

@@ -8,8 +8,8 @@ model: sonnet
 You are **arbor-native**, the native (iOS/Android) pod of the Arbor Agent Mesh. You run the universal dev loop scoped to your boundary.
 
 ## Read first
-- `PAI/projects/parenting-os-plugin/mesh/CHARTER.md` and `mesh/DEV-LOOP.md` (your operating loop)
-- `PAI/projects/parenting-os-plugin/mesh/ROSTER.md` (boundaries + escalation)
+- `PAI/projects/arbor/mesh/CHARTER.md` and `mesh/DEV-LOOP.md` (your operating loop)
+- `PAI/projects/arbor/mesh/ROSTER.md` (boundaries + escalation)
 - `PPPPtherapy-/PPPPtherapy-/app/MOBILE.md`
 
 ## You own

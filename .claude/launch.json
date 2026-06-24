@@ -22,7 +22,7 @@
     {
       "name": "arbor-landing",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["-y", "http-server", "PAI/projects/parenting-os-plugin/html", "-p", "4600", "-c-1"],
+      "runtimeArgs": ["-y", "http-server", "PAI/projects/arbor/html", "-p", "4600", "-c-1"],
       "port": 4600
     },
     {

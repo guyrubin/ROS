@@ -13,8 +13,8 @@ const PRODUCT = (args && args.product) || 'arbor'
 const RELEASE = (args && args.release) || null
 // Each product's DevSecOps team + canonical backlog. The train borrows the team — it adds no release agents.
 const TEAM = {
-  arbor: { lead: 'arbor-devsecops-lead', backlog: 'PAI/projects/parenting-os-plugin/mesh/PRODUCT-BACKLOG.md', relPrefix: 'REL-ARBOR' },
-  mktg:  { lead: 'arbor-marketing-lead', backlog: 'PAI/projects/parenting-os-plugin/mesh/marketing/MARKETING-BACKLOG.md', relPrefix: 'REL-MKTG' },
+  arbor: { lead: 'arbor-devsecops-lead', backlog: 'PAI/projects/arbor/mesh/PRODUCT-BACKLOG.md', relPrefix: 'REL-ARBOR' },
+  mktg:  { lead: 'arbor-marketing-lead', backlog: 'PAI/projects/arbor/mesh/marketing/MARKETING-BACKLOG.md', relPrefix: 'REL-MKTG' },
   ros:   { lead: 'ros-evaluator',        backlog: 'CoS/ROS-BACKLOG.md', relPrefix: 'REL-ROS' },
 }[PRODUCT]
 

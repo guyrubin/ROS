@@ -100,7 +100,7 @@ log(`${real.length}/${allFindings.length} findings verified`)
 
 await agent(
   `Editor pass + write (CRITICS.md §6). (1) Dedupe verified findings (merge same surface+fix, keep highest). (2) Apply the feedback lens's usage weighting (boost high-traffic/high-pain surfaces). (3) SYNTHESIZE: roll symptom nits into THEMES (name the root cause), fuse capability×market×feedback into SMART feature theses, cap to the top ~10 safe items + top 3 themes + 1 feature thesis, and write a 4–6 line "State of the app". (4) WRITE to ` +
-  `PAI/projects/parenting-os-plugin/mesh/improvement/IMPROVEMENT-BACKLOG.md (State-of-the-app on top, then Themes, scored Open items, "Gated — needs Guy", "Dropped") + a cycle-log row, and record the cycle in mesh/MEMORY.md. Verified findings:\n${JSON.stringify(real)}`,
+  `PAI/projects/arbor/mesh/improvement/IMPROVEMENT-BACKLOG.md (State-of-the-app on top, then Themes, scored Open items, "Gated — needs Guy", "Dropped") + a cycle-log row, and record the cycle in mesh/MEMORY.md. Verified findings:\n${JSON.stringify(real)}`,
   { agentType: 'arbor-evaluator', label: 'synthesize+write', phase: 'Triage', effort: 'high' }
 )
 

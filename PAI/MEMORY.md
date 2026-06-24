@@ -39,7 +39,7 @@ Last updated: 2026-06-22
 
 **Gate conditions:** arbor-safety confirms "never used to train AI" is technically accurate; arbor-brand confirms copy passes the Arbor Bar; arbor-content completes native Hebrew review; linked privacy/safety view confirmed at a stable route.
 
-**PRD location:** `PAI/projects/parenting-os-plugin/mesh/prds/PRD_2026-06-22_AP-007.md`
+**PRD location:** `PAI/projects/arbor/mesh/prds/PRD_2026-06-22_AP-007.md`
 
 ---
 
@@ -118,7 +118,7 @@ Last updated: 2026-06-22
 
 **Sensed (CIL-market findings this cycle):** HE landing heading register broken (Frank Ruhl Libre absent); EN H1 generic (fails Arbor Bar first-line/memory tests); OG image is square logo (WhatsApp near-invisible); llms.txt/sitemap carry wrong Firebase host (AEO blocked until domain live); no social proof above fold; ILS pricing absent on HE landing; activation path to first value unguaranteed (<60s Aha); no Duolingo/Khan literacy counter-narrative on any surface. 7 gated funnel findings remain OPEN (see MARKETING-BACKLOG.md §3 + §6).
 
-**Published to owned organic surfaces (auto-publish, no-confirmation):** CIL-market-he-landing-missing-frank-ruhl-font — Frank Ruhl Libre import + --serif token + h1-h4 weight-700 applied to `PAI/projects/parenting-os-plugin/html/arbor-marketing-landing-page-he.html` (lines 111 / 168-169 / 693-694 / 816-817 / 824). arbor-brand ECD gate PASS (all 8 Arbor Bar tests). arbor-safety gate PASS (typography-only; zero new clinical/effect-size copy; no child data). File is publish-ready. **Firebase prod push HELD — Level 3 deploy gate: Guy or arbor-orchestrator must authorize `firebase deploy` before this reaches arborprd-westeu.web.app. Pre-deploy check: confirm Frank Ruhl Libre renders on HE headings in prod.**
+**Published to owned organic surfaces (auto-publish, no-confirmation):** CIL-market-he-landing-missing-frank-ruhl-font — Frank Ruhl Libre import + --serif token + h1-h4 weight-700 applied to `PAI/projects/arbor/html/arbor-marketing-landing-page-he.html` (lines 111 / 168-169 / 693-694 / 816-817 / 824). arbor-brand ECD gate PASS (all 8 Arbor Bar tests). arbor-safety gate PASS (typography-only; zero new clinical/effect-size copy; no child data). File is publish-ready. **Firebase prod push HELD — Level 3 deploy gate: Guy or arbor-orchestrator must authorize `firebase deploy` before this reaches arborprd-westeu.web.app. Pre-deploy check: confirm Frank Ruhl Libre renders on HE headings in prod.**
 
 **Feature-requests handed to product:** 10 capability items from CIL competitor scan written to MARKETING-BACKLOG.md §5 and flagged HANDED TO PRODUCT-BACKLOG.md + IMPROVEMENT-BACKLOG.md (2026-06-21): CIL-capability-fcm-background-push · CIL-capability-proactive-monitoring-alerts · CIL-capability-physical-growth-tracking · CIL-capability-live-expert-booking · CIL-capability-multi-child-family-dashboard · CIL-capability-screen-time-controls · CIL-capability-infant-age-months-input (correctness bug, gated schema change) · CIL-capability-parent-coach-community · CIL-capability-ios-android-widgets · CIL-capability-literacy-marketing-positioning. Marketing retains counter-narrative ownership; product pods own the builds.
 
@@ -153,7 +153,7 @@ Last updated: 2026-06-22
 
 ## Updates [2026-06-17] — Arbor WAF migration: blueprint + Wave 0 executed
 
-- **What:** ran two autonomous multi-agent workflows to harden Arbor to top-tier Well-Architected (maturity 2.8/5 → target) for the **NL + IL** launch markets — gradual, cost-efficient, conflict-aware. Plan doc: `PAI/projects/parenting-os-plugin/arbor-waf-migration-plan.md`. Full artifacts in the Arbor repo `PPPPtherapy-/PPPPtherapy-/docs/architecture/migration-2026-06-17/`.
+- **What:** ran two autonomous multi-agent workflows to harden Arbor to top-tier Well-Architected (maturity 2.8/5 → target) for the **NL + IL** launch markets — gradual, cost-efficient, conflict-aware. Plan doc: `PAI/projects/arbor/arbor-waf-migration-plan.md`. Full artifacts in the Arbor repo `PPPPtherapy-/PPPPtherapy-/docs/architecture/migration-2026-06-17/`.
 - **Blueprint (17-agent):** build-ready specs for all **44 missions** (OPS/SEC/REL/PERF/COST/AI/CMP) + adversarial verdicts + shared-file conflict map → **5-wave** plan. Critical path = the "API spine" (`routes/api.ts` + `createApp.ts`); everything else parallelizes in 5 disjoint-file tracks. Consumer launch unlocks end of W2; B2G at W4.
 - **Wave 0 EXECUTED (13-agent):** all collision-free missions authored drop-in (DPIA, RoPA/DPA, incident+breach runbook w/ NL-72h + IL-PPA + Hebrew, change-gate, backup/DR, SLO/SLI, CMEK eval=defer, WIF script, budget script, k6 load-test, model-fitness ADR, OPS-1 observability + 5 new modules at `app/src/lib/observability/`, 26/26 tests). **Zero tracked files modified, no git/gcloud/deploy.** Apply gates: `wave-0/WAVE-0-APPLY.md`.
 - **Lean-cost stance locked:** no Redis, no Sentry, CMEK deferred to a paying B2G contract; `min-instances=1` is the only deliberate recurring spend.
@@ -209,7 +209,7 @@ Last updated: 2026-06-22
 
 ## Updates [2026-06-14] — Competitor wedge shipped: 3 features + IA redesign, live on `main`
 
-- **Trigger:** market research on Arbor's competitors (Kinedu, Lovevery, Huckleberry, Cleo, Cooper, Maven) → defined 3 features to beat them, each built on the longitudinal-memory moat. Strategy stress-tested (grill-me) and IA redesigned (card-sort/tree-test). Docs: `PAI/projects/parenting-os-plugin/arbor-competitive-analysis-and-feature-defs-2026-06-14.md`, `…/arbor-redesign-and-additions-definition-2026-06-14.md`, `…/arbor-ia-redesign-2026-06-14.md`; build plan `PPPPtherapy-/PPPPtherapy-/app/.design/arbor-ia/TASKS.md`.
+- **Trigger:** market research on Arbor's competitors (Kinedu, Lovevery, Huckleberry, Cleo, Cooper, Maven) → defined 3 features to beat them, each built on the longitudinal-memory moat. Strategy stress-tested (grill-me) and IA redesigned (card-sort/tree-test). Docs: `PAI/projects/arbor/arbor-competitive-analysis-and-feature-defs-2026-06-14.md`, `…/arbor-redesign-and-additions-definition-2026-06-14.md`, `…/arbor-ia-redesign-2026-06-14.md`; build plan `PPPPtherapy-/PPPPtherapy-/app/.design/arbor-ia/TASKS.md`.
 - **Built + shipped to production** (3 commits, merged to `main` @ `f019b86`, pushed; live **https://arborprd-westeu.web.app**, verified home 200 / api 401 / fresh asset):
   - **Rhythm** — `app/src/rhythm/predict.ts` (pure, 8 tests): predicts today's friction/calm/wind-down windows from the family's own log; honest sparse-data state. On the new **Today** home.
   - **Daily Play** — `app/src/playbank/` (12 household-item activities + concern-aware selector, 9 tests): picks by band **+ recently-logged behavior**; card on Today + library under Grow.
@@ -221,7 +221,7 @@ Last updated: 2026-06-22
 
 ## Updates [2026-06-12] — Practice Studio shipped (Fall release, 10 features)
 
-- **PRD:** `PAI/projects/parenting-os-plugin/PRDs/PRD_2026-06-12_speech-language-fall-release.md` — 10 features ported from Articulation Station / Speech Blubs / Otsimo / MITA, organized as 4 modules + the Development Copilot killer feature (connect-the-category, prescribe→signal wedge).
+- **PRD:** `PAI/projects/arbor/PRDs/PRD_2026-06-12_speech-language-fall-release.md` — 10 features ported from Articulation Station / Speech Blubs / Otsimo / MITA, organized as 4 modules + the Development Copilot killer feature (connect-the-category, prescribe→signal wedge).
 - **Built same day on `main` @ `8072745`, pushed + deployed to production** (arborprd-westeu.web.app verified: new bundle + all 5 chunks live, API 401 gate + rate limit up; CSP concern moot — helmet CSP is API-only, Hosting serves the SPA without CSP): new `app/src/practice/` engine (content banks + pure scoring `signals.ts`, 15 unit tests) + 5 views in `app/src/components/practice/` (SpeechCoach, MimicStudio, Missions, Adventures, DevelopmentCopilot). New 7th nav section "Practice Studio"; Development Dashboard under My Child. All sandbox-safe; audio/camera strictly on-device. tsc + 122 tests + prod build green; flows verified live in browser.
 - **Key design decisions:** bands not "developmental age" numbers (clinical defensibility / EU-MDR); parent scoring is the universal floor (Web Speech API best-effort only); Development Score = practice *consistency*, never child ability; adventures record first-try answers only.
 - **Open (PRD hypotheses):** H1 daily-habit retention gate (<20% families @3 missions/wk by day 30 = kill), H2 SLP interviews on the practice report, H3 recommendation-followed rate. Hebrew sound set + AI-generated adventures = fast follow.
@@ -254,8 +254,8 @@ Active facts only. Completed execution history → [[PAI/archive|PAI Archive]].
 - **Run from `app/`:** dev `npm run dev` (tsx `server.ts`), prod `npm run start` → `http://localhost:3000`. ROS `.claude/launch.json` exposes `arbor-dev` / `arbor-prod` (they run this working tree → the v2 branch).
 - **AI status:** Disabled — placeholder `GEMINI_API_KEY` in `app/.env.local`; add real key to enable the coach.
 - **Capabilities on the v2 branch (uncommitted/unmerged):** Firebase auth, Firestore + local memory adapters (`src/memory/`), Claude-primary model router (`src/ai/modelRouter`), knowledge wiki retrieval (`src/knowledge/`), Zod coach contract (`src/contracts/coach`), safety escalation screening (`src/safety/`), Cloud Run/terraform scaffold. The 10 routine plans are on `main` (`04cc2c7`).
-- **PRD:** `PPPPtherapy-/docs/arbor-prd.md` (canonical); mirror at `PAI/projects/parenting-os-plugin/prd-v1.md`.
-- **Surfaces:** the React app at `PPPPtherapy-/PPPPtherapy-/app/` is the canonical product. The HTML files in `PAI/projects/parenting-os-plugin/html/` (incl. `arbor-app.html`, `arbor-concierge-mvp-prototype.html`) are **legacy Phase 0 / standalone prototypes**, not the shipping app.
+- **PRD:** `PPPPtherapy-/docs/arbor-prd.md` (canonical); mirror at `PAI/projects/arbor/prd-v1.md`.
+- **Surfaces:** the React app at `PPPPtherapy-/PPPPtherapy-/app/` is the canonical product. The HTML files in `PAI/projects/arbor/html/` (incl. `arbor-app.html`, `arbor-concierge-mvp-prototype.html`) are **legacy Phase 0 / standalone prototypes**, not the shipping app.
 - Next: add real `GEMINI_API_KEY`; decide cloud deployment target (Cloud Run scaffold present); GCP deploy still blocked by missing local `gcloud` (`firebase-tools` works via `npx`).
 
 ## Updates [2026-06-02] — Sprint 1 executed (study-group QA)
@@ -271,7 +271,7 @@ Active facts only. Completed execution history → [[PAI/archive|PAI Archive]].
 ## Sprint goal [set 2026-06-02]
 
 - **Arbor Sprint 1:** ship Tier 0 bugs → Tier 1 legibility ("tell the truth / calm the room" P0 work). Fold G-10 (child photo) + G-11 (manual challenge→plan) into A-01/A-02 profile work — same code path.
-- **Master sequencing source of truth:** `PAI/projects/parenting-os-plugin/execution/arbor-master-sprint-plan-2026-06-02.md` (merges the A/K/D, H/E, and G backlogs; dedup map inside).
+- **Master sequencing source of truth:** `PAI/projects/arbor/execution/arbor-master-sprint-plan-2026-06-02.md` (merges the A/K/D, H/E, and G backlogs; dedup map inside).
 - **Parallel safety gate (does not wait for a sprint slot):** K-03 real crisis resources, K-01 semantic safety, K-02 review queue — beta with real families is blocked until these land.
 - **Open decisions blocking work:** (1) voice — marketing headlines vs de-grandify; (2) beta paid? (gates Account Settings G-16); (3) aesthetic D-01 — warm paper vs dark cockpit.
 
@@ -290,7 +290,7 @@ Active facts only. Completed execution history → [[PAI/archive|PAI Archive]].
 - Corrected stale/wrong memory: the local clone is **not** on a clean `main`. It is on branch `codex/arbor-v2-architecture-foundation` @ `42997e3`, 6 commits ahead of `origin/main`, dirty. The v2 architecture + Firebase auth + terraform/Cloud Run scaffold are here but **untracked/uncommitted and unmerged** — at risk of loss until committed. (Matches the 2026-05-28 handover note about switching to this branch.)
 - `main` last verified canonical is still `04cc2c7` (10 routine plans). Earlier this session I wrote `05c2156`/"PR #7 merged" — that was unverified and wrong; removed.
 - Verified the running app (`arbor-dev`, port 3000) is the React source under `app/src/`; the root-level `App.tsx`/`components/` paths assumed earlier do not exist — real source is `app/src/` (App.tsx, AuthContext.tsx, LoginPage.tsx, ai/, memory/, safety/, knowledge/, contracts/, server/, routes/).
-- Built a standalone single-file demo `PAI/projects/parenting-os-plugin/html/arbor-app.html` (auth, multi-child profiles, conservative triage engine, guidance, timeline, 7-day tracking, dark mode, export) — a design/UX reference artifact, **not** the shipping app. Flagged Arbor surface sprawl (multiple HTML prototypes + the React app).
+- Built a standalone single-file demo `PAI/projects/arbor/html/arbor-app.html` (auth, multi-child profiles, conservative triage engine, guidance, timeline, 7-day tracking, dark mode, export) — a design/UX reference artifact, **not** the shipping app. Flagged Arbor surface sprawl (multiple HTML prototypes + the React app).
 - Efficiency: moved the 2026-05-15→05-28 execution log to `PAI/archive.md` to keep this file in the hot path.
 
 ## Updates [2026-05-30] — filesystem reorg (partial)
@@ -306,4 +306,4 @@ Goal: consolidate the 3 local Arbor clones into one at `PAI/arbor/`, rename GitH
 - **Still pending:** (1) move inner clone → `PAI/arbor/` + delete duplicate outer `PPPPtherapy-/` (after sessions close); (2) GitHub rename `PPPPtherapy-` → `Arbor` (`gh` not installed — do via GitHub web UI, then `git remote set-url`); (3) update `.claude/launch.json` prefix to `PAI/arbor/app`; (4) Arbor rebrand sweep + wire `brand/arbor-logo.png`.
 
 ## Product Council cycle [2026-06-21] — full council intake → PRODUCT-BACKLOG
-4 streams fused (philosophy 10 / clinical 8 / demand 12 / cil top findings). Deduped 5 root-cause clusters, scored priority=(reach×impact×confidence×strategic_fit)÷effort (aligned=1.0, tension=0.6), wrote `## Council Intake — 2026-06-21 (full council)` to `PAI/projects/parenting-os-plugin/PRODUCT-BACKLOG.md` (top 12 + parked tail; append-only, canonical body untouched). **Top build-ready SAFE for the orchestrator:** CI-13 (wire screenModelOutput into /analyze-behavior + inline co-reg — verified label-leak hole), CI-06 schema half (PlayActivity citations), CI-12 (cosmetics no-dark-pattern failing test = PHI-04), CI-07 (self-retiring Competence Ladder). **Gated → Guy:** CI-04 red-flag layer (board HELD — fix 16m→18m threshold, build loss-of-skills detector, dep corrected-age), CI-02/03 AAP corrected-age sign-off, CI-01 weekly-brief channel, CI-09 FCM JITAI consent, CI-10/11 referral reward+billing, DEM-005 booking HELD, DEM-010 fake-slot scarcity. Clinical gate binding (CI-03/04/CLI-04 HELD on claims).
+4 streams fused (philosophy 10 / clinical 8 / demand 12 / cil top findings). Deduped 5 root-cause clusters, scored priority=(reach×impact×confidence×strategic_fit)÷effort (aligned=1.0, tension=0.6), wrote `## Council Intake — 2026-06-21 (full council)` to `PAI/projects/arbor/PRODUCT-BACKLOG.md` (top 12 + parked tail; append-only, canonical body untouched). **Top build-ready SAFE for the orchestrator:** CI-13 (wire screenModelOutput into /analyze-behavior + inline co-reg — verified label-leak hole), CI-06 schema half (PlayActivity citations), CI-12 (cosmetics no-dark-pattern failing test = PHI-04), CI-07 (self-retiring Competence Ladder). **Gated → Guy:** CI-04 red-flag layer (board HELD — fix 16m→18m threshold, build loss-of-skills detector, dep corrected-age), CI-02/03 AAP corrected-age sign-off, CI-01 weekly-brief channel, CI-09 FCM JITAI consent, CI-10/11 referral reward+billing, DEM-005 booking HELD, DEM-010 fake-slot scarcity. Clinical gate binding (CI-03/04/CLI-04 HELD on claims).

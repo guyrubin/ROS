@@ -84,7 +84,7 @@ for (const d of state.domains || []) {
 }
 
 // Arbor (PAI) pulse from the mesh memory, if present
-const mesh = read('PAI/projects/parenting-os-plugin/mesh/MEMORY.md');
+const mesh = read('PAI/projects/arbor/mesh/MEMORY.md');
 if (mesh) {
   const firstUpdate = mesh.match(/##\s+Update[^\n]*\n([\s\S]*?)(?=\n##\s)/);
   if (firstUpdate) state.arborPulse = firstUpdate[0].split('\n').slice(0, 2).join(' ').slice(0, 240);

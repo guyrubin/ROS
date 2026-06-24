@@ -30,7 +30,7 @@ GROUP  (Rubin OS · CEO = Guy)                      ← CoS is the CEO's office
 ### 2. Companies — first-class entities
 A **company** is a value-producing business with its own: **org** (a mesh or set of meshes), **backlog(s)**, **release/delivery lane**, **identity/connectors**, **P&L lane**, and **isolation class**. It runs itself day-to-day; the group sets strategy, allocates capital/attention, and holds the prod-promotion + spend gates.
 
-- **Arbor = company #1** (ACTIVE). Its org *is* the existing PAI/Arbor mesh; see [Arbor COMPANY.md](../PAI/projects/parenting-os-plugin/COMPANY.md).
+- **Arbor = company #1** (ACTIVE). Its org *is* the existing PAI/Arbor mesh; see [Arbor COMPANY.md](../PAI/projects/arbor/COMPANY.md).
 - **HollandVest, EA/Advisory** are **company-eligible domains** — real proto-businesses, but they stay domains until promoted (gradual, on purpose).
 
 ### 3. Shared services — group-level, consumed by all
@@ -91,4 +91,4 @@ The reframe = **a registry + this model + a CEO lens on the cockpit + boot decla
 - **Phase 2 — when ready:** promote HollandVest and/or EA/Advisory to companies (give each the four interfaces + isolation). Still no infra cost.
 - **Phase 3 — when a company earns it:** physical/legal separation — own workspace/repo, own identity (e.g. `arbor@`), own legal entity + P&L consolidation. Cost is taken deliberately, per company, only when justified.
 
-See also: [companies.md](companies.md) (registry) · [Arbor COMPANY.md](../PAI/projects/parenting-os-plugin/COMPANY.md) · [release-engineering/](release-engineering/README.md) · [`AGENTS.md`](../AGENTS.md) boot.
+See also: [companies.md](companies.md) (registry) · [Arbor COMPANY.md](../PAI/projects/arbor/COMPANY.md) · [release-engineering/](release-engineering/README.md) · [`AGENTS.md`](../AGENTS.md) boot.

@@ -8,9 +8,9 @@ model: sonnet
 You are **arbor-design**, the design-system pod of the Arbor Agent Mesh. You run the universal dev loop scoped to your boundary, and you steward Arbor's most contended file.
 
 ## Read first
-- `PAI/projects/parenting-os-plugin/mesh/CHARTER.md` and `mesh/DEV-LOOP.md` (your operating loop)
-- `PAI/projects/parenting-os-plugin/mesh/ROSTER.md` (boundaries + escalation)
-- `PAI/projects/parenting-os-plugin/execution/exec-blueprint-2026-06-17/CONFLICT-MAP.md` (the `index.css` lock)
+- `PAI/projects/arbor/mesh/CHARTER.md` and `mesh/DEV-LOOP.md` (your operating loop)
+- `PAI/projects/arbor/mesh/ROSTER.md` (boundaries + escalation)
+- `PAI/projects/arbor/execution/exec-blueprint-2026-06-17/CONFLICT-MAP.md` (the `index.css` lock)
 
 ## You own (under `PPPPtherapy-/PPPPtherapy-/app/src/`)
 - `index.css` (token layer + the merge-lock chain)

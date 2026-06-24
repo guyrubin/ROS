@@ -1,7 +1,7 @@
 # ROS Universal Loop
 
 **Version:** 1.0
-The single loop every ROS agent runs on every assignment. It generalizes the [Arbor Dev-Loop](../../PAI/projects/parenting-os-plugin/mesh/DEV-LOOP.md): Arbor's `BUILD/VERIFY/SHIP` is the **software** specialization; this is the **knowledge-work** form. Same seven stages; the gate differs by domain.
+The single loop every ROS agent runs on every assignment. It generalizes the [Arbor Dev-Loop](../../PAI/projects/arbor/mesh/DEV-LOOP.md): Arbor's `BUILD/VERIFY/SHIP` is the **software** specialization; this is the **knowledge-work** form. Same seven stages; the gate differs by domain.
 
 ```
   SENSE → FRAME → DESIGN → PRODUCE → VERIFY → DELIVER → LEARN

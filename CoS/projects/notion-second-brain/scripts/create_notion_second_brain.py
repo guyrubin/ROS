@@ -182,7 +182,7 @@ SEED_PAGES = {
         {"Name": "Coca-Cola employment contract", "Status": "Active", "Domain": ["EA", "KK"], "Health": "Amber", "Current Milestone": "Receive/review employment contract", "ROS Path": "EA/clients/Coca-Cola/CONTEXT.md"},
         {"Name": "ABN freelance onboarding", "Status": "Active", "Domain": ["EA", "KK"], "Health": "Green", "Current Milestone": "Complete onboarding steps/access/admin", "ROS Path": "EA/clients/ABN/CONTEXT.md"},
         {"Name": "HV deal sourcing — Den Haag / Rotterdam", "Status": "Active", "Domain": ["HV"], "Health": "Green", "Current Milestone": "Pipeline sourcing", "ROS Path": "HV/MEMORY.md"},
-        {"Name": "Parenting app / Parenting OS plugin", "Status": "Active", "Domain": ["PAI"], "Health": "Green", "Current Milestone": "Product development", "ROS Path": "PAI/projects/parenting-os-plugin/"},
+        {"Name": "Parenting app / Parenting OS plugin", "Status": "Active", "Domain": ["PAI"], "Health": "Green", "Current Milestone": "Product development", "ROS Path": "PAI/projects/arbor/"},
     ],
     "Assets / Workplaces": [
         {"Name": "Coca-Cola", "Type": "Workplace", "Domain": ["EA"], "Status": "Contracting", "ROS Path": "EA/clients/Coca-Cola/CONTEXT.md"},

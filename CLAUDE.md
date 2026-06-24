@@ -80,6 +80,7 @@ ROS uses an LLM-maintained wiki approach:
 | Agent Filesystem Contract | `/00_System/agent-filesystem-contract.md` |
 | Memory/Archive Policy | `/00_System/memory-archive-policy.md` |
 | Hygiene Runbook | `/00_System/ros-hygiene-runbook.md` |
+| Repo Boundaries (ROS vs nested Arbor) | `/00_System/repo-boundaries.md` |
 | Session Audit | `/00_System/session-audit.md` |
 | Instruction Standards | `/00_System/markdown-instruction-principles.md` |
 | Layer Model | `/00_System/layer-model.md` |
@@ -87,7 +88,7 @@ ROS uses an LLM-maintained wiki approach:
 | Release Engineering (Delivery) | `/00_System/release-engineering/` |
 | ROS OS + Dashboard | `/CoS/ROS-OS.md` · `/CoS/projects/ros-os-dashboard/` (:4700) |
 | Standard & method skills | `/.claude/skills/{de-slop,grill-me,vertical-slice}/` |
-| Self-improvement loops | Arbor `/PAI/projects/parenting-os-plugin/mesh/improvement/`, ROS `/00_System/agent-framework/ROS-CIL.md` |
+| Self-improvement loops | Arbor `/PAI/projects/arbor/mesh/improvement/`, ROS `/00_System/agent-framework/ROS-CIL.md` |
 
 ## Token Optimization Rules
 

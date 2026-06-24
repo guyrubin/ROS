@@ -10,7 +10,7 @@ export const meta = {
 
 const CTX = `
 ARBOR — context (you are a fresh agent; read fully). Arbor is a parent-mediated, evidence-grounded developmental OS for raising a kid (0-12). NOT a kid-facing companion. Prod: https://arborprd-westeu.web.app. Markets: Israel (Hebrew/RTL flagship, live) + Netherlands. The moat = an append-only, parent-owned longitudinal child-memory record that every feature reads/writes.
-APP + SPECS (read-only): code at C:\\Users\\dguyr\\ROS\\.arbor-build\\app ; product docs/PRDs/backlogs at C:\\Users\\dguyr\\ROS\\PAI\\projects\\parenting-os-plugin (many arbor-*.md, PRDs/, mesh/, EXECUTION-BACKLOG.md, PRODUCT.md, html prototypes).
+APP + SPECS (read-only): code at C:\\Users\\dguyr\\ROS\\.arbor-build\\app ; product docs/PRDs/backlogs at C:\\Users\\dguyr\\ROS\\PAI\\projects\\arbor (many arbor-*.md, PRDs/, mesh/, EXECUTION-BACKLOG.md, PRODUCT.md, html prototypes).
 
 THE FOUNDER'S BRIEF (read literally — two prior plans were rejected; here is the corrected intent):
 - "It needs to be viral for the PARENTS, and viral for the KIDS." Build TWO DISTINCT VIRAL DESIGN LANGUAGES with DIFFERENT look and feel — one for parent surfaces, one for kid surfaces. Both must be premium and independently shareable/viral. Do NOT collapse them into "one richness, tone-only difference" — that was an explicitly rejected mistake. They are two genuinely different aesthetics, both excellent.
