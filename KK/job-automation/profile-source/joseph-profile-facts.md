@@ -1,28 +1,19 @@
 # Joseph Rubin — Profile Facts (Job Automation)
 
-**Status:** 🔴 BLOCKED — no verified source yet.
-**Last checked:** 2026-06-21
+**Status:** ✅ RESOLVED — "Joseph" is Guy. **Last checked:** 2026-06-24.
 
-## What is known (non-CV, safe to use)
-- Name: Joseph Rubin
-- Role descriptor: EA consultant / CTO consultant (EA lead/support when explicitly involved)
-- Email: `josephdoronrubin@gmail.com` (Joseph's own account — used when Joseph is sender/primary)
+## Identity (confirmed by Guy 2026-06-24)
+**Joseph Doron Rubin = Guy's legal name.** Full legal name **Guy Yossi Rubin Doron** (Yossi = Joseph); he goes by **Guy**. `josephdoronrubin@gmail.com` is **his own** account. The ROS "Joseph" principal (`/00_System/principals.md`) is the **same legal human** — a persona/account split for EA-context sending, **not** a different person.
 
-## What is BLOCKED (do NOT invent)
-No verified CV / LinkedIn-aligned fact source exists for Joseph. Per Career mesh rules:
-> "Do not use Guy facts for Joseph. Joseph remains a separate stream and current Joseph facts are blocked until current Joseph source files are available."
+## Consequence (supersedes the old "blocked / do not use Guy facts" rule)
+- For sourcing, CVs, applications, contracts, IDs, and permits, **use Guy's verified facts** — they are Joseph's. Canonical source: [`drive-cv-profile-facts.md`](drive-cv-profile-facts.md) (Drive folder `1LERQza-…`).
+- A role/offer addressed to "Joseph Rubin" is Guy's; reply from `josephdoronrubin@gmail.com` via the himalaya `joseph` account (`/00_System/himalaya-mail-runbook.md`).
+- The old block ("Joseph is a separate stream, do not reuse Guy's CV, facts blocked") was **incorrect** and is retired.
 
-Therefore the engine must **not**, for Joseph: fabricate experience, titles, certs, comp history, or summaries; reuse Guy's CV; fit-score roles against an assumed profile; or draft applications grounded in invented facts.
+## Verified personal facts (from BE WSE refusal letter + eID, 2026-06-24)
+- DOB **05/01/1983**, Israel (Rehovot) · Nationality **Israeli** (non-EU → BE work needs the professional card, see [[relocation-be-card-refusal-appeal]]).
+- BE address: **Timmerwerfstraat 1 bus 101, 2000 Antwerpen**. Mobile **+32 469 22 80 40**.
+- BE entity: **Cloud AI Consulting VOF** (no CBE/VAT yet — gated on professional card #683002).
 
-## To unblock (minimum needed from Guy/Joseph)
-1. **Verified fact source** — Joseph's current CV/LinkedIn in a dedicated Drive folder (mirror Guy's `1LERQza-mQ2g8Hoyl1Dbi4ZzcloZIvY_m`). Record the folder ID here once created.
-2. **Target buy-box** — Joseph's track is likely *CTO/EA advisory* not Guy's architect track, so confirm:
-   - Role type (fractional/interim CTO, EA/advisory, permanent exec?)
-   - Geography (NL / BE / remote-EU / other)
-   - Permanent vs contract vs fractional
-   - Comp floor + permit/work-authorization status
-3. Once 1–2 are in, generate `buy-box.md` §1 "Joseph target profile" and run his sourcing sprint.
-
-## Until unblocked
-- The dual-stream engine sources, scores, and tracks **Guy** fully (live).
-- Joseph rows in `pipeline.md` stay **PENDING SOURCE** — the sprint flags relevant CTO/EA roles by keyword but does not score or draft until the source lands.
+## Persona caveat (keep)
+The EA confidentiality model may still present "Joseph" as a distinct sending identity for client work — that persona separation is fine. What's retired is treating him as a *different legal person* with *blocked facts*.

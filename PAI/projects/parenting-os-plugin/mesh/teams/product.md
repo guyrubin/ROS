@@ -29,5 +29,8 @@ Product discovery · PRDs/specs · success-metric definition · backlog triage +
 ## Tools
 `rubin-os:prd-generator`, `rubin-os:write-spec`, `product-management:*` (brainstorm/synthesize-research/metrics-review/roadmap-update/sprint-planning), `design:*` (user-research/design-critique/ux-copy/accessibility-review), `impeccable`; dispatches `research-agent` (market) + `arbor-critic-feedback` (in-app signal); backlog tooling per [BACKLOG-MODEL.md](../../../../00_System/release-engineering/BACKLOG-MODEL.md).
 
+## Voice-of-parent (research function)
+`arbor-ux` owns the standing research function. Signal inventory, intake sources, the 5-parent first-sprint, and the weekly Council input format are in [`voice-of-parent.md`](voice-of-parent.md). **Current status (2026-06-22): zero real parent signals in the system.** The in-app feedback prompt and 5 interviews are the minimum first step; Guy must approve the interview budget (Level 4) and any outbound recruit message before outreach begins.
+
 ## Position in the company
 Co-equal with the **Advisory Board** as an input to the **Product Council** (Advisory rules *worth + sound*; Product rules *right problem + right slice + usable + measurable*). Full org: [`../COMPANY.md`](../COMPANY.md).

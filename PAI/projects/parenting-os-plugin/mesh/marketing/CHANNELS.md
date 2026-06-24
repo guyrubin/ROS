@@ -11,6 +11,12 @@
 - **Deep-link / referral:** the loop payload resolves at `https://arborparentingapp.com/join?ref=<code>` (needs P0-2 resolver — still gated).
 - **DNS/hosting wiring** (Firebase custom domain) + **prod deploy** remain Guy-gated (Level 3/4) — the domain is owned; pointing it live is the next manual step.
 
+## Live marketing site (deployed 2026-06-22)
+- **https://arbor-marketing-il.web.app** — the new landing pages are **LIVE** here (HE flagship at `/`, EN at `/en`, HE AEO hub at `/he/is-this-normal`). A **dedicated standalone Firebase Hosting site** (`arbor-marketing-il`, project `arborprd-westeu`), **fully isolated from the product app** — no app build, no `main`, no concurrent product WIP. Source + config: `PAI/projects/parenting-os-plugin/marketing/site/` (`firebase.json` with `"site":"arbor-marketing-il"`).
+- **Redeploy (safe, repeatable):** `cd PAI/projects/parenting-os-plugin/marketing/site && firebase deploy --only hosting --project arborprd-westeu`. This is the correct pattern for **static landing pages** — distinct from the APP hosting (the app ships only via `main`/arbor-deploy.yml; never hand-deploy the app site).
+- **To serve these at arborparentingapp.com:** Firebase Console → Hosting → site `arbor-marketing-il` → Add custom domain `arborparentingapp.com` (moves the brand domain off the app site onto the marketing site). Console step — Guy-gated.
+- **Still pending:** the 3 OG share-card PNGs (`/brand/og-{he,en}-1200x630.png` + AEO hub card) for WhatsApp/social previews; native-HE human review before paid promotion.
+
 ## Owned channels
 | Channel | Handle / URL | Status | Notes |
 | :-- | :-- | :-- | :-- |

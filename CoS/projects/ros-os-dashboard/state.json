@@ -1,8 +1,35 @@
 {
   "meta": {
-    "updated": "2026-06-21",
-    "by": "seed (extend build-state.mjs to auto-feed)",
-    "arborGeneratedAt": "2026-06-22"
+    "updated": "2026-06-22",
+    "by": "gen-state.mjs (filesystem-derived)",
+    "arborGeneratedAt": "2026-06-22",
+    "sections": {
+      "companies": {
+        "file": "00_System/companies.md",
+        "updatedAt": "2026-06-22",
+        "staleAfter": 2
+      },
+      "backlog": {
+        "file": "PAI/.../mesh/PRODUCT-BACKLOG.md",
+        "updatedAt": "2026-06-22",
+        "staleAfter": 2
+      },
+      "loops": {
+        "file": "00_System/agent-framework/SCHEDULED-LOOPS.md",
+        "updatedAt": "2026-06-21",
+        "staleAfter": 7
+      },
+      "connectors": {
+        "file": "00_System/connectors.md",
+        "updatedAt": "2026-06-21",
+        "staleAfter": 7
+      },
+      "releases": {
+        "file": "00_System/release-engineering/RELEASE-LEDGER.md",
+        "updatedAt": "2026-06-22",
+        "staleAfter": 7
+      }
+    }
   },
   "runtimes": [
     {
@@ -125,67 +152,184 @@
   ],
   "loops": [
     {
-      "name": "KK Gmail triage (morning routing)",
+      "id": "333eaf638d76",
       "owner": "KK",
-      "cad": "weekdays 08:30/13:30/18:30",
-      "status": "live",
-      "id": "333eaf638d76"
+      "cad": "30 8,13,18 * * 1-5 (08:30/13:30/18:30 wkdays)",
+      "does": "Actionable Gmail triage across bguy / hollandvest / joseph; 08:30 run = canonical morning routing",
+      "posture": "Read-only",
+      "last": "✅ enabled (verified)",
+      "status": "live"
     },
     {
-      "name": "Career job sourcing sprint",
+      "id": "4fc75fbfad30",
       "owner": "Career",
-      "cad": "Mon/Thu 09:00",
-      "status": "live",
-      "id": "4fc75fbfad30"
+      "cad": "0 9 * * 1,4 (Mon/Thu 09:00)",
+      "does": "LinkedIn + Google Jobs sourcing sprint for Guy + Joseph (skills: job-application-automation, google-workspace, himalaya)",
+      "posture": "Read-only",
+      "last": "✅ enabled (verified)",
+      "status": "live"
     },
     {
-      "name": "Arbor CIL — eval",
-      "owner": "PAI",
-      "cad": "twice daily 03:00/15:00",
-      "status": "confirmed",
-      "id": "cloud"
-    },
-    {
-      "name": "Arbor CIL — build wave",
-      "owner": "PAI",
-      "cad": "Mon/Thu 04:00",
-      "status": "confirmed",
-      "id": "cloud"
-    },
-    {
-      "name": "ROS-CIL — company self-audit",
-      "owner": "CoS",
-      "cad": "weekly light / monthly deep",
-      "status": "proposed",
-      "id": "/ros-improve"
-    },
-    {
-      "name": "Command Center refresh",
-      "owner": "CoS",
-      "cad": "daily AM",
-      "status": "proposed",
-      "id": "build-state + radar"
-    },
-    {
-      "name": "HV deal radar",
+      "id": "hv-weekly-digest",
       "owner": "HV",
-      "cad": "daily (revive)",
-      "status": "proposed",
-      "id": "stalled 06-05"
+      "cad": "0 8 * * 1 (Mon 08:00)",
+      "does": "Compile best assets + project-management RAG from ROS HV files → Google Drive doc + Gmail draft to Guy",
+      "posture": "Draft-only (no send)",
+      "last": "✅ active 2026-06-21 — scheduled-tasks MCP (runs while app open), not Hermes",
+      "status": "live"
     },
     {
-      "name": "KK daily brief → Notion",
-      "owner": "KK",
-      "cad": "daily AM",
-      "status": "proposed",
-      "id": "live-tested 06-21"
+      "id": "arbor-cil-eval",
+      "owner": "PAI/Arbor",
+      "cad": "0 3,15 * * *",
+      "does": "CIL cheap regression panel → refresh IMPROVEMENT-BACKLOG.md",
+      "posture": "Write-backlog",
+      "last": "✅ verified live (last run 2026-06-21 13:03) — scheduled-tasks MCP",
+      "status": "live"
     },
     {
-      "name": "AI-trends watch → optimize",
+      "id": "arbor-cil-build",
+      "owner": "PAI/Arbor",
+      "cad": "0 4 * * 1,4",
+      "does": "CIL deep eval + build top safe fixes to green branch claude/cil-week",
+      "posture": "Build-to-branch",
+      "last": "✅ verified live; never merges/deploys",
+      "status": "live"
+    },
+    {
+      "id": "arbor-clinical-loop",
+      "owner": "PAI/Arbor",
+      "cad": "0 6 * * 6 (Sat)",
+      "does": "Clinical Excellence loop (L2) — Clinical Board benchmarks Arbor vs CDC/AAP/ASHA + competitors → clinical requirements + ",
+      "posture": "Write-backlog",
+      "last": "✅ live 2026-06-22; propose-only; firewall enforced",
+      "status": "live"
+    },
+    {
+      "id": "arbor-product-council",
+      "owner": "PAI/Arbor",
+      "cad": "0 6 * * 0 (Sun)",
+      "does": "Product Council intake — fuse Advisory + Clinical + Marketing + CIL → scored PRODUCT-BACKLOG.md candidate block (ahead o",
+      "posture": "Write-backlog",
+      "last": "✅ live 2026-06-21; no build/merge/deploy; clinical + gated items surfaced for Gu",
+      "status": "live"
+    },
+    {
+      "id": "arbor-marketing-loop",
+      "owner": "PAI/Arbor Mktg",
+      "cad": "0 5 * * 2,5 (Tue+Fri)",
+      "does": "Marketing loop — build safe materials to the brand spine, ECD+safety gate, publish to owned organic surfaces",
+      "posture": "Publish-organic",
+      "last": "✅ live 2026-06-21 — was doc-claimed-active but NOT actually registered until now",
+      "status": "live"
+    },
+    {
+      "id": "ros-daily-plan",
       "owner": "CoS",
-      "cad": "weekly",
-      "status": "proposed",
-      "id": "/ai-trends-watch"
+      "cad": "0 7 * * 1-5 (wkday 07:00)",
+      "does": "Daily epic-plan — reconcile prod + git + ledger + the 3 backlogs → write CoS/daily/PLAN-<date>.md with the day's propose",
+      "posture": "Plan + surface only (no execute)",
+      "last": "✅ live 2026-06-22 — scheduled-tasks MCP; the morning step of the [Daily Executio",
+      "status": "live"
+    },
+    {
+      "id": "hv-deal-radar-revive",
+      "owner": "HV",
+      "cad": "Daily/Weekly",
+      "does": "Scan Pararius/Immoweb + broker snippets (Funda is bot-walled) for the active buy-box; rank top N new candidates; write t",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "hv-project-control",
+      "owner": "HV",
+      "cad": "Fridays",
+      "does": "For each live project (≥G3): /hv-project-control → refresh cost/programme/risk, update Notion Tasks, draft exceptions",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "cos-weekly-review-prep",
+      "owner": "CoS",
+      "cad": "Fridays",
+      "does": "Pre-assemble the cross-domain weekly review (status pulled from each domain MEMORY.md + Notion) so the live review is a ",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "command-center-morning-refresh",
+      "owner": "CoS",
+      "cad": "Weekday mornings",
+      "does": "node CoS/projects/guy-command-center/build-state.mjs + the Notion radar refresh script — refresh both cockpits from live",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "ros-cil-weekly-light",
+      "owner": "CoS",
+      "cad": "Weekly",
+      "does": "/ros-improve mode:\"light\" — freshness + management + reality audit → ROS-BACKLOG + State of the Company; safe fixes only",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "ros-cil-monthly-deep",
+      "owner": "CoS",
+      "cad": "Monthly",
+      "does": "/ros-improve mode:\"deep\" — full lens panel (domains/standard/tooling) + safe fix wave; gated items surfaced",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "ai-trends-watch",
+      "owner": "CoS",
+      "cad": "Weekly",
+      "does": "research-agent scans AI / agent / LLM trends + new tools, skills, methods → proposes ROS optimizations to ROS-BACKLOG.md",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "mkt-content-cadence",
+      "owner": "MKT",
+      "cad": "Weekly",
+      "does": "Draft the week's post slate from the content calendar (draft-only)",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "fin-deadline-watch",
+      "owner": "FIN",
+      "cad": "Weekly",
+      "does": "Flag upcoming invoice due-dates, insurance renewals, tax/filing deadlines",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "arbor-health-digest",
+      "owner": "PAI",
+      "cad": "Daily",
+      "does": "Pull prod error/latency/cost + AI usage into one digest (read-only)",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
+    },
+    {
+      "id": "release-train-cadence",
+      "owner": "CoS Delivery",
+      "cad": "weekly (Arbor Product) · 2×/wk (Marketing) · on-demand (ROS)",
+      "does": "Run /ros-release: build→full green-gate→canary→smoke, STOP at prod-promote for Guy",
+      "posture": "read-report",
+      "last": "not live — awaiting Guy",
+      "status": "proposed"
     }
   ],
   "notion": {
@@ -267,7 +411,7 @@
     "status": "live",
     "role": "Group company #1 — parenting intelligence, ages 0–12",
     "owners": "PAI (product) · CoS (portfolio)",
-    "agentCount": 40,
+    "agentCount": 41,
     "departments": [
       {
         "k": "Governance",
@@ -278,7 +422,7 @@
       {
         "k": "Advisory & Clinical",
         "tier": "T1",
-        "role": "Worth-building rubric + clinical soundness/claims — holds VETO",
+        "role": "Worth-building rubric + clinical soundness/claims — holds veto",
         "lead": "arbor-clinical-lead"
       },
       {
@@ -290,13 +434,13 @@
       {
         "k": "Product Council",
         "tier": "intake",
-        "role": "Fuses 5 streams → one scored PRODUCT-BACKLOG",
+        "role": "Fuses 5 streams into one scored PRODUCT-BACKLOG",
         "lead": "/arbor-product-council"
       },
       {
         "k": "Orchestrator",
         "tier": "conductor",
-        "role": "Backlog → conflict-free build waves",
+        "role": "Backlog into conflict-free build waves",
         "lead": "arbor-orchestrator"
       },
       {
@@ -326,7 +470,7 @@
       {
         "k": "CIL",
         "tier": "loop",
-        "role": "Critic panel → scored IMPROVEMENT-BACKLOG",
+        "role": "Critic panel into scored IMPROVEMENT-BACKLOG",
         "lead": "arbor-evaluator"
       },
       {
@@ -345,17 +489,17 @@
       {
         "stage": "PM",
         "who": "arbor-pm",
-        "note": "triage → scored AP- tickets"
+        "note": "triage into scored AP- tickets"
       },
       {
         "stage": "Council",
         "who": "/arbor-product-council",
-        "note": "fuse + clinical GATE"
+        "note": "fuse + clinical gate"
       },
       {
         "stage": "Orchestrator",
         "who": "arbor-orchestrator",
-        "note": "backlog → conflict-free waves"
+        "note": "backlog into conflict-free waves"
       },
       {
         "stage": "DevSecOps",
@@ -365,7 +509,7 @@
       {
         "stage": "Release train",
         "who": "ros-release-lead",
-        "note": "canary → STOP at prod-promote"
+        "note": "canary, then stop at prod-promote"
       }
     ],
     "loops": [
@@ -375,6 +519,7 @@
         "cad": "0 3,15 * * *",
         "does": "CIL cheap regression panel → refresh IMPROVEMENT-BACKLOG.md",
         "posture": "Write-backlog",
+        "last": "✅ verified live (last run 2026-06-21 13:03) — scheduled-tasks MCP",
         "status": "live"
       },
       {
@@ -383,31 +528,44 @@
         "cad": "0 4 * * 1,4",
         "does": "CIL deep eval + build top safe fixes to green branch claude/cil-week",
         "posture": "Build-to-branch",
+        "last": "✅ verified live; never merges/deploys",
         "status": "live"
       },
       {
         "id": "arbor-clinical-loop",
         "owner": "PAI/Arbor",
         "cad": "0 6 * * 6 (Sat)",
-        "does": "Clinical Excellence loop (L2) — Clinical Board benchmarks Arbor vs CDC/AAP/ASHA + competitors → clin",
+        "does": "Clinical Excellence loop (L2) — Clinical Board benchmarks Arbor vs CDC/AAP/ASHA + competitors → clinical requirements + ",
         "posture": "Write-backlog",
+        "last": "✅ live 2026-06-22; propose-only; firewall enforced",
         "status": "live"
       },
       {
         "id": "arbor-product-council",
         "owner": "PAI/Arbor",
         "cad": "0 6 * * 0 (Sun)",
-        "does": "Product Council intake — fuse Advisory + Clinical + Marketing + CIL → scored PRODUCT-BACKLOG.md cand",
+        "does": "Product Council intake — fuse Advisory + Clinical + Marketing + CIL → scored PRODUCT-BACKLOG.md candidate block (ahead o",
         "posture": "Write-backlog",
+        "last": "✅ live 2026-06-21; no build/merge/deploy; clinical + gated items surfaced for Gu",
         "status": "live"
       },
       {
         "id": "arbor-marketing-loop",
         "owner": "PAI/Arbor Mktg",
         "cad": "0 5 * * 2,5 (Tue+Fri)",
-        "does": "Marketing loop — build safe materials to the brand spine, ECD+safety gate, publish to owned organic ",
+        "does": "Marketing loop — build safe materials to the brand spine, ECD+safety gate, publish to owned organic surfaces",
         "posture": "Publish-organic",
+        "last": "✅ live 2026-06-21 — was doc-claimed-active but NOT actually registered until now",
         "status": "live"
+      },
+      {
+        "id": "arbor-health-digest",
+        "owner": "PAI",
+        "cad": "Daily",
+        "does": "Pull prod error/latency/cost + AI usage into one digest (read-only)",
+        "posture": "read-report",
+        "last": "not live — awaiting Guy",
+        "status": "proposed"
       }
     ],
     "backlog": {
@@ -417,18 +575,51 @@
         "CLI": 8,
         "PHI": 9
       },
-      "promoted": 13,
-      "buildReady": 9,
+      "promoted": 20,
+      "buildReady": 8,
       "buildReadyIds": [
         "AP-001",
         "AP-002",
         "AP-004",
         "AP-005",
-        "AP-006",
         "AP-007",
         "AP-009",
         "AP-010",
         "AP-013"
+      ],
+      "buildReadyTickets": [
+        {
+          "id": "AP-004",
+          "title": "PaywallModal — add per-cadence price display"
+        },
+        {
+          "id": "AP-007",
+          "title": "Trust chip at onboarding hand-over"
+        },
+        {
+          "id": "AP-005",
+          "title": "JITAI nudge hardcoded English — wire i18n"
+        },
+        {
+          "id": "AP-009",
+          "title": "PlayActivity citation schema + render (plumbing only)"
+        },
+        {
+          "id": "AP-010",
+          "title": "Surface existing coach citations to parent (source + link, no grade)"
+        },
+        {
+          "id": "AP-001",
+          "title": "Non-pathologizing framing guard — wire screenModelOutput to /analyze-behavior"
+        },
+        {
+          "id": "AP-002",
+          "title": "Competence Ladder — scaffolding that retires itself"
+        },
+        {
+          "id": "AP-013",
+          "title": "School-age 7–10 surveillance track (substantiated set only)"
+        }
       ],
       "gatedForGuy": 4,
       "gatedForGuyIds": [
@@ -438,16 +629,110 @@
         "AP-012"
       ],
       "heldByClinicalGate": 9,
+      "droppedIds": [
+        "AP-006"
+      ],
       "building": 0,
       "buildingWave": "PM-01-2026-06-22",
       "shipped": 0
     },
-    "branches": [
-      "claude/cil-week",
-      "claude/mk-registration-engine",
-      "claude/ros-shape-up",
-      "ros-cil/2026-06-21-editor-pass"
-    ],
     "firewall": "Back-end inspiration only — never branded/clinician-claimed. Clinical soundness + any developmental/medical/effect-size claim is a binding veto."
-  }
+  },
+  "releaseLedger": {
+    "trains": [
+      {
+        "id": "REL-ARBOR-001",
+        "product": "Arbor Product",
+        "stage": "✅ SHIPPED — prod 100% 2026-06-22",
+        "shipped": true,
+        "items": "OPS net (B3/A3/A2 canary pipeline) + council items (CI-07/12/13 live · CI-05/08 dark · CI-06 already on main)",
+        "branch": "merged to main 4c9f7ed · live revision arbor-api-00104-giw",
+        "nextGate": "— (shipped; CLM-004/005 claim-flips await Clinical+Safety)"
+      }
+    ],
+    "lane": "FREE — REL-ARBOR-001 merged + promoted to prod 2026-06-22"
+  },
+  "companyRegistry": [
+    {
+      "entity": "Arbor",
+      "kind": "company",
+      "owner": "Guy (CEO) · GM = arbor-orchestrator",
+      "backlog": "Arbor Product AP- · Arbor Marketing AM-",
+      "releaseLane": "REL-ARBOR-*",
+      "isolation": "company-scoped + child-data/clinical firewall",
+      "status": "ACTIVE — company #1"
+    },
+    {
+      "entity": "HollandVest",
+      "kind": "company-eligible domain",
+      "owner": "Guy",
+      "backlog": "ROS-BACKLOG Theme D + HV files",
+      "releaseLane": "REL-HV-* (when promoted)",
+      "isolation": "domain-scoped",
+      "status": "domain — promote in Phase 2"
+    },
+    {
+      "entity": "EA / Advisory",
+      "kind": "company-eligible domain",
+      "owner": "Guy + Joseph",
+      "backlog": "per-client",
+      "releaseLane": "REL-EA-* (when promoted)",
+      "isolation": "per-client confidential",
+      "status": "domain — promote in Phase 2"
+    },
+    {
+      "entity": "CoS",
+      "kind": "group HQ (CEO office)",
+      "owner": "Guy",
+      "backlog": "ROS ROS-",
+      "releaseLane": "REL-ROS-*",
+      "isolation": "sees across all companies",
+      "status": "group"
+    },
+    {
+      "entity": "Delivery / Release",
+      "kind": "group service",
+      "owner": "CoS",
+      "backlog": "—",
+      "releaseLane": "runs all lanes",
+      "isolation": "cross-company",
+      "status": "group — built 2026-06-22"
+    },
+    {
+      "entity": "Finance / Admin",
+      "kind": "group service",
+      "owner": "shared",
+      "backlog": "—",
+      "releaseLane": "—",
+      "isolation": "consolidates P&L (later)",
+      "status": "group"
+    },
+    {
+      "entity": "Research",
+      "kind": "group service",
+      "owner": "KK-owned",
+      "backlog": "—",
+      "releaseLane": "—",
+      "isolation": "dispatch-scoped",
+      "status": "group"
+    },
+    {
+      "entity": "Marketing (group)",
+      "kind": "group service + per-company",
+      "owner": "Guy",
+      "backlog": "—",
+      "releaseLane": "—",
+      "isolation": "Guy personal-brand + HV brand",
+      "status": "group (Arbor has its own marketing org)"
+    },
+    {
+      "entity": "KK",
+      "kind": "personal",
+      "owner": "Guy (personal)",
+      "backlog": "—",
+      "releaseLane": "—",
+      "isolation": "personal — never a company",
+      "status": "personal"
+    }
+  ]
 }

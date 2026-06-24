@@ -348,3 +348,92 @@ These never auto-execute. Amounts stated; Level 4 gate on all spend.
 | **AM-L4** | **Transcreate flagship COPY per locale** — NL/DE/FR drafts **DONE 2026-06-22** → `marketing/assets/arbor-nl-de-fr-transcreation-2026-06-22.md` (one-liner, 2am hook, convergence, hero, CTA; back-translations; passed the 8-test gate). Per-locale ASSET builds (carousel/landing art) still to come | `arbor-localization` (+ `arbor-content` master, `arbor-creative` per-locale art) | native-voice gate **+ awaiting native-human review per market**; publish L3 |
 
 > **Gated decision for Guy (AM-L2):** name the **five** markets/languages for the rollout (beyond Hebrew). Anchored: English (source) + Dutch (NL). Candidates for the other three: German, French (BE), Arabic (IL) or Spanish. `arbor-localization` locks the matrix once confirmed. **Quality reality:** the agent transcreates to the bar and self-checks, but **a native-human reviewer per market is the final publish gate** — best-in-class native copy in six languages is not a pure-AI guarantee.
+
+---
+
+## 11. Redesign Marketing Harvest (2026-06-23)
+
+**Source:** Claude Design prototype handoff (`PAI/PRDs/arbor-redesign-handoff/_analysis/`). The redesign is a UX/IA/design-system upgrade, not a feature expansion — the marketing job is to harvest the surfaces it surfaces and close the messaging gap. Product tickets AP-043–AP-054 own the build; this section owns the marketing surface of those same surfaces.
+
+**No-regression-on-messaging rule (binding on all items below):** Never market a number lower than what is live. The live app ships: **10 hero journeys** (prototype shows 4), **14 practice worlds** (prototype shows 6), **250+ activities** (prototype shows 3), **133 milestones** (prototype shows 35), **Free / Plus / Family** pricing (prototype omits Family), **50+ cosmetics** (prototype shows 4). No AM-R item may introduce copy that implies a smaller count or omits the Family tier.
+
+**Positioning conflict flag — Blueprint "four competitors / four domains" vs BRAND-STRATEGY "six surfaces" (see §11g below for Guy).**
+
+---
+
+### 11a. Pricing page — conversion surface
+
+| ID | Title | Surface | Linked AP | Channel | Gate |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| **AM-R1** | **Pricing page: dedicated conversion landing** — standalone `/pricing` page (EN + HE/RTL) that makes the Free / Plus ($12/₪39) / **Family** three-tier table explicit, leads with the 14-day no-card trial, and positions the stack-replacement convergence argument (six tools at €60–100/mo vs one Arbor bill). Family tier must be present and named; the prototype omits it. Copy: `arbor-content`; ILS confirm: Guy; HE native: `arbor-localization` + native reviewer gate. | landing / pricing page | AP-048 (paywall/entitlement) | landing + lifecycle | **GATED: ILS price points ($12/₪39 Plus; Family ₪ TBD) need Guy confirm before publishing ₪ anchors. 14-day trial framing is safe once copy is in. No per-item confirm needed for draft.** |
+| **AM-R2** | **Trial CTA upgrade** — replace all current "Get started" CTAs on EN + HE landings with "Try free for 14 days — no card needed" variant (prototype copy verbatim); update OG/schema `offers` block with `freeTrialDuration`; lock this as the canonical free-trial message across every surface. No pricing numbers in the CTA itself (avoids stale-price risk). | landing / OG / schema | AP-048 | landing + SEO | safe — draft autonomous; publish L3 |
+
+---
+
+### 11b. "The Science" page — trust + SEO/AEO surface
+
+| ID | Title | Surface | Linked AP | Channel | Gate |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| **AM-R3** | **"The Science" trust page** — `/en/the-science/` + `/he/המדע/` dedicated pages (FAQPage + Article JSON-LD) anchored on: **133 milestones · 7 domains · 40+ sources · CDC "Learn the Signs" · ASQ-3 · Co-regulation (Siegel & Bryson) · Gottman**; clinical board note (child psych, SLP, developmental peds — internal reviewers, not licensed clinicians). AEO gold: answers the "is this app evidence-based?" AI-search query no HE competitor answers. `arbor-seo` owns schema; `arbor-content` writes copy; `arbor-safety` veto on any effect-size or diagnostic implication; `arbor-clinical-lead` sign-off required before publish. | SEO / AEO / landing | AP-043 (milestone framework) | SEO + AEO + trust | **GATED: any effect-size claim or "screens for" language = `arbor-safety` + `arbor-clinical-lead` veto before publish. Mechanism citations (CDC/ASQ-3/Siegel-Bryson/Gottman) are safe once source-linked and non-diagnostic framing confirmed. Page is safe to DRAFT autonomously.** |
+| **AM-R4** | **"The Science" social proof strip** — lift the trust bar onto the landing hero section: "133 milestones · 7 domains · 40+ sources · CDC-grounded" as a one-row proof strip (replaces the current empty social-proof gap, closes `CIL-market-no-social-proof`). No effect-size claims; mechanism-only. `arbor-brand` ECD gate on placement. | landing | AP-043 | landing | **GATED: `arbor-safety` + `arbor-clinical-lead` clearance required on the "CDC-grounded" string and the source-count framing before publish.** "CDC-grounded" is a provenance/clinical-grounding claim identical in class to the claims that gate AM-R3 and AM-R5. Surfacing source counts as a trust badge on the highest-traffic surface (the hero) without cleared wording is the PHI-01 "credibility-badge without per-claim clearance" failure mode. Labeled mechanism-only but not yet cleared as such. Safe to draft; **do not publish until arbor-safety + arbor-clinical-lead clear the exact strings.** [Re-gated 2026-06-23 per AUDIT-gates M-3.] |
+| **AM-R5** | **AEO answer card: "Is Arbor evidence-based?"** — single FAQPage answer citing ASQ-3, CDC "Learn the Signs," Siegel & Bryson (co-regulation), 40+ source count. Optimised for AI answer engines in EN + HE. Lives in `/the-science/` page schema. No HE competitor owns this query. `arbor-safety` gate on framing. | AEO / SEO | AP-043 | AEO | **GATED: `arbor-safety` + `arbor-clinical-lead` gate on any developmental-outcome claim. Safe to draft.** |
+
+---
+
+### 11c. Hero Stories — viral / share surface
+
+| ID | Title | Surface | Linked AP | Channel | Gate |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| **AM-R6** | **"Your child is the hero" social content series** — 5-part short-form series (IG Reels / TikTok) showing the Story Journey → Hero Comic arc using a **stylized generic hero avatar, never a real child's face or biometric data**. Copy hook per brand: *"Khan Kids teaches any kid. Arbor makes yours the hero — and you get the comic."* Lead with the 10-journey count (live number), not the 4 shown in prototype. `arbor-creative` produces; `arbor-brand` ECD gate; `arbor-safety` on any avatar compositing that involves child context. | social / viral | AP-051 (Hero Avatar fan-out, Wave 4) | social + viral | safe — draft + ECD + safety gate; own-queue publish T2; share mechanic gated on AP-044 (FR-14 share export) |
+| **AM-R7** | **Hero Story landing section** — add/refresh the Academy (kids) surface card on the six-surface landing with live numbers (**10 story journeys · 4 packs**) and the kid-hero viral hook. Current landing likely shows stale or absent count. No prototype numbers. `arbor-content` + `arbor-localization` (HE native). ECD gate. | landing | AP-051 | landing | safe — draft + ECD gate; publish L3 |
+
+---
+
+### 11d. Design system / visual language — brand consistency upgrade
+
+| ID | Title | Surface | Linked AP | Channel | Gate |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| **AM-R8** | **Marketing-surface design-token sweep** — once the product design token layer (AP-043 / Bucket A-7, Wave 1) ships, apply the same token layer (sage-paper background, emerald clay accent, Fraunces/Frank Ruhl Libre type scale, spacing primitives) to ALL marketing HTML files (`arbor-marketing-landing-page-en.html`, `arbor-marketing-landing-page-he.html`, `arbor-il.html`, and any future per-market landings). Eliminates 344-hardcoded-hex drift risk on the marketing surface. Owner: `arbor-content` + `arbor-design`; blocked on AP-043 Wave 1 merge. | landing / brand | AP-043 (design tokens, Wave 1) | landing | safe — draft and plan now; publish waits on AP-043 Wave 1 merge |
+| **AM-R9** | **Accent theme social assets** — produce Green / Teal / Blue variants of the convergence carousel (AM-NEW-1) and the "The Science" trust strip as three-variant test set. Lets the social queue A/B theme preference at zero marginal cost. `arbor-creative`. ECD gate on which theme leads. | social / brand | AP-050 (accent themes, Wave 4) | social | safe — blocked on AM-NEW-1 base asset completing |
+
+---
+
+### 11e. Capability Blueprint positioning — "four competitors" reframe
+
+| ID | Title | Surface | Linked AP | Channel | Gate |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| **AM-R10** | **Capability Blueprint → six-surface counter-narrative refresh** — the Blueprint (`Arbor Capability Blueprint.dc.html`) asserts "Kinedu + Lovevery + Khan Kids + Duolingo = four competitors." `BRAND-STRATEGY.md` §3 names **eight incumbent slots across six surfaces** (Lovevery/Kinedu, Huckleberry, Good Inside/Cleo/Cooper/Maven, Speech Blubs/Lingokids, Khan Kids/Duolingo ABC/Lingokids, and Maven/Cleo/portal for Care). The Blueprint framing is incomplete for marketing purposes. This item: draft updated competitor-kill copy for the convergence section of EN + HE landing to reflect the full six-surface map (supersedes the four-frame). `arbor-content`; ECD gate. Feeds AM-NEW-0 (landing rebuild). | landing / positioning | none (marketing copy, no product ticket) | landing | safe — draft autonomous; ECD gate; publish L3 |
+| **AM-R11** | **"One child OS — no competitor has all five value loops" social post** — short-form post (IG + HE) using the Blueprint's five value loops as a hook: Emotional insight → Guided action → Motivation & habit → Hero avatar everywhere → The growth story. Proof: the loops only work because it's one record. One-post format (story or carousel panel 5). `arbor-content` + `arbor-creative`. ECD gate. | social | none | social | safe — draft + ECD + safety gate; own-queue T2 |
+
+---
+
+### 11f. 5-step onboarding — activation funnel asset
+
+| ID | Title | Surface | Linked AP | Channel | Gate |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| **AM-R12** | **Onboarding pre-framing landing copy** — add a "Ready in 60 seconds" pre-onboarding copy block to the landing CTA section: the 5 steps named in plain language (Welcome → Child setup → Choose your focus → Build the hero → Enter Arbor), with the avatar privacy line ("stylized, on your device, GDPR/COPPA") and the "7-domain clinical framework, tuned to age + focus" credential. Copy primes the install → register conversion. `arbor-content`; `arbor-safety` gate on the clinical framing and avatar-privacy language; ECD gate. | landing / lifecycle | AP-046 (5-step onboarding, Wave 3) | landing + lifecycle | **GATED: `arbor-safety` on avatar-creation step framing (child-data per COPPA/GDPR) + `arbor-clinical-psych` copy pass on Focus-selection language (Step 3 — domain labeling must not imply a screen). Draft is safe.** |
+| **AM-R13** | **Onboarding completion share prompt** — at the "Enter Arbor" step (onboarding step 5), a share-able "Arbor is ready for [child name]" Growth Card stub to prime the referral loop. Stylized avatar + first-name only. No behavioral data in the card at this stage. `arbor-content` + `arbor-creative`; `arbor-safety` gate (child-first-name in card = minimal PII, GDPR-OK if parent-initiated share); ECD gate on card design. | lifecycle / viral | AP-046 + AP-044 (share export) | lifecycle + viral | **GATED: `arbor-safety` on any child-identifier in the share payload. Card design safe to draft.** |
+
+---
+
+### 11g. Positioning conflict flag — for Guy (decision required)
+
+**Flag: Blueprint "four competitors + four domains" vs BRAND-STRATEGY "six surfaces + eight incumbents + seven domains."**
+
+Three discrepancies exist between the Capability Blueprint prototype document and the live marketing spine:
+
+1. **Competitor count:** Blueprint §4 asserts "Kinedu / Lovevery / Khan Kids / Duolingo = four competitors." BRAND-STRATEGY §3 maps **eight named incumbents** across six surfaces (Lovevery, Kinedu, Huckleberry, Good Inside, Cleo, Cooper, Maven, Speech Blubs, Lingokids, Khan Kids, Duolingo ABC). The Blueprint is an older strategic sketch; BRAND-STRATEGY is the current spine. Marketing executes against BRAND-STRATEGY. No conflict in practice — the Blueprint is not a published asset — but any external use of the Blueprint phrasing (investor deck, press kit) will understate the competitive moat.
+
+2. **Domain count:** Blueprint says "4 dev domains." PROTOTYPE and LIVE app both ship **7 domains**. REDESIGN-DIFF §Bucket C confirms: "KEEP LIVE 7-domain model. Blueprint is an older sketch." This is resolved at the product level; marketing must market **7 domains** (the live number) not 4.
+
+3. **Surface count:** Blueprint §1 names six parent-app surfaces (Today/Guidance, Milestones, Activities, Academy, Journal, Coach) — a different carve than BRAND-STRATEGY's six commercial surfaces (Daily Play, Rhythm, Ask Arbor, Practice Studio, Academy-kids, Arbor Care, Child Memory). The commercial surface framing is the marketing spine. Blueprint is internal product logic.
+
+**Decision needed from Guy:** Should the Blueprint document be updated/retired, or is it intentionally a simplified internal-facing document? If it will be shared externally (investor/partner/press), it needs to align to the six-surface, eight-competitor, seven-domain spine before use. Marketing will not use the Blueprint framing in any outbound asset until this is resolved; all outbound copy traces to BRAND-STRATEGY §3.
+
+---
+
+### 11h. Backlog re-score notes
+
+Items AM-R1 and AM-R12/R13 are **highest leverage** (pricing conversion + activation funnel — direct revenue impact). AM-R3/R4/R5 are **second tier** (trust + SEO/AEO, 6–8 week compounding payoff). AM-R6/R7 are **third tier** (viral amplification, gated on AP-044 share export for full loop). AM-R8 is a Wave 1 dependency item, not a standalone campaign action. AM-R9/R10/R11 are content-engine items, execute behind AM-NEW-1.
+
+Items AM-R1, AM-R3, AM-R4, AM-R5, AM-R12, AM-R13 carry clinical/safety/child-data gates — none auto-publish. `arbor-safety` veto applies to any effect-size or onboarding-avatar-data claim in this set before any asset ships. AM-R4 re-gated 2026-06-23 (AUDIT-gates M-3): "CDC-grounded" string and source-count framing require arbor-safety + arbor-clinical-lead clearance, parity with AM-R3/R5.

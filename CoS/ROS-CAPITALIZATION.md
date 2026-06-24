@@ -11,21 +11,21 @@ Domain north-stars (Guy, 2026-06-21): **KK = the ultimate personal assistant / s
 
 ---
 
-## 1. Tool capitalization map — the right tool, per team
+## 1. Tool capitalization map — LEAN: the right *cheap* tool per job (revised 2026-06-22)
 
-Live now (MCP): Gmail ×3 · Calendar · Notion · Drive · Web/Research · **Slack ✅ (connected 2026-06-21, workspace "ROS")**. **Wiring status (see [`connectors.md`](../00_System/connectors.md)):** Slack ✅ done · Ahrefs ⏳ consent pending (free plan) · Amplitude ⚠️ needs org login · Linear ⚠️ no workspace yet (use Notion as PM backend until created). Capitalize as each connects; don't block the company on tools that need account setup.
+Live now (MCP, free): Gmail ×3 · Calendar · Notion · Drive · Web/Research · **Slack ✅**. **Stance (sourced cost/fit research — see [`connectors.md`](../00_System/connectors.md) → Tool capitalization):** run the **free tier** that does the job now; buy the paid upgrade only when a named **trigger** fires (a Level-4 cost decision, surfaced in the cockpit). The all-incumbent stack (~**$625–775/mo**) would eat ~18% of the €10k budget on tooling not yet needed; the lean stack is ~**€0/mo** (first justified spend ≈ €36/mo: Canva Pro + HeyGen Creator). The speculative OAuths (Ahrefs ⏳ / Amplitude ⚠️ / Linear ⚠️) are **dropped** — wire each only on its trigger.
 
-| Team | North-star | Capitalized stack (best tool per job) |
+| Team | North-star | Lean stack (pick-now free · upgrade trigger) |
 | :-- | :-- | :-- |
-| **KK** (PA / second brain) | Run Guy's day + be the recall layer | Gmail+Calendar+Notion (live) · **Slack** (command + notify surface) · **PM** (task backend) · Drive · `research-agent` for recall. Runtime-aware (MCP in Cowork). |
-| **HV** (EU RE dev) | Source→underwrite→permit→execute, EU-pluggable | Funda/Pararius/Kadaster sourcing · `research-agent` + DD-brief · **PM** (deal execution: reno/refi milestones) · Gmail (hollandvest) |
-| **PAI/Arbor** (product AI) | Ship + self-improve Arbor | **Amplitude** (usage → CIL feedback critic) · **Ahrefs/Similarweb** (SEO/competitive → capability+market critics) · Figma/Canva (design) · the CIL |
-| **MKT** | Growth on data, not vibes | **Ahrefs/Similarweb/HubSpot** (keyword/competitor/CRM) · Canva/Figma · content skills |
-| **EA** | Client-grade architecture | Per-client tools (ServiceNow/Jira/Confluence — client-side) · Drive · Gmail. **Confidential — wire per engagement, not globally.** |
-| **FIN** | Nothing slips | Gmail+Notion (live) · accounting/banking connectors later (gated) |
-| **CoS** | One operating picture | the command center · **Slack** (status + decisions-needed) · rollups from every domain memory |
+| **KK** (PA / second brain) | Run Guy's day + recall | Gmail+Calendar+Notion+Drive (live) · **Slack** · `research-agent`. PM backend = **Notion + markdown backlog** (no Linear). |
+| **HV** (EU RE dev) | Source→underwrite→permit→execute | Funda/Pararius/Kadaster · `research-agent` + DD-brief · **Notion/markdown** deal tracking · Gmail (hollandvest) |
+| **PAI/Arbor** (product AI) | Ship + self-improve Arbor | **PostHog EU** (free analytics → CIL feedback critic) · **free SEO stack** (GSC/Trends/AWT + research-agent) · Canva/HeyGen free · the CIL. *Defer: Ahrefs, Amplitude.* |
+| **MKT** | Growth on data, not vibes | **Free SEO stack + research-agent** · Canva (free→Pro $15) · **Brevo+Resend** (free lifecycle, parent-consent gated) · content skills. *Defer: Ahrefs/Similarweb/HubSpot/Klaviyo.* |
+| **EA** | Client-grade architecture | Per-client tools (client-side) · Drive · Gmail. **Confidential — per engagement, not global.** |
+| **FIN** | Nothing slips | Gmail+Notion (live) · accounting/banking later (gated) |
+| **CoS** | One operating picture | the cockpit · **Slack** · rollups from every domain memory |
 
-> **Principle:** capitalize, don't accumulate. Wire a tool when a team will *use* it; an unused connector is clutter. Auth the lead tool per category first; add siblings (Asana/ClickUp, Similarweb/HubSpot) only if the lead doesn't fit.
+> **Principle:** capitalize, don't accumulate — *and don't over-buy*. Run the cheapest tool that does the job, name the upgrade trigger, gate the spend (L4). Two child-data escalations: analytics = **PostHog EU** (Frankfurt, IP-off — never the US Amplitude instance); lifecycle email goes only to the **parent** with logged consent (the gate lives in the Arbor app, not the ESP).
 
 ## 2. Autonomy rollout — gradual, in waves
 

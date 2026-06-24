@@ -14,6 +14,8 @@ ROS serves **two first-class principals** — Guy Rubin and Joseph Rubin. This r
 
 **Shared (both principals):** EA workplace engagements where they collaborate, and all ROS infrastructure (framework, meshes, dashboard, connectors).
 
+> **Same legal person (confirmed 2026-06-24).** Guy and "Joseph" are **one human** — full legal name **Guy Yossi Rubin Doron** (Yossi = Joseph); `josephdoronrubin@gmail.com` is Guy's own account. The two-principal split is a **persona/account boundary** (EA sending identity + confidentiality), **not** two people. For legal/identity/permit/contract work the facts are interchangeable; for client confidentiality the persona boundary still holds. See [`KK/job-automation/profile-source/joseph-profile-facts.md`](../KK/job-automation/profile-source/joseph-profile-facts.md).
+
 ## Active-principal declaration (boot)
 At session start, after routing context loads, **declare/confirm the active principal**. The active principal sets:
 - the **default sending identity** (`/00_System/identity-policy.md`),

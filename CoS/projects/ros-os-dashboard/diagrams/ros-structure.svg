@@ -1,0 +1,68 @@
+<svg viewBox="0 0 900 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ROS structure: Guy as CEO over CoS group HQ, the companies Arbor / HollandVest / EA, the shared group services, and KK personal ops.">
+<title>ROS — Structure</title>
+<style>
+  text{font-family:'Inter',ui-sans-serif,system-ui,sans-serif}
+  .title{font-family:'Frank Ruhl Libre',Georgia,serif;font-weight:700;fill:oklch(0.96 0.010 95)}
+  .k{fill:oklch(0.96 0.010 95);font-weight:600}
+  .r{fill:oklch(0.79 0.016 110)}
+  .m{fill:oklch(0.655 0.018 120);font-family:ui-monospace,'SF Mono',monospace}
+  .lab{fill:oklch(0.60 0.018 120);font-family:ui-monospace,monospace;letter-spacing:0.14em}
+  .box{fill:oklch(0.225 0.012 152);stroke:oklch(0.33 0.015 152);stroke-width:1}
+  .ln{stroke:oklch(0.33 0.015 152);stroke-width:1.3;fill:none}
+</style>
+<rect width="900" height="580" fill="oklch(0.18 0.010 152)"/>
+<text class="title" x="34" y="48" font-size="26">ROS — Structure</text>
+<text class="m" x="34" y="70" font-size="12">the multi-company group · Guy = CEO · CoS = group HQ</text>
+<line x1="34" y1="86" x2="866" y2="86" stroke="oklch(0.295 0.013 152)" stroke-width="1"/>
+
+<!-- spine -->
+<path class="ln" d="M450 150 L450 196 M450 250 L450 270 M130 300 L770 300 M130 300 L130 322 M450 300 L450 322 M770 300 L770 322 M450 430 L450 450"/>
+
+<!-- CEO -->
+<text class="lab" x="34" y="128" font-size="10">CEO</text>
+<rect class="box" x="360" y="104" width="180" height="46" rx="9"/>
+<text class="k" x="450" y="125" font-size="14" text-anchor="middle">Guy</text>
+<text class="m" x="450" y="141" font-size="10.5" text-anchor="middle">Chief Executive</text>
+
+<!-- CoS HQ -->
+<text class="lab" x="34" y="226" font-size="10">GROUP HQ</text>
+<rect class="box" x="250" y="196" width="400" height="56" rx="10" stroke="oklch(0.72 0.12 300)"/>
+<circle cx="272" cy="216" r="4" fill="oklch(0.72 0.12 300)"/>
+<text class="k" x="286" y="220" font-size="14">CoS — the CEO's office</text>
+<text class="m" x="286" y="238" font-size="10.5">strategy · capital + attention · OKRs · release train · standard · the cockpit</text>
+
+<!-- Companies -->
+<text class="lab" x="34" y="346" font-size="10">COMPANIES</text>
+<rect class="box" x="40" y="322" width="250" height="74" rx="10" stroke="oklch(0.74 0.13 158)"/>
+<circle cx="60" cy="344" r="4" fill="oklch(0.74 0.13 158)"/>
+<text class="k" x="74" y="348" font-size="14">Arbor</text>
+<text class="m" x="74" y="366" font-size="10.5">company #1 · parenting OS 0–12</text>
+<text class="m" x="74" y="382" font-size="10.5">GM arbor-orchestrator · ~40 agents</text>
+
+<rect class="box" x="325" y="322" width="250" height="74" rx="10" stroke="oklch(0.76 0.13 70)"/>
+<circle cx="345" cy="344" r="4" fill="oklch(0.76 0.13 70)"/>
+<text class="k" x="359" y="348" font-size="14">HollandVest</text>
+<text class="m" x="359" y="366" font-size="10.5">EU real-estate development</text>
+<text class="m" x="359" y="382" font-size="10.5">domain → promote in phase 2</text>
+
+<rect class="box" x="610" y="322" width="250" height="74" rx="10" stroke="oklch(0.72 0.10 235)"/>
+<circle cx="630" cy="344" r="4" fill="oklch(0.72 0.10 235)"/>
+<text class="k" x="644" y="348" font-size="14">EA / Advisory</text>
+<text class="m" x="644" y="366" font-size="10.5">security &amp; enterprise architecture</text>
+<text class="m" x="644" y="382" font-size="10.5">per-client confidential</text>
+
+<!-- Group services -->
+<text class="lab" x="34" y="468" font-size="10">SHARED GROUP SERVICES</text>
+<g font-size="11">
+  <rect class="box" x="40" y="442" width="195" height="40" rx="8"/><text class="r" x="56" y="467">Delivery · release train</text>
+  <rect class="box" x="247" y="442" width="195" height="40" rx="8"/><text class="r" x="263" y="467">FIN · P&amp;L + admin</text>
+  <rect class="box" x="454" y="442" width="195" height="40" rx="8"/><text class="r" x="470" y="467">Research · cited briefs</text>
+  <rect class="box" x="661" y="442" width="199" height="40" rx="8"/><text class="r" x="677" y="467">MKT · brand + content</text>
+</g>
+
+<!-- Personal -->
+<text class="lab" x="34" y="540" font-size="10">PERSONAL (never a company)</text>
+<rect class="box" x="40" y="516" width="300" height="40" rx="8" stroke-dasharray="3 3"/>
+<text class="r" x="56" y="541" font-size="11">KK · personal ops / second brain</text>
+<text class="m" x="600" y="541" font-size="10.5" text-anchor="end">isolation enforced per company · CoS sees across</text>
+</svg>

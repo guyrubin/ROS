@@ -9,7 +9,7 @@ The canonical list of every entity in the group — companies, group services, c
 
 | Entity | Kind | CEO / owner | Org (mesh) | Backlog(s) | Release lane | Identity | Isolation | Status |
 | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
-| **Arbor** | **company** | Guy (CEO) · GM = `arbor-orchestrator` | [PAI/Arbor mesh](../PAI/projects/parenting-os-plugin/mesh/CHARTER.md) | Arbor Product `AP-` · Arbor Marketing `AM-` | `REL-ARBOR-*` | `bguy` (own `arbor@` later) | company-scoped + child-data/clinical firewall | **ACTIVE — company #1** |
+| **Arbor** | **company** | Guy (CEO) · GM = `arbor-orchestrator` | [PAI/Arbor mesh](../PAI/projects/parenting-os-plugin/mesh/CHARTER.md) | Arbor Product `AP-` · Arbor Marketing `AM-` | `REL-ARBOR-*` | **`support@arborparentingapp.com`** (→ `support@jgrubin.com`; Workspace alias 2026-06-22) · `bguy` for legacy | company-scoped + child-data/clinical firewall | **ACTIVE — company #1** |
 | HollandVest | company-eligible domain | Guy | [HV mesh](../HV/mesh/MESH.md) | ROS-BACKLOG Theme D + HV files | `REL-HV-*` (when promoted) | `bhollandvest` | domain-scoped | domain — promote in Phase 2 |
 | EA / Advisory | company-eligible domain | Guy + Joseph | [EA mesh](../EA/mesh/MESH.md) | per-client | `REL-EA-*` (when promoted) | `joseph` / `bguy` | **per-client confidential** | domain — promote in Phase 2 |
 | **CoS** | group HQ (CEO office) | Guy | [Conductor](../CoS/mesh/MESH.md) + [Delivery](../CoS/delivery/MESH.md) + `ros-evaluator` | ROS `ROS-` | `REL-ROS-*` | `bguy` | sees across all companies | group |

@@ -20,9 +20,10 @@ ROS runs across **two runtimes**, and they reach connectors *differently*. A tas
 
 | Connector | Hermes path | Claude Code (MCP) path | Live status | Notes |
 |---|---|---|---|---|
-| Gmail — `bguy.rubin@gmail.com` | `himalaya` account `bguy` | **Gmail MCP — the connected account** (search/read/draft/label; verified 2026-06-21) | Active | Draft first; never send without explicit confirmation. CoS/KK/EA/PAI/MKT/FIN-by-context. |
-| Gmail — `bhollandvest@gmail.com` | `himalaya` account `hollandvest` | **Hermes only — NOT the connected MCP account** | Active (Hermes) | HV + FIN-by-context. HV third-party outbound originates here via Hermes. Draft first. |
-| Gmail — `josephdoronrubin@gmail.com` | `himalaya` account `joseph` | **Hermes only — NOT the connected MCP account** | Active (Hermes) | EA when Joseph is sender/primary. Draft first. |
+| Gmail — `bguy.rubin@gmail.com` | `himalaya` account `bguy` | **Gmail MCP — the connected account** (search/read/draft/label; verified 2026-06-21). ⚠ MCP **cannot download attachments** — use himalaya for those. | Active | Draft first; never send without explicit confirmation. CoS/KK/EA/PAI/MKT/FIN-by-context. |
+| Gmail — `bhollandvest@gmail.com` | `himalaya` account `hollandvest` | **himalaya CLI via WSL** (`wsl.exe -e bash -lc 'himalaya … -a hollandvest'`) — NOT the MCP account. See [`himalaya-mail-runbook.md`](himalaya-mail-runbook.md). | Active | HV + FIN-by-context. Draft first. |
+| Gmail — `josephdoronrubin@gmail.com` | `himalaya` account `joseph` | **himalaya CLI via WSL** (`wsl.exe -e bash -lc 'himalaya … -a joseph'`) — NOT the MCP account; read/download-attachment/draft/send all work. See [`himalaya-mail-runbook.md`](himalaya-mail-runbook.md). | Active | EA / Joseph-as-sender. Draft first. |
+| Workspace — `support@arborparentingapp.com` (→ `support@jgrubin.com`) | not wired ⏳ | not wired ⏳ | **Mailbox live (Workspace); NOT yet agent-connected** | **Arbor company** support/press/user comms; send-as alias of `support@jgrubin.com` (`arborparentingapp.com` = domain alias of `jgrubin.com`). To agent-enable: add a `himalaya` account or MCP for `support@jgrubin.com` (Workspace app-password / OAuth) — **Guy-gated** (credential). Until then, Arbor support is drafted here, sent by Guy. Identity rules: [identity-policy.md](identity-policy.md). |
 | Notion | skill `productivity/notion` | Notion MCP — **`fetch`+`create`+`update` by ID work; `query-data-sources` is Enterprise-gated** (read rows via Hermes / a view) | Active | Command Centers verified. **Live data-source IDs + the create-by-ID pattern: [`HV/mesh/INTEGRATIONS.md`](../HV/mesh/INTEGRATIONS.md)** (supersede the stale `notion_database_registry.md` IDs). Inspect before writes; no duplicates. |
 | Google Calendar | (Hermes: not wired) | Calendar MCP (list/create/update/suggest-time) — account `bguy.rubin` | Active via MCP | Event creation is Level 3 — draft/confirm. KK owns. |
 | Google Drive | (Hermes: not wired) | Drive MCP (search/read/create) — account `bguy.rubin` | Active via MCP | Career CV fact-source `1LERQza-…`; **HV "HollandVest — Deals & Projects" `1LkTfpnokI4y_VpjBrLj3fCCrvPecIw1D`**. |
@@ -35,25 +36,33 @@ ROS runs across **two runtimes**, and they reach connectors *differently*. A tas
 | Slack / Linear / Asana / Atlassian / HubSpot | — | plugin MCP (needs `authenticate`) | **Needs auth** | Wire on demand per domain need. |
 | Funda scraper | TBD | TBD | Phase 3 | HV new-listing alerts. |
 
-## Tool capitalization (decided 2026-06-21 — see [`CoS/ROS-CAPITALIZATION.md`](../CoS/ROS-CAPITALIZATION.md))
-Four stacks chosen to wire; each needs a one-time `authenticate` (OAuth) — auth the **lead** tool per category first, add siblings only if it doesn't fit. Map to owning team:
+## Tool capitalization — LEAN stack (revised 2026-06-22; supersedes the 4-stack OAuth plan)
+Sourced cost/fit research: [`CoS/ROS-CAPITALIZATION.md`](../CoS/ROS-CAPITALIZATION.md). Rule: **capitalize, don't accumulate** — run the cheapest tool that does the job *now* (free tier), and buy the upgrade only when a named **trigger** fires (a Level-4 cost decision, surfaced in the cockpit). For a pre-launch, bootstrapped, child-data product, the all-incumbent stack (~**$625–775/mo**) would eat ~18% of the €10k budget on tooling not yet needed. The lean stack is ~**€0/mo** today; first justified spend ≈ **€36/mo** (Canva Pro + HeyGen Creator) once viral cadence demands it. Prices are vendor list (verified ~2026-06; re-confirm at purchase).
 
-| Stack | Lead tool (siblings) | Owning team(s) | Use | Status |
+| Job | Pick now (free) | Owner | Upgrade · trigger | Status |
 |---|---|---|---|---|
-| Comms hub | **Slack** | CoS, KK | status + decisions-needed + command surface | ✅ **Connected** 2026-06-21 — workspace "ROS" (`ros-5pu8645`), user `U0BCVJB86TS`. MCP tools live (send/read/search/schedule). |
-| Marketing/SEO | **Ahrefs** (Similarweb/HubSpot) | MKT, PAI/Arbor | keyword/competitor → market+capability critics | ⏳ consent pending — Guy logged in (Guy Rubin's workspace, free plan); finish the 2-click Allow (or paste the `localhost:43667/callback?...` URL to complete). |
-| Product analytics | **Amplitude** (Pendo) | PAI/Arbor | usage → CIL `arbor-critic-feedback` | ⚠️ needs org login (not signed in / maybe not set up). Arbor today logs to its own Firestore sink (`lib/analytics.ts`) — Amplitude optional. |
-| Project management | **Linear** (Asana/ClickUp) | KK, HV (deal exec), PAI, CoS | task/issue backend beyond Notion | ⚠️ **no Linear workspace exists** under `bguy.rubin@gmail.com` — needs one created (name/region) before connect, or use Notion as the PM backend for now. |
+| Comms | **Slack Free** (90-day history) | CoS, KK | Slack Pro ~$8.75/u · >90-day history hurts | ✅ Connected (`ros-5pu8645`) |
+| SEO / competitor | **Search Console + Google Trends + Ahrefs Webmaster Tools** (free) + `research-agent` | MKT, PAI | Ahrefs Lite $129 · content/SEO vs named rivals. SimilarWeb $149 → defer indefinitely | Free — use now |
+| Product analytics | **PostHog EU Cloud** (Frankfurt · 1M events/mo free · IP-off) | PAI/Arbor | PostHog paid past 1M events. Amplitude only on the **EU** instance if mandated | Free tier — wire (was "Amplitude needs-auth") |
+| PM / tasks | **Notion + markdown backlog** (owned) | all | Linear Basic $10/u · volume outgrows markdown / a human joins | Owned — no new tool |
+| Creative | **Canva Free + HeyGen Free** | MKT/Arbor creative | Canva Pro $15 + HeyGen Creator $29 · caps block a real campaign cadence | First justified spend (~€36/mo) |
+| Email / lifecycle | **Brevo Free** (300/day) + **Resend Free** (3k/mo transactional) | MKT/Arbor | Brevo Starter ~$9 · send >300/day. **NOT Klaviyo** (e-com priced) | Free — wire behind the consent gate |
+| CRM | **none** | — | HubSpot Free CRM (1k contacts) · partner/creator relationships worth tracking | Skip |
+| Ad-data | **none** | — | Supermetrics ~€29 · paid spend across 2+ ad platforms | Skip |
 
-> Capitalize, don't accumulate — wire a tool when a team will use it; an unused connector is clutter (EA client tools stay per-engagement, not global).
+> **Two child-data compliance escalations (Guy-gated, before wiring):** (1) **Analytics = PostHog EU** (Frankfurt, DPA, IP-capture off by default) is both cheaper AND the right COPPA/GDPR posture; if Amplitude is ever used it must be the EU/Frankfurt instance, never the US one (CLOUD Act). (2) **Lifecycle email** goes only to the **parent's** address with logged verifiable parental consent — the consent gate lives in the Arbor app, not the ESP. 2025 free tiers shrank (Klaviyo/MailerLite/Slack-90d); build on the durable ones (PostHog 1M · Brevo 300/day · Resend 3k) and keep durable records in ROS markdown so a cap can't trap data.
 
-## Needs your action to go fully live
-- **Authorize the four stacks above** (`authenticate` OAuth) — I'll initiate; you complete the sign-in. Gradual: start with the one or two that unlock the most.
+## Needs your action
+- **Drop the speculative OAuths.** Ahrefs (consent-pending), Amplitude (needs-auth), Linear (needs-workspace) are **not needed now** — wire each only when its trigger fires. This removes the pending-OAuth backlog.
+- **One near-term setup** (both free, both behind the Arbor parental-consent gate): a **PostHog EU** project (analytics) and a **Brevo** account (lifecycle). I initiate; you approve.
 - **Hermes-side** Calendar/Drive are reached via Claude Code MCP today; only wire Hermes equivalents if a *scheduled* loop needs them.
 
 ## Required skills by connector (Hermes runtime)
 - Gmail/email → `himalaya`. Notion → `productivity/notion`. Hermes config/cron/MCP changes → `hermes-agent`.
 - In **Claude Code**, skip these skills — load the MCP tool schemas via ToolSearch instead.
+
+## Credential store (semi-sensitive, non-money)
+API keys/tokens for DNS/tooling/connectors live in the **gitignored** store **[`/00_System/secrets/`](secrets/README.md)** (`keys.env`; load `set -a; source 00_System/secrets/keys.env; set +a`). First key: `GODADDY_API_KEY`/`_SECRET` (DNS). **Money/financial + prod app secrets NEVER go here → GCP Secret Manager.** Policy + non-secret registry: `secrets/README.md`.
 
 ## Safety rules
 - Email sends, calendar/event creation, Drive sharing/deletes, Notion writes, and financial actions are **external/workspace writes**: draft first, confirm before executing (per `/CLAUDE.md` Levels 3–5).

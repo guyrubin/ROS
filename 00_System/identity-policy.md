@@ -1,6 +1,6 @@
 # ROS Identity Policy
-Version: 1.1
-Last updated: 2026-05-17
+Version: 1.2
+Last updated: 2026-06-22
 
 ---
 
@@ -17,6 +17,8 @@ This file defines which Gmail identity is used for each ROS agent, how emails ar
 | bguy.rubin@gmail.com | Guy Rubin (personal/professional) | Himalaya `bguy` active / verified ✅ | CoS, KK, EA, PAI, MKT, FIN-by-context |
 | bhollandvest@gmail.com | Hollandvest (real estate entity) | Himalaya `hollandvest` active / verified ✅ | HV, KK, FIN-by-context |
 | josephdoronrubin@gmail.com | Joseph Rubin (EA consultant, CTO consultant) | Himalaya `joseph` active / verified ✅ | EA when Joseph is sender/primary, KK, FIN-by-context |
+| support@jgrubin.com | Guy — **second primary comms mailbox** (Google Workspace, `jgrubin.com`) | Workspace mailbox (Guy-managed); not yet Himalaya/MCP-wired ⏳ | CoS, PAI/Arbor, MKT — branded (non-gmail) outbound comms |
+| support@arborparentingapp.com | **Arbor (product company #1)** — support · user replies · press · waitlist; **send-as alias of support@jgrubin.com** via the `arborparentingapp.com` domain alias | Workspace alias (domain-alias set up by Guy 2026-06-22); not yet Himalaya/MCP-wired ⏳ | PAI/Arbor + arbor-marketing |
 
 ---
 
@@ -51,6 +53,15 @@ Joseph Rubin's account. Joseph is an EA consultant and CTO consultant — the ma
 - Any communication where Joseph is the primary contact
 
 josephdoronrubin@gmail.com is configured in Himalaya but blocked until its Gmail App Password is populated. Use it for EA work only where Joseph is the sender or primary contact once credentials are available. Only CC Joseph on specific deliverables when explicitly instructed — never auto-CC on EA client emails. Guy sends from bguy.rubin@gmail.com; Joseph sends from josephdoronrubin@gmail.com.
+
+### support@arborparentingapp.com (Arbor support/comms — the company's public mailbox)
+
+The Arbor product company's communication address. Backed by **support@jgrubin.com** (a Google Workspace mailbox on the `jgrubin.com` domain); `arborparentingapp.com` is a **domain alias** of `jgrubin.com`, so mail to `support@arborparentingapp.com` lands in `support@jgrubin.com`, and that mailbox can **send-as** the Arbor address. Use when:
+- replying to Arbor user support / inbound from the app, the landing page, or the App/Play stores
+- press / partner / waitlist communication for Arbor
+- any email where the sender should be **"Arbor"** / **"Arbor Support"**, not "Guy Rubin"
+
+**Scope = the Arbor company only.** Never use it for personal, HV, or EA mail (and never use a personal/HV/EA account for Arbor support). Draft-first + Level-3-confirm-to-send applies exactly as for every account. Deliverability: **SET UP 2026-06-22.** MX → `smtp.google.com`, SPF, DMARC (`p=none`) published via GoDaddy API (verified live). **Send-as added** in `support@jgrubin.com` Gmail (Guy, 2026-06-22) → the alias sends + receives. **DKIM = N/A for the alias** (a Workspace domain *alias* can't hold its own DKIM key; alias mail is signed by the Workspace *primary* domain — verified: no `google._domainkey.arborparentingapp.com` record, by design). Keep DMARC at `p=none` (alias From won't strictly align with the primary's signing domain — tightening would spam-filter legit mail). Optional future hardening: DKIM on the Workspace **primary** domain (separate domain/DNS).
 
 ---
 
