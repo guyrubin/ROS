@@ -42,8 +42,8 @@ Phase 1 (Today + sidebar) shipped the *worst* surface, but the audit shows the *
 - **[2|S]** Topbar duplicates the sidebar brand (logo + "Arbor" wordmark) — wasted prime real estate, no screen context.
 
 ### P1.2 — Functionality quick wins
-- **[3|S]** **Masterclasses "Open Masterclasses" CTA is a dead button** (no-op handler). Wire or remove. [Masterclasses.tsx]
-- **[2|S]** Coach "Teacher note" handoff toast promises a copy but the handler is redundant with the in-card copy. Dedupe. [CoachTab.tsx]
+- **[3|S] ✅ FIXED 2026-06-26** **Masterclasses "Open Masterclasses" CTA was a dead button** — `AcademyForYou` is only ever rendered ON the Masterclasses page, so the "Open Masterclasses" CTA pointed at the page you were already on (no-op handler). Removed the vestigial `onNavigateToMasterclasses` prop; the CTA no longer renders. The course catalog + Scholar Hub + For-You recommendations all remain. [Masterclasses.tsx]
+- **[2|S] ✅ INVESTIGATED — WORKING (downgraded to polish)** Coach "Teacher note" handoff: the note **IS** copied — `CoachAnswerCards` calls its own `copy(note, "handoff")` (real clipboard write) before `onAddToHandoff(note)`, so the toast ("Teacher note copied — paste it into your Consult summary") is accurate, not a lie. The only nit is a minor message dedupe (the in-card "Copied note" label is invisible post-navigation, so the toast carries the feedback). Not a dead button; not blocking. [CoachTab.tsx:490, CoachAnswerCards.tsx:299]
 
 ---
 
