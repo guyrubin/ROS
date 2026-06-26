@@ -10,6 +10,15 @@
 
 Phase 1 (Today + sidebar) shipped the *worst* surface, but the audit shows the **"messy" you still see is one root cause on the PARENT surface**: design tokens are not enforced. The parent app paints in ~12 un-tokensed hex literals, has no real type scale (13 arbitrary px sizes), flat elevation everywhere (all `shadow-sm`), and a **split-brand palette** — the active nav is green while the rest of the brand is sapphire, and the chrome runs a different palette than the content. That incoherence *is* the mess. The single biggest lever: **establish one Clalit/Maccabi clinical-trust token system (sapphire + Clalit/Maccabi green, navy ink, WCAG-AA contrast, type scale, elevation scale) and sweep the parent surface onto it.** The KID surface's gap is different and bigger: the **viral share loop is stubbed** — the shareable moment never leaves the app, which is the brand's stated growth engine.
 
+## 🆕 Session 2026-06-26 — waves 5–8 shipped to prod
+
+Incremental prod delivery behind the canary pipeline (each wave: lint + build + eval:safety + test green, then merge→main→promote→hosting, ~6 min). All four confirmed LIVE on `arborparentingapp.com`.
+
+- **Wave-5 `03d13d9`** — closed the parent-surface hardcoded-English gap: `BehaviorsTab` export + `ChildProfile` + `PlansTab` + `SpeechCoachTab` (119 i18n keys en+he). *(Localization ✅)*
+- **Wave-6 `837afc5`** — SchoolBrief per-section parent edit: editable overview + add/remove per list section, every edit resets per-export approval, export built from the edited draft so the clinical-term scan covers edits. Safety-cleared (arbor-safety, 9 constraints, eval:safety green, +8 tests → 1136). *(P2 SchoolBrief ✅)*
+- **Wave-7 `fdc743a`** — Masterclasses UI-chrome i18n sweep (9 keys) — finishes the parent-surface localization wave-5 started. *(Localization ✅)*
+- **Wave-8 `d71cda7`** — Masterclasses capability-depth: private reflection card (client-only localStorage, privacy-hinted) + catalog progress bar + brand-colored completion confetti (reduced-motion-respecting). *(P2 Masterclasses 🟡 partial — reflection→coach feed deferred, claims-sensitive)*
+
 ---
 
 ## ✅ Phase 1 — SHIPPED to prod (main `e5f4d81`, PR #34, 2026-06-26)
@@ -36,10 +45,10 @@ Phase 1 (Today + sidebar) shipped the *worst* surface, but the audit shows the *
 - **[5|M] ✅ ADDRESSED THIS PASS** **Arbor AI was taking over the entire Overview** — the AI focus text rendered in THREE places on Today (the hero focus well, the coach-card body, AND the daily-play empty state), so the AI voice dominated the whole home screen. Rebalanced: the AI focus now lives in ONE bounded place (the hero well, `line-clamp-3` + read-more); the coach card shows a static invite (`coach.ready`) and the daily-play empty state shows a play placeholder instead of re-echoing the focus. AI is one voice on Today, not three — the human data (streak, dev-ring, kid-activity, rhythm) reclaims the screen. [OverviewTab.tsx:376,413]
 - **[4|M]** **Bedtime Stories orphan**: fully-built (backend endpoint + 470-line tab) with **zero nav entry**. Wire it into nav (Academy, or a Today JITAI entry). [BedtimeStoriesTab.tsx]
 - **[4|M]** **Mobile can't launch Kid Mode** — entry is desktop-only (`Topbar` hidden `md:flex`). Add a mobile Kid Mode entry. [Topbar.tsx, MobileNav.tsx]
-- **[3|S]** **Ask Arbor has no persistent entry** — only reachable from inside Today despite navigation.ts claiming a "top-bar action"; mobile尤其. Add a persistent coach affordance.
+- **[3|S] ✅ FIXED 2026-06-26** **Ask Arbor has no persistent entry** — was reachable only from in-context CTAs inside other tabs, despite navigation.ts asserting a "top-bar action." Added shared `<AskArborButton>` (mirrors KidModeButton): solid-sapphire primary pill in the desktop Topbar + compact icon in the mobile accessories row. The nav contract is now TRUE on both surfaces. [AskArborButton.tsx, Topbar.tsx, Shell.tsx]
 - **[3|M]** **Mobile Today buries the dashboard** (check-in/goals/reminders/trends) behind one collapsed toggle. Surface at least the check-in on mobile.
-- **[2|S]** Sub-nav has no **back-to-section-home / breadcrumb** — deep leaves strand the user. [Shell.tsx:268]
-- **[2|S]** Topbar duplicates the sidebar brand (logo + "Arbor" wordmark) — wasted prime real estate, no screen context.
+- **[2|S] ✅ FIXED 2026-06-26** **Topbar duplicates the sidebar brand** (logo + "Arbor" wordmark) — wasted prime real estate. Topbar left zone now shows the mark + the ACTIVE SECTION label ("Today" / "My Child" / …) = orientation, not a duplicate wordmark. (The [2|S] sub-nav breadcrumb is largely covered by this — the Topbar now carries the section context.)
+- **[2|S]** ~~Sub-nav has no back-to-section-home / breadcrumb~~ — largely addressed by the Topbar section label above; full sub-nav breadcrumb deferred as low-value.
 
 ### P1.2 — Functionality quick wins
 - **[3|S] ✅ FIXED 2026-06-26** **Masterclasses "Open Masterclasses" CTA was a dead button** — `AcademyForYou` is only ever rendered ON the Masterclasses page, so the "Open Masterclasses" CTA pointed at the page you were already on (no-op handler). Removed the vestigial `onNavigateToMasterclasses` prop; the CTA no longer renders. The course catalog + Scholar Hub + For-You recommendations all remain. [Masterclasses.tsx]
@@ -50,13 +59,13 @@ Phase 1 (Today + sidebar) shipped the *worst* surface, but the audit shows the *
 ## 🟡 Phase 3 (P2) — Capability design-depth lifts (medium effort, some new dev)
 *Take each capability from "shallow/placeholder" to deepest level.*
 
-- **[3|M]** **Development Map = a number list** → render the prototype's signature **dev-radar ring** (radial domain map), not a flat list. [DevelopmentTab.tsx]
+- **[3|M] ✅ SHIPPED 2026-06-26 (main `cf11930`)** **Development Map = a number list** → built the prototype's signature **dev-radar ring** (`DevRadarRing.tsx`: radial polar domain map; sapphire polygon fills to milestones-reached per spoke, green success-accent on strong domains; parent clinical-trust register, `role=img`+aria, one-shot motion gated by reduced-motion, RTL-safe SVG coords). DevScoreCard swaps the flat bars for the ring; headline score + clinical copy preserved. Built via **arbor-design agent**.
 - **[3|L]** Dev ring + growth charts are **flat conic bars** → real data viz (the Grow/My Child centerpieces). [DevScoreStrip, TrendsChart]
 - **[4|M]** **Today lost the live kid-activity sync card** — the prototype's one differentiator vs. a static dashboard. Restore a live "what your child did" sync surface. [OverviewTab.tsx]
 - **[3|M]** **Coach is reactive only** → proactive "Arbor noticed…" surfacing into the conversation (from logged patterns).
 - **[3|M]** **Behaviors pattern analysis is a dead-end report** → it should generate a plan or coach action, not just display.
-- **[2|M]** **SchoolBrief** — no per-section parent edit/approve (all-or-nothing export).
-- **[2|M]** **Masterclasses** are read-only articles → add practice/reflection + completion-that-feeds-coaching.
+- **[2|M] ✅ SHIPPED 2026-06-26 (wave-6, main `837afc5`)** **SchoolBrief** per-section parent edit — editable overview (textarea) + add/remove on each list section (keyStrengths, classroomChallenges, languageSupportPlan, suggestedTeacherStrategies); every edit resets the per-export approval; the export is built from the *edited* draft so the clinical-term fail-closed scan still covers parent edits. Safety-cleared (9 constraints, eval:safety green, +8 tests → 1136 total).
+- **[2|M] 🟡 PARTIAL 2026-06-26 (wave-8, main `d71cda7`)** **Masterclasses** were read-only articles → **private reflection + completion celebration NOW LIVE**: an optional "moment to reflect" card (client-only localStorage, privacy-hinted — never sent or stored server-side), a catalog progress bar, and a brand-colored completion burst (reduced-motion-respecting). **Still open:** the reflection→coach feed (the "feeds coaching" half) is proactive-coach-adjacent and claims-sensitive → deferred to the safety/clinical gate, not built autonomously.
 - **[3|M]** **Celebrations are generic** (same confetti every win) + **[3|S] no haptics** anywhere in kid surface + Daily Play completion writes to the moat but doesn't visibly celebrate/advance the hero.
 - **[3|M]** **World-scene art generated once + static** → no parallax/motion/scene life. [kid surfaces]
 - **[4|M]** **Share card is a flat green wash** with a plain "Made with Arbor" wordmark → a premium, covetable brand frame.
@@ -97,11 +106,11 @@ Phase 1 (Today + sidebar) shipped the *worst* surface, but the audit shows the *
 ## 🌐 Localization (HE/RTL) — cross-cuts all phases
 *Clalit/Maccabi is Israeli — Hebrew must be top-level. P1 quick fixes first, then new-dev.*
 
-- **[4|S] No browser-locale detection** — Israeli users land on English (QA-7 fix stranded on a branch, not on main). **Merge QA-7.** *(P1 quick win)*
+- **[4|S] ✅ SHIPPED 2026-06-26 (main `cf11930`)** **Browser-locale detection now live** — `LanguageContext.readLang` honors the browser locale on first visit (he / he-IL / legacy "iw" → Hebrew + RTL; explicit in-app choice always wins, persisted). Implemented directly on main (same outcome as the stranded QA-7 branch). *(P1 quick win)*
 - **[4|M] Consent string uses Hebrew slash-form** — gated clinical/consent copy.
 - **[3|S] HE marketing landing has no language switcher** — visitors stranded (asymmetric vs EN page). *(P1)*
-- **[2|S] index.html ships hardcoded English meta/lang** — no HE/RTL at the document root before React mounts. *(P1)*
-- **[3|M] Hardcoded English** scattered across parent surfaces (ChildProfile, PlansTab, SpeechCoachTab, BehaviorsTab export).
+- **[2|S] ✅ SHIPPED 2026-06-26 (main `cf11930`)** **index.html now sets lang/dir pre-hydration** — inline script (mirrors the detection, stored choice first) sets `<html lang/dir>` before the bundle loads, so Hebrew users see no English/LTR first-paint flash and RTL font stacks apply from first paint. *(P1)*
+- **[3|M] ✅ SHIPPED 2026-06-26 (main `03d13d9` + `fdc743a`)** **Hardcoded English on the flagship parent surfaces — fully localized.** Wave-3 (`TrendsChart` all 6 strings + `OverviewTab` 5 strings, 11 keys en+he) → wave-5 closed the four remaining surfaces (`ChildProfile`, `PlansTab`, `SpeechCoachTab`, `BehaviorsTab` export — 119 keys en+he) → wave-7 swept `Masterclasses` UI chrome (9 keys). No more inline `he ? "EN" : "HE"` UI ternaries on the parent surface. (Content bodies that ship bilingual as data fields — e.g. masterclass sections — are unaffected.)
 - **[3|M] Accessibility aria-labels are English-only** — HE screen-reader users get English.
 - **[3|M] Physical-direction Tailwind classes** (`ml-/mr-/pl-/pr-/border-right/left`) **break RTL in 24+ spots** → convert to logical properties (`ms-/me-/ps-/pe-/border-s/e`).
 - **[4|L NEWDEV] Hebrew copy degenerates into אוהב/ת slash-forms** because **child gender is not tracked** → track gender on ChildProfile; gendered HE copy. *(new dev)*
