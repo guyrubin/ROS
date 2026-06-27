@@ -5,7 +5,7 @@ description: Active facts and state for the Chief of Staff domain.
 ---
 
 # CoS Memory
-Last updated: 2026-05-15
+Last updated: 2026-06-27
 
 ---
 
@@ -46,6 +46,7 @@ bguy.rubin@gmail.com
 
 <!-- CoS-level patterns, recurring blockers, cross-domain dependencies -->
 
+- Hermes-for-ROS optimization backlog lives at `CoS/backlogs/hermes-ros-optimization-backlog-2026-06-27.md`; near-term focus is context-compression reliability, ROS runtime runbook, gateway/cron health visibility, and a disabled kill-switched SENSE pilot.
 - User's handwritten software setup notes should be converted into actionable ROS/Notion project dashboards with task rows, owner agents, dependencies, blockers, and import-ready files when Notion API access is unavailable.
 - Notion execution has a valid `NOTION_API_KEY` for integration `ROS KK Con` in Guy Rubin's workspace, with verified API access to Rubin OS Command Center and HollandVest Command Center as of 2026-05-19.
 
