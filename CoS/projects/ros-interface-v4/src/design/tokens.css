@@ -1,0 +1,173 @@
+/* ROS dark cockpit design tokens — ported from Command Center v3 */
+:root {
+  /* backgrounds */
+  --bg: #070a0f;
+  --panel: #10151f;
+  --panel2: #141b29;
+  --panel3: #1a2236;
+
+  /* text */
+  --ink: #f4f0e8;
+  --muted: #94a1b0;
+  --faint: #5e6c7d;
+
+  /* borders */
+  --line: #222d40;
+  --line2: #2c394f;
+
+  /* semantic accents */
+  --gold: #d6a84b;
+  --blue: #67b7ff;
+  --green: #55d38a;
+  --amber: #e8b54a;
+  --red: #ff6b6b;
+  --violet: #b891ff;
+  --cyan: #4fd6c8;
+
+  /* domain accents */
+  --cos: var(--gold);
+  --kk:  var(--blue);
+  --hv:  var(--amber);
+  --ea:  var(--red);
+  --pai: var(--violet);
+  --mkt: var(--cyan);
+  --fin: var(--green);
+
+  /* rag */
+  --rag-green: #55d38a;
+  --rag-amber: #e8b54a;
+  --rag-red:   #ff6b6b;
+
+  /* layout */
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 14px 44px rgba(0,0,0,0.5);
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.4);
+
+  /* type */
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono: 'SFMono-Regular', ui-monospace, Consolas, monospace;
+
+  /* nav */
+  --rail-w: 52px;
+  --topbar-h: 48px;
+  --bottombar-h: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* scrollbars */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 2px; }
+
+/* utility classes */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line2);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.card2 {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line2);
+  background: var(--panel2);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  font-family: var(--font);
+}
+.btn:hover { background: var(--panel3); border-color: var(--line2); }
+.btn-gold { border-color: var(--gold); color: var(--gold); }
+.btn-gold:hover { background: rgba(214,168,75,0.12); }
+.btn-red { border-color: var(--red); color: var(--red); }
+.btn-red:hover { background: rgba(255,107,107,0.12); }
+
+.rag-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rag-green { background: var(--rag-green); }
+.rag-amber { background: var(--rag-amber); box-shadow: 0 0 6px var(--rag-amber); }
+.rag-red   { background: var(--rag-red);   box-shadow: 0 0 8px var(--rag-red); animation: pulse-red 2s ease-in-out infinite; }
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  gap: 8px;
+  color: var(--faint);
+  font-size: 13px;
+  text-align: center;
+}
+.empty-state .icon { font-size: 28px; margin-bottom: 4px; }
+
+.cta-amber {
+  background: rgba(232,181,74,0.08);
+  border: 1px solid rgba(232,181,74,0.3);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--amber);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
