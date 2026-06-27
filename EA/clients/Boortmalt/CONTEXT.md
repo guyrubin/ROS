@@ -59,6 +59,8 @@ No architectural design decisions are settled yet — IAM/ZTA, CCoE guardrails, 
 | 2026-06-24 | Reply identity set to `josephdoronrubin@gmail.com` for this engagement | The offer/admin pack names Joseph identity; identity remains draft-first for external sends. |
 | 2026-06-27 | Boortmalt promoted into EA active workplace context for architecture planning | User asked to define the EA multi-agent/skill system for the new Joseph-onboarded company with CISO/CCoE security focus. |
 | 2026-06-27 | First architecture operating model is discovery-first, not design-first | No Boortmalt estate has been disclosed; best system converts ambiguity into onboarding checklist, stakeholder map, baseline review plan, and roadmap. |
+| 2026-06-27 | Boortmalt onboarding + first-deliverable pack created | Operating artifact now exists at `EA/clients/Boortmalt/boortmalt-onboarding-first-deliverable-pack-2026-06-27.md`; use it as the first-week checklist, stakeholder/forum map, source-pack request draft, and first-deliverable recommendation. |
+| 2026-06-27 | Boortmalt CISO/CCoE baseline workbook created | Execution artifact now exists at `EA/clients/Boortmalt/boortmalt-ciso-ccoe-baseline-workbook-2026-06-27.md`; use it after source-pack access lands to run the current-state baseline, risk/control/evidence backlog, decision log, and 0-30 / 30-90 roadmap. |
 
 ## Expected EA outputs (demand-aligned)
 
@@ -71,5 +73,7 @@ Activation per `EA/frameworks/ea-skill-process-outcomes.md` and `EA/clients/Boor
 - [ ] Confirm contract/start/work-authorization route and do not let architecture planning obscure the legal gate.
 - [ ] Capture Boortmalt sponsor, CISO line, CCoE/platform lead, architecture board/CAB, and OT/operations counterpart.
 - [ ] Request the minimum source pack: org/security mandate, policies, cloud/account map, network/OT topology, identity/PAM model, risk register, logging/SOC overview, BCP/DR posture, current initiatives/backlog.
-- [ ] Produce the first 72-hour onboarding checklist and first-deliverable hypothesis before attempting target design.
+- [x] Produce the first 72-hour onboarding checklist and first-deliverable hypothesis before attempting target design — created `EA/clients/Boortmalt/boortmalt-onboarding-first-deliverable-pack-2026-06-27.md`.
+- [x] Prepare the CISO/CCoE current-state baseline workbook and risk/control/evidence backlog skeleton — created `EA/clients/Boortmalt/boortmalt-ciso-ccoe-baseline-workbook-2026-06-27.md`.
+- [ ] Use the source-pack request draft after recipient and sending identity are confirmed.
 - [ ] Refresh this dossier whenever a new fact is confirmed; keep assumptions labelled.

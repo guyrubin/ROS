@@ -5,7 +5,7 @@ Last updated: 2026-06-04
 
 ## Operating status
 
-EA work context has been reset to the current two workplaces only.
+EA work context has been reset to the current three workplaces only.
 Treat all prior client/workplace references as inactive unless Guy explicitly reactivates them.
 
 ## Team
@@ -54,6 +54,8 @@ Treat all prior client/workplace references as inactive unless Guy explicitly re
 
 ## Active deliverables
 
+- [x] Boortmalt onboarding + first-deliverable pack — Workplace: Boortmalt — Type: Onboarding/Architecture readiness — Path: `EA/clients/Boortmalt/boortmalt-onboarding-first-deliverable-pack-2026-06-27.md` — Status: Draft internal artifact ready for sponsor/onboarding tailoring; external send still requires confirmation.
+- [x] Boortmalt CISO/CCoE baseline workbook — Workplace: Boortmalt — Type: Current-state baseline/risk-control execution workbook — Path: `EA/clients/Boortmalt/boortmalt-ciso-ccoe-baseline-workbook-2026-06-27.md` — Status: Draft internal artifact ready to populate after source-pack/access lands.
 <!-- - [ ] [document/task] — Workplace: Coca-Cola/ABN — Type: Contract/Onboarding/Admin/Architecture — Due: — Status: -->
 
 ## Practice pipeline
