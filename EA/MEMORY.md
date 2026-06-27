@@ -22,6 +22,16 @@ Treat all prior client/workplace references as inactive unless Guy explicitly re
 
 ## Current workplaces
 
+### Boortmalt | Freelance via ATCON Global | Information Security Architect
+- **Relationship type**: Freelance via ATCON Global
+- **Status**: 🟡 Offer accepted / onboarding + work-authorization gate open
+- **Current phase**: Offer accepted; onboarding and contract/start route pending
+- **Role lens**: Information Security Architect supporting CISO/CCoE security
+- **Domain focus**: CISO operating model, CCoE/cloud guardrails, IAM/ZTA/PAM, network and possible OT/plant segmentation, controls/evidence, SecOps/resilience, and risk-based roadmap
+- **Next action**: Confirm lawful start/contract route, capture Boortmalt sponsor/CISO/CCoE/OT stakeholders, request source pack, and produce first 72-hour onboarding + first-deliverable brief
+- **Deliverable path**: `EA/clients/Boortmalt/`
+- **Notes**: New active EA workplace promoted from the KK Boortmalt/ATCON offer pack on 2026-06-27.
+
 ### Coca-Cola | Employment | Infrastructure & Security Enterprise Architecture
 - **Relationship type**: Employment
 - **Status**: 🟡 Final stages — employment contract pending/finalizing
@@ -52,7 +62,8 @@ No other active EA workplace/client pipeline items. Scratch prior items unless e
 
 ## Technology positions
 
-- 2026-06-04 — EA reusable skill model lives at `EA/frameworks/ea-skill-process-outcomes.md` and is demand-aligned to current work: ABN Security EA onboarding/current-state review/target-state security HLD, and Coca-Cola Infra & Security EA contract/onboarding/baseline review/target-state HLD update.
+- 2026-06-27 — Boortmalt EA operating artifacts live at `EA/clients/Boortmalt/CONTEXT.md` and `EA/clients/Boortmalt/ea-multi-agent-security-system-plan.md`; model is a single-client security architecture cell with `ea-lead` accountability plus CISO/CCoE/IAM/ZTA/network-OT/control-evidence/SecOps-resilience/roadmap skill lanes.
+- 2026-06-04 — EA reusable skill model lives at `EA/frameworks/ea-skill-process-outcomes.md` and is demand-aligned to current work: Boortmalt Information Security Architect / CISO+CCoE security onboarding, ABN Security EA onboarding/current-state review/target-state security HLD, and Coca-Cola Infra & Security EA contract/onboarding/baseline review/target-state HLD update.
 - 2026-06-04 — EA skill model now includes executable activation support: demand-to-artifact routing, output modes, artifact skeletons, and definition-of-done checks for onboarding, reviews, HLDs, ADRs, control matrices, roadmaps, and executive briefs.
 
 ## Reusable patterns
@@ -63,6 +74,7 @@ No other active EA workplace/client pipeline items. Scratch prior items unless e
 
 | Workplace | Type | Status | Current phase | Since |
 |---|---|---|---|---|
+| Boortmalt | Freelance | 🟡 Offer accepted / onboarding + authorization gate open | Contract/start route + architecture onboarding | 2026-06 |
 | Coca-Cola | Employment | 🟡 Contract final stages | Employment contract | 2026-05 |
 | ABN | Freelance | 🟢 Active onboarding | Onboarding | 2026-05 |
 

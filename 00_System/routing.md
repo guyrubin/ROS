@@ -21,7 +21,7 @@ This file defines the canonical routing rules for Rubin OS. It is read by the ro
 | today, this morning, morning routing, morning briefing, daily briefing, daily plan, inbox routing, route my morning, this afternoon, calendar, what's on, schedule, appointments, follow-up, inbox, email triage, urgent | KK (Personal Ops) | ros-core |
 | weekly review, OKRs, priorities, what matters most, strategy, blockers, quarterly, are we on track, cross-domain, orchestrate | CoS (Chief of Staff) | ros-core |
 | deal, property, asset, BRRRR, rent, tenant, lender, renovation, permit, vergunning, bestemmingsplan, WWS, Funda, Kadaster, Pararius, Dutch RE, Hollandvest | HV (Real Estate) | ros-hv |
-| architecture, HLD, ADR, cloud, AWS, Azure, GCP, ZTA, CCoE, CSDM, Coca-Cola, ABN, ABN AMRO, workplace, employment contract, freelance onboarding, security architect, platform design, interview prep | EA (Enterprise Architecture) | ros-ea |
+| architecture, HLD, ADR, cloud, AWS, Azure, GCP, ZTA, CCoE, CSDM, Coca-Cola, ABN, ABN AMRO, Boortmalt, ATCON, workplace, employment contract, freelance onboarding, security architect, information security architect, platform design, interview prep | EA (Enterprise Architecture) | ros-ea |
 | product, PRD, MVP, roadmap, feature, user story, go-to-market, pricing, venture, startup, parenting app | PAI (Product & AI Ventures) | ros-pai |
 | Arbor mesh, agent mesh, build wave, dispatch orchestrator, improvement loop, hardening sweep, devsecops, domain pod, run the mesh | arbor-orchestrator (Arbor Agent Mesh, under PAI) | ros-pai |
 | content, post, LinkedIn, blog, article, campaign, brand, copy, social media, newsletter, thought leadership | MKT (Marketing) | ros-mkt |

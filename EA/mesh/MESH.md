@@ -18,7 +18,7 @@ Turn a workplace architecture ask into a senior-architect-grade deliverable — 
 > **No pods — by design.** EA work is confidential and per-client isolated: a single architect carries one client's context end-to-end, serially, so material from Coca-Cola can never bleed into ABN work (or vice-versa). Parallel pods would multiply the surface for cross-client leakage and fragment a deliverable that must read as one coherent architectural voice. `ea-lead` dispatches the EA **skill cards** (`EA/frameworks/ea-skill-process-outcomes.md`) per demand instead of fanning out to agents.
 
 ## Active client contexts
-**Coca-Cola** (Infrastructure & Security EA) and **ABN** (Security EA) — these two ONLY. Never mix contexts; client confidentiality is a hard gate. Prior clients are inactive unless Guy explicitly reactivates.
+**Coca-Cola** (Infrastructure & Security EA), **ABN** (Security EA), and **Boortmalt** (Information Security Architect / CISO + CCoE security) — these three ONLY. Never mix contexts; client confidentiality is a hard gate. Prior clients are inactive unless Guy explicitly reactivates.
 
 ## Gate (Definition-of-Done)
 - **Client confirmed & CONTEXT loaded** — the mandatory `EA/clients/[client]/CONTEXT.md` (estate, stakeholders, in-flight decisions, decision log) is read as the **first FRAME input**; no other client referenced. **No EA deliverable without a current CONTEXT.md** — this is what makes EA client-specific by structure rather than generic (ROS-BACKLOG D1).

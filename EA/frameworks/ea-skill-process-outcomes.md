@@ -3,13 +3,22 @@
 Last updated: 2026-06-04
 Owner: EA
 
-Purpose: define the actual EA skills ROS should activate for Guy's current work demands: ABN AMRO Security Enterprise Architecture onboarding and Coca-Cola Infrastructure & Security Enterprise Architecture. This replaces generic architecture categories with outcome-driven skill cards tied to the work Guy is expected to perform.
+Purpose: define the actual EA skills ROS should activate for Guy/Joseph's current work demands: Boortmalt Information Security Architect / CISO + CCoE security onboarding, ABN AMRO Security Enterprise Architecture onboarding, and Coca-Cola Infrastructure & Security Enterprise Architecture. This replaces generic architecture categories with outcome-driven skill cards tied to the work Guy/Joseph is expected to perform.
 
 This is reusable across workplaces, but workplace facts, stakeholders, decisions, and deliverables remain under `EA/clients/[client]/` and must not be mixed.
 
 ---
 
 ## Current demand signals
+
+### Boortmalt — Information Security Architect / CISO + CCoE security
+
+Demand profile:
+- Offer accepted via ATCON Global; onboarding and work-authorization gate still open; immediate demand is to separate legal/admin blockers from architecture readiness.
+- Role lens: Information Security Architect supporting CISO-adjacent security governance and likely CCoE/cloud-platform guardrails.
+- First architecture demand should be discovery-first: confirm sponsor/CISO line, CCoE/platform lead, OT/plant operations counterpart, governance forums, source repositories, and first deliverable.
+- Domain focus: CISO operating model, CCoE guardrails, IAM/ZTA/PAM, network and possible OT/plant segmentation, NIS2/ISO/NIST/CIS-style control evidence, SecOps/logging, resilience/DR, and risk-based roadmap.
+- Likely tooling to confirm: ServiceNow/Jira, Confluence/SharePoint, architecture repository, cloud consoles, identity/PAM tooling, SIEM/SOC dashboards, CMDB, risk register, policy/evidence repositories.
 
 ### ABN AMRO — Security Enterprise Architect
 
@@ -43,9 +52,11 @@ Each output must include:
 Use this protocol before producing any EA artifact.
 
 1. Confirm workplace:
+   - Boortmalt: Information Security Architecture, CISO/CCoE, industrial/security/risk/control lens.
    - ABN: Security Enterprise Architecture, banking/security/risk/control lens.
    - Coca-Cola: Infrastructure & Security Enterprise Architecture, platform/operability/resilience lens.
 2. Load workplace context:
+   - Boortmalt: `EA/clients/Boortmalt/CONTEXT.md` plus `EA/clients/Boortmalt/ea-multi-agent-security-system-plan.md` for operating model.
    - ABN: `EA/clients/ABN/CONTEXT.md`.
    - Coca-Cola: `EA/clients/Coca-Cola/CONTEXT.md`.
 3. Identify demand mode:
@@ -70,6 +81,7 @@ Use this protocol before producing any EA artifact.
 | User asks for | Activate | Produce |
 |---|---|---|
 | "Help me start/onboard" | Skill 1 + Skill 10 | Onboarding/access checklist, stakeholder map, first-deliverable brief, sponsor update |
+| "Define Boortmalt CISO/CCoE system" | Skills 1,2,4,5,6,7,9,10 + Boortmalt plan | Single-client security architecture cell, activation matrix, first 72-hour checklist, source-pack request, first-deliverable brief |
 | "Review current state" | Skill 2 + relevant domain cards + Skill 10 | Current-state review, risk heatmap, control/gap matrix, executive summary |
 | "Make an HLD" | Skill 3 + relevant domain cards + Skill 8 | Target-state HLD, architecture views, transition roadmap, ADR candidates |
 | "IAM / Zero Trust" | Skill 4 + Skill 7 + Skill 8 | IAM/ZTA assessment, privileged access model, evidence process, ADR |
@@ -506,6 +518,27 @@ Quality bar:
 
 ## Workplace-specific activation matrix
 
+### Boortmalt default skill stack
+
+1. Engagement scope and onboarding capture.
+2. CISO operating model / executive communication via Skill 10 plus governance outputs.
+3. Current-state security/infrastructure architecture review.
+4. Cloud landing zone and CCoE/platform guardrails.
+5. IAM / Zero Trust / privileged access design.
+6. Network segmentation and secure connectivity, including OT/plant scope only if confirmed.
+7. Compliance-to-control translation with NIS2/ISO/NIST/CIS/internal policy evidence.
+8. SecOps/resilience review through logging, evidence, vulnerability, backup/DR and ransomware-readiness dimensions.
+9. Risk-based roadmap/backlog.
+10. ADR and governance.
+
+Near-term expected outputs:
+- Boortmalt first 72-hour onboarding/access/stakeholder checklist.
+- Boortmalt CISO/CCoE mandate and source-pack request.
+- Boortmalt current-state security + CCoE baseline review.
+- Boortmalt IAM/ZTA/PAM and network/OT segmentation assessments where confirmed in scope.
+- Boortmalt control/evidence matrix and 0-30 / 30-90 / 90+ security roadmap.
+- Boortmalt target-state security/CCoE HLD and CISO decision pack.
+
 ### ABN AMRO default skill stack
 
 1. Engagement scope and onboarding capture.
@@ -547,6 +580,11 @@ Near-term expected outputs:
 ---
 
 ## What “good” looks like
+
+For Boortmalt:
+- CISO/CCoE-first, discovery-first, evidence-aware, industrial/OT-conscious without assuming plant scope.
+- Strong on governance/decision paths, cloud/platform guardrails, IAM/ZTA/PAM, segmentation, controls/evidence, SecOps/resilience, and risk-roadmap sequencing.
+- First deliverables should help Joseph/Guy become effective immediately: source-pack request, stakeholder map, CISO/CCoE mandate brief, current-state baseline plan, and 0-30/30-90 roadmap.
 
 For ABN:
 - Security-first, banking-grade, evidence-aware, governance-ready.

@@ -22,6 +22,6 @@ Read at session start. Durable current facts only. Prescriptive behavior → `CL
 
 ## Active by domain
 - **HV** (Real Estate): smart-living + development-upside sourcing (Amsterdam Noord/Zuid, Den Haag). Primary target [[HV/03_Deals/Badhuiskade_217_Amsterdam_Noord|Badhuiskade 217]] pending viewing+DD. EU dual-exit dev engine live (see memory).
-- **EA** (Enterprise Arch): ABN Security EA onboarding + Coca-Cola Infra & Security EA contract/onboarding. Lead = Guy (Joseph only when explicitly involved).
+- **EA** (Enterprise Arch): Boortmalt Information Security Architect / CISO+CCoE security onboarding (Joseph identity), ABN Security EA onboarding, and Coca-Cola Infra & Security EA contract/onboarding. Lead = Guy/Joseph boundary per context; keep client contexts isolated.
 - **PAI** (Ventures/Arbor): Arbor live in prod — arborparentingapp.com (Firebase Hosting + Cloud Run `arbor-api`). Full product-org + autonomous marketing mesh + 4 live loops; merge/deploy human-gated. Active GOAL: viral ignition by 2026-07-21 + iOS/Android store publishing (CI green, account-gated steps remain). Detail: [[PAI/MEMORY|PAI Memory]]. 🔒 Peterson = back-end inspiration only, never branded.
 - **KK** (Personal Ops): active. **MKT**: active.
