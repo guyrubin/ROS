@@ -1,3 +1,9 @@
+---
+type: reference
+title: ROS Layer Model
+description: The layered model of the ROS knowledge and execution stack.
+---
+
 # ROS Layer Model
 Version: 1.2
 Last updated: 2026-06-14

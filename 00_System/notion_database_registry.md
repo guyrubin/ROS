@@ -1,3 +1,9 @@
+---
+type: reference
+title: Notion Database Registry
+description: Mapping of ROS concepts to their Notion database IDs.
+---
+
 # Notion Database Registry
 Last updated: 2026-05-24
 Status: Active / partially mapped

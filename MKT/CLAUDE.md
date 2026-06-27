@@ -1,3 +1,9 @@
+---
+type: domain-guide
+title: MKT — Marketing & Content
+description: Operating guide for the marketing agent (content, copy, campaigns, brand, social).
+---
+
 # MKT -- Marketing & Content
 Version: 0.1 (stub -- build Phase 5)
 Last updated: 2026-05-17

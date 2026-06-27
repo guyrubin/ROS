@@ -1,3 +1,9 @@
+---
+type: reference
+title: Notion Template IDs
+description: Source of truth for all Rubin OS Notion template IDs.
+---
+
 # Notion Template IDs
 Last updated: 2026-05-11
 

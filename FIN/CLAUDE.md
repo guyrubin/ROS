@@ -1,3 +1,9 @@
+---
+type: domain-guide
+title: FIN — Finance & Admin
+description: Operating guide for the finance agent (invoices, insurance, contracts, tax, admin).
+---
+
 # FIN -- Finance & Admin
 Version: 0.1 (stub -- build Phase 5)
 Last updated: 2026-05-17

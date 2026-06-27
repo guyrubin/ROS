@@ -1,3 +1,9 @@
+---
+type: runbook
+title: ROS Session Audit Protocol
+description: Wrap-up procedure to capture learnings and updates at session end.
+---
+
 # ROS Session Audit Protocol
 
 Version: 1.1

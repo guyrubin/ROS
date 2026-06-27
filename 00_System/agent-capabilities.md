@@ -1,6 +1,12 @@
+---
+type: reference
+title: ROS Agent Capabilities
+description: What each ROS agent can and cannot do, and the capability/connector matrix per domain.
+---
+
 # ROS Agent Capabilities
-Version: 1.1
-Last updated: 2026-05-24
+Version: 1.2
+Last updated: 2026-06-27
 
 ---
 
@@ -9,6 +15,8 @@ Last updated: 2026-05-24
 This is the shared, current baseline capability catalog for every Rubin OS agent. Domain `CLAUDE.md` files should reference this file instead of duplicating tool rules. Capabilities are runtime-neutral unless a connector explicitly depends on Hermes, Codex, Claude, or another runtime.
 
 All agents inherit these capabilities unless a domain-specific safety rule narrows access.
+
+For capability improvement, use `/00_System/capability-optimization.md`. This file names the baseline; the optimization runbook defines maturity levels, layer placement, quality gates, and the SENSE -> FRAME -> DESIGN -> EXECUTE -> JUDGE -> PROMOTE -> AUDIT loop.
 
 ---
 
@@ -22,6 +30,21 @@ All agents inherit these capabilities unless a domain-specific safety rule narro
 | Document intelligence | Extract, OCR, summarize, compare, and convert PDFs, scans, docs, slides, spreadsheets, and images into Markdown-first ROS artifacts | Contracts, invoices, listings, decks, reports, forms | Keep originals referenced; distinguish extraction from interpretation |
 | Data analysis and lightweight automation | Use scripts/notebooks/CLI tools for calculations, tables, parsing, charts, and repeatable checks | Financial models, content calendars, lead lists, KPI reviews, logs | Verify outputs; keep reusable scripts/templates in the appropriate ROS folder |
 | Knowledge-base maintenance | Convert findings into atomic, linked Markdown notes and update the right `MEMORY.md` when context is durable | Research synthesis, decisions, agent memory, dashboards | Do not store temporary task progress as durable memory |
+
+---
+
+## Capability quality gates
+
+Before a capability result becomes durable ROS knowledge or triggers external action, agents must check:
+
+| Gate | Rule |
+|---|---|
+| Source | Name the files, connector targets, or sources used. |
+| Freshness | Verify current facts instead of relying on stale memory. |
+| Safety | Apply the root safety level before external, financial, legal, or irreversible action. |
+| Layer fit | Store the output in the correct ROS layer from `/00_System/layer-model.md`. |
+| Evidence | Use tests, readback, screenshots, citations, calculations, or human confirmation when relevant. |
+| Write-back | Promote durable facts, decisions, templates, or runbooks using `/00_System/agent-filesystem-contract.md`. |
 
 ---
 

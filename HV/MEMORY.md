@@ -1,3 +1,9 @@
+---
+type: memory
+title: HV Memory
+description: Active facts and state for the HollandVest real estate domain.
+---
+
 # HV Memory
 Last updated: 2026-05-15
 

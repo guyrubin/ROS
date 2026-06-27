@@ -1,5 +1,26 @@
+---
+type: memory
+title: PAI Memory
+description: Active facts and state for the Product & AI Ventures domain.
+---
+
 # PAI Memory
-Last updated: 2026-06-17
+Last updated: 2026-06-27
+
+## ⭐ CURRENT STATE [2026-06-27] — Arbor is LIVE in production (supersedes all "unmerged branch / AI disabled / local-only" notes below)
+
+The 2026-06-03 "Active ventures" block and earlier still describe Arbor as a local unmerged v2 branch with AI disabled. **That is historical — superseded.** Ground truth today:
+
+- **Live in prod** on **arborparentingapp.com** (GoDaddy-API domain + Firebase custom-domain; login-fix = add domain to Firebase Auth authorized domains). Prod is current + functional.
+- **Deploy pipeline:** `arbor-deploy.yml` is a canary (candidate → smoke → promote → hosting); the long-stale-prod root cause (a `--to-latest=100` promote-step bug) is **fixed**. Client deploys only from `main` — never hand-deploy hosting; merge-to-main through the pipeline IS the prod-promote.
+- **Mobile:** iOS + Android native builds **green in CI**; only Apple/Google account-gated steps remain (active goal: publish both stores).
+- **Billing:** Free / Plus / Family; web Stripe + native iOS/Play; **RevenueCat** as unified entitlement brain (needs one end-to-end test purchase).
+- **Avatar + AI image-gen:** BUILT / DEPLOYED / VERIFIED in prod; remaining = 2 Guy-gated calls (child-ASR vendor, Firebase Storage).
+- **Design system:** LIVE on claude.ai/design ("Arbor Design System", sapphire "2035"); remote supersedes the local build — leave as-is.
+- **Child-data GDPR:** export/erase allow-list (`CHILD_SUBCOLLECTIONS` in `childData.ts`) fixed + guard test enforces every sink is registered. Don't remove the guard.
+- **Design-goal state:** canonical strategy = `PRODUCT-REDESIGN-STRATEGY.md`; wave-1 RTL+a11y + wave-3 clinical-firewall shipped (`cda94e1`); next = layout/IA redesign (UC-1); sapphire-flip + future prod-promote = Guy-gated.
+- **Folder:** renamed `parenting-os-plugin` → `PAI/projects/arbor` (2026-06-24); the live app still physically nests in the `PPPPtherapy-` repo (move deferred until the 17 worktrees close). Boundary doc: `00_System/repo-boundaries.md`.
+- **Autonomy:** PAI now runs the three-engine self-running loop — spec in `PAI/AUTONOMY.md`; PAI/CLAUDE.md rebuilt v0.1-stub → v1.0 domain OS (2026-06-27).
 
 ## Updates [2026-06-17] - Arbor marketing + SEO/AEO foundation live
 

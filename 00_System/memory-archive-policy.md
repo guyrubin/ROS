@@ -1,3 +1,9 @@
+---
+type: policy
+title: ROS Memory and Archive Policy
+description: Rules for what lives in active memory versus the archive across ROS.
+---
+
 # ROS Memory and Archive Policy
 
 **Created:** 2026-05-20

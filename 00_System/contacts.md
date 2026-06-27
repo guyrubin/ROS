@@ -1,3 +1,9 @@
+---
+type: contact
+title: Shared Contacts
+description: Shared contact and principal registry across all ROS domains.
+---
+
 # Shared Contacts
 Last updated: 2026-05-13
 

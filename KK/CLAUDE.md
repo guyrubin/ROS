@@ -1,3 +1,9 @@
+---
+type: domain-guide
+title: KK — Personal Operations
+description: Operating guide for the personal-ops agent (daily ops, inbox, calendar, tasks, scheduling).
+---
+
 # KK -- Personal Operations
 Version: 0.3
 Last updated: 2026-06-04

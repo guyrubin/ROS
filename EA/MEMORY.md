@@ -1,3 +1,9 @@
+---
+type: memory
+title: EA Memory
+description: Active facts and state for the Enterprise Architecture domain.
+---
+
 # EA Memory
 Last updated: 2026-06-04
 

@@ -1,3 +1,9 @@
+---
+type: policy
+title: ROS Identity Policy
+description: Email-account-to-agent mapping and send/identity safety rules.
+---
+
 # ROS Identity Policy
 Version: 1.1
 Last updated: 2026-05-17

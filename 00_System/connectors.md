@@ -1,3 +1,9 @@
+---
+type: reference
+title: Connectors
+description: Shared connector registry for Rubin OS — external tool and MCP grants per agent.
+---
+
 # Connectors
 Last updated: 2026-05-19
 

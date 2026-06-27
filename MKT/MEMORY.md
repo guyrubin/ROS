@@ -1,4 +1,10 @@
-﻿# MKT Memory
+---
+type: memory
+title: MKT Memory
+description: Active facts and state for the marketing and content domain.
+---
+
+# MKT Memory
 Last updated: 2026-05-13
 
 ---

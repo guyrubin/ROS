@@ -1,3 +1,9 @@
+---
+type: domain-guide
+title: EA — Enterprise Architecture Consulting
+description: Operating guide for the Enterprise Architecture agent (HLDs, ADRs, cloud, EA clients).
+---
+
 # EA — Enterprise Architecture Consulting
 <!-- Stacks on root CLAUDE.md. Loaded when routing to architecture / consulting tasks. -->
 

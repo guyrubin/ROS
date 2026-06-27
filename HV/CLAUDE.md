@@ -1,3 +1,9 @@
+---
+type: domain-guide
+title: HV — HollandVest Real Estate Developer
+description: Operating guide for the HollandVest agent (real estate deals, BRRRR, permits, WWS, tenants).
+---
+
 # HV — HollandVest Real Estate Developer
 <!-- Stacks on root CLAUDE.md. Loaded when routing to real estate tasks. -->
 

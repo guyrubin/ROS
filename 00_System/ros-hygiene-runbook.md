@@ -1,3 +1,9 @@
+---
+type: runbook
+title: ROS Hygiene Runbook
+description: Periodic vault hygiene procedure — gaps, consistency, and cleanup.
+---
+
 # ROS Hygiene Runbook
 
 Version: 1.1

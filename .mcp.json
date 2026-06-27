@@ -1,0 +1,9 @@
+{
+  "_doc": "Shared MCP manifest for Rubin OS (ROS) — single source of truth for the external-tool surface that every engine (Claude Code and other harnesses) should read. Format is Claude Code's project-scoped .mcp.json: each entry under 'mcpServers' is a locally-launched stdio MCP server with a 'command', 'args', and optional 'env'. All secrets MUST be referenced as ${ENV_VAR} placeholders — never inline a real key or token. mcpServers is intentionally EMPTY: as of 2026-06-27, ROS uses NO locally-launchable (command-based) MCP servers. The connectors ROS actually relies on are either (a) Hermes/Cowork SKILLS — see '_hermesSkills' below — or (b) Cowork/desktop-managed remote connectors that are launched by the host app (not from this file) and appear in .claude/settings.local.json only as opaque permission IDs with no verifiable on-disk launch command. Per the conservative rule, no server was fabricated. To add a real server later, insert it under 'mcpServers' with a verified command/args and ${ENV_VAR}-referenced secrets.",
+  "mcpServers": {},
+  "_hermesSkills": [
+    "himalaya (email) — Gmail IMAP/SMTP for bguy.rubin@gmail.com (account 'bguy'), bhollandvest@gmail.com (account 'hollandvest'), josephdoronrubin@gmail.com (account 'joseph'). Hermes CLI skill, NOT an MCP server. Runbook: 00_System/himalaya-mail-runbook.md. Draft first; never send externally without explicit confirmation.",
+    "productivity/notion — Notion read/query/create/update via the Notion API (secret: ${NOTION_API_KEY}). Hermes skill, NOT an MCP server. Verified integration 'ROS KK Con' over Rubin OS Command Center and HollandVest Command Center workspaces.",
+    "hermes-agent — Hermes setup/tooling skill (config, env, profiles, gateway, skills, cron, MCP setup). Load before changing any Hermes configuration. Skill, NOT an MCP server."
+  ]
+}

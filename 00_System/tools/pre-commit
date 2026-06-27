@@ -1,0 +1,10 @@
+#!/bin/sh
+# ROS OKF pre-commit hook (committed canonical copy).
+# Install: copy this file to .git/hooks/pre-commit and make it executable.
+#   cp 00_System/tools/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+#
+# Runs the OKF linter over the markdown vault. A malformed-frontmatter or
+# UTF-8 hard violation aborts the commit (non-zero exit). Missing frontmatter
+# is a warning only and does not block.
+
+node 00_System/tools/okf-lint.mjs

@@ -1,3 +1,7 @@
+---
+type: routing
+---
+
 # ROS Routing Matrix
 Version: 1.4
 Last updated: 2026-06-14

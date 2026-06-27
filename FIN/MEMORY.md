@@ -1,4 +1,10 @@
-﻿# FIN Memory
+---
+type: memory
+title: FIN Memory
+description: Active facts and state for the finance and admin domain.
+---
+
+# FIN Memory
 Last updated: 2026-05-13
 
 ---

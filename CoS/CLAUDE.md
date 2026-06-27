@@ -1,3 +1,9 @@
+---
+type: domain-guide
+title: CoS — Chief of Staff
+description: Operating guide for the Chief of Staff agent (weekly review, OKRs, strategy, cross-domain orchestration).
+---
+
 # CoS — Chief of Staff
 <!-- Stacks on root CLAUDE.md. Loaded when routing to cross-domain orchestration tasks. -->
 

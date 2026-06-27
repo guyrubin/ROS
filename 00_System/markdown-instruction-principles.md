@@ -1,6 +1,12 @@
+---
+type: policy
+title: ROS Markdown Instruction Principles
+description: Standards for writing instruction and memory markdown files in ROS.
+---
+
 # ROS Markdown Instruction Principles
-Version: 1.2
-Last updated: 2026-06-14
+Version: 1.3
+Last updated: 2026-06-27
 
 ## Purpose
 
@@ -85,6 +91,42 @@ Safety level: 3 - requires user confirmation before executing
 **In memory:** `2026-05-24 - Badhuiskade 217 remains the primary HV target pending DD.`
 
 **In instruction files:** `Before quoting renovation budgets, check /HV/MEMORY.md.`
+
+## Minimalism ladder (adapted from ponytail)
+
+ROS has no separate `/de-slop` file on disk; this is the canonical home for the minimalism doctrine. Source: ponytail (DietrichGebert/ponytail), adapted from a code/YAGNI minimalism skill into this markdown+git PKM context.
+
+Before adding anything (a note, a file, a section, a line, a skill, a route), climb the ladder top-down and stop at the first rung that satisfies the need. YAGNI first: the cheapest artifact that is correct wins.
+
+| Rung | Ask | Default |
+|---:|---|---|
+| 1 | Does it need to exist at all? | Prefer not creating it. |
+| 2 | Can an existing note, skill, or route serve? | Reuse before new. |
+| 3 | Can it be one memory line? | One line in `MEMORY.md` before a paragraph. |
+| 4 | Can it reference instead of restate? | Link the source file before restating its content. |
+| 5 | Can it extend existing structure? | Add to an existing file/section before a new file. |
+| 6 | How few lines does it take? | Minimal lines; cut filler. |
+| 7 | What is the bare minimum that works? | Ship that; defer the rest. |
+
+### Intensity dial
+
+Pick a setting per task; default to `lite` for routine PKM work.
+
+| Setting | Use when | Effect |
+|---|---|---|
+| `lite` | Routine edits, additions | Apply rungs 3–7; light touch. |
+| `full` | New docs, restructures | Apply all 7 rungs deliberately. |
+| `ultra` | Bloat audits, consolidation | Aggressively collapse, merge, archive; justify every retained line. |
+
+### Floors (never cut for brevity)
+
+Minimalism trims words and artifacts, never correctness. These are non-negotiable regardless of intensity:
+
+- **Accuracy** — every retained fact stays true and current.
+- **Security** — never drop a safety gate, secret-handling rule, or confirmation step to save lines.
+- **Validation** — keep the checks that prove a change is correct.
+- **Accessibility** — preserve structure (headers, tables, paths) that keeps docs navigable.
+- **Full comprehension before acting** — read and understand the source completely before trimming or editing it.
 
 ## Domain CLAUDE.md Structure
 

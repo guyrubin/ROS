@@ -1,4 +1,10 @@
-﻿# KK Memory
+---
+type: memory
+title: KK Memory
+description: Active facts and state for the personal-operations domain.
+---
+
+# KK Memory
 Last updated: 2026-05-14
 
 ---

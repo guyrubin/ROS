@@ -1,3 +1,9 @@
+---
+type: policy
+title: ROS Agent Filesystem Contract
+description: Rules for where agents read and write files across the ROS vault.
+---
+
 # ROS Agent Filesystem Contract
 Version: 1.1
 Last updated: 2026-06-14
