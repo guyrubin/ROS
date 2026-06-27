@@ -61,6 +61,8 @@ No architectural design decisions are settled yet — IAM/ZTA, CCoE guardrails, 
 | 2026-06-27 | First architecture operating model is discovery-first, not design-first | No Boortmalt estate has been disclosed; best system converts ambiguity into onboarding checklist, stakeholder map, baseline review plan, and roadmap. |
 | 2026-06-27 | Boortmalt onboarding + first-deliverable pack created | Operating artifact now exists at `EA/clients/Boortmalt/boortmalt-onboarding-first-deliverable-pack-2026-06-27.md`; use it as the first-week checklist, stakeholder/forum map, source-pack request draft, and first-deliverable recommendation. |
 | 2026-06-27 | Boortmalt CISO/CCoE baseline workbook created | Execution artifact now exists at `EA/clients/Boortmalt/boortmalt-ciso-ccoe-baseline-workbook-2026-06-27.md`; use it after source-pack access lands to run the current-state baseline, risk/control/evidence backlog, decision log, and 0-30 / 30-90 roadmap. |
+| 2026-06-27 | New-customer onboarding separated from reusable knowledge base | Customer-specific onboarding artifacts stay under `EA/clients/Boortmalt/`; reusable frameworks/templates stay under `EA/frameworks/` or `EA/12_Templates/`. Do not fan out Boortmalt onboarding work across ABN or Coca-Cola. |
+| 2026-06-27 | Boortmalt new-customer onboarding plan created | Fresh customer-specific plan exists at `EA/clients/Boortmalt/boortmalt-new-customer-onboarding-plan-2026-06-27.md`; use it as the controlling Boortmalt onboarding plan and keep knowledge-base extraction separate. |
 
 ## Expected EA outputs (demand-aligned)
 
@@ -70,6 +72,7 @@ Activation per `EA/frameworks/ea-skill-process-outcomes.md` and `EA/clients/Boor
 
 ## Next actions
 
+- [x] Create fresh Boortmalt-only new-customer onboarding plan and customer/knowledge-base separation guard — created `EA/clients/Boortmalt/boortmalt-new-customer-onboarding-plan-2026-06-27.md`.
 - [ ] Confirm contract/start/work-authorization route and do not let architecture planning obscure the legal gate.
 - [ ] Capture Boortmalt sponsor, CISO line, CCoE/platform lead, architecture board/CAB, and OT/operations counterpart.
 - [ ] Request the minimum source pack: org/security mandate, policies, cloud/account map, network/OT topology, identity/PAM model, risk register, logging/SOC overview, BCP/DR posture, current initiatives/backlog.

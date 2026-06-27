@@ -1,6 +1,6 @@
 # Coca-Cola — Workplace Context (EA FRAME dossier)
-Last updated: 2026-06-27
-Reviewed: 2026-06-27
+Last updated: 2026-06-22
+Reviewed: 2026-06-22
 <!-- Mandatory first read for Coca-Cola EA work — the EA Definition-of-Done gate (EA/mesh/MESH.md §Gate). This file alone must satisfy the gate with connectors offline: estate · named stakeholders · in-flight decisions · decision log. -->
 
 > Mirror surface: [[../../../CoS/projects/guy-command-center/Command Center - Obsidian Entry|Command Center]] → EA Client Cockpit (Coca-Cola tab); engagement state in `CoS/projects/guy-command-center/state.json`. The Command Center is a convenience mirror — **this file is the source of truth for the FRAME**, by design, so EA deliverables hold with connectors down.
@@ -57,7 +57,6 @@ What has actually been settled, so the FRAME is self-contained:
 | 2026-05 | Role lens fixed to **Infrastructure & Security Enterprise Architecture** | Distinguishes Coca-Cola from ABN's security-led lens; drives which EA skill cards activate |
 | 2026-06 | Coca-Cola kept **strictly isolated** from ABN and all prior clients | Confidentiality gate (EA/CLAUDE.md, MESH.md §Gate) |
 | 2026-06-22 | Dossier restructured to the **four-section FRAME shape** (estate/stakeholders/in-flight/log) so the filesystem alone satisfies the EA gate offline | ROS-BACKLOG GA-4: connector-independent gate input |
-| 2026-06-27 | Coca-Cola onboarding readiness + first-deliverable pack created | Operating artifact now exists at `EA/clients/Coca-Cola/coca-cola-onboarding-readiness-first-deliverable-pack-2026-06-27.md`; use it as the contract/onboarding checklist, stakeholder/forum map, source-pack request draft, and infrastructure/security baseline review plan. |
 
 ## Expected EA outputs (demand-aligned)
 
@@ -65,7 +64,7 @@ Contract/onboarding readiness checklist → infra & security baseline review →
 
 ## Next actions
 
-- [x] Convert §1 open rows + §2 roles into a contract/onboarding readiness checklist and first-deliverable pack — created `EA/clients/Coca-Cola/coca-cola-onboarding-readiness-first-deliverable-pack-2026-06-27.md`.
+- [ ] Convert §1 open rows + §2 roles into established facts via the contract/onboarding readiness checklist (first deliverable).
 - [ ] Review contract terms on receipt; capture start date, role/title, reporting line, compensation (resolves D-CC-1).
 - [ ] Record onboarding/access/provisioning steps as they surface (resolves D-CC-2).
 - [ ] On each update, move resolved items from "open" into the relevant §1–§4 row and refresh the dates above.

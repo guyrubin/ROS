@@ -54,10 +54,9 @@ Treat all prior client/workplace references as inactive unless Guy explicitly re
 
 ## Active deliverables
 
-- [x] Boortmalt onboarding + first-deliverable pack — Workplace: Boortmalt — Type: Onboarding/Architecture readiness — Path: `EA/clients/Boortmalt/boortmalt-onboarding-first-deliverable-pack-2026-06-27.md` — Status: Draft internal artifact ready for sponsor/onboarding tailoring; external send still requires confirmation.
+- [x] Boortmalt onboarding + first-deliverable pack — Workplace: Boortmalt — Type: New-customer onboarding / architecture readiness — Path: `EA/clients/Boortmalt/boortmalt-onboarding-first-deliverable-pack-2026-06-27.md` — Status: Draft internal artifact ready for sponsor/onboarding tailoring; external send still requires confirmation.
 - [x] Boortmalt CISO/CCoE baseline workbook — Workplace: Boortmalt — Type: Current-state baseline/risk-control execution workbook — Path: `EA/clients/Boortmalt/boortmalt-ciso-ccoe-baseline-workbook-2026-06-27.md` — Status: Draft internal artifact ready to populate after source-pack/access lands.
-- [x] ABN onboarding + first-deliverable pack — Workplace: ABN — Type: Onboarding/Security EA current-state review readiness — Path: `EA/clients/ABN/abn-onboarding-first-deliverable-pack-2026-06-27.md` — Status: Draft internal artifact ready for onboarding tailoring; external send still requires confirmation.
-- [x] Coca-Cola contract/onboarding readiness + first-deliverable pack — Workplace: Coca-Cola — Type: Contract/onboarding/Infra & Security baseline readiness — Path: `EA/clients/Coca-Cola/coca-cola-onboarding-readiness-first-deliverable-pack-2026-06-27.md` — Status: Draft internal artifact ready for contract/onboarding tailoring; external send still requires confirmation.
+- [x] Boortmalt new-customer onboarding plan — Workplace: Boortmalt — Type: Customer-specific onboarding plan with knowledge-base separation guard — Path: `EA/clients/Boortmalt/boortmalt-new-customer-onboarding-plan-2026-06-27.md` — Status: Controlling plan for the new customer onboarding; external send still requires confirmation.
 <!-- - [ ] [document/task] — Workplace: Coca-Cola/ABN — Type: Contract/Onboarding/Admin/Architecture — Due: — Status: -->
 
 ## Practice pipeline
@@ -73,6 +72,7 @@ No other active EA workplace/client pipeline items. Scratch prior items unless e
 ## Reusable patterns
 
 - EA outputs should activate the relevant skill cards from the framework and end in concrete artifacts: onboarding checklist, stakeholder map, current-state review, HLD, ADR, control/evidence matrix, risk backlog, roadmap, or executive brief, with workplace context kept separate.
+- For new-customer onboarding, the controlling customer artifact is created under that customer's folder first; reusable knowledge-base/framework updates are separate and contain only anonymized/generalized patterns.
 
 ## Workplace roster
 
