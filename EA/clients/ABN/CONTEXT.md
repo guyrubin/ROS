@@ -1,6 +1,6 @@
 # ABN — Workplace Context (EA FRAME dossier)
-Last updated: 2026-06-22
-Reviewed: 2026-06-22
+Last updated: 2026-06-27
+Reviewed: 2026-06-27
 <!-- Mandatory first read for ABN EA work — the EA Definition-of-Done gate (EA/mesh/MESH.md §Gate). This file alone must satisfy the gate with connectors offline: estate · named stakeholders · in-flight decisions · decision log. -->
 
 > Mirror surface: [[../../../CoS/projects/guy-command-center/Command Center - Obsidian Entry|Command Center]] → EA Client Cockpit (ABN tab); engagement state in `CoS/projects/guy-command-center/state.json`. The Command Center is a convenience mirror — **this file is the source of truth for the FRAME**, by design, so EA deliverables hold with connectors down.
@@ -57,6 +57,7 @@ What has actually been settled, so the FRAME is self-contained:
 | 2026-05 | Role lens fixed to **Security Enterprise Architecture** (not infra-led) | Distinguishes ABN from the Coca-Cola infra+security lens; drives which EA skill cards activate |
 | 2026-06 | ABN kept **strictly isolated** from Coca-Cola and all prior clients | Confidentiality gate (EA/CLAUDE.md, MESH.md §Gate) |
 | 2026-06-22 | Dossier restructured to the **four-section FRAME shape** (estate/stakeholders/in-flight/log) so the filesystem alone satisfies the EA gate offline | ROS-BACKLOG GA-4: connector-independent gate input |
+| 2026-06-27 | ABN onboarding + first-deliverable pack created | Operating artifact now exists at `EA/clients/ABN/abn-onboarding-first-deliverable-pack-2026-06-27.md`; use it as the first-week checklist, stakeholder/forum map, source-pack request draft, and current-state review plan. |
 
 ## Expected EA outputs (demand-aligned)
 
@@ -64,7 +65,7 @@ Onboarding/access/stakeholder checklist → first-deliverable brief → current-
 
 ## Next actions
 
-- [ ] Convert §1 open rows + §2 roles into established facts via the onboarding/access checklist (first deliverable).
+- [x] Convert §1 open rows + §2 roles into an onboarding/access checklist and first-deliverable pack — created `EA/clients/ABN/abn-onboarding-first-deliverable-pack-2026-06-27.md`.
 - [ ] Capture start date, rate/contract terms, role/title, intermediary, and key contacts (resolves D-ABN-1).
 - [ ] Record screening/access/compliance prerequisites as they surface (resolves D-ABN-2).
 - [ ] On each update, move resolved items from "open" into the relevant §1–§4 row and refresh the dates above.

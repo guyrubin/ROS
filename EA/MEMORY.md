@@ -1,5 +1,5 @@
 # EA Memory
-Last updated: 2026-06-04
+Last updated: 2026-06-27
 
 ---
 
@@ -56,6 +56,8 @@ Treat all prior client/workplace references as inactive unless Guy explicitly re
 
 - [x] Boortmalt onboarding + first-deliverable pack — Workplace: Boortmalt — Type: Onboarding/Architecture readiness — Path: `EA/clients/Boortmalt/boortmalt-onboarding-first-deliverable-pack-2026-06-27.md` — Status: Draft internal artifact ready for sponsor/onboarding tailoring; external send still requires confirmation.
 - [x] Boortmalt CISO/CCoE baseline workbook — Workplace: Boortmalt — Type: Current-state baseline/risk-control execution workbook — Path: `EA/clients/Boortmalt/boortmalt-ciso-ccoe-baseline-workbook-2026-06-27.md` — Status: Draft internal artifact ready to populate after source-pack/access lands.
+- [x] ABN onboarding + first-deliverable pack — Workplace: ABN — Type: Onboarding/Security EA current-state review readiness — Path: `EA/clients/ABN/abn-onboarding-first-deliverable-pack-2026-06-27.md` — Status: Draft internal artifact ready for onboarding tailoring; external send still requires confirmation.
+- [x] Coca-Cola contract/onboarding readiness + first-deliverable pack — Workplace: Coca-Cola — Type: Contract/onboarding/Infra & Security baseline readiness — Path: `EA/clients/Coca-Cola/coca-cola-onboarding-readiness-first-deliverable-pack-2026-06-27.md` — Status: Draft internal artifact ready for contract/onboarding tailoring; external send still requires confirmation.
 <!-- - [ ] [document/task] — Workplace: Coca-Cola/ABN — Type: Contract/Onboarding/Admin/Architecture — Due: — Status: -->
 
 ## Practice pipeline
