@@ -50,11 +50,18 @@ Source: Guy reported that ROS is inefficient, lacks a night knowledge-management
 
 **CB — Central Backlog / Knowledge Operations**
 - **CB-1 · Make `CoS/ROS-BACKLOG.md` the single backlog intake for ROS operating-system work** — all cross-agent efficiency, sync, memory, automation, and runtime improvement items land here first; domain/project backlogs may exist only for domain execution detail and should link back when work affects ROS-the-company. *(A, S)*
-- **CB-2 · Night knowledge-management operation** — define a daily closeout that turns the day's activity into: memory candidates, archive candidates, backlog deltas, and unresolved decisions; start read-only/reporting before enabling writes. *(C, M)*
+- **CB-2 · Night knowledge-management operation** — implement as a ponytail-style efficient closeout: one script gathers git/session/backlog deltas once, then one LLM pass emits only memory candidates, archive candidates, backlog deltas, and unresolved decisions; start read-only/reporting before enabling writes. *(C, M)*
 - **CB-3 · Memory write-back guardrail** — require each proposed memory save to name source evidence, target file (`MEMORY.md`, domain `MEMORY.md`, archive, or project note), freshness horizon, and whether it is fact vs instruction. *(A, S)*
 - **CB-4 · Claude/Hermes synchronization preflight** — before memory/backlog writes, check git status, branch, ahead/behind, dirty files, and active cross-agent handoff notes; never hide sync conflicts in chat-only state. *(A, S)*
 - **CB-5 · Backlog triage cadence** — add a CoS review lane that promotes only approved backlog items into Notion/My Tasks or domain execution plans, avoiding duplicate task systems. *(B, S)*
 - **CB-6 · Night-op audit trail** — log each night run's source window, files read, memory/backlog changes proposed or made, git outcome, and blockers so Claude and Hermes can resume from the same evidence. *(A, M)*
+
+**Efficiency constraint (ponytail/full)**
+- Reuse this backlog; no new doctrine file unless the run needs more than this section.
+- Prefer deterministic collection code over agent browsing: one shell/Python collector, one compact JSON/Markdown report, one LLM decision pass.
+- Inputs are deltas only: today's git commits/status, changed files, cron outputs, session-search hits, and existing backlog lines.
+- Output caps: max 5 memory candidates, max 5 backlog deltas, max 5 open decisions, plus blockers; omit empty sections.
+- Floors not cut: evidence paths, sync safety, secret handling, and validation.
 
 **Immediate next cut**
 1. Write the night-op prompt/runbook against this backlog item, not as a hidden cron-only behavior.
