@@ -45,6 +45,29 @@ Seeded from the OKF execution ([report](reports/ros-okf-execution-2026-06-27.md)
 - **G-2 · Reconcile fleet counts** (62 = 22 ROS + 40 Arbor) across harness doc + operating plan. *(A, S)*
 - **G-3 · Rotate the plaintext z.ai key** — hygiene at convenience, NOT urgent. *(C, S)*
 
+### [2026-06-28] Central Backlog + Night Knowledge Management
+Source: Guy reported that ROS is inefficient, lacks a night knowledge-management operation for saving today's activity into memory, and Claude/Hermes have synchronization issues. Decision: centralize these as one company-level backlog stream here instead of scattering them across chat memory, hidden runtime state, or per-agent notes.
+
+**CB — Central Backlog / Knowledge Operations**
+- **CB-1 · Make `CoS/ROS-BACKLOG.md` the single backlog intake for ROS operating-system work** — all cross-agent efficiency, sync, memory, automation, and runtime improvement items land here first; domain/project backlogs may exist only for domain execution detail and should link back when work affects ROS-the-company. *(A, S)*
+- **CB-2 · Night knowledge-management operation** — define a daily closeout that turns the day's activity into: memory candidates, archive candidates, backlog deltas, and unresolved decisions; start read-only/reporting before enabling writes. *(C, M)*
+- **CB-3 · Memory write-back guardrail** — require each proposed memory save to name source evidence, target file (`MEMORY.md`, domain `MEMORY.md`, archive, or project note), freshness horizon, and whether it is fact vs instruction. *(A, S)*
+- **CB-4 · Claude/Hermes synchronization preflight** — before memory/backlog writes, check git status, branch, ahead/behind, dirty files, and active cross-agent handoff notes; never hide sync conflicts in chat-only state. *(A, S)*
+- **CB-5 · Backlog triage cadence** — add a CoS review lane that promotes only approved backlog items into Notion/My Tasks or domain execution plans, avoiding duplicate task systems. *(B, S)*
+- **CB-6 · Night-op audit trail** — log each night run's source window, files read, memory/backlog changes proposed or made, git outcome, and blockers so Claude and Hermes can resume from the same evidence. *(A, M)*
+
+**Immediate next cut**
+1. Write the night-op prompt/runbook against this backlog item, not as a hidden cron-only behavior.
+2. Run it manually once in read-only mode to produce proposed memory/backlog deltas.
+3. Only after the manual run is useful, schedule it as a Hermes cron with explicit owner, delivery, and write boundary.
+
 ## Done / shipped
 
-_(rolling log)_
+- **[2026-06-27] ROS Knowledge Architecture (OKF)** — multi-agent; OKF spec+frontmatter, linter-as-hook (0 hard violations), shared `.mcp.json`, ponytail→de-slop, Obsidian graph+8 indexes; PAI v1.0. Committed `a095886`, pushed. Report: `reports/ros-best-shape-2026-06-27.md`.
+- **[2026-06-27] Disk optimization** — ~7 GB freed (19→26 GB), 14 Arbor worktrees removed (67 branches preserved), node_modules purged.
+- **[2026-06-27] Arbor repo** — GitHub renamed `PPPPtherapy-`→`Arbor`, local remote updated; repo recovered from a partial-move split (nothing lost); concurrent WIP preserved (`cd9a4d2`); **prod verified at latest `d69e467`, live + functional**.
+
+- **[2026-06-27] Arbor folder flatten — DONE ✅** (Guy ran it once the lock cleared): single clean repo at **`ROS/Arbor`** (67 branches, latest `main`, remote→`Arbor`); stale wrapper + husk removed; `launch.json` repointed.
+
+### Still open — retire the stale `.workspace` clone (K-1b)
+`.workspace/PPPPtherapy-` is a separate 25-day-old clone (`feat/arbor-next`, 2026-06-02, old remote name, 5 branches, 0 uncommitted) that a Codex session mistook for its repo — its real edits are safe in `ROS/Arbor` (`cd9a4d2`). **Action:** point the Codex session at `ROS/Arbor`, then remove `.workspace/PPPPtherapy-` + `.workspace/arbor-export` + `.workspace/arbor_audit.txt`. Low-risk (gitignored, stale, nothing uncommitted) but do it with that session closed.
