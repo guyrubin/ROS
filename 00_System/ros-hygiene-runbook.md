@@ -74,17 +74,29 @@ For each active memory file:
 - Confirm project folders have README or MEMORY where useful.
 - Fix broken relative links when encountered.
 
-### 6. Sensitive-file check
+### 6. Repository junk / generated artifact check
+
+Use the deterministic hygiene scanner before manual cleanup. It deliberately excludes active Arbor clones and never auto-cleans secrets.
+
+```bash
+python3 00_System/scripts/test_ros_repo_hygiene.py
+python3 00_System/scripts/ros_repo_hygiene.py --root .
+# Optional cleanup: deletes only allowlisted generated-output paths such as untracked graphify-out cache.
+python3 00_System/scripts/ros_repo_hygiene.py --root . --clean
+```
+
+### 7. Sensitive-file check
 
 Before staging:
 
 ```bash
 git ls-files --others --exclude-standard
+git status --short --ignored 00_System/secrets Arbor graphify-out .claude/worktrees
 ```
 
-Do not stage `KK/personal/`, identity documents, passports, insurance PDFs, contracts, or raw personal records unless Guy explicitly approves.
+Do not stage `00_System/secrets/`, local `.env*` files, `KK/personal/`, identity documents, passports, insurance PDFs, contracts, or raw personal records unless Guy explicitly approves.
 
-### 7. Commit and push
+### 8. Commit and push
 
 Only after reviewing the staged diff:
 

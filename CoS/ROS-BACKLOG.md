@@ -69,19 +69,25 @@ Source: Guy reported that ROS is inefficient, lacks a night knowledge-management
 3. Only after the manual run is useful, schedule it as a Hermes cron with explicit owner, delivery, and write boundary.
 
 ### [2026-06-29] Centralized ROS Code Optimization Backlog v3
-Source: Guy asked to go over the entire ROS codebase and centralize code optimization work using ponytail/code-efficiency discipline. Detailed backlog: `CoS/backlogs/ros-code-optimization-backlog-v3-2026-06-29.md`.
+Source: Guy asked to go over the entire ROS codebase and centralize code optimization work using ponytail/code-efficiency discipline. Detailed backlog: `CoS/backlogs/ros-code-optimization-backlog-v3-2026-06-29.md`. Execution manifest: `CoS/backlogs/ros-generated-artifact-manifest-2026-06-29.md`.
+
+**Production execution status — 2026-06-29**
+- Shipped safe ROS-level hygiene tooling: `00_System/scripts/ros_repo_hygiene.py` + tests.
+- Cleaned `graphify-out/` generated output: 211 untracked ignored files / 5,548,785 bytes removed.
+- Protected active Arbor work: `Arbor/` remains excluded and untouched because another session is working there.
+- Hardened ignore rules for `00_System/secrets/`, `.claude/worktrees/`, `Arbor/`, and `graphify-out/`.
 
 **RCO3 — Code Optimization**
-- **RCO3-01 · Generated/build artifact separation** — separate source from generated/cache/build outputs before optimizing or deleting. *(C, S)*
-- **RCO3-02 · Arbor source-of-truth deduplication** — name one authoritative Arbor app tree before editing or removing mirrors. *(C, S)*
+- **RCO3-01 · Generated/build artifact separation** — generated/cache/build outputs are classified in `CoS/backlogs/ros-generated-artifact-manifest-2026-06-29.md`; `graphify-out/` was confirmed untracked/ignored and cleaned in production. *(A shipped / C before further deletion, S)*
+- **RCO3-02 · Arbor source-of-truth deduplication** — active Arbor source remains `Arbor/`; ROS-level cleanup excludes it while another session is working there. *(C blocked by concurrent Arbor session, S)*
 - **RCO3-03 · TypeScript hotspot decomposition** — split only stable seams in the largest Arbor modules. *(B, M)*
 - **RCO3-04 · Type-safety tightening without rewrite** — reduce high-risk `any` at API/AI/billing/storage boundaries first. *(A/B, M)*
-- **RCO3-05 · Test/build command normalization** — define cheap verification ladders for each code surface. *(A, S)*
+- **RCO3-05 · Test/build command normalization** — ROS-level hygiene verification now uses `python3 00_System/scripts/test_ros_repo_hygiene.py` and `python3 00_System/scripts/ros_repo_hygiene.py --root .`; Arbor verification remains under the active Arbor session. *(A partial, S)*
 - **RCO3-06 · TODO/noise triage** — separate generated/vendor TODO noise from actionable source TODOs. *(A, S)*
 - **RCO3-07 · Python utility hardening** — add dry-run/input-validation conventions to Notion/import scripts. *(A, S)*
-- **RCO3-08 · Secret and local-env hygiene** — verify secret files are ignored/untracked and rotate anything exposed. *(C, S)*
-- **RCO3-09 · Agent worktree hygiene** — add active-worktree cleanup/expiry rules. *(C, S)*
-- **RCO3-10 · Graph/output regeneration boundary** — decide committed graph artifacts vs regenerable cache. *(A, S)*
+- **RCO3-08 · Secret and local-env hygiene** — `00_System/secrets/` is ignored; the scanner reports secret paths without reading values and never auto-cleans them. *(A shipped for ignore/reporting; key rotation remains C, S)*
+- **RCO3-09 · Agent worktree hygiene** — `.claude/worktrees/` ignored/excluded; deletion still requires owner/expiry registry. *(A partial / C before deletion, S)*
+- **RCO3-10 · Graph/output regeneration boundary** — `graphify-out/` treated as regenerable local generated output and removed when untracked. *(A shipped, S)*
 
 **Execution order:** RCO3-08 → RCO3-01/02 → RCO3-05 → RCO3-03/04 → RCO3-06/09/10 → RCO3-07.
 

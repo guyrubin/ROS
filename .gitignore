@@ -50,6 +50,10 @@ tmp/
 # Runtime scratch & local agent config (not ROS knowledge)
 .workspace/
 .claude/settings.local.json
+.claude/worktrees/
+
+# Local-only secrets; keep policies/docs in git, never raw values
+/00_System/secrets/
 
 # Nested Arbor product clone (separate git remote: guyrubin/PPPPtherapy- → Arbor).
 # Pending consolidation into PAI/arbor/ once the live sessions using it close.
@@ -58,3 +62,7 @@ tmp/
 /PAI/arbor/
 # One-off helper script tied to the live .workspace session
 /commit-logo.bat
+
+/Arbor/
+
+/graphify-out/
