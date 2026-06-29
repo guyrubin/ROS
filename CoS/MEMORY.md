@@ -5,7 +5,7 @@ description: Active facts and state for the Chief of Staff domain.
 ---
 
 # CoS Memory
-Last updated: 2026-06-28
+Last updated: 2026-06-29
 
 ---
 
@@ -47,6 +47,7 @@ bguy.rubin@gmail.com
 <!-- CoS-level patterns, recurring blockers, cross-domain dependencies -->
 
 - ROS company-level operating-system backlog is centralized in `CoS/ROS-BACKLOG.md`; the 2026-06-28 Central Backlog + Night Knowledge Management epic captures night memory write-back, Claude/Hermes sync preflight, backlog triage, and night-op audit trail as one stream.
+- ROS code optimization backlog v3 lives at `CoS/backlogs/ros-code-optimization-backlog-v3-2026-06-29.md`; it centralizes repo-wide code-efficiency work across Arbor, ROS interface, generated artifacts, scripts, secrets hygiene, and agent worktree cleanup with ponytail constraints.
 - Hermes-for-ROS optimization backlog lives at `CoS/backlogs/hermes-ros-optimization-backlog-2026-06-27.md`; near-term focus is context-compression reliability, ROS runtime runbook, gateway/cron health visibility, and a disabled kill-switched SENSE pilot.
 - ROS interface v4 lives at `CoS/projects/ros-interface-v4/`; the OS view includes a document-level graph layer that makes boot files, system docs, domain memories, project docs, runtime state, and their dependencies visible.
 - User's handwritten software setup notes should be converted into actionable ROS/Notion project dashboards with task rows, owner agents, dependencies, blockers, and import-ready files when Notion API access is unavailable.

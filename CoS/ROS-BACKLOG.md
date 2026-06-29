@@ -68,6 +68,23 @@ Source: Guy reported that ROS is inefficient, lacks a night knowledge-management
 2. Run it manually once in read-only mode to produce proposed memory/backlog deltas.
 3. Only after the manual run is useful, schedule it as a Hermes cron with explicit owner, delivery, and write boundary.
 
+### [2026-06-29] Centralized ROS Code Optimization Backlog v3
+Source: Guy asked to go over the entire ROS codebase and centralize code optimization work using ponytail/code-efficiency discipline. Detailed backlog: `CoS/backlogs/ros-code-optimization-backlog-v3-2026-06-29.md`.
+
+**RCO3 — Code Optimization**
+- **RCO3-01 · Generated/build artifact separation** — separate source from generated/cache/build outputs before optimizing or deleting. *(C, S)*
+- **RCO3-02 · Arbor source-of-truth deduplication** — name one authoritative Arbor app tree before editing or removing mirrors. *(C, S)*
+- **RCO3-03 · TypeScript hotspot decomposition** — split only stable seams in the largest Arbor modules. *(B, M)*
+- **RCO3-04 · Type-safety tightening without rewrite** — reduce high-risk `any` at API/AI/billing/storage boundaries first. *(A/B, M)*
+- **RCO3-05 · Test/build command normalization** — define cheap verification ladders for each code surface. *(A, S)*
+- **RCO3-06 · TODO/noise triage** — separate generated/vendor TODO noise from actionable source TODOs. *(A, S)*
+- **RCO3-07 · Python utility hardening** — add dry-run/input-validation conventions to Notion/import scripts. *(A, S)*
+- **RCO3-08 · Secret and local-env hygiene** — verify secret files are ignored/untracked and rotate anything exposed. *(C, S)*
+- **RCO3-09 · Agent worktree hygiene** — add active-worktree cleanup/expiry rules. *(C, S)*
+- **RCO3-10 · Graph/output regeneration boundary** — decide committed graph artifacts vs regenerable cache. *(A, S)*
+
+**Execution order:** RCO3-08 → RCO3-01/02 → RCO3-05 → RCO3-03/04 → RCO3-06/09/10 → RCO3-07.
+
 ## Done / shipped
 
 - **[2026-06-27] ROS Knowledge Architecture (OKF)** — multi-agent; OKF spec+frontmatter, linter-as-hook (0 hard violations), shared `.mcp.json`, ponytail→de-slop, Obsidian graph+8 indexes; PAI v1.0. Committed `a095886`, pushed. Report: `reports/ros-best-shape-2026-06-27.md`.
