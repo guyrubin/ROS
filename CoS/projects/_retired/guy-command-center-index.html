@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Guy Rubin — ROS Command Center</title>
+<style>
+:root{
+  --bg:#070a0f;--panel:#10151f;--panel2:#141b29;--ink:#f4f0e8;--muted:#94a1b0;--faint:#5e6c7d;
+  --line:#222d40;--line2:#2c394f;--gold:#d6a84b;--blue:#67b7ff;--green:#55d38a;--amber:#e8b54a;
+  --red:#ff6b6b;--violet:#b891ff;--cyan:#4fd6c8;
+  --radius:16px;--shadow:0 14px 44px #0008;--font:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"SFMono-Regular",ui-monospace,Consolas,monospace;
+}
+[data-density="compact"]{--radius:12px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+  radial-gradient(1100px 520px at 14% -8%,#22324a55 0,transparent 46%),
+  radial-gradient(900px 480px at 96% 0,#2a1d3a44 0,transparent 50%),
+  linear-gradient(160deg,#070a0d,#0c1018 60%,#0a0d14);
+  color:var(--ink);font:14px/1.4 var(--font);min-height:100vh;letter-spacing:.005em}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-thumb{background:#243043;border-radius:9px}
+::selection{background:var(--gold);color:#1a1206}
+
+.app{max-width:1480px;margin:0 auto;padding:14px;display:grid;gap:12px;grid-template-columns:1fr 1.46fr .92fr}
+[data-density="compact"] .app{gap:9px;padding:10px}
+.col{display:grid;gap:12px;align-content:start}
+[data-density="compact"] .col{gap:9px}
+.top{grid-column:1/-1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.footer{grid-column:1/-1;color:var(--faint);font-size:11.5px;text-align:center;padding:4px 0 10px}
+@media(max-width:1180px){.app{grid-template-columns:1fr 1fr}.col.right{grid-column:1/-1;grid-template-columns:1fr 1fr;display:grid}}
+@media(max-width:760px){.app{grid-template-columns:1fr}.col.right{grid-template-columns:1fr}.top{gap:8px}}
+
+.brand{display:flex;align-items:center;gap:11px}
+.mark{width:40px;height:40px;border-radius:13px;position:relative;
+  background:conic-gradient(from 210deg,var(--gold),#3a2c0e,var(--blue),var(--violet),var(--gold));
+  box-shadow:0 0 0 1px #ffffff22 inset,0 6px 18px #d6a84b33}
+.mark:after{content:"";position:absolute;inset:5px;border-radius:9px;background:#0b0f17;
+  background-image:radial-gradient(circle at 50% 40%,#ffe7a455,transparent 60%)}
+.title h1{font-size:17px;margin:0;font-weight:800;letter-spacing:.01em}
+.title p{margin:1px 0 0;color:var(--muted);font-size:11.5px}
+.spacer{margin-left:auto}
+.clocks{display:flex;gap:8px;align-items:center}
+.wclock{text-align:center;line-height:1.05;padding:4px 9px;border:1px solid var(--line);border-radius:11px;background:#0c121c}
+.wclock b{font:700 14px var(--mono);color:var(--gold);display:block}
+.wclock small{font-size:9.5px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase}
+.tbtn{border:1px solid var(--line2);background:#10172299;border-radius:11px;padding:8px 11px;cursor:pointer;
+  color:var(--muted);font-size:12px;transition:.15s}
+.tbtn:hover{border-color:var(--gold);color:var(--ink)}
+.tbtn.mic.on{border-color:var(--red);color:#ffb3b3;animation:pulse 1.1s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px #ff6b6b22}}
+.kbd{font:700 10px var(--mono);background:#1a2230;border:1px solid var(--line2);border-radius:6px;padding:2px 6px;color:#cdd7e3}
+.dayprog{grid-column:1/-1;height:6px;border-radius:99px;background:#161e2c;overflow:hidden;border:1px solid var(--line)}
+.dayprog>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--gold));transition:width .6s}
+
+.card{background:linear-gradient(180deg,#141b28f7,#0e131df7);border:1px solid var(--line2);
+  border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.card.accent{border-color:#5a4a22;box-shadow:0 0 0 1px #d6a84b22,var(--shadow)}
+.head{display:flex;align-items:center;gap:8px;padding:11px 13px;border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,#121826,#0e1420)}
+.head h2{margin:0;font-size:11.5px;text-transform:uppercase;letter-spacing:.14em;color:#dbe5f1;font-weight:700}
+.head .ic{font-size:14px}
+.head small{margin-left:auto;color:var(--faint);font-size:10.5px}
+.head .mini{margin-left:auto;display:flex;gap:6px}
+.body{padding:13px}
+[data-density="compact"] .body{padding:10px}
+.btn{border:1px solid var(--line2);background:#161f2e;color:var(--ink);border-radius:10px;padding:7px 10px;
+  cursor:pointer;font-size:12px;transition:.15s;display:inline-flex;align-items:center;gap:6px}
+.btn:hover,.btn:focus{border-color:var(--gold);outline:0;background:#1b2536}
+.btn.gold{background:linear-gradient(180deg,#33260f,#241a0a);color:#ffe7a4;border-color:#7a5f22}
+.btn.sm{padding:5px 8px;font-size:11px;border-radius:8px}
+.btn.ghost{background:transparent;border-color:var(--line)}
+
+.front .body{display:grid;gap:13px;background:radial-gradient(420px 220px at 72% 0,#2b221033 0,transparent 60%)}
+.seat{position:relative;border:1px solid #36425a;border-radius:18px;padding:15px 16px;
+  background:linear-gradient(150deg,#1a2330,#0f141d);min-height:120px;overflow:hidden}
+.seat:before{content:"";position:absolute;inset:8px 38px;border:2px solid #46546b;border-radius:34px 34px 20px 20px;opacity:.4}
+.belt{position:absolute;left:-30px;right:-30px;top:62px;height:11px;
+  background:linear-gradient(90deg,#2b3342,var(--gold) 50%,#2b3342);transform:rotate(-17deg);opacity:.7;box-shadow:0 0 16px #d6a84b44}
+.seat h3{position:relative;margin:0 0 8px;font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.16em}
+.mission{position:relative;font-size:21px;font-weight:850;line-height:1.12;max-width:340px;outline:0}
+.mission:focus{color:#ffe7a4}
+.mtag{position:relative;display:inline-flex;gap:6px;margin-top:10px;align-items:center}
+.mtag select{background:#0d1320;border:1px solid var(--line2);border-radius:8px;padding:4px 7px;font-size:11px;color:var(--muted)}
+.why{position:relative;margin-top:8px;color:#aeb9c5;font-size:12px}
+.timer{display:grid;grid-template-columns:96px 1fr;gap:13px;align-items:center}
+.ring{position:relative;width:96px;height:96px}
+.ring svg{transform:rotate(-90deg)}
+.ring .tx{position:absolute;inset:0;display:grid;place-items:center;font:800 22px var(--mono);color:#ffe7a4}
+.tcol .row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tcol .modes{display:flex;gap:5px;margin-bottom:2px}
+.chipbtn{border:1px solid var(--line2);background:#121a27;border-radius:8px;padding:4px 9px;font-size:11px;cursor:pointer;color:var(--muted)}
+.chipbtn.on{border-color:var(--gold);color:#ffe7a4;background:#241a0a}
+.dots{display:flex;gap:5px;margin-top:6px}
+.dots i{width:9px;height:9px;border-radius:99px;background:#26303f;border:1px solid #36425a}
+.dots i.fill{background:var(--gold);box-shadow:0 0 8px #d6a84b88;border-color:var(--gold)}
+
+.rings{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+.fring{cursor:pointer;border:1px solid var(--line);border-radius:13px;padding:9px 4px;background:#0e141e;transition:.15s}
+.fring:hover{border-color:var(--line2);background:#121a27}
+.fring .rr{position:relative;width:62px;height:62px;margin:0 auto}
+.fring .rr .tx{position:absolute;inset:0;display:grid;place-items:center;font-size:16px}
+.fring b{display:block;font-size:11px;margin-top:5px}
+.fring span{font-size:10px;color:var(--faint)}
+
+/* EA CLIENT COCKPIT */
+.client .body{display:grid;gap:10px}
+.cl-tabs{display:flex;gap:6px}
+.cl-tab{flex:1;cursor:pointer;border:1px solid var(--line);border-radius:10px;padding:6px 8px;background:#0d1320;display:flex;align-items:center;gap:7px;transition:.15s}
+.cl-tab:hover{border-color:var(--line2)}
+.cl-tab.on{border-color:var(--gold);background:#1a1408}
+.cl-tab .d{width:7px;height:7px;border-radius:99px;flex:none}
+.cl-tab b{font-size:11.5px}
+.cl-tab small{display:block;font-size:9px;color:var(--faint)}
+.cl-top{display:flex;align-items:center;gap:10px}
+.cl-role{font-size:10.5px;color:var(--muted);margin-top:-4px}
+.cl-focus{font-size:10.5px;color:var(--muted);border-left:2px solid var(--gold);padding-left:8px;line-height:1.35}
+.cl-name{font-size:16px;font-weight:800;outline:0}
+.cl-name:focus{color:#ffe7a4}
+.cl-stack{font:600 10px var(--mono);color:var(--muted);border:1px solid var(--line2);border-radius:99px;padding:3px 8px}
+.cl-rag{margin-left:auto;cursor:pointer;font:700 9px var(--mono);padding:4px 9px;border-radius:99px;border:1px solid var(--line2)}
+.cl-rag.green{color:var(--green);border-color:#2c5e44}.cl-rag.amber{color:var(--amber);border-color:#5e4f2c}.cl-rag.red{color:var(--red);border-color:#5e2c2c}
+.cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cl-fld{border:1px solid var(--line);border-radius:11px;padding:8px 10px;background:#0e141e}
+.cl-fld label{font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);display:block;margin-bottom:3px}
+.cl-fld .val{font-size:12px;outline:0}
+.cl-fld .val:focus{color:#ffe7a4}
+.cl-ms{display:grid;gap:5px}
+.cl-ms .ml{display:flex;gap:8px;align-items:center;font-size:11.5px;padding:5px 8px;border:1px solid var(--line);border-radius:9px;background:#0d1320}
+.cl-ms .ml input{accent-color:var(--gold);width:14px;height:14px}
+.cl-ms .ml.done span{text-decoration:line-through;color:var(--faint)}
+.cl-acts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.cl-links{display:flex;gap:6px;flex-wrap:wrap}
+
+.domain{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:9px 10px;
+  border:1px solid var(--line);border-radius:12px;background:#0e141e;cursor:pointer;transition:.15s}
+.domain:hover{border-color:var(--line2);background:#111a26}
+.dot{width:9px;height:9px;border-radius:99px;margin-top:5px;flex:none;transition:.2s}
+.dot.green{background:var(--green);box-shadow:0 0 8px #55d38a88}
+.dot.amber{background:var(--amber);box-shadow:0 0 8px #e8b54a88}
+.dot.red{background:var(--red);box-shadow:0 0 8px #ff6b6b88}
+.domain b{display:block;font-size:12.5px}
+.domain .ctx{color:var(--muted);font-size:11px;line-height:1.3;margin-top:1px}
+.pill{font:700 9px var(--mono);padding:3px 7px;border-radius:99px;border:1px solid var(--line2);color:#c9d3df;align-self:center;letter-spacing:.05em}
+.pill.green{color:var(--green);border-color:#2c5e44}.pill.amber{color:var(--amber);border-color:#5e4f2c}.pill.red{color:var(--red);border-color:#5e2c2c}
+
+.map{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media(max-width:1180px){.map{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.map{grid-template-columns:1fr}}
+.tile{position:relative;min-height:74px;border:1px solid var(--line);border-radius:13px;padding:9px 10px;
+  background:linear-gradient(150deg,#141b28,#0d121b);overflow:hidden}
+.tile b{display:flex;align-items:center;gap:6px;margin-bottom:5px;font-size:12px}
+.tile em{font-style:normal;color:var(--muted);font-size:10.5px;line-height:1.32;display:block}
+.tile .sev{position:absolute;top:9px;right:9px;width:7px;height:7px;border-radius:99px}
+.tile.war{background:linear-gradient(150deg,#241411,#10141c)}.tile.fin{background:linear-gradient(150deg,#10220f,#10141c)}
+.tile.inv{background:linear-gradient(150deg,#0f1d2a,#10141c)}.tile.travel{background:linear-gradient(150deg,#0f1a29,#10141c)}
+.tile.fit{background:linear-gradient(150deg,#1c1226,#10141c)}.tile.fam{background:linear-gradient(150deg,#0f1f22,#10141c)}
+.tile.work{background:linear-gradient(150deg,#15161f,#10141c)}.tile.art{background:linear-gradient(150deg,#221a0f,#10141c)}
+
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.lanes{grid-template-columns:1fr}}
+.lane{min-height:90px;padding:9px;border:1px dashed #2f3c52;border-radius:13px;background:#0b1017}
+.lane h3{margin:0 0 7px;font-size:10.5px;text-transform:uppercase;letter-spacing:.13em;color:var(--faint);display:flex;align-items:center;gap:6px}
+.lane h3 .add{margin-left:auto;cursor:pointer;color:var(--gold);font-size:15px;line-height:1}
+.task{padding:7px 8px;border-radius:10px;background:#141d2b;margin:6px 0;border:1px solid #283447;display:flex;gap:8px;align-items:center;font-size:12px;transition:.15s}
+.task:hover{border-color:#36425a}
+.task input[type=checkbox]{accent-color:var(--gold);width:15px;height:15px;flex:none}
+.task .txt{flex:1;outline:0}
+.task.done .txt{text-decoration:line-through;color:var(--faint)}
+.task .tg{font:700 8px var(--mono);color:var(--faint);border:1px solid var(--line);border-radius:99px;padding:2px 5px}
+.task .x{cursor:pointer;color:var(--faint);opacity:0;font-size:14px}
+.task:hover .x{opacity:1}.task .x:hover{color:var(--red)}
+
+.cmd{display:grid;gap:8px}
+.cmdgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.prompt{width:100%;min-height:78px;border:1px solid var(--line2);background:#0a0f18;color:var(--ink);
+  border-radius:11px;padding:9px;font-family:var(--mono);font-size:11.5px;resize:vertical;line-height:1.45}
+.sendrow{display:flex;gap:6px}
+
+.syncbar{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted)}
+.syncbar .led{width:8px;height:8px;border-radius:99px;background:var(--green)}
+.syncbar .led.dirty{background:var(--amber)}
+
+.queue .qi{display:flex;gap:8px;align-items:flex-start;padding:7px 0;border-bottom:1px solid #1a2230;font-size:11.5px}
+.queue .qi:last-child{border-bottom:0}
+.queue .qd{width:7px;height:7px;border-radius:99px;margin-top:4px;flex:none}
+.queue .qv{font:700 9px var(--mono);color:#cdd7e3;background:#1a2230;border-radius:5px;padding:1px 5px}
+.queue .qx{margin-left:auto;cursor:pointer;color:var(--faint);opacity:0}
+.queue .qi:hover .qx{opacity:1}
+
+.signal{display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #1a2230}
+.signal:last-child{border-bottom:0}
+.signal .sb{width:7px;height:7px;border-radius:99px;margin-top:5px;flex:none;cursor:pointer}
+.signal .st{flex:1;font-size:11.5px;line-height:1.35}
+.signal .st small{color:var(--faint);display:block;font-size:10px;margin-top:1px}
+
+.connectors{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.connector{padding:8px 9px;border:1px solid var(--line);border-radius:11px;background:#0e141e;display:block}
+.connector:hover{border-color:var(--line2)}
+.connector .ch{display:flex;align-items:center;gap:6px}
+.connector b{font-size:12px}
+.connector .led{width:7px;height:7px;border-radius:99px;margin-left:auto}
+.connector span{font-size:10px;color:var(--faint);display:block;margin-top:2px;line-height:1.3}
+
+.journal textarea{width:100%;min-height:70px;border:1px solid var(--line2);border-radius:11px;background:#0a0f18;color:var(--ink);padding:9px;font-size:12.5px;resize:vertical}
+.log{max-height:120px;overflow:auto;margin-top:9px;border-top:1px solid var(--line);padding-top:7px}
+.log .li{font-size:11px;color:var(--muted);padding:5px 0;border-bottom:1px solid #161e2a;display:flex;gap:7px}
+.log .li:last-child{border-bottom:0}
+.log .li b{color:var(--faint);font:600 9.5px var(--mono);white-space:nowrap}
+.log .li .x{margin-left:auto;cursor:pointer;color:var(--faint);opacity:0}
+.log .li:hover .x{opacity:1}
+
+.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{font-size:11.5px}
+.minirow{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #18212f;padding:7px 0;align-items:center}
+.minirow:last-child{border-bottom:0}.minirow b{font-size:12px}.minirow .small{color:var(--faint);font-size:10.5px}
+
+.overlay{position:fixed;inset:0;background:#04060ac9;backdrop-filter:blur(7px);display:none;align-items:flex-start;justify-content:center;padding-top:11vh;z-index:50}
+.overlay.on{display:flex}
+.palette{width:min(640px,92vw);background:linear-gradient(180deg,#141b29,#0d1219);border:1px solid var(--line2);border-radius:16px;box-shadow:0 30px 80px #000b;overflow:hidden}
+.palette input{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;padding:15px 16px;font-size:15px}
+.palette input:focus{outline:0}
+.presults{max-height:48vh;overflow:auto;padding:6px}
+.pitem{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;font-size:13px}
+.pitem .pi{width:22px;text-align:center;font-size:15px}
+.pitem .pk{margin-left:auto;color:var(--faint);font-size:10px}
+.pitem small{color:var(--faint);font-size:10.5px;display:block}
+.pitem.sel,.pitem:hover{background:#1c2638}
+.phint{display:flex;gap:12px;padding:8px 14px;border-top:1px solid var(--line);color:var(--faint);font-size:10.5px}
+
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(40px);opacity:0;
+  background:#1a2230;border:1px solid var(--gold);color:#ffe7a4;padding:9px 16px;border-radius:11px;font-size:12.5px;z-index:60;transition:.25s;box-shadow:0 12px 30px #0009;max-width:90vw;text-align:center}
+.toast.on{transform:translateX(-50%) translateY(0);opacity:1}
+.edit{cursor:text;border-radius:5px;padding:0 2px;margin:0 -2px}
+.edit:hover{background:#ffffff10}.edit:focus{outline:0;background:#ffffff14}
+</style>
+</head>
+<body data-density="cozy">
+<div class="app">
+
+  <header class="top">
+    <div class="brand">
+      <div class="mark"></div>
+      <div class="title"><h1>Guy Rubin — Command Center</h1>
+      <p>Voice-agentic file system · Hermes ⇄ Claude ⇄ Obsidian ⇄ Google</p></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="clocks" id="clocks"></div>
+    <button class="tbtn mic" id="micBtn" onclick="toggleMic()" title="Voice capture (Web Speech)">🎙</button>
+    <button class="tbtn" onclick="openPalette()">⌘ <span class="kbd">K</span></button>
+    <button class="tbtn" onclick="toggleDensity()" title="Density">▦</button>
+    <button class="tbtn" onclick="exportState()" title="Export state.json">⬇︎</button>
+  </header>
+  <div class="dayprog" title="Workday 07:00–19:00"><i id="dayProg"></i></div>
+
+  <!-- LEFT -->
+  <section class="col left">
+
+    <div class="card front">
+      <div class="head"><span class="ic">🪑</span><h2>Front Seat</h2><small>one mission · 80/20</small></div>
+      <div class="body">
+        <div class="seat">
+          <div class="belt"></div><h3>Now driving</h3>
+          <div id="mission" class="mission" contenteditable spellcheck="false"></div>
+          <div class="mtag">
+            <select id="missionDomain" onchange="onMissionDomain()">
+              <option>HV</option><option>EA</option><option>PAI</option><option>KK</option><option>FIN</option><option>MKT</option><option>Personal</option>
+            </select>
+            <span class="why">If it is not in the seat, it waits in the trunk.</span>
+          </div>
+        </div>
+        <div class="timer">
+          <div class="ring">
+            <svg width="96" height="96"><circle cx="48" cy="48" r="42" stroke="#26303f" stroke-width="7" fill="none"/>
+              <circle id="ringArc" cx="48" cy="48" r="42" stroke="#d6a84b" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="0"/></svg>
+            <div class="tx" id="left">25:00</div>
+          </div>
+          <div class="tcol">
+            <div class="modes">
+              <button class="chipbtn on" data-min="25" onclick="setMode(25,this)">25</button>
+              <button class="chipbtn" data-min="50" onclick="setMode(50,this)">50</button>
+              <button class="chipbtn" data-min="90" onclick="setMode(90,this)">90</button>
+            </div>
+            <div class="row">
+              <button class="btn gold sm" id="startBtn" onclick="toggleTimer()">▶ Start</button>
+              <button class="btn sm" onclick="resetTimer()">↺ Reset</button>
+              <button class="btn sm" onclick="closeDay()">⏏ Close day</button>
+            </div>
+            <div class="dots" id="dots"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card accent client">
+      <div class="head"><span class="ic">🎯</span><h2>EA Client Cockpit</h2><small id="clHint">active engagement</small></div>
+      <div class="body" id="clientBody"></div>
+    </div>
+
+    <div class="card">
+      <div class="head"><span class="ic">🏃</span><h2>Fitness Rings</h2><small>tap to log</small></div>
+      <div class="body rings" id="rings"></div>
+    </div>
+
+    <div class="card">
+      <div class="head"><span class="ic">🔁</span><h2>Daily Ritual</h2><small>4 moves</small></div>
+      <div class="body">
+        <div class="minirow"><b>1 · Plan</b><span class="small">route inbox + calendar</span></div>
+        <div class="minirow"><b>2 · Buckle</b><span class="small">choose one mission</span></div>
+        <div class="minirow"><b>3 · Block</b><span class="small">health + deep work on calendar</span></div>
+        <div class="minirow"><b>4 · Close</b><span class="small">log · trunk · stop</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENTER -->
+  <section class="col center">
+    <div class="card">
+      <div class="head"><span class="ic">🛰️</span><h2>War Room / Domains</h2><small>click to cycle · shift-click opens note</small></div>
+      <div class="body" id="domains" style="display:grid;gap:9px"></div>
+    </div>
+    <div class="card">
+      <div class="head"><span class="ic">🗺️</span><h2>Compact Life Map</h2><small>everything in one picture</small></div>
+      <div class="body map" id="map"></div>
+    </div>
+    <div class="card">
+      <div class="head"><span class="ic">🧳</span><h2>Back Seat / Trunk</h2><small>next vs later</small></div>
+      <div class="body lanes">
+        <div class="lane"><h3>Back seat — next <span class="add" onclick="addTask('back')">＋</span></h3><div id="back"></div></div>
+        <div class="lane"><h3>Trunk — later <span class="add" onclick="addTask('trunk')">＋</span></h3><div id="trunk"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT -->
+  <aside class="col right">
+
+    <div class="card">
+      <div class="head"><span class="ic">🔄</span><h2>Sync</h2><div class="mini"><span class="syncbar" id="syncbar"></span></div></div>
+      <div class="body">
+        <div class="cmdgrid">
+          <button class="btn sm" onclick="pullState()">⤓ Pull from ROS</button>
+          <button class="btn gold sm" onclick="pushState()">⤴ Push to agents</button>
+        </div>
+        <div style="font-size:10.5px;color:var(--faint);margin-top:7px;line-height:1.4">
+          Pull reads <b>state.json</b> (the shared truth). Push copies your edits + queue for Hermes/Claude to commit. Contract: <b>AGENT-SYNC.md</b>.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="head"><span class="ic">⌨️</span><h2>Command Palette</h2><small>real actions</small></div>
+      <div class="body cmd">
+        <div class="cmdgrid">
+          <button class="btn sm" onclick="setPrompt('morning')">🌅 Morning sync</button>
+          <button class="btn sm" onclick="setPrompt('eamail')">📨 Triage EA mail</button>
+          <button class="btn sm" onclick="setPrompt('hld')">🏗️ Draft HLD</button>
+          <button class="btn sm" onclick="setPrompt('blocks')">📅 Time blocks</button>
+        </div>
+        <textarea id="prompt" class="prompt"></textarea>
+        <div class="sendrow">
+          <button class="btn gold sm" style="flex:1" onclick="copyPrompt()">⧉ Copy for agent</button>
+          <button class="btn sm" onclick="openGmailCompose()" title="Open Gmail compose">✉︎</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card queue">
+      <div class="head"><span class="ic">📥</span><h2>Agent Queue</h2><div class="mini"><button class="btn sm ghost" onclick="copyQueue()">⧉ copy</button><button class="btn sm ghost" onclick="clearDone()">clear</button></div></div>
+      <div class="body" id="queue"></div>
+    </div>
+
+    <div class="card">
+      <div class="head"><span class="ic">📡</span><h2>Signals</h2><div class="mini"><button class="btn sm ghost" onclick="setPrompt('signal');copyPrompt()">↻ refresh</button></div></div>
+      <div class="body" id="signals"></div>
+    </div>
+
+    <div class="card">
+      <div class="head"><span class="ic">🔌</span><h2>Connectors</h2><small>live status</small></div>
+      <div class="body connectors" id="connectors"></div>
+    </div>
+
+    <div class="card journal">
+      <div class="head"><span class="ic">🧠</span><h2>Brain Dump</h2><small>🎙 or ⌘⏎</small></div>
+      <div class="body">
+        <textarea id="dump" placeholder="Quick capture… ⌘/Ctrl+Enter saves. Use 🎙 to dictate. Promote durable facts into ROS Markdown."></textarea>
+        <button class="btn gold sm" style="margin-top:7px" onclick="saveDump()">＋ Save thought</button>
+        <div id="log" class="log"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="head"><span class="ic">🔗</span><h2>Quick Links</h2><small>Obsidian + Google</small></div>
+      <div class="body nav" id="quicklinks"></div>
+    </div>
+  </aside>
+
+  <div class="footer" id="footer"></div>
+</div>
+
+<div class="overlay" id="overlay" onclick="if(event.target.id==='overlay')closePalette()">
+  <div class="palette">
+    <input id="pinput" placeholder="Command — EA scaffold, draft HLD, calendar block, triage mail, voice…" oninput="filterPalette()" />
+    <div class="presults" id="presults"></div>
+    <div class="phint"><span><span class="kbd">↑↓</span> navigate</span><span><span class="kbd">↵</span> run</span><span><span class="kbd">esc</span> close</span></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================================
+   ROS Command Center v3 — voice-agentic file system.
+   state.json is the shared source of truth (Hermes ⇄ Claude ⇄ dashboard).
+   The dashboard renders state and PROPOSES intents (actionQueue) that agents
+   execute via MCP/WSL. See AGENT-SYNC.md.
+   ========================================================================= */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const VAULT="ROS";
+const obs=p=>`obsidian://open?vault=${VAULT}&file=${encodeURIComponent(p)}`;
+const esc=t=>(t||'').replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,9);
+const nowISO=()=>new Date().toISOString();
+
+/* Embedded fallback = mirror of state.json defaults (used on file:// where fetch is blocked) */
+const FALLBACK={v:3,meta:{owner:"Guy Rubin",updatedAt:nowISO(),updatedBy:"dashboard"},
+ frontSeat:{mission:"Stand up the new EA client engagement: scope + discovery.",domain:"EA",startedAt:""},
+ domains:[
+  {k:"HV",t:"Investments / Real Estate",s:"amber",ctx:"Smart-living + dev-upside sourcing. Radar: Den Haag / Koningin Emmakade DD.",file:"HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands.md"},
+  {k:"EA",t:"Work / Architecture",s:"red",ctx:"New client kickoff: scoping + discovery this week. Coca-Cola + ABN in parallel.",file:"EA/MEMORY.md"},
+  {k:"PAI",t:"Ventures",s:"amber",ctx:"Arbor v2 branch + Firebase/Cloud Run scaffold; decide deploy + AI key.",file:"PAI/MEMORY.md"},
+  {k:"KK",t:"Personal Ops",s:"green",ctx:"Inbox, calendar, school placement, travel, health — today's execution layer.",file:"KK/MEMORY.md"},
+  {k:"FIN",t:"Finance / Admin",s:"green",ctx:"Contracts, tax, insurance, subscriptions, personal-finance guardrails.",file:"FIN/MEMORY.md"},
+  {k:"MKT",t:"Content / Brand",s:"amber",ctx:"LinkedIn / job positioning, campaigns, thought leadership.",file:"MKT/MEMORY.md"}],
+ map:[
+  {c:"war",i:"🛰️",b:"War / Geopolitics",e:"Conflicts, sanctions, supply shocks, AI/security shifts → decision impact only.",sev:"amber"},
+  {c:"inv",i:"📈",b:"Investments",e:"HV pipeline, BRRRR math, asset watch, lender/tax risk → go / no-go.",sev:"amber"},
+  {c:"fin",i:"💶",b:"Finance",e:"Cash, invoices, contracts, subscriptions, insurance, tax → next admin action.",sev:"green"},
+  {c:"travel",i:"✈️",b:"Travel",e:"Trips, schools, routes, docs. Rule: Brussels = Central/Midi, never CRL.",sev:"green"},
+  {c:"fit",i:"🏃",b:"Fitness",e:"Move before 60m sitting, stretch, run, recovery. Calendar removes guilt.",sev:"green"},
+  {c:"fam",i:"👨‍👧",b:"Family",e:"Dylan schools, Keren visits, Hebrew/English, Amsterdam Noord proximity.",sev:"green"},
+  {c:"work",i:"🏗️",b:"Work",e:"New EA client + Coca-Cola / ABN priorities, architecture decisions, follow-ups.",sev:"red"},
+  {c:"art",i:"🎨",b:"Art / Energy",e:"Quote, music, article/bookmark revival. Resilience fuel, not productivity.",sev:"green"}],
+ tasks:{back:[
+   {t:"EA client: confirm scope + stakeholders",d:0,domain:"EA"},
+   {t:"EA client: create engagement Drive folder + ROS folder",d:0,domain:"EA"},
+   {t:"Koningin Emmakade DD follow-up",d:0,domain:"HV"}],
+  trunk:[
+   {t:"Notion dashboards polish",d:0,domain:"CoS"},
+   {t:"Arbor cloud deployment decision",d:0,domain:"PAI"},
+   {t:"Bookmark / article revival pack",d:0,domain:"MKT"}]},
+ signals:[
+  {sev:"amber",t:"Rates / ECB watch",s:"Refi gap sensitivity on HV deals — confirm before any go/no-go."},
+  {sev:"green",t:"Dutch housing policy",s:"Wet betaalbare huur / WWS — monitor for ceiling shifts."},
+  {sev:"red",t:"Geopolitics",s:"Energy + supply shocks → only if it changes a Guy/HV/EA decision."}],
+ fitness:{move:0,stretch:0,run:0},sessions:0,lastDay:"",
+ clients:[
+   {id:"abn-amro",agent:"EA",name:"ABN AMRO",role:"Security Enterprise Architect",relationship:"Freelance",stack:"confirm during onboarding",
+    domainFocus:"Security architecture · IAM / ZTA · network segmentation · banking compliance (DORA / DNB / NIS2)",
+    status:"amber",phase:"Onboarding (in progress)",nextDecision:"Capture onboarding checklist — access/clearance, compliance docs, start date, key contacts",
+    owner:"Guy Rubin (EA)",identity:"bguy.rubin@gmail.com",stakeholders:[],tools:"confirm: ServiceNow / Azure DevOps / Confluence / Archi",
+    milestones:[{t:"Onboarding checklist + access provisioned",d:0},{t:"Compliance / clearance docs captured",d:0},{t:"Current-state security architecture review",d:0},{t:"Target-state security HLD",d:0}],
+    drive:"",rosFolder:"EA/clients/ABN/",contextFile:"EA/clients/ABN/CONTEXT.md",notion:"",active:true},
+   {id:"coca-cola",agent:"EA",name:"Coca-Cola",role:"Infrastructure & Security Enterprise Architect",relationship:"Employment",stack:"confirm (multi-cloud + infra)",
+    domainFocus:"Infrastructure & security architecture · cloud landing zones · network · identity · security baselines",
+    status:"amber",phase:"Finalizing employment contract",nextDecision:"Review employment contract when received; capture start date + onboarding",
+    owner:"Guy Rubin (EA)",identity:"bguy.rubin@gmail.com",stakeholders:[],tools:"confirm: ServiceNow / Jira / Confluence / cloud consoles",
+    milestones:[{t:"Employment contract reviewed + signed",d:0},{t:"Onboarding + access",d:0},{t:"Infra & security baseline review",d:0},{t:"Target-state HLD update",d:0}],
+    drive:"",rosFolder:"EA/clients/Coca-Cola/",contextFile:"EA/clients/Coca-Cola/CONTEXT.md",notion:"",active:false}],
+ actionQueue:[],
+ integrations:{gmail:{status:"live",via:"MCP + Himalaya"},calendar:{status:"live",via:"MCP + links"},
+   drive:{status:"live",via:"MCP"},notion:{status:"live",via:"MCP"},
+   tasks:{status:"planned",via:"Google Tasks"},contacts:{status:"planned",via:"Google Contacts"},slack:{status:"planned",via:"client-side"}}};
+
+let S=JSON.parse(JSON.stringify(FALLBACK));
+let dirty=false, served=location.protocol.startsWith('http');
+
+function markDirty(){dirty=true;S.meta.updatedAt=nowISO();S.meta.updatedBy="dashboard";localStorage.cc3=JSON.stringify(S);drawSync();}
+function saveAll(){markDirty();}
+
+/* ---------- LOAD: state.json (served) → localStorage → fallback ---------- */
+async function pullState(silent){
+  try{
+    const r=await fetch('./state.json?'+Date.now());
+    if(!r.ok)throw 0;
+    S=await r.json();dirty=false;localStorage.cc3=JSON.stringify(S);
+    renderAll();drawSync();if(!silent)toast('Pulled state.json — synced with agents');
+  }catch(e){
+    if(localStorage.cc3){try{S=JSON.parse(localStorage.cc3);}catch(_){}}
+    renderAll();drawSync();if(!silent)toast(served?'state.json not found — using local':'file:// can\'t fetch — using local copy');
+  }
+}
+function pushState(){
+  S.meta.updatedAt=nowISO();S.meta.updatedBy="dashboard";localStorage.cc3=JSON.stringify(S);
+  const blob=JSON.stringify(S,null,2);
+  navigator.clipboard.writeText(blob).then(()=>{dirty=false;drawSync();
+    toast('State + queue copied — paste to Hermes/Claude to commit state.json');}).catch(()=>toast('Copy failed'));
+}
+function drawSync(){
+  const m=S.meta||{};
+  $('#syncbar').innerHTML=`<span class="led ${dirty?'dirty':''}"></span>${dirty?'local edits — push':'synced'} · by ${esc(m.updatedBy||'?')}`;
+}
+
+/* ---------- WORLD CLOCKS + DAY PROGRESS ---------- */
+const ZONES=[{l:"AMS",z:"Europe/Amsterdam"},{l:"BRU",z:"Europe/Brussels"},{l:"TLV",z:"Asia/Jerusalem"}];
+function clocks(){
+  $('#clocks').innerHTML=ZONES.map(z=>{const t=new Date().toLocaleTimeString("en-GB",{timeZone:z.z,hour:"2-digit",minute:"2-digit"});
+    return `<div class="wclock"><b>${t}</b><small>${z.l}</small></div>`;}).join('');
+  const now=new Date(),h=now.getHours()+now.getMinutes()/60;
+  $('#dayProg').style.width=Math.max(0,Math.min(100,(h-7)/12*100))+'%';
+}
+
+/* ---------- ACTION QUEUE (the agentic loop) ---------- */
+function enqueue(verb,args,domain,safety){
+  S.actionQueue.unshift({id:uid(),ts:nowISO(),source:"dashboard",verb,args:args||{},domain:domain||"",safety:safety||0,status:"pending",result:""});
+  S.actionQueue=S.actionQueue.slice(0,40);markDirty();drawQueue();
+  toast((safety>=3?'Queued (needs confirm): ':'Queued: ')+verb);
+}
+const QCOL={pending:"#e8b54a",done:"#55d38a",blocked:"#ff6b6b",rejected:"#5e6c7d"};
+function drawQueue(){
+  const q=S.actionQueue;
+  $('#queue').innerHTML=q.length?q.map((a,i)=>`
+    <div class="qi"><span class="qd" style="background:${QCOL[a.status]||'#888'}"></span>
+      <div style="flex:1"><span class="qv">${esc(a.verb)}</span> ${a.safety>=3?'<span class="qv" style="color:#ff9b9b">gate '+a.safety+'</span>':''}
+        <div style="color:var(--muted);margin-top:2px">${esc(summ(a))}</div></div>
+      <span class="qx" onclick="delQueue(${i})">✕</span></div>`).join('')
+    :'<div style="color:#5e6c7d;font-size:11px">Empty — voice or palette actions land here for agents to execute.</div>';
+}
+function summ(a){const x=a.args||{};return x.summary||x.text||x.title||x.to||JSON.stringify(x).slice(0,60);}
+function delQueue(i){S.actionQueue.splice(i,1);markDirty();drawQueue();}
+function clearDone(){S.actionQueue=S.actionQueue.filter(a=>a.status==='pending');markDirty();drawQueue();toast('Cleared completed/queued');}
+function copyQueue(){const pending=S.actionQueue.filter(a=>a.status==='pending');
+  if(!pending.length){toast('Queue empty');return;}
+  const txt="Execute these Command Center intents per AGENT-SYNC.md (respect safety gates; draft-first for 3+):\n\n"+
+    pending.map(a=>`- [${a.verb}] ${summ(a)}${a.domain?' ('+a.domain+')':''}${a.safety>=3?' [GATE '+a.safety+' — confirm]':''}`).join('\n');
+  navigator.clipboard.writeText(txt).then(()=>toast('Queue copied for agent')).catch(()=>toast('Copy failed'));
+}
+
+/* ---------- TIMER ---------- */
+const R=42,C=2*Math.PI*R;let total=1500,remain=1500,tick=null,running=false;
+const fmt=n=>String(n).padStart(2,'0');
+function renderTimer(){const m=Math.floor(remain/60),s=remain%60;$('#left').textContent=`${fmt(m)}:${fmt(s)}`;
+  $('#ringArc').style.strokeDashoffset=C*(1-remain/total);$('#startBtn').innerHTML=running?'⏸ Pause':'▶ Start';}
+function setMode(min,el){$$('.chipbtn').forEach(b=>b.classList.remove('on'));el.classList.add('on');
+  total=min*60;remain=total;running=false;clearInterval(tick);renderTimer();}
+function toggleTimer(){if(running){clearInterval(tick);running=false;renderTimer();return;}
+  running=true;renderTimer();tick=setInterval(()=>{remain=Math.max(0,remain-1);renderTimer();
+    if(!remain){clearInterval(tick);running=false;S.sessions++;markDirty();drawDots();toast('Focus session complete 🎯');renderTimer();}},1000);}
+function resetTimer(){clearInterval(tick);running=false;remain=total;renderTimer();}
+function drawDots(){$('#dots').innerHTML=Array.from({length:Math.max(8,S.sessions)},(_,i)=>`<i class="${i<S.sessions?'fill':''}"></i>`).join('');}
+
+/* ---------- FITNESS ---------- */
+const FIT=[{k:"move",i:"🚶",b:"Move",c:"#55d38a"},{k:"stretch",i:"🧘",b:"Stretch",c:"#67b7ff"},{k:"run",i:"🏃",b:"Run",c:"#b891ff"}];
+function drawRings(){const r2=R*0.62,c2=2*Math.PI*r2;
+  $('#rings').innerHTML=FIT.map(f=>{const v=S.fitness[f.k];
+    return `<div class="fring" onclick="bumpFit('${f.k}')" oncontextmenu="resetFit(event,'${f.k}')" title="tap +25% · right-click reset">
+      <div class="rr"><svg width="62" height="62" style="transform:rotate(-90deg)">
+        <circle cx="31" cy="31" r="${r2}" stroke="#26303f" stroke-width="6" fill="none"/>
+        <circle cx="31" cy="31" r="${r2}" stroke="${f.c}" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="${c2}" stroke-dashoffset="${c2*(1-v)}"/></svg>
+        <div class="tx">${f.i}</div></div><b>${f.b}</b><span>${Math.round(v*100)}%</span></div>`;}).join('');}
+function bumpFit(k){S.fitness[k]=Math.min(1,Math.round((S.fitness[k]+0.25)*100)/100);markDirty();drawRings();
+  if(S.fitness[k]>=1)toast(FIT.find(f=>f.k===k).b+' ring closed ✅');}
+function resetFit(e,k){e.preventDefault();S.fitness[k]=0;markDirty();drawRings();}
+
+/* ---------- DOMAINS ---------- */
+const SORDER=["green","amber","red"],SLABEL={green:"GREEN",amber:"AMBER",red:"RED"};
+function drawDomains(){
+  $('#domains').innerHTML=S.domains.map((d,i)=>`
+    <div class="domain" data-i="${i}" title="click: status · shift-click: open note">
+      <i class="dot ${d.s}"></i>
+      <div><b>${d.k} — ${esc(d.t)}</b><div class="ctx edit" contenteditable spellcheck="false"
+        onclick="event.stopPropagation()" onblur="S.domains[${i}].ctx=this.innerText.trim();markDirty()">${esc(d.ctx)}</div></div>
+      <span class="pill ${d.s}">${SLABEL[d.s]}</span></div>`).join('');
+  $$('#domains .domain').forEach(el=>el.addEventListener('click',e=>{const i=+el.dataset.i;
+    if(e.shiftKey){location.href=obs(S.domains[i].file);return;}
+    S.domains[i].s=SORDER[(SORDER.indexOf(S.domains[i].s)+1)%3];markDirty();drawDomains();}));
+}
+
+/* ---------- MAP ---------- */
+const SEVCOL={green:"#55d38a",amber:"#e8b54a",red:"#ff6b6b"};
+function drawMap(){$('#map').innerHTML=S.map.map(m=>`
+  <div class="tile ${m.c}"><span class="sev" style="background:${SEVCOL[m.sev]}"></span>
+    <b>${m.i} ${esc(m.b)}</b><em>${esc(m.e)}</em></div>`).join('');}
+
+/* ---------- TASKS ---------- */
+function drawLanes(){['back','trunk'].forEach(lane=>{
+  $('#'+lane).innerHTML=(S.tasks[lane]||[]).map((t,i)=>`
+    <label class="task ${t.d?'done':''}">
+      <input type="checkbox" ${t.d?'checked':''} onchange="S.tasks['${lane}'][${i}].d=this.checked?1:0;markDirty();drawLanes()">
+      <span class="txt edit" contenteditable spellcheck="false" onblur="S.tasks['${lane}'][${i}].t=this.innerText.trim();markDirty()">${esc(t.t)}</span>
+      ${t.domain?`<span class="tg">${esc(t.domain)}</span>`:''}
+      <span class="x" onclick="S.tasks['${lane}'].splice(${i},1);markDirty();drawLanes()">✕</span></label>`).join('')
+    ||'<div style="color:#5e6c7d;font-size:11px;padding:6px">empty</div>';});}
+function addTask(lane){S.tasks[lane].push({t:"New task",d:0,domain:""});markDirty();drawLanes();
+  const l=$('#'+lane).querySelectorAll('.txt');l[l.length-1]?.focus();}
+
+/* ---------- SIGNALS ---------- */
+function drawSignals(){$('#signals').innerHTML=S.signals.map((g,i)=>`
+  <div class="signal"><span class="sb" style="background:${SEVCOL[g.sev]}" onclick="S.signals[${i}].sev=SORDER[(SORDER.indexOf(S.signals[${i}].sev)+1)%3];markDirty();drawSignals()" title="cycle"></span>
+    <div class="st"><b class="edit" contenteditable spellcheck="false" onblur="S.signals[${i}].t=this.innerText.trim();markDirty()">${esc(g.t)}</b>
+    <small class="edit" contenteditable spellcheck="false" onblur="S.signals[${i}].s=this.innerText.trim();markDirty()">${esc(g.s)}</small></div></div>`).join('');}
+
+/* ---------- EA CLIENT COCKPIT ---------- */
+function activeClient(){return S.clients.find(c=>c.active)||S.clients[0];}
+function setActiveClient(id){S.clients.forEach(c=>c.active=(c.id===id));markDirty();drawClient();}
+function drawClient(){
+  const c=activeClient();if(!c){$('#clientBody').innerHTML='No client set.';return;}
+  $('#clHint').textContent=c.agent+' · '+c.phase;
+  const tabs=S.clients.map(x=>`<div class="cl-tab ${x.active?'on':''}" onclick="setActiveClient('${x.id}')">
+      <span class="d dot ${x.status}"></span><div><b>${esc(x.name)}</b><small>${esc((x.role||'').replace('Enterprise Architect','EA'))}</small></div></div>`).join('');
+  $('#clientBody').innerHTML=`
+    ${S.clients.length>1?`<div class="cl-tabs">${tabs}</div>`:''}
+    <div class="cl-top">
+      <div class="cl-name edit" contenteditable spellcheck="false" onblur="c_set('name',this.innerText)">${esc(c.name)}</div>
+      <span class="cl-stack edit" contenteditable spellcheck="false" onblur="c_set('stack',this.innerText)">${esc(c.stack)}</span>
+      <span class="cl-rag ${c.status}" onclick="c_rag()">${SLABEL[c.status]}</span>
+    </div>
+    ${c.role?`<div class="cl-role">${esc(c.role)}</div>`:''}
+    ${c.domainFocus?`<div class="cl-focus">${esc(c.domainFocus)}</div>`:''}
+    <div class="cl-grid">
+      <div class="cl-fld"><label>Phase</label><div class="val edit" contenteditable onblur="c_set('phase',this.innerText)">${esc(c.phase)}</div></div>
+      <div class="cl-fld"><label>Relationship · identity</label><div class="val">${esc(c.relationship||c.owner)} · ${esc(c.identity)}</div></div>
+    </div>
+    <div class="cl-fld"><label>Next decision</label><div class="val edit" contenteditable onblur="c_set('nextDecision',this.innerText)">${esc(c.nextDecision)}</div></div>
+    <div class="cl-fld"><label>Client tools / connectors</label><div class="val edit" contenteditable onblur="c_set('tools',this.innerText)">${esc(c.tools||'add the tools this client uses…')}</div></div>
+    <div class="cl-fld"><label>Stakeholders (comma-separated)</label><div class="val edit" contenteditable onblur="c_setStake(this.innerText)">${esc((c.stakeholders||[]).join(', '))||'<span style=color:#5e6c7d>add names…</span>'}</div></div>
+    <div><label style="font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--faint)">Milestones</label>
+      <div class="cl-ms" style="margin-top:5px">${(c.milestones||[]).map((m,i)=>`
+        <label class="ml ${m.d?'done':''}"><input type="checkbox" ${m.d?'checked':''} onchange="c_ms(${i},this.checked)">
+        <span class="edit" contenteditable spellcheck="false" onblur="c_msTxt(${i},this.innerText)">${esc(m.t)}</span></label>`).join('')}</div></div>
+    <div class="cl-acts">
+      <button class="btn sm" onclick="ea_scaffold()" title="Queue Drive folder + ROS folder + Notion row">🗂️ Scaffold</button>
+      <button class="btn sm" onclick="ea_action('hld')">🏗️ HLD</button>
+      <button class="btn sm" onclick="ea_action('adr')">📐 ADR</button>
+      <button class="btn sm" onclick="ea_action('review')">🔍 Review</button>
+      <button class="btn sm" onclick="ea_action('kickoff')">✉︎ Kickoff</button>
+      <button class="btn sm" onclick="ea_action('meeting')">📅 Meet</button>
+    </div>
+    <div class="cl-links">
+      ${c.drive?`<a class="btn sm ghost" href="${c.drive}" target="_blank">📁 Drive</a>`:`<span class="btn sm ghost" style="opacity:.5">📁 Drive (queue scaffold)</span>`}
+      ${c.notion?`<a class="btn sm ghost" href="${c.notion}" target="_blank">📔 Notion</a>`:`<span class="btn sm ghost" style="opacity:.5">📔 Notion</span>`}
+      <a class="btn sm ghost" href="${obs(c.contextFile||c.rosFolder)}">🗒️ CONTEXT</a>
+    </div>`;
+}
+function c_set(k,v){const c=activeClient();c[k]=v.trim();markDirty();drawClient();}
+function c_setStake(v){activeClient().stakeholders=v.split(',').map(x=>x.trim()).filter(Boolean);markDirty();}
+function c_rag(){const c=activeClient();c.status=SORDER[(SORDER.indexOf(c.status)+1)%3];markDirty();drawClient();}
+function c_ms(i,on){activeClient().milestones[i].d=on?1:0;markDirty();drawClient();}
+function c_msTxt(i,v){activeClient().milestones[i].t=v.trim();markDirty();}
+function ea_scaffold(){const c=activeClient();
+  enqueue("drive.folder",{summary:`Create Drive folder "EA — ${c.name} — Engagement"`,name:`EA — ${c.name} — Engagement`},"EA",3);
+  enqueue("note.promote",{summary:`Update engagement index in existing ${c.rosFolder} (CONTEXT.md present)`,path:c.rosFolder},"EA",2);
+  enqueue("notion.upsert",{summary:`Upsert client "${c.name}" into EA/CoS projects DB`,client:c.name},"EA",3);
+  toast('Scaffold queued (3 intents) — Push, then ask an agent to drain the queue');}
+function ea_action(kind){const c=activeClient();const map={
+  hld:["note.promote",{summary:`Draft HLD for ${c.name} (skill: hld-writer) → ${c.rosFolder}HLD.md`},2],
+  adr:["note.promote",{summary:`Draft ADR for ${c.name} (skill: adr-writer) → ${c.rosFolder}ADRs/`},2],
+  review:["note.promote",{summary:`Run architecture-review for ${c.name} (${c.stack})`},2],
+  kickoff:["gmail.draft",{summary:`Draft kickoff email to ${c.name} stakeholders`,to:(c.stakeholders||[]).join(', '),from:c.identity},3],
+  meeting:["calendar.create",{summary:`Suggest + draft kickoff meeting with ${c.name}`,title:`EA kickoff — ${c.name}`},3]};
+  const[v,a,s]=map[kind];enqueue(v,a,"EA",s);
+  // also load a ready prompt for immediate agent use
+  PROMPTS.eatmp=`EA / ${c.name} (${c.stack}). `+ (
+    kind==='hld'?`Draft a High-Level Design using the hld-writer skill. Save to ${c.rosFolder}HLD.md.`:
+    kind==='adr'?`Capture the key architecture decision as an ADR using adr-writer. Save under ${c.rosFolder}ADRs/.`:
+    kind==='review'?`Run an architecture-review for the ${c.stack} estate. Output risks, trade-offs, and a recommendation.`:
+    kind==='kickoff'?`Draft a kickoff email from ${c.identity} to the stakeholders confirming scope, success criteria, and next steps. Draft only — do not send.`:
+    `Suggest 3 kickoff meeting slots this week and draft a calendar invite "EA kickoff — ${c.name}". Ask before creating.`);
+  setPromptRaw(PROMPTS.eatmp);}
+
+/* ---------- CONNECTORS (from state.integrations) ---------- */
+function drawConnectors(){
+  const I=S.integrations||{};
+  const items=[
+   {b:"Hermes",k:null,d:"Telegram · WSL · cron · skills",href:null,st:"live"},
+   {b:"Claude / Cowork",k:null,d:"MCP + ROS filesystem",href:obs("CoS/projects/guy-command-center/AGENT-SYNC.md"),st:"live"},
+   {b:"Obsidian",k:null,d:"This project as notes",href:obs("CoS/projects/guy-command-center/Command Center - Obsidian Entry.md"),st:"live"},
+   {b:"Gmail",k:"gmail",d:(I.gmail?.via||""),href:"https://mail.google.com/mail/u/0/#inbox"},
+   {b:"Calendar",k:"calendar",d:(I.calendar?.via||""),href:"https://calendar.google.com/calendar/u/0/r/day"},
+   {b:"Drive",k:"drive",d:(I.drive?.via||""),href:"https://drive.google.com"},
+   {b:"Notion",k:"notion",d:(I.notion?.via||""),href:"https://www.notion.so"},
+   {b:"Tasks",k:"tasks",d:(I.tasks?.via||""),href:"https://tasks.google.com"}
+  ];
+  const led=st=>st==='live'?'#55d38a':st==='planned'?'#e8b54a':'#5e6c7d';
+  $('#connectors').innerHTML=items.map(c=>{const st=c.st||I[c.k]?.status||'planned';
+    const inner=`<div class="ch"><b>${c.b}</b><span class="led" style="background:${led(st)}"></span></div><span>${esc(c.d)} · ${st}</span>`;
+    return c.href?`<a class="connector" href="${c.href}" target="_blank" rel="noopener">${inner}</a>`:`<div class="connector">${inner}</div>`;}).join('');
+}
+
+/* ---------- GOOGLE CALENDAR prefilled (no OAuth) ---------- */
+function gcalLink(text,details,startH,durMin){
+  const d=new Date();d.setHours(startH,0,0,0);const e=new Date(d.getTime()+durMin*60000);
+  const z=x=>x.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(text)}&details=${encodeURIComponent(details||'')}&dates=${z(d)}/${z(e)}`;}
+const BLOCKS=[{t:"🧠 Deep work — front-seat mission",h:9,m:90,d:"From ROS Command Center"},
+  {t:"🧘 Stretch / move",h:12,m:15,d:"Before 60m sitting"},{t:"🏃 Run / recovery",h:18,m:45,d:"Energy + resilience"}];
+
+/* ---------- PROMPTS (tailored, connector-aware) ---------- */
+const PROMPTS={
+ morning:"Hermes: morning sync. Pull state.json, triage Gmail (bguy + EA), check today's Calendar, refresh Signals, and propose ONE front-seat mission + top-5 tasks. Write changes back to state.json and post the top-5 to Telegram.",
+ eamail:"Claude: triage the new EA client's threads in Gmail (last 7 days). Summarise asks, deadlines, and decisions. Draft replies from the EA identity (draft-first). Update the EA client card + actionQueue in state.json.",
+ hld:"Claude: using the hld-writer skill, draft a High-Level Design for the new EA client based on current scope. Save to the client's ROS folder and link it from state.json.",
+ blocks:"Hermes/Claude: create today's Google Calendar blocks — deep-work (90m), stretch (15m), run (45m). Use the Calendar connector; ask before creating each event.",
+ signal:"Claude/Hermes: refresh today's war-room Signals — geopolitics, rates/markets, Dutch real estate, EA-client risk. Cite sources; keep ONLY items that change a Guy/HV/EA/PAI decision; write them into state.json.signals.",
+ close:"Hermes: close my day. Snapshot today to the CoS daily note, archive done tasks, reset fitness/sessions in state.json, and list tomorrow's front-seat candidate."
+};
+let curPrompt="morning";
+function setPrompt(k){curPrompt=k;$('#prompt').value=PROMPTS[k]||'';}
+function setPromptRaw(t){curPrompt="ea";$('#prompt').value=t;}
+async function copyPrompt(){try{await navigator.clipboard.writeText($('#prompt').value);toast('Prompt copied — paste into Hermes/Claude');}catch(e){toast('Select & copy manually');}}
+function openGmailCompose(){const body=encodeURIComponent($('#prompt').value);
+  window.open(`https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent('[CC] '+curPrompt)}&body=${body}`,'_blank');}
+
+/* ---------- BRAIN DUMP ---------- */
+function saveDump(){const t=$('#dump').value.trim();if(!t)return;voiceRoute(t,'typed');$('#dump').value='';}
+function pushDump(text){S.dump=S.dump||[];S.dump.unshift({t:new Date().toLocaleString(),x:text});S.dump=S.dump.slice(0,20);markDirty();drawLog();}
+function drawLog(){const d=S.dump||[];$('#log').innerHTML=d.map((x,i)=>
+  `<div class="li"><b>${(x.t.split(',')[1]||x.t).trim()}</b><span style="flex:1">${esc(x.x)}</span><span class="x" onclick="S.dump.splice(${i},1);markDirty();drawLog()">✕</span></div>`).join('');}
+function closeDay(){pushDump('🌙 Closed day · mission: '+$('#mission').innerText.trim());toast('Day closed — logged');}
+
+/* ---------- VOICE (Web Speech) + command routing ---------- */
+let rec=null,listening=false;
+function toggleMic(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){toast('Voice not supported in this browser — use Telegram voice → Hermes');return;}
+  if(listening){rec&&rec.stop();return;}
+  rec=new SR();rec.lang='en-US';rec.interimResults=false;rec.continuous=false;
+  rec.onstart=()=>{listening=true;$('#micBtn').classList.add('on');toast('Listening… say a command');};
+  rec.onend=()=>{listening=false;$('#micBtn').classList.remove('on');};
+  rec.onerror=e=>{listening=false;$('#micBtn').classList.remove('on');toast('Voice error: '+e.error);};
+  rec.onresult=e=>{const txt=e.results[0][0].transcript.trim();voiceRoute(txt,'voice');};
+  rec.start();
+}
+/* Parse natural commands per AGENT-SYNC §4 grammar */
+function voiceRoute(txt,src){
+  const t=txt.trim(),low=t.toLowerCase();
+  const sev=low.includes(' red')?'red':low.includes(' amber')?'amber':low.includes(' green')?'green':null;
+  if(low.startsWith('front seat')){const v=t.replace(/^front seat[:,\s]*/i,'');$('#mission').innerText=v;S.frontSeat.mission=v;markDirty();toast('Front seat set');enqueue('frontseat.set',{summary:v},S.frontSeat.domain,0);}
+  else if(low.startsWith('task')){const v=t.replace(/^task[:,\s]*/i,'');S.tasks.back.push({t:v,d:0,domain:""});markDirty();drawLanes();enqueue('task.add',{summary:v,text:v},"",2);}
+  else if(low.startsWith('signal')){const v=t.replace(/^signal[:,\s]*(red|amber|green)?[:,\s]*/i,'');S.signals.unshift({sev:sev||'amber',t:v.slice(0,28),s:v});markDirty();drawSignals();enqueue('signal.add',{summary:v},"",0);}
+  else if(low.startsWith('client')&&sev){const c=activeClient();c.status=sev;const why=t.replace(/^client.*?(red|amber|green)/i,'').replace(/^\s*because\s*/i,'').trim();if(why)c.nextDecision=why;markDirty();drawClient();enqueue('client.update',{summary:c.name+' → '+sev+(why?' — '+why:'')},"EA",2);}
+  else if(low.startsWith('block')){const kind=low.includes('stretch')?1:low.includes('run')?2:0;const b=BLOCKS[kind];enqueue('calendar.create',{summary:b.t,title:b.t,start:b.h+':00',dur:b.m},"",3);window.open(gcalLink(b.t,b.d,b.h,b.m),'_blank');}
+  else if(low.startsWith('draft email')||low.startsWith('email')){enqueue('gmail.draft',{summary:t},"",3);pushDump('🎙 '+t);}
+  else if(low.startsWith('remember')){const v=t.replace(/^remember[:,\s]*/i,'');enqueue('note.promote',{summary:v,text:v},S.frontSeat.domain,2);pushDump('📌 '+v);}
+  else {pushDump((src==='voice'?'🎙 ':'')+t);if(src==='voice')enqueue('note.capture',{summary:t,text:t},"",0);}
+}
+
+/* ---------- QUICK LINKS ---------- */
+function drawLinks(){
+  const L=[
+   {t:"📋 AGENT-SYNC",h:obs("CoS/projects/guy-command-center/AGENT-SYNC.md")},
+   {t:"📊 HV Radar",h:obs("HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands.md")},
+   {t:"🧭 Routing",h:obs("00_System/routing.md")},
+   {t:"🧠 EA Memory",h:obs("EA/MEMORY.md")},
+   {t:"📅 Deep-work",h:gcalLink(BLOCKS[0].t,BLOCKS[0].d,BLOCKS[0].h,BLOCKS[0].m)},
+   {t:"🧘 Stretch",h:gcalLink(BLOCKS[1].t,BLOCKS[1].d,BLOCKS[1].h,BLOCKS[1].m)},
+   {t:"🏃 Run",h:gcalLink(BLOCKS[2].t,BLOCKS[2].d,BLOCKS[2].h,BLOCKS[2].m)},
+   {t:"📆 Calendar",h:"https://calendar.google.com/calendar/u/0/r/day"},
+   {t:"📁 Drive",h:"https://drive.google.com"},{t:"✉︎ Gmail",h:"https://mail.google.com/mail/u/0/#inbox"}
+  ];
+  $('#quicklinks').innerHTML=L.map(l=>`<a class="btn sm" href="${l.h}" target="_blank" rel="noopener">${l.t}</a>`).join('');
+}
+
+/* ---------- EXPORT ---------- */
+function exportState(){S.meta.updatedAt=nowISO();const blob=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='state.json';a.click();toast('Exported state.json — drop into the project folder');}
+function copyDayMd(){const day=new Date().toISOString().slice(0,10);const c=activeClient();
+  const md=`# Daily Note — ${day}\n\n## Front seat\n- **${S.frontSeat.domain}:** ${S.frontSeat.mission}\n`+
+    `\n## EA client — ${c.name} (${c.stack})\n- Phase: ${c.phase}\n- Next decision: ${c.nextDecision}\n- Status: ${c.status}\n`+
+    `\n## Domains\n`+S.domains.map(d=>`- ${d.s==='green'?'🟢':d.s==='amber'?'🟡':'🔴'} **${d.k}** — ${d.ctx}`).join('\n')+
+    `\n\n## Back seat\n`+S.tasks.back.map(t=>`- [${t.d?'x':' '}] ${t.t}`).join('\n')+
+    `\n\n## Trunk\n`+S.tasks.trunk.map(t=>`- [${t.d?'x':' '}] ${t.t}`).join('\n')+
+    `\n\n## Signals\n`+S.signals.map(g=>`- **${g.t}:** ${g.s}`).join('\n')+
+    `\n\n## Agent queue (pending)\n`+S.actionQueue.filter(a=>a.status==='pending').map(a=>`- [${a.verb}] ${summ(a)}`).join('\n')+
+    `\n\n## Brain dump\n`+(S.dump||[]).map(d=>`- ${d.t} — ${d.x}`).join('\n')+'\n';
+  navigator.clipboard.writeText(md).then(()=>toast('Daily note copied — paste into Obsidian')).catch(()=>toast('Copy failed'));}
+
+function toggleDensity(){const b=document.body;b.dataset.density=b.dataset.density==='compact'?'cozy':'compact';localStorage.ccDensity=b.dataset.density;}
+
+/* ---------- Cmd+K PALETTE ---------- */
+const ACTIONS=[
+ {i:"🗂️",t:"EA: scaffold engagement (Drive+ROS+Notion)",k:"ea",run:ea_scaffold},
+ {i:"🏗️",t:"EA: draft HLD",k:"ea",run:()=>ea_action('hld')},
+ {i:"📐",t:"EA: draft ADR",k:"ea",run:()=>ea_action('adr')},
+ {i:"🔍",t:"EA: architecture review",k:"ea",run:()=>ea_action('review')},
+ {i:"✉︎",t:"EA: draft kickoff email",k:"ea",run:()=>ea_action('kickoff')},
+ {i:"📅",t:"EA: draft kickoff meeting",k:"ea",run:()=>ea_action('meeting')},
+ {i:"📨",t:"Triage EA client mail (prompt)",k:"prompt",run:()=>{setPrompt('eamail');copyPrompt();}},
+ {i:"🌅",t:"Morning sync (prompt)",k:"prompt",run:()=>{setPrompt('morning');copyPrompt();}},
+ {i:"📡",t:"Refresh signals (prompt)",k:"prompt",run:()=>{setPrompt('signal');copyPrompt();}},
+ {i:"🧠",t:"Open Deep-work calendar block",k:"google",run:()=>window.open(gcalLink(BLOCKS[0].t,BLOCKS[0].d,BLOCKS[0].h,BLOCKS[0].m),'_blank')},
+ {i:"🧘",t:"Open Stretch calendar block",k:"google",run:()=>window.open(gcalLink(BLOCKS[1].t,BLOCKS[1].d,BLOCKS[1].h,BLOCKS[1].m),'_blank')},
+ {i:"🏃",t:"Open Run calendar block",k:"google",run:()=>window.open(gcalLink(BLOCKS[2].t,BLOCKS[2].d,BLOCKS[2].h,BLOCKS[2].m),'_blank')},
+ {i:"⤓",t:"Pull state.json from ROS",k:"sync",run:()=>pullState()},
+ {i:"⤴",t:"Push state + queue to agents",k:"sync",run:pushState},
+ {i:"📥",t:"Copy agent queue",k:"sync",run:copyQueue},
+ {i:"🎙",t:"Voice command",k:"voice",run:toggleMic},
+ {i:"📋",t:"Open AGENT-SYNC contract (Obsidian)",k:"obsidian",run:()=>location.href=obs("CoS/projects/guy-command-center/AGENT-SYNC.md")},
+ {i:"⧉",t:"Copy today as Obsidian daily note",k:"action",run:copyDayMd},
+ {i:"⬇︎",t:"Export state.json",k:"action",run:exportState},
+ {i:"📆",t:"Open Google Calendar",k:"google",run:()=>window.open("https://calendar.google.com/calendar/u/0/r/day",'_blank')},
+ {i:"📁",t:"Open Google Drive",k:"google",run:()=>window.open("https://drive.google.com",'_blank')},
+ {i:"✉︎",t:"Open Gmail",k:"google",run:()=>window.open("https://mail.google.com/mail/u/0/#inbox",'_blank')},
+ {i:"🚶",t:"Bump Move ring",k:"fitness",run:()=>bumpFit('move')},
+ {i:"🧘",t:"Bump Stretch ring",k:"fitness",run:()=>bumpFit('stretch')},
+ {i:"🏃",t:"Bump Run ring",k:"fitness",run:()=>bumpFit('run')},
+ {i:"⏏",t:"Close day",k:"action",run:closeDay},
+ {i:"▦",t:"Toggle density",k:"action",run:toggleDensity}
+];
+let pFiltered=ACTIONS,pSel=0;
+function openPalette(){$('#overlay').classList.add('on');$('#pinput').value='';pFiltered=ACTIONS;pSel=0;drawPalette();$('#pinput').focus();}
+function closePalette(){$('#overlay').classList.remove('on');}
+function filterPalette(){const q=$('#pinput').value.toLowerCase();
+  pFiltered=ACTIONS.filter(a=>a.t.toLowerCase().includes(q)||a.k.includes(q));pSel=0;drawPalette();}
+function drawPalette(){$('#presults').innerHTML=pFiltered.map((a,i)=>
+  `<div class="pitem ${i===pSel?'sel':''}" onclick="runPalette(${i})"><span class="pi">${a.i}</span><div>${a.t}<small>${a.k}</small></div><span class="pk">↵</span></div>`).join('')
+  ||'<div class="pitem"><span class="pi">∅</span>No match</div>';}
+function runPalette(i){const a=pFiltered[i];if(a){closePalette();a.run();}}
+
+document.addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('#overlay').classList.contains('on')?closePalette():openPalette();return;}
+  if($('#overlay').classList.contains('on')){
+    if(e.key==='Escape')closePalette();
+    else if(e.key==='ArrowDown'){e.preventDefault();pSel=Math.min(pFiltered.length-1,pSel+1);drawPalette();}
+    else if(e.key==='ArrowUp'){e.preventDefault();pSel=Math.max(0,pSel-1);drawPalette();}
+    else if(e.key==='Enter'){e.preventDefault();runPalette(pSel);}return;}
+  if((e.metaKey||e.ctrlKey)&&e.key==='Enter'&&document.activeElement?.id==='dump')saveDump();
+});
+
+let toastT;function toast(m){const el=$('#toast');el.textContent=m;el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),2600);}
+
+function onMissionDomain(){S.frontSeat.domain=$('#missionDomain').value;markDirty();}
+function rollover(){const day=new Date().toISOString().slice(0,10);if(S.lastDay!==day){S.lastDay=day;S.fitness={move:0,stretch:0,run:0};S.sessions=0;}}
+
+/* ---------- RENDER ALL ---------- */
+function renderAll(){
+  S.dump=S.dump||[];rollover();
+  $('#mission').innerText=S.frontSeat.mission||'';$('#missionDomain').value=S.frontSeat.domain||'EA';
+  total=25*60;remain=total;
+  drawSync();renderTimer();drawDots();drawRings();drawClient();drawDomains();drawMap();drawLanes();drawSignals();drawQueue();drawConnectors();drawLog();drawLinks();
+}
+
+/* ---------- BOOT ---------- */
+function boot(){
+  if(localStorage.ccDensity)document.body.dataset.density=localStorage.ccDensity;
+  $('#mission').addEventListener('blur',()=>{S.frontSeat.mission=$('#mission').innerText.trim();markDirty();});
+  setPrompt('morning');
+  pullState(true);                 // try state.json; falls back to local/embedded
+  clocks();setInterval(clocks,1000*20);
+  $('#footer').textContent='Voice-agentic file system: state.json is the shared truth · Hermes (WSL) ⇄ Claude (MCP) ⇄ dashboard. Edits are proposals — Push, then an agent drains the queue. Contract: AGENT-SYNC.md.';
+}
+boot();
+</script>
+</body>
+</html>

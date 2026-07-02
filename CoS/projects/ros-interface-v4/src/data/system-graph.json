@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "title": "Rubin OS — Multi-Agent & Skills Map",
+    "version": "1.7",
+    "generatedFrom": [
+      "/AGENTS.md",
+      "/CLAUDE.md",
+      "/00_System/routing.md",
+      "/00_System/agent-capabilities.md",
+      "00_System/ros-multi-agent-map.html",
+      ".claude/agents/",
+      ".claude/skills/"
+    ],
+    "schema": "graphify-compatible (nodes[].id/label/type/group · edges[].source/target/rel)",
+    "note": "Curated knowledge graph of the ROS multi-agent system. Hand-built for signal; same schema a /graphify run emits, so it can be regenerated/enriched later."
+  },
+  "nodes": [
+    { "id": "claude", "label": "Claude / Cowork", "type": "runtime", "group": "runtime", "role": "orchestrate · judge · gate", "desc": "Interactive ROS agent. Routes requests, runs domain skills, reviews output, holds the human-gating decision points. The conductor of the loop.", "identity": "claude-cowork@rubin-os.local", "path": "C:\\Users\\dguyr\\ROS" },
+    { "id": "codex", "label": "Codex", "type": "runtime", "group": "runtime", "role": "bulk-build · file-system", "desc": "Coding / file-system agent. Heavy lifting — bulk implementation on [codex] branches — while Claude orchestrates and gates merges.", "identity": "codex-agent@rubin-os.local", "path": "C:\\Users\\dguyr\\ROS" },
+    { "id": "hermes", "label": "Hermes", "type": "runtime", "group": "runtime", "role": "run-the-loop · automation", "desc": "WSL automation runtime. Owns the connector layer (himalaya mail, Notion) and runs scheduled routines — keeps loops turning between human touchpoints.", "identity": "hermes-agent@rubin-os.local", "path": "/home/guyru/ROS (WSL)" },
+
+    { "id": "cos", "label": "CoS", "type": "agent", "group": "CoS", "full": "Chief of Staff", "desc": "Operating layer above all agents. Runs the rhythm of the business — right work, right agent, right time.", "triggers": "weekly review, OKRs, strategy, blockers, cross-domain, orchestrate", "cmd": "/cos.*" },
+    { "id": "kk", "label": "KK", "type": "agent", "group": "KK", "full": "Personal Ops", "desc": "Daily execution — inbox, calendar, tasks, scheduling. Handles the now; CoS handles direction.", "triggers": "today, inbox, calendar, schedule, follow-up, urgent", "cmd": "/kk.*" },
+    { "id": "hv", "label": "HV", "type": "agent", "group": "HV", "full": "Real Estate · HollandVest", "desc": "Dutch real-estate deals, BRRRR models, permits, WWS, tenants. The EU dual-exit development engine.", "triggers": "deal, property, BRRRR, rent, permit, vergunning, WWS, Funda", "cmd": "/hv.*" },
+    { "id": "ea", "label": "EA", "type": "agent", "group": "EA", "full": "Enterprise Architecture", "desc": "Client-facing architecture — HLDs, ADRs, cloud strategy, security architecture. Always confirms which client first.", "triggers": "architecture, HLD, ADR, cloud, ZTA, CCoE, security architect, client", "cmd": "/ea.*" },
+    { "id": "pai", "label": "PAI", "type": "agent", "group": "PAI", "full": "Product & AI Ventures", "desc": "Product thinking for Guy's ventures — PRDs, MVPs, pricing, GTM, AI product design. Home of Arbor & the three-engine loop.", "triggers": "product, PRD, MVP, roadmap, pricing, venture, GTM, parenting app", "cmd": "/pai.*" },
+    { "id": "mkt", "label": "MKT", "type": "agent", "group": "MKT", "full": "Marketing", "desc": "Content, copy, campaigns, brand, social. Turns positioning into channel-specific, conversion-focused assets.", "triggers": "content, post, LinkedIn, blog, campaign, brand, copy, social", "cmd": "/mkt.*" },
+    { "id": "fin", "label": "FIN", "type": "agent", "group": "FIN", "full": "Finance & Admin", "desc": "Invoices, insurance, contracts, tax, subscriptions, compliance. The back-office ledger of the group.", "triggers": "invoice, insurance, contract, compliance, bank, tax, subscription, legal", "cmd": "/fin.*" },
+
+    { "id": "weekly-review", "label": "weekly-review", "type": "skill", "group": "CoS", "desc": "Structured cross-domain review every week." },
+    { "id": "okr-tracker", "label": "okr-tracker", "type": "skill", "group": "CoS", "desc": "Set & track quarterly objectives." },
+    { "id": "project-tracker", "label": "project-tracker", "type": "skill", "group": "CoS", "desc": "Milestones, vendors, blockers." },
+    { "id": "stakeholder-briefing", "label": "stakeholder-briefing", "type": "skill", "group": "CoS", "desc": "Board / investor / client reports." },
+
+    { "id": "inbox-manager", "label": "inbox-manager", "type": "skill", "group": "KK", "desc": "Triage & prioritise email." },
+    { "id": "task-manager", "label": "task-manager", "type": "skill", "group": "KK", "desc": "Capture & manage tasks / priorities." },
+
+    { "id": "deal-analyzer", "label": "deal-analyzer", "type": "skill", "group": "HV", "desc": "Structured acquisition assessment." },
+    { "id": "brrrr-calculator", "label": "brrrr-calculator", "type": "skill", "group": "HV", "desc": "Buy-Reno-Rent-Refi-Repeat model." },
+    { "id": "deal-note-creator", "label": "deal-note-creator", "type": "skill", "group": "HV", "desc": "Document a new deal / asset." },
+    { "id": "permit-pathway", "label": "permit-pathway", "type": "skill", "group": "HV", "desc": "Dutch permit / vergunning strategy." },
+    { "id": "wws-analyzer", "label": "wws-analyzer", "type": "skill", "group": "HV", "desc": "WWS points & rent ceiling." },
+
+    { "id": "architecture-review", "label": "architecture-review", "type": "skill", "group": "EA", "desc": "Assess architecture / cloud strategy." },
+    { "id": "hld-writer", "label": "hld-writer", "type": "skill", "group": "EA", "desc": "High-level design document." },
+    { "id": "adr-writer", "label": "adr-writer", "type": "skill", "group": "EA", "desc": "Architecture decision record." },
+
+    { "id": "prd-generator", "label": "prd-generator", "type": "skill", "group": "PAI", "desc": "Product requirements / MVP scope." },
+    { "id": "pricing-strategy", "label": "pricing-strategy", "type": "skill", "group": "PAI", "desc": "Pricing model & price point." },
+    { "id": "gtm-strategist", "label": "gtm-strategist", "type": "skill", "group": "PAI", "desc": "Go-to-market strategy." },
+
+    { "id": "campaign-planner", "label": "campaign-planner", "type": "skill", "group": "MKT", "desc": "Plan a marketing campaign." },
+    { "id": "content-creator", "label": "content-creator", "type": "skill", "group": "MKT", "desc": "Produce written content assets." },
+    { "id": "copywriter", "label": "copywriter", "type": "skill", "group": "MKT", "desc": "Conversion-focused copy." },
+
+    { "id": "email-composer", "label": "email-composer", "type": "shared", "group": "FIN", "desc": "Outbound email; auto-selects the right account. Cross-domain." },
+    { "id": "notion-sync", "label": "notion-sync", "type": "shared", "group": "CoS", "desc": "Create / update Notion pages. Cross-domain." },
+    { "id": "research", "label": "research", "type": "shared", "group": "KK", "desc": "Information gathering & synthesis. Cross-domain." },
+    { "id": "voice-extract", "label": "voice-extract", "type": "shared", "group": "PAI", "desc": "Calibrate writing-voice profile. Cross-domain." },
+    { "id": "session-audit", "label": "session-audit", "type": "shared", "group": "EA", "desc": "Capture learnings at wrap-up. Cross-domain." },
+    { "id": "ros-workflow", "label": "ros-workflow", "type": "shared", "group": "MKT", "desc": "Meta: navigate / route the system. Cross-domain." },
+
+    { "id": "compliance-mapper", "label": "compliance-mapper", "type": "subagent", "group": "EA", "desc": "Maps a system to a regulatory/control framework → requirement→control→evidence→gap matrix. Read-only." },
+    { "id": "security-reviewer", "label": "security-reviewer", "type": "subagent", "group": "EA", "desc": "Security-architecture review lens — ranked, evidenced findings. Read-only." },
+    { "id": "threat-modeler", "label": "threat-modeler", "type": "subagent", "group": "EA", "desc": "Structured STRIDE threat model → threat register with mitigations. Read-only." },
+
+    { "id": "security-review", "label": "security-review", "type": "skill", "group": "EA", "desc": "Security-architecture + code review tailored to EA client context (NIS2/ISO27001/NIST)." },
+    { "id": "threat-model", "label": "threat-model", "type": "skill", "group": "EA", "desc": "STRIDE threat model on a system / design / data flow." },
+    { "id": "zero-trust-assessment", "label": "zero-trust-assessment", "type": "skill", "group": "EA", "desc": "Zero Trust / IAM / privileged-access posture (esp. Azure/Entra). Boortmalt D4." },
+    { "id": "iso27001-nist-mapping", "label": "iso27001-nist-mapping", "type": "skill", "group": "EA", "desc": "Map to ISO 27001 Annex A / NIST CSF → control-gap matrix. Boortmalt D2/D5." },
+    { "id": "nis2-control-mapping", "label": "nis2-control-mapping", "type": "skill", "group": "EA", "desc": "Map to NIS2 obligations → requirement→control→evidence matrix." },
+    { "id": "azure-tenant-separation-review", "label": "azure-tenant-separation-review", "type": "skill", "group": "EA", "desc": "Carve-out / tenant separation security. Boortmalt D3/D8/D9." },
+
+    { "id": "ai-eval-harness", "label": "ai-eval-harness", "type": "skill", "group": "PAI", "desc": "Version-pinned eval suites + LLM-as-judge for Arbor AI features. Safety-first." },
+    { "id": "arbor-competitor-benchmark", "label": "arbor-competitor-benchmark", "type": "skill", "group": "PAI", "desc": "Benchmark Arbor vs rivals across its six surfaces → gap + pricing matrix." },
+
+    { "id": "cap-web-search", "label": "Web search & research", "type": "capability", "group": "capability", "desc": "Live web, source triangulation, citation capture · prefer primary sources." },
+    { "id": "cap-browser", "label": "Browser / computer use", "type": "capability", "group": "capability", "desc": "Portals, forms, dashboards · no sends/purchases/deletes without confirmation." },
+    { "id": "cap-multimodal", "label": "Video & multimodal", "type": "capability", "group": "capability", "desc": "Recordings, screenshots, transcripts → evidence, timelines, UI states." },
+    { "id": "cap-docintel", "label": "Document intelligence", "type": "capability", "group": "capability", "desc": "OCR, summarize, compare PDFs/scans/decks → Markdown-first artifacts." },
+    { "id": "cap-data", "label": "Data analysis & automation", "type": "capability", "group": "capability", "desc": "Scripts, tables, charts, repeatable checks · verify outputs." },
+    { "id": "cap-kb", "label": "Knowledge-base maintenance", "type": "capability", "group": "capability", "desc": "Atomic, linked Markdown notes · update the right MEMORY.md." },
+
+    { "id": "conn-gmail-bguy", "label": "Gmail · bguy", "type": "connector", "group": "connector", "desc": "Primary account. CoS / KK / EA / PAI / MKT correspondence." },
+    { "id": "conn-gmail-joseph", "label": "Gmail · joseph", "type": "connector", "group": "connector", "desc": "Joseph (EA lead) — send/receive for EA work; attachments via himalaya." },
+    { "id": "conn-gmail-hv", "label": "Gmail · hollandvest", "type": "connector", "group": "connector", "desc": "HollandVest account — HV only." },
+    { "id": "conn-notion", "label": "Notion", "type": "connector", "group": "connector", "desc": "Command Center, Projects, Tasks, Decisions, dashboards." },
+    { "id": "conn-calendar", "label": "Google Calendar", "type": "connector", "group": "connector", "desc": "Scheduling & time-blocks." },
+    { "id": "conn-drive", "label": "Google Drive", "type": "connector", "group": "connector", "desc": "Document store & exports." }
+  ],
+  "edges": [
+    { "source": "claude", "target": "codex", "rel": "delegates build" },
+    { "source": "codex", "target": "hermes", "rel": "hands to loop" },
+    { "source": "hermes", "target": "claude", "rel": "reports / refreshes" },
+
+    { "source": "claude", "target": "cos", "rel": "routes" },
+    { "source": "claude", "target": "kk", "rel": "routes" },
+    { "source": "claude", "target": "hv", "rel": "routes" },
+    { "source": "claude", "target": "ea", "rel": "routes" },
+    { "source": "claude", "target": "pai", "rel": "routes" },
+    { "source": "claude", "target": "mkt", "rel": "routes" },
+    { "source": "claude", "target": "fin", "rel": "routes" },
+
+    { "source": "cos", "target": "weekly-review", "rel": "owns" },
+    { "source": "cos", "target": "okr-tracker", "rel": "owns" },
+    { "source": "cos", "target": "project-tracker", "rel": "owns" },
+    { "source": "cos", "target": "stakeholder-briefing", "rel": "owns" },
+
+    { "source": "kk", "target": "inbox-manager", "rel": "owns" },
+    { "source": "kk", "target": "task-manager", "rel": "owns" },
+
+    { "source": "hv", "target": "deal-analyzer", "rel": "owns" },
+    { "source": "hv", "target": "brrrr-calculator", "rel": "owns" },
+    { "source": "hv", "target": "deal-note-creator", "rel": "owns" },
+    { "source": "hv", "target": "permit-pathway", "rel": "owns" },
+    { "source": "hv", "target": "wws-analyzer", "rel": "owns" },
+
+    { "source": "ea", "target": "architecture-review", "rel": "owns" },
+    { "source": "ea", "target": "hld-writer", "rel": "owns" },
+    { "source": "ea", "target": "adr-writer", "rel": "owns" },
+
+    { "source": "pai", "target": "prd-generator", "rel": "owns" },
+    { "source": "pai", "target": "pricing-strategy", "rel": "owns" },
+    { "source": "pai", "target": "gtm-strategist", "rel": "owns" },
+
+    { "source": "mkt", "target": "campaign-planner", "rel": "owns" },
+    { "source": "mkt", "target": "content-creator", "rel": "owns" },
+    { "source": "mkt", "target": "copywriter", "rel": "owns" },
+
+    { "source": "fin", "target": "email-composer", "rel": "owns (shared)" },
+    { "source": "cos", "target": "notion-sync", "rel": "owns (shared)" },
+    { "source": "kk", "target": "research", "rel": "owns (shared)" },
+    { "source": "pai", "target": "voice-extract", "rel": "owns (shared)" },
+    { "source": "ea", "target": "session-audit", "rel": "owns (shared)" },
+    { "source": "mkt", "target": "ros-workflow", "rel": "owns (shared)" },
+
+    { "source": "ea", "target": "compliance-mapper", "rel": "runs" },
+    { "source": "ea", "target": "security-reviewer", "rel": "runs" },
+    { "source": "ea", "target": "threat-modeler", "rel": "runs" },
+
+    { "source": "ea", "target": "security-review", "rel": "owns" },
+    { "source": "ea", "target": "threat-model", "rel": "owns" },
+    { "source": "ea", "target": "zero-trust-assessment", "rel": "owns" },
+    { "source": "ea", "target": "iso27001-nist-mapping", "rel": "owns" },
+    { "source": "ea", "target": "nis2-control-mapping", "rel": "owns" },
+    { "source": "ea", "target": "azure-tenant-separation-review", "rel": "owns" },
+
+    { "source": "security-reviewer", "target": "security-review", "rel": "uses" },
+    { "source": "threat-modeler", "target": "threat-model", "rel": "uses" },
+    { "source": "compliance-mapper", "target": "iso27001-nist-mapping", "rel": "uses" },
+    { "source": "compliance-mapper", "target": "nis2-control-mapping", "rel": "uses" },
+
+    { "source": "pai", "target": "ai-eval-harness", "rel": "owns" },
+    { "source": "pai", "target": "arbor-competitor-benchmark", "rel": "owns" },
+
+    { "source": "claude", "target": "cap-web-search", "rel": "inherits (all agents)" },
+    { "source": "claude", "target": "cap-browser", "rel": "inherits (all agents)" },
+    { "source": "claude", "target": "cap-multimodal", "rel": "inherits (all agents)" },
+    { "source": "claude", "target": "cap-docintel", "rel": "inherits (all agents)" },
+    { "source": "claude", "target": "cap-data", "rel": "inherits (all agents)" },
+    { "source": "claude", "target": "cap-kb", "rel": "inherits (all agents)" },
+
+    { "source": "hermes", "target": "conn-gmail-bguy", "rel": "owns connector" },
+    { "source": "hermes", "target": "conn-gmail-joseph", "rel": "owns connector" },
+    { "source": "hermes", "target": "conn-gmail-hv", "rel": "owns connector" },
+    { "source": "hermes", "target": "conn-notion", "rel": "owns connector" },
+    { "source": "hermes", "target": "conn-calendar", "rel": "owns connector" },
+    { "source": "hermes", "target": "conn-drive", "rel": "owns connector" },
+
+    { "source": "conn-gmail-hv", "target": "hv", "rel": "account" },
+    { "source": "conn-gmail-joseph", "target": "ea", "rel": "account" },
+    { "source": "conn-gmail-bguy", "target": "cos", "rel": "account" },
+    { "source": "conn-notion", "target": "cos", "rel": "serves" },
+    { "source": "conn-calendar", "target": "kk", "rel": "serves" },
+    { "source": "conn-drive", "target": "cos", "rel": "serves" }
+  ]
+}

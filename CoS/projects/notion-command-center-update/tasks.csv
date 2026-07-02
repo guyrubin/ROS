@@ -1,7 +1,0 @@
-Name,Status,Priority,Domain,Due,Owner,Context,Source,Waiting For,ROS Path,Notes
-Attend Christoffelkruidstraat 82 viewing,Scheduled,P0,HV; KK,2026-05-18T16:00:00+02:00,Guy,Errand,Email,,HV/MEMORY.md,Confirmed by Lammers + Dijkstra Makelaars / HousApp; address 1032LK Amsterdam; docs: https://app.eerlijkbieden.nl/auction/69aaee601a3901efb5f7571f
-Review Coca-Cola employment contract when received,Waiting,P0,EA; KK,2026-05-16,Guy,Review,ROS,Coca-Cola / HR / hiring contact,EA/clients/Coca-Cola/CONTEXT.md,Track inbox; review terms immediately when received.
-Complete ABN onboarding checklist,Next,P0,EA; KK,2026-05-16,Guy,Desk,ROS,ABN onboarding contact where applicable,EA/clients/ABN/CONTEXT.md,"Documents, access, admin, start-date logistics."
-Decide next move on Badhuiskade 217 viewing/DD,Next,P1,HV,2026-05-17,Guy / HV,Review,ROS,,HV/03_Deals/Badhuiskade_217_Amsterdam_Noord,Primary target in HV memory; request DD documents if pursuing.
-Choose Arbor first beta wedge,Next,P1,PAI,2026-05-20,Guy,Deep Work,ROS,,PAI/MEMORY.md,"Options: behavior/routines, speech/language, emotional regulation, school readiness, autism/ADHD concerns."
-Share Notion Command Center page with integration ROS KK Con,Blocked,P0,CoS; KK,2026-05-15,Guy,Desk,Telegram,Guy to connect Notion page to integration,CoS/projects/notion-command-center-update/,"Notion API key is valid, but search returns zero accessible pages; no live update possible until a parent page is shared."

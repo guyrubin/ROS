@@ -24,6 +24,8 @@ export function CommandPalette() {
     { id: 'work',     label: 'Go to WORK view',     category: 'Navigate', action: () => navigate('/work') },
     { id: 'ops',      label: 'Go to OPS view',      category: 'Navigate', action: () => navigate('/ops') },
     { id: 'os',       label: 'Go to OS view',       category: 'Navigate', action: () => navigate('/os') },
+    { id: 'backlog',  label: 'Go to BACKLOG — all domains', category: 'Navigate', action: () => navigate('/backlog'), keys: '⌘^' },
+    { id: 'map',      label: 'Go to MAP — system graph', category: 'Navigate', action: () => navigate('/map'), keys: '⌘%' },
     { id: 'cos',      label: 'Open CoS',    category: 'Domain', action: () => openSlideOver('CoS'), keys: '⌘8' },
     { id: 'kk',       label: 'Open KK',     category: 'Domain', action: () => openSlideOver('KK'),  keys: '⌘1' },
     { id: 'hv',       label: 'Open HV',     category: 'Domain', action: () => openSlideOver('HV'),  keys: '⌘2' },

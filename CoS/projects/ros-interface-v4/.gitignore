@@ -1,0 +1,6 @@
+node_modules
+dist
+dist-artifact
+# confidential — staged for local preview only, never commit/deploy publicly
+public/state.json
+*.tsbuildinfo

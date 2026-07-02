@@ -19,7 +19,7 @@ export default function App() {
       const mod = e.metaKey || e.ctrlKey
       if (!mod) return
       const map: Record<string, string> = {
-        '`': '/', '0': '/', '!': '/momentum', '@': '/work', '#': '/ops', '$': '/os',
+        '`': '/', '0': '/', '!': '/momentum', '@': '/work', '#': '/ops', '$': '/os', '%': '/map', '^': '/backlog',
       }
       if (map[e.key]) { e.preventDefault(); navigate(map[e.key]) }
     }

@@ -2,9 +2,13 @@
   "v": 3,
   "meta": {
     "owner": "Guy Rubin",
-    "updatedAt": "2026-06-01T09:00:00Z",
+    "updatedAt": "2026-06-29",
     "updatedBy": "claude",
-    "note": "Canonical state for the ROS Command Center. Edited by Hermes (WSL), Claude (MCP/file), and the dashboard (proposes via actionQueue). See AGENT-SYNC.md for the contract."
+    "note": "EA: Boortmalt set as sole active client with full roadmap/deliverables/backlog/structure",
+    "memoryDates": {
+      "EA": "2026-06-29"
+    },
+    "generatedAt": "2026-07-02"
   },
   "frontSeat": {
     "mission": "ABN AMRO onboarding: confirm scope + first security-architecture deliverable.",
@@ -12,45 +16,428 @@
     "startedAt": ""
   },
   "domains": [
-    { "k": "HV",  "t": "Investments / Real Estate", "s": "amber", "ctx": "Smart-living + dev-upside sourcing. Radar: Den Haag / Koningin Emmakade DD.", "file": "HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands.md" },
-    { "k": "EA",  "t": "Security Enterprise Architecture", "s": "red", "ctx": "Two engagements: ABN AMRO (Security EA — onboarding) + Coca-Cola (Infra & Security EA — in-flight). Protect deep work; close onboarding admin.", "file": "EA/MEMORY.md" },
-    { "k": "PAI", "t": "Ventures",                   "s": "amber", "ctx": "Arbor v2 branch + Firebase/Cloud Run scaffold; decide deploy + AI key.", "file": "PAI/MEMORY.md" },
-    { "k": "KK",  "t": "Personal Ops",               "s": "green", "ctx": "Inbox, calendar, school placement, travel, health — today's execution layer.", "file": "KK/MEMORY.md" },
-    { "k": "FIN", "t": "Finance / Admin",            "s": "green", "ctx": "Contracts, tax, insurance, subscriptions, personal-finance guardrails.", "file": "FIN/MEMORY.md" },
-    { "k": "MKT", "t": "Content / Brand",            "s": "amber", "ctx": "LinkedIn / job positioning, campaigns, thought leadership.", "file": "MKT/MEMORY.md" }
+    {
+      "k": "HV",
+      "t": "Investments / Real Estate",
+      "s": "amber",
+      "ctx": "Smart-living + dev-upside sourcing. Radar: Den Haag / Koningin Emmakade DD.",
+      "file": "HV/00_Dashboards/Smart_Living_Deal_Radar_Netherlands.md"
+    },
+    {
+      "k": "EA",
+      "t": "Security Enterprise Architecture",
+      "s": "red",
+      "ctx": "Two engagements: ABN AMRO (Security EA — onboarding) + Coca-Cola (Infra & Security EA — in-flight). Protect deep work; close onboarding admin.",
+      "file": "EA/MEMORY.md"
+    },
+    {
+      "k": "PAI",
+      "t": "Ventures",
+      "s": "amber",
+      "ctx": "Arbor v2 branch + Firebase/Cloud Run scaffold; decide deploy + AI key.",
+      "file": "PAI/MEMORY.md"
+    },
+    {
+      "k": "KK",
+      "t": "Personal Ops",
+      "s": "green",
+      "ctx": "Inbox, calendar, school placement, travel, health — today's execution layer.",
+      "file": "KK/MEMORY.md"
+    },
+    {
+      "k": "FIN",
+      "t": "Finance / Admin",
+      "s": "green",
+      "ctx": "Contracts, tax, insurance, subscriptions, personal-finance guardrails.",
+      "file": "FIN/MEMORY.md"
+    },
+    {
+      "k": "MKT",
+      "t": "Content / Brand",
+      "s": "amber",
+      "ctx": "LinkedIn / job positioning, campaigns, thought leadership.",
+      "file": "MKT/MEMORY.md"
+    }
   ],
   "map": [
-    { "c": "war",    "i": "🛰️", "b": "War / Geopolitics", "e": "Conflicts, sanctions, supply shocks, AI/security shifts → decision impact only.", "sev": "amber" },
-    { "c": "inv",    "i": "📈", "b": "Investments",       "e": "HV pipeline, BRRRR math, asset watch, lender/tax risk → go / no-go.", "sev": "amber" },
-    { "c": "fin",    "i": "💶", "b": "Finance",           "e": "Cash, invoices, contracts, subscriptions, insurance, tax → next admin action.", "sev": "green" },
-    { "c": "travel", "i": "✈️", "b": "Travel",           "e": "Trips, schools, routes, docs. Rule: Brussels = Central/Midi, never CRL.", "sev": "green" },
-    { "c": "fit",    "i": "🏃", "b": "Fitness",           "e": "Move before 60m sitting, stretch, run, recovery. Calendar removes guilt.", "sev": "green" },
-    { "c": "fam",    "i": "👨‍👧", "b": "Family", "e": "Dylan schools, Keren visits, Hebrew/English, Amsterdam Noord proximity.", "sev": "green" },
-    { "c": "work",   "i": "🏗️", "b": "Work",       "e": "ABN AMRO (Security EA, onboarding) + Coca-Cola (Infra & Security EA). Architecture decisions, follow-ups.", "sev": "red" },
-    { "c": "art",    "i": "🎨", "b": "Art / Energy",      "e": "Quote, music, article/bookmark revival. Resilience fuel, not productivity.", "sev": "green" }
+    {
+      "c": "war",
+      "i": "🛰️",
+      "b": "War / Geopolitics",
+      "e": "Conflicts, sanctions, supply shocks, AI/security shifts → decision impact only.",
+      "sev": "amber"
+    },
+    {
+      "c": "inv",
+      "i": "📈",
+      "b": "Investments",
+      "e": "HV pipeline, BRRRR math, asset watch, lender/tax risk → go / no-go.",
+      "sev": "amber"
+    },
+    {
+      "c": "fin",
+      "i": "💶",
+      "b": "Finance",
+      "e": "Cash, invoices, contracts, subscriptions, insurance, tax → next admin action.",
+      "sev": "green"
+    },
+    {
+      "c": "travel",
+      "i": "✈️",
+      "b": "Travel",
+      "e": "Trips, schools, routes, docs. Rule: Brussels = Central/Midi, never CRL.",
+      "sev": "green"
+    },
+    {
+      "c": "fit",
+      "i": "🏃",
+      "b": "Fitness",
+      "e": "Move before 60m sitting, stretch, run, recovery. Calendar removes guilt.",
+      "sev": "green"
+    },
+    {
+      "c": "fam",
+      "i": "👨‍👧",
+      "b": "Family",
+      "e": "Dylan schools, Keren visits, Hebrew/English, Amsterdam Noord proximity.",
+      "sev": "green"
+    },
+    {
+      "c": "work",
+      "i": "🏗️",
+      "b": "Work",
+      "e": "ABN AMRO (Security EA, onboarding) + Coca-Cola (Infra & Security EA). Architecture decisions, follow-ups.",
+      "sev": "red"
+    },
+    {
+      "c": "art",
+      "i": "🎨",
+      "b": "Art / Energy",
+      "e": "Quote, music, article/bookmark revival. Resilience fuel, not productivity.",
+      "sev": "green"
+    }
   ],
   "tasks": {
     "back": [
-      { "t": "ABN AMRO: confirm onboarding scope + access + stakeholders", "d": 0, "domain": "EA" },
-      { "t": "ABN AMRO + Coca-Cola: create engagement Drive + ROS folders", "d": 0, "domain": "EA" },
-      { "t": "Coca-Cola: close contract/admin items", "d": 0, "domain": "EA" },
-      { "t": "Koningin Emmakade DD follow-up", "d": 0, "domain": "HV" }
+      {
+        "t": "ABN AMRO: confirm onboarding scope + access + stakeholders",
+        "d": 0,
+        "domain": "EA"
+      },
+      {
+        "t": "ABN AMRO + Coca-Cola: create engagement Drive + ROS folders",
+        "d": 0,
+        "domain": "EA"
+      },
+      {
+        "t": "Coca-Cola: close contract/admin items",
+        "d": 0,
+        "domain": "EA"
+      },
+      {
+        "t": "Koningin Emmakade DD follow-up",
+        "d": 0,
+        "domain": "HV"
+      }
     ],
     "trunk": [
-      { "t": "Notion dashboards polish", "d": 0, "domain": "CoS" },
-      { "t": "Arbor cloud deployment decision", "d": 0, "domain": "PAI" },
-      { "t": "Bookmark / article revival pack", "d": 0, "domain": "MKT" }
+      {
+        "t": "Notion dashboards polish",
+        "d": 0,
+        "domain": "CoS"
+      },
+      {
+        "t": "Arbor cloud deployment decision",
+        "d": 0,
+        "domain": "PAI"
+      },
+      {
+        "t": "Bookmark / article revival pack",
+        "d": 0,
+        "domain": "MKT"
+      }
     ]
   },
   "signals": [
-    { "sev": "amber", "t": "Rates / ECB watch", "s": "Refi gap sensitivity on HV deals — confirm before any go/no-go." },
-    { "sev": "green", "t": "Dutch housing policy", "s": "Wet betaalbare huur / WWS — monitor for ceiling shifts." },
-    { "sev": "red",   "t": "Geopolitics", "s": "Energy + supply shocks → only if it changes a Guy/HV/EA decision." }
+    {
+      "sev": "amber",
+      "t": "Rates / ECB watch",
+      "s": "Refi gap sensitivity on HV deals — confirm before any go/no-go."
+    },
+    {
+      "sev": "green",
+      "t": "Dutch housing policy",
+      "s": "Wet betaalbare huur / WWS — monitor for ceiling shifts."
+    },
+    {
+      "sev": "red",
+      "t": "Geopolitics",
+      "s": "Energy + supply shocks → only if it changes a Guy/HV/EA decision."
+    }
   ],
-  "fitness": { "move": 0, "stretch": 0, "run": 0 },
+  "fitness": {
+    "move": 0,
+    "stretch": 0,
+    "run": 0
+  },
   "sessions": 0,
   "lastDay": "",
   "clients": [
+    {
+      "id": "boortmalt",
+      "agent": "EA",
+      "name": "Boortmalt",
+      "role": "Information Security Architect",
+      "relationship": "Freelance (ATCON)",
+      "stack": "Azure · Entra ID · SOC/SIEM · NIS2/ISO27001",
+      "domainFocus": "Carve-out + Azure tenant separation · IAM/Zero Trust · SOC/IR · NIS2/ISO27001 · Day-1 security",
+      "status": "green",
+      "phase": "Pre-start / onboarding",
+      "nextDecision": "Bind PI + public liability insurance before 1 Jul (blocking) · await ATCON onboarding contact",
+      "owner": "Guy/Joseph (EA)",
+      "identity": "josephdoronrubin@gmail.com",
+      "stakeholders": [
+        {
+          "name": "Ankit Tanna",
+          "role": "ATCON Director (agency)",
+          "contact": "ankit.tanna@atconglobal.com"
+        },
+        {
+          "name": "Boortmalt onboarding contact",
+          "role": "TBC",
+          "contact": "awaited from ATCON"
+        }
+      ],
+      "tools": "Azure portal · Entra · SIEM/SOC (confirm at onboarding)",
+      "terms": [
+        {
+          "label": "Rate",
+          "value": "€800/day ex-VAT"
+        },
+        {
+          "label": "Start",
+          "value": "1 Jul 2026"
+        },
+        {
+          "label": "End",
+          "value": "31 Dec 2026 (ext.)"
+        },
+        {
+          "label": "Schedule",
+          "value": "3d/wk · hybrid Antwerp"
+        },
+        {
+          "label": "Entity",
+          "value": "Cloud AI Consulting VOF"
+        }
+      ],
+      "roadmap": [
+        {
+          "id": "P1",
+          "title": "Orient & Baseline",
+          "window": "D0–+30",
+          "status": "next",
+          "milestone": "M1 · Charter + dependency inventory"
+        },
+        {
+          "id": "P2",
+          "title": "Design & Operating Model",
+          "window": "+30–+60",
+          "status": "later",
+          "milestone": "M2 · Target HLD + risk register"
+        },
+        {
+          "id": "P3",
+          "title": "Operationalize & Assure",
+          "window": "+60–+90",
+          "status": "later",
+          "milestone": "M3 · SOC/IR + migration gate"
+        },
+        {
+          "id": "P4",
+          "title": "Day-1 Cutover",
+          "window": "Day-1 (TBC)",
+          "status": "later",
+          "milestone": "M4 · Secure cutover"
+        },
+        {
+          "id": "P5",
+          "title": "Steady-state & Extension",
+          "window": "→ 31 Dec",
+          "status": "later",
+          "milestone": "M5 · Handover + extension case"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "D1",
+          "title": "InfoSec Strategy & Roadmap",
+          "status": "open"
+        },
+        {
+          "id": "D2",
+          "title": "Policies & Governance Framework",
+          "status": "open"
+        },
+        {
+          "id": "D3",
+          "title": "Azure Tenant Security Architecture",
+          "status": "open"
+        },
+        {
+          "id": "D4",
+          "title": "IAM Governance Model",
+          "status": "open"
+        },
+        {
+          "id": "D5",
+          "title": "Risk Register & Compliance Baseline",
+          "status": "open"
+        },
+        {
+          "id": "D6",
+          "title": "SOC Operating Model",
+          "status": "open"
+        },
+        {
+          "id": "D7",
+          "title": "IR & Escalation Framework",
+          "status": "open"
+        },
+        {
+          "id": "D8",
+          "title": "Migration Security Assurance",
+          "status": "open"
+        },
+        {
+          "id": "D9",
+          "title": "Tenant-Separation Controls & Handover",
+          "status": "open"
+        }
+      ],
+      "backlog": [
+        {
+          "id": "W0",
+          "title": "Pre-start & admin",
+          "done": 2,
+          "total": 6
+        },
+        {
+          "id": "W1",
+          "title": "Onboarding & scope",
+          "done": 0,
+          "total": 7
+        },
+        {
+          "id": "W2",
+          "title": "Current-state & operating model",
+          "done": 0,
+          "total": 7
+        },
+        {
+          "id": "W3",
+          "title": "Azure tenant security arch",
+          "done": 0,
+          "total": 7
+        },
+        {
+          "id": "W4",
+          "title": "SecOps, IR & migration",
+          "done": 0,
+          "total": 6
+        },
+        {
+          "id": "W5",
+          "title": "Steady-state & extension",
+          "done": 0,
+          "total": 4
+        }
+      ],
+      "structure": [
+        {
+          "label": "CONTEXT.md",
+          "path": "EA/clients/Boortmalt/CONTEXT.md",
+          "kind": "doc"
+        },
+        {
+          "label": "ROADMAP.md",
+          "path": "EA/clients/Boortmalt/ROADMAP.md",
+          "kind": "doc"
+        },
+        {
+          "label": "DELIVERABLES-BACKLOG.md",
+          "path": "EA/clients/Boortmalt/DELIVERABLES-BACKLOG.md",
+          "kind": "doc"
+        },
+        {
+          "label": "BACKLOG.md (master, 6 waves)",
+          "path": "EA/clients/Boortmalt/BACKLOG.md",
+          "kind": "doc"
+        },
+        {
+          "label": "index.md",
+          "path": "EA/clients/Boortmalt/index.md",
+          "kind": "doc"
+        },
+        {
+          "label": "onboarding/",
+          "kind": "folder",
+          "children": [
+            {
+              "label": "engagement-brief.md",
+              "path": "EA/clients/Boortmalt/onboarding/engagement-brief.md",
+              "kind": "doc"
+            },
+            {
+              "label": "onboarding-access-checklist.md",
+              "path": "EA/clients/Boortmalt/onboarding/onboarding-access-checklist.md",
+              "kind": "doc"
+            },
+            {
+              "label": "stakeholder-map.md",
+              "path": "EA/clients/Boortmalt/onboarding/stakeholder-map.md",
+              "kind": "doc"
+            },
+            {
+              "label": "discovery-log.md",
+              "path": "EA/clients/Boortmalt/onboarding/discovery-log.md",
+              "kind": "doc"
+            }
+          ]
+        }
+      ],
+      "milestones": [
+        {
+          "t": "Contract signed + confirmed to ATCON",
+          "d": 1
+        },
+        {
+          "t": "Insurance bound (PI + public liability)",
+          "d": 0
+        },
+        {
+          "t": "Onboarding contact + access provisioned",
+          "d": 0
+        },
+        {
+          "t": "Charter + dependency inventory (M1)",
+          "d": 0
+        },
+        {
+          "t": "Target-state HLD approved (M2)",
+          "d": 0
+        },
+        {
+          "t": "Day-1 secure cutover (M4)",
+          "d": 0
+        }
+      ],
+      "drive": "",
+      "rosFolder": "EA/clients/Boortmalt/",
+      "contextFile": "EA/clients/Boortmalt/CONTEXT.md",
+      "notion": "",
+      "active": true
+    },
     {
       "id": "abn-amro",
       "agent": "EA",
@@ -60,23 +447,35 @@
       "stack": "confirm during onboarding",
       "domainFocus": "Security architecture · IAM / ZTA · network segmentation · banking compliance (DORA / DNB / NIS2)",
       "status": "amber",
-      "phase": "Onboarding (in progress)",
-      "nextDecision": "Capture onboarding checklist — access/clearance, compliance docs, start date, key contacts",
+      "phase": "Lapsed lead (did not convert)",
+      "nextDecision": "Inactive — reactivate only if Guy revives it",
       "owner": "Guy Rubin (EA)",
       "identity": "bguy.rubin@gmail.com",
       "stakeholders": [],
       "tools": "confirm: ServiceNow / Azure DevOps / Confluence / Archi",
       "milestones": [
-        { "t": "Onboarding checklist + access provisioned", "d": 0 },
-        { "t": "Compliance / clearance docs captured", "d": 0 },
-        { "t": "Current-state security architecture review", "d": 0 },
-        { "t": "Target-state security HLD", "d": 0 }
+        {
+          "t": "Onboarding checklist + access provisioned",
+          "d": 0
+        },
+        {
+          "t": "Compliance / clearance docs captured",
+          "d": 0
+        },
+        {
+          "t": "Current-state security architecture review",
+          "d": 0
+        },
+        {
+          "t": "Target-state security HLD",
+          "d": 0
+        }
       ],
       "drive": "",
       "rosFolder": "EA/clients/ABN/",
       "contextFile": "EA/clients/ABN/CONTEXT.md",
       "notion": "",
-      "active": true
+      "active": false
     },
     {
       "id": "coca-cola",
@@ -87,17 +486,29 @@
       "stack": "confirm (multi-cloud + infra)",
       "domainFocus": "Infrastructure & security architecture · cloud landing zones · network · identity · security baselines",
       "status": "amber",
-      "phase": "Finalizing employment contract",
-      "nextDecision": "Review employment contract when received; capture start date + onboarding",
+      "phase": "Lapsed lead (did not convert)",
+      "nextDecision": "Inactive — reactivate only if Guy revives it",
       "owner": "Guy Rubin (EA)",
       "identity": "bguy.rubin@gmail.com",
       "stakeholders": [],
       "tools": "confirm: ServiceNow / Jira / Confluence / cloud consoles",
       "milestones": [
-        { "t": "Employment contract reviewed + signed", "d": 0 },
-        { "t": "Onboarding + access", "d": 0 },
-        { "t": "Infra & security baseline review", "d": 0 },
-        { "t": "Target-state HLD update", "d": 0 }
+        {
+          "t": "Employment contract reviewed + signed",
+          "d": 0
+        },
+        {
+          "t": "Onboarding + access",
+          "d": 0
+        },
+        {
+          "t": "Infra & security baseline review",
+          "d": 0
+        },
+        {
+          "t": "Target-state HLD update",
+          "d": 0
+        }
       ],
       "drive": "",
       "rosFolder": "EA/clients/Coca-Cola/",
@@ -108,12 +519,1327 @@
   ],
   "actionQueue": [],
   "integrations": {
-    "gmail":    { "status": "live",    "via": "MCP (Claude) + Himalaya (Hermes)" },
-    "calendar": { "status": "live",    "via": "MCP (Claude); prefilled links (dashboard)" },
-    "drive":    { "status": "live",    "via": "MCP (Claude)" },
-    "notion":   { "status": "live",    "via": "MCP (Claude)" },
-    "tasks":    { "status": "planned", "via": "Google Tasks — not yet wired" },
-    "contacts": { "status": "planned", "via": "Google Contacts — not yet wired" },
-    "slack":    { "status": "planned", "via": "client-side — confirm with client" }
-  }
+    "gmail": {
+      "status": "live",
+      "via": "MCP (Claude) + Himalaya (Hermes)"
+    },
+    "calendar": {
+      "status": "live",
+      "via": "MCP (Claude); prefilled links (dashboard)"
+    },
+    "drive": {
+      "status": "live",
+      "via": "MCP (Claude)"
+    },
+    "notion": {
+      "status": "live",
+      "via": "MCP (Claude)"
+    },
+    "tasks": {
+      "status": "planned",
+      "via": "Google Tasks — not yet wired"
+    },
+    "contacts": {
+      "status": "planned",
+      "via": "Google Contacts — not yet wired"
+    },
+    "slack": {
+      "status": "planned",
+      "via": "client-side — confirm with client"
+    }
+  },
+  "backlogs": [
+    {
+      "id": "cos_ros_backlog_md",
+      "domain": "CoS",
+      "title": "ROS Backlog (company-level)",
+      "path": "CoS/ROS-BACKLOG.md",
+      "total": 37,
+      "done": 4,
+      "active": 2,
+      "blocked": 1,
+      "open": 30,
+      "updated": "2026-06-29",
+      "items": [
+        {
+          "id": "K",
+          "title": "K-1 · Machine cleanup + Arbor-under-PAI migration + GitHub rename PPPPtherapy-→Arbor — disk 92% full; WIP preserved as commits; paused on concurrent Arbor sessi",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "K",
+          "title": "K-2 · Promote OKF linter to a committed .claude/settings.json hook — enforce invariants fleet-wide (today local git hook only). (C, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "K",
+          "title": "K-3 · Frontmatter second pass — the ~160 remaining vault files + 4 eager boot files (type:-only). (A, M)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "K",
+          "title": "K-4 · Populate .mcp.json with real server defs once Codex/Hermes MCP configs captured. (A, M)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "K",
+          "title": "K-5 · Wikilink → relative-link export for agent-portable graph (keep [[ ]] for humans). (A, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "K",
+          "title": "K-6 · Backlink index + typed edges — post-traction; flagged overkill now, do not build early. (A, L)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "K",
+          "title": "K-7 · OKF static HTML visualizer over the vault — on-demand, not a build item. (A, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "A",
+          "title": "A-1 · Codex Plugin pilot on ONE Arbor backlog item — the autonomy keystone. (C, M)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "A",
+          "title": "A-2 · grill-me-codex align card so the Codex surface never builds un-grilled. (C, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "A",
+          "title": "A-3 · Hermes SENSE schedule (kill-switched) — the always-on trigger. (C, M)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "A",
+          "title": "A-4 · ros-redteam to falsify evaluator findings (closes the critic+evaluator asymmetry). (A, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "H",
+          "title": "H-1 · Validator tool-strip (G-M1) — make ~13 validator-class agents read-only by tool-grant. (C, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "H",
+          "title": "H-2 · Uncomment the Arbor prod-promote gate + Guy as Required Reviewer. (C, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "H",
+          "title": "H-3 · Agent-run telemetry (agent-runs.jsonl → cost-per-epic + eval-score-trend). (A, M)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "G",
+          "title": "G-1 · De-orphan state.json (5/11 keys, frozen 2026-06-22) + freshness alarm. (A, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "G",
+          "title": "G-2 · Reconcile fleet counts (62 = 22 ROS + 40 Arbor) across harness doc + operating plan. (A, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "G",
+          "title": "G-3 · Rotate the plaintext z.ai key — hygiene at convenience, NOT urgent. (C, S)",
+          "status": "open",
+          "section": "[2026-06-27] Knowledge Architecture — next enhancements"
+        },
+        {
+          "id": "CB",
+          "title": "CB-1 · Make CoS/ROS-BACKLOG.md the single backlog intake for ROS operating-system work — all cross-agent efficiency, sync, memory, automation, and runtime impro",
+          "status": "open",
+          "section": "[2026-06-28] Central Backlog + Night Knowledge Management"
+        },
+        {
+          "id": "CB",
+          "title": "CB-2 · Night knowledge-management operation — ✅ collector SHIPPED read-only (00System/scripts/rosnightkm.py, 2026-06-29): one deterministic pass gathers git/mem",
+          "status": "done",
+          "section": "[2026-06-28] Central Backlog + Night Knowledge Management"
+        },
+        {
+          "id": "CB",
+          "title": "CB-3 · Memory write-back guardrail — require each proposed memory save to name source evidence, target file (MEMORY.md, domain MEMORY.md, archive, or project no",
+          "status": "open",
+          "section": "[2026-06-28] Central Backlog + Night Knowledge Management"
+        },
+        {
+          "id": "CB",
+          "title": "CB-4 · Claude/Hermes synchronization preflight — before memory/backlog writes, check git status, branch, ahead/behind, dirty files, and active cross-agent hando",
+          "status": "active",
+          "section": "[2026-06-28] Central Backlog + Night Knowledge Management"
+        },
+        {
+          "id": "CB",
+          "title": "CB-5 · Backlog triage cadence — add a CoS review lane that promotes only approved backlog items into Notion/My Tasks or domain execution plans, avoiding duplica",
+          "status": "open",
+          "section": "[2026-06-28] Central Backlog + Night Knowledge Management"
+        },
+        {
+          "id": "CB",
+          "title": "CB-6 · Night-op audit trail — log each night run's source window, files read, memory/backlog changes proposed or made, git outcome, and blockers so Claude and H",
+          "status": "open",
+          "section": "[2026-06-28] Central Backlog + Night Knowledge Management"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-01 · Generated/build artifact separation — generated/cache/build outputs are classified in CoS/backlogs/ros-generated-artifact-manifest-2026-06-29.md; grap",
+          "status": "done",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-02 · Arbor source-of-truth deduplication — active Arbor source remains Arbor/; ROS-level cleanup excludes it while another session is working there. (C blo",
+          "status": "blocked",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-03 · TypeScript hotspot decomposition — split only stable seams in the largest Arbor modules. (B, M)",
+          "status": "open",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-04 · Type-safety tightening without rewrite — reduce high-risk any at API/AI/billing/storage boundaries first. (A/B, M)",
+          "status": "open",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-05 · Test/build command normalization — ROS-level hygiene verification now uses python3 00System/scripts/testrosrepohygiene.py and python3 00System/scripts",
+          "status": "active",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-06 · TODO/noise triage — separate generated/vendor TODO noise from actionable source TODOs. (A, S)",
+          "status": "open",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-07 · Python utility hardening — add dry-run/input-validation conventions to Notion/import scripts. (A, S)",
+          "status": "open",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-08 · Secret and local-env hygiene — 00System/secrets/ is ignored; the scanner reports secret paths without reading values and never auto-cleans them. (A sh",
+          "status": "done",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-09 · Agent worktree hygiene — .claude/worktrees/ ignored/excluded; deletion still requires owner/expiry registry. (A partial / C before deletion, S)",
+          "status": "open",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "RCO3",
+          "title": "RCO3-10 · Graph/output regeneration boundary — graphify-out/ treated as regenerable local generated output and removed when untracked. (A shipped, S)",
+          "status": "done",
+          "section": "[2026-06-29] Centralized ROS Code Optimization Backlog v3"
+        },
+        {
+          "id": "HR",
+          "title": "HR-1 · Context-compression reliability — long ROS sessions hit HTTP 402/token-affordability on compression; tune compression/aux-model/token budget in the Herme",
+          "status": "open",
+          "section": "[2026-06-29] Hermes runtime discipline (folded in — single ledger)"
+        },
+        {
+          "id": "HR",
+          "title": "HR-2 · Gateway + cron health check (read-only) — one status report over hermes-gateway-cos/kk services + cron list; alert only on failure/repeated warnings, nev",
+          "status": "open",
+          "section": "[2026-06-29] Hermes runtime discipline (folded in — single ledger)"
+        },
+        {
+          "id": "HR",
+          "title": "HR-3 · Cron ownership registry — owner/schedule/workdir/delivery/read-write scope per Hermes cron, so agents can see automations without hidden runtime state. (",
+          "status": "open",
+          "section": "[2026-06-29] Hermes runtime discipline (folded in — single ledger)"
+        },
+        {
+          "id": "HR",
+          "title": "HR-4 · Hermes ROS boot+preflight discipline — compact eager-vs-lazy boot checklist + capability preflight (source/freshness/safety/layer/evidence/write-back) so",
+          "status": "open",
+          "section": "[2026-06-29] Hermes runtime discipline (folded in — single ledger)"
+        }
+      ]
+    },
+    {
+      "id": "cos_projects_ros_interface_v4_enhancement_backlog_md",
+      "domain": "CoS",
+      "title": "ROS Consolidated Dashboard — Enhancement Backlog",
+      "path": "CoS/projects/ros-interface-v4/ENHANCEMENT-BACKLOG.md",
+      "total": 29,
+      "done": 9,
+      "active": 0,
+      "blocked": 3,
+      "open": 17,
+      "updated": "2026-06-29",
+      "items": [
+        {
+          "id": "A1",
+          "title": "A1",
+          "status": "open",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A2",
+          "title": "A2",
+          "status": "open",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A3",
+          "title": "A3",
+          "status": "open",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A4",
+          "title": "A4",
+          "status": "open",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A5",
+          "title": "A5",
+          "status": "open",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A6",
+          "title": "A6",
+          "status": "done",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A7",
+          "title": "A7",
+          "status": "open",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A8",
+          "title": "A8",
+          "status": "open",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A9",
+          "title": "A9",
+          "status": "open",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A10",
+          "title": "A10",
+          "status": "done",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "A11",
+          "title": "A11",
+          "status": "open",
+          "section": "EPIC A — Close the coverage gaps (parity: nothing lost)"
+        },
+        {
+          "id": "B1",
+          "title": "B1",
+          "status": "done",
+          "section": "EPIC B — Retire the scatter (one surface, for real)"
+        },
+        {
+          "id": "B2",
+          "title": "B2",
+          "status": "done",
+          "section": "EPIC B — Retire the scatter (one surface, for real)"
+        },
+        {
+          "id": "B3",
+          "title": "B3",
+          "status": "done",
+          "section": "EPIC B — Retire the scatter (one surface, for real)"
+        },
+        {
+          "id": "B4",
+          "title": "B4",
+          "status": "done",
+          "section": "EPIC B — Retire the scatter (one surface, for real)"
+        },
+        {
+          "id": "D1",
+          "title": "D1",
+          "status": "done",
+          "section": "EPIC D — Deploy (login-gated, Firebase) — Guy-gated Tier-C"
+        },
+        {
+          "id": "D2",
+          "title": "D2",
+          "status": "blocked",
+          "section": "EPIC D — Deploy (login-gated, Firebase) — Guy-gated Tier-C"
+        },
+        {
+          "id": "D3",
+          "title": "D3",
+          "status": "blocked",
+          "section": "EPIC D — Deploy (login-gated, Firebase) — Guy-gated Tier-C"
+        },
+        {
+          "id": "C1",
+          "title": "C1",
+          "status": "open",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "C2",
+          "title": "C2",
+          "status": "blocked",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "C3",
+          "title": "C3",
+          "status": "open",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "C4",
+          "title": "C4",
+          "status": "open",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "C5",
+          "title": "C5",
+          "status": "open",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "C6",
+          "title": "C6",
+          "status": "open",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "C7",
+          "title": "C7",
+          "status": "open",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "C8",
+          "title": "C8",
+          "status": "open",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "C9",
+          "title": "C9",
+          "status": "done",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "C10",
+          "title": "C10",
+          "status": "open",
+          "section": "EPIC C — Make it better than the sum (enhancements)"
+        },
+        {
+          "id": "EA-E3",
+          "title": "EA-E3",
+          "status": "done",
+          "section": "Cross-domain dependencies (owned elsewhere — do not duplicate)"
+        }
+      ]
+    },
+    {
+      "id": "cos_backlogs_ros_code_optimization_backlog_md",
+      "domain": "CoS",
+      "title": "ROS Code Optimization Backlog v3",
+      "path": "CoS/backlogs/ros-code-optimization-backlog.md",
+      "total": 10,
+      "done": 0,
+      "active": 0,
+      "blocked": 0,
+      "open": 10,
+      "updated": "2026-06-29",
+      "items": [
+        {
+          "id": "RCO3-01",
+          "title": "Generated/build artifact separation",
+          "status": "open",
+          "section": "Central backlog lanes"
+        },
+        {
+          "id": "RCO3-02",
+          "title": "Arbor source-of-truth deduplication",
+          "status": "open",
+          "section": "Central backlog lanes"
+        },
+        {
+          "id": "RCO3-03",
+          "title": "TypeScript hotspot decomposition",
+          "status": "open",
+          "section": "Central backlog lanes"
+        },
+        {
+          "id": "RCO3-04",
+          "title": "Type-safety tightening without rewrite",
+          "status": "open",
+          "section": "Central backlog lanes"
+        },
+        {
+          "id": "RCO3-05",
+          "title": "Test/build command normalization",
+          "status": "open",
+          "section": "Central backlog lanes"
+        },
+        {
+          "id": "RCO3-06",
+          "title": "TODO/noise triage",
+          "status": "open",
+          "section": "Central backlog lanes"
+        },
+        {
+          "id": "RCO3-07",
+          "title": "Python utility hardening",
+          "status": "open",
+          "section": "Central backlog lanes"
+        },
+        {
+          "id": "RCO3-08",
+          "title": "Secret and local-env hygiene",
+          "status": "open",
+          "section": "Central backlog lanes"
+        },
+        {
+          "id": "RCO3-09",
+          "title": "Agent worktree hygiene",
+          "status": "open",
+          "section": "Central backlog lanes"
+        },
+        {
+          "id": "RCO3-10",
+          "title": "Graph/output regeneration boundary",
+          "status": "open",
+          "section": "Central backlog lanes"
+        }
+      ]
+    },
+    {
+      "id": "ea_clients_boortmalt_deliverables_backlog_md",
+      "domain": "EA",
+      "title": "Boortmalt — Deliverables Backlog (per contract job description)",
+      "path": "EA/clients/Boortmalt/DELIVERABLES-BACKLOG.md",
+      "total": 53,
+      "done": 0,
+      "active": 0,
+      "blocked": 0,
+      "open": 53,
+      "updated": "2026-07-02",
+      "items": [
+        {
+          "title": "Define security vision, objectives, success criteria for the separated entity",
+          "status": "open",
+          "section": "D1 — Information Security Strategy & Roadmap (Skill 1+9 · Phase 1–2)"
+        },
+        {
+          "title": "Confirm board-approved risk appetite (depends: U6, risk/compliance)",
+          "status": "open",
+          "section": "D1 — Information Security Strategy & Roadmap (Skill 1+9 · Phase 1–2)"
+        },
+        {
+          "title": "Operating-model design: independent security function, roles, RACI",
+          "status": "open",
+          "section": "D1 — Information Security Strategy & Roadmap (Skill 1+9 · Phase 1–2)"
+        },
+        {
+          "title": "Strategy roadmap (Now/Next/Later) tied to Day-1",
+          "status": "open",
+          "section": "D1 — Information Security Strategy & Roadmap (Skill 1+9 · Phase 1–2)"
+        },
+        {
+          "title": "Inventory existing (source-org) policies — reuse vs rebuild (dep: U-estate)",
+          "status": "open",
+          "section": "D2 — Security Policies, Standards & Governance Framework (Skill 1+7+8 · Phase 2)"
+        },
+        {
+          "title": "Core policy set (access, data, network, cloud, logging, incident, third-party)",
+          "status": "open",
+          "section": "D2 — Security Policies, Standards & Governance Framework (Skill 1+7+8 · Phase 2)"
+        },
+        {
+          "title": "Control framework selection (e.g. ISO 27001 / NIST CSF / CIS) + mapping",
+          "status": "open",
+          "section": "D2 — Security Policies, Standards & Governance Framework (Skill 1+7+8 · Phase 2)"
+        },
+        {
+          "title": "Governance forums, decision rights, exception process",
+          "status": "open",
+          "section": "D2 — Security Policies, Standards & Governance Framework (Skill 1+7+8 · Phase 2)"
+        },
+        {
+          "title": "D3a (Azure): Architecture principles + constraints; tenant boundary model, management groups, subscription topology; landing-zone security baseline (Azure Polic",
+          "status": "open",
+          "section": "D3 — Azure Tenant Security Architecture (Day-1 Ready) (Skill 3+6 · Phase 2→4)"
+        },
+        {
+          "title": "D3b (M365/SaaS): Purview data classification/DLP/retention; Conditional Access scoped to O365 workloads; external-sharing/guest-access policy; mail-flow securit",
+          "status": "open",
+          "section": "D3 — Azure Tenant Security Architecture (Day-1 Ready) (Skill 3+6 · Phase 2→4)"
+        },
+        {
+          "title": "Logging/evidence/control plane design (shared across both lanes)",
+          "status": "open",
+          "section": "D3 — Azure Tenant Security Architecture (Day-1 Ready) (Skill 3+6 · Phase 2→4)"
+        },
+        {
+          "title": "Options + recommendation; transition plan to Day-1; validation plan",
+          "status": "open",
+          "section": "D3 — Azure Tenant Security Architecture (Day-1 Ready) (Skill 3+6 · Phase 2→4)"
+        },
+        {
+          "title": "Entra ID / IdP + federation design (dep: U-identity)",
+          "status": "open",
+          "section": "D4 — Identity & Access Management Governance Model (Skill 4 · Phase 2→3)"
+        },
+        {
+          "title": "Conditional access + Zero Trust policy set",
+          "status": "open",
+          "section": "D4 — Identity & Access Management Governance Model (Skill 4 · Phase 2→3)"
+        },
+        {
+          "title": "PIM/PAM privileged access model + break-glass",
+          "status": "open",
+          "section": "D4 — Identity & Access Management Governance Model (Skill 4 · Phase 2→3)"
+        },
+        {
+          "title": "JML lifecycle, SoD, access certification process",
+          "status": "open",
+          "section": "D4 — Identity & Access Management Governance Model (Skill 4 · Phase 2→3)"
+        },
+        {
+          "title": "Stand up risk register (reuse source-org findings; dep: U-risk)",
+          "status": "open",
+          "section": "D5 — Security Risk Register & Compliance Baseline (Skill 2+7 · Phase 1→2, then live)"
+        },
+        {
+          "title": "Confirm regulatory scope NIS2 + sector/contractual (dep: U6)",
+          "status": "open",
+          "section": "D5 — Security Risk Register & Compliance Baseline (Skill 2+7 · Phase 1→2, then live)"
+        },
+        {
+          "title": "Requirement → control → evidence matrix",
+          "status": "open",
+          "section": "D5 — Security Risk Register & Compliance Baseline (Skill 2+7 · Phase 1→2, then live)"
+        },
+        {
+          "title": "Risk acceptance/escalation path + owners",
+          "status": "open",
+          "section": "D5 — Security Risk Register & Compliance Baseline (Skill 2+7 · Phase 1→2, then live)"
+        },
+        {
+          "title": "SOC model decision: in-house vs MSSP vs hybrid (dep: U5) — ADR",
+          "status": "open",
+          "section": "D6 — Security Operations Center (SOC) Operating Model (Skill 5 · Phase 3)"
+        },
+        {
+          "title": "Monitoring/detection coverage scope + use cases",
+          "status": "open",
+          "section": "D6 — Security Operations Center (SOC) Operating Model (Skill 5 · Phase 3)"
+        },
+        {
+          "title": "SIEM/logging onboarding to new tenant",
+          "status": "open",
+          "section": "D6 — Security Operations Center (SOC) Operating Model (Skill 5 · Phase 3)"
+        },
+        {
+          "title": "SOC RACI + service boundaries + SLAs",
+          "status": "open",
+          "section": "D6 — Security Operations Center (SOC) Operating Model (Skill 5 · Phase 3)"
+        },
+        {
+          "title": "IR plan (phases, roles, runbooks)",
+          "status": "open",
+          "section": "D7 — Incident Response & Escalation Framework (Skill 5 · Phase 3)"
+        },
+        {
+          "title": "Escalation paths + crisis-management process",
+          "status": "open",
+          "section": "D7 — Incident Response & Escalation Framework (Skill 5 · Phase 3)"
+        },
+        {
+          "title": "Integration with business/IT support + SOC",
+          "status": "open",
+          "section": "D7 — Incident Response & Escalation Framework (Skill 5 · Phase 3)"
+        },
+        {
+          "title": "Post-incident review process; tabletop exercise",
+          "status": "open",
+          "section": "D7 — Incident Response & Escalation Framework (Skill 5 · Phase 3)"
+        },
+        {
+          "title": "Define migration security gate (review-challenge-approve criteria)",
+          "status": "open",
+          "section": "D8 — Security Assurance & Risk Assessments for Migration (Skill 2+9 · Phase 3→4)"
+        },
+        {
+          "title": "Third-party migration-tool security evaluation — Quest ODM + ShareGate named in HLD v1.1 with no prior review; evaluation done 2026-07-02 (reviews/third-party-m",
+          "status": "open",
+          "section": "D8 — Security Assurance & Risk Assessments for Migration (Skill 2+9 · Phase 3→4)"
+        },
+        {
+          "title": "Risk-assess each migration initiative pre-cutover",
+          "status": "open",
+          "section": "D8 — Security Assurance & Risk Assessments for Migration (Skill 2+9 · Phase 3→4)"
+        },
+        {
+          "title": "Validate controls before/during/after migration",
+          "status": "open",
+          "section": "D8 — Security Assurance & Risk Assessments for Migration (Skill 2+9 · Phase 3→4)"
+        },
+        {
+          "title": "Go/No-Go security sign-off process",
+          "status": "open",
+          "section": "D8 — Security Assurance & Risk Assessments for Migration (Skill 2+9 · Phase 3→4)"
+        },
+        {
+          "title": "Inherited-dependency severance plan executed (dep: U4)",
+          "status": "open",
+          "section": "D9 — Tenant-Separation Security Controls & Governance Handover (Skill 3+8 · Phase 4→5)"
+        },
+        {
+          "title": "Tenant-separation control set verified",
+          "status": "open",
+          "section": "D9 — Tenant-Separation Security Controls & Governance Handover (Skill 3+8 · Phase 4→5)"
+        },
+        {
+          "title": "Day-1 readiness review + residual-risk acceptance log",
+          "status": "open",
+          "section": "D9 — Tenant-Separation Security Controls & Governance Handover (Skill 3+8 · Phase 4→5)"
+        },
+        {
+          "title": "Handover/operations pack for steady-state team",
+          "status": "open",
+          "section": "D9 — Tenant-Separation Security Controls & Governance Handover (Skill 3+8 · Phase 4→5)"
+        },
+        {
+          "title": "D1 Strategy & Roadmap",
+          "status": "open",
+          "section": "Deliverable → phase → milestone map"
+        },
+        {
+          "title": "D2 Policies & Governance",
+          "status": "open",
+          "section": "Deliverable → phase → milestone map"
+        },
+        {
+          "title": "D3 Azure Tenant Sec Arch",
+          "status": "open",
+          "section": "Deliverable → phase → milestone map"
+        },
+        {
+          "title": "D4 IAM Governance",
+          "status": "open",
+          "section": "Deliverable → phase → milestone map"
+        },
+        {
+          "title": "D5 Risk Register & Compliance",
+          "status": "open",
+          "section": "Deliverable → phase → milestone map"
+        },
+        {
+          "title": "D6 SOC Operating Model",
+          "status": "open",
+          "section": "Deliverable → phase → milestone map"
+        },
+        {
+          "title": "D7 IR & Escalation",
+          "status": "open",
+          "section": "Deliverable → phase → milestone map"
+        },
+        {
+          "title": "D8 Migration Assurance",
+          "status": "open",
+          "section": "Deliverable → phase → milestone map"
+        },
+        {
+          "title": "D9 Tenant-Separation Controls & Handover",
+          "status": "open",
+          "section": "Deliverable → phase → milestone map"
+        },
+        {
+          "id": "ADR-01",
+          "title": "Control framework (ISO 27001 vs NIST CSF vs CIS)",
+          "status": "open",
+          "section": "Decision log (ADRs to raise)"
+        },
+        {
+          "id": "ADR-02",
+          "title": "Tenant boundary / landing-zone model",
+          "status": "open",
+          "section": "Decision log (ADRs to raise)"
+        },
+        {
+          "id": "ADR-03",
+          "title": "IdP / federation model",
+          "status": "open",
+          "section": "Decision log (ADRs to raise)"
+        },
+        {
+          "id": "ADR-04",
+          "title": "PAM/PIM approach + real tiering model",
+          "status": "open",
+          "section": "Decision log (ADRs to raise)"
+        },
+        {
+          "id": "ADR-05",
+          "title": "SOC: in-house vs MSSP vs hybrid",
+          "status": "open",
+          "section": "Decision log (ADRs to raise)"
+        },
+        {
+          "id": "ADR-06",
+          "title": "On-prem AD forest: build now vs gate on app-questionnaire results — HLD built it \"just in case,\" not requirement-driven",
+          "status": "open",
+          "section": "Decision log (ADRs to raise)"
+        },
+        {
+          "id": "ADR-07",
+          "title": "Migration-tool risk acceptance — Quest ODM/ShareGate conditions vs native-MS alternative for mailbox",
+          "status": "open",
+          "section": "Decision log (ADRs to raise)"
+        }
+      ]
+    },
+    {
+      "id": "ea_clients_boortmalt_backlog_md",
+      "domain": "EA",
+      "title": "Boortmalt — Engagement Backlog (Onboarding → Execution)",
+      "path": "EA/clients/Boortmalt/BACKLOG.md",
+      "total": 38,
+      "done": 2,
+      "active": 1,
+      "blocked": 0,
+      "open": 35,
+      "updated": "2026-06-29",
+      "items": [
+        {
+          "id": "0.1",
+          "title": "Sign & return Docusign (envelope 296EEA9D…)",
+          "status": "done",
+          "section": "Wave 0 — Pre-start & admin (now → 1 July) — Skill 1"
+        },
+        {
+          "id": "0.2",
+          "title": "Send signed confirmation to ATCON, request Boortmalt onboarding contact",
+          "status": "done",
+          "section": "Wave 0 — Pre-start & admin (now → 1 July) — Skill 1"
+        },
+        {
+          "id": "0.3",
+          "title": "Bind professional indemnity + public liability insurance before 1 July",
+          "status": "open",
+          "section": "Wave 0 — Pre-start & admin (now → 1 July) — Skill 1"
+        },
+        {
+          "id": "0.4",
+          "title": "Keep BE professional-card appeal alive (due 24 Jul); confirm self-employment work-auth path",
+          "status": "active",
+          "section": "Wave 0 — Pre-start & admin (now → 1 July) — Skill 1"
+        },
+        {
+          "id": "0.5",
+          "title": "Confirm Cloud AI Consulting VOF invoicing setup: monthly template, timesheet format, accounts@atconglobal.com routing",
+          "status": "open",
+          "section": "Wave 0 — Pre-start & admin (now → 1 July) — Skill 1"
+        },
+        {
+          "id": "0.6",
+          "title": "Receive & accept Boortmalt onboarding pack: contact, sponsor, reporting line, access process",
+          "status": "open",
+          "section": "Wave 0 — Pre-start & admin (now → 1 July) — Skill 1"
+        },
+        {
+          "id": "1.1",
+          "title": "Engagement brief: mandate, success criteria, Day-1 target date, program scope",
+          "status": "open",
+          "section": "Wave 1 — Onboarding & scope capture (Week 1–2) — Skill 1 + 10"
+        },
+        {
+          "id": "1.2",
+          "title": "Onboarding/access checklist (identity, device, VPN, Azure portal, repos, risk/policy stores, backlog tool)",
+          "status": "open",
+          "section": "Wave 1 — Onboarding & scope capture (Week 1–2) — Skill 1 + 10"
+        },
+        {
+          "id": "1.3",
+          "title": "Stakeholder map: program lead, CIO/CISO, platform/infra leads, identity lead, SOC/MSSP, app owners, source-org counterparts",
+          "status": "open",
+          "section": "Wave 1 — Onboarding & scope capture (Week 1–2) — Skill 1 + 10"
+        },
+        {
+          "id": "1.4",
+          "title": "Governance-forum calendar: architecture board, security/risk committee, change/CAB, program steering — cadence & entry points",
+          "status": "open",
+          "section": "Wave 1 — Onboarding & scope capture (Week 1–2) — Skill 1 + 10"
+        },
+        {
+          "id": "1.5",
+          "title": "Carve-out context capture: source/parent org, separation drivers, regulatory deadlines, Day-1 vs Day-2 scope",
+          "status": "open",
+          "section": "Wave 1 — Onboarding & scope capture (Week 1–2) — Skill 1 + 10"
+        },
+        {
+          "id": "1.6",
+          "title": "Known-unknowns log + first-deliverable hypothesis",
+          "status": "open",
+          "section": "Wave 1 — Onboarding & scope capture (Week 1–2) — Skill 1 + 10"
+        },
+        {
+          "id": "1.7",
+          "title": "30/60/90-day plan, framed to land \"Day-1-ready security architecture\"",
+          "status": "open",
+          "section": "Wave 1 — Onboarding & scope capture (Week 1–2) — Skill 1 + 10"
+        },
+        {
+          "id": "2.2",
+          "title": "Inherited-dependency inventory: what the carved-out entity relies on from the source org (identity, network, SaaS, shared services)",
+          "status": "open",
+          "section": "Wave 2 — Current-state & target operating model (Week 2–5) — Skill 2 + 7 + 10"
+        },
+        {
+          "id": "2.3",
+          "title": "InfoSec strategy & roadmap (target operating model: independent security function Day-1)",
+          "status": "open",
+          "section": "Wave 2 — Current-state & target operating model (Week 2–5) — Skill 2 + 7 + 10"
+        },
+        {
+          "id": "2.4",
+          "title": "Security governance framework: policies, standards, control framework, risk-appetite alignment",
+          "status": "open",
+          "section": "Wave 2 — Current-state & target operating model (Week 2–5) — Skill 2 + 7 + 10"
+        },
+        {
+          "id": "2.5",
+          "title": "Compliance baseline & control requirements for the new org (NIS2 + sector/contractual) — requirement→control→evidence map",
+          "status": "open",
+          "section": "Wave 2 — Current-state & target operating model (Week 2–5) — Skill 2 + 7 + 10"
+        },
+        {
+          "id": "2.6",
+          "title": "Findings heatmap + risk-ranked remediation backlog (quick wins / structural / decisions-required)",
+          "status": "open",
+          "section": "Wave 2 — Current-state & target operating model (Week 2–5) — Skill 2 + 7 + 10"
+        },
+        {
+          "id": "2.7",
+          "title": "Executive brief to sponsor/CISO: state of separation security + asks",
+          "status": "open",
+          "section": "Wave 2 — Current-state & target operating model (Week 2–5) — Skill 2 + 7 + 10"
+        },
+        {
+          "id": "3.2",
+          "title": "IAM & Zero Trust model: Entra ID design, conditional access, PIM/PAM, workload identity, break-glass",
+          "status": "open",
+          "section": "Wave 3 — Azure tenant security architecture (Week 4–10) — Skill 3 + 4 + 6 + 8"
+        },
+        {
+          "id": "3.3",
+          "title": "Identity governance: JML lifecycle, SoD, least privilege, access certification",
+          "status": "open",
+          "section": "Wave 3 — Azure tenant security architecture (Week 4–10) — Skill 3 + 4 + 6 + 8"
+        },
+        {
+          "id": "3.4",
+          "title": "Tenant security boundaries & guardrails (Azure Policy/IaC, preventive/detective/corrective)",
+          "status": "open",
+          "section": "Wave 3 — Azure tenant security architecture (Week 4–10) — Skill 3 + 4 + 6 + 8"
+        },
+        {
+          "id": "3.5",
+          "title": "Network & connectivity security model for the separated tenant (segmentation, private connectivity, ingress/egress)",
+          "status": "open",
+          "section": "Wave 3 — Azure tenant security architecture (Week 4–10) — Skill 3 + 4 + 6 + 8"
+        },
+        {
+          "id": "3.6",
+          "title": "ADR set: IdP/federation, PAM/PIM, tenant boundary model, guardrail baseline, logging plane",
+          "status": "open",
+          "section": "Wave 3 — Azure tenant security architecture (Week 4–10) — Skill 3 + 4 + 6 + 8"
+        },
+        {
+          "id": "3.7",
+          "title": "Day-1 security architecture validation plan: reviews, tests, evidence, sign-offs",
+          "status": "open",
+          "section": "Wave 3 — Azure tenant security architecture (Week 4–10) — Skill 3 + 4 + 6 + 8"
+        },
+        {
+          "id": "4.1",
+          "title": "SOC operating model: onboarding/operationalization, monitoring/detection/alerting scope, MSSP boundaries",
+          "status": "open",
+          "section": "Wave 4 — SecOps, IR & migration assurance (Week 8–transition) — Skill 2 + 5 + 9"
+        },
+        {
+          "id": "4.2",
+          "title": "Incident response & escalation framework: procedures, paths, crisis management, post-incident review",
+          "status": "open",
+          "section": "Wave 4 — SecOps, IR & migration assurance (Week 8–transition) — Skill 2 + 5 + 9"
+        },
+        {
+          "id": "4.3",
+          "title": "Security risk register (live) + compliance status reporting to executives",
+          "status": "open",
+          "section": "Wave 4 — SecOps, IR & migration assurance (Week 8–transition) — Skill 2 + 5 + 9"
+        },
+        {
+          "id": "4.4",
+          "title": "Migration/transformation security assurance: review-challenge-approve gate; validate controls pre/during/post cutover",
+          "status": "open",
+          "section": "Wave 4 — SecOps, IR & migration assurance (Week 8–transition) — Skill 2 + 5 + 9"
+        },
+        {
+          "id": "4.5",
+          "title": "Tenant-separation security controls & governance handover pack",
+          "status": "open",
+          "section": "Wave 4 — SecOps, IR & migration assurance (Week 8–transition) — Skill 2 + 5 + 9"
+        },
+        {
+          "id": "4.6",
+          "title": "Day-1 readiness review + residual-risk acceptance log",
+          "status": "open",
+          "section": "Wave 4 — SecOps, IR & migration assurance (Week 8–transition) — Skill 2 + 5 + 9"
+        },
+        {
+          "id": "5.1",
+          "title": "Operationalize governance forums & reporting cadence (independent security function)",
+          "status": "open",
+          "section": "Wave 5 — Steady-state & extension (post Day-1 → 31 Dec / extension) — Skill 9 + 10"
+        },
+        {
+          "id": "5.2",
+          "title": "Roadmap refresh: Day-2 hardening, control maturity, automation backlog",
+          "status": "open",
+          "section": "Wave 5 — Steady-state & extension (post Day-1 → 31 Dec / extension) — Skill 9 + 10"
+        },
+        {
+          "id": "5.3",
+          "title": "Extension case: evidence pack of delivered value → support contract extension beyond 31 Dec",
+          "status": "open",
+          "section": "Wave 5 — Steady-state & extension (post Day-1 → 31 Dec / extension) — Skill 9 + 10"
+        },
+        {
+          "id": "5.4",
+          "title": "If scope grows, trigger rate-review clause (appendix allows rate change on scope change)",
+          "status": "open",
+          "section": "Wave 5 — Steady-state & extension (post Day-1 → 31 Dec / extension) — Skill 9 + 10"
+        },
+        {
+          "title": "Does Boortmalt add to or replace the ABN freelance lead? (Both currently in EA memory.)",
+          "status": "open",
+          "section": "Open decisions for Guy"
+        },
+        {
+          "title": "Insurance: confirm cover is in force before 1 July (Wave 0.3) — blocking.",
+          "status": "open",
+          "section": "Open decisions for Guy"
+        },
+        {
+          "title": "Confirm which email identity stays primary for ATCON/Boortmalt (currently Joseph).",
+          "status": "open",
+          "section": "Open decisions for Guy"
+        }
+      ]
+    },
+    {
+      "id": "ea_frameworks_ea_system_enhancements_backlog_md",
+      "domain": "EA",
+      "title": "EA Multiagent + Skills System — Enhancements Backlog",
+      "path": "EA/frameworks/ea-system-enhancements-backlog.md",
+      "total": 7,
+      "done": 0,
+      "active": 0,
+      "blocked": 0,
+      "open": 7,
+      "updated": "2026-06-29",
+      "items": [
+        {
+          "id": "E1",
+          "title": "/ea-review orchestration — one command that fans out security-reviewer + threat-modeler (+ compliance-mapper when compliance is in scope) on a target artifact (",
+          "status": "open",
+          "section": "P1 — Make the multiagent system actually run (highest value, low effort)"
+        },
+        {
+          "id": "E2",
+          "title": "STRIDE GPT trial as an MCP server with a local model (Ollama). Evaluate against the threat-model skill; decide adopt/skip.",
+          "status": "open",
+          "section": "P1 — Make the multiagent system actually run (highest value, low effort)"
+        },
+        {
+          "id": "E3",
+          "title": "gen-state phase 2 — derive roadmap phase status + milestone done-state from ROADMAP.md's milestone tracker, so the cockpit phase-strip advances automatically as",
+          "status": "open",
+          "section": "P2 — Close the obvious gaps"
+        },
+        {
+          "id": "E4",
+          "title": "One targeted skill — only if demand is real: current-state-security-review for Boortmalt Wave 2 / D5, only if the existing rubin-os:architecture-review lacks se",
+          "status": "open",
+          "section": "P2 — Close the obvious gaps"
+        },
+        {
+          "id": "E5",
+          "title": "Skill-consistency convention — a one-page shared DoD + section template so new EA security skills stay coherent as the set grows. A convention, not a linter.",
+          "status": "open",
+          "section": "P2 — Close the obvious gaps"
+        },
+        {
+          "id": "E6",
+          "title": "Short reference note on client-tenant Azure security AI (Entra Agents · Defender AI-SPM · Security Copilot).",
+          "status": "open",
+          "section": "P3 — Watchlist (do ONLY when a trigger fires)"
+        },
+        {
+          "id": "E7",
+          "title": "Only once the EA knowledge base is large enough to justify graph indexing.",
+          "status": "open",
+          "section": "P3 — Watchlist (do ONLY when a trigger fires)"
+        }
+      ]
+    },
+    {
+      "id": "pai_pai_enhancement_backlog_md",
+      "domain": "PAI",
+      "title": "PAI Enhancement Backlog (Product & AI Ventures / Arbor)",
+      "path": "PAI/PAI-ENHANCEMENT-BACKLOG.md",
+      "total": 21,
+      "done": 1,
+      "active": 1,
+      "blocked": 2,
+      "open": 17,
+      "updated": "2026-06-29",
+      "items": [
+        {
+          "id": "P0",
+          "title": "P0",
+          "status": "open",
+          "section": "Theme 1 — Multi-agent system deliverables (the valuable ones)"
+        },
+        {
+          "id": "P1",
+          "title": "P1",
+          "status": "active",
+          "section": "Theme 1 — Multi-agent system deliverables (the valuable ones)"
+        },
+        {
+          "id": "P1",
+          "title": "P1",
+          "status": "open",
+          "section": "Theme 1 — Multi-agent system deliverables (the valuable ones)"
+        },
+        {
+          "id": "P2",
+          "title": "P2",
+          "status": "open",
+          "section": "Theme 1 — Multi-agent system deliverables (the valuable ones)"
+        },
+        {
+          "id": "P2",
+          "title": "P2",
+          "status": "open",
+          "section": "Theme 1 — Multi-agent system deliverables (the valuable ones)"
+        },
+        {
+          "id": "P3",
+          "title": "P3",
+          "status": "open",
+          "section": "Theme 1 — Multi-agent system deliverables (the valuable ones)"
+        },
+        {
+          "id": "P0",
+          "title": "P0",
+          "status": "open",
+          "section": "Theme 2 — Skills system for a product-AI team (PAI)"
+        },
+        {
+          "id": "P1",
+          "title": "P1",
+          "status": "blocked",
+          "section": "Theme 2 — Skills system for a product-AI team (PAI)"
+        },
+        {
+          "id": "P1",
+          "title": "P1",
+          "status": "open",
+          "section": "Theme 2 — Skills system for a product-AI team (PAI)"
+        },
+        {
+          "id": "P2",
+          "title": "P2",
+          "status": "open",
+          "section": "Theme 2 — Skills system for a product-AI team (PAI)"
+        },
+        {
+          "id": "P2",
+          "title": "P2",
+          "status": "open",
+          "section": "Theme 2 — Skills system for a product-AI team (PAI)"
+        },
+        {
+          "id": "P2",
+          "title": "P2",
+          "status": "open",
+          "section": "Theme 2 — Skills system for a product-AI team (PAI)"
+        },
+        {
+          "id": "P3",
+          "title": "P3",
+          "status": "open",
+          "section": "Theme 2 — Skills system for a product-AI team (PAI)"
+        },
+        {
+          "id": "P3",
+          "title": "P3",
+          "status": "open",
+          "section": "Theme 2 — Skills system for a product-AI team (PAI)"
+        },
+        {
+          "id": "P0",
+          "title": "P0",
+          "status": "open",
+          "section": "Theme 3 — Reliability & maturity rivets (both themes depend on these)"
+        },
+        {
+          "id": "P0",
+          "title": "P0",
+          "status": "done",
+          "section": "Theme 3 — Reliability & maturity rivets (both themes depend on these)"
+        },
+        {
+          "id": "P0",
+          "title": "P0",
+          "status": "open",
+          "section": "Theme 3 — Reliability & maturity rivets (both themes depend on these)"
+        },
+        {
+          "id": "P1",
+          "title": "P1",
+          "status": "blocked",
+          "section": "Theme 3 — Reliability & maturity rivets (both themes depend on these)"
+        },
+        {
+          "id": "P1",
+          "title": "P1",
+          "status": "open",
+          "section": "Theme 3 — Reliability & maturity rivets (both themes depend on these)"
+        },
+        {
+          "id": "P2",
+          "title": "P2",
+          "status": "open",
+          "section": "Theme 3 — Reliability & maturity rivets (both themes depend on these)"
+        },
+        {
+          "id": "P2",
+          "title": "P2",
+          "status": "open",
+          "section": "Theme 3 — Reliability & maturity rivets (both themes depend on these)"
+        }
+      ]
+    },
+    {
+      "id": "pai_projects_parenting_os_plugin_arbor_backlog_md",
+      "domain": "PAI",
+      "title": "Arbor Backlog (product improvement)",
+      "path": "PAI/projects/parenting-os-plugin/ARBOR-BACKLOG.md",
+      "total": 7,
+      "done": 0,
+      "active": 0,
+      "blocked": 1,
+      "open": 6,
+      "updated": "2026-06-29",
+      "items": [
+        {
+          "title": "Ship (clean — tsc PASS, 22/22 tests, merges clean). Polish: green→sapphire in new chrome; isolate admin rows.",
+          "status": "open",
+          "section": "2026-06-29 — Open-PR verification (the \"new PR\" check)"
+        },
+        {
+          "title": "Merge-safe today (path dormant). Decouple the 502 before arming RESENDAPIKEY or the first email blip tells a parent their saved request failed + drops the found",
+          "status": "open",
+          "section": "2026-06-29 — Open-PR verification (the \"new PR\" check)"
+        },
+        {
+          "id": "94",
+          "title": "DUX-001 · Proactive behavior prediction card on Overview",
+          "status": "open",
+          "section": "Active Backlog Summary (as of 2026-06-29)"
+        },
+        {
+          "id": "93",
+          "title": "DUX-013 · Kid Mode register firewall in HeroJourneyTab",
+          "status": "open",
+          "section": "Active Backlog Summary (as of 2026-06-29)"
+        },
+        {
+          "id": "91",
+          "title": "DUX-002 · Coach session summary auto-saved to Growth Plans",
+          "status": "open",
+          "section": "Active Backlog Summary (as of 2026-06-29)"
+        },
+        {
+          "id": "90",
+          "title": "DUX-003 · Quick Log: 2-tap capture with offline queue",
+          "status": "blocked",
+          "section": "Active Backlog Summary (as of 2026-06-29)"
+        },
+        {
+          "id": "88",
+          "title": "DUX-011 · Arbor Noticed card on Overview from timeline",
+          "status": "open",
+          "section": "Active Backlog Summary (as of 2026-06-29)"
+        }
+      ]
+    },
+    {
+      "id": "pai_projects_parenting_os_plugin_marketing_backlog_md",
+      "domain": "PAI",
+      "title": "Arbor Marketing Backlog",
+      "path": "PAI/projects/parenting-os-plugin/MARKETING-BACKLOG.md",
+      "total": 1,
+      "done": 0,
+      "active": 0,
+      "blocked": 0,
+      "open": 1,
+      "updated": "2026-06-27",
+      "items": [
+        {
+          "title": "(seed — populated by arbor-marketing)",
+          "status": "open",
+          "section": "Arbor Marketing Backlog"
+        }
+      ]
+    }
+  ]
 }
