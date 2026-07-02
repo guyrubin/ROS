@@ -1,23 +1,42 @@
-{
+﻿{
   "version": "0.0.1",
   "configurations": [
     {
       "name": "arbor-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "PPPPtherapy-/PPPPtherapy-/app", "run", "dev"],
+      "runtimeArgs": ["--prefix", "Arbor/app", "run", "dev"],
       "port": 3000
     },
     {
       "name": "arbor-prod",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "PPPPtherapy-/PPPPtherapy-/app", "run", "start"],
+      "runtimeArgs": ["--prefix", "Arbor/app", "run", "start"],
       "port": 3000
     },
     {
-      "name": "command-center",
+      "name": "ros-interface-v4",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "CoS/projects/ros-interface-v4", "run", "dev"],
+      "port": 4600
+    },
+    {
+      "name": "arbor-senior-onepager",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["-y", "http-server", "CoS/projects/guy-command-center", "-p", "4500", "-c-1"],
-      "port": 4500
+      "runtimeArgs": ["-y", "http-server", "PAI/projects/arbor-third-age", "-p", "4720", "-c-1"],
+      "port": 4720
+    },
+    {
+      "name": "arbor-uc1",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:/Users/dguyr/arbor-uc1/app", "run", "dev"],
+      "port": 4801
+    },
+    {
+      "name": "arbor-uc1-prod",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:/Users/dguyr/arbor-uc1/app", "run", "start"],
+      "port": 4802
     }
   ]
 }
+

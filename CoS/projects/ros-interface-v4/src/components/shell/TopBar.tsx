@@ -10,6 +10,8 @@ const VIEWS = [
   { to: '/work',     label: 'WORK',     end: false },
   { to: '/ops',      label: 'OPS',      end: false },
   { to: '/os',       label: 'OS',       end: false },
+  { to: '/backlog',  label: 'BACKLOG',  end: false },
+  { to: '/map',      label: 'MAP',      end: false },
 ]
 
 export function TopBar() {

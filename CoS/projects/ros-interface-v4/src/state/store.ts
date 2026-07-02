@@ -33,6 +33,7 @@ function applyV3Defaults(raw: Partial<RosState>): RosState {
     sessions:     raw.sessions     ?? 0,
     lastDay:      raw.lastDay      ?? '',
     integrations: raw.integrations ?? {},
+    backlogs:     raw.backlogs     ?? [],
   } as RosState
 }
 

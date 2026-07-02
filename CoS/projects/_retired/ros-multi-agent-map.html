@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubin OS — Multi-Agent System Map</title>
+<style>
+  :root{
+    --bg:#0a0c10;
+    --bg-2:#0e1117;
+    --panel:#12161f;
+    --panel-2:#161b26;
+    --line:#222a38;
+    --line-2:#2c3445;
+    --line-soft:#1b212d;
+    --ink:#e8ecf3;
+    --ink-2:#aab4c5;
+    --ink-3:#6b7689;
+    --accent:#5b8cff;
+    --accent-2:#7c5cff;
+    --mono:'SF Mono',ui-monospace,'JetBrains Mono','Cascadia Code',Consolas,monospace;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+
+    /* domain hues */
+    --cos:#7c8cff;
+    --kk:#3fc7a8;
+    --hv:#f0a13c;
+    --ea:#56b6ff;
+    --pai:#b07bff;
+    --mkt:#ff6fa5;
+    --fin:#9bd14a;
+
+    /* runtime hues */
+    --rt-claude:#d97757;
+    --rt-codex:#46c08a;
+    --rt-hermes:#5b8cff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(124,92,255,.10), transparent 60%),
+      radial-gradient(1000px 600px at -10% 10%, rgba(91,140,255,.10), transparent 55%),
+      var(--bg);
+    color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.5;
+  }
+  a{color:inherit}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(10,12,16,.72);
+    border-bottom:1px solid var(--line-soft);}
+  .nav{display:flex;align-items:center;gap:18px;height:62px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:.2px}
+  .logo{width:30px;height:30px;border-radius:8px;
+    background:conic-gradient(from 200deg,var(--cos),var(--ea),var(--pai),var(--mkt),var(--hv),var(--kk),var(--fin),var(--cos));
+    box-shadow:0 0 0 1px rgba(255,255,255,.08), 0 6px 18px rgba(91,140,255,.25);}
+  .brand small{display:block;font-weight:500;font-size:11px;color:var(--ink-3);letter-spacing:.4px}
+  .nav-links{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+  .nav-links a{font-size:13px;color:var(--ink-2);text-decoration:none;padding:7px 12px;border-radius:8px;transition:.18s}
+  .nav-links a:hover{color:var(--ink);background:var(--panel)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:70px 0 34px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  h1{font-size:clamp(34px,5vw,58px);line-height:1.04;margin:0 0 18px;font-weight:800;letter-spacing:-1.2px}
+  h1 .grad{background:linear-gradient(100deg,var(--accent),var(--accent-2) 60%,var(--mkt));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:18px;color:var(--ink-2);max-width:680px}
+  .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 20px;min-width:118px}
+  .stat b{display:block;font-size:30px;font-weight:800;letter-spacing:-1px;
+    background:linear-gradient(120deg,#fff,var(--ink-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:12px;color:var(--ink-3);letter-spacing:.3px}
+
+  section{padding:54px 0;border-top:1px solid var(--line-soft)}
+  .sec-head{margin-bottom:30px}
+  .sec-kicker{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-3)}
+  .sec-title{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.6px;margin:8px 0 8px}
+  .sec-sub{color:var(--ink-2);max-width:720px;font-size:15px}
+
+  /* ---------- runtime strip ---------- */
+  .rt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .rt{position:relative;border-radius:18px;padding:24px;overflow:hidden;
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);transition:.22s}
+  .rt:hover{transform:translateY(-3px);border-color:var(--acc, var(--line))}
+  .rt::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--accent)}
+  .rt.claude{--accent:var(--rt-claude)} .rt.codex{--accent:var(--rt-codex)} .rt.hermes{--accent:var(--rt-hermes)}
+  .rt::before{background:var(--accent)}
+  .rt-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .rt-ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:18px;
+    background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+  .rt h3{margin:0;font-size:19px}
+  .rt .role{font-size:12px;color:var(--ink-3);font-family:var(--mono)}
+  .rt p{font-size:14px;color:var(--ink-2);margin:0 0 14px}
+  .kv{display:flex;gap:8px;font-size:12.5px;padding:7px 0;border-top:1px dashed var(--line-soft)}
+  .kv b{color:var(--ink-3);font-weight:600;min-width:74px}
+  .kv span{color:var(--ink-2);font-family:var(--mono);font-size:11.5px}
+  .pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:999px;
+    background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);margin:2px 4px 0 0}
+
+  .loop-note{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent-2);
+    border-radius:12px;padding:16px 20px;font-size:14px;color:var(--ink-2)}
+  .loop-note b{color:var(--ink)}
+
+  /* ---------- boot sequence ---------- */
+  .boot{display:grid;grid-template-columns:1.1fr 1fr;gap:22px}
+  .boot-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .boot-card h4{margin:0 0 4px;font-size:15px;display:flex;align-items:center;gap:8px}
+  .tag-eager{color:#ffcf6b} .tag-lazy{color:#7fd6ff}
+  .boot-card .desc{font-size:12.5px;color:var(--ink-3);margin-bottom:16px}
+  .step{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:13.5px}
+  .step:last-child{border-bottom:none}
+  .step .n{font-family:var(--mono);font-size:11px;color:var(--bg);background:#ffcf6b;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;flex-shrink:0;font-weight:700}
+  .boot-card.lazy .n{background:#7fd6ff}
+  .step code{font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--bg-2);padding:1px 6px;border-radius:5px}
+  .step em{color:var(--ink-3);font-style:normal;font-size:12px;display:block}
+
+  /* ---------- domain agents ---------- */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+  .filters button{font-family:var(--mono);font-size:12px;padding:7px 14px;border-radius:999px;cursor:pointer;
+    background:var(--panel);color:var(--ink-2);border:1px solid var(--line);transition:.16s}
+  .filters button:hover{color:var(--ink)}
+  .filters button.active{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+
+  .agents{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .agent{position:relative;background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);border-radius:18px;padding:22px;transition:.2s;overflow:hidden}
+  .agent:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 50%,var(--line));box-shadow:0 14px 40px -18px color-mix(in srgb,var(--c) 80%,transparent)}
+  .agent .glow{position:absolute;top:-50px;right:-50px;width:150px;height:150px;border-radius:50%;
+    background:radial-gradient(circle,color-mix(in srgb,var(--c) 35%,transparent),transparent 70%);filter:blur(8px);opacity:.6}
+  .agent-top{display:flex;align-items:center;gap:13px;margin-bottom:6px;position:relative}
+  .badge{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-weight:800;font-size:16px;letter-spacing:.5px;
+    background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--c);border:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
+  .agent h3{margin:0;font-size:18px}
+  .agent .dom{font-size:11.5px;color:var(--ink-3);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px}
+  .persona{font-size:13.5px;color:var(--ink-2);margin:12px 0 14px;min-height:60px}
+  .meta{font-size:11.5px;color:var(--ink-3);display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+  .meta .row{display:flex;gap:7px}
+  .meta b{color:var(--ink-2);min-width:64px;font-weight:600}
+  .meta code{font-family:var(--mono);color:var(--c);font-size:11px}
+  .skills-label{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-3);margin-bottom:9px;font-family:var(--mono)}
+  .skill-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .skill-chips span{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:7px;
+    background:var(--bg-2);border:1px solid var(--line);color:var(--ink-2);transition:.15s}
+  .agent:hover .skill-chips span{border-color:color-mix(in srgb,var(--c) 35%,var(--line))}
+
+  /* shared skills band */
+  .shared{margin-top:24px;background:var(--panel);border:1px dashed var(--line);border-radius:16px;padding:20px 22px}
+  .shared h4{margin:0 0 4px;font-size:14px}
+  .shared p{font-size:12.5px;color:var(--ink-3);margin:0 0 14px}
+  .shared .skill-chips span{background:var(--bg);border-color:var(--line-soft);color:var(--ink-2)}
+
+  /* ---------- capability stack ---------- */
+  .stack{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .layers{display:flex;flex-direction:column;gap:10px}
+  .layer{display:flex;gap:16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:.18s}
+  .layer:hover{transform:translateX(4px)}
+  .layer .ln{font-family:var(--mono);font-weight:800;font-size:22px;width:34px;color:var(--lc)}
+  .layer .lt{flex:1}
+  .layer .lt b{display:block;font-size:14.5px}
+  .layer .lt span{font-size:12.5px;color:var(--ink-3)}
+  .layer .lbar{width:6px;align-self:stretch;border-radius:3px;background:var(--lc)}
+
+  .caps{display:flex;flex-direction:column;gap:10px}
+  .cap{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+  .cap b{font-size:13.5px;display:flex;align-items:center;gap:8px}
+  .cap .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  .cap span{font-size:12px;color:var(--ink-3);display:block;margin-top:3px}
+
+  /* ---------- governance ---------- */
+  .gov{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .gov-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .gov-card h4{margin:0 0 16px;font-size:15px}
+  .lvl{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .lvl:first-of-type{border-top:none}
+  .lvl .num{font-family:var(--mono);font-weight:800;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex-shrink:0;font-size:12px}
+  .lvl .txt b{display:block;font-size:13px}
+  .lvl .txt span{font-size:12px;color:var(--ink-3)}
+  .g0{background:#1f3a2b;color:#7fe0a0}.g1{background:#1f3340;color:#7fcdff}.g2{background:#2a2f4a;color:#9fa9ff}
+  .g3{background:#3a2f1c;color:#ffcf6b}.g4{background:#3a261c;color:#ffb07a}.g5{background:#3a1c24;color:#ff8aa3}
+
+  /* ---------- loop ---------- */
+  .floop{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:8px}
+  .floop .node{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 18px;font-family:var(--mono);font-size:13px;font-weight:600;position:relative}
+  .floop .node small{display:block;font-family:var(--sans);font-size:11px;color:var(--ink-3);font-weight:400;margin-top:2px}
+  .floop .arr{color:var(--accent);font-size:20px}
+
+  footer{padding:40px 0 60px;color:var(--ink-3);font-size:12.5px;border-top:1px solid var(--line-soft);text-align:center}
+  footer code{font-family:var(--mono);color:var(--ink-2)}
+
+  @media(max-width:920px){
+    .rt-grid,.agents{grid-template-columns:1fr 1fr}
+    .boot,.stack,.gov{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    .rt-grid,.agents{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><div class="logo"></div>
+      <div>Rubin OS<small>Multi-Agent System Map · v1.7</small></div>
+    </div>
+    <nav class="nav-links">
+      <a href="#runtimes">Runtimes</a>
+      <a href="#boot">Boot</a>
+      <a href="#agents">Agents</a>
+      <a href="#skills">Skills</a>
+      <a href="#stack">Capabilities</a>
+      <a href="#governance">Governance</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">Markdown-first AI Operating System</div>
+    <h1>One working tree.<br><span class="grad">Three runtimes. Seven agents.</span></h1>
+    <p class="lede">Rubin OS treats the filesystem as the stable context layer. Models, tools, and runtimes change — the working tree stays canonical. This is the full-resolution map of how <b>Claude/Cowork</b>, <b>Codex</b>, and <b>Hermes</b> share one repo, and how the seven domain agents and their skills route work across it.</p>
+    <div class="stat-row">
+      <div class="stat"><b>3</b><span>RUNTIMES</span></div>
+      <div class="stat"><b>7</b><span>DOMAIN AGENTS</span></div>
+      <div class="stat"><b>23</b><span>SKILLS</span></div>
+      <div class="stat"><b>4</b><span>CAPABILITY LAYERS</span></div>
+      <div class="stat"><b>6</b><span>SAFETY LEVELS</span></div>
+    </div>
+  </div>
+
+  <!-- RUNTIMES -->
+  <section id="runtimes">
+    <div class="sec-head">
+      <div class="sec-kicker">Layer 0 · Execution substrate</div>
+      <h2 class="sec-title">The three runtimes</h2>
+      <p class="sec-sub">All three operate on a single canonical working tree (<code>C:\Users\dguyr\ROS</code> ↔ <code>/home/guyru/ROS</code>). Each has a distinct role, commit identity, and operating path. GitHub is the source of truth and audit log.</p>
+    </div>
+    <div class="rt-grid">
+
+      <div class="rt claude">
+        <div class="rt-top">
+          <div class="rt-ic">C</div>
+          <div><h3>Claude / Cowork</h3><div class="role">orchestrate · judge · gate</div></div>
+        </div>
+        <p>The interactive ROS agent. Routes requests, runs domain skills, reviews and judges output, and holds the human-gating decision points. The "conductor" of the loop.</p>
+        <div class="kv"><b>Path</b><span>C:\Users\dguyr\ROS</span></div>
+        <div class="kv"><b>Identity</b><span>claude-cowork@rubin-os.local</span></div>
+        <div class="kv"><b>Commits</b><span>[claude] …</span></div>
+        <div style="margin-top:12px">
+          <span class="pill">routing</span><span class="pill">skills</span><span class="pill">review</span><span class="pill">Tier-C gate</span>
+        </div>
+      </div>
+
+      <div class="rt codex">
+        <div class="rt-top">
+          <div class="rt-ic">{ }</div>
+          <div><h3>Codex</h3><div class="role">bulk-build · file-system</div></div>
+        </div>
+        <p>The coding / file-system agent in the shared Windows workspace. Does the heavy lifting — bulk implementation on <code style="font-family:var(--mono);font-size:11px">[codex]</code> branches — while Claude orchestrates and gates the merges.</p>
+        <div class="kv"><b>Path</b><span>C:\Users\dguyr\ROS</span></div>
+        <div class="kv"><b>Identity</b><span>codex-agent@rubin-os.local</span></div>
+        <div class="kv"><b>Commits</b><span>[codex] …</span></div>
+        <div style="margin-top:12px">
+          <span class="pill">bulk build</span><span class="pill">refactor</span><span class="pill">codex branches</span>
+        </div>
+      </div>
+
+      <div class="rt hermes">
+        <div class="rt-top">
+          <div class="rt-ic">H</div>
+          <div><h3>Hermes</h3><div class="role">run-the-loop · automation</div></div>
+        </div>
+        <p>The WSL automation runtime over the same tree. Owns the connector layer (email via <code style="font-family:var(--mono);font-size:11px">himalaya</code>, Notion) and runs scheduled routines — the engine that keeps loops turning between human touchpoints.</p>
+        <div class="kv"><b>Path</b><span>/home/guyru/ROS (WSL)</span></div>
+        <div class="kv"><b>Identity</b><span>hermes-agent@rubin-os.local</span></div>
+        <div class="kv"><b>Commits</b><span>[hermes] …</span></div>
+        <div style="margin-top:12px">
+          <span class="pill">himalaya mail</span><span class="pill">notion</span><span class="pill">scheduled loops</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="loop-note">
+      <b>The three-engine loop (PAI autonomy model):</b> Claude Code <b>orchestrates / judges / gates</b> → Codex <b>bulk-builds</b> on branches → Hermes <b>runs the loop</b> and connectors. The baton passes via the filesystem + GitHub. A human (Guy) only enters at <b>Tier-C</b> decisions (prod deploy, merge, force-push, secrets, money, child-data).
+    </div>
+  </section>
+
+  <!-- BOOT -->
+  <section id="boot">
+    <div class="sec-head">
+      <div class="sec-kicker">Session start · canonical in /AGENTS.md</div>
+      <h2 class="sec-title">Boot &amp; context-loading sequence</h2>
+      <p class="sec-sub">Every session loads a tiny eager core, routes the request, then lazy-loads only what the task needs. This protects the token budget — eager-load is the per-session tax; everything else is recall-only.</p>
+    </div>
+    <div class="boot">
+      <div class="boot-card eager">
+        <h4><span class="tag-eager">●</span> Eager — every session, in order</h4>
+        <div class="desc">The fixed cost. Five steps, always, before any work.</div>
+        <div class="step"><div class="n">1</div><div><code>/AGENTS.md</code><em>cross-agent contract + runtime registry</em></div></div>
+        <div class="step"><div class="n">2</div><div><code>/CLAUDE.md</code><em>root instruction surface (model-neutral)</em></div></div>
+        <div class="step"><div class="n">3</div><div><code>/MEMORY.md</code><em>root current memory (active cross-domain facts)</em></div></div>
+        <div class="step"><div class="n">4</div><div><code>/00_System/routing.md</code><em>the routing matrix</em></div></div>
+        <div class="step"><div class="n">5</div><div><code>route → domain CLAUDE.md + MEMORY.md</code><em>load only the matched domain</em></div></div>
+      </div>
+      <div class="boot-card lazy">
+        <h4><span class="tag-lazy">●</span> Lazy — only when the task needs it</h4>
+        <div class="desc">Baseline inheritances. Recall-only, ~zero standing cost.</div>
+        <div class="step"><div class="n">＋</div><div><code>agent-capabilities.md</code><em>before using a shared capability</em></div></div>
+        <div class="step"><div class="n">＋</div><div><code>capability-optimization.md</code><em>before improving a capability</em></div></div>
+        <div class="step"><div class="n">＋</div><div><code>connectors.md</code><em>before any Gmail / Notion / Calendar action</em></div></div>
+        <div class="step"><div class="n">＋</div><div><code>agent-filesystem-contract.md</code><em>when changing structure or contracts</em></div></div>
+        <div class="step"><div class="n">＋</div><div><code>session-audit.md</code><em>at wrap-up after meaningful work</em></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENTS -->
+  <section id="agents">
+    <div class="sec-head">
+      <div class="sec-kicker">Routing matrix · /00_System/routing.md</div>
+      <h2 class="sec-title">The seven domain agents</h2>
+      <p class="sec-sub">When input is ambiguous, the active agent applies the routing matrix and routes to the <b>most specific match</b>. Explicit <code>/cos.* /kk.* /hv.* …</code> commands override keyword routing. No match → CoS clarifies and re-routes.</p>
+    </div>
+
+    <div class="filters" id="filters">
+      <button class="active" data-f="all">All agents</button>
+      <button data-f="cos">CoS</button>
+      <button data-f="kk">KK</button>
+      <button data-f="hv">HV</button>
+      <button data-f="ea">EA</button>
+      <button data-f="pai">PAI</button>
+      <button data-f="mkt">MKT</button>
+      <button data-f="fin">FIN</button>
+    </div>
+
+    <div class="agents" id="agentGrid"></div>
+
+    <div class="shared">
+      <h4>Cross-domain skills — inherited by every agent</h4>
+      <p>These don't belong to one domain; any agent loads them on demand.</p>
+      <div class="skill-chips">
+        <span>email-composer</span><span>notion-sync</span><span>research</span>
+        <span>voice-extract</span><span>session-audit</span><span>ros-workflow</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS MATRIX -->
+  <section id="skills">
+    <div class="sec-head">
+      <div class="sec-kicker">The skills system</div>
+      <h2 class="sec-title">Skill → agent ownership</h2>
+      <p class="sec-sub">Skills are tool-backed workflows triggered by intent or explicit command. Each is owned by one domain (with a few shared across all). Hover a card above to see its skill chips; the matrix below is the full ledger.</p>
+    </div>
+    <div id="skillMatrix" class="agents" style="grid-template-columns:repeat(4,1fr)"></div>
+  </section>
+
+  <!-- CAPABILITY STACK -->
+  <section id="stack">
+    <div class="sec-head">
+      <div class="sec-kicker">The four-layer model + baseline capabilities</div>
+      <h2 class="sec-title">Capability stack</h2>
+      <p class="sec-sub">Every output has a layer it belongs in. The six baseline capabilities are inherited by all agents unless a domain safety rule narrows access.</p>
+    </div>
+    <div class="stack">
+      <div class="layers">
+        <div class="layer" style="--lc:var(--pai)"><div class="lbar"></div><div class="ln">L4</div><div class="lt"><b>Reasoning</b><span>Better agent performance per session — boot discipline, routing, tool choice, critique, write-back.</span></div></div>
+        <div class="layer" style="--lc:var(--hv)"><div class="lbar"></div><div class="ln">L3</div><div class="lt"><b>Execution</b><span>Safe external action — draft-first flows, reversible previews, confirmations.</span></div></div>
+        <div class="layer" style="--lc:var(--kk)"><div class="lbar"></div><div class="ln">L2</div><div class="lt"><b>Operations</b><span>Current work visibility — Notion tasks, project dashboards, status fields.</span></div></div>
+        <div class="layer" style="--lc:var(--ea)"><div class="lbar"></div><div class="ln">L1</div><div class="lt"><b>Knowledge</b><span>Small, durable, source-grounded context — runbooks, templates, ADRs, memory.</span></div></div>
+      </div>
+      <div class="caps">
+        <div class="cap"><b><span class="dot"></span>Web search &amp; source-grounded research</b><span>Live web, source triangulation, citation capture · prefer primary sources.</span></div>
+        <div class="cap"><b><span class="dot"></span>Browser / computer use</b><span>Portals, forms, dashboards · no sends/purchases/deletes without confirmation.</span></div>
+        <div class="cap"><b><span class="dot"></span>Video &amp; multimodal analytics</b><span>Recordings, screenshots, transcripts → evidence, timelines, UI states.</span></div>
+        <div class="cap"><b><span class="dot"></span>Document intelligence</b><span>OCR, summarize, compare PDFs/scans/decks → Markdown-first artifacts.</span></div>
+        <div class="cap"><b><span class="dot"></span>Data analysis &amp; light automation</b><span>Scripts, tables, charts, repeatable checks · verify outputs.</span></div>
+        <div class="cap"><b><span class="dot"></span>Knowledge-base maintenance</b><span>Atomic, linked Markdown notes · update the right MEMORY.md.</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:30px">
+      <div class="sec-kicker" style="margin-bottom:14px">Capability optimization loop · /00_System/capability-optimization.md</div>
+      <div class="floop">
+        <div class="node">SENSE<small>inspect</small></div><span class="arr">→</span>
+        <div class="node">FRAME<small>name it</small></div><span class="arr">→</span>
+        <div class="node">DESIGN<small>lightest shape</small></div><span class="arr">→</span>
+        <div class="node">EXECUTE<small>do work</small></div><span class="arr">→</span>
+        <div class="node">JUDGE<small>verify</small></div><span class="arr">→</span>
+        <div class="node">PROMOTE<small>write back</small></div><span class="arr">→</span>
+        <div class="node">AUDIT<small>session-audit</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE -->
+  <section id="governance">
+    <div class="sec-head">
+      <div class="sec-kicker">Safety &amp; maturity</div>
+      <h2 class="sec-title">Governance model</h2>
+      <p class="sec-sub">Two ladders govern the system: <b>safety levels</b> gate action by reversibility, and <b>maturity levels</b> track how hardened each capability is. Level 0–2 auto-execute; Level 3+ requires confirmation.</p>
+    </div>
+    <div class="gov">
+      <div class="gov-card">
+        <h4>Safety levels — the execution gate</h4>
+        <div class="lvl"><div class="num g0">0</div><div class="txt"><b>Analyze / summarize / research</b><span>Auto-execute · no confirmation</span></div></div>
+        <div class="lvl"><div class="num g1">1</div><div class="txt"><b>Draft content (email, docs, plans)</b><span>Auto-execute · no confirmation</span></div></div>
+        <div class="lvl"><div class="num g2">2</div><div class="txt"><b>Write / edit files in workspace</b><span>Auto-execute · no confirmation</span></div></div>
+        <div class="lvl"><div class="num g3">3</div><div class="txt"><b>External action (email, post, API)</b><span>Require confirmation</span></div></div>
+        <div class="lvl"><div class="num g4">4</div><div class="txt"><b>Financial action (payment, contract)</b><span>Confirm + state amounts</span></div></div>
+        <div class="lvl"><div class="num g5">5</div><div class="txt"><b>Irreversible (delete, legal, transfer)</b><span>Confirm with explicit warning</span></div></div>
+      </div>
+      <div class="gov-card">
+        <h4>Capability maturity — how hardened</h4>
+        <div class="lvl"><div class="num g0">0</div><div class="txt"><b>Ad hoc</b><span>One-off behavior, no durable pattern</span></div></div>
+        <div class="lvl"><div class="num g1">1</div><div class="txt"><b>Cataloged</b><span>Named in a capabilities/domain file</span></div></div>
+        <div class="lvl"><div class="num g2">2</div><div class="txt"><b>Repeatable</b><span>Has a checklist / template / command</span></div></div>
+        <div class="lvl"><div class="num g3">3</div><div class="txt"><b>Gated <span style="font-size:10px;color:var(--ink-3)">← default target</span></b><span>Safety, source, freshness, verification checks</span></div></div>
+        <div class="lvl"><div class="num g4">4</div><div class="txt"><b>Measured</b><span>Records quality, time, cost, failure signals</span></div></div>
+        <div class="lvl"><div class="num g5">5</div><div class="txt"><b>Delegated</b><span>Safe reversible work runs by automation; risk gates to Guy</span></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="wrap">
+  Rubin OS · Markdown-first, runtime-neutral, single working tree · source of truth <code>github.com/guyrubin/ROS</code><br>
+  Generated map of <code>/AGENTS.md</code> · <code>/CLAUDE.md</code> · <code>/00_System/routing.md</code> · <code>agent-capabilities.md</code> · <code>capability-optimization.md</code>
+</footer>
+
+<script>
+const AGENTS = [
+  { k:'cos', name:'CoS', full:'Chief of Staff', c:'var(--cos)',
+    persona:'The operating layer above all agents. Runs the rhythm of the business — makes sure the right work gets done, by the right agent, at the right time.',
+    triggers:'weekly review, OKRs, strategy, blockers, cross-domain, orchestrate',
+    plugin:'ros-core', account:'bguy', cmd:'/cos.*',
+    skills:['weekly-review','okr-tracker','project-tracker','stakeholder-briefing'] },
+  { k:'kk', name:'KK', full:'Personal Ops', c:'var(--kk)',
+    persona:'Daily execution — what you are doing today. Owns inbox, calendar, tasks, and scheduling. Handles the now; CoS handles the direction.',
+    triggers:'today, inbox, calendar, schedule, follow-up, email triage, urgent',
+    plugin:'ros-core', account:'bguy', cmd:'/kk.*',
+    skills:['inbox-manager','task-manager','research'] },
+  { k:'hv', name:'HV', full:'Real Estate · HollandVest', c:'var(--hv)',
+    persona:'Property operations — Dutch real estate deals, BRRRR models, permits, WWS scoring, tenants. The EU dual-exit development engine.',
+    triggers:'deal, property, BRRRR, rent, permit, vergunning, WWS, Funda, Kadaster',
+    plugin:'ros-hv', account:'hollandvest', cmd:'/hv.*',
+    skills:['deal-analyzer','brrrr-calculator','deal-note-creator','permit-pathway','wws-analyzer'] },
+  { k:'ea', name:'EA', full:'Enterprise Architecture', c:'var(--ea)',
+    persona:'Client-facing architecture — HLDs, ADRs, cloud strategy, CCoE, security architecture for engagements. Always confirms which client first.',
+    triggers:'architecture, HLD, ADR, cloud, ZTA, CCoE, security architect, client',
+    plugin:'ros-ea', account:'joseph / bguy', cmd:'/ea.*',
+    skills:['architecture-review','hld-writer','adr-writer'] },
+  { k:'pai', name:'PAI', full:'Product &amp; AI Ventures', c:'var(--pai)',
+    persona:'Product thinking for Guy’s own ventures — PRDs, MVPs, pricing, GTM, AI product design. Home of Arbor and the three-engine autonomy loop.',
+    triggers:'product, PRD, MVP, roadmap, pricing, venture, go-to-market, parenting app',
+    plugin:'ros-pai', account:'bguy', cmd:'/pai.*',
+    skills:['prd-generator','pricing-strategy','gtm-strategist'] },
+  { k:'mkt', name:'MKT', full:'Marketing', c:'var(--mkt)',
+    persona:'Content, copy, campaigns, brand, social. Turns positioning into assets — channel-specific, conversion-focused, on-voice.',
+    triggers:'content, post, LinkedIn, blog, campaign, brand, copy, social, newsletter',
+    plugin:'ros-mkt', account:'bguy', cmd:'/mkt.*',
+    skills:['campaign-planner','content-creator','copywriter'] },
+  { k:'fin', name:'FIN', full:'Finance &amp; Admin', c:'var(--fin)',
+    persona:'Financial administration — invoices, insurance, contracts, tax, subscriptions, compliance. The back-office ledger of the group.',
+    triggers:'invoice, insurance, contract, compliance, bank, tax, subscription, legal',
+    plugin:'ros-fin', account:'bguy', cmd:'/fin.*',
+    skills:['email-composer','notion-sync'] },
+];
+
+const grid = document.getElementById('agentGrid');
+function renderAgents(filter){
+  grid.innerHTML = '';
+  AGENTS.filter(a=>filter==='all'||a.k===filter).forEach(a=>{
+    const el = document.createElement('div');
+    el.className = 'agent'; el.style.setProperty('--c', a.c);
+    el.innerHTML = `
+      <div class="glow"></div>
+      <div class="agent-top">
+        <div class="badge">${a.name}</div>
+        <div><h3>${a.full}</h3><div class="dom">${a.k} · ${a.plugin}</div></div>
+      </div>
+      <div class="persona">${a.persona}</div>
+      <div class="meta">
+        <div class="row"><b>Triggers</b><span style="color:var(--ink-3)">${a.triggers}</span></div>
+        <div class="row"><b>Command</b><code>${a.cmd}</code></div>
+        <div class="row"><b>Account</b><code>${a.account}</code></div>
+      </div>
+      <div class="skills-label">${a.skills.length} skills</div>
+      <div class="skill-chips">${a.skills.map(s=>`<span>${s}</span>`).join('')}</div>`;
+    grid.appendChild(el);
+  });
+}
+renderAgents('all');
+
+document.querySelectorAll('#filters button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    renderAgents(b.dataset.f);
+  });
+});
+
+// skill matrix
+const SKILLS = [
+  ['weekly-review','CoS','cos','Structured cross-domain review every week'],
+  ['okr-tracker','CoS','cos','Set & track quarterly objectives'],
+  ['project-tracker','CoS','cos','Milestones, vendors, blockers'],
+  ['stakeholder-briefing','CoS','cos','Board / investor / client reports'],
+  ['inbox-manager','KK','kk','Triage & prioritise email'],
+  ['task-manager','KK','kk','Capture & manage tasks/priorities'],
+  ['deal-analyzer','HV','hv','Structured acquisition assessment'],
+  ['brrrr-calculator','HV','hv','Buy-Reno-Rent-Refi-Repeat model'],
+  ['deal-note-creator','HV','hv','Document a new deal/asset'],
+  ['permit-pathway','HV','hv','Dutch permit / vergunning strategy'],
+  ['wws-analyzer','HV','hv','WWS points & rent ceiling'],
+  ['architecture-review','EA','ea','Assess architecture / cloud strategy'],
+  ['hld-writer','EA','ea','High-level design document'],
+  ['adr-writer','EA','ea','Architecture decision record'],
+  ['prd-generator','PAI','pai','Product requirements / MVP scope'],
+  ['pricing-strategy','PAI','pai','Pricing model & price point'],
+  ['gtm-strategist','PAI','pai','Go-to-market strategy'],
+  ['campaign-planner','MKT','mkt','Plan a marketing campaign'],
+  ['content-creator','MKT','mkt','Produce written content assets'],
+  ['copywriter','MKT','mkt','Conversion-focused copy'],
+  ['email-composer','Shared','fin','Outbound email, auto-selects account'],
+  ['notion-sync','Shared','cos','Create / update Notion pages'],
+  ['research','Shared','kk','Information gathering & synthesis'],
+  ['voice-extract','Shared','pai','Calibrate writing-voice profile'],
+  ['session-audit','Shared','ea','Capture learnings at wrap-up'],
+  ['ros-workflow','Shared','mkt','Meta: navigate / route the system'],
+];
+const sm = document.getElementById('skillMatrix');
+SKILLS.forEach(([n,owner,c,d])=>{
+  const el=document.createElement('div');
+  el.className='agent'; el.style.setProperty('--c',`var(--${c})`);
+  el.style.padding='16px';
+  el.innerHTML=`<div class="glow" style="width:90px;height:90px;top:-30px;right:-30px"></div>
+    <div style="font-family:var(--mono);font-weight:700;font-size:13.5px;color:var(--c)">${n}</div>
+    <div style="font-size:12px;color:var(--ink-2);margin:7px 0 10px">${d}</div>
+    <div class="dom" style="font-size:10.5px">${owner}</div>`;
+  sm.appendChild(el);
+});
+</script>
+</body>
+</html>

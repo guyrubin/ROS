@@ -1,0 +1,1847 @@
+{
+ "meta": {
+  "title": "ROS Knowledge Graph — Graphify extraction",
+  "generatedFrom": [
+   "00_System/",
+   ".claude/agents/",
+   ".claude/skills/"
+  ],
+  "builtAtCommit": "870eaf7529da3a7381c64f979d4d0126c92a029d",
+  "nodes": 119,
+  "edges": 144,
+  "communityLabels": {
+   "0": "Security & Compliance Frameworks",
+   "1": "Connectors, Email & Identity",
+   "2": "Capabilities & Layer Model",
+   "3": "Filesystem Contract & Working Tree",
+   "4": "Hygiene & Improve Loop",
+   "5": "Threat Modeling & Security Review",
+   "6": "Instruction & Memory Discipline",
+   "7": "Knowledge Architecture (OKF)",
+   "8": "AI Eval & Capability Maturity",
+   "9": "OKF Format Spec & Linter",
+   "10": "Arbor Competitive Intel",
+   "11": "Routing Matrix"
+  }
+ },
+ "nodes": [
+  {
+   "id": "agents_compliance_mapper_compliance_mapper",
+   "label": "Compliance Mapper Agent",
+   "community": 0,
+   "file_type": "document",
+   "source": ".claude/agents/compliance-mapper.md",
+   "degree": 5
+  },
+  {
+   "id": "agents_compliance_mapper_requirement_control_evidence_gap_matrix",
+   "label": "Requirement -> Control -> Evidence -> Gap Matrix",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/agents/compliance-mapper.md",
+   "degree": 2
+  },
+  {
+   "id": "agents_compliance_mapper_cross_framework_crosswalk",
+   "label": "Cross-Framework Crosswalk",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/agents/compliance-mapper.md",
+   "degree": 1
+  },
+  {
+   "id": "agents_compliance_mapper_statement_of_applicability",
+   "label": "Statement of Applicability",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/agents/compliance-mapper.md",
+   "degree": 2
+  },
+  {
+   "id": "agents_security_reviewer_security_reviewer",
+   "label": "Security Reviewer Agent",
+   "community": 5,
+   "file_type": "document",
+   "source": ".claude/agents/security-reviewer.md",
+   "degree": 3
+  },
+  {
+   "id": "agents_security_reviewer_security_review_lenses",
+   "label": "Security Review Lenses (Identity/Data/Network/Cloud/Resilience/Compliance/Supply-chain)",
+   "community": 5,
+   "file_type": "concept",
+   "source": ".claude/agents/security-reviewer.md",
+   "degree": 1
+  },
+  {
+   "id": "agents_threat_modeler_threat_modeler",
+   "label": "Threat Modeler Agent",
+   "community": 5,
+   "file_type": "document",
+   "source": ".claude/agents/threat-modeler.md",
+   "degree": 4
+  },
+  {
+   "id": "agents_threat_modeler_stride",
+   "label": "STRIDE",
+   "community": 5,
+   "file_type": "concept",
+   "source": ".claude/agents/threat-modeler.md",
+   "degree": 2
+  },
+  {
+   "id": "agents_threat_modeler_threat_register",
+   "label": "Threat Register",
+   "community": 5,
+   "file_type": "concept",
+   "source": ".claude/agents/threat-modeler.md",
+   "degree": 1
+  },
+  {
+   "id": "ai_eval_harness_skill_ai_eval_harness",
+   "label": "AI Eval Harness Skill",
+   "community": 8,
+   "file_type": "document",
+   "source": ".claude/skills/ai-eval-harness/SKILL.md",
+   "degree": 4
+  },
+  {
+   "id": "ai_eval_harness_skill_llm_as_judge",
+   "label": "LLM-as-Judge",
+   "community": 8,
+   "file_type": "concept",
+   "source": ".claude/skills/ai-eval-harness/SKILL.md",
+   "degree": 2
+  },
+  {
+   "id": "ai_eval_harness_skill_eval_driven_development",
+   "label": "Eval-Driven Development (build the evals first)",
+   "community": 8,
+   "file_type": "rationale",
+   "source": ".claude/skills/ai-eval-harness/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "ai_eval_harness_skill_pinned_judge_model",
+   "label": "Pinned Judge Model",
+   "community": 8,
+   "file_type": "rationale",
+   "source": ".claude/skills/ai-eval-harness/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "ai_eval_harness_skill_safety_hard_gate",
+   "label": "Safety as a Hard Gate (Tier-C)",
+   "community": 8,
+   "file_type": "rationale",
+   "source": ".claude/skills/ai-eval-harness/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "ai_eval_harness_skill_l4_measured_rivet",
+   "label": "L4 Measured Rivet",
+   "community": 8,
+   "file_type": "concept",
+   "source": ".claude/skills/ai-eval-harness/SKILL.md",
+   "degree": 2
+  },
+  {
+   "id": "arbor_competitor_benchmark_skill_arbor_competitor_benchmark",
+   "label": "Arbor Competitor Benchmark Skill",
+   "community": 10,
+   "file_type": "document",
+   "source": ".claude/skills/arbor-competitor-benchmark/SKILL.md",
+   "degree": 5
+  },
+  {
+   "id": "arbor_competitor_benchmark_skill_multi_agent_fan_out",
+   "label": "Multi-Agent Fan-Out (one worker per competitor)",
+   "community": 10,
+   "file_type": "concept",
+   "source": ".claude/skills/arbor-competitor-benchmark/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "arbor_competitor_benchmark_skill_six_surfaces",
+   "label": "Arbor Six Product Surfaces",
+   "community": 10,
+   "file_type": "concept",
+   "source": ".claude/skills/arbor-competitor-benchmark/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "arbor_competitor_benchmark_skill_longitudinal_memory_moat",
+   "label": "Longitudinal-Memory Moat",
+   "community": 10,
+   "file_type": "concept",
+   "source": ".claude/skills/arbor-competitor-benchmark/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "arbor_competitor_benchmark_skill_capability_map",
+   "label": "CAPABILITY-MAP.md",
+   "community": 10,
+   "file_type": "document",
+   "source": ".claude/skills/arbor-competitor-benchmark/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "arbor_competitor_benchmark_skill_competitive_brief",
+   "label": "product-management:competitive-brief",
+   "community": 10,
+   "file_type": "document",
+   "source": ".claude/skills/arbor-competitor-benchmark/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "azure_tenant_separation_review_skill_azure_tenant_separation_review",
+   "label": "Azure Tenant Separation Review Skill",
+   "community": 0,
+   "file_type": "document",
+   "source": ".claude/skills/azure-tenant-separation-review/SKILL.md",
+   "degree": 7
+  },
+  {
+   "id": "azure_tenant_separation_review_skill_inherited_dependency_inventory",
+   "label": "Inherited-Dependency Inventory",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/azure-tenant-separation-review/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "azure_tenant_separation_review_skill_day_1_readiness",
+   "label": "Day-1 Security Readiness Gate",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/azure-tenant-separation-review/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "azure_tenant_separation_review_skill_entra_id",
+   "label": "Entra ID Tenant Boundary",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/azure-tenant-separation-review/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "azure_tenant_separation_review_skill_boortmalt_d3_d8_d9",
+   "label": "Boortmalt Deliverables D3/D8/D9",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/azure-tenant-separation-review/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "iso27001_nist_mapping_skill_iso27001_nist_mapping",
+   "label": "ISO27001 / NIST CSF Mapping Skill",
+   "community": 0,
+   "file_type": "document",
+   "source": ".claude/skills/iso27001-nist-mapping/SKILL.md",
+   "degree": 8
+  },
+  {
+   "id": "iso27001_nist_mapping_skill_iso27001_annex_a",
+   "label": "ISO 27001:2022 Annex A (93 controls)",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/iso27001-nist-mapping/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "iso27001_nist_mapping_skill_nist_csf_2",
+   "label": "NIST CSF 2.0 (Govern/Identify/Protect/Detect/Respond/Recover)",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/iso27001-nist-mapping/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "iso27001_nist_mapping_skill_boortmalt_d2_d5",
+   "label": "Boortmalt Deliverable D2/D5",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/iso27001-nist-mapping/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "nis2_control_mapping_skill_nis2_control_mapping",
+   "label": "NIS2 Control Mapping Skill",
+   "community": 0,
+   "file_type": "document",
+   "source": ".claude/skills/nis2-control-mapping/SKILL.md",
+   "degree": 8
+  },
+  {
+   "id": "nis2_control_mapping_skill_nis2_art_21",
+   "label": "NIS2 Art. 21 Risk-Management Measures",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/nis2-control-mapping/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "nis2_control_mapping_skill_incident_reporting_timelines",
+   "label": "NIS2 Incident-Reporting Timelines (24h/72h/1mo)",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/nis2-control-mapping/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "nis2_control_mapping_skill_national_transposition",
+   "label": "National Transposition (Belgium NCCN/CCB)",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/nis2-control-mapping/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "threat_model_skill_threat_model",
+   "label": "Threat Model (STRIDE) Skill",
+   "community": 5,
+   "file_type": "document",
+   "source": ".claude/skills/threat-model/SKILL.md",
+   "degree": 8
+  },
+  {
+   "id": "threat_model_skill_stride",
+   "label": "STRIDE Categories",
+   "community": 5,
+   "file_type": "concept",
+   "source": ".claude/skills/threat-model/SKILL.md",
+   "degree": 2
+  },
+  {
+   "id": "threat_model_skill_data_flow_diagram",
+   "label": "Data Flow Diagram (DFD)",
+   "community": 5,
+   "file_type": "concept",
+   "source": ".claude/skills/threat-model/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "threat_model_skill_residual_risk",
+   "label": "Residual-Risk Acceptance",
+   "community": 5,
+   "file_type": "concept",
+   "source": ".claude/skills/threat-model/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "zero_trust_assessment_skill_zero_trust_assessment",
+   "label": "Zero Trust / IAM Assessment Skill",
+   "community": 0,
+   "file_type": "document",
+   "source": ".claude/skills/zero-trust-assessment/SKILL.md",
+   "degree": 7
+  },
+  {
+   "id": "zero_trust_assessment_skill_zero_trust_principles",
+   "label": "Zero Trust Principles (verify explicitly / least privilege / assume breach)",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/zero-trust-assessment/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "zero_trust_assessment_skill_pim_pam",
+   "label": "Privileged Access (PIM/PAM)",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/zero-trust-assessment/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "zero_trust_assessment_skill_boortmalt_d4",
+   "label": "Boortmalt Deliverable D4",
+   "community": 0,
+   "file_type": "concept",
+   "source": ".claude/skills/zero-trust-assessment/SKILL.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_routing_routing_matrix",
+   "label": "ROS Routing Matrix",
+   "community": 11,
+   "file_type": "document",
+   "source": "00_System/routing.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_routing_most_specific_match_rule",
+   "label": "Most-Specific-Match Routing Rule",
+   "community": 11,
+   "file_type": "rationale",
+   "source": "00_System/routing.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_routing_cos_fallback",
+   "label": "CoS Orchestrator Fallback",
+   "community": 11,
+   "file_type": "concept",
+   "source": "00_System/routing.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_agent_capabilities_agent_capabilities",
+   "label": "ROS Agent Capabilities",
+   "community": 2,
+   "file_type": "document",
+   "source": "00_System/agent-capabilities.md",
+   "degree": 3
+  },
+  {
+   "id": "00_system_agent_capabilities_baseline_capabilities",
+   "label": "Baseline Capabilities for All Agents",
+   "community": 2,
+   "file_type": "concept",
+   "source": "00_System/agent-capabilities.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_agent_capabilities_capability_quality_gates",
+   "label": "Capability Quality Gates",
+   "community": 2,
+   "file_type": "concept",
+   "source": "00_System/agent-capabilities.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_capability_optimization_capability_optimization",
+   "label": "ROS Capability Optimization Runbook",
+   "community": 2,
+   "file_type": "document",
+   "source": "00_System/capability-optimization.md",
+   "degree": 4
+  },
+  {
+   "id": "00_system_capability_optimization_optimization_loop",
+   "label": "SENSE-FRAME-DESIGN-EXECUTE-JUDGE-PROMOTE-AUDIT Loop",
+   "community": 2,
+   "file_type": "concept",
+   "source": "00_System/capability-optimization.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_capability_optimization_capability_maturity_levels",
+   "label": "Capability Maturity Levels (0-5)",
+   "community": 8,
+   "file_type": "concept",
+   "source": "00_System/capability-optimization.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_capability_optimization_audit_at_system_altitude",
+   "label": "Start at ROS-Level System Map (SENSE safeguard)",
+   "community": 2,
+   "file_type": "rationale",
+   "source": "00_System/capability-optimization.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_layer_model_layer_model",
+   "label": "ROS Layer Model",
+   "community": 2,
+   "file_type": "document",
+   "source": "00_System/layer-model.md",
+   "degree": 8
+  },
+  {
+   "id": "00_system_layer_model_layer_1_knowledge",
+   "label": "Layer 1: Knowledge",
+   "community": 2,
+   "file_type": "concept",
+   "source": "00_System/layer-model.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_layer_model_layer_2_operations",
+   "label": "Layer 2: Operations",
+   "community": 2,
+   "file_type": "concept",
+   "source": "00_System/layer-model.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_layer_model_layer_3_execution",
+   "label": "Layer 3: Execution",
+   "community": 2,
+   "file_type": "concept",
+   "source": "00_System/layer-model.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_layer_model_layer_4_reasoning",
+   "label": "Layer 4: Reasoning",
+   "community": 2,
+   "file_type": "concept",
+   "source": "00_System/layer-model.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_layer_model_one_layer_rule",
+   "label": "Nothing Lives in Two Layers Rule",
+   "community": 2,
+   "file_type": "rationale",
+   "source": "00_System/layer-model.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_ros_knowledge_architecture_knowledge_architecture",
+   "label": "ROS Knowledge Architecture",
+   "community": 7,
+   "file_type": "document",
+   "source": "00_System/ROS-KNOWLEDGE-ARCHITECTURE.md",
+   "degree": 6
+  },
+  {
+   "id": "00_system_ros_knowledge_architecture_okf",
+   "label": "Open Knowledge Format (OKF)",
+   "community": 7,
+   "file_type": "concept",
+   "source": "00_System/ROS-KNOWLEDGE-ARCHITECTURE.md",
+   "degree": 3
+  },
+  {
+   "id": "00_system_ros_knowledge_architecture_one_graph_n_contexts",
+   "label": "One Canonical Graph, N Independent Contexts, Git as the Bus",
+   "community": 7,
+   "file_type": "rationale",
+   "source": "00_System/ROS-KNOWLEDGE-ARCHITECTURE.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_ros_knowledge_architecture_five_layers",
+   "label": "Five Layers (OKF/Git/Obsidian/MCP/Graph)",
+   "community": 7,
+   "file_type": "concept",
+   "source": "00_System/ROS-KNOWLEDGE-ARCHITECTURE.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_ros_knowledge_architecture_linter_as_hook",
+   "label": "Linter-as-Hook (invariant enforcement)",
+   "community": 7,
+   "file_type": "concept",
+   "source": "00_System/ROS-KNOWLEDGE-ARCHITECTURE.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_ros_knowledge_architecture_shared_mcp_json",
+   "label": "Shared .mcp.json Manifest",
+   "community": 7,
+   "file_type": "concept",
+   "source": "00_System/ROS-KNOWLEDGE-ARCHITECTURE.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_ros_knowledge_architecture_three_engines",
+   "label": "Three Engines (Claude Code / Codex / Hermes)",
+   "community": 7,
+   "file_type": "concept",
+   "source": "00_System/ROS-KNOWLEDGE-ARCHITECTURE.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_ros_knowledge_architecture_ponytail_adapt",
+   "label": "Ponytail Skill -> ADAPT into /de-slop",
+   "community": 7,
+   "file_type": "rationale",
+   "source": "00_System/ROS-KNOWLEDGE-ARCHITECTURE.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_agent_filesystem_contract_filesystem_contract",
+   "label": "ROS Agent Filesystem Contract",
+   "community": 3,
+   "file_type": "concept",
+   "source": "00_System/agent-filesystem-contract.md",
+   "degree": 6
+  },
+  {
+   "id": "00_system_agent_filesystem_contract_filesystem_as_context_layer",
+   "label": "Filesystem as Context Layer",
+   "community": 3,
+   "file_type": "rationale",
+   "source": "00_System/agent-filesystem-contract.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_agent_filesystem_contract_runtime_neutrality",
+   "label": "Runtime Neutrality",
+   "community": 3,
+   "file_type": "rationale",
+   "source": "00_System/agent-filesystem-contract.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_agent_filesystem_contract_path_map",
+   "label": "ROS Path Map",
+   "community": 3,
+   "file_type": "concept",
+   "source": "00_System/agent-filesystem-contract.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_agent_filesystem_contract_promotion_rule",
+   "label": "Runtime State Promotion Rule",
+   "community": 3,
+   "file_type": "concept",
+   "source": "00_System/agent-filesystem-contract.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_connectors_connectors",
+   "label": "Connectors Registry",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/connectors.md",
+   "degree": 8
+  },
+  {
+   "id": "00_system_connectors_gmail_bguy",
+   "label": "Gmail bguy.rubin Connector",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/connectors.md",
+   "degree": 3
+  },
+  {
+   "id": "00_system_connectors_gmail_hollandvest",
+   "label": "Gmail bhollandvest Connector",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/connectors.md",
+   "degree": 3
+  },
+  {
+   "id": "00_system_connectors_gmail_joseph",
+   "label": "Gmail josephdoronrubin Connector",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/connectors.md",
+   "degree": 4
+  },
+  {
+   "id": "00_system_connectors_notion_connector",
+   "label": "Notion Connector",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/connectors.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_connectors_github_connector",
+   "label": "GitHub Connector",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/connectors.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_connectors_himalaya_cli",
+   "label": "Himalaya CLI",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/connectors.md",
+   "degree": 3
+  },
+  {
+   "id": "00_system_connectors_draft_first_safety_rule",
+   "label": "Draft-First Email Safety Rule",
+   "community": 1,
+   "file_type": "rationale",
+   "source": "00_System/connectors.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_contacts_shared_contacts",
+   "label": "Shared Contacts Registry",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/contacts.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_contacts_joseph_rubin",
+   "label": "Joseph Rubin (EA Lead)",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/contacts.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_identity_policy_identity_policy",
+   "label": "ROS Identity Policy",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/identity-policy.md",
+   "degree": 5
+  },
+  {
+   "id": "00_system_identity_policy_gmail_account_registry",
+   "label": "Gmail Account Registry",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/identity-policy.md",
+   "degree": 4
+  },
+  {
+   "id": "00_system_identity_policy_ea_client_isolation",
+   "label": "EA Client Isolation Rules",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/identity-policy.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_identity_policy_email_drafting_protocol",
+   "label": "Email Drafting Protocol",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/identity-policy.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_index_system_index",
+   "label": "00_System Index",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/index.md",
+   "degree": 10
+  },
+  {
+   "id": "00_system_markdown_instruction_principles_principles",
+   "label": "ROS Markdown Instruction Principles",
+   "community": 6,
+   "file_type": "concept",
+   "source": "00_System/markdown-instruction-principles.md",
+   "degree": 6
+  },
+  {
+   "id": "00_system_markdown_instruction_principles_token_discipline",
+   "label": "Token Discipline / Size Ceilings",
+   "community": 6,
+   "file_type": "concept",
+   "source": "00_System/markdown-instruction-principles.md",
+   "degree": 3
+  },
+  {
+   "id": "00_system_markdown_instruction_principles_one_rule_one_file",
+   "label": "One Rule One File (DRY)",
+   "community": 9,
+   "file_type": "rationale",
+   "source": "00_System/markdown-instruction-principles.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_markdown_instruction_principles_minimalism_ladder",
+   "label": "Minimalism Ladder",
+   "community": 6,
+   "file_type": "concept",
+   "source": "00_System/markdown-instruction-principles.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_markdown_instruction_principles_imperative_headers",
+   "label": "Imperative On/When/Before/After Headers",
+   "community": 6,
+   "file_type": "concept",
+   "source": "00_System/markdown-instruction-principles.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_markdown_instruction_principles_memory_is_state",
+   "label": "MEMORY.md is State Not Instructions",
+   "community": 6,
+   "file_type": "rationale",
+   "source": "00_System/markdown-instruction-principles.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_memory_archive_policy_policy",
+   "label": "ROS Memory and Archive Policy",
+   "community": 6,
+   "file_type": "concept",
+   "source": "00_System/memory-archive-policy.md",
+   "degree": 6
+  },
+  {
+   "id": "00_system_memory_archive_policy_memory_whiteboard",
+   "label": "Memory is the Whiteboard",
+   "community": 6,
+   "file_type": "rationale",
+   "source": "00_System/memory-archive-policy.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_memory_archive_policy_archive_filing_cabinet",
+   "label": "Archive is the Filing Cabinet",
+   "community": 6,
+   "file_type": "rationale",
+   "source": "00_System/memory-archive-policy.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_memory_archive_policy_misplacement_test",
+   "label": "Misplacement Test",
+   "community": 3,
+   "file_type": "concept",
+   "source": "00_System/memory-archive-policy.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_notion_database_registry_registry",
+   "label": "Notion Database Registry",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/notion_database_registry.md",
+   "degree": 4
+  },
+  {
+   "id": "00_system_notion_database_registry_command_center",
+   "label": "Rubin OS Command Center",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/notion_database_registry.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_notion_templates_template_ids",
+   "label": "Notion Template IDs",
+   "community": 1,
+   "file_type": "concept",
+   "source": "00_System/notion_templates.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_okf_spec_okf_spec",
+   "label": "ROS-OKF Format Spec",
+   "community": 9,
+   "file_type": "concept",
+   "source": "00_System/okf-spec.md",
+   "degree": 5
+  },
+  {
+   "id": "00_system_okf_spec_open_knowledge_format",
+   "label": "Open Knowledge Format (OKF v0.1)",
+   "community": 9,
+   "file_type": "concept",
+   "source": "00_System/okf-spec.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_okf_spec_yaml_frontmatter",
+   "label": "YAML Frontmatter Block",
+   "community": 9,
+   "file_type": "concept",
+   "source": "00_System/okf-spec.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_okf_spec_type_vocabulary",
+   "label": "OKF type Vocabulary",
+   "community": 9,
+   "file_type": "concept",
+   "source": "00_System/okf-spec.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_okf_spec_eager_boot_exception",
+   "label": "Eager-Boot Frontmatter Exception",
+   "community": 9,
+   "file_type": "rationale",
+   "source": "00_System/okf-spec.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_okf_spec_linter_invariants",
+   "label": "OKF Linter-Enforced Invariants",
+   "community": 9,
+   "file_type": "concept",
+   "source": "00_System/okf-spec.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_ros_hygiene_runbook_runbook",
+   "label": "ROS Hygiene Runbook",
+   "community": 4,
+   "file_type": "concept",
+   "source": "00_System/ros-hygiene-runbook.md",
+   "degree": 6
+  },
+  {
+   "id": "00_system_ros_hygiene_runbook_hygiene_scanner",
+   "label": "ros_repo_hygiene.py Scanner",
+   "community": 4,
+   "file_type": "concept",
+   "source": "00_System/ros-hygiene-runbook.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_ros_hygiene_runbook_sensitive_file_check",
+   "label": "Sensitive-File Check",
+   "community": 4,
+   "file_type": "concept",
+   "source": "00_System/ros-hygiene-runbook.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_ros_improve_loop_improve_loop",
+   "label": "ROS Improve Loop",
+   "community": 4,
+   "file_type": "concept",
+   "source": "00_System/ros-improve-loop.md",
+   "degree": 5
+  },
+  {
+   "id": "00_system_ros_improve_loop_night_km_collector",
+   "label": "ros_night_km.py Collector",
+   "community": 4,
+   "file_type": "concept",
+   "source": "00_System/ros-improve-loop.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_ros_improve_loop_tier_mapping",
+   "label": "Tier A/B/C Mapping",
+   "community": 4,
+   "file_type": "concept",
+   "source": "00_System/ros-improve-loop.md",
+   "degree": 2
+  },
+  {
+   "id": "00_system_ros_improve_loop_allowlist_graduation",
+   "label": "Auto-Approve Allowlist Graduation",
+   "community": 4,
+   "file_type": "concept",
+   "source": "00_System/ros-improve-loop.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_ros_improve_loop_augmented_not_autonomous",
+   "label": "Augmented Not Autonomous",
+   "community": 4,
+   "file_type": "rationale",
+   "source": "00_System/ros-improve-loop.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_ros_improve_loop_guard_mjs",
+   "label": "guard.mjs Tier-C Gate",
+   "community": 4,
+   "file_type": "concept",
+   "source": "00_System/ros-improve-loop.md",
+   "degree": 1
+  },
+  {
+   "id": "00_system_session_audit_protocol",
+   "label": "ROS Session Audit Protocol",
+   "community": 3,
+   "file_type": "concept",
+   "source": "00_System/session-audit.md",
+   "degree": 4
+  },
+  {
+   "id": "00_system_session_audit_decision_table",
+   "label": "Session Audit Decision Table",
+   "community": 3,
+   "file_type": "concept",
+   "source": "00_System/session-audit.md",
+   "degree": 2
+  },
+  {
+   "id": "sync_merge_claude_work_into_hermes_push_merge_plan",
+   "label": "Claude-Into-Hermes Merge Plan (SUPERSEDED)",
+   "community": 3,
+   "file_type": "document",
+   "source": "00_System/sync/MERGE-CLAUDE-WORK-INTO-HERMES-PUSH.md",
+   "degree": 4
+  },
+  {
+   "id": "sync_current_path_contract_path_contract",
+   "label": "Current ROS Path Contract",
+   "community": 3,
+   "file_type": "concept",
+   "source": "00_System/sync/current-path-contract.md",
+   "degree": 3
+  },
+  {
+   "id": "sync_current_path_contract_single_tree_decision",
+   "label": "Single Canonical Working Tree",
+   "community": 3,
+   "file_type": "rationale",
+   "source": "00_System/sync/current-path-contract.md",
+   "degree": 1
+  }
+ ],
+ "edges": [
+  {
+   "source": "agents_compliance_mapper_compliance_mapper",
+   "target": "agents_compliance_mapper_cross_framework_crosswalk",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_compliance_mapper_compliance_mapper",
+   "target": "agents_compliance_mapper_requirement_control_evidence_gap_matrix",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_compliance_mapper_compliance_mapper",
+   "target": "agents_compliance_mapper_statement_of_applicability",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_compliance_mapper_compliance_mapper",
+   "target": "iso27001_nist_mapping_skill_iso27001_nist_mapping",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_compliance_mapper_compliance_mapper",
+   "target": "nis2_control_mapping_skill_nis2_control_mapping",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_compliance_mapper_requirement_control_evidence_gap_matrix",
+   "target": "iso27001_nist_mapping_skill_iso27001_nist_mapping",
+   "rel": "semantically_similar_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "iso27001_nist_mapping_skill_iso27001_nist_mapping",
+   "target": "agents_compliance_mapper_statement_of_applicability",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_security_reviewer_security_reviewer",
+   "target": "agents_security_reviewer_security_review_lenses",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_security_reviewer_security_reviewer",
+   "target": "threat_model_skill_threat_model",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_threat_modeler_threat_modeler",
+   "target": "agents_security_reviewer_security_reviewer",
+   "rel": "conceptually_related_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "agents_threat_modeler_threat_modeler",
+   "target": "agents_threat_modeler_stride",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_threat_modeler_threat_modeler",
+   "target": "agents_threat_modeler_threat_register",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_threat_modeler_threat_modeler",
+   "target": "threat_model_skill_threat_model",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "agents_threat_modeler_stride",
+   "target": "threat_model_skill_stride",
+   "rel": "conceptually_related_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "ai_eval_harness_skill_ai_eval_harness",
+   "target": "ai_eval_harness_skill_l4_measured_rivet",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "ai_eval_harness_skill_ai_eval_harness",
+   "target": "ai_eval_harness_skill_llm_as_judge",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "ai_eval_harness_skill_eval_driven_development",
+   "target": "ai_eval_harness_skill_ai_eval_harness",
+   "rel": "rationale_for",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "ai_eval_harness_skill_safety_hard_gate",
+   "target": "ai_eval_harness_skill_ai_eval_harness",
+   "rel": "rationale_for",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "ai_eval_harness_skill_pinned_judge_model",
+   "target": "ai_eval_harness_skill_llm_as_judge",
+   "rel": "rationale_for",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "ai_eval_harness_skill_l4_measured_rivet",
+   "target": "00_system_capability_optimization_capability_maturity_levels",
+   "rel": "conceptually_related_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "arbor_competitor_benchmark_skill_arbor_competitor_benchmark",
+   "target": "arbor_competitor_benchmark_skill_capability_map",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "arbor_competitor_benchmark_skill_arbor_competitor_benchmark",
+   "target": "arbor_competitor_benchmark_skill_competitive_brief",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "arbor_competitor_benchmark_skill_arbor_competitor_benchmark",
+   "target": "arbor_competitor_benchmark_skill_longitudinal_memory_moat",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "arbor_competitor_benchmark_skill_arbor_competitor_benchmark",
+   "target": "arbor_competitor_benchmark_skill_multi_agent_fan_out",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "arbor_competitor_benchmark_skill_arbor_competitor_benchmark",
+   "target": "arbor_competitor_benchmark_skill_six_surfaces",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "azure_tenant_separation_review_skill_azure_tenant_separation_review",
+   "target": "azure_tenant_separation_review_skill_boortmalt_d3_d8_d9",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "azure_tenant_separation_review_skill_azure_tenant_separation_review",
+   "target": "azure_tenant_separation_review_skill_day_1_readiness",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "azure_tenant_separation_review_skill_azure_tenant_separation_review",
+   "target": "azure_tenant_separation_review_skill_entra_id",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "azure_tenant_separation_review_skill_azure_tenant_separation_review",
+   "target": "azure_tenant_separation_review_skill_inherited_dependency_inventory",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "azure_tenant_separation_review_skill_azure_tenant_separation_review",
+   "target": "nis2_control_mapping_skill_nis2_control_mapping",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "azure_tenant_separation_review_skill_azure_tenant_separation_review",
+   "target": "threat_model_skill_threat_model",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "azure_tenant_separation_review_skill_azure_tenant_separation_review",
+   "target": "zero_trust_assessment_skill_zero_trust_assessment",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "iso27001_nist_mapping_skill_iso27001_nist_mapping",
+   "target": "iso27001_nist_mapping_skill_boortmalt_d2_d5",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "iso27001_nist_mapping_skill_iso27001_nist_mapping",
+   "target": "iso27001_nist_mapping_skill_iso27001_annex_a",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "iso27001_nist_mapping_skill_iso27001_nist_mapping",
+   "target": "iso27001_nist_mapping_skill_nist_csf_2",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "iso27001_nist_mapping_skill_iso27001_nist_mapping",
+   "target": "nis2_control_mapping_skill_nis2_control_mapping",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "iso27001_nist_mapping_skill_iso27001_nist_mapping",
+   "target": "zero_trust_assessment_skill_zero_trust_assessment",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "nis2_control_mapping_skill_nis2_control_mapping",
+   "target": "nis2_control_mapping_skill_incident_reporting_timelines",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "nis2_control_mapping_skill_nis2_control_mapping",
+   "target": "nis2_control_mapping_skill_national_transposition",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "nis2_control_mapping_skill_nis2_control_mapping",
+   "target": "nis2_control_mapping_skill_nis2_art_21",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "nis2_control_mapping_skill_nis2_control_mapping",
+   "target": "threat_model_skill_threat_model",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "nis2_control_mapping_skill_nis2_control_mapping",
+   "target": "zero_trust_assessment_skill_zero_trust_assessment",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "threat_model_skill_threat_model",
+   "target": "threat_model_skill_data_flow_diagram",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "threat_model_skill_threat_model",
+   "target": "threat_model_skill_residual_risk",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "threat_model_skill_threat_model",
+   "target": "threat_model_skill_stride",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "threat_model_skill_threat_model",
+   "target": "zero_trust_assessment_skill_zero_trust_assessment",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "zero_trust_assessment_skill_zero_trust_assessment",
+   "target": "zero_trust_assessment_skill_boortmalt_d4",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "zero_trust_assessment_skill_zero_trust_assessment",
+   "target": "zero_trust_assessment_skill_pim_pam",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "zero_trust_assessment_skill_zero_trust_assessment",
+   "target": "zero_trust_assessment_skill_zero_trust_principles",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_routing_routing_matrix",
+   "target": "00_system_routing_most_specific_match_rule",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_routing_routing_matrix",
+   "target": "00_system_routing_cos_fallback",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_capabilities_agent_capabilities",
+   "target": "00_system_agent_capabilities_baseline_capabilities",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_capabilities_agent_capabilities",
+   "target": "00_system_agent_capabilities_capability_quality_gates",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_capabilities_agent_capabilities",
+   "target": "00_system_capability_optimization_capability_optimization",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_capabilities_capability_quality_gates",
+   "target": "00_system_layer_model_layer_model",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_capability_optimization_capability_optimization",
+   "target": "00_system_capability_optimization_capability_maturity_levels",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_capability_optimization_capability_optimization",
+   "target": "00_system_capability_optimization_optimization_loop",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_capability_optimization_capability_optimization",
+   "target": "00_system_layer_model_layer_model",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_capability_optimization_audit_at_system_altitude",
+   "target": "00_system_capability_optimization_optimization_loop",
+   "rel": "rationale_for",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_layer_model_layer_model",
+   "target": "00_system_layer_model_layer_1_knowledge",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_layer_model_layer_model",
+   "target": "00_system_layer_model_layer_2_operations",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_layer_model_layer_model",
+   "target": "00_system_layer_model_layer_3_execution",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_layer_model_layer_model",
+   "target": "00_system_layer_model_layer_4_reasoning",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_layer_model_one_layer_rule",
+   "target": "00_system_layer_model_layer_model",
+   "rel": "rationale_for",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_knowledge_architecture_five_layers",
+   "target": "00_system_layer_model_layer_model",
+   "rel": "semantically_similar_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_ros_knowledge_architecture_knowledge_architecture",
+   "target": "00_system_ros_knowledge_architecture_five_layers",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_knowledge_architecture_knowledge_architecture",
+   "target": "00_system_ros_knowledge_architecture_linter_as_hook",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_knowledge_architecture_knowledge_architecture",
+   "target": "00_system_ros_knowledge_architecture_okf",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_knowledge_architecture_knowledge_architecture",
+   "target": "00_system_ros_knowledge_architecture_shared_mcp_json",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_knowledge_architecture_knowledge_architecture",
+   "target": "00_system_ros_knowledge_architecture_three_engines",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_knowledge_architecture_ponytail_adapt",
+   "target": "00_system_ros_knowledge_architecture_knowledge_architecture",
+   "rel": "rationale_for",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_knowledge_architecture_okf",
+   "target": "00_system_ros_knowledge_architecture_three_engines",
+   "rel": "conceptually_related_to",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_knowledge_architecture_one_graph_n_contexts",
+   "target": "00_system_ros_knowledge_architecture_okf",
+   "rel": "rationale_for",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_filesystem_contract_filesystem_contract",
+   "target": "00_system_agent_filesystem_contract_filesystem_as_context_layer",
+   "rel": "conceptually_related_to",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_filesystem_contract_filesystem_contract",
+   "target": "00_system_agent_filesystem_contract_path_map",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_filesystem_contract_filesystem_contract",
+   "target": "00_system_agent_filesystem_contract_promotion_rule",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_filesystem_contract_filesystem_contract",
+   "target": "00_system_agent_filesystem_contract_runtime_neutrality",
+   "rel": "conceptually_related_to",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_filesystem_contract_filesystem_contract",
+   "target": "00_system_session_audit_protocol",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_agent_filesystem_contract_filesystem_contract",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_agent_filesystem_contract_path_map",
+   "target": "sync_current_path_contract_path_contract",
+   "rel": "conceptually_related_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_connectors_connectors",
+   "target": "00_system_connectors_draft_first_safety_rule",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_connectors_connectors",
+   "target": "00_system_connectors_github_connector",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_connectors_connectors",
+   "target": "00_system_connectors_gmail_bguy",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_connectors_connectors",
+   "target": "00_system_connectors_gmail_hollandvest",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_connectors_connectors",
+   "target": "00_system_connectors_gmail_joseph",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_connectors_connectors",
+   "target": "00_system_connectors_notion_connector",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_identity_policy_identity_policy",
+   "target": "00_system_connectors_connectors",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_connectors_connectors",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_connectors_gmail_bguy",
+   "target": "00_system_connectors_himalaya_cli",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_identity_policy_gmail_account_registry",
+   "target": "00_system_connectors_gmail_bguy",
+   "rel": "shares_data_with",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_connectors_gmail_hollandvest",
+   "target": "00_system_connectors_himalaya_cli",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_identity_policy_gmail_account_registry",
+   "target": "00_system_connectors_gmail_hollandvest",
+   "rel": "shares_data_with",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_connectors_gmail_joseph",
+   "target": "00_system_connectors_himalaya_cli",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_contacts_joseph_rubin",
+   "target": "00_system_connectors_gmail_joseph",
+   "rel": "conceptually_related_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_identity_policy_gmail_account_registry",
+   "target": "00_system_connectors_gmail_joseph",
+   "rel": "shares_data_with",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_connectors_notion_connector",
+   "target": "00_system_notion_database_registry_registry",
+   "rel": "conceptually_related_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_identity_policy_email_drafting_protocol",
+   "target": "00_system_connectors_draft_first_safety_rule",
+   "rel": "semantically_similar_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_contacts_shared_contacts",
+   "target": "00_system_contacts_joseph_rubin",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_contacts_shared_contacts",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_identity_policy_identity_policy",
+   "target": "00_system_identity_policy_ea_client_isolation",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_identity_policy_identity_policy",
+   "target": "00_system_identity_policy_email_drafting_protocol",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_identity_policy_identity_policy",
+   "target": "00_system_identity_policy_gmail_account_registry",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_identity_policy_identity_policy",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_markdown_instruction_principles_principles",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_memory_archive_policy_policy",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_notion_database_registry_registry",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_notion_templates_template_ids",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_ros_hygiene_runbook_runbook",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_index_system_index",
+   "target": "00_system_session_audit_protocol",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_markdown_instruction_principles_principles",
+   "target": "00_system_markdown_instruction_principles_imperative_headers",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_markdown_instruction_principles_principles",
+   "target": "00_system_markdown_instruction_principles_memory_is_state",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_markdown_instruction_principles_principles",
+   "target": "00_system_markdown_instruction_principles_minimalism_ladder",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_markdown_instruction_principles_principles",
+   "target": "00_system_markdown_instruction_principles_one_rule_one_file",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_markdown_instruction_principles_principles",
+   "target": "00_system_markdown_instruction_principles_token_discipline",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_memory_archive_policy_policy",
+   "target": "00_system_markdown_instruction_principles_token_discipline",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_hygiene_runbook_runbook",
+   "target": "00_system_markdown_instruction_principles_token_discipline",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_markdown_instruction_principles_one_rule_one_file",
+   "target": "00_system_okf_spec_linter_invariants",
+   "rel": "semantically_similar_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_markdown_instruction_principles_memory_is_state",
+   "target": "00_system_memory_archive_policy_memory_whiteboard",
+   "rel": "semantically_similar_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_memory_archive_policy_policy",
+   "target": "00_system_memory_archive_policy_archive_filing_cabinet",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_memory_archive_policy_policy",
+   "target": "00_system_memory_archive_policy_memory_whiteboard",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_memory_archive_policy_policy",
+   "target": "00_system_memory_archive_policy_misplacement_test",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "sync_merge_claude_work_into_hermes_push_merge_plan",
+   "target": "00_system_memory_archive_policy_policy",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_memory_archive_policy_misplacement_test",
+   "target": "00_system_session_audit_decision_table",
+   "rel": "semantically_similar_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_notion_database_registry_registry",
+   "target": "00_system_notion_database_registry_command_center",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_notion_templates_template_ids",
+   "target": "00_system_notion_database_registry_registry",
+   "rel": "conceptually_related_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "00_system_okf_spec_okf_spec",
+   "target": "00_system_okf_spec_eager_boot_exception",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_okf_spec_okf_spec",
+   "target": "00_system_okf_spec_linter_invariants",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_okf_spec_okf_spec",
+   "target": "00_system_okf_spec_open_knowledge_format",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_okf_spec_okf_spec",
+   "target": "00_system_okf_spec_type_vocabulary",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_okf_spec_okf_spec",
+   "target": "00_system_okf_spec_yaml_frontmatter",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_okf_spec_type_vocabulary",
+   "target": "00_system_okf_spec_yaml_frontmatter",
+   "rel": "conceptually_related_to",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_hygiene_runbook_runbook",
+   "target": "00_system_ros_hygiene_runbook_hygiene_scanner",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_hygiene_runbook_runbook",
+   "target": "00_system_ros_hygiene_runbook_sensitive_file_check",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_improve_loop_improve_loop",
+   "target": "00_system_ros_hygiene_runbook_runbook",
+   "rel": "conceptually_related_to",
+   "conf": "INFERRED"
+  },
+  {
+   "source": "sync_merge_claude_work_into_hermes_push_merge_plan",
+   "target": "00_system_ros_hygiene_runbook_runbook",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_improve_loop_improve_loop",
+   "target": "00_system_ros_improve_loop_augmented_not_autonomous",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_improve_loop_improve_loop",
+   "target": "00_system_ros_improve_loop_allowlist_graduation",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_improve_loop_improve_loop",
+   "target": "00_system_ros_improve_loop_night_km_collector",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_improve_loop_improve_loop",
+   "target": "00_system_ros_improve_loop_tier_mapping",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_ros_improve_loop_tier_mapping",
+   "target": "00_system_ros_improve_loop_guard_mjs",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "00_system_session_audit_protocol",
+   "target": "00_system_session_audit_decision_table",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "sync_merge_claude_work_into_hermes_push_merge_plan",
+   "target": "00_system_session_audit_protocol",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "sync_merge_claude_work_into_hermes_push_merge_plan",
+   "target": "sync_current_path_contract_path_contract",
+   "rel": "references",
+   "conf": "EXTRACTED"
+  },
+  {
+   "source": "sync_current_path_contract_single_tree_decision",
+   "target": "sync_current_path_contract_path_contract",
+   "rel": "rationale_for",
+   "conf": "EXTRACTED"
+  }
+ ]
+}
